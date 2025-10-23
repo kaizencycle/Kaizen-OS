@@ -1,0 +1,21 @@
+{
+  "type": "object",
+  "required": ["runId","candidateTag","baselineTag","scores","decision"],
+  "properties": {
+    "runId": { "type": "string" },
+    "candidateTag": { "type": "string" },
+    "baselineTag": { "type": "string" },
+    "scores": {
+      "type": "object",
+      "properties": {
+        "core_capabilities": { "type": "number" },
+        "safety_alignment":  { "type": "number" },
+        "robustness":        { "type": "number" }
+      },
+      "additionalProperties": false
+    },
+    "passes": { "type": "boolean" },
+    "decision": { "type": "string", "enum": ["reject","hold","promote"] },
+    "artifacts": { "type": "object" }
+  }
+}

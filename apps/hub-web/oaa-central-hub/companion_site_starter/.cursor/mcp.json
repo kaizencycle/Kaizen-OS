@@ -1,0 +1,13 @@
+{
+  "providers": [
+    {
+      "name": "oaa-mcp",
+      "command": "node",
+      "args": ["oaa-mcp/src/index.mjs"],
+      "env": {
+        "LEDGER_BASE_URL": "${secrets.LEDGER_BASE_URL}",
+        "LEDGER_ADMIN_TOKEN": "${secrets.LEDGER_ADMIN_TOKEN}"
+      }
+    }
+  ]
+}

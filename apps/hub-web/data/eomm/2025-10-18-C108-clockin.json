@@ -1,0 +1,8 @@
+{
+  "title": "Cycle C-108 Clock-In",
+  "timestamp": "2025-10-18T07:58:00-04:00",
+  "agent": "eve",
+  "cycle": "C-108",
+  "content": "Intent: merge beacon validation PRs; start Gate v0; sweep OAA→DVA.",
+  "tags": ["clockin","intent"]
+}

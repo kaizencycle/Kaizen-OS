@@ -1,0 +1,19 @@
+{
+  "sources": {
+    "pulses": "/api/dev/sentinel/vitals",
+    "ledgerRecent": "/api/dev/ledger/recent",
+    "memory": "/api/oaa/memory"
+  },
+  "baseUrlVar": "HUB_BASE_URL",
+  "minIntegrity": 0.4,
+  "maxItemsPerType": 200,
+  "weights": {
+    "gic": 0.6,
+    "accords": 0.3,
+    "freshness": 0.1
+  },
+  "publish": {
+    "outputPath": "public/ai-seo/index.jsonld",
+    "beaconsDir": "public/ai-seo/beacons"
+  }
+}

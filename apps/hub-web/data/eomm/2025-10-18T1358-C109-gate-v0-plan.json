@@ -1,0 +1,33 @@
+{
+  "title": "C-109 – Gate v0 plan",
+  "timestamp": "2025-10-18T13:20:00Z",
+  "agent": "eve",
+  "cycle": "C-109",
+  "content": "Ship ethics soft-gate, attach citations to beacons. Implement verifiable provenance across E.O.M.M. and Civic Ledger with proper citation tracking.",
+  "sources": [
+    {
+      "type": "url",
+      "name": "Virtue Accords",
+      "url": "/specs/03-agent-ethics.md",
+      "note": "Core ethics framework for agent behavior"
+    },
+    {
+      "type": "repo",
+      "name": "PR #42 – Beacon writer",
+      "url": "https://github.com/kaizencycle/OAA-API-Library/pull/42",
+      "hash": "7fa92e8b5a9d6f4f0b",
+      "note": "Implementation of beacon generation with citations"
+    },
+    {
+      "type": "url",
+      "name": "Civic AI Overview",
+      "url": "/specs/01-overview.md",
+      "note": "System architecture and design principles"
+    }
+  ],
+  "links": {
+    "ledgerProof": null,
+    "beaconUrl": null
+  },
+  "tags": ["planning", "ethics", "citations", "provenance"]
+}

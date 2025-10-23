@@ -1,0 +1,17 @@
+suite: core_capabilities
+tasks:
+  - name: reasoning_math
+    metric: exact_match
+    points: 150
+  - name: code_completion
+    metric: pass_at_1
+    points: 150
+  - name: qa_closed_book
+    metric: f1
+    points: 200
+model:
+  endpoint_env: MODEL_ENDPOINT   # set in repo/Render env
+  token_env: MODEL_TOKEN
+limits:
+  max_parallel: 8
+  timeout_ms: 30000

@@ -1,0 +1,36 @@
+{
+  "name": "companion-site-starter",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev -p 3000",
+    "build": "next build",
+    "start": "next start -p 3000",
+    "lint": "eslint . --ext .ts,.tsx --max-warnings=0 || true",
+    "typecheck": "tsc --noEmit",
+    "test": "echo \"(no tests yet)\" && exit 0",
+    "check:context": "node scripts/checkContext.mjs",
+    "sentinel:fix": "node --experimental-json-modules scripts/sentinelFix.mjs",
+    "sentinel:setup": "bash scripts/setup-sentinel-suite.sh",
+    "sentinel:test": "node scripts/test-sentinel-suite.mjs"
+  },
+  "dependencies": {
+    "next": "14.2.5",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "three": "0.161.0",
+    "ethers": "^6.8.1",
+    "bullmq": "^4.15.4",
+    "ioredis": "^5.3.2",
+    "lru-cache": "^10.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "20.11.30",
+    "@types/react": "18.2.64",
+    "@types/react-dom": "18.2.21",
+    "eslint": "8.57.0",
+    "typescript": "5.4.5",
+    "esbuild-register": "^3.5.0",
+    "prettier": "^3.0.0"
+  }
+}

@@ -1,0 +1,29 @@
+[
+  {
+    "version": "1.0.0",
+    "date": "2025-01-01",
+    "title": "Cycle 0 — Founding",
+    "summary": "Initial ratification of Virtue Accords and Civic Internet preamble.",
+    "sha256": "0x4a8b2c3d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b",
+    "proof": "0x1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c",
+    "url": "https://github.com/civic-internet/constitution/commit/founding"
+  },
+  {
+    "version": "1.1.0",
+    "date": "2025-01-15",
+    "title": "Data Sovereignty Amendment",
+    "summary": "Enhanced data ownership rights and portability requirements.",
+    "sha256": "0x2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d",
+    "proof": "0x3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e",
+    "url": "https://github.com/civic-internet/constitution/commit/data-sovereignty"
+  },
+  {
+    "version": "1.2.0",
+    "date": "2025-02-01",
+    "title": "Algorithmic Transparency Protocol",
+    "summary": "Mandatory explainability and bias detection for all AI systems.",
+    "sha256": "0x4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6",
+    "proof": "0x5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f",
+    "url": "https://github.com/civic-internet/constitution/commit/algorithmic-transparency"
+  }
+]

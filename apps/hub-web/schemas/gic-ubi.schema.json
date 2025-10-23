@@ -1,0 +1,30 @@
+{
+  "$id": "https://oaa/specs/gic-ubi.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "cycle": { "type": "string" },
+    "userId": { "type": "string" },
+    "ubiBase": { "type": "number", "minimum": 0 },
+    "geoWeight": { "type": "number", "minimum": 0 },
+    "merit": { "type": "number", "minimum": 0 },
+    "penalty": { "type": "number", "minimum": 0 },
+    "total": { "type": "number", "minimum": 0 },
+    "proofs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "proofId": { "type": "string" },
+          "integrity": { "type": "number", "minimum": 0, "maximum": 1 },
+          "impact": { "type": "number", "minimum": 0 },
+          "weight": { "type": "number", "minimum": 0 }
+        },
+        "required": ["proofId","integrity","impact","weight"]
+      }
+    },
+    "signature": { "type": "string" }
+  },
+  "required": ["cycle","userId","ubiBase","geoWeight","merit","penalty","total"]
+}

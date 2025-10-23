@@ -1,0 +1,83 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Attestation Schema",
+  "type": "object",
+  "required": ["@context", "@type", "name", "text", "integrityHash"],
+  "properties": {
+    "@context": { "type": "string", "const": "https://schema.org" },
+    "@type": { "type": "string", "enum": ["CreativeWork", "WebPage", "SoftwareSourceCode", "Dataset"] },
+    "name": { "type": "string", "minLength": 1 },
+    "author": { "type": "string" },
+    "agent": { "type": "string" },
+    "dateCreated": { "type": "string" },
+    "text": { "type": "string", "minLength": 1 },
+    "keywords": { "type": "array", "items": { "type": "string" } },
+    "integrityHash": { "type": "string", "pattern": "^sha256:[a-f0-9]{64}$" },
+    "attestation": {
+      "type": "object",
+      "properties": {
+        "signer": { "type": "string" },
+        "signature": { "type": "string" }
+      }
+    },
+    "oaa": {
+      "type": "object",
+      "properties": {
+        "kind": { "type": "string" },
+        "cycle": { "type": "string" },
+        "companion": { "type": "string" }
+      }
+    },
+    "citation": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "@type": { "enum": ["CreativeWork", "WebPage", "SoftwareSourceCode", "Dataset"] },
+          "name": { "type": "string" },
+          "url": { "type": "string" },
+          "hash": { "type": "string" },
+          "note": { "type": "string" }
+        },
+        "required": ["@type", "name", "url"]
+      }
+    },
+    "isBasedOn": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "prov": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "generatedAtTime": { "type": "string" },
+        "wasAttributedTo": { "type": "string" },
+        "used": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    },
+    "sameAs": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "geo": {
+      "type": "object",
+      "properties": {
+        "latitude": { "type": "number" },
+        "longitude": { "type": "number" },
+        "region": { "type": "string" },
+        "country": { "type": "string" }
+      }
+    },
+    "_source": {
+      "type": "object",
+      "properties": {
+        "eomm_file": { "type": "string" }
+      }
+    }
+  },
+  "additionalProperties": true
+}

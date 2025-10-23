@@ -1,0 +1,3 @@
+web: cd companion_site_starter && npm run start
+worker: cd companion_site_starter && node -r esbuild-register workers/publishWorker.ts
+gateway: cd services/gic_gateway_service && npm run start

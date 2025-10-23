@@ -1,0 +1,47 @@
+name: auto-seal-constitution
+on:
+  push:
+    paths:
+      - "public/constitution/virtue_accords.md"
+  workflow_dispatch: {}
+
+jobs:
+  seal:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+      
+      - uses: actions/setup-node@v4
+        with: 
+          node-version: 20
+      
+      - name: Verify Node.js
+        run: node -e "console.log('Node version:', process.version)"
+      
+      - name: Seal + update history
+        env:
+          LEDGER_BASE_URL: ${{ secrets.LEDGER_BASE_URL }}
+          LEDGER_ADMIN_TOKEN: ${{ secrets.LEDGER_ADMIN_TOKEN }}
+        run: node scripts/autoSealConstitution.mjs
+      
+      - name: Commit changes (if any)
+        run: |
+          if [[ -n "$(git status --porcelain)" ]]; then
+            git config user.name "civic-bot"
+            git config user.email "bot@civic.gic"
+            git add public/constitution/history.json
+            git commit -m "chore: auto-seal constitution (CI) [skip ci]"
+            git push
+            echo "✅ Constitution history updated and committed"
+          else
+            echo "ℹ️ No changes to commit"
+          fi
+      
+      - name: Notify completion
+        run: |
+          echo "🏛️ Constitution auto-seal process completed"
+          echo "📋 Check the constitution viewer for updated history"
