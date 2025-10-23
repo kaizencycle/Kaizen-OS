@@ -1,0 +1,50 @@
+{
+  "app_id": "hello-reflection",
+  "name": "Hello Reflection",
+  "description": "A simple example app that demonstrates civic reflection creation and management",
+  "version": "1.0.0",
+  "author": "Civic Protocol Core",
+  "license": "MIT",
+  "homepage": "https://github.com/civic-protocol/core",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/civic-protocol/core.git"
+  },
+  "keywords": [
+    "civic",
+    "reflection",
+    "governance",
+    "blockchain",
+    "example"
+  ],
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "node --watch index.js"
+  },
+  "dependencies": {
+    "civic-client": "file:../sdk/js"
+  },
+  "civic": {
+    "permissions": [
+      "reflections:read",
+      "reflections:write",
+      "attestations:read",
+      "votes:read",
+      "cycles:read",
+      "balance:read"
+    ],
+    "capabilities": [
+      "create_reflection",
+      "list_reflections",
+      "create_attestation",
+      "cast_vote",
+      "view_balance"
+    ],
+    "api_version": "0.1.0",
+    "min_civic_version": "0.1.0"
+  },
+  "manifest_version": "1.0",
+  "created_at": "2024-01-01T00:00:00Z",
+  "updated_at": "2024-01-01T00:00:00Z"
+}

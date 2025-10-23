@@ -1,0 +1,676 @@
+openapi: 3.0.3
+info:
+  title: Civic Ledger API
+  description: |
+    The Civic Ledger API provides endpoints for managing Reflections, Attestations, and Votes
+    in the Civic Protocol ecosystem. This API enables civic participation through verified
+    activity and governance mechanisms.
+  version: 0.1.0
+  contact:
+    name: Civic Protocol Core
+    url: https://github.com/civic-protocol/core
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+
+servers:
+  - url: http://localhost:5411
+    description: Development server
+  - url: https://api.civicprotocol.org
+    description: Production server
+
+paths:
+  /reflections:
+    get:
+      summary: List reflections
+      description: Retrieve a list of reflections with optional filtering
+      parameters:
+        - name: author
+          in: query
+          description: Filter by author citizen ID
+          schema:
+            type: string
+        - name: visibility
+          in: query
+          description: Filter by visibility level
+          schema:
+            type: string
+            enum: [private, public]
+        - name: tags
+          in: query
+          description: Filter by tags (comma-separated)
+          schema:
+            type: string
+        - name: limit
+          in: query
+          description: Maximum number of reflections to return
+          schema:
+            type: integer
+            default: 50
+            maximum: 100
+        - name: offset
+          in: query
+          description: Number of reflections to skip
+          schema:
+            type: integer
+            default: 0
+      responses:
+        '200':
+          description: List of reflections
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  reflections:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Reflection'
+                  total:
+                    type: integer
+                  has_more:
+                    type: boolean
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '500':
+          $ref: '#/components/responses/InternalError'
+
+    post:
+      summary: Create a reflection
+      description: Submit a new reflection to the civic ledger
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateReflectionRequest'
+      responses:
+        '201':
+          description: Reflection created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Reflection'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+        '500':
+          $ref: '#/components/responses/InternalError'
+
+  /reflections/{reflection_id}:
+    get:
+      summary: Get reflection by ID
+      description: Retrieve a specific reflection by its ID
+      parameters:
+        - name: reflection_id
+          in: path
+          required: true
+          description: Unique identifier for the reflection
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Reflection details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Reflection'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalError'
+
+  /attestations:
+    get:
+      summary: List attestations
+      description: Retrieve a list of attestations
+      parameters:
+        - name: attester
+          in: query
+          description: Filter by attester citizen ID
+          schema:
+            type: string
+        - name: subject
+          in: query
+          description: Filter by subject citizen ID
+          schema:
+            type: string
+        - name: type
+          in: query
+          description: Filter by attestation type
+          schema:
+            type: string
+        - name: limit
+          in: query
+          description: Maximum number of attestations to return
+          schema:
+            type: integer
+            default: 50
+        - name: offset
+          in: query
+          description: Number of attestations to skip
+          schema:
+            type: integer
+            default: 0
+      responses:
+        '200':
+          description: List of attestations
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  attestations:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Attestation'
+                  total:
+                    type: integer
+                  has_more:
+                    type: boolean
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '500':
+          $ref: '#/components/responses/InternalError'
+
+    post:
+      summary: Create an attestation
+      description: Submit a new attestation
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateAttestationRequest'
+      responses:
+        '201':
+          description: Attestation created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Attestation'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '500':
+          $ref: '#/components/responses/InternalError'
+
+  /agora/votes:
+    get:
+      summary: List votes
+      description: Retrieve votes from the Agora governance system
+      parameters:
+        - name: proposal_id
+          in: query
+          description: Filter by proposal ID
+          schema:
+            type: string
+        - name: voter
+          in: query
+          description: Filter by voter citizen ID
+          schema:
+            type: string
+        - name: limit
+          in: query
+          description: Maximum number of votes to return
+          schema:
+            type: integer
+            default: 50
+      responses:
+        '200':
+          description: List of votes
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  votes:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Vote'
+                  total:
+                    type: integer
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '500':
+          $ref: '#/components/responses/InternalError'
+
+    post:
+      summary: Cast a vote
+      description: Submit a vote in the Agora governance system
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CastVoteRequest'
+      responses:
+        '201':
+          description: Vote cast successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Vote'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '500':
+          $ref: '#/components/responses/InternalError'
+
+  /cycles:
+    get:
+      summary: List cycles
+      description: Retrieve civic cycles (Seed → Sweep → Seal → Ledger)
+      parameters:
+        - name: date
+          in: query
+          description: Filter by cycle date (YYYY-MM-DD)
+          schema:
+            type: string
+            format: date
+        - name: status
+          in: query
+          description: Filter by cycle status
+          schema:
+            type: string
+            enum: [seed, sweep, seal, ledger]
+        - name: limit
+          in: query
+          description: Maximum number of cycles to return
+          schema:
+            type: integer
+            default: 50
+      responses:
+        '200':
+          description: List of cycles
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  cycles:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Cycle'
+                  total:
+                    type: integer
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '500':
+          $ref: '#/components/responses/InternalError'
+
+  /balance/{address}:
+    get:
+      summary: Get GIC balance
+      description: Retrieve the GIC balance for a given address
+      parameters:
+        - name: address
+          in: path
+          required: true
+          description: Citizen or companion address
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Balance information
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Balance'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalError'
+
+  /earn/events:
+    get:
+      summary: Get earn events
+      description: Retrieve GIC earning events for an address
+      parameters:
+        - name: address
+          in: query
+          required: true
+          description: Citizen or companion address
+          schema:
+            type: string
+        - name: date
+          in: query
+          description: Filter by date (YYYY-MM-DD)
+          schema:
+            type: string
+            format: date
+        - name: limit
+          in: query
+          description: Maximum number of events to return
+          schema:
+            type: integer
+            default: 50
+      responses:
+        '200':
+          description: List of earn events
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  events:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/EarnEvent'
+                  total:
+                    type: integer
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '500':
+          $ref: '#/components/responses/InternalError'
+
+components:
+  schemas:
+    Reflection:
+      type: object
+      properties:
+        ref_id:
+          type: string
+          description: Unique reflection identifier
+        envelope_hash:
+          type: string
+          description: Hash of encrypted reflection content
+        author:
+          type: string
+          description: Citizen ID of the author
+        companion:
+          type: string
+          description: Companion ID (if applicable)
+        visibility:
+          type: string
+          enum: [private, public]
+          description: Visibility level of the reflection
+        tags:
+          type: array
+          items:
+            type: string
+          description: Tags associated with the reflection
+        created_at:
+          type: string
+          format: date-time
+          description: Creation timestamp
+        zk_proof:
+          type: string
+          description: Zero-knowledge proof of valid reflection
+
+    CreateReflectionRequest:
+      type: object
+      required:
+        - title
+        - body
+        - visibility
+      properties:
+        title:
+          type: string
+          description: Reflection title
+        body:
+          type: string
+          description: Reflection content
+        visibility:
+          type: string
+          enum: [private, public]
+          description: Visibility level
+        tags:
+          type: array
+          items:
+            type: string
+          description: Tags for categorization
+        companion_id:
+          type: string
+          description: Companion ID (if authored by AI)
+
+    Attestation:
+      type: object
+      properties:
+        att_id:
+          type: string
+          description: Unique attestation identifier
+        attester:
+          type: string
+          description: Citizen ID of the attester
+        subject:
+          type: string
+          description: Citizen ID of the subject
+        type:
+          type: string
+          description: Type of attestation
+        content_hash:
+          type: string
+          description: Hash of attested content
+        created_at:
+          type: string
+          format: date-time
+          description: Creation timestamp
+        signature:
+          type: string
+          description: Cryptographic signature
+
+    CreateAttestationRequest:
+      type: object
+      required:
+        - subject
+        - type
+        - content_hash
+      properties:
+        subject:
+          type: string
+          description: Citizen ID of the subject
+        type:
+          type: string
+          description: Type of attestation
+        content_hash:
+          type: string
+          description: Hash of content being attested
+        metadata:
+          type: object
+          description: Additional attestation metadata
+
+    Vote:
+      type: object
+      properties:
+        vote_id:
+          type: string
+          description: Unique vote identifier
+        proposal_id:
+          type: string
+          description: ID of the proposal being voted on
+        voter:
+          type: string
+          description: Citizen ID of the voter
+        choice:
+          type: string
+          description: Vote choice (yes/no/abstain)
+        weight:
+          type: number
+          description: Voting weight (based on stake/activity)
+        created_at:
+          type: string
+          format: date-time
+          description: Vote timestamp
+        signature:
+          type: string
+          description: Cryptographic signature
+
+    CastVoteRequest:
+      type: object
+      required:
+        - proposal_id
+        - choice
+      properties:
+        proposal_id:
+          type: string
+          description: ID of the proposal
+        choice:
+          type: string
+          enum: [yes, no, abstain]
+          description: Vote choice
+        memo:
+          type: string
+          description: Optional vote explanation
+
+    Cycle:
+      type: object
+      properties:
+        cycle_id:
+          type: string
+          description: Unique cycle identifier
+        date:
+          type: string
+          format: date
+          description: Cycle date
+        seed_hash:
+          type: string
+          description: Hash of seed phase
+        sweeps_root:
+          type: string
+          description: Merkle root of sweeps
+        seal_hash:
+          type: string
+          description: Hash of seal phase
+        day_root:
+          type: string
+          description: Final day root hash
+        counts:
+          type: object
+          properties:
+            seeds:
+              type: integer
+            sweeps:
+              type: integer
+            seals:
+              type: integer
+        status:
+          type: string
+          enum: [seed, sweep, seal, ledger]
+          description: Current cycle status
+        created_at:
+          type: string
+          format: date-time
+          description: Creation timestamp
+
+    Balance:
+      type: object
+      properties:
+        address:
+          type: string
+          description: Citizen or companion address
+        balance:
+          type: string
+          description: GIC balance (as string to handle large numbers)
+        vesting:
+          type: string
+          description: Vesting balance
+        nonce:
+          type: integer
+          description: Transaction nonce
+        last_updated:
+          type: string
+          format: date-time
+          description: Last balance update
+
+    EarnEvent:
+      type: object
+      properties:
+        event_id:
+          type: string
+          description: Unique event identifier
+        address:
+          type: string
+          description: Recipient address
+        amount:
+          type: string
+          description: GIC amount earned
+        reason:
+          type: string
+          description: Reason for earning
+        cycle_id:
+          type: string
+          description: Associated cycle ID
+        created_at:
+          type: string
+          format: date-time
+          description: Event timestamp
+
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+          description: Error code
+        message:
+          type: string
+          description: Human-readable error message
+        details:
+          type: object
+          description: Additional error details
+
+  responses:
+    BadRequest:
+      description: Bad request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            error: "BAD_REQUEST"
+            message: "Invalid request parameters"
+
+    Unauthorized:
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            error: "UNAUTHORIZED"
+            message: "Authentication required"
+
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            error: "NOT_FOUND"
+            message: "Resource not found"
+
+    RateLimited:
+      description: Rate limit exceeded
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            error: "RATE_LIMITED"
+            message: "Rate limit exceeded"
+
+    InternalError:
+      description: Internal server error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            error: "INTERNAL_ERROR"
+            message: "An internal error occurred"
+
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-API-Key
+      description: API key for authentication
+
+security:
+  - ApiKeyAuth: []
