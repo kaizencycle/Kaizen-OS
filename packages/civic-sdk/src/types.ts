@@ -30,6 +30,7 @@ export interface ServiceHealth {
   errorRate: number;
   lastCheck: string;
   uptime: number;
+  integrity?: number;
 }
 
 export interface OAAIntent {
@@ -74,4 +75,24 @@ export interface EOMMReflection {
   createdAt: string;
   updatedAt: string;
   tags: string[];
+}
+
+export interface GICAttestation {
+  hash: string;
+  service: string;
+  timestamp: string;
+  integrity: number;
+  proof: string;
+}
+
+export interface IntegrityCheck {
+  service: string;
+  gi: number;
+  status: 'healthy' | 'degraded' | 'unhealthy';
+  timestamp: string;
+  checks: {
+    responseTime: number;
+    memoryUsage: number;
+    errorRate: number;
+  };
 }

@@ -2,6 +2,7 @@
 export * from './clients';
 export * from './types';
 export * from './utils';
+export * from './civic-os-gateway';
 
 // Re-export common types
 export interface CivicService {
