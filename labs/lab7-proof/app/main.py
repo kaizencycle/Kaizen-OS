@@ -9,6 +9,7 @@ from app.routers.oaa.verify_history import router as verify_history_router
 from app.routers.oaa.keys_page import router as keys_page_router
 from app.routers.oaa.echo_routes import router as echo_routes_router
 from app.routers.quality_metrics import router as quality_metrics_router
+from app.routers.civic_mount import router as civic_mount_router
 import os
 
 app = FastAPI(
@@ -26,6 +27,7 @@ app.include_router(verify_history_router)
 app.include_router(keys_page_router)
 app.include_router(echo_routes_router)
 app.include_router(quality_metrics_router)
+app.include_router(civic_mount_router)
 
 # Set admin token from environment
 oaa_router.ADMIN_TOKEN = os.getenv("ADMIN_TOKEN", "")
@@ -53,7 +55,8 @@ def root():
             "redis_health": "/_health/redis",
             "oaa_redis_health": "/oaa/_health/redis",
             "echo_ingest": "/oaa/echo/ingest",
-            "quality_metrics": "/dev/quality"
+            "quality_metrics": "/dev/quality",
+            "civic_mount": "/api/civic/mount"
         }
     }
 
