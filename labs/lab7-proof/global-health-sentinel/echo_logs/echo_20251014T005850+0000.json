@@ -1,0 +1,47 @@
+{
+  "timestamp": "2025-10-14T00:58:50+00:00",
+  "kind": "echo_heartbeat",
+  "services": {
+    "Lab4": {
+      "status": "UP",
+      "latency_ms": 111.98,
+      "error": null
+    },
+    "Lab6": {
+      "status": "UP",
+      "latency_ms": 176.25,
+      "error": null
+    },
+    "CivicLedger": {
+      "status": "UP",
+      "latency_ms": 96.13,
+      "error": null
+    },
+    "GICIndexer": {
+      "status": "DOWN",
+      "latency_ms": null,
+      "error": "HTTPSConnectionPool(host='gic-indexer.onrender.com', port=443): Read timed out. (read timeout=10)"
+    },
+    "Lab7": {
+      "status": "UP",
+      "latency_ms": 81.68,
+      "error": null
+    }
+  },
+  "global_health": {
+    "attached": false,
+    "fingerprint_sha256": null
+  },
+  "summary": {
+    "up": [
+      "Lab4",
+      "Lab6",
+      "CivicLedger",
+      "Lab7"
+    ],
+    "down": [
+      "GICIndexer"
+    ]
+  },
+  "fingerprint_sha256": "7dae057bb7a1c0ef1968f3eb8963b1edaee6a0d12de94e0c0192cbd1b7170c4e"
+}

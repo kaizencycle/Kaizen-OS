@@ -1,0 +1,34 @@
+{
+  "agent": "ATLAS",
+  "cycle": "C-296",
+  "timestamp": "2025-10-23T12:58:48.784891Z",
+  "commit": "0d31d6dbd411164299bcb118cc5d21e90cdb96df",
+  "gi_score": {
+    "total": 0.75,
+    "components": {
+      "memory": 0.0,
+      "human": 1.0,
+      "integrity": 1.0,
+      "ethics": 1.0
+    },
+    "threshold": 0.95,
+    "passed": false
+  },
+  "quality": {
+    "lint": "pass",
+    "types": "pass",
+    "tests": "fail",
+    "coverage": 0.0
+  },
+  "drift": {
+    "violations": 0,
+    "severity": "low",
+    "violated_patterns": []
+  },
+  "charter": {
+    "missing_tags": 0,
+    "policy_files_checked": 0,
+    "compliant_files": []
+  },
+  "hash": "86e156d9b62c6d824c94de1c350792d932afbe195d49f7938842e0ed678eb45a"
+}

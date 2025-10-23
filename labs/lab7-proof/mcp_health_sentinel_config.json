@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "health-sentinel": {
+      "command": "python",
+      "args": ["mcp_health_sentinel_server.py"],
+      "cwd": ".",
+      "env": {
+        "PYTHONPATH": "."
+      }
+    }
+  }
+}

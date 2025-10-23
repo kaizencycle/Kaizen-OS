@@ -1,0 +1,7 @@
+{
+  "agent": "deepseek",
+  "ok": true,
+  "checked": [
+    "artifacts/bundle/module.py"
+  ]
+}

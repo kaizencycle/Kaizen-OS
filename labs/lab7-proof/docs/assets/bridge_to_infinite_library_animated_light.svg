@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="640" viewBox="0 0 1080 640">
+  <defs>
+    <style>
+      .bg { fill:#f9fafc; }
+      .card { fill:#ffffff; stroke:#1e293b; stroke-width:2; rx:10; ry:10; }
+      .muted { fill:#475569; font: 14px monospace; }
+      .title { fill:#0f172a; font: 700 18px monospace; }
+      .big { fill:#0f172a; font: 700 22px monospace; }
+      .pipe { stroke:#2563eb; stroke-width:3; fill:none; stroke-linecap:round; }
+      .pipeDim { stroke:#94a3b8; stroke-width:2; stroke-dasharray:6 6; }
+      .pulse { fill:#2563eb; }
+    </style>
+  </defs>
+
+  <rect class="bg" x="0" y="0" width="1080" height="640" />
+
+  <text x="540" y="46" text-anchor="middle" class="big">BRIDGE TO THE INFINITE LIBRARY</text>
+  <text x="540" y="70" text-anchor="middle" class="muted">OAA · Web Data Scout · Lab4 · Civic Ledger · GIC Indexer</text>
+
+  <!-- Nodes -->
+  <rect x="60" y="140" width="280" height="160" class="card"/>
+  <text x="200" y="170" text-anchor="middle" class="title">Web Data Scout</text>
+  <text x="80" y="196" class="muted">• parse.bot / alt provider</text>
+  <text x="80" y="214" class="muted">• URL + schema → JSON</text>
+  <text x="80" y="232" class="muted">• Timeouts, retries, cache</text>
+  <text x="80" y="250" class="muted">• Circuit breaker</text>
+
+  <rect x="400" y="140" width="280" height="160" class="card"/>
+  <text x="540" y="170" text-anchor="middle" class="title">OAA (Lab7‑proof)</text>
+  <text x="420" y="196" class="muted">• Jade plan → Hermes call</text>
+  <text x="420" y="214" class="muted">• Zeus validate/cache</text>
+  <text x="420" y="232" class="muted">• Eve human gate</text>
+  <text x="420" y="250" class="muted">• Lessons & agents</text>
+
+  <rect x="740" y="140" width="280" height="160" class="card"/>
+  <text x="880" y="170" text-anchor="middle" class="title">Lab4‑proof Frontend</text>
+  <text x="760" y="196" class="muted">• 2005‑style portal</text>
+  <text x="760" y="214" class="muted">• OAA Tab → /oaa</text>
+  <text x="760" y="232" class="muted">• Live lesson cards</text>
+  <text x="760" y="250" class="muted">• Social reflections</text>
+
+  <rect x="260" y="380" width="560" height="180" class="card"/>
+  <text x="540" y="410" text-anchor="middle" class="title">Civic Ledger + GIC Indexer</text>
+  <text x="280" y="436" class="muted">• Seal records (SHA‑256) & timestamps</text>
+  <text x="280" y="454" class="muted">• Dataset catalog & query</text>
+  <text x="280" y="472" class="muted">• Ops logs redaction + PII guard</text>
+  <text x="280" y="490" class="muted">• Nightly integrity validation</text>
+
+  <!-- Primary pipes (animated dash flow) -->
+  <path id="p1" class="pipe" d="M340 220 L400 220" stroke-dasharray="10 8">
+    <animate attributeName="stroke-dashoffset" from="0" to="-18" dur="1.8s" repeatCount="indefinite"/>
+  </path>
+  <path id="p2" class="pipe" d="M680 220 L740 220" stroke-dasharray="10 8">
+    <animate attributeName="stroke-dashoffset" from="0" to="-18" dur="1.8s" repeatCount="indefinite"/>
+  </path>
+  <path id="p3" class="pipe" d="M540 300 L540 380" stroke-dasharray="10 8">
+    <animate attributeName="stroke-dashoffset" from="0" to="-18" dur="1.8s" repeatCount="indefinite"/>
+  </path>
+
+  <!-- Logging pipes (dim dashed) -->
+  <path id="p4" class="pipeDim" d="M200 300 L540 420" />
+  <path id="p5" class="pipeDim" d="M880 300 L540 420" />
+
+  <!-- Moving pulse dots -->
+  <circle class="pulse" r="5">
+    <animateMotion dur="2.2s" repeatCount="indefinite"><mpath xlink:href="#p1" xmlns:xlink="http://www.w3.org/1999/xlink"/></animateMotion>
+  </circle>
+  <circle class="pulse" r="5">
+    <animateMotion dur="2.2s" begin="0.6s" repeatCount="indefinite"><mpath xlink:href="#p2" xmlns:xlink="http://www.w3.org/1999/xlink"/></animateMotion>
+  </circle>
+  <circle class="pulse" r="5">
+    <animateMotion dur="2.2s" begin="1.2s" repeatCount="indefinite"><mpath xlink:href="#p3" xmlns:xlink="http://www.w3.org/1999/xlink"/></animateMotion>
+  </circle>
+
+  <!-- Soft glow -->
+  <rect x="400" y="140" width="280" height="160" fill="none" stroke="#2563eb" stroke-width="6" opacity="0.0">
+    <animate attributeName="opacity" values="0;0.5;0" dur="3.2s" repeatCount="indefinite"/>
+  </rect>
+</svg>

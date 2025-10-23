@@ -1,0 +1,26 @@
+services:
+  - type: web
+    name: thought-broker
+    env: node
+    plan: starter
+    region: oregon
+    buildCommand: npm ci && npm run build
+    startCommand: npm start
+    envVars:
+      - key: LEDGER_BASE_URL
+        value: https://civic-ledger.onrender.com
+      - key: LEDGER_ADMIN_TOKEN
+        generateValue: true
+      - key: CURSOR_API_URL
+        value: https://api.cursor.sh
+      - key: CURSOR_API_TOKEN
+        generateValue: true
+      - key: BROKER_MAX_LOOPS
+        value: "3"
+      - key: BROKER_SCORE_TAU
+        value: "0.92"
+      - key: BROKER_MAX_SECONDS
+        value: "60"
+      - key: ALLOW_DISPATCH
+        value: "false"
+    healthCheckPath: /v1/loop/health

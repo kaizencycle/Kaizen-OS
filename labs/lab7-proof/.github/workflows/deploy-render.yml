@@ -1,0 +1,74 @@
+name: Deploy to Render
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: deploy-render-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    name: Deploy Backend + Frontend
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Deploy Backend
+        env:
+          RENDER_API_KEY: ${{ secrets.LAB7_RENDER_API_KEY }}
+          SERVICE_ID: ${{ secrets.LAB7_BACKEND_SERVICE_ID }}
+        run: |
+          curl -X POST "https://api.render.com/v1/services/$SERVICE_ID/deploys" \
+            -H "Authorization: Bearer $RENDER_API_KEY" \
+            -H "Content-Type: application/json" \
+            -d '{"clearCache": "clear"}'
+
+      - name: Deploy Frontend (if exists)
+        if: secrets.LAB7_FRONTEND_SERVICE_ID != ''
+        env:
+          RENDER_API_KEY: ${{ secrets.LAB7_RENDER_API_KEY }}
+          SERVICE_ID: ${{ secrets.LAB7_FRONTEND_SERVICE_ID }}
+        run: |
+          curl -X POST "https://api.render.com/v1/services/$SERVICE_ID/deploys" \
+            -H "Authorization: Bearer $RENDER_API_KEY" \
+            -H "Content-Type: application/json" \
+            -d '{"clearCache": "clear"}'
+
+      - name: Wait for Backend Health
+        env:
+          HEALTH_URL: ${{ vars.LAB7_BACKEND_HEALTH_URL }}
+        run: |
+          for i in {1..30}; do
+            if curl -f "$HEALTH_URL" >/dev/null 2>&1; then
+              echo "Backend is healthy"
+              exit 0
+            fi
+            echo "Waiting for backend... ($i/30)"
+            sleep 10
+          done
+          echo "Backend health check failed"
+          exit 1
+
+      - name: Wait for Frontend Health (if exists)
+        if: vars.LAB7_FRONTEND_HEALTH_URL != ''
+        env:
+          HEALTH_URL: ${{ vars.LAB7_FRONTEND_HEALTH_URL }}
+        run: |
+          for i in {1..30}; do
+            if curl -f "$HEALTH_URL" >/dev/null 2>&1; then
+              echo "Frontend is healthy"
+              exit 0
+            fi
+            echo "Waiting for frontend... ($i/30)"
+            sleep 10
+          done
+          echo "Frontend health check failed"
+          exit 1

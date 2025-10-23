@@ -1,0 +1,3 @@
+[
+  { "name": "ubi-summary-200", "request": { "path": "/ubi/summary" }, "expect": { "status": 200 } }
+]

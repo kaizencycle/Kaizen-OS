@@ -1,0 +1,207 @@
+name: lab7-proof-oaa
+version: 0.1.0
+owner: Michael (Kaizen)
+summary: >
+  Online Apprenticeship Agent (OAA) that pairs a user with a Mentor ensemble
+  (Gemini, Claude, DeepSeek, Perplexity). Learning progress mints XP -> Levels -> GIC,
+  with integrity anchored via Attestation + Citizen Shield and logged to the Ledger.
+
+domains:
+  - education
+  - integrity-ledger
+  - civic-economy
+
+components:
+  frontend.reflections_app:
+    desc: User portal for sessions, quests, XP, staking, and rewards.
+    tech: Next.js/React, Auth (email/OAuth), WebAuthn optional
+    routes:
+      - /login
+      - /dashboard
+      - /quests
+      - /mentor
+      - /rewards
+      - /settings
+
+  service.oaa_orchestrator:
+    desc: Core brain routing user prompts to the Mentor Ensemble and applying policy/guardrails.
+    tech: FastAPI / Node (tRPC) acceptable; message bus optional (NATS/Rabbit).
+    responsibilities:
+      - session state & turn memory
+      - tool routing: {gemini, claude, deepseek, perplexity}
+      - rubric scoring & XP event emission
+      - rate-limits & abuse heuristics
+
+  service.model_adapter.gemini:
+    desc: Adapter for Gemini family.
+    env: GEMINI_API_KEY
+  service.model_adapter.claude:
+    env: CLAUDE_API_KEY
+  service.model_adapter.deepseek:
+    env: DEEPSEEK_API_KEY
+  service.model_adapter.perplexity:
+    env: PERPLEXITY_API_KEY
+
+  service.xp_engine:
+    desc: Converts rubric scores/rubrics→XP→Level; emits GIC reward intents.
+    rules:
+      - xp_per_task: 1–100
+      - leveling_curve: quadratic (base=100, growth=1.35)
+      - daily_bonus: streaks (cap 7)
+      - anti-farm: diminishing returns per duplicate-task window (24h)
+
+  service.reward_minter:
+    desc: Translates Level milestones + verified XP into on-ledger GIC mints or drips.
+    inputs:
+      - RewardIntent{user_id, xp, level, attestation_id}
+    outputs:
+      - GICTransfer{tx_id, amount, reason}
+
+  service.gic_indexer:
+    desc: Index GIC balances, txs, staking locks; expose read API to frontend.
+    deps: civic-ledger-core (read-only)
+
+  service.attestation:
+    desc: Tamper-evident claims for sessions/rewards (GI field + proof).
+    schema:
+      - attestation_id (uuid)
+      - user_id
+      - session_id
+      - mentors_used: [gemini|claude|deepseek|perplexity]
+      - rubric_scores: {accuracy, depth, originality, integrity}
+      - xp_awarded
+      - gi_snapshot (0.0–1.0)
+      - hash: merkle(…fields…)
+      - sig: ed25519
+      - ts: iso8601
+
+  service.citizen_shield:
+    desc: Security & integrity stack.
+    modules:
+      - authz: scopes {learn:*, earn:*, admin:*}
+      - rate_limits: sliding-window per user+ip+device
+      - content_safety: prompt/response filters, jailbreak heuristics
+      - reputation: per-user trust score; cool-downs
+      - anomaly_stream: emits ShieldAlert if thresholds tripped
+
+  service.anti_abuse:
+    desc: Pattern detection (botting/looping/copy-paste farms).
+    signals:
+      - identical-answer-hash bursts
+      - abnormal time-on-task distribution
+      - device fingerprint collisions
+      - IP ASN risk (datacenter, proxy)
+    actions:
+      - soft-warn → throttle → require extra challenge → deny mint
+
+  service.profile_store:
+    desc: User profile, skill graph, quest progress, streaks.
+    db: Postgres (jsonb for skill graph)
+
+  service.quest_engine:
+    desc: Curates tasks by domain (STEM) & difficulty; aligns to rubrics.
+
+  ledger.civic_protocol_core:
+    desc: GIC ledger (write via reward_minter; read via gic_indexer).
+    endpoints:
+      - POST /ledger/attest
+      - POST /ledger/transfer
+      - GET  /ledger/balance/:wallet
+      - GET  /ledger/tx/:id
+
+  bus.events:
+    topics:
+      - xp.events.v1
+      - rewards.intents.v1
+      - attestation.completed.v1
+      - shield.alerts.v1
+
+data_models:
+  User:
+    fields: [id, handle, email, wallet, reputation, created_at]
+  MentorSession:
+    fields: [session_id, user_id, turn_n, mentors_used, prompt, response_ref, rubric, started_at, ended_at]
+  Rubric:
+    fields: [accuracy(0-5), depth(0-5), originality(0-5), integrity(0-5)]
+  XPEvent:
+    fields: [id, user_id, session_id, rubric_hash, xp, reason, ts]
+  RewardIntent:
+    fields: [id, user_id, level_before, level_after, xp_total, attestation_id, ts]
+  Attestation:
+    ref: service.attestation.schema
+
+apis:
+  public.frontend:
+    - GET  /me
+    - GET  /quests
+    - POST /session/start
+    - POST /session/turn
+    - POST /session/submit  # triggers rubric→XP→Attest
+    - GET  /rewards
+    - POST /stake/start     # optional staking quests (7-day)
+  internal.orchestrator:
+    - POST /route            # {prompt, tools[], policy}
+    - POST /rubric/score     # pluggable rubric providers
+    - POST /xp/apply         # emits XPEvent
+    - POST /attest/commit
+    - POST /reward/intent
+  internal.shield:
+    - POST /scan/prompt
+    - POST /scan/response
+    - POST /reputation/update
+  internal.indexer:
+    - GET  /balances/:wallet
+    - GET  /txs/:wallet?limit=…
+
+security:
+  auth:
+    - primary: JWT (short-lived) + refresh
+    - step_up: WebAuthn (mint, stake, withdrawals)
+  scopes:
+    - learn:read|write
+    - earn:mint_intent
+    - admin:*
+  crypto:
+    - ed25519 for attestations
+    - TLS 1.3 everywhere
+  pii_minimization:
+    - store only necessary fields; hash emails; separate secrets vault
+
+integrity_rules:
+  - No reward without Attestation.sig + Shield OK + Rubric>threshold
+  - Duplicate-content penalty within 24h window
+  - Streak bonuses capped; cool-downs apply after rapid gains
+  - All mints are on-ledger; UI reflects pending→confirmed states
+
+deploy:
+  envs:
+    - dev
+    - staging
+    - prod
+  infra:
+    - Render / Fly / Railway ok
+    - Postgres + Redis
+    - Optional: NATS for events
+  observability:
+    - logs: JSON structured
+    - metrics: Prometheus
+    - audits: append-only table for reward decisions
+
+configs:
+  leveling:
+    base_xp: 100
+    growth_rate: 1.35
+    thresholds:
+      - L1: 0–99
+      - L2: 100–234
+      - L3: 235–…   # computed by curve
+  rewards:
+    per_level:
+      - L1→L2: 0.5 GIC
+      - L2→L3: 1.0 GIC
+      - every_5_levels: bonus 3 GIC (attested)
+  shields:
+    max_turns_per_hour: 60
+    max_mints_per_day: 2
+
+copy_hash_tolerance: 0.85

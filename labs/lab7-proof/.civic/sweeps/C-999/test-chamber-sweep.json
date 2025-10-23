@@ -1,0 +1,11 @@
+{
+  "chamber_id": "Test Chamber",
+  "parent_chamber": "Command Ledger III",
+  "cycle": "C-999",
+  "summary": "Integration test sweep",
+  "artifacts": [],
+  "morale_delta": 0.1,
+  "timestamp": "2025-10-21T16:45:00.154638Z",
+  "integrity_anchor": "sha256:8fbb6fc13fe8997aa6e078fa8509e41381078899532e347a06c55f0df9ef67b0",
+  "result_status": "Complete"
+}

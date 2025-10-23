@@ -1,0 +1,12 @@
+{
+  "title": "INIT: Example patch via Thought Broker",
+  "chamber": "Lab7-Proof (OAA Core)",
+  "cycle": "C-109",
+  "motivation": "Demonstrate inner-dialogue review before code generation",
+  "scope": ["spec", "tests", "docs"],
+  "risk": "low",
+  "rollback": "revert PR + disable feature flag",
+  "citations": [
+    { "url": "/specs/07-incentives-gic.md", "hash": "sha256:placeholder" }
+  ]
+}

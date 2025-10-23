@@ -1,0 +1,8 @@
+{
+  "suggestions": [
+    {
+      "file": "(staged)",
+      "text": "diff --git a/.github/workflows/copilot-verify.yml b/.github/workflows/copilot-verify.yml\nindex f452132..a0bfa9b 100644\n--- a/.github/workflows/copilot-verify.yml\n+++ b/.github/workflows/copilot-verify.yml\n@@ -9 +9 @@ jobs:\n-    uses: your-org/ledger-core/.github/workflows/reusable-copilot-verify.yml@main\n+    uses: kaizencycle/lab7-proof/.github/workflows/reusable-copilot-verify.yml@main\n"
+    }
+  ]
+}

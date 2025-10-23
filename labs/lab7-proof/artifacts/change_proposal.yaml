@@ -1,0 +1,22 @@
+id: c6c698bba72d
+title: Local ECI run
+models_used:
+- name: gpt
+  report: gpt_report.json
+- name: deepseek
+  report: deepseek_report.json
+- name: cursor
+  report: cursor_report.json
+- name: claude
+  report: claude_report.json
+- name: gpt_quorum
+  report: quorum_report.json
+repo:
+  path: workrepo
+attestations:
+  model_quorum_ok: true
+  human_seals:
+    ANCHOR_SIGNER: true
+    CUSTODIAN_SIGNER: true
+status: approved
+timestamp: 1760555010

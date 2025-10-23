@@ -1,0 +1,15 @@
+{
+  "timestamp": "2025-10-18T14:04:21.721Z",
+  "baseRef": "HEAD~1",
+  "headRef": "HEAD",
+  "diffHash": "8a77066e2e40ed1f79842b0c4db8ddd945eb0601bfc9c3eeb01dc16c9d5dd9b6",
+  "overlapScore": 0,
+  "minScore": 0.35,
+  "conforms": false,
+  "details": [],
+  "metadata": {
+    "totalChunks": 9,
+    "totalSuggestions": 0,
+    "validComparisons": 0
+  }
+}

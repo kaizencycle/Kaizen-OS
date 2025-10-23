@@ -1,0 +1,167 @@
+name: integrity-reward-gate
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths: 
+      - "**/*.md"
+      - "**/*.ipynb"
+      - "src/**"
+      - "docs/**"
+      - "core/**"
+      - "app/**"
+      - "services/**"
+  push:
+    branches: [main, master]
+    paths:
+      - "**/*.md"
+      - "**/*.ipynb"
+      - "src/**"
+      - "docs/**"
+      - "core/**"
+      - "app/**"
+      - "services/**"
+
+permissions:
+  contents: read
+  pull-requests: write
+
+concurrency:
+  group: integrity-gate-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  reward-precheck:
+    name: Integrity Reward Gate
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Full history for better analysis
+      
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      
+      - name: Cache pip
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/pip
+          key: pip-${{ runner.os }}-${{ hashFiles('**/requirements*.txt', 'pyproject.toml') }}
+          restore-keys: |
+            pip-${{ runner.os }}-
+      
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+          # Additional dependencies for integrity checking
+          pip install numpy scikit-learn  # For embedding calculations if needed
+      
+      - name: Run integrity checks
+        run: |
+          python scripts/integrity_check.py \
+            --min-truth 0.7 \
+            --min-symbiosis 0.6 \
+            --max-entropy 0.4 \
+            --min-novelty 0.15 \
+            --drift-threshold 0.35 \
+            --verbose
+      
+      - name: Comment on PR (if failed)
+        if: failure() && github.event_name == 'pull_request'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const { data: comments } = await github.rest.issues.listComments({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+            });
+            
+            const botComment = comments.find(comment => 
+              comment.user.type === 'Bot' && 
+              comment.body.includes('Integrity Check Failed')
+            );
+            
+            const commentBody = `## 🚫 Integrity Check Failed
+            
+            This PR contains content that doesn't meet our integrity standards for AI-human collaboration.
+            
+            **What this means:**
+            - Content may lack proper citations or evidence (low truth score)
+            - Human-AI collaboration may be imbalanced (low symbiosis score)
+            - Content may be too repetitive or unoriginal (high duplication penalty)
+            - There may be internal contradictions (high entropy penalty)
+            - AI behavior may have drifted from expected patterns (drift anomaly)
+            
+            **To fix this:**
+            1. Add proper citations and evidence to support claims
+            2. Ensure balanced human-AI contribution
+            3. Make content more original and meaningful
+            4. Resolve any contradictions or ambiguities
+            5. Align AI behavior with expected patterns
+            
+            **Next steps:**
+            - Review the failed files in the CI logs
+            - Improve content quality and collaboration balance
+            - Re-run the integrity check
+            
+            This helps maintain high-quality, trustworthy AI-human collaboration in our codebase.`;
+            
+            if (botComment) {
+              await github.rest.issues.updateComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                comment_id: botComment.id,
+                body: commentBody
+              });
+            } else {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.issue.number,
+                body: commentBody
+              });
+            }
+      
+      - name: Comment on PR (if passed)
+        if: success() && github.event_name == 'pull_request'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const { data: comments } = await github.rest.issues.listComments({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+            });
+            
+            const botComment = comments.find(comment => 
+              comment.user.type === 'Bot' && 
+              comment.body.includes('Integrity Check')
+            );
+            
+            if (!botComment) {
+              const commentBody = `## ✅ Integrity Check Passed
+              
+              This PR meets our integrity standards for AI-human collaboration.
+              
+              **Quality indicators:**
+              - Content has proper citations and evidence
+              - Balanced human-AI contribution
+              - Original and meaningful content
+              - Consistent and coherent messaging
+              - AI behavior aligned with expected patterns
+              
+              Great work on maintaining high-quality collaboration! 🎉`;
+              
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.issue.number,
+                body: commentBody
+              });
+            }

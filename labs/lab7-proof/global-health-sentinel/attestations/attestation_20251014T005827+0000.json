@@ -1,0 +1,81 @@
+{
+  "timestamp": "2025-10-14T00:58:27+00:00",
+  "regions": [
+    {
+      "code": "US"
+    },
+    {
+      "code": "EU"
+    },
+    {
+      "code": "JP"
+    }
+  ],
+  "signals": {
+    "epidemic": [
+      {
+        "region": "US",
+        "indicator": "admissions_index",
+        "value": 0.42,
+        "delta_7d": 0.03,
+        "confidence": 0.7,
+        "source": "sample"
+      },
+      {
+        "region": "EU",
+        "indicator": "admissions_index",
+        "value": 0.42,
+        "delta_7d": 0.03,
+        "confidence": 0.7,
+        "source": "sample"
+      },
+      {
+        "region": "JP",
+        "indicator": "admissions_index",
+        "value": 0.42,
+        "delta_7d": 0.03,
+        "confidence": 0.7,
+        "source": "sample"
+      }
+    ],
+    "climate_health": [
+      {
+        "region": "US",
+        "indicator": "AQI",
+        "value": 52,
+        "delta_7d": -4,
+        "confidence": 0.8,
+        "source": "sample"
+      },
+      {
+        "region": "EU",
+        "indicator": "AQI",
+        "value": 52,
+        "delta_7d": -4,
+        "confidence": 0.8,
+        "source": "sample"
+      },
+      {
+        "region": "JP",
+        "indicator": "AQI",
+        "value": 52,
+        "delta_7d": -4,
+        "confidence": 0.8,
+        "source": "sample"
+      }
+    ]
+  },
+  "risk_flags": [
+    {
+      "region": "US",
+      "level": "MODERATE",
+      "reason": "Admissions_index +3bps / 7d"
+    }
+  ],
+  "summary": {
+    "headline": "Stable conditions with localized upticks",
+    "one_liner": "No global alarm; monitor US admissions trend.",
+    "analyst_notes": "Replace sample data with real feeds gated by Lab6 Citizen Shield."
+  },
+  "fingerprint_sha256": "61e5fdbf66998346d9faede8cda1387a20ec162b82eb3ea091194d37a8707bdf"
+}

@@ -1,0 +1,6 @@
+{
+  "agent": "gpt_quorum",
+  "ok": true,
+  "approvals": 4,
+  "rationale": "4/4 models approved; threshold=3"
+}

@@ -1,0 +1,77 @@
+name: reusable-copilot-verify
+on:
+  workflow_call:
+    inputs:
+      min_score:
+        type: string
+        required: false
+        default: "0.35"
+      fail_on_low:
+        type: string
+        required: false
+        default: "false" # "true" to fail job if below min_score
+      post_comment:
+        type: string
+        required: false
+        default: "true" # "true" to post PR comment
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@v4
+        with: { fetch-depth: 0 }
+
+      - uses: actions/setup-node@v4
+        with: { node-version: 20 }
+
+      - name: Ensure suggestions exist
+        run: |
+          mkdir -p .copilot
+          [ -f .copilot/suggestions.json ] || echo '{"suggestions":[]}' > .copilot/suggestions.json
+
+      - name: Copilot diff verifier
+        id: verify
+        env:
+          BASE_REF: ${{ github.event_name == 'pull_request' && github.event.pull_request.base.sha || 'HEAD~1' }}
+          HEAD_REF: ${{ github.sha }}
+          MIN_SCORE: ${{ inputs.min_score }}
+          MIN_SCORE_FAIL: ${{ inputs.fail_on_low }}
+          LEDGER_BASE_URL: ${{ vars.LEDGER_BASE_URL }}
+          LEDGER_ADMIN_TOKEN: ${{ secrets.LEDGER_ADMIN_TOKEN }}
+          PROOF_OUT: ".copilot/proof.json"
+        run: node scripts/verifyCopilotDiff.mjs
+
+      - name: Upload proof
+        uses: actions/upload-artifact@v4
+        with:
+          name: copilot-proof
+          path: .copilot/proof.json
+
+      - name: Post PR comment
+        if: github.event_name == 'pull_request' && inputs.post_comment == 'true'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            let proof = {};
+            try {
+              proof = JSON.parse(fs.readFileSync('.copilot/proof.json', 'utf8'));
+            } catch (e) {
+              console.log('Could not read proof file');
+            }
+            
+            const score = (proof.overlapScore * 100).toFixed(1);
+            const status = proof.conforms ? '✅ CONFORMS' : '❌ DIVERGES';
+            const emoji = proof.conforms ? '🎉' : '⚠️';
+            
+            const comment = `## ${emoji} Copilot Verification Results\n\n**Status:** ${status}\n**Overlap Score:** ${score}% (threshold: ${(proof.minScore * 100).toFixed(1)}%)\n**Proof:** [Download artifact](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }})\n\n<details>\n<summary>📊 Detailed Results</summary>\n\n- **Files Changed:** ${proof.metadata?.totalChunks || 0}\n- **Suggestions Analyzed:** ${proof.metadata?.totalSuggestions || 0}\n- **Valid Comparisons:** ${proof.metadata?.validComparisons || 0}\n\n${proof.details?.length > 0 ? '**Per-file scores:**\\n' + proof.details.map((d, i) => `- \\`${d.file}\\`: ${(d.score * 100).toFixed(1)}%`).join('\\n') : ''}\n</details>\n\n*This verification compares your code changes against Copilot suggestions to ensure alignment with AI-assisted development practices.*`;
+
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: comment
+            });

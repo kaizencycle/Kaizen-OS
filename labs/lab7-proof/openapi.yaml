@@ -1,0 +1,236 @@
+openapi: 3.1.0
+info:
+  title: OAA Gateway API
+  version: 0.1.0
+  description: |
+    Online Apprenticeship Agent — Mentor drafts, critique, rubric→XP→Level→GIC.
+servers:
+  - url: http://localhost:8080
+    description: Dev
+tags:
+  - name: session
+    description: Apprentice session lifecycle
+
+paths:
+  /v1/session/start:
+    post:
+      tags: [session]
+      summary: Start a new session
+      operationId: startSession
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/StartSessionRequest' }
+      responses:
+        "200":
+          description: Session created
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/StartSessionResponse' }
+        "400": { $ref: '#/components/responses/Error' }
+
+  /v1/session/turn:
+    post:
+      tags: [session]
+      summary: Get mentor drafts for a prompt (one turn)
+      operationId: sessionTurn
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/TurnRequest' }
+      responses:
+        "200":
+          description: Mentor drafts
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/TurnResponse' }
+        "404": { $ref: '#/components/responses/Error' }
+        "400": { $ref: '#/components/responses/Error' }
+
+  /v1/session/submit:
+    post:
+      tags: [session]
+      summary: Submit final answer → Shield → Rubric → XP/Level → Attest → (maybe) Reward
+      operationId: sessionSubmit
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/SubmitRequest' }
+      responses:
+        "200":
+          description: Submission result
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/SubmitResponse' }
+        "400": { $ref: '#/components/responses/Error' }
+        "404": { $ref: '#/components/responses/Error' }
+
+  /v1/session/critique:
+    post:
+      tags: [session]
+      summary: Critique current draft against rubric (no XP/mint)
+      operationId: sessionCritique
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/CritiqueRequest' }
+      responses:
+        "200":
+          description: Critique + rubric
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/CritiqueResponse' }
+        "400": { $ref: '#/components/responses/Error' }
+        "404": { $ref: '#/components/responses/Error' }
+
+components:
+  responses:
+    Error:
+      description: Error response
+      content:
+        application/json:
+          schema: { $ref: '#/components/schemas/Error' }
+
+  securitySchemes:
+    hmac:
+      type: http
+      scheme: bearer
+      description: Use X-Hub-Signature-256 header with sha256 HMAC of raw body
+
+  schemas:
+    MentorName:
+      type: string
+      enum: [gemini, claude, deepseek, perplexity]
+
+    StartSessionRequest:
+      type: object
+      required: [user_id]
+      properties:
+        user_id: { type: string, examples: ["michael"] }
+        mentors:
+          type: array
+          items: { $ref: '#/components/schemas/MentorName' }
+          default: [gemini, claude]
+
+    StartSessionResponse:
+      type: object
+      required: [session_id, mentors, started_at]
+      properties:
+        session_id: { type: string, examples: ["sess_michael_1728660000"] }
+        mentors:
+          type: array
+          items: { $ref: '#/components/schemas/MentorName' }
+        started_at:
+          type: string
+          format: date-time
+
+    TurnRequest:
+      type: object
+      required: [session_id, prompt]
+      properties:
+        session_id: { type: string }
+        prompt: { type: string }
+        tools:
+          type: array
+          items: { $ref: '#/components/schemas/MentorName' }
+
+    TurnResponse:
+      type: object
+      required: [session_id, drafts]
+      properties:
+        session_id: { type: string }
+        drafts:
+          type: object
+          additionalProperties: { type: string }
+          description: Map of mentor → draft text
+        meta:
+          type: object
+          additionalProperties: true
+
+    SubmitRequest:
+      type: object
+      required: [session_id, user_id, prompt, answer]
+      properties:
+        session_id: { type: string }
+        user_id: { type: string }
+        prompt: { type: string }
+        answer: { type: string }
+
+    RubricScores:
+      type: object
+      properties:
+        accuracy: { type: integer, minimum: 0, maximum: 5 }
+        depth: { type: integer, minimum: 0, maximum: 5 }
+        originality: { type: integer, minimum: 0, maximum: 5 }
+        integrity: { type: integer, minimum: 0, maximum: 5 }
+
+    SubmitResponse:
+      type: object
+      required: [attestation_id, xp_awarded, level_before, level_after]
+      properties:
+        attestation_id: { type: string }
+        xp_awarded: { type: integer }
+        level_before: { type: integer }
+        level_after: { type: integer }
+        reward_tx_id:
+          type: string
+          nullable: true
+        balance_after:
+          type: number
+          format: float
+          nullable: true
+
+    CritiqueRequest:
+      type: object
+      required: [session_id, prompt, answer]
+      properties:
+        session_id: { type: string }
+        prompt: { type: string }
+        answer: { type: string }
+
+    CritiqueResponse:
+      type: object
+      required: [rubric, critique]
+      properties:
+        rubric: { $ref: '#/components/schemas/RubricScores' }
+        critique: { type: string }
+
+    Error:
+      type: object
+      required: [code, message]
+      properties:
+        code: { type: string, examples: ["not_found", "bad_request"] }
+        message: { type: string }
+        details:
+          description: Optional machine-friendly info
+          oneOf:
+            - type: string
+            - type: object
+              additionalProperties: true
+  /agent/status:
+    post:
+      summary: Post agent status/event payloads behind gateway
+      security:
+        - hmac: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties: true
+      responses:
+        "200":
+          description: ok
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  ok: { type: boolean }
+                  received: { type: object }
+                  at: { type: string, format: date-time }

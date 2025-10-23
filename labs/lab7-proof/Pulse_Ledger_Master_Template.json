@@ -1,0 +1,432 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Pulse Ledger (Chamber III) — Master Template",
+  "description": "Canonical Sentinel Core Schema for all live agent pulses",
+  "type": "object",
+  "required": [
+    "pulse_header",
+    "agent_telemetry",
+    "anomaly_stream",
+    "command_sync",
+    "resonance_archive",
+    "pulse_manifest"
+  ],
+  "properties": {
+    "pulse_header": {
+      "type": "object",
+      "required": ["cycle_id", "timestamp", "chamber", "version", "integrity"],
+      "properties": {
+        "cycle_id": {
+          "type": "string",
+          "pattern": "^PULSE-\\d{8}-\\d{6}$",
+          "description": "Deterministic cycle identifier"
+        },
+        "timestamp": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Pulse generation time in ISO-8601 UTC"
+        },
+        "chamber": {
+          "type": "string",
+          "enum": ["III"],
+          "description": "Ledger chamber designation"
+        },
+        "version": {
+          "type": "string",
+          "pattern": "^\\d+\\.\\d+\\.\\d+$",
+          "description": "Schema version"
+        },
+        "integrity": {
+          "type": "number",
+          "minimum": 0.0,
+          "maximum": 1.0,
+          "description": "Overall system integrity score"
+        }
+      }
+    },
+    "agent_telemetry": {
+      "type": "object",
+      "required": ["echo", "hermes", "aurea", "zeus", "health_sentinel"],
+      "properties": {
+        "echo": {
+          "$ref": "#/definitions/agent_metrics"
+        },
+        "hermes": {
+          "$ref": "#/definitions/agent_metrics"
+        },
+        "aurea": {
+          "$ref": "#/definitions/agent_metrics"
+        },
+        "zeus": {
+          "$ref": "#/definitions/agent_metrics"
+        },
+        "health_sentinel": {
+          "$ref": "#/definitions/agent_metrics"
+        }
+      }
+    },
+    "anomaly_stream": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["timestamp", "agent", "severity", "type", "message", "resolution"],
+        "properties": {
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "agent": {
+            "type": "string",
+            "enum": ["echo", "hermes", "aurea", "zeus", "health_sentinel"]
+          },
+          "severity": {
+            "type": "string",
+            "enum": ["critical", "warning", "info"]
+          },
+          "type": {
+            "type": "string",
+            "description": "Anomaly type identifier"
+          },
+          "message": {
+            "type": "string",
+            "description": "Human-readable anomaly description"
+          },
+          "resolution": {
+            "type": "string",
+            "enum": ["pending", "resolved", "escalated"]
+          }
+        }
+      }
+    },
+    "command_sync": {
+      "type": "object",
+      "required": ["repositories", "deployments"],
+      "properties": {
+        "repositories": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["name", "branch", "last_commit", "status", "render_deploy"],
+            "properties": {
+              "name": {
+                "type": "string",
+                "description": "Repository name"
+              },
+              "branch": {
+                "type": "string",
+                "description": "Active branch name"
+              },
+              "last_commit": {
+                "type": "string",
+                "pattern": "^[a-f0-9]{40}$",
+                "description": "Last commit hash"
+              },
+              "status": {
+                "type": "string",
+                "enum": ["clean", "modified", "conflict"]
+              },
+              "render_deploy": {
+                "type": "string",
+                "enum": ["live", "building", "failed"]
+              }
+            }
+          }
+        },
+        "deployments": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["service", "environment", "status", "health_score", "last_deploy"],
+            "properties": {
+              "service": {
+                "type": "string",
+                "description": "Service name"
+              },
+              "environment": {
+                "type": "string",
+                "enum": ["production", "staging", "development"]
+              },
+              "status": {
+                "type": "string",
+                "enum": ["running", "building", "failed"]
+              },
+              "health_score": {
+                "type": "number",
+                "minimum": 0.0,
+                "maximum": 1.0
+              },
+              "last_deploy": {
+                "type": "string",
+                "format": "date-time"
+              }
+            }
+          }
+        }
+      }
+    },
+    "resonance_archive": {
+      "type": "object",
+      "required": ["sealed_pulses"],
+      "properties": {
+        "sealed_pulses": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["cycle_id", "timestamp", "integrity", "status", "archive_location"],
+            "properties": {
+              "cycle_id": {
+                "type": "string",
+                "pattern": "^PULSE-\\d{8}-\\d{6}$"
+              },
+              "timestamp": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "integrity": {
+                "type": "number",
+                "minimum": 0.0,
+                "maximum": 1.0
+              },
+              "status": {
+                "type": "string",
+                "enum": ["sealed"]
+              },
+              "archive_location": {
+                "type": "string",
+                "description": "Archive storage location"
+              }
+            }
+          }
+        }
+      }
+    },
+    "pulse_manifest": {
+      "type": "object",
+      "required": ["chamber", "version", "cycle_id", "timestamp", "integrity", "agents"],
+      "properties": {
+        "chamber": {
+          "type": "string",
+          "enum": ["III"]
+        },
+        "version": {
+          "type": "string",
+          "pattern": "^\\d+\\.\\d+\\.\\d+$"
+        },
+        "cycle_id": {
+          "type": "string",
+          "pattern": "^PULSE-\\d{8}-\\d{6}$"
+        },
+        "timestamp": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "integrity": {
+          "type": "number",
+          "minimum": 0.0,
+          "maximum": 1.0
+        },
+        "agents": {
+          "type": "object",
+          "required": ["echo", "hermes", "aurea", "zeus", "health_sentinel"],
+          "properties": {
+            "echo": {
+              "$ref": "#/definitions/agent_manifest"
+            },
+            "hermes": {
+              "$ref": "#/definitions/agent_manifest"
+            },
+            "aurea": {
+              "$ref": "#/definitions/agent_manifest"
+            },
+            "zeus": {
+              "$ref": "#/definitions/agent_manifest"
+            },
+            "health_sentinel": {
+              "$ref": "#/definitions/agent_manifest"
+            }
+          }
+        },
+        "anomalies": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/anomaly"
+          }
+        },
+        "repositories": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/repository"
+          }
+        },
+        "deployments": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/deployment"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "agent_metrics": {
+      "type": "object",
+      "required": ["uptime", "latency", "integrity", "last_update"],
+      "properties": {
+        "uptime": {
+          "type": "object",
+          "required": ["percentage", "status", "last_update"],
+          "properties": {
+            "percentage": {
+              "type": "number",
+              "minimum": 0.0,
+              "maximum": 100.0
+            },
+            "status": {
+              "type": "string",
+              "enum": ["active", "down"]
+            },
+            "last_update": {
+              "type": "string",
+              "format": "date-time"
+            }
+          }
+        },
+        "latency": {
+          "type": "object",
+          "required": ["ms", "status", "last_update"],
+          "properties": {
+            "ms": {
+              "type": "number",
+              "minimum": 0
+            },
+            "status": {
+              "type": "string",
+              "enum": ["good", "slow", "timeout"]
+            },
+            "last_update": {
+              "type": "string",
+              "format": "date-time"
+            }
+          }
+        },
+        "integrity": {
+          "type": "object",
+          "required": ["score", "status", "last_update"],
+          "properties": {
+            "score": {
+              "type": "number",
+              "minimum": 0.0,
+              "maximum": 1.0
+            },
+            "status": {
+              "type": "string",
+              "enum": ["high", "medium", "low"]
+            },
+            "last_update": {
+              "type": "string",
+              "format": "date-time"
+            }
+          }
+        },
+        "last_update": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "agent_manifest": {
+      "type": "object",
+      "required": ["status", "metrics"],
+      "properties": {
+        "status": {
+          "type": "string",
+          "enum": ["active", "inactive"]
+        },
+        "metrics": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "anomaly": {
+      "type": "object",
+      "required": ["timestamp", "agent", "severity", "type", "message", "resolution"],
+      "properties": {
+        "timestamp": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "agent": {
+          "type": "string",
+          "enum": ["echo", "hermes", "aurea", "zeus", "health_sentinel"]
+        },
+        "severity": {
+          "type": "string",
+          "enum": ["critical", "warning", "info"]
+        },
+        "type": {
+          "type": "string"
+        },
+        "message": {
+          "type": "string"
+        },
+        "resolution": {
+          "type": "string",
+          "enum": ["pending", "resolved", "escalated"]
+        }
+      }
+    },
+    "repository": {
+      "type": "object",
+      "required": ["name", "branch", "last_commit", "status", "render_deploy"],
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "branch": {
+          "type": "string"
+        },
+        "last_commit": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{40}$"
+        },
+        "status": {
+          "type": "string",
+          "enum": ["clean", "modified", "conflict"]
+        },
+        "render_deploy": {
+          "type": "string",
+          "enum": ["live", "building", "failed"]
+        }
+      }
+    },
+    "deployment": {
+      "type": "object",
+      "required": ["service", "environment", "status", "health_score", "last_deploy"],
+      "properties": {
+        "service": {
+          "type": "string"
+        },
+        "environment": {
+          "type": "string",
+          "enum": ["production", "staging", "development"]
+        },
+        "status": {
+          "type": "string",
+          "enum": ["running", "building", "failed"]
+        },
+        "health_score": {
+          "type": "number",
+          "minimum": 0.0,
+          "maximum": 1.0
+        },
+        "last_deploy": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    }
+  }
+}

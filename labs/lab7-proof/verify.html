@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>OAA Attestation Verifier</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root { --bg:#0b0b10; --fg:#e9e9ef; --muted:#a5a7b0; --ok:#36c275; --err:#ff6b6b; --acc:#c7a94d; }
+    body{margin:0;background:var(--bg);color:var(--fg);font:14px/1.4 ui-sans-serif,system-ui,Segoe UI,Roboto,Helvetica,Arial;}
+    .wrap{max-width:900px;margin:26px auto;padding:0 16px;}
+    h1{font-weight:600;font-size:20px;margin:0 0 18px}
+    .card{background:#11131a;border:1px solid #1f2230;border-radius:12px;padding:16px;margin:12px 0}
+    label{display:block;margin:10px 0 6px;color:var(--muted)}
+    textarea, input[type="text"], input[type="number"]{
+      width:100%;box-sizing:border-box;background:#0f121a;color:var(--fg);border:1px solid #23273a;border-radius:8px;
+      padding:10px 12px;font:13px ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
+    }
+    .row{display:flex;gap:12px;flex-wrap:wrap}
+    .row > div{flex:1 1 280px}
+    button{
+      appearance:none;background:linear-gradient(135deg,#1b1f2c,#161a24);color:var(--fg);
+      border:1px solid #2b3147;border-radius:10px;padding:10px 14px;font-weight:600;cursor:pointer
+    }
+    button:hover{border-color:#3b4361}
+    .pill{display:inline-block;padding:2px 8px;border-radius:999px;font-weight:600;font-size:12px}
+    .ok{background:#11291d;color:var(--ok);border:1px solid #1f5a39}
+    .bad{background:#2a1518;color:var(--err);border:1px solid #6a2b34}
+    .warn{background:#2a2412;color:#e8c36a;border:1px solid #6c5c2b}
+    pre{white-space:pre-wrap;word-break:break-word;background:#0e1118;border:1px solid #23273a;border-radius:8px;padding:12px}
+    .muted{color:var(--muted)}
+    a{color:var(--acc);text-decoration:none}
+    a:hover{text-decoration:underline}
+  </style>
+  <!-- TweetNaCl for Ed25519 -->
+  <script type="module" src="https://unpkg.com/tweetnacl@1.0.3/nacl-fast.js"></script>
+</head>
+<body>
+<div class="wrap">
+  <h1>OAA Attestation Verifier</h1>
+
+  <div class="card">
+    <label for="att">Paste attestation JSON</label>
+    <textarea id="att" rows="14" placeholder='{"content":{...},"content_hash":"sha256:...","signature":"ed25519:...","public_key_b64":"..."}'></textarea>
+
+    <div class="row" style="margin-top:10px">
+      <div>
+        <label for="baseUrl">OAA Base URL (for key pinning)</label>
+        <input id="baseUrl" type="text" placeholder="https://your-lab7-api.onrender.com" />
+      </div>
+      <div>
+        <label for="tsWindow">Timestamp window (minutes)</label>
+        <input id="tsWindow" type="number" min="0" step="1" value="10" />
+      </div>
+    </div>
+
+    <div style="margin-top:10px">
+      <label class="muted"><input type="checkbox" id="pin" /> Enforce key pinning via <code>/.well-known/oaa-keys.json</code></label>
+      <label class="muted" style="display:block;margin-top:6px"><input type="checkbox" id="checkTs" checked /> Enforce timestamp window</label>
+    </div>
+
+    <div style="margin-top:14px; display:flex; gap:10px; flex-wrap:wrap">
+      <button id="btnVerify">Verify</button>
+      <button id="btnClear">Clear</button>
+    </div>
+  </div>
+
+  <div class="card">
+    <div id="status"><span class="pill warn">Waiting</span> Paste an attestation and press Verify.</div>
+    <div style="margin-top:10px">
+      <button id="btnCopy" style="display:none">📋 Copy Result</button>
+    </div>
+    <div id="details" class="muted" style="margin-top:10px"></div>
+  </div>
+
+  <div class="card">
+    <div class="muted">
+      Tips: Always pin keys, check <code>content.ts</code> freshness, and reject reused <code>nonce</code> in production.
+      See <a href="https://github.com/kaizencycle" target="_blank" rel="noopener">kaizencycle</a> for server code.
+    </div>
+  </div>
+</div>
+
+<script type="module">
+  import nacl from "https://unpkg.com/tweetnacl@1.0.3/nacl-fast.js";
+
+  const $ = id => document.getElementById(id);
+  const $att = $("att"), $base = $("baseUrl"), $pin = $("pin"),
+        $tsWin = $("tsWindow"), $checkTs = $("checkTs"),
+        $status = $("status"), $details = $("details"), $copy = $("btnCopy");
+
+  function sortKeys(x){
+    if(Array.isArray(x)) return x.map(sortKeys);
+    if(x && typeof x==="object"){
+      const o={}; for(const k of Object.keys(x).sort()) o[k]=sortKeys(x[k]); return o;
+    }
+    return x;
+  }
+  function canonicalJSON(obj){ return JSON.stringify(sortKeys(obj)); }
+
+  async function sha256Hex(str){
+    const enc = new TextEncoder().encode(str);
+    const buf = await crypto.subtle.digest("SHA-256", enc);
+    const bytes = new Uint8Array(buf);
+    return Array.from(bytes).map(b=>b.toString(16).padStart(2,"0")).join("");
+  }
+  function b64ToUint8(b64){
+    const bin = atob(b64);
+    const out = new Uint8Array(bin.length);
+    for(let i=0;i<bin.length;i++) out[i]=bin.charCodeAt(i);
+    return out;
+  }
+
+  async function fetchKeyset(baseUrl){
+    const url = baseUrl.replace(/\/$/,"") + "/.well-known/oaa-keys.json";
+    const res = await fetch(url, {cache:"no-store"});
+    if(!res.ok) throw new Error(`Keyset fetch failed: ${res.status}`);
+    const ks = await res.json();
+    return new Set((ks.keys||[]).map(k=>k.x));
+  }
+
+  function setStatus(ok, reason){
+    const pill = ok
+      ? `<span class="pill ok">VALID</span>`
+      : `<span class="pill bad">INVALID</span>`;
+    $status.innerHTML = `${pill} <span class="muted">${reason||""}</span>`;
+  }
+
+  function showDetails(obj){
+    const json = JSON.stringify(obj, null, 2);
+    const escaped = escapeHtml(json);
+    $details.innerHTML = `<pre>${escaped}</pre>`;
+    $copy.style.display = "inline-block";
+    $copy.onclick = () => copyToClipboard(json);
+  }
+  function escapeHtml(s){ return s.replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])); }
+
+  function copyToClipboard(text) {
+    navigator.clipboard.writeText(text).then(() => {
+      $copy.textContent = "✅ Copied!";
+      setTimeout(() => ($copy.textContent = "📋 Copy Result"), 2000);
+    });
+  }
+
+  $("btnClear").addEventListener("click", ()=>{
+    $att.value = ""; setStatus(false,"Cleared"); showDetails({});
+  });
+
+  $("btnVerify").addEventListener("click", async ()=>{
+    try{
+      const att = JSON.parse($att.value || "{}");
+      if(!att || !att.content || !att.signature || !att.content_hash){
+        setStatus(false,"Missing fields"); showDetails({error:"content/signature/content_hash required"}); return;
+      }
+
+      // Optional: key pinning
+      if($pin.checked){
+        if(!$base.value){ setStatus(false,"Base URL required for key pinning"); return; }
+        const allowed = await fetchKeyset($base.value);
+        if(!allowed.has(att.public_key_b64)){
+          setStatus(false,"unknown_signing_key"); showDetails({error:"Key not in /.well-known/oaa-keys.json"}); return;
+        }
+      }
+
+      // Optional: timestamp freshness
+      if($checkTs.checked && att.content && att.content.ts){
+        const minutes = Math.max(0, parseInt($tsWin.value||"0",10));
+        if(minutes>0){
+          const now = Date.now();
+          const ts = Date.parse(att.content.ts);
+          if(Number.isFinite(ts)){
+            const diffMin = Math.abs(now - ts)/60000;
+            if(diffMin > minutes){
+              setStatus(false,"timestamp_out_of_window");
+              showDetails({diff_minutes: diffMin.toFixed(2), window_minutes: minutes});
+              return;
+            }
+          }
+        }
+      }
+
+      // 1) Hash
+      const canon = canonicalJSON(att.content);
+      const recomputed = await sha256Hex(canon);
+      const got = (att.content_hash||"").replace(/^sha256:/,"");
+      if(!got || got !== recomputed){
+        setStatus(false,"hash_mismatch"); showDetails({recomputed_hash:recomputed, got}); return;
+      }
+
+      // 2) Signature
+      if(!att.signature.startsWith("ed25519:")){
+        setStatus(false,"bad_sig_format"); showDetails({signature:att.signature}); return;
+      }
+      const sig = b64ToUint8(att.signature.slice(8));
+      const pub = b64ToUint8(att.public_key_b64);
+      const ok = nacl.sign.detached.verify(new TextEncoder().encode(canon), sig, pub);
+
+      if(!ok){ setStatus(false,"signature_invalid"); showDetails({}); return; }
+
+      setStatus(true,"All checks passed");
+      showDetails({recomputed_hash:recomputed, signing_key:att.signing_key||null});
+    }catch(e){
+      setStatus(false,"exception"); showDetails({error:String(e)});
+    }
+  });
+</script>
+</body>
+</html>

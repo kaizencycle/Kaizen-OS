@@ -1,0 +1,40 @@
+name: Civic Patch (Lab7 → Broker smoke loop)
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  civic:
+    runs-on: ubuntu-latest
+    env:
+      BROKER_URL: ${{ secrets.BROKER_URL }}   # e.g., https://thought-broker.onrender.com
+      CYCLE: C-109
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: '20' }
+
+      - name: Install
+        run: npm ci || npm i
+
+      - name: Ensure civic templates exist
+        run: |
+          test -f ./.civic/change.proposal.json || (echo "Missing .civic/change.proposal.json" && exit 1)
+          test -f ./.civic/change.spec.md || echo "# Spec seed" > ./.civic/change.spec.md
+          test -f ./.civic/change.tests.json || echo "[]" > ./.civic/change.tests.json
+
+      - name: Run Thought Broker (bounded smoke test)
+        run: npm run broker:run
+
+      - name: Upload consensus artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: consensus-C109
+          path: .civic/
+
+      - name: Summary
+        run: |
+          echo "## Thought Broker consensus" >> $GITHUB_STEP_SUMMARY
+          echo "- cycle: $CYCLE" >> $GITHUB_STEP_SUMMARY
+          echo "- broker: $BROKER_URL" >> $GITHUB_STEP_SUMMARY

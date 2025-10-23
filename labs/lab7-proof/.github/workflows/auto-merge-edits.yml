@@ -1,0 +1,54 @@
+name: Auto-Merge Lab7 Edits
+
+on:
+  schedule:
+    # Run every 5 minutes to check for new edits
+    - cron: '*/5 * * * *'
+  workflow_dispatch: # Manual trigger
+  push:
+    paths:
+      - 'lab7-edits/**'
+
+jobs:
+  auto-merge:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+          pip install mcp
+
+      - name: Run auto-merge script
+        id: auto-merge
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          RENDER_API_TOKEN: ${{ secrets.RENDER_API_TOKEN }}
+        run: |
+          python scripts/auto_merge_edits.py
+
+      - name: Auto-commit changes
+        if: steps.auto-merge.outcome == 'success'
+        run: |
+          python scripts/auto_commit_changes.py
+
+      - name: Verify changes were committed
+        run: |
+          echo "Checking git status after auto-commit..."
+          git status --porcelain
+          if [ -n "$(git status --porcelain)" ]; then
+            echo "Warning: There are still uncommitted changes"
+            git status
+          else
+            echo "All changes have been committed successfully"
+          fi

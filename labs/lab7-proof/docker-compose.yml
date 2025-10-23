@@ -1,0 +1,58 @@
+version: "3.9"
+services:
+  orchestrator:
+    build: ./services/orchestrator
+    container_name: lab7-orchestrator
+    environment:
+      - ENV=dev
+      - GEMINI_API_KEY=${GEMINI_API_KEY}
+      - CLAUDE_API_KEY=${CLAUDE_API_KEY}
+      - DEEPSEEK_API_KEY=${DEEPSEEK_API_KEY}
+      - PERPLEXITY_API_KEY=${PERPLEXITY_API_KEY}
+      - ENABLE_REWARDS=true
+      - RUBRIC_BASE_URL=http://rubric:8090
+      - SHIELD_POLICY_PATH=/policy/shield.policy.yaml
+    ports: ["8080:8080"]
+    depends_on:
+      - rubric
+      - redis
+      - postgres
+    volumes:
+      - ./services/orchestrator/policy:/policy:ro
+
+  rubric:
+    build: ./services/rubric
+    container_name: lab7-rubric
+    ports: ["8090:8090"]
+
+  frontend:
+    build: ./frontend/reflections-app
+    container_name: lab7-frontend
+    environment:
+      - DATABASE_URL=postgresql://lab7:lab7pass@postgres:5432/lab7?schema=public
+      - NEXT_PUBLIC_OAA_BASE=http://orchestrator:8080
+    depends_on:
+      - orchestrator
+      - postgres
+    ports:
+      - "3000:3000"
+
+  redis:
+    image: redis:7-alpine
+    container_name: lab7-redis
+    ports: ["6379:6379"]
+
+  postgres:
+    image: postgres:16-alpine
+    container_name: lab7-postgres
+    environment:
+      POSTGRES_DB: lab7
+      POSTGRES_USER: lab7
+      POSTGRES_PASSWORD: lab7pass
+    ports: ["5432:5432"]
+    volumes:
+      - lab7pg:/var/lib/postgresql/data
+      - ./infra/sql:/docker-entrypoint-initdb.d:ro
+
+volumes:
+  lab7pg:

@@ -1,0 +1,39 @@
+[Unit]
+Description=Lab7 Background Agent - Auto-merge and Auto-commit
+Documentation=https://github.com/your-org/your-repo
+After=network.target
+Wants=network.target
+
+[Service]
+Type=simple
+User=ubuntu
+Group=ubuntu
+WorkingDirectory=/workspace
+ExecStart=/usr/bin/python3 /workspace/scripts/lab7_background_agent.py
+Restart=always
+RestartSec=10
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=lab7-background-agent
+
+# Environment variables
+Environment=PYTHONPATH=/workspace
+Environment=GIT_AUTHOR_NAME="Lab7 Background Agent"
+Environment=GIT_AUTHOR_EMAIL="lab7-agent@github.com"
+Environment=GIT_COMMITTER_NAME="Lab7 Background Agent"
+Environment=GIT_COMMITTER_EMAIL="lab7-agent@github.com"
+
+# Security settings
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/workspace
+ReadWritePaths=/tmp
+
+# Resource limits
+MemoryMax=512M
+CPUQuota=50%
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,119 @@
+name: Lab7 CI
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: lab7-ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  backend:
+    name: Backend (FastAPI)
+    runs-on: ubuntu-latest
+
+    services:
+      redis:
+        image: redis:7-alpine
+        ports:
+          - 6379:6379
+        options: >-
+          --health-cmd "redis-cli ping || exit 1"
+          --health-interval 5s
+          --health-timeout 3s
+          --health-retries 10
+
+    env:
+      OAA_NONCE_REDIS_URL: redis://localhost:6379/0
+      OAA_NONCE_TTL_SEC: 600
+      OAA_VERIFY_PIN_KEYS: "true"
+      OAA_VERIFY_TS_WINDOW_MIN: "10"
+      OAA_VERIFY_NONCE_TTL_SEC: "600"
+      OAA_VERIFY_REQUIRE_NONCE: "false"
+      OAA_ISSUER: oaa.lab7.ci
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Cache pip
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/pip
+          key: pip-${{ runner.os }}-${{ hashFiles('**/requirements*.txt') }}
+          restore-keys: |
+            pip-${{ runner.os }}-
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install black ruff mypy pytest
+
+      - name: Generate Ed25519 keypair for CI
+        run: |
+          python - << 'PY'
+          from nacl import signing
+          import base64, os
+          sk = signing.SigningKey.generate()
+          pub = sk.verify_key
+          print(f"OAA_ED25519_PRIVATE_B64={base64.b64encode(sk.encode()).decode()}")
+          print(f"OAA_ED25519_PUBLIC_B64={base64.b64encode(pub.encode()).decode()}")
+          PY
+        shell: bash >> $GITHUB_ENV
+
+      - name: Black (check)
+        run: black --check .
+
+      - name: Ruff (lint)
+        run: ruff check .
+
+      - name: Mypy (type check)
+        run: mypy app
+
+      - name: Pytest
+        env:
+          PYTHONPATH: ${{ github.workspace }}
+        run: pytest -q
+
+  frontend:
+    name: Frontend (Next.js)
+    runs-on: ubuntu-latest
+    if: hashFiles('frontend/reflections-app/package.json') != ''
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "18"
+          cache: "npm"
+          cache-dependency-path: frontend/reflections-app/package-lock.json
+
+      - name: Install dependencies
+        working-directory: frontend/reflections-app
+        run: npm ci
+
+      - name: Type check
+        working-directory: frontend/reflections-app
+        run: npx tsc --noEmit
+
+      - name: Lint
+        working-directory: frontend/reflections-app
+        run: npx next lint
+
+      - name: Build
+        working-directory: frontend/reflections-app
+        run: npm run build

@@ -1,0 +1,44 @@
+name: zeus-gate
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, labeled]
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  gate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Run Zeus Gate
+        env:
+          ZEUS_MIN_SUCCESS_IMPLICIT: '0.55'
+          ZEUS_MIN_SAFETY_SCORE: '0.97'
+          ZEUS_CARD_GLOB: 'ledger/model_cards/*.json'
+        run: |
+          python scripts/zeus_gate.py
+      - name: Upload gate summary
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: zeus-gate-summary
+          path: ZEUS_GATE_SUMMARY.md
+      - name: Label automerge:safe
+        if: success()
+        env:
+          GH_TOKEN: ${{ secrets.LAB7_AUTOLABEL_TOKEN }}
+        run: |
+          if [ -n "$GH_TOKEN" ]; then
+            number="${{ github.event.pull_request.number }}"
+            gh pr edit "$number" --add-label "automerge:safe"
+          else
+            echo "No LAB7_AUTOLABEL_TOKEN provided; skipping label."
+          fi
