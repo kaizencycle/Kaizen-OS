@@ -5,7 +5,8 @@
   "private": true,
   "workspaces": [
     "apps/*",
-    "packages/*"
+    "packages/*",
+    "sentinels/*"
   ],
   "scripts": {
     "build": "turbo run build",
@@ -16,7 +17,11 @@
     "compose:up": "docker compose -f infra/docker/compose.yml up -d",
     "compose:down": "docker compose -f infra/docker/compose.yml down",
     "clean": "turbo run clean",
-    "type-check": "turbo run type-check"
+    "type-check": "turbo run type-check",
+    "atlas:audit": "npm run build --workspace=packages/atlas-sentinel && node -e \"require('./packages/atlas-sentinel/dist')\"",
+    "sentinel:health": "scripts\\sentinel-health.bat",
+    "integrity:report": "./scripts/integrity-report.sh",
+    "docs:generate": "echo \"Documentation generation coming soon\""
   },
   "devDependencies": {
     "turbo": "^1.10.12",

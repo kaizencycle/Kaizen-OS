@@ -1,0 +1,19 @@
+{
+  "name": "@civic/atlas-sentinel-service",
+  "version": "1.0.0",
+  "description": "ATLAS Sentinel as a standalone service",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "ts-node index.ts",
+    "build": "tsc"
+  },
+  "dependencies": {
+    "@civic/atlas-sentinel": "*"
+  },
+  "devDependencies": {
+    "@types/node": "^18.0.0",
+    "typescript": "^5.0.0",
+    "ts-node": "^10.0.0"
+  }
+}

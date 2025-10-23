@@ -1,0 +1,26 @@
+# Civic-OS Code Ownership by Sentinel Domain
+
+# Default owners
+* @kaizencycle
+
+# Sentinels - each companion owns their domain
+/sentinels/jade/ @kaizencycle
+/sentinels/eve/ @kaizencycle
+/sentinels/zeus/ @kaizencycle
+/sentinels/hermes/ @kaizencycle
+/sentinels/atlas/ @kaizencycle
+
+# Bio-DNA manifests require all sentinels approval
+/configs/bio-dna/ @kaizencycle
+
+# Lab proofs require review
+/labs/lab4-proof/ @kaizencycle
+/labs/lab6-proof/ @kaizencycle
+/labs/lab7-proof/ @kaizencycle
+
+# Quality gates owned by ATLAS
+/.github/workflows/atlas-sentinel.yml @kaizencycle
+/packages/atlas-sentinel/ @kaizencycle
+
+# Documentation open to contributions
+/docs/ @kaizencycle

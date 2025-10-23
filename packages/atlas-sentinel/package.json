@@ -1,0 +1,32 @@
+{
+  "name": "@civic/atlas-sentinel",
+  "version": "1.0.0",
+  "description": "ATLAS Sentinel - Quality, Anti-Drift & Learning Synthesizer",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "test": "jest",
+    "lint": "eslint src --ext .ts"
+  },
+  "keywords": [
+    "civic-os",
+    "quality",
+    "integrity",
+    "sentinel",
+    "atlas"
+  ],
+  "author": "Kaizen Cycle",
+  "license": "MIT",
+  "dependencies": {
+    "@civic/sdk": "*",
+    "@civic/integrity-core": "*"
+  },
+  "devDependencies": {
+    "@types/node": "^18.0.0",
+    "typescript": "^5.0.0",
+    "jest": "^29.0.0",
+    "@types/jest": "^29.0.0"
+  }
+}

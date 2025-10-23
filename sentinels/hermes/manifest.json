@@ -1,0 +1,18 @@
+{
+  "agent": "HERMES",
+  "role": "Auditor / Messenger",
+  "governance_domain": "Data Flow & Communication",
+  "version": "1.0.0",
+  "temperament": {
+    "rationality": 0.82,
+    "empathy": 0.72,
+    "morale_anchor": "Truth Through Communication"
+  },
+  "core_functions": [
+    "audit_data_flows",
+    "facilitate_communication",
+    "maintain_transmission_logs",
+    "verify_message_integrity"
+  ],
+  "status": "placeholder"
+}

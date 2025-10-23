@@ -1,0 +1,428 @@
+name: ATLAS Sentinel - Quality & Integrity Gate
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+  push:
+    branches: [main, develop]
+  workflow_dispatch:
+    inputs:
+      deep_audit:
+        description: 'Run deep audit (slower but comprehensive)'
+        required: false
+        default: 'false'
+
+env:
+  ATLAS_VERSION: '1.0.0'
+  GI_THRESHOLD: '0.95'
+  QUALITY_THRESHOLD: '0.90'
+
+jobs:
+  atlas-audit:
+    name: ATLAS Quality Audit
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+      issues: write
+    
+    steps:
+      - name: 🔍 Checkout Code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Full history for drift detection
+      
+      - name: 🧠 ATLAS Clock-In
+        id: clockin
+        run: |
+          echo "🤖 ATLAS Sentinel awakening for Cycle $(date +%Y-%m-%d)"
+          echo "📋 Intent: Audit code quality, check integrity, prevent drift"
+          echo "⏰ Timestamp: $(date -u +%Y-%m-%dT%H:%M:%SZ)"
+          echo "atlas_cycle=C-$(date +%j)" >> $GITHUB_OUTPUT
+          echo "atlas_start=$(date +%s)" >> $GITHUB_OUTPUT
+      
+      - name: 📦 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+      
+      - name: 📥 Install Dependencies
+        run: |
+          npm ci
+          npm run build --workspace=packages/atlas-sentinel
+      
+      # ============================================
+      # PHASE 1: CODE QUALITY AUDIT
+      # ============================================
+      
+      - name: 🎯 Phase 1 - Code Quality Scan
+        id: quality
+        run: |
+          echo "## 📊 ATLAS Quality Audit" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          
+          # Lint check
+          echo "### Linting" >> $GITHUB_STEP_SUMMARY
+          if npm run lint -- --format json > lint-results.json 2>&1; then
+            echo "✅ Lint: PASS" >> $GITHUB_STEP_SUMMARY
+            echo "quality_lint=pass" >> $GITHUB_OUTPUT
+          else
+            echo "❌ Lint: FAIL" >> $GITHUB_STEP_SUMMARY
+            echo "quality_lint=fail" >> $GITHUB_OUTPUT
+          fi
+          
+          # Type check
+          echo "### Type Safety" >> $GITHUB_STEP_SUMMARY
+          if npm run type-check 2>&1 | tee type-check.log; then
+            echo "✅ TypeScript: PASS" >> $GITHUB_STEP_SUMMARY
+            echo "quality_types=pass" >> $GITHUB_OUTPUT
+          else
+            echo "❌ TypeScript: FAIL" >> $GITHUB_STEP_SUMMARY
+            echo "quality_types=fail" >> $GITHUB_OUTPUT
+          fi
+          
+          # Test coverage
+          echo "### Test Coverage" >> $GITHUB_STEP_SUMMARY
+          npm run test -- --coverage --json > coverage.json 2>&1 || true
+          COVERAGE=$(jq -r '.coverageMap.total.statements.pct // 0' coverage.json)
+          echo "Coverage: ${COVERAGE}%" >> $GITHUB_STEP_SUMMARY
+          echo "quality_coverage=${COVERAGE}" >> $GITHUB_OUTPUT
+      
+      # ============================================
+      # PHASE 2: ANTI-DRIFT DETECTION
+      # ============================================
+      
+      - name: 🔒 Phase 2 - Anti-Drift Analysis
+        id: drift
+        run: |
+          echo "## 🔒 Anti-Drift Detection" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          
+          # Check against Bio-DNA manifests
+          echo "### Bio-DNA Alignment Check" >> $GITHUB_STEP_SUMMARY
+          
+          # Verify integrity formula
+          if grep -r "GI.*0.95" packages/integrity-core/; then
+            echo "✅ GI threshold maintained" >> $GITHUB_STEP_SUMMARY
+            echo "drift_gi=aligned" >> $GITHUB_OUTPUT
+          else
+            echo "⚠️ GI threshold may have drifted" >> $GITHUB_STEP_SUMMARY
+            echo "drift_gi=warning" >> $GITHUB_OUTPUT
+          fi
+          
+          # Check for prohibited patterns
+          echo "### Security Pattern Scan" >> $GITHUB_STEP_SUMMARY
+          PROHIBITED_PATTERNS=(
+            "eval("
+            "new Function("
+            "dangerouslySetInnerHTML"
+            "localStorage.setItem"
+            "sessionStorage"
+          )
+          
+          VIOLATIONS=0
+          for pattern in "${PROHIBITED_PATTERNS[@]}"; do
+            if git diff origin/main...HEAD | grep -q "$pattern"; then
+              echo "⚠️ Found prohibited pattern: $pattern" >> $GITHUB_STEP_SUMMARY
+              ((VIOLATIONS++))
+            fi
+          done
+          
+          echo "drift_violations=${VIOLATIONS}" >> $GITHUB_OUTPUT
+          
+          if [ $VIOLATIONS -eq 0 ]; then
+            echo "✅ No prohibited patterns found" >> $GITHUB_STEP_SUMMARY
+          fi
+      
+      # ============================================
+      # PHASE 3: CUSTOS CHARTER COMPLIANCE
+      # ============================================
+      
+      - name: 📜 Phase 3 - Custos Charter Compliance
+        id: charter
+        run: |
+          echo "## 📜 Custos Charter Compliance" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          
+          # Check for virtue tags in changed files
+          CHANGED_FILES=$(git diff --name-only origin/main...HEAD)
+          
+          echo "### Virtue Tag Verification" >> $GITHUB_STEP_SUMMARY
+          
+          MISSING_TAGS=0
+          for file in $CHANGED_FILES; do
+            if [[ $file == *.md ]] || [[ $file == *.yml ]] || [[ $file == *.yaml ]]; then
+              if ! grep -q "Doctrine-ID\|Ethics\|Policy\|Governance" "$file" 2>/dev/null; then
+                echo "⚠️ Missing virtue tags: $file" >> $GITHUB_STEP_SUMMARY
+                ((MISSING_TAGS++))
+              fi
+            fi
+          done
+          
+          echo "charter_missing_tags=${MISSING_TAGS}" >> $GITHUB_OUTPUT
+          
+          if [ $MISSING_TAGS -eq 0 ]; then
+            echo "✅ All policy files properly tagged" >> $GITHUB_STEP_SUMMARY
+          fi
+          
+          # Check for attestation requirements
+          echo "### Attestation Requirements" >> $GITHUB_STEP_SUMMARY
+          if git diff origin/main...HEAD | grep -q "HMAC\|SHA256\|ledger"; then
+            echo "✅ Cryptographic attestation detected" >> $GITHUB_STEP_SUMMARY
+            echo "charter_attestation=present" >> $GITHUB_OUTPUT
+          else
+            echo "ℹ️ No attestation changes in this PR" >> $GITHUB_STEP_SUMMARY
+            echo "charter_attestation=none" >> $GITHUB_OUTPUT
+          fi
+      
+      # ============================================
+      # PHASE 4: INTEGRITY SCORE CALCULATION
+      # ============================================
+      
+      - name: 🎯 Phase 4 - Calculate GI Score
+        id: gi_score
+        run: |
+          echo "## 🎯 Governance Integrity (GI) Score" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          
+          # Calculate GI based on formula: GI = α*M + β*H + γ*I + δ*E
+          # M = Memory (test coverage)
+          # H = Human (code review)
+          # I = Integrity (no violations)
+          # E = Ethics (charter compliance)
+          
+          COVERAGE=${{ steps.quality.outputs.quality_coverage }}
+          VIOLATIONS=${{ steps.drift.outputs.drift_violations }}
+          MISSING_TAGS=${{ steps.charter.outputs.charter_missing_tags }}
+          
+          # Normalize to 0-1 scale
+          M=$(echo "scale=2; $COVERAGE / 100" | bc)
+          H=1.0  # Assume human review via PR
+          I=$(echo "scale=2; 1 - ($VIOLATIONS / 10)" | bc | awk '{if ($1 < 0) print 0; else print $1}')
+          E=$(echo "scale=2; 1 - ($MISSING_TAGS / 10)" | bc | awk '{if ($1 < 0) print 0; else print $1}')
+          
+          # Weights: α=0.25, β=0.20, γ=0.30, δ=0.25
+          GI=$(echo "scale=3; 0.25*$M + 0.20*$H + 0.30*$I + 0.25*$E" | bc)
+          
+          echo "### Score Breakdown" >> $GITHUB_STEP_SUMMARY
+          echo "- Memory (M): $M" >> $GITHUB_STEP_SUMMARY
+          echo "- Human (H): $H" >> $GITHUB_STEP_SUMMARY
+          echo "- Integrity (I): $I" >> $GITHUB_STEP_SUMMARY
+          echo "- Ethics (E): $E" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### **Final GI Score: $GI**" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          
+          echo "gi_score=${GI}" >> $GITHUB_OUTPUT
+          
+          # Check threshold
+          THRESHOLD=${{ env.GI_THRESHOLD }}
+          if (( $(echo "$GI >= $THRESHOLD" | bc -l) )); then
+            echo "✅ **GI Score PASS** (>= $THRESHOLD)" >> $GITHUB_STEP_SUMMARY
+            echo "gi_pass=true" >> $GITHUB_OUTPUT
+          else
+            echo "❌ **GI Score FAIL** (< $THRESHOLD)" >> $GITHUB_STEP_SUMMARY
+            echo "gi_pass=false" >> $GITHUB_OUTPUT
+          fi
+      
+      # ============================================
+      # PHASE 5: GENERATE ATTESTATION
+      # ============================================
+      
+      - name: 🔐 Phase 5 - Generate Attestation
+        id: attestation
+        if: steps.gi_score.outputs.gi_pass == 'true'
+        run: |
+          echo "## 🔐 ATLAS Attestation" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          
+          # Generate SHA256 of the commit
+          COMMIT_SHA=$(git rev-parse HEAD)
+          COMMIT_MSG=$(git log -1 --pretty=%B)
+          TIMESTAMP=$(date -u +%Y-%m-%dT%H:%M:%SZ)
+          
+          # Create attestation payload
+          ATTESTATION=$(cat <<EOF
+          {
+            "agent": "ATLAS",
+            "cycle": "${{ steps.clockin.outputs.atlas_cycle }}",
+            "commit": "$COMMIT_SHA",
+            "timestamp": "$TIMESTAMP",
+            "gi_score": ${{ steps.gi_score.outputs.gi_score }},
+            "quality": {
+              "lint": "${{ steps.quality.outputs.quality_lint }}",
+              "types": "${{ steps.quality.outputs.quality_types }}",
+              "coverage": ${{ steps.quality.outputs.quality_coverage }}
+            },
+            "drift": {
+              "violations": ${{ steps.drift.outputs.drift_violations }}
+            },
+            "charter": {
+              "missing_tags": ${{ steps.charter.outputs.charter_missing_tags }}
+            }
+          }
+          EOF
+          )
+          
+          echo "$ATTESTATION" > atlas-attestation.json
+          
+          # Generate SHA256 hash
+          ATTESTATION_HASH=$(echo "$ATTESTATION" | sha256sum | cut -d' ' -f1)
+          
+          echo "### Attestation Details" >> $GITHUB_STEP_SUMMARY
+          echo '```json' >> $GITHUB_STEP_SUMMARY
+          echo "$ATTESTATION" >> $GITHUB_STEP_SUMMARY
+          echo '```' >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Attestation Hash:** \`$ATTESTATION_HASH\`" >> $GITHUB_STEP_SUMMARY
+          
+          echo "attestation_hash=${ATTESTATION_HASH}" >> $GITHUB_OUTPUT
+      
+      # ============================================
+      # PHASE 6: POST TO CIVIC LEDGER (if configured)
+      # ============================================
+      
+      - name: 📝 Phase 6 - Seal to Civic Ledger
+        id: ledger
+        if: steps.gi_score.outputs.gi_pass == 'true' && github.event_name == 'push'
+        continue-on-error: true
+        run: |
+          if [ -n "${{ secrets.LEDGER_API_URL }}" ] && [ -n "${{ secrets.LEDGER_ADMIN_TOKEN }}" ]; then
+            echo "## 📝 Ledger Seal" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            
+            # Post attestation to ledger
+            curl -X POST "${{ secrets.LEDGER_API_URL }}/api/attestations" \
+              -H "Authorization: Bearer ${{ secrets.LEDGER_ADMIN_TOKEN }}" \
+              -H "Content-Type: application/json" \
+              -d @atlas-attestation.json \
+              -o ledger-response.json
+            
+            LEDGER_ID=$(jq -r '.id // "unknown"' ledger-response.json)
+            echo "✅ Sealed to ledger: $LEDGER_ID" >> $GITHUB_STEP_SUMMARY
+            echo "ledger_id=${LEDGER_ID}" >> $GITHUB_OUTPUT
+          else
+            echo "ℹ️ Ledger not configured, skipping seal" >> $GITHUB_STEP_SUMMARY
+          fi
+      
+      # ============================================
+      # PHASE 7: ATLAS CLOCK-OUT
+      # ============================================
+      
+      - name: 🌙 ATLAS Clock-Out
+        if: always()
+        run: |
+          ATLAS_END=$(date +%s)
+          ATLAS_START=${{ steps.clockin.outputs.atlas_start }}
+          DURATION=$((ATLAS_END - ATLAS_START))
+          
+          echo "## 🌙 ATLAS Clock-Out" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Cycle:** ${{ steps.clockin.outputs.atlas_cycle }}" >> $GITHUB_STEP_SUMMARY
+          echo "**Duration:** ${DURATION}s" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          
+          # Determine wins and blocks
+          echo "### Wins 🎉" >> $GITHUB_STEP_SUMMARY
+          if [ "${{ steps.gi_score.outputs.gi_pass }}" == "true" ]; then
+            echo "- ✅ GI Score passed threshold" >> $GITHUB_STEP_SUMMARY
+          fi
+          if [ "${{ steps.quality.outputs.quality_lint }}" == "pass" ]; then
+            echo "- ✅ Code quality standards met" >> $GITHUB_STEP_SUMMARY
+          fi
+          if [ "${{ steps.drift.outputs.drift_violations }}" == "0" ]; then
+            echo "- ✅ No drift violations detected" >> $GITHUB_STEP_SUMMARY
+          fi
+          
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### Blocks 🚧" >> $GITHUB_STEP_SUMMARY
+          if [ "${{ steps.gi_score.outputs.gi_pass }}" != "true" ]; then
+            echo "- ❌ GI Score below threshold" >> $GITHUB_STEP_SUMMARY
+          fi
+          if [ "${{ steps.quality.outputs.quality_lint }}" == "fail" ]; then
+            echo "- ❌ Linting issues found" >> $GITHUB_STEP_SUMMARY
+          fi
+          if [ "${{ steps.drift.outputs.drift_violations }}" != "0" ]; then
+            echo "- ⚠️ Drift violations detected" >> $GITHUB_STEP_SUMMARY
+          fi
+          
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### Tomorrow's Intent 🎯" >> $GITHUB_STEP_SUMMARY
+          echo "- Continue monitoring code quality" >> $GITHUB_STEP_SUMMARY
+          echo "- Strengthen integrity gates" >> $GITHUB_STEP_SUMMARY
+          echo "- Support the four companions" >> $GITHUB_STEP_SUMMARY
+          
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "---" >> $GITHUB_STEP_SUMMARY
+          echo "*ATLAS Sentinel - Truth Through Verification*" >> $GITHUB_STEP_SUMMARY
+      
+      # ============================================
+      # FAIL THE BUILD IF GI SCORE IS TOO LOW
+      # ============================================
+      
+      - name: ❌ Enforce GI Threshold
+        if: steps.gi_score.outputs.gi_pass == 'false'
+        run: |
+          echo "::error::GI Score (${{ steps.gi_score.outputs.gi_score }}) is below threshold (${{ env.GI_THRESHOLD }})"
+          exit 1
+      
+      # ============================================
+      # UPLOAD ARTIFACTS
+      # ============================================
+      
+      - name: 📦 Upload Attestation
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: atlas-attestation
+          path: |
+            atlas-attestation.json
+            lint-results.json
+            coverage.json
+          retention-days: 90
+      
+      # ============================================
+      # COMMENT ON PR
+      # ============================================
+      
+      - name: 💬 Comment on PR
+        if: github.event_name == 'pull_request'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const giScore = '${{ steps.gi_score.outputs.gi_score }}';
+            const giPass = '${{ steps.gi_score.outputs.gi_pass }}';
+            const attestationHash = '${{ steps.attestation.outputs.attestation_hash }}';
+            
+            const emoji = giPass === 'true' ? '✅' : '❌';
+            const status = giPass === 'true' ? 'PASS' : 'FAIL';
+            
+            const comment = `
+            ## ${emoji} ATLAS Sentinel Report
+            
+            **GI Score:** ${giScore} (Threshold: ${{ env.GI_THRESHOLD }})
+            **Status:** ${status}
+            
+            ### Quality Metrics
+            - **Lint:** ${{ steps.quality.outputs.quality_lint }}
+            - **Type Safety:** ${{ steps.quality.outputs.quality_types }}
+            - **Coverage:** ${{ steps.quality.outputs.quality_coverage }}%
+            
+            ### Integrity Check
+            - **Drift Violations:** ${{ steps.drift.outputs.drift_violations }}
+            - **Charter Compliance:** ${attestationHash ? '✅ Attested' : '⚠️ Review Needed'}
+            
+            ${attestationHash ? `**Attestation Hash:** \`${attestationHash}\`` : ''}
+            
+            ---
+            *ATLAS Sentinel - Cycle ${{ steps.clockin.outputs.atlas_cycle }}*
+            `;
+            
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: comment
+            });
