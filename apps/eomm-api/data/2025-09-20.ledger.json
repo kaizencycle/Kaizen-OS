@@ -1,0 +1,16 @@
+{
+  "date": "2025-09-20",
+  "day_root": "f968e40519e67e10532ad2b58ba4c74ae288ee17a4f334b61935bc517888fbe5",
+  "counts": {
+    "seeds": 1,
+    "sweeps": 2,
+    "seals": 1
+  },
+  "links": {
+    "seed": "2025-09-20.seed.json",
+    "echo": "2025-09-20.echo.json",
+    "seal": "2025-09-20.seal.json",
+    "ledger": "2025-09-20.ledger.json"
+  },
+  "ts": "2025-09-21T12:52:39.511743Z"
+}

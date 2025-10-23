@@ -1,0 +1,86 @@
+﻿{
+    "date":  "2025-09-20",
+    "files":  {
+                  "2025-09-20.seed.json":  {
+                                               "type":  "seed",
+                                               "date":  "2025-09-20",
+                                               "time":  "12:45:00",
+                                               "intent":  "iterate",
+                                               "meta":  {
+
+                                                        },
+                                               "ts":  "2025-09-21T01:09:19.474794Z"
+                                           },
+                  "2025-09-20.echo.json":  [
+                                               {
+                                                   "type":  "sweep",
+                                                   "date":  "2025-09-20",
+                                                   "chamber":  "LAB",
+                                                   "note":  "first",
+                                                   "meta":  {
+
+                                                            },
+                                                   "ts":  "T"
+                                               },
+                                               {
+                                                   "type":  "sweep",
+                                                   "date":  "2025-09-20",
+                                                   "chamber":  "LAB",
+                                                   "note":  "second",
+                                                   "meta":  {
+
+                                                            },
+                                                   "ts":  "T"
+                                               },
+                                               {
+                                                   "type":  "sweep",
+                                                   "date":  "2025-09-20",
+                                                   "chamber":  "lab4",
+                                                   "note":  "sweep",
+                                                   "meta":  {
+                                                                "additionalProp1":  {
+
+                                                                                    }
+                                                            },
+                                                   "ts":  "2025-09-21T00:59:00.666467Z"
+                                               },
+                                               {
+                                                   "type":  "sweep",
+                                                   "date":  "2025-09-20",
+                                                   "chamber":  "LAB4",
+                                                   "note":  "first sweep",
+                                                   "meta":  {
+
+                                                            },
+                                                   "ts":  "2025-09-21T01:09:26.233700Z"
+                                               }
+                                           ],
+                  "2025-09-20.seal.json":  {
+                                               "type":  "seal",
+                                               "date":  "2025-09-20",
+                                               "wins":  "seed+sweep working",
+                                               "blocks":  "none",
+                                               "tomorrow_intent":  "polish",
+                                               "meta":  {
+
+                                                        },
+                                               "ts":  "2025-09-21T01:09:31.934180Z"
+                                           },
+                  "2025-09-20.ledger.json":  {
+                                                 "date":  "2025-09-20",
+                                                 "day_root":  "7465e57057f9cbbeafd6bf69a6e22e765baac9ff1571e9c6d51e442581fc38d7",
+                                                 "counts":  {
+                                                                "seeds":  1,
+                                                                "sweeps":  4,
+                                                                "seals":  1
+                                                            },
+                                                 "links":  {
+                                                               "seed":  "2025-09-20.seed.json",
+                                                               "echo":  "2025-09-20.echo.json",
+                                                               "seal":  "2025-09-20.seal.json",
+                                                               "ledger":  "2025-09-20.ledger.json"
+                                                           },
+                                                 "ts":  "2025-09-21T01:09:31.935729Z"
+                                             }
+              }
+}

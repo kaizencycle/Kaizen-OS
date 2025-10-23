@@ -1,0 +1,14 @@
+{"type": "gic_tx", "date": "2025-09-22", "user": "test-user", "amount": 10, "reason": "reflection:publish", "hash": "test-hash-123", "ts": "2025-09-22T00:07:29.974301Z"}
+{"type": "gic_tx", "date": "2025-09-22", "user": "test-user", "amount": 25, "reason": "reflection:publish", "hash": "publish-test-hash-456", "ts": "2025-09-22T00:07:47.920670Z"}
+{"type": "gic_tx", "date": "2025-09-22", "user": "test-user", "amount": 10, "reason": "reflection:private", "hash": "test-hash-123", "ts": "2025-09-22T00:09:10.951912Z"}
+{"type": "gic_tx", "date": "2025-09-22", "user": "test-user", "amount": 10, "reason": "reflection:private", "hash": "test-hash-123", "ts": "2025-09-22T00:09:21.087096Z"}
+{"type": "gic_tx", "date": "2025-09-22", "user": "test-user", "amount": 10, "reason": "reflection:publish_feature", "hash": "featured-test-hash-789", "ts": "2025-09-22T00:33:49.821050Z"}
+{"type": "gic_tx", "date": "2025-09-22", "user": "test-user", "amount": 0, "reason": "reflection:publish_feature", "hash": "featured-test-hash-789", "ts": "2025-09-22T00:33:57.112230Z"}
+{"type": "gic_tx", "date": "2025-09-22", "user": "test-user-new", "amount": 25, "reason": "reflection:publish_feature", "hash": "new-featured-hash-123", "ts": "2025-09-22T00:34:56.815613Z"}
+{"type": "gic_tx", "date": "2025-09-22", "user": "smoke-tester", "amount": 10, "reason": "reflection:private", "hash": null, "ts": "2025-09-22T01:07:36.483816Z"}
+{"type": "gic_tx", "date": "2025-09-22", "user": "smoke-tester", "amount": 25, "reason": "reflection:publish_feature", "hash": "smoke-test-featured-hash-123", "ts": "2025-09-22T01:08:11.313824Z"}
+{"type": "gic_tx", "date": "2025-09-22", "user": "smoke-tester", "amount": 10, "reason": "reflection:private", "hash": null, "ts": "2025-09-22T01:13:34.371619Z"}
+{"type": "gic_tx", "date": "2025-09-22", "user": "anon", "amount": 10, "reason": "reflection:private", "hash": null, "ts": "2025-09-22T13:20:39.490268Z"}
+{"type": "gic_tx", "date": "2025-09-22", "user": "anon", "amount": 10, "reason": "reflection:private", "hash": null, "ts": "2025-09-22T13:20:39.505381Z"}
+{"type": "gic_tx", "date": "2025-09-22", "user": "anon", "amount": 10, "reason": "reflection:private", "hash": null, "ts": "2025-09-22T13:20:39.517064Z"}
+{"type": "gic_tx", "date": "2025-09-22", "user": "lab4-tester", "amount": 10, "reason": "reflection:publish", "hash": "smoke-test-hash", "ts": "2025-09-22T13:21:39.821030Z"}

@@ -1,0 +1,16 @@
+{
+  "type": "day_root",
+  "date": "2025-09-25",
+  "inputs": {
+    "seed": "7300d8c38ae76e64d43fe1da1df14ee55be6fb40553a2e49dba22485c12db612",
+    "echo": [
+      "9d262641612d64735678f95a60b4b0404e754ce24a147cba5c75c831fbe1036b",
+      "b08329a8499665b7594f5f370745eb9111ade155eafb9b2d9e5dfad30c171b09",
+      "2cdcb6c13af2d9641046bb1d48ba68123c869ae20f65103296337cdeb3e3778a"
+    ],
+    "seal": "f6cc6a872be495d0dbc2e858abc13e7dc25967657e3b04e481c7e84cf8d74808"
+  },
+  "root": "cd867eab80fc37464b5a1198d074e023244b94acc53e51fb4ded14d76da0c9fd",
+  "method": "pairwise-merkle-sha256(hex-concat)",
+  "ts": "2025-09-22T13:29:18.494667Z"
+}

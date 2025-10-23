@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+# Usage: invoked by git before opening the editor
+# Args: $1 = path to COMMIT_EDITMSG
+set -euo pipefail
+
+# Don't override merge or rebase messages
+MSG_FILE="$1"
+if [ -f ".git/MERGE_MSG" ] || [ -f ".git/rebase-merge/message" ]; then
+  exit 0
+fi
+
+# Autogenerate commit message with Ollama
+GEN="$(scripts/generate-commit-msg.sh || true)"
+if [ -n "${GEN// }" ]; then
+  printf "%s\n\n" "$GEN" > "$MSG_FILE"
+fi

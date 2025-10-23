@@ -1,0 +1,8 @@
+(?i)\becho\s+server\b
+|(?i)\becho\s+endpoint\b
+|(?i)\becho\s+file\b
+|(?i)\becho\s+data\b
+|(?i)\bautosweep\s+test\b
+|(?i)\bconcordance\b
+|(?i)\bresonance\s+frequency\b
+|(?i)\bvirtue\b(?!\s+accords)

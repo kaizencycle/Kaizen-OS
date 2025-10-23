@@ -1,0 +1,45 @@
+#!/usr/bin/env bash
+set -e
+
+ROOT="$(git rev-parse --show-toplevel)"
+FORBIDDEN_FILE="${ROOT}/.redaction/forbidden.regex"
+ALLOW_FILE="${ROOT}/.redaction/allowlist.regex"
+
+[[ -f "$FORBIDDEN_FILE" ]] || exit 0
+
+FORBIDDEN="$(tr '\n' '|' < "$FORBIDDEN_FILE" | sed 's/|$//')"
+ALLOW=""
+[[ -f "$ALLOW_FILE" ]] && ALLOW="$(tr '\n' '|' < "$ALLOW_FILE" | sed 's/|$//')"
+
+FILES=$(git diff --cached --name-only --diff-filter=ACM | tr '\n' ' ')
+[[ -z "$FILES" ]] && exit 0
+
+echo "🔒 Pre-commit redaction check…"
+FAILED=0
+
+for f in $FILES; do
+  if [[ -f "$f" ]]; then
+    if grep -nEi "$FORBIDDEN" "$f" >/tmp/forbidden_hits 2>/dev/null; then
+      if [[ -n "$ALLOW" ]] && grep -nEi "$ALLOW" "$f" >/tmp/allow_hits 2>/dev/null; then
+        if grep -Fvxf /tmp/allow_hits /tmp/forbidden_hits >/tmp/net_hits || true; then
+          if [[ -s /tmp/net_hits ]]; then
+            echo "🚫 $f"
+            cat /tmp/net_hits
+            FAILED=1
+          fi
+        fi
+      else
+        echo "🚫 $f"
+        cat /tmp/forbidden_hits
+        FAILED=1
+      fi
+    fi
+  fi
+done
+
+if [[ "$FAILED" -eq 1 ]]; then
+  echo "❌ Forbidden terms in staged files. Redact or move to private."
+  exit 1
+fi
+
+echo "✅ Clean. Proceeding with commit."
