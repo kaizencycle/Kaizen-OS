@@ -1,0 +1,26 @@
+{
+  "name": "@civic-protocol/core",
+  "version": "1.0.0",
+  "description": "Civic Protocol Core - A sovereign blockchain for civilization state",
+  "type": "module",
+  "scripts": {
+    "verify-copilot": "node scripts/verifyCopilotDiff.mjs",
+    "test": "echo \"No tests specified\" && exit 0"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "keywords": [
+    "blockchain",
+    "civic",
+    "governance",
+    "ai",
+    "consensus"
+  ],
+  "author": "Civic Protocol Team",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/civic-protocol/core.git"
+  }
+}
