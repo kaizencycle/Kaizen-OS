@@ -13,8 +13,8 @@
     "test": "jest"
   },
   "dependencies": {
-    "@civic/sdk": "workspace:*",
-    "@civic/integrity-core": "workspace:*",
+    "@civic/sdk": "*",
+    "@civic/integrity-core": "*",
     "express": "^4.18.0",
     "cors": "^2.8.5"
   },
