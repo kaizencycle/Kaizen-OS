@@ -1,0 +1,45 @@
+name: sentinel-patch
+on:
+  schedule: [ { cron: "*/15 * * * *" } ]  # every 15 minutes
+  workflow_dispatch:
+  push:
+    branches: [ "main" ]
+    paths: [ "companion_site_starter/**", "services/**" ]  # tune as needed
+
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 20 }
+
+      # 1) Run sentinels (linters, type checks, tiny codemods)
+      - run: cd companion_site_starter && npm ci
+      - run: cd companion_site_starter && npm run lint || true
+      - run: cd companion_site_starter && npm run typecheck || true
+
+      # 2) Run auto-fixers (prettier/eslint --fix, json schema formatters, etc.)
+      - run: |
+          cd companion_site_starter
+          npm run sentinel:fix || true
+          git status --porcelain
+
+      # 3) If there are changes, create a branch and PR
+      - name: open patch PR
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          if [ -n "$(git status --porcelain)" ]; then
+            BR="sentinel/auto-patch-$(date +%Y%m%d%H%M%S)"
+            git config user.name "echo-sentinel"
+            git config user.email "sentinel@civic.gic"
+            git checkout -b "$BR"
+            git add -A
+            git commit -m "chore(sentinel): auto-patch (lint/format/guardrails)"
+            git push origin "$BR"
+            gh pr create --title "chore(sentinel): auto-patch" --body "Automated patch from Echo Health Sentinel." --base main --head "$BR" || true
+          fi

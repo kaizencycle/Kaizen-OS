@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+echo "[guard] scanning staged content for secrets..."
+if git diff --cached -U0 | egrep -q '(SECRET|PRIVATE KEY|BEGIN [A-Z ]+PRIVATE KEY|authorization:|Bearer\s+[A-Za-z0-9\-\._~\+\/]+=*)'; then
+  echo "[guard] possible secret detected in staged changes. aborting push."
+  exit 1
+fi

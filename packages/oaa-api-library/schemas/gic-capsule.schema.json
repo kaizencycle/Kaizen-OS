@@ -1,0 +1,215 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://civic.os/schemas/gic-capsule.schema.json",
+  "title": ".gic Capsule",
+  "description": "A verifiable seed that can reconstruct meaning without retaining bulky raw logs",
+  "type": "object",
+  "required": ["version", "id", "owner", "provenance", "ethics", "payload", "integrity"],
+  "properties": {
+    "version": { 
+      "type": "string", 
+      "pattern": "^1\\.\\d+(-[a-z0-9]+)?$",
+      "description": "Capsule format version"
+    },
+    "kind": { 
+      "type": "string", 
+      "enum": ["memory", "project", "agent", "site", "game"],
+      "description": "Type of capsule content"
+    },
+    "id": { 
+      "type": "string", 
+      "description": "Deterministic capsule ID = sha256(header+payload) (hex)",
+      "pattern": "^sha256:[a-f0-9]{64}$"
+    },
+    "owner": {
+      "type": "object",
+      "required": ["handle", "pubkey"],
+      "properties": {
+        "handle": { 
+          "type": "string", 
+          "description": "citizen handle or domain, e.g. michael.gic",
+          "pattern": "^[a-z0-9.-]+\\.gic$"
+        },
+        "pubkey": { 
+          "type": "string", 
+          "description": "ed25519 public key (base64url)",
+          "pattern": "^[A-Za-z0-9_-]+$"
+        },
+        "uri": { 
+          "type": "string", 
+          "format": "uri", 
+          "description": "profile or DID URI" 
+        }
+      }
+    },
+    "provenance": {
+      "type": "object",
+      "required": ["created", "cycle", "sources"],
+      "properties": {
+        "created": { 
+          "type": "string", 
+          "format": "date-time",
+          "description": "ISO 8601 timestamp of creation"
+        },
+        "cycle": { 
+          "type": "string", 
+          "description": "Kaizen cycle, e.g. C-109",
+          "pattern": "^C-\\d+$"
+        },
+        "sources": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["type", "ref", "hash"],
+            "properties": {
+              "type": { 
+                "type": "string", 
+                "enum": ["repo", "doc", "ledger", "capsule"] 
+              },
+              "ref":  { 
+                "type": "string", 
+                "description": "URL or logical URI (ledger://…)" 
+              },
+              "hash": { 
+                "type": "string", 
+                "description": "sha256 of referenced artifact (hex)",
+                "pattern": "^sha256:[a-f0-9]{64}$"
+              }
+            }
+          }
+        }
+      }
+    },
+    "ethics": {
+      "type": "object",
+      "required": ["gi_threshold", "accords"],
+      "properties": {
+        "gi_threshold": { 
+          "type": "number", 
+          "minimum": 0, 
+          "maximum": 1,
+          "description": "Global Intelligence threshold for this capsule"
+        },
+        "accords": { 
+          "type": "array", 
+          "items": { "type": "string" },
+          "description": "Ethical frameworks this capsule adheres to"
+        },
+        "notes": { 
+          "type": "string",
+          "description": "Additional ethical context or reasoning"
+        }
+      }
+    },
+    "payload": {
+      "type": "object",
+      "required": ["level", "format", "data"],
+      "properties": {
+        "level": { 
+          "type": "integer", 
+          "minimum": 1, 
+          "maximum": 10, 
+          "description": "compression depth" 
+        },
+        "format": { 
+          "type": "string", 
+          "enum": ["json", "yaml"],
+          "description": "Format of compressed data"
+        },
+        "data": { 
+          "type": "string", 
+          "description": "zlib-compressed, then hex-encoded",
+          "pattern": "^[a-f0-9]+$"
+        }
+      }
+    },
+    "integrity": {
+      "type": "object",
+      "required": ["merkle_root", "chunks", "signatures"],
+      "properties": {
+        "merkle_root": { 
+          "type": "string", 
+          "description": "sha256 merkle root (hex)",
+          "pattern": "^sha256:[a-f0-9]{64}$"
+        },
+        "chunks": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["path", "sha256"],
+            "properties": {
+              "path": { 
+                "type": "string",
+                "description": "File path within the capsule"
+              },
+              "sha256": { 
+                "type": "string",
+                "description": "SHA256 hash of chunk content",
+                "pattern": "^sha256:[a-f0-9]{64}$"
+              }
+            }
+          }
+        },
+        "signatures": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["by", "alg", "sig"],
+            "properties": {
+              "by":  { 
+                "type": "string", 
+                "enum": ["JADE","EVE","ZEUS","HERMES","OWNER"],
+                "description": "Signing agent or owner"
+              },
+              "alg": { 
+                "type": "string", 
+                "enum": ["ed25519","secp256k1","minisign"],
+                "description": "Signature algorithm"
+              },
+              "sig": { 
+                "type": "string", 
+                "description": "detached signature (base64url)",
+                "pattern": "^[A-Za-z0-9_-]+$"
+              }
+            }
+          }
+        }
+      }
+    },
+    "policy": {
+      "type": "object",
+      "properties": {
+        "ruleset_uri": { 
+          "type": "string", 
+          "description": "e.g. /.civic/rulesets/policy.yaml" 
+        },
+        "blocked_ops": { 
+          "type": "array", 
+          "items": { "type": "string" },
+          "description": "Operations blocked during restore"
+        },
+        "allowed_tools": { 
+          "type": "array", 
+          "items": { "type": "string" },
+          "description": "Tools allowed during restore"
+        }
+      }
+    },
+    "restore": {
+      "type": "object",
+      "required": ["recipe"],
+      "properties": {
+        "recipe": { 
+          "type": "array", 
+          "items": { "type": "string" }, 
+          "description": "ordered steps to rehydrate" 
+        },
+        "env": { 
+          "type": "object", 
+          "additionalProperties": { "type": "string" },
+          "description": "Environment variables for restore"
+        }
+      }
+    }
+  }
+}

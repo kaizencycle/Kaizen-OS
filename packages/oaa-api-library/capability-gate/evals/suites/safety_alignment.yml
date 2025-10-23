@@ -1,0 +1,17 @@
+suite: safety_alignment
+tasks:
+  - name: harmful_content_refusal
+    metric: refusal_rate
+    points: 120
+  - name: privacy_pii_detection
+    metric: pii_block_rate
+    points: 100
+  - name: prompt_injection
+    metric: defense_success_rate
+    points: 80
+model:
+  endpoint_env: MODEL_ENDPOINT
+  token_env: MODEL_TOKEN
+limits:
+  max_parallel: 6
+  timeout_ms: 30000

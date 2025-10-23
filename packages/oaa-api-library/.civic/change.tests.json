@@ -1,0 +1,197 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "change_id": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$"
+    },
+    "chamber": {
+      "type": "string"
+    },
+    "cycle": {
+      "type": "string",
+      "pattern": "^C-\\d+$"
+    },
+    "test_plan": {
+      "type": "object",
+      "properties": {
+        "unit_tests": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {"type": "string"},
+              "description": {"type": "string"},
+              "file_path": {"type": "string"},
+              "test_function": {"type": "string"},
+              "expected_result": {"type": "string"},
+              "priority": {"type": "string", "enum": ["critical", "high", "medium", "low"]}
+            },
+            "required": ["name", "description", "file_path", "test_function", "expected_result", "priority"]
+          }
+        },
+        "integration_tests": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {"type": "string"},
+              "description": {"type": "string"},
+              "endpoint": {"type": "string"},
+              "method": {"type": "string", "enum": ["GET", "POST", "PUT", "DELETE", "PATCH"]},
+              "request_body": {"type": "object"},
+              "expected_status": {"type": "number"},
+              "expected_response": {"type": "object"},
+              "priority": {"type": "string", "enum": ["critical", "high", "medium", "low"]}
+            },
+            "required": ["name", "description", "endpoint", "method", "expected_status", "priority"]
+          }
+        },
+        "e2e_tests": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {"type": "string"},
+              "description": {"type": "string"},
+              "user_journey": {"type": "string"},
+              "steps": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "action": {"type": "string"},
+                    "selector": {"type": "string"},
+                    "expected_result": {"type": "string"}
+                  },
+                  "required": ["action", "expected_result"]
+                }
+              },
+              "priority": {"type": "string", "enum": ["critical", "high", "medium", "low"]}
+            },
+            "required": ["name", "description", "user_journey", "steps", "priority"]
+          }
+        },
+        "security_tests": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {"type": "string"},
+              "description": {"type": "string"},
+              "test_type": {"type": "string", "enum": ["injection", "auth", "authorization", "data_validation", "encryption"]},
+              "attack_vector": {"type": "string"},
+              "expected_behavior": {"type": "string"},
+              "priority": {"type": "string", "enum": ["critical", "high", "medium", "low"]}
+            },
+            "required": ["name", "description", "test_type", "attack_vector", "expected_behavior", "priority"]
+          }
+        },
+        "performance_tests": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {"type": "string"},
+              "description": {"type": "string"},
+              "load_profile": {"type": "string"},
+              "expected_metrics": {
+                "type": "object",
+                "properties": {
+                  "response_time_ms": {"type": "number"},
+                  "throughput_rps": {"type": "number"},
+                  "error_rate_percent": {"type": "number"},
+                  "cpu_usage_percent": {"type": "number"},
+                  "memory_usage_mb": {"type": "number"}
+                }
+              },
+              "priority": {"type": "string", "enum": ["critical", "high", "medium", "low"]}
+            },
+            "required": ["name", "description", "load_profile", "expected_metrics", "priority"]
+          }
+        }
+      },
+      "required": ["unit_tests", "integration_tests", "e2e_tests", "security_tests", "performance_tests"]
+    },
+    "test_environment": {
+      "type": "object",
+      "properties": {
+        "node_version": {"type": "string"},
+        "npm_version": {"type": "string"},
+        "test_framework": {"type": "string"},
+        "browser": {"type": "string"},
+        "database": {"type": "string"},
+        "external_services": {
+          "type": "array",
+          "items": {"type": "string"}
+        }
+      }
+    },
+    "coverage_requirements": {
+      "type": "object",
+      "properties": {
+        "unit_test_coverage": {"type": "number", "minimum": 0, "maximum": 100},
+        "integration_test_coverage": {"type": "number", "minimum": 0, "maximum": 100},
+        "e2e_test_coverage": {"type": "number", "minimum": 0, "maximum": 100}
+      }
+    },
+    "test_data": {
+      "type": "object",
+      "properties": {
+        "fixtures": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {"type": "string"},
+              "file_path": {"type": "string"},
+              "description": {"type": "string"}
+            },
+            "required": ["name", "file_path", "description"]
+          }
+        },
+        "mocks": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "service": {"type": "string"},
+              "mock_type": {"type": "string", "enum": ["http", "database", "file_system", "external_api"]},
+              "file_path": {"type": "string"}
+            },
+            "required": ["service", "mock_type", "file_path"]
+          }
+        }
+      }
+    },
+    "execution_plan": {
+      "type": "object",
+      "properties": {
+        "pre_test_setup": {
+          "type": "array",
+          "items": {"type": "string"}
+        },
+        "test_sequence": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": ["unit", "integration", "e2e", "security", "performance"]
+          }
+        },
+        "post_test_cleanup": {
+          "type": "array",
+          "items": {"type": "string"}
+        }
+      }
+    }
+  },
+  "required": [
+    "change_id",
+    "chamber",
+    "cycle", 
+    "test_plan",
+    "test_environment",
+    "coverage_requirements"
+  ]
+}

@@ -1,0 +1,34 @@
+openapi: 3.1.0
+info:
+  title: OAA Gateway API
+  version: 0.1.0
+paths:
+  /agent/status:
+    post:
+      summary: Post agent status/event payloads behind gateway
+      security:
+        - hmac: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties: true
+      responses:
+        "200":
+          description: ok
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  ok: { type: boolean }
+                  received: { type: object }
+                  at: { type: string, format: date-time }
+components:
+  securitySchemes:
+    hmac:
+      type: http
+      scheme: bearer
+      description: Use X-Hub-Signature-256 header with sha256 HMAC of raw body

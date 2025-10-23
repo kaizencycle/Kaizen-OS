@@ -1,0 +1,22 @@
+{
+  "contextRules": [
+    {
+      "name": "oaa-core-context",
+      "globs": ["docs/OAA_PREFACE.md", "pages/api/oaa/context.ts", "OAA_MEMORY.json"],
+      "reason": "Hydrate OAA identity, civics, and durable memory in every chat.",
+      "alwaysInclude": true
+    }
+  ],
+  "agents": [
+    {
+      "name": "oaa-context-refresh",
+      "interval": "30m",
+      "include": ["pages/api/oaa/context.ts"],
+      "actions": [
+        {"type":"modify","pattern":"updatedAt: .*","replacement":"updatedAt: \"${now_iso}\","},
+        {"type":"git","command":"commit","message":"chore(context): refresh updatedAt ${now_iso}"},
+        {"type":"git","command":"push"}
+      ]
+    }
+  ]
+}

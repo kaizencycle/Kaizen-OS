@@ -1,0 +1,8 @@
+^\.github/workflows/
+^docs/
+^scripts/
+^ops_requests/
+^ops_agent/
+^render\.ya?ml$
+^oaa\.env$
+^sentinel_state\.json$

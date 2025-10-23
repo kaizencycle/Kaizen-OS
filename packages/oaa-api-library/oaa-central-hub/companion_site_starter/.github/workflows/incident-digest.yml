@@ -1,0 +1,33 @@
+name: incident-digest
+on:
+  schedule:
+    - cron: "0 9 * * MON"   # every Monday 09:00 UTC (adjust as you like)
+  workflow_dispatch: {}
+
+jobs:
+  build-weekly-digest:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    env:
+      GITHUB_OWNER: ${{ github.repository_owner }}
+      GITHUB_REPO: ${{ github.event.repository.name }}
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      WEEKS_BACK: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 20 }
+      - name: Generate digest
+        run: node scripts/incidentDigest.mjs
+      - name: Commit digest
+        run: |
+          if [[ -n "$(git status --porcelain)" ]]; then
+            git config user.name "sentinel-reporter"
+            git config user.email "sentinel@civic.gic"
+            git add docs/ops/INCIDENTS.md
+            git commit -m "chore(ops): weekly incident digest"
+            git push
+          else
+            echo "No changes to commit."
+          fi

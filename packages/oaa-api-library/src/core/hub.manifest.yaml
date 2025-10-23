@@ -1,0 +1,30 @@
+# oaa/hub.manifest.yaml
+hub:
+  name: OAA Central
+  version: 0.1.0
+
+labs:
+  - id: lab7-oaa
+    routes: ["/oaa", "/api/oaa/*"]
+  - id: lab4-frontend
+    routes: ["/", "/oaa"]
+  - id: lab6-citizen-shield
+    routes: ["/gateway/*", "/agent/*"]
+  - id: civic-ledger
+    routes: ["/ledger/*"]
+  - id: gic-indexer
+    routes: ["/gic/*"]
+
+tools:
+  webDataScout:
+    endpoint: ${SCOUT_ENDPOINT}
+    breaker:
+      error_rate_pct: 20
+      timeout_ms: 20000
+
+policies:
+  file: ops/policy.json
+
+logging:
+  ops_logs_dir: ".github/ops_logs"
+  seal: true

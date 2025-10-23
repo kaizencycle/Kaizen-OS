@@ -1,0 +1,34 @@
+{
+  "version": "v1",
+  "updatedAt": "2025-01-17T00:00:00.000Z",
+  "notes": [
+    {
+      "ts": 1697452800000,
+      "note": "Companions: Jade, Eve, Zeus, Hermes — roles: Jade (builder), Eve (reflection), Zeus (ops), Hermes (routing)."
+    },
+    {
+      "ts": 1697452800000,
+      "note": "Civic Stack online: .gic registry (concept), Civic Ledger (mock + prod), GIC Gateway (feeds, posts)."
+    },
+    {
+      "ts": 1697452800000,
+      "note": "Operational cycles: Clock-in/out; Eve logs Wins, Blocks, TomorrowIntent per cycle."
+    },
+    {
+      "ts": 1697452800000,
+      "note": "OAA Hub exposes dev surfaces: /dev/context, /dev/ledger, /dev/queue, /dev/reports — all DEV_MODE-gated."
+    },
+    {
+      "ts": 1697452800000,
+      "note": "Sentinel Suite: CI status + runtime vitals (BullMQ depth/fail%), webhook to Command Ledger, weekly digest."
+    },
+    {
+      "ts": 1697452800000,
+      "note": "Design doctrine: integrity-first learning; human+machine symbiosis; rewards via GIC for shared agreements."
+    }
+  ],
+  "companions": ["jade", "eve", "zeus", "hermes"],
+  "repos": ["OAA-API-Library", "gic-gateway-service", "gic-registry-contracts"],
+  "queue": { "name": "publishEvents" },
+  "ethics": { "accords": "Virtue Accords", "epoch": "Cycle 0" }
+}

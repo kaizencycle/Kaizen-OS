@@ -1,0 +1,52 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "lib": ["dom", "dom.iterable", "ES6"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "incremental": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"],
+      "@/components/*": ["./src/components/*"],
+      "@/lib/*": ["./src/lib/*"],
+      "@/api/*": ["./src/api/*"],
+      "@/packs/*": ["./src/packs/*"],
+      "@/core/*": ["./src/core/*"],
+      "@/pages/*": ["./src/pages/*"],
+      "@/schemas/*": ["./src/schemas/*"],
+      "@/specs/*": ["./src/specs/*"],
+      "@/scripts/*": ["./src/scripts/*"],
+      "@/data/*": ["./src/data/*"],
+      "@/lore/*": ["./src/lore/*"],
+      "@/gic/*": ["./src/gic/*"],
+      "@/tests/*": ["./src/tests/*"]
+    }
+  },
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    ".next",
+    "out",
+    "dist"
+  ]
+}
