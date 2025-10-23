@@ -1,0 +1,43 @@
+{
+  "name": "Reflections Ledger (PROD)",
+  "version": "1.0.0",
+  "description": "Call the Reflections FastAPI ledger on Render",
+  "baseUrl": "https://reflections.onrender.com",
+  "tools": [
+    {
+      "name": "seed",
+      "description": "Create a seed entry in the ledger",
+      "method": "POST",
+      "path": "/seed",
+      "headers": { "x-api-key": "${env:PROD_API_KEY}" }
+    },
+    {
+      "name": "sweep",
+      "description": "Log a reflection sweep (private/publish/publish_feature tiers)",
+      "method": "POST",
+      "path": "/sweep",
+      "headers": { "x-api-key": "${env:PROD_API_KEY}" }
+    },
+    {
+      "name": "seal",
+      "description": "Seal the day with wins/blocks/tomorrow_intent",
+      "method": "POST",
+      "path": "/seal",
+      "headers": { "x-api-key": "${env:PROD_API_KEY}" }
+    },
+    {
+      "name": "verify",
+      "description": "Verify a day's ledger (counts, GIC sum, links)",
+      "method": "GET",
+      "path": "/verify/{date}",
+      "headers": { "x-api-key": "${env:PROD_API_KEY}" }
+    },
+    {
+      "name": "index",
+      "description": "List all days with counts + GIC",
+      "method": "GET",
+      "path": "/index",
+      "headers": { "x-api-key": "${env:PROD_API_KEY}" }
+    }
+  ]
+}

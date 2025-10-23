@@ -1,0 +1,26 @@
+services:
+  - type: web
+    name: hive-paw-api
+    env: python
+    plan: starter
+    region: oregon
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "uvicorn app.main:app --host 0.0.0.0 --port $PORT"
+    envVars:
+      - key: HUB_BASE_URL
+        value: https://hive-paw-api.onrender.com
+      - key: LEDGER_BASE_URL
+        sync: false        # set in Render dashboard
+      - key: LEDGER_ADMIN_TOKEN
+        sync: false        # set in Render dashboard
+      - key: OAA_ISSUER
+        value: oaa_hub
+      - key: OAA_VERIFY_PIN_KEYS
+        value: "true"
+      - key: OAA_VERIFY_TS_WINDOW_MIN
+        value: "10"
+      - key: OAA_VERIFY_REQUIRE_NONCE
+        value: "false"
+      - key: LEGER_HMAC_KEY
+        sync: false        # set in Render dashboard
+    healthCheckPath: /health

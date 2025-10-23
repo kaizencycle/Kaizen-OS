@@ -1,0 +1,18 @@
+[
+  {
+    "type": "sweep",
+    "date": "2025-09-20",
+    "chamber": "LAB",
+    "note": "first",
+    "meta": {},
+    "ts": "T"
+  },
+  {
+    "type": "sweep",
+    "date": "2025-09-20",
+    "chamber": "LAB",
+    "note": "second",
+    "meta": {},
+    "ts": "T"
+  }
+]

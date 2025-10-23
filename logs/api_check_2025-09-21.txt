@@ -1,0 +1,182 @@
+[2025-09-20 22:53:58.927] [HEADER] ===============================
+[2025-09-20 22:53:58.941] [HEADER] Testing Civic AI Ledger API
+[2025-09-20 22:53:58.945] [HEADER] Date: 2025-09-21  Time: 22:53:58
+[2025-09-20 22:53:58.987] [HEADER] Base URL: http://127.0.0.1:8000
+[2025-09-20 22:53:58.994] [HEADER] ===============================
+[2025-09-20 22:53:59.002] [HEADER] 
+[2025-09-20 22:53:59.009] [SECTION] --- SEED TEST ---
+[2025-09-20 22:53:59.018] [TEST] Testing SEED
+[2025-09-20 22:53:59.103] [RESULT] STATUS=200 Duration=0.064s
+[2025-09-20 22:53:59.109] [RESPONSE] {
+    "seed_hash":  "0fa04b7ab52b3f0ccc594a0a217bd07470a4517607814d56e443b578d46d72b1",
+    "file":  "2025-09-21.seed.json"
+}
+[2025-09-20 22:53:59.117] [SECTION] --- SWEEP TEST ---
+[2025-09-20 22:53:59.123] [TEST] Testing SWEEP
+[2025-09-20 22:53:59.131] [RESULT] STATUS=200 Duration=0.003s
+[2025-09-20 22:53:59.139] [RESPONSE] {
+    "attestation":  "765c3096937906e8e5aa835362f55b661c17aa10950812d460b280164e415490",
+    "file":  "2025-09-21.echo.json"
+}
+[2025-09-20 22:53:59.145] [SECTION] --- SEAL TEST ---
+[2025-09-20 22:53:59.150] [TEST] Testing SEAL
+[2025-09-20 22:53:59.168] [RESULT] STATUS=200 Duration=0.014s
+[2025-09-20 22:53:59.173] [RESPONSE] {
+    "ok":  true,
+    "seal_file":  "2025-09-21.seal.json",
+    "ledger_file":  "2025-09-21.ledger.json",
+    "day_root":  "dbb2640e8d7dffeb09a0be6953dbd25d2e0fc693367576a37a0f819fd52d2495",
+    "counts":  {
+                   "seeds":  1,
+                   "sweeps":  5,
+                   "seals":  1
+               }
+}
+[2025-09-20 22:53:59.179] [SECTION] --- LEDGER TEST ---
+[2025-09-20 22:53:59.184] [TEST] Testing LEDGER
+[2025-09-20 22:53:59.197] [RESULT] STATUS=200 Duration=0.009s
+[2025-09-20 22:53:59.202] [RESPONSE] {
+    "date":  "2025-09-21",
+    "day_root":  "dbb2640e8d7dffeb09a0be6953dbd25d2e0fc693367576a37a0f819fd52d2495",
+    "counts":  {
+                   "seeds":  1,
+                   "sweeps":  5,
+                   "seals":  1
+               },
+    "links":  {
+                  "seed":  "2025-09-21.seed.json",
+                  "echo":  "2025-09-21.echo.json",
+                  "seal":  "2025-09-21.seal.json",
+                  "ledger":  "2025-09-21.ledger.json"
+              },
+    "ts":  "2025-09-21T02:53:59.166866Z"
+}
+[2025-09-20 22:53:59.208] [SECTION] --- VERIFY TEST ---
+[2025-09-20 22:53:59.213] [TEST] Testing VERIFY
+[2025-09-20 22:53:59.228] [RESULT] STATUS=200 Duration=0.014s
+[2025-09-20 22:53:59.234] [RESPONSE] {
+    "ok":  true,
+    "expected":  "dbb2640e8d7dffeb09a0be6953dbd25d2e0fc693367576a37a0f819fd52d2495",
+    "computed":  "dbb2640e8d7dffeb09a0be6953dbd25d2e0fc693367576a37a0f819fd52d2495",
+    "counts":  {
+                   "seeds":  1,
+                   "sweeps":  5,
+                   "seals":  1
+               }
+}
+[2025-09-20 22:53:59.239] [SECTION] --- EXPORT TEST ---
+[2025-09-20 22:53:59.244] [TEST] Testing EXPORT
+[2025-09-20 22:53:59.256] [RESULT] STATUS=200 Duration=0.007s
+[2025-09-20 22:53:59.262] [RESPONSE] {
+    "date":  "2025-09-21",
+    "files":  {
+                  "2025-09-21.seed.json":  {
+                                               "type":  "seed",
+                                               "date":  "2025-09-21",
+                                               "time":  "12:00:00",
+                                               "intent":  "API test",
+                                               "meta":  {
+
+                                                        },
+                                               "ts":  "2025-09-21T02:53:59.088320Z"
+                                           },
+                  "2025-09-21.echo.json":  [
+                                               {
+                                                   "type":  "sweep",
+                                                   "date":  "2025-09-21",
+                                                   "chamber":  "LAB",
+                                                   "note":  "first",
+                                                   "meta":  {
+
+                                                            },
+                                                   "ts":  "T"
+                                               },
+                                               {
+                                                   "type":  "sweep",
+                                                   "date":  "2025-09-21",
+                                                   "chamber":  "LAB",
+                                                   "note":  "second",
+                                                   "meta":  {
+
+                                                            },
+                                                   "ts":  "T"
+                                               },
+                                               {
+                                                   "type":  "sweep",
+                                                   "date":  "2025-09-21",
+                                                   "chamber":  "LAB4",
+                                                   "note":  "first sweep",
+                                                   "meta":  {
+
+                                                            },
+                                                   "ts":  "2025-09-21T01:07:44.272217Z"
+                                               },
+                                               {
+                                                   "type":  "sweep",
+                                                   "date":  "2025-09-21",
+                                                   "chamber":  "LAB4",
+                                                   "note":  "demo sweep",
+                                                   "meta":  {
+
+                                                            },
+                                                   "ts":  "2025-09-21T01:21:40.187440Z"
+                                               },
+                                               {
+                                                   "type":  "sweep",
+                                                   "date":  "2025-09-21",
+                                                   "chamber":  "LAB4",
+                                                   "note":  "API test sweep",
+                                                   "meta":  {
+
+                                                            },
+                                                   "ts":  "2025-09-21T02:53:59.132166Z"
+                                               }
+                                           ],
+                  "2025-09-21.seal.json":  {
+                                               "type":  "seal",
+                                               "date":  "2025-09-21",
+                                               "wins":  "API test successful",
+                                               "blocks":  "none",
+                                               "tomorrow_intent":  "continue testing",
+                                               "meta":  {
+
+                                                        },
+                                               "ts":  "2025-09-21T02:53:59.165855Z"
+                                           },
+                  "2025-09-21.ledger.json":  {
+                                                 "date":  "2025-09-21",
+                                                 "day_root":  "dbb2640e8d7dffeb09a0be6953dbd25d2e0fc693367576a37a0f819fd52d2495",
+                                                 "counts":  {
+                                                                "seeds":  1,
+                                                                "sweeps":  5,
+                                                                "seals":  1
+                                                            },
+                                                 "links":  {
+                                                               "seed":  "2025-09-21.seed.json",
+                                                               "echo":  "2025-09-21.echo.json",
+                                                               "seal":  "2025-09-21.seal.json",
+                                                               "ledger":  "2025-09-21.ledger.json"
+                                                           },
+                                                 "ts":  "2025-09-21T02:53:59.166866Z"
+                                             }
+              }
+}
+[2025-09-20 22:53:59.271] [SECTION] --- INDEX TEST ---
+[2025-09-20 22:53:59.276] [TEST] Testing INDEX
+[2025-09-20 22:53:59.287] [RESULT] STATUS=200 Duration=0.007s
+[2025-09-20 22:53:59.293] [RESPONSE] {
+    "count":  6,
+    "days":  [
+                 "2025-09-18",
+                 "2025-09-19",
+                 "2025-09-20",
+                 "2025-09-21",
+                 "2025-09-22",
+                 "2025-09-23"
+             ]
+}
+[2025-09-20 22:53:59.308] [SUMMARY] ===============================
+[2025-09-20 22:53:59.313] [SUMMARY] Tests complete at 2025-09-20 22:53:59
+[2025-09-20 22:53:59.318] [SUMMARY] Total Duration: 0.407s
+[2025-09-20 22:53:59.323] [SUMMARY] Success Rate: 7/7
+[2025-09-20 22:53:59.331] [SUMMARY] ===============================

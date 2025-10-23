@@ -1,0 +1,161 @@
+diff --git a/components/AppSidebar.tsx b/components/AppSidebar.tsx
+new file mode 100644
+--- /dev/null
++++ b/components/AppSidebar.tsx
+@@
++"use client";
++import Link from "next/link";
++import { usePathname } from "next/navigation";
++import { useEffect, useState } from "react";
++
++const links = [
++  { href: "/", label: "Home", icon: "🏠" },
++  { href: "/onboarding", label: "Onboarding", icon: "🧭" },
++  { href: "/login", label: "Login", icon: "🔐" },
++  { href: "/companion", label: "Companion", icon: "🤝" },
++  { href: "/forest", label: "Forest", icon: "🌳" },
++  { href: "/consensus", label: "Consensus", icon: "🗳️" },
++];
++
++export default function AppSidebar() {
++  const pathname = usePathname() || "/";
++  const [open, setOpen] = useState(true);
++
++  // remember state
++  useEffect(() => {
++    const s = localStorage.getItem("sidebar-open");
++    if (s !== null) setOpen(s === "1");
++  }, []);
++  useEffect(() => {
++    localStorage.setItem("sidebar-open", open ? "1" : "0");
++  }, [open]);
++
++  // keyboard: S toggles
++  useEffect(() => {
++    const h = (e: KeyboardEvent) => {
++      if (e.key.toLowerCase() === "s" && !e.metaKey && !e.ctrlKey) {
++        e.preventDefault(); setOpen(o=>!o);
++      }
++    };
++    window.addEventListener("keydown", h);
++    return () => window.removeEventListener("keydown", h);
++  }, []);
++
++  return (
++    <>
++      <button className="sb-toggle" aria-label="Toggle sidebar" onClick={() => setOpen(o=>!o)}>
++        ☰
++      </button>
++      <aside className={`sb ${open ? "open" : ""}`}>
++        <div className="sb-head">
++          <span className="logo">✨</span>
++          <strong>Reflections</strong>
++        </div>
++        <nav className="sb-nav">
++          {links.map(l => {
++            const active = pathname === l.href;
++            return (
++              <Link key={l.href} href={l.href} className={`sb-link ${active ? "active" : ""}`}>
++                <span className="ic">{l.icon}</span>
++                <span>{l.label}</span>
++              </Link>
++            );
++          })}
++        </nav>
++        <div className="sb-foot">
++          <small>Press <kbd>S</kbd> to toggle</small>
++        </div>
++      </aside>
++    </>
++  );
++}
+diff --git a/app/layout.tsx b/app/layout.tsx
+--- a/app/layout.tsx
++++ b/app/layout.tsx
+@@
+ import "./styles.css";
+-import Link from "next/link";
+ import type { ReactNode } from "react";
+ import Logout from "@/components/Logout";
++import AppSidebar from "@/components/AppSidebar";
+ 
+ export default function RootLayout({ children }: { children: ReactNode }) {
+   return (
+     <html lang="en">
+       <body>
+-        <header className="nav">
+-          <nav className="nav-inner">
+-            <div className="brand">✨ Reflections</div>
+-            <div className="links">
+-              <Link href="/">Home</Link>
+-              <Link href="/onboarding">Onboarding</Link>
+-              <Link href="/login">Login</Link>
+-              <Link href="/companion">Companion</Link>
+-              <Link href="/forest">Forest</Link>
+-            </div>
+-            <Logout />
+-          </nav>
+-        </header>
+-        <main className="main">{children}</main>
++        <div className="shell">
++          <AppSidebar />
++          <main className="main">{children}</main>
++        </div>
++        <div className="topbar">
++          <div className="grow" />
++          <Logout />
++        </div>
+       </body>
+     </html>
+   );
+ }
+diff --git b/app/styles.css a/app/styles.css
+--- a/app/styles.css
++++ b/app/styles.css
+@@
+-/* top nav */
+-.nav{position:sticky;top:0;background:#0b0e14;border-bottom:1px solid var(--border);z-index:10}
+-.nav-inner{display:flex;align-items:center;gap:16px;max-width:1100px;margin:0 auto;padding:10px 16px}
+-.nav .links a{margin:0 8px}
++/* Layout shell with sidebar */
++.shell{display:grid;grid-template-columns:260px 1fr;min-height:100vh}
++@media(max-width:900px){.shell{grid-template-columns:1fr}}
++.topbar{position:fixed;right:12px;top:10px;z-index:15;display:flex;gap:8px;align-items:center}
++.topbar .grow{flex:1}
+ 
+ .main{max-width:1100px;margin:0 auto;padding:20px}
+ 
+ /* grid shell (for companion page interior) */
+ .grid-shell{display:grid;grid-template-columns:260px 1fr;gap:18px}
+ @media(max-width:860px){.grid-shell{grid-template-columns:1fr}}
+ 
++/* Sidebar */
++.sb-toggle{
++  position:fixed;left:10px;top:10px;z-index:20;
++  background:#131722;border:1px solid var(--border);color:#d8e0f0;
++  width:36px;height:36px;border-radius:8px;cursor:pointer;
++  display:none;
++}
++@media(max-width:900px){.sb-toggle{display:block}}
++.sb{
++  position:sticky;top:0;height:100vh;padding:16px 12px 10px;
++  background:#0b0f16;border-right:1px solid var(--border);
++}
++@media(max-width:900px){
++  .sb{position:fixed;left:0;top:0;bottom:0;transform:translateX(-100%);transition:transform .2s ease;z-index:18;width:260px}
++  .sb.open{transform:none}
++}
++.sb-head{display:flex;align-items:center;gap:8px;padding:6px 8px 12px}
++.sb-head .logo{font-size:18px}
++.sb-nav{display:flex;flex-direction:column;gap:6px;margin-top:6px}
++.sb-link{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:10px;border:1px solid transparent;color:#dbe7ff;text-decoration:none;background:transparent}
++.sb-link:hover{background:#0f1320;border-color:#1d2638}
++.sb-link.active{background:#141a2a;border-color:#29324a;box-shadow:0 0 0 1px #29324a inset}
++.sb-foot{position:absolute;bottom:12px;left:12px;color:var(--muted)}
++.ic{width:18px;text-align:center}
++
+ /* Drawer styles (unchanged) */
+ .stack>*{margin-bottom:8px}
+ .wfull{width:100%}
+ .drawer{position:relative;background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:12px;max-height:80vh}
+ .drawer-head{display:flex;align-items:center;gap:8px;margin-bottom:8px}

@@ -1,0 +1,292 @@
+# .cursorrules
+[context]
+project_name = HIVE-PAW API (with ledger)
+stack = Python 3.11+, FastAPI, Uvicorn, Pydantic, pytest, ruff, black
+runtime = Windows 10+, PowerShell, CMD
+goals = 
+  - Keep storage as JSON (not JSONL).
+  - Endpoints: /health, /ping, /routes, /seed, /sweep, /seal, /ledger/{date}, /ledger/latest, /verify/{date}, /export/{date}, /index (optional).
+  - Ledger invariants: counts match files; day_root = merkle_root([seed, *sweeps, seal]).
+  - ECHO = append-only sweeps; never mutate past records.
+
+[style]
+- Prefer small, testable functions.
+- Keep paths centralized in storage.py; hashing in hashing.py; Pydantic models in models.py.
+- Use Pydantic validation, return 4xx for user errors, 5xx never leak internals.
+
+[testing]
+- Write pytest for each endpoint (happy + error paths).
+- Provide a sample day fixture under tests/fixtures/data/2025-09-18/.
+
+[security]
+- No secrets in repo**; environment via .env (LEGER_HMAC_KEY)
+
+[integrity]
+- Always compute sha256 for seed, sweeps, seal, ledger.
+- Store hashes in `day_root` using Merkle aggregation.
+- On `/verify/{date}`, recompute and compare — raise 409 if mismatch.
+- Add tests where tampering (edit sweep.json manually) → verify fails.
+
+# Enforce integrity across ledger files
+[default]
+- Prefer explicit functions and tests.
+- Keep Windows paths compatible.
+
+[integrity]
+- All record files for a day (seed, echo, seal, ledger) must have SHA-256 hashes computed.
+- The ledger’s `day_root` is the Merkle root of: [sha256(seed_json), *sha256(each sweep record)*, sha256(seal_json)] in that order.
+- `/verify/{date}` must recompute and return: {"ok": bool, "expected": str, "computed": str, "counts": {...}}
+- If files are missing or counts differ, return 400 with clear detail.
+- On mismatch, return 409 with expected vs computed.
+
+[testing]
+- Add tests that (a) pass for normal day, (b) fail after tampering with echo file, (c) fail if seed/seal missing.
+
+**1) Hashing utilities**  
+  
+**Create: app/hashing.py**  
+  
+
+from __future__ import annotations
+import hashlib
+import json
+from typing import Iterable, Any
+
+def sha256_bytes(data: bytes) -> str:
+    return hashlib.sha256(data).hexdigest()
+
+def sha256_json(obj: Any) -> str:
+    blob = json.dumps(obj, sort_keys=True, ensure_ascii=False, separators=(",", ":")).encode("utf-8")
+    return sha256_bytes(blob)
+
+def merkle_root(leaves: Iterable[str]) -> str:
+    """
+    Compute a simple pairwise Merkle root over hex digest leaves (strings).
+    If no leaves => return sha256 of empty string.
+    """
+    layer = [x.lower() for x in leaves]
+    if not layer:
+        return sha256_bytes(b"")
+    while len(layer) > 1:
+        nxt = []
+        it = iter(layer)
+        for a in it:
+            b = next(it, a)  # duplicate last if odd
+            nxt.append(sha256_bytes((a + b).encode("utf-8")))
+        layer = nxt
+    return layer[0]  
+  
+  
+**2) Storage helpers (pure JSON, not JSONL)**  
+  
+**Update: app/storage.py (add these functions; keep your existing helpers intact)**  
+  
+from __future__ import annotations
+from pathlib import Path
+import json
+from typing import Dict, List, Tuple, Any, Optional
+
+DATA_DIR = Path(__file__).resolve().parent.parent / "data"
+
+def today_files(date_str: str) -> Dict[str, str]:
+    """Return relative file names for a given date."""
+    base = f"{date_str}"
+    return {
+        "seed":   f"{base}.seed.json",
+        "echo":   f"{base}.echo.json",
+        "seal":   f"{base}.seal.json",
+        "ledger": f"{base}.ledger.json",
+    }
+
+def p(path_rel: str) -> Path:
+    """Absolute path under DATA_DIR."""
+    DATA_DIR.mkdir(parents=True, exist_ok=True)
+    return DATA_DIR / path_rel
+
+def read_json(path_rel: str) -> Any:
+    with open(p(path_rel), "r", encoding="utf-8") as f:
+        return json.load(f)
+
+def write_json(path_rel: str, obj: Any) -> None:
+    DATA_DIR.mkdir(parents=True, exist_ok=True)
+    with open(p(path_rel), "w", encoding="utf-8") as f:
+        json.dump(obj, f, ensure_ascii=False, indent=2)
+
+def load_day(date_str: str) -> Tuple[Optional[dict], List[dict], Optional[dict]]:
+    """Load seed (dict or None), sweeps (list), seal (dict or None). Missing files => None/[]"""
+    files = today_files(date_str)
+    seed = read_json(files["seed"]) if p(files["seed"]).exists() else None
+    sweeps = read_json(files["echo"]) if p(files["echo"]).exists() else []
+    if isinstance(sweeps, dict):
+        # tolerate old format accidentally saved as dict
+        sweeps = [sweeps]
+    seal = read_json(files["seal"]) if p(files["seal"]).exists() else None
+    return seed, sweeps, seal
+
+def build_ledger_obj(date_str: str, seed: dict, sweeps: List[dict], seal: dict) -> dict:
+    from .hashing import sha256_json, merkle_root
+    leaves = [sha256_json(seed)] + [sha256_json(s) for s in sweeps] + [sha256_json(seal)]
+    root = merkle_root(leaves)
+    files = today_files(date_str)
+    return {
+        "date": date_str,
+        "day_root": root,
+        "counts": {"seeds": 1 if seed else 0, "sweeps": len(sweeps), "seals": 1 if seal else 0},
+        "links": {
+            "seed": files["seed"],
+            "echo": files["echo"],
+            "seal": files["seal"],
+            "ledger": files["ledger"],
+        },
+        "ts": __import__("datetime").datetime.utcnow().isoformat() + "Z",
+    }
+  
+**3) API wiring**  
+  
+**Update: app/main.py (exact spots)**  
+  
+🔧 Near the imports (top of file), ensure:  
+```
+from __future__ import annotations
+from fastapi import FastAPI, HTTPException
+from datetime import datetime
+from pathlib import Path
+from typing import Any, Dict, List
+
+from .hashing import sha256_json, merkle_root
+
+```
+from .storage import today_files, read_json, write_json, load_day, build_ledger_obj, DATA_DIR  
+  
+✅ Keep your existing endpoints. Replace or add the following where appropriate.  
+  
+**3.1 /seal endpoint must build & write the ledger**  
+  
+```
+@app.post("/seal")
+def seal(payload: Dict[str, Any]):
+    date = payload["date"]
+    files = today_files(date)
+    # Load
+    seed, sweeps, seal_obj = load_day(date)
+    # If caller provided the seal body now, use it & persist
+    if payload.get("wins") or payload.get("blocks") or payload.get("tomorrow_intent"):
+        seal_obj = {
+            "type": "seal",
+            "date": date,
+            "wins": payload.get("wins", ""),
+            "blocks": payload.get("blocks", ""),
+            "tomorrow_intent": payload.get("tomorrow_intent", ""),
+            "meta": payload.get("meta", {}),
+            "ts": datetime.utcnow().isoformat() + "Z",
+        }
+        write_json(files["seal"], seal_obj)
+
+    if not seed or not seal_obj:
+        raise HTTPException(status_code=400, detail="Seed and Seal are required to build ledger")
+
+    ledger = build_ledger_obj(date, seed, sweeps, seal_obj)
+    write_json(files["ledger"], ledger)
+
+    return {"ok": True, "seal_file": files["seal"], "ledger_file": files["ledger"], "day_root": ledger["day_root"], "counts": ledger["counts"]}  
+  
+**3.2 /verify/{date} endpoint**  
+  
+@app.get("/verify/{date}")
+def verify_day(date: str):
+    files = today_files(date)
+    if not p(files["ledger"]).exists():
+        raise HTTPException(status_code=404, detail="No ledger for this date")
+
+    ledger = read_json(files["ledger"])
+    seed, sweeps, seal_obj = load_day(date)
+
+    if not seed or not seal_obj:
+        raise HTTPException(status_code=400, detail="Seed/Seal missing while verifying")
+
+    recomputed = build_ledger_obj(date, seed, sweeps, seal_obj)
+    expected = ledger.get("day_root")
+    computed = recomputed["day_root"]
+
+    if expected != computed or ledger["counts"] != recomputed["counts"]:
+        raise HTTPException(status_code=409, detail={
+            "ok": False,
+            "expected": expected,
+            "computed": computed,
+            "counts_in_ledger": ledger["counts"],
+            "counts_computed": recomputed["counts"],
+        })
+
+    return {"ok": True, "expected": expected, "computed": computed, "counts": recomputed["counts"]}  
+  
+**3.3 /export/{date} (JSON bundle of that day)**  
+  
+@app.get("/export/{date}")
+def export_day(date: str):
+    files = today_files(date)
+    out = {"date": date, "files": {}}
+    for key, rel in files.items():
+        if not p(rel).exists():
+            continue
+        out["files"][rel] = read_json(rel)
+
+    return out  
+  
+**3.4 /index (list all day folders available)**  
+  
+@app.get("/index")
+def index_days():
+    DATA_DIR.mkdir(parents=True, exist_ok=True)
+    days: List[str] = sorted({f.name.split(".")[0] for f in DATA_DIR.glob("*.json")})
+    # Keep only ISO dates
+    days = [d for d in days if len(d) == 10 and d[4] == "-" and d[7] == "-"]
+
+    return {"count": len(set(days)), "days": sorted(set(days))}  
+   
+  
+**4) Tests (pytest)**  
+  
+**Create: tests/test_integrity.py**  
+  
+from pathlib import Path
+import json
+from app.storage import today_files, write_json, read_json, load_day, build_ledger_obj, DATA_DIR
+from app.hashing import sha256_json
+
+def setup_day(date="2025-09-18"):
+    files = today_files(date)
+    DATA_DIR.mkdir(parents=True, exist_ok=True)
+    # seed
+    seed = {"type": "seed", "date": date, "time": "12:00:00", "intent": "iterate", "meta": {}, "ts":"T"}
+    write_json(files["seed"], seed)
+    # sweeps
+    sweeps = [
+        {"type": "sweep", "date": date, "chamber": "LAB", "note": "first", "meta": {}, "ts":"T"},
+        {"type": "sweep", "date": date, "chamber": "LAB", "note": "second", "meta": {}, "ts":"T"},
+    ]
+    write_json(files["echo"], sweeps)
+    # seal
+    seal = {"type":"seal","date":date,"wins":"ok","blocks":"none","tomorrow_intent":"polish","meta":{},"ts":"T"}
+    write_json(files["seal"], seal)
+    # ledger
+    ledger = build_ledger_obj(date, seed, sweeps, seal)
+    write_json(files["ledger"], ledger)
+    return files, seed, sweeps, seal, ledger
+
+def test_verify_ok():
+    files, seed, sweeps, seal, ledger = setup_day()
+    recomputed = build_ledger_obj("2025-09-18", seed, sweeps, seal)
+    assert ledger["day_root"] == recomputed["day_root"]
+    assert ledger["counts"] == recomputed["counts"]
+
+def test_verify_fails_on_tamper():
+    files, seed, sweeps, seal, ledger = setup_day("2025-09-19")
+    # tamper echo
+    tampered = list(sweeps)
+    tampered.append({"type":"sweep","date":"2025-09-19","chamber":"LAB","note":"tamper","meta":{},"ts":"T"})
+    write_json(files["echo"], tampered)
+    recomputed = build_ledger_obj("2025-09-19", seed, tampered, seal)
+
+```
+    assert ledger["day_root"] != recomputed["day_root"]  
+  

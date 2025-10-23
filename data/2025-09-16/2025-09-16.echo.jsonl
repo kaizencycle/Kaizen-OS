@@ -1,0 +1,5 @@
+{"type": "sweep", "date": "2025-09-16", "chamber": "Lab4", "note": "first sweep", "meta": {}, "ts": "2025-09-16T16:21:10.042577Z"}
+{"type": "sweep", "date": "2025-09-16", "chamber": "Lab4", "note": "first sweep", "meta": {"additionalProp1": {}}, "ts": "2025-09-16T16:22:59.014015Z"}
+{"type": "sweep", "date": "2025-09-16", "chamber": "Lab4", "note": "sweep A", "meta": {"additionalProp1": {}}, "ts": "2025-09-16T17:09:12.311252Z"}
+{"type": "sweep", "date": "2025-09-16", "chamber": "Lab4", "note": "sweep A", "meta": {"additionalProp1": {}}, "ts": "2025-09-16T17:09:16.287310Z"}
+{"type": "sweep", "date": "2025-09-16", "chamber": "lab4", "note": "test", "meta": {"additionalProp1": {}}, "ts": "2025-09-17T00:06:38.766270Z"}

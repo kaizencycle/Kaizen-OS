@@ -1,0 +1,38 @@
+# ---------- BUILD STAGE ----------
+FROM node:18-alpine AS build
+WORKDIR /app
+
+# Install prod deps first (better cache) then dev deps
+COPY package.json package-lock.json* ./
+RUN npm ci
+
+# Copy the rest and build
+COPY . .
+ENV NEXT_TELEMETRY_DISABLED=1
+# If you use NEXT_PUBLIC_* envs, set them at build time via Render “Env Vars”
+RUN npm run build
+
+# ---------- RUNTIME STAGE ----------
+FROM node:18-alpine
+WORKDIR /app
+
+ENV NODE_ENV=production
+ENV PORT=3000
+ENV NEXT_TELEMETRY_DISABLED=1
+
+# Only bring what’s needed to run
+COPY --from=build /app/.next ./.next
+COPY --from=build /app/public ./public
+COPY --from=build /app/package.json ./package.json
+
+# Install production-only deps
+RUN npm ci --omit=dev --no-audit --no-fund
+
+EXPOSE 3000
+
+# Optional health check; Next responds on / by default
+HEALTHCHECK --interval=30s --timeout=5s --retries=3 CMD wget -qO- http://127.0.0.1:3000/ > /dev/null || exit 1
+
+
+```
+CMD ["npm", "run", "start"]  

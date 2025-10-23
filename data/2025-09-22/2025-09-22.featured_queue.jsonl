@@ -1,0 +1,4 @@
+{"type": "feature_candidate", "date": "2025-09-22", "user": "test-user", "hash": "featured-test-hash-789", "len": 188, "ts": "2025-09-22T00:33:49.821927Z"}
+{"type": "feature_candidate", "date": "2025-09-22", "user": "test-user", "hash": "featured-test-hash-789", "len": 799, "ts": "2025-09-22T00:33:57.113263Z"}
+{"type": "feature_candidate", "date": "2025-09-22", "user": "test-user-new", "hash": "new-featured-hash-123", "len": 254, "ts": "2025-09-22T00:34:56.816401Z"}
+{"type": "feature_candidate", "date": "2025-09-22", "user": "smoke-tester", "hash": "smoke-test-featured-hash-123", "len": 254, "ts": "2025-09-22T01:08:11.314937Z"}

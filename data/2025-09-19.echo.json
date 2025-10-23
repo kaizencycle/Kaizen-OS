@@ -1,0 +1,26 @@
+[
+  {
+    "type": "sweep",
+    "date": "2025-09-19",
+    "chamber": "LAB",
+    "note": "first",
+    "meta": {},
+    "ts": "T"
+  },
+  {
+    "type": "sweep",
+    "date": "2025-09-19",
+    "chamber": "LAB",
+    "note": "second",
+    "meta": {},
+    "ts": "T"
+  },
+  {
+    "type": "sweep",
+    "date": "2025-09-19",
+    "chamber": "LAB",
+    "note": "tamper",
+    "meta": {},
+    "ts": "T"
+  }
+]

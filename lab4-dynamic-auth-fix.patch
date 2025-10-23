@@ -1,0 +1,143 @@
+diff --git a/app/companion/page.tsx b/app/companion/page.tsx
+--- a/app/companion/page.tsx
++++ b/app/companion/page.tsx
+@@
++"use client";
++export const dynamic = "force-dynamic";
+ import { useState, useEffect } from "react";
+ import { COMPANIONS } from "@/lib/companions";
+ import ChamberDrawer from "@/components/ChamberDrawer";
+ import CompanionStore from "@/components/CompanionStore";
++import { authedFetchJSON } from "@/lib/fetchers";
+ 
+ export default function CompanionPage() {
+   const [user, setUser] = useState("");
+   const [companion, setCompanion] = useState<keyof typeof COMPANIONS>("jade");
+   const [text, setText] = useState("");
+   const [messages, setMessages] = useState<{ role: "user" | "assistant"; content: string }[]>([]);
+   const [balance, setBalance] = useState<any>(null);
+   const [forest, setForest] = useState<any>({ trees: 0, staked_gic: 0 });
+   const [forestMonth, setForestMonth] = useState<{trees:number, ym:string} | null>(null);
+   const [loadingUser, setLoadingUser] = useState(true);
+   const router = useRouter();
+@@
+-  async function loadBalance(handle: string) {
+-    if (!process.env.NEXT_PUBLIC_GIC_INDEXER_URL || !handle) return;
+-    try {
+-      const r = await fetch(`${process.env.NEXT_PUBLIC_GIC_INDEXER_URL}/balances/${handle}`, { cache: "no-store" });
+-      if (r.ok) setBalance(await r.json());
+-    } catch {}
+-  }
++  async function loadBalance(handle: string) {
++    if (!process.env.NEXT_PUBLIC_GIC_INDEXER_URL || !handle) return;
++    const r = await fetch(`${process.env.NEXT_PUBLIC_GIC_INDEXER_URL}/balances/${handle}`, { cache: "no-store" })
++      .catch(()=>null);
++    if (r?.ok) setBalance(await r.json());
++  }
+@@
+   async function send() {
+     if (!text.trim()) return;
+     setMessages(m => [...m, { role: "user", content: text }]);
+     const body = { user, text, companion };
+     setText("");
+-    const r = await fetch("/api/reflect", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body) });
++    // Use authed fetch so session cookie and optional Bearer are sent
++    const r = await authedFetchJSON("/api/reflect", { method: "POST", body: JSON.stringify(body) });
+     const data = await r.json();
+     if (data.reply) setMessages(m => [...m, { role: "assistant", content: `${COMPANIONS[companion].icon} ${data.reply}\n\n(+${data.xpGranted} XP)` }]);
+     if (data.error) setMessages(m => [...m, { role: "assistant", content: `⚠️ ${data.error}` }]);
+     loadBalance(user);
+   }
+diff --git a/app/consensus/page.tsx b/app/consensus/page.tsx
+--- a/app/consensus/page.tsx
++++ b/app/consensus/page.tsx
+@@
++"use client";
++export const dynamic = "force-dynamic";
+ import { useEffect, useState } from "react";
+ import { COMPANIONS } from "@/lib/companions";
++import { authedFetchJSON } from "@/lib/fetchers";
+ 
+ export default function Consensus(){
+   const [user, setUser] = useState("");
+   const [topic, setTopic] = useState("");
+   const [notes, setNotes] = useState<string[]>([]);
+@@
+   async function deliberate(){
+     const say = async (key:string) => {
+-      const r = await fetch("/api/reflect", {
+-        method:"POST", headers:{"Content-Type":"application/json"},
+-        body: JSON.stringify({ user, text: `Consensus on: ${topic}`, companion: key })
+-      });
++      const r = await authedFetchJSON("/api/reflect", {
++        method:"POST",
++        body: JSON.stringify({ user, text: `Consensus on: ${topic}`, companion: key })
++      });
+       const j = await r.json();
+       return `${COMPANIONS[key as keyof typeof COMPANIONS].icon} ${COMPANIONS[key as keyof typeof COMPANIONS].name}: ${j.reply||"…"}`;
+     };
+     const voices = await Promise.all(["jade","hermes","eve","zeus"].map(k=>say(k)));
+     setNotes(voices);
+   }
+diff --git a/app/forest/page.tsx b/app/forest/page.tsx
+--- a/app/forest/page.tsx
++++ b/app/forest/page.tsx
+@@
+-"use client";
++"use client";
++export const dynamic = "force-dynamic";
+ import { useEffect, useMemo, useState } from "react";
+ import { useSearchParams, useRouter } from "next/navigation";
++import { authedFetchJSON } from "@/lib/fetchers";
+@@
+   async function stake(){
+     if (!handle) return alert("Please sign in.");
+     const amount = Number(amt);
+     if (!amount || amount <= 0) return;
+     setBusy(true);
+-    const r = await fetch("/api/stake/trees", {
+-      method: "POST",
+-      headers: {"Content-Type":"application/json"},
+-      body: JSON.stringify({ user: handle, amount })
+-    });
++    const r = await authedFetchJSON("/api/stake/trees", {
++      method: "POST",
++      body: JSON.stringify({ user: handle, amount })
++    });
+     setBusy(false);
+     const j = await r.json();
+     if (!r.ok) return alert(j.error || "Stake failed");
+     alert(`🌳 Staked ${j.staked} GIC → ~${j.trees.toFixed(2)} trees`);
+     loadStats();
+   }
+diff --git a/lib/fetchers.ts b/lib/fetchers.ts
+new file mode 100644
+--- /dev/null
++++ b/lib/fetchers.ts
+@@
++/**
++ * authedFetchJSON
++ * - Sends JSON defaults
++ * - Always includes credentials (iron-session cookie)
++ * - Adds Authorization: Bearer <token> if present in localStorage (optional)
++ */
++export function authedFetchJSON(input: RequestInfo | URL, init?: RequestInit) {
++  const headers: Record<string,string> = {
++    "Content-Type": "application/json",
++    ...(init?.headers as Record<string,string> || {})
++  };
++  try {
++    const token = typeof window !== "undefined" ? localStorage.getItem("bearer_token") : null;
++    if (token && !headers["Authorization"]) headers["Authorization"] = `Bearer ${token}`;
++  } catch {}
++  return fetch(input, { ...init, headers, credentials: "include" });
++}
+diff --git a/README.md b/README.md
+--- a/README.md
++++ b/README.md
+@@
+ ## Notes
+ - Sidebar collapses on mobile.  
+ - XP rule (MVP): `min(50, max(5, floor(chars/10)))`. Tune later.
++- Dynamic pages: `/companion`, `/forest`, `/consensus` use `"use client"` and `export const dynamic = "force-dynamic"` to avoid Next.js prerender errors on Render.
++- Auth: API calls go through `authedFetchJSON()` which always sends the session cookie and (optionally) an `Authorization: Bearer <token>` if `localStorage.bearer_token` exists. Your iron-session login protects routes; Bearer is available for future API endpoints that require it.
