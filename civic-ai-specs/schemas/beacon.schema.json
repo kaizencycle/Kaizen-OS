@@ -1,0 +1,364 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Beacon Schema",
+  "description": "Schema for AI-SEO beacons that provide structured data for search engines and AI systems",
+  "type": "object",
+  "required": ["id", "timestamp", "type", "content", "location", "metadata"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier for the beacon",
+      "pattern": "^[a-zA-Z0-9_-]{1,64}$"
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO 8601 timestamp of when the beacon was created"
+    },
+    "type": {
+      "type": "string",
+      "description": "Type of beacon",
+      "enum": [
+        "topic_page",
+        "cultural_knowledge",
+        "governance_document",
+        "technical_specification",
+        "community_resource",
+        "educational_content",
+        "research_finding",
+        "best_practice",
+        "case_study",
+        "news_update"
+      ]
+    },
+    "content": {
+      "type": "object",
+      "description": "The main content of the beacon",
+      "required": ["title", "description", "body"],
+      "properties": {
+        "title": {
+          "type": "string",
+          "description": "Title of the content",
+          "minLength": 1,
+          "maxLength": 200
+        },
+        "description": {
+          "type": "string",
+          "description": "Brief description of the content",
+          "minLength": 1,
+          "maxLength": 500
+        },
+        "body": {
+          "type": "string",
+          "description": "Main content body",
+          "minLength": 1,
+          "maxLength": 5000
+        },
+        "keywords": {
+          "type": "array",
+          "description": "Keywords for search optimization",
+          "items": {
+            "type": "string"
+          }
+        },
+        "summary": {
+          "type": "string",
+          "description": "Executive summary of the content",
+          "maxLength": 1000
+        }
+      }
+    },
+    "location": {
+      "type": "object",
+      "description": "Geographic and cultural location information",
+      "required": ["coordinates"],
+      "properties": {
+        "coordinates": {
+          "type": "object",
+          "description": "Geographic coordinates",
+          "required": ["latitude", "longitude"],
+          "properties": {
+            "latitude": {
+              "type": "number",
+              "minimum": -90,
+              "maximum": 90,
+              "description": "Latitude coordinate"
+            },
+            "longitude": {
+              "type": "number",
+              "minimum": -180,
+              "maximum": 180,
+              "description": "Longitude coordinate"
+            }
+          }
+        },
+        "address": {
+          "type": "object",
+          "description": "Human-readable address",
+          "properties": {
+            "country": {
+              "type": "string",
+              "description": "Country name"
+            },
+            "state": {
+              "type": "string",
+              "description": "State or province"
+            },
+            "city": {
+              "type": "string",
+              "description": "City name"
+            },
+            "neighborhood": {
+              "type": "string",
+              "description": "Neighborhood or district"
+            },
+            "postal_code": {
+              "type": "string",
+              "description": "Postal or ZIP code"
+            }
+          }
+        },
+        "cultural_context": {
+          "type": "object",
+          "description": "Cultural context information",
+          "properties": {
+            "primary_culture": {
+              "type": "string",
+              "description": "Primary cultural context"
+            },
+            "languages": {
+              "type": "array",
+              "description": "Languages spoken in the area",
+              "items": {
+                "type": "string"
+              }
+            },
+            "traditions": {
+              "type": "array",
+              "description": "Local traditions and practices",
+              "items": {
+                "type": "string"
+              }
+            },
+            "values": {
+              "type": "array",
+              "description": "Local cultural values",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "topics": {
+      "type": "array",
+      "description": "Topics covered by the beacon",
+      "items": {
+        "type": "object",
+        "required": ["name", "relevance_score"],
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Topic name"
+          },
+          "relevance_score": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1,
+            "description": "Relevance score for this topic"
+          },
+          "subtopics": {
+            "type": "array",
+            "description": "Subtopics within this topic",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "entities": {
+      "type": "array",
+      "description": "Named entities mentioned in the beacon",
+      "items": {
+        "type": "object",
+        "required": ["name", "type"],
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Entity name"
+          },
+          "type": {
+            "type": "string",
+            "enum": ["person", "organization", "location", "concept", "event", "other"],
+            "description": "Type of entity"
+          },
+          "description": {
+            "type": "string",
+            "description": "Description of the entity"
+          },
+          "url": {
+            "type": "string",
+            "format": "uri",
+            "description": "URL to more information about the entity"
+          }
+        }
+      }
+    },
+    "citations": {
+      "type": "array",
+      "description": "Citations and references",
+      "items": {
+        "type": "object",
+        "required": ["type", "title", "url"],
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": ["academic_paper", "book", "website", "video", "podcast", "interview", "other"]
+          },
+          "title": {
+            "type": "string",
+            "description": "Title of the cited work"
+          },
+          "authors": {
+            "type": "array",
+            "description": "Authors of the cited work",
+            "items": {
+              "type": "string"
+            }
+          },
+          "url": {
+            "type": "string",
+            "format": "uri",
+            "description": "URL to the cited work"
+          },
+          "publication_date": {
+            "type": "string",
+            "format": "date",
+            "description": "Publication date"
+          }
+        }
+      }
+    },
+    "ai_seo": {
+      "type": "object",
+      "description": "AI-SEO specific metadata",
+      "properties": {
+        "search_intent": {
+          "type": "string",
+          "enum": ["informational", "navigational", "transactional", "commercial"],
+          "description": "Search intent this beacon addresses"
+        },
+        "target_audience": {
+          "type": "array",
+          "description": "Target audience for this beacon",
+          "items": {
+            "type": "string"
+          }
+        },
+        "content_freshness": {
+          "type": "string",
+          "enum": ["evergreen", "seasonal", "time_sensitive", "archived"],
+          "description": "Content freshness classification"
+        },
+        "authority_score": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1,
+          "description": "Authority score for this content"
+        },
+        "relevance_score": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1,
+          "description": "Relevance score for search queries"
+        }
+      }
+    },
+    "community": {
+      "type": "object",
+      "description": "Community-related metadata",
+      "properties": {
+        "community_id": {
+          "type": "string",
+          "description": "Identifier of the community that created this beacon"
+        },
+        "contributors": {
+          "type": "array",
+          "description": "Contributors to this beacon",
+          "items": {
+            "type": "object",
+            "required": ["id", "name", "role"],
+            "properties": {
+              "id": {
+                "type": "string",
+                "description": "Contributor identifier"
+              },
+              "name": {
+                "type": "string",
+                "description": "Contributor name"
+              },
+              "role": {
+                "type": "string",
+                "enum": ["author", "editor", "reviewer", "translator", "other"],
+                "description": "Role of the contributor"
+              }
+            }
+          }
+        },
+        "community_rating": {
+          "type": "number",
+          "minimum": 1,
+          "maximum": 5,
+          "description": "Average community rating"
+        },
+        "review_count": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Number of community reviews"
+        }
+      }
+    },
+    "metadata": {
+      "type": "object",
+      "description": "Additional metadata",
+      "properties": {
+        "version": {
+          "type": "string",
+          "description": "Version of the beacon"
+        },
+        "last_updated": {
+          "type": "string",
+          "format": "date-time",
+          "description": "When the beacon was last updated"
+        },
+        "expires_at": {
+          "type": "string",
+          "format": "date-time",
+          "description": "When the beacon expires (if applicable)"
+        },
+        "tags": {
+          "type": "array",
+          "description": "Tags for categorizing the beacon",
+          "items": {
+            "type": "string"
+          }
+        },
+        "related_beacons": {
+          "type": "array",
+          "description": "Related beacon IDs",
+          "items": {
+            "type": "string"
+          }
+        },
+        "access_level": {
+          "type": "string",
+          "enum": ["public", "community", "restricted", "private"],
+          "description": "Access level for this beacon"
+        }
+      }
+    }
+  },
+  "additionalProperties": false
+}

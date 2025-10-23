@@ -1,0 +1,56 @@
+{
+  "name": "civic-ai-specs",
+  "version": "0.1.0",
+  "description": "Open specifications for ethical, verifiable, and geocivic AI systems",
+  "private": true,
+  "scripts": {
+    "lint:lore": "node scripts/lore-lint.mjs",
+    "build:indexes": "node scripts/build-lore-index.mjs",
+    "quests:secrets:gen": "node scripts/quests-bulk-secret.mjs",
+    "quests:secrets:write": "node scripts/quests-bulk-secret.mjs random --write",
+    "quests:secrets:json": "node scripts/quests-bulk-secret.mjs random --write --json",
+    "validate:schemas": "node -e \"const Ajv = require('ajv'); const fs = require('fs'); const ajv = new Ajv(); for (const file of fs.readdirSync('schemas').filter(f => f.endsWith('.json'))) { const schema = JSON.parse(fs.readFileSync(\`schemas/\${file}\`, 'utf8')); if (!ajv.validateSchema(schema)) { console.error(\`Schema validation failed for \${file}:\`, ajv.errors); process.exit(1); } console.log(\`✓ \${file} is valid\`); }\"",
+    "test": "npm run validate:schemas && npm run lint:lore && npm run build:indexes",
+    "build": "npm run test",
+    "dev": "npm run build:indexes"
+  },
+  "keywords": [
+    "civic-ai",
+    "ai-ethics",
+    "open-standard",
+    "verifiable-ai",
+    "community-governance",
+    "cultural-integration",
+    "oaa",
+    "dva",
+    "gic",
+    "hive"
+  ],
+  "author": "Kaizen Cycle / Michael Judan",
+  "license": "CC-BY-4.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kaizencycle/civic-ai-specs.git"
+  },
+  "bugs": {
+    "url": "https://github.com/kaizencycle/civic-ai-specs/issues"
+  },
+  "homepage": "https://github.com/kaizencycle/civic-ai-specs#readme",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "devDependencies": {
+    "ajv": "^8.12.0",
+    "js-yaml": "^4.1.0"
+  },
+  "files": [
+    "specs/",
+    "schemas/",
+    "lore/",
+    "examples/",
+    "scripts/",
+    "public/",
+    "LICENSES/",
+    "*.md"
+  ]
+}
