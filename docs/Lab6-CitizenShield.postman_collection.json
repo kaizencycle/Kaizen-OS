@@ -1,0 +1,137 @@
+{
+  "info": {
+    "name": "Lab6 \u2014 Citizen Shield",
+    "_postman_id": "b7a1e4d0-9ee0-4a3a-9c61-cc0f-lab6-shield",
+    "description": "Citizen Shield endpoints: onboard, enroll, zk verify, group status",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "lab6_api",
+      "value": "https://lab6-proof-api.onrender.com"
+    },
+    {
+      "key": "ledger_api",
+      "value": "https://civic-protocol-core-ledger.onrender.com"
+    }
+  ],
+  "item": [
+    {
+      "name": "Onboard (Twin Seals \u2192 Ledger Attest)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{lab6_api}}/onboard",
+          "host": [
+            "{{lab6_api}}"
+          ],
+          "path": [
+            "onboard"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\\n  \\\"agent\\\": \\\"citizen.shield.app\\\",\\n  \\\"accepted\\\": true,\\n  \\\"note\\\": \\\"Twin Seals accepted\\\"\\n}"
+        }
+      }
+    },
+    {
+      "name": "Enroll",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{lab6_api}}/enroll",
+          "host": [
+            "{{lab6_api}}"
+          ],
+          "path": [
+            "enroll"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\\n  \\\"name\\\": \\\"Alice Citizen\\\",\\n  \\\"citizenId\\\": \\\"alice-001\\\",\\n  \\\"pubkey\\\": \\\"ed25519:...optional...\\\"\\n}"
+        }
+      }
+    },
+    {
+      "name": "ZK Verify Reflection",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{lab6_api}}/zk/verify-reflection",
+          "host": [
+            "{{lab6_api}}"
+          ],
+          "path": [
+            "zk",
+            "verify-reflection"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\\n  \\\"reflection_hash\\\": \\\"sha256:YOUR_HASH_HERE\\\"\\n}"
+        }
+      }
+    },
+    {
+      "name": "Group Status",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{lab6_api}}/group/status",
+          "host": [
+            "{{lab6_api}}"
+          ],
+          "path": [
+            "group",
+            "status"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Ledger \u2014 Attest (direct)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{ledger_api}}/attest",
+          "host": [
+            "{{ledger_api}}"
+          ],
+          "path": [
+            "attest"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\\n  \\\"type\\\": \\\"onboard\\\",\\n  \\\"agent\\\": \\\"citizen.shield.app\\\",\\n  \\\"accepted\\\": true,\\n  \\\"seals_hash\\\": \\\"(fill from /onboard response)\\\",\\n  \\\"timestamp\\\": 1690000000\\n}"
+        }
+      }
+    }
+  ]
+}

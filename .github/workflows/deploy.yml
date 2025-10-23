@@ -1,0 +1,73 @@
+name: Lab6 Proof — CI/CD Deploy
+
+on:
+  push:
+    branches: [ main, dev ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build-test-deploy:
+    runs-on: ubuntu-latest
+
+    env:
+      PYTHON_VERSION: '3.11'
+      NODE_VERSION: '18'
+      LEDGER_API_BASE: https://civic-protocol-core-ledger.onrender.com
+      LAB6_API_BASE: https://lab6-proof-api.onrender.com
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # ---------------------------
+      # 🐍 Backend (FastAPI) setup
+      # ---------------------------
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+
+      - name: Install backend dependencies
+        run: |
+          python -m pip install --upgrade pip
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+          pip install pytest httpx
+
+      - name: Run backend tests
+        run: |
+          if [ -d tests ]; then pytest -q; else echo "⚠️ No tests directory found"; fi
+
+      # ---------------------------
+      # ⚛️ Frontend (Citizen Shield)
+      # ---------------------------
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
+      - name: Install and build frontend
+        working-directory: frontend/citizen-shield-app
+        run: |
+          npm ci
+          npm run build
+
+      # ---------------------------
+      # ☁️ Deploy to Render (optional)
+      # ---------------------------
+      - name: Deploy to Render
+        if: github.ref == 'refs/heads/main'
+        uses: render-examples/gha-deploy@v1
+        with:
+          service-id: ${{ secrets.RENDER_SERVICE_ID }}
+          api-key: ${{ secrets.RENDER_API_KEY }}
+        continue-on-error: true
+
+      # ---------------------------
+      # 📜 Artifacts
+      # ---------------------------
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: citizen-shield-dist
+          path: frontend/citizen-shield-app/dist
