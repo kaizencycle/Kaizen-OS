@@ -1,0 +1,7 @@
+fastapi
+uvicorn
+httpx
+pydantic>=2.0,<3.0
+
+
+

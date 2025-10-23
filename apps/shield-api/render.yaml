@@ -1,0 +1,18 @@
+services:
+  - type: web
+    name: oaa-api-library
+    env: python
+    plan: starter
+    region: oregon
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "uvicorn app.main:app --host 0.0.0.0 --port $PORT"
+    envVars:
+      - key: HUB_BASE_URL
+        value: https://oaa-api-library.onrender.com
+      - key: LEDGER_BASE_URL
+        sync: false
+      - key: LEDGER_ADMIN_TOKEN
+        sync: false
+      - key: OAA_ISSUER
+        value: oaa_hub
+    healthCheckPath: /health
