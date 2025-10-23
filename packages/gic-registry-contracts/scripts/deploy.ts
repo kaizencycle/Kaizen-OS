@@ -1,0 +1,1 @@
+import { ethers } from 'hardhat'; async function main(){ const [d]=await ethers.getSigners(); const F=await ethers.getContractFactory('GICRegistry'); const c=await F.deploy(d.address); await c.waitForDeployment(); console.log('GICRegistry:', await c.getAddress()); } main().catch(e=>{console.error(e);process.exit(1)});

@@ -1,0 +1,11 @@
+{
+  "name": "civic-replay",
+  "version": "0.1.0",
+  "type": "module",
+  "dependencies": {
+    "nats": "2.25.2",
+    "axios": "1.7.7",
+    "dotenv": "16.4.5",
+    "uuid": "9.0.1"
+  }
+}

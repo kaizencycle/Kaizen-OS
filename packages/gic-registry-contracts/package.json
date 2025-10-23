@@ -1,0 +1,16 @@
+{
+  "name": "gic-registry-contracts",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "build": "hardhat compile",
+    "deploy": "hardhat run scripts/deploy.ts --network $NETWORK"
+  },
+  "devDependencies": {
+    "hardhat": "2.22.5",
+    "@nomicfoundation/hardhat-toolbox": "4.0.0",
+    "typescript": "5.4.5",
+    "ts-node": "10.9.2"
+  }
+}

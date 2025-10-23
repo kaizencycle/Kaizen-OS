@@ -1,0 +1,12 @@
+{
+  "project": "KaizenCycle Initiative",
+  "version": "Cycle 0",
+  "nodes": {
+    "Lab4": "https://hive-api-2le8.onrender.com",
+    "Lab6": "https://lab6-proof-api.onrender.com",
+    "Lab7": "https://lab7-proof-api.onrender.com",
+    "Ledger": "https://civic-protocol-core-ledger.onrender.com"
+  },
+  "contact": "michael@kaizencycle.org",
+  "tagline": "We heal as we walk."
+}
