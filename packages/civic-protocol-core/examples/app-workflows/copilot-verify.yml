@@ -1,0 +1,12 @@
+# Example workflow for app repositories (OAA-API-Library, Lab7-proof, etc.)
+# Place this file in .github/workflows/copilot-verify.yml in each app repo
+
+name: copilot-verify
+on: [pull_request, push]
+jobs:
+  verify:
+    uses: civic-protocol/core/.github/workflows/reusable-copilot-verify.yml@main
+    secrets: inherit
+    with:
+      min_score: "0.35"
+      fail_on_low: "false"

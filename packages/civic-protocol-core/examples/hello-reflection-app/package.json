@@ -1,0 +1,25 @@
+{
+  "name": "hello-reflection-app",
+  "version": "1.0.0",
+  "description": "A simple example app that demonstrates civic reflection creation and management",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "node --watch app.js"
+  },
+  "dependencies": {
+    "civic-client": "file:../../sdk/js"
+  },
+  "keywords": [
+    "civic",
+    "reflection",
+    "governance",
+    "blockchain",
+    "example"
+  ],
+  "author": "Civic Protocol Core",
+  "license": "MIT",
+  "engines": {
+    "node": ">=16.0.0"
+  }
+}

@@ -1,0 +1,44 @@
+# Civic Protocol Core - Python Dependencies
+
+# Core dependencies
+requests>=2.28.0
+cryptography>=3.4.8
+pycryptodome>=3.15.0
+
+# Web framework for dev node
+flask>=2.2.0
+flask-cors>=4.0.0
+
+# Data handling
+pydantic>=1.10.0
+dataclasses-json>=0.5.7
+
+# Testing
+pytest>=7.0.0
+pytest-cov>=4.0.0
+pytest-asyncio>=0.20.0
+
+# Development tools
+black>=22.0.0
+flake8>=5.0.0
+mypy>=0.991
+
+# Documentation
+sphinx>=5.0.0
+sphinx-rtd-theme>=1.0.0
+
+# Optional: Advanced cryptography
+# pyzkp>=0.1.0  # For zero-knowledge proofs
+# semaphore>=0.1.0  # For rate limiting proofs
+
+
+
+
+
+
+
+
+
+
+
+
