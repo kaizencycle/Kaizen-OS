@@ -1,0 +1,41 @@
+
+:root{
+  --bg: #0b0d10;
+  --fg: #eaeff2;
+  --muted: #9fb1bd;
+  --accent: #7ee0ff;
+  --accent2:#b18cff;
+  --card: #12161b;
+  --line: #1d232a;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:var(--bg);color:var(--fg);font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, Noto Sans, 'Apple Color Emoji','Segoe UI Emoji';}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+.container{max-width:1080px;margin:0 auto;padding:24px}
+.hero{
+  padding:96px 24px;
+  background: radial-gradient(1000px 500px at 10% 0%, rgba(126,224,255,.08), transparent),
+              radial-gradient(1000px 500px at 90% 0%, rgba(177,140,255,.08), transparent);
+  border-bottom:1px solid var(--line);
+  text-align:center;
+}
+.badge{display:inline-block;padding:6px 10px;border:1px solid var(--line);border-radius:999px;color:var(--muted);font-size:12px;letter-spacing:.06em;text-transform:uppercase}
+h1{font-size:48px;letter-spacing:.4px;margin:16px 0 8px}
+.sub{color:var(--muted);max-width:780px;margin:0 auto 24px}
+.cta{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:12px}
+.btn{padding:12px 18px;border:1px solid var(--line);border-radius:10px;background:var(--card);color:var(--fg);}
+.btn.primary{border-color:transparent;background:linear-gradient(135deg, rgba(126,224,255,.15), rgba(177,140,255,.15));}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin:24px 0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px}
+.card h3{margin:4px 0 6px}
+.small{color:var(--muted);font-size:14px}
+.footer{padding:40px 24px;border-top:1px solid var(--line);color:var(--muted);text-align:center}
+.logo{width:72px;height:72px;opacity:.9}
+.section{padding:36px 0;border-top:1px solid var(--line)}
+.kicker{color:var(--muted);text-transform:uppercase;letter-spacing:.08em;font-size:12px}
+.list{margin:8px 0 0 18px;color:var(--muted)}
+code{background:#0e1216;border:1px solid var(--line);padding:2px 6px;border-radius:6px}
+.footer .small a { opacity:.75; }
+
+.footer .small a:hover { opacity:1; text-decoration:underline; }
