@@ -87,29 +87,44 @@
 
 ```
 civic-os/
-├─ apps/
-│  ├─ hub-web/            # OAA Hub + .gic site maker (Next.js)
-│  ├─ ledger-api/         # Civic Ledger Core
-│  ├─ indexer-api/        # GIC Indexer
-│  ├─ eomm-api/           # E.O.M.M. Reflections
-│  ├─ shield-api/         # Citizen Shield
-│  ├─ broker-api/         # Thought Broker
-│  ├─ hive-app/           # Hive (Citizen interface)
-│  ├─ cathedral-app/      # Cathedral (Governance)
-│  └─ genesisdome-app/    # Genesis Dome
-├─ packages/
-│  ├─ civic-sdk/          # Shared API clients/types
-│  ├─ integrity-core/     # GI scoring, /integrity-check helpers
-│  ├─ oaa-memory/         # .oaa parsers, schemas
-│  ├─ ui-kit/             # Shared React UI components
-│  └─ shield-policies/    # JSON schemas & request guards
-├─ configs/
-│  ├─ services.json       # Service manifest
-│  └─ schemas/            # JSON schemas
-├─ infra/
-│  ├─ docker/             # Docker Compose for local dev
-│  └─ render.yaml         # Multi-service deployment
-└─ .github/workflows/     # CI/CD pipeline
+├─ apps/                          # Core Applications
+│  ├─ hub-web/                    # OAA Hub + .gic site maker (Next.js)
+│  ├─ ledger-api/                 # Civic Ledger Core
+│  ├─ indexer-api/                # GIC Indexer
+│  ├─ eomm-api/                   # E.O.M.M. Reflections
+│  ├─ shield-api/                 # Citizen Shield
+│  ├─ broker-api/                 # Thought Broker
+│  ├─ hive-app/                   # Hive (Citizen interface)
+│  ├─ cathedral-app/              # Cathedral (Governance)
+│  ├─ genesisdome-app/            # Genesis Dome
+│  └─ api-gateway/                # API Gateway
+├─ packages/                      # Shared Packages & Libraries
+│  ├─ civic-sdk/                  # Shared API clients/types
+│  ├─ integrity-core/             # GI scoring, /integrity-check helpers
+│  ├─ oaa-memory/                 # .oaa parsers, schemas
+│  ├─ ui-kit/                     # Shared React UI components
+│  ├─ shield-policies/            # JSON schemas & request guards
+│  ├─ atlas-sentinel/             # Atlas Sentinel monitoring
+│  ├─ civic-protocol-core/        # ← INTEGRATED: Core blockchain protocols
+│  ├─ oaa-api-library/            # ← INTEGRATED: OAA API library
+│  └─ civic-ai-specs/             # ← INTEGRATED: AI specifications
+├─ labs/                          # ← NEW: Lab Proof Systems
+│  ├─ lab4-proof/                 # ← INTEGRATED: E.O.M.M. Reflections
+│  ├─ lab6-proof/                 # ← INTEGRATED: Citizen Shield App
+│  └─ lab7-proof/                 # ← INTEGRATED: OAA Hub & Shell
+├─ sentinels/                     # AI Sentinel Agents
+│  ├─ atlas/                      # Atlas Sentinel
+│  ├─ eve/                        # Eve Sentinel
+│  ├─ hermes/                     # Hermes Sentinel
+│  ├─ jade/                       # Jade Sentinel
+│  └─ zeus/                       # Zeus Sentinel
+├─ configs/                       # Configuration Files
+│  ├─ services.json               # Service manifest
+│  └─ schemas/                    # JSON schemas
+├─ infra/                         # Infrastructure
+│  ├─ docker/                     # Docker Compose for local dev
+│  └─ render.yaml                 # Multi-service deployment
+└─ .github/workflows/             # CI/CD pipeline
 ```
 
 ## 🚀 Quick Start
@@ -175,11 +190,25 @@ npm run clean
 
 ## 📦 Packages
 
+### Core Packages
 - **@civic/sdk** - Shared API clients and types
 - **@civic/integrity-core** - GI scoring and integrity checks
 - **@civic/oaa-memory** - OAA parsers and memory management
 - **@civic/ui-kit** - Shared React components
 - **@civic/shield-policies** - Security policies and guards
+- **@civic/atlas-sentinel** - Atlas Sentinel monitoring
+
+### Integrated Packages
+- **@civic/protocol-core** - Core blockchain and governance protocols
+- **@civic/oaa-api-library** - Comprehensive OAA API library
+- **@civic/ai-specs** - AI specifications and standards
+
+## 🔬 Labs
+
+### Lab Proof Systems
+- **@civic/lab4-proof** - E.O.M.M. Reflections API and Civic Ledger integration
+- **@civic/lab6-proof** - Citizen Shield application (React/TypeScript)
+- **@civic/lab7-proof** - OAA Hub and Civic OS shell/init system
 
 ## 🔄 CI/CD Pipeline
 
@@ -236,6 +265,20 @@ All services include integrity checks and health endpoints:
 ## 📜 License
 
 MIT License - see [LICENSE](LICENSE) for details.
+
+## 🔗 Integrated Repositories
+
+This monorepo integrates all kaizencycle repositories using git subtree:
+
+### Lab Repositories
+- [lab4-proof](https://github.com/kaizencycle/lab4-proof) → `labs/lab4-proof/`
+- [lab6-proof](https://github.com/kaizencycle/lab6-proof) → `labs/lab6-proof/`
+- [lab7-proof](https://github.com/kaizencycle/lab7-proof) → `labs/lab7-proof/`
+
+### Core Packages
+- [Civic-Protocol-Core](https://github.com/kaizencycle/Civic-Protocol-Core) → `packages/civic-protocol-core/`
+- [OAA-API-Library](https://github.com/kaizencycle/OAA-API-Library) → `packages/oaa-api-library/`
+- [civic-ai-specs](https://github.com/kaizencycle/civic-ai-specs) → `packages/civic-ai-specs/`
 
 ## 🔗 Links
 

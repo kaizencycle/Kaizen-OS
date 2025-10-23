@@ -1,5 +1,5 @@
 {
-  "name": "civic-ai-specs",
+  "name": "@civic/ai-specs",
   "version": "0.1.0",
   "description": "Open specifications for ethical, verifiable, and geocivic AI systems",
   "private": true,

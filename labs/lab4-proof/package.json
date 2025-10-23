@@ -1,23 +1,23 @@
 {
-  "name": "@civic/lab7-proof",
+  "name": "@civic/lab4-proof",
   "version": "1.0.0",
-  "description": "Lab7 Proof - OAA Hub and Civic OS shell/init system",
+  "description": "Lab4 Proof - E.O.M.M. Reflections API and Civic Ledger integration",
   "private": true,
   "scripts": {
-    "dev": "python start-dev.py",
+    "dev": "python main.py",
     "build": "echo 'Python project - no build step required'",
     "test": "python -m pytest tests/",
-    "lint": "python -m flake8 src/",
-    "type-check": "python -m mypy src/",
-    "start": "python start-dev.py",
+    "lint": "python -m flake8 app/",
+    "type-check": "python -m mypy app/",
+    "start": "python main.py",
     "install-deps": "pip install -r requirements.txt"
   },
   "keywords": [
     "civic-os",
-    "lab7",
-    "oaa-hub",
-    "civic-shell",
-    "init-system",
+    "lab4",
+    "eomm",
+    "reflections",
+    "api",
     "python",
     "fastapi"
   ],
@@ -25,7 +25,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/kaizencycle/lab7-proof.git"
+    "url": "https://github.com/kaizencycle/lab4-proof.git"
   },
   "engines": {
     "python": ">=3.8.0"

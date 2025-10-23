@@ -1,5 +1,5 @@
 {
-  "name": "oaa-api-library",
+  "name": "@civic/oaa-api-library",
   "version": "0.1.0",
   "description": "A comprehensive library for the Open Agent Architecture (OAA) system",
   "main": "src/core/server.ts",
