@@ -4,6 +4,10 @@ export * from './guards';
 export * from './middleware';
 export * from './types';
 
+import { ShieldPolicy } from './types';
+import { PolicyValidator } from './guards';
+import { ValidationResult } from './types';
+
 // Main policy manager
 export class ShieldPolicyManager {
   private policies: Map<string, ShieldPolicy> = new Map();
@@ -33,7 +37,8 @@ export class ShieldPolicyManager {
     return {
       valid: errors.length === 0,
       errors,
-      warnings
+      warnings,
+      actions: []
     };
   }
 }

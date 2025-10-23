@@ -4,6 +4,10 @@ export * from './integrity-checker';
 export * from './middleware';
 export * from './types';
 
+import { GICalculator } from './gi-calculator';
+import { IntegrityChecker } from './integrity-checker';
+import { IntegrityChecks, IntegrityResult } from './types';
+
 // Main integrity check function
 export async function checkIntegrity(service: string, checks: IntegrityChecks): Promise<IntegrityResult> {
   const calculator = new GICalculator();

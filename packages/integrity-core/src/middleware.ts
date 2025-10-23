@@ -34,44 +34,9 @@ export class IntegrityMiddleware {
       const startTime = Date.now();
       const startMemory = process.memoryUsage();
 
-      // Override res.end to capture response metrics
-      const originalEnd = res.end;
-      res.end = function(chunk?: any, encoding?: any) {
-        const endTime = Date.now();
-        const endMemory = process.memoryUsage();
-        
-        // Calculate metrics
-        const responseTime = endTime - startTime;
-        const memoryUsage = (endMemory.heapUsed / endMemory.heapTotal) * 100;
-        
-        // Create integrity checks object
-        const checks: IntegrityChecks = {
-          responseTime,
-          memoryUsage,
-          errorRate: res.statusCode >= 400 ? 1 : 0, // simplified error rate
-          uptime: process.uptime(),
-          throughput: 1, // simplified - would need more sophisticated tracking
-          latency: responseTime,
-          availability: res.statusCode < 500 ? 100 : 0
-        };
-
-        // Calculate GI and status
-        const gi = this.calculator.calculateGI(checks, this.options.thresholds);
-        const status = this.checker.evaluateStatus(gi, checks, this.options.thresholds);
-
-        // Log if needed
-        if (this.options.logLevel === 'debug' || status !== 'healthy') {
-          console.log(`[Integrity] ${req.path} - GI: ${gi.toFixed(3)}, Status: ${status}, ResponseTime: ${responseTime}ms`);
-        }
-
-        // Add integrity headers
-        res.setHeader('X-Integrity-GI', gi.toFixed(3));
-        res.setHeader('X-Integrity-Status', status);
-        res.setHeader('X-Response-Time', responseTime.toString());
-
-        // Call original end
-        originalEnd.call(this, chunk, encoding);
-      }.bind(res);
+      // Store start time for later use
+      (req as any).integrityStartTime = startTime;
+      (req as any).integrityStartMemory = startMemory;
 
       next();
     };
@@ -80,6 +45,9 @@ export class IntegrityMiddleware {
   // Express route for integrity check endpoint
   integrityCheckRoute() {
     return (req: Request, res: Response) => {
+      const calculator = new GICalculator();
+      const checker = new IntegrityChecker();
+      
       const checks: IntegrityChecks = {
         responseTime: 0, // would be calculated from recent requests
         memoryUsage: (process.memoryUsage().heapUsed / process.memoryUsage().heapTotal) * 100,
@@ -90,9 +58,9 @@ export class IntegrityMiddleware {
         availability: 100 // would be calculated from recent requests
       };
 
-      const gi = this.calculator.calculateGI(checks, this.options.thresholds);
-      const status = this.checker.evaluateStatus(gi, checks, this.options.thresholds);
-      const recommendations = this.checker.getRecommendations(gi, checks);
+      const gi = calculator.calculateGI(checks, this.options.thresholds);
+      const status = checker.evaluateStatus(gi, checks, this.options.thresholds);
+      const recommendations = checker.getRecommendations(gi, checks);
 
       res.json({
         service: process.env.SERVICE_NAME || 'unknown',
