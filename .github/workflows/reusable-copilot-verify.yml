@@ -1,0 +1,39 @@
+name: reusable-copilot-verify
+on:
+  workflow_call:
+    inputs:
+      min_score:  { type: string, required: false, default: "0.35" }
+      fail_on_low:{ type: string, required: false, default: "false" } # "true" to fail job if below min_score
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+        with: { fetch-depth: 0 }
+
+      - uses: actions/setup-node@v4
+        with: { node-version: 20 }
+
+      - name: Ensure suggestions exist
+        run: |
+          mkdir -p .copilot
+          [ -f .copilot/suggestions.json ] || echo '{"suggestions":[]}' > .copilot/suggestions.json
+
+      - name: Copilot diff verifier
+        env:
+          BASE_REF: ${{ github.event_name == 'pull_request' && github.event.pull_request.base.sha || 'HEAD~1' }}
+          HEAD_REF: ${{ github.sha }}
+          MIN_SCORE: ${{ inputs.min_score }}
+          MIN_SCORE_FAIL: ${{ inputs.fail_on_low }}
+          LEDGER_BASE_URL: ${{ vars.LEDGER_BASE_URL }}
+          LEDGER_ADMIN_TOKEN: ${{ secrets.LEDGER_ADMIN_TOKEN }}
+          PROOF_OUT: ".copilot/proof.json"
+        run: node scripts/verifyCopilotDiff.mjs
+
+      - name: Upload proof
+        uses: actions/upload-artifact@v4
+        with:
+          name: copilot-proof
+          path: .copilot/proof.json
