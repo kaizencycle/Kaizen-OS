@@ -1,0 +1,44 @@
+{
+  "name": "civic-os",
+  "version": "1.0.0",
+  "description": "Civic OS - Kaizen Cycle Architecture Monorepo",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "turbo run build",
+    "dev": "turbo run dev --parallel",
+    "test": "turbo run test",
+    "lint": "turbo run lint",
+    "ci": "turbo run build test",
+    "compose:up": "docker compose -f infra/docker/compose.yml up -d",
+    "compose:down": "docker compose -f infra/docker/compose.yml down",
+    "clean": "turbo run clean",
+    "type-check": "turbo run type-check"
+  },
+  "devDependencies": {
+    "turbo": "^1.10.12",
+    "@types/node": "^20.0.0",
+    "typescript": "^5.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=8.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kaizencycle/civic-os.git"
+  },
+  "keywords": [
+    "civic-os",
+    "kaizen-cycle",
+    "monorepo",
+    "integrity",
+    "ledger",
+    "oaa"
+  ],
+  "author": "Kaizen Cycle",
+  "license": "MIT"
+}

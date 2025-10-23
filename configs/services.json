@@ -1,0 +1,155 @@
+{
+  "civic-os": {
+    "version": "1.0.0",
+    "cycle": "C-109",
+    "chamberId": "CivicOS-main-tree",
+    "parent": "Command-Ledger-III",
+    "sync": "AUTO",
+    "services": {
+      "hub-web": {
+        "name": "OAA Hub",
+        "description": "Parses human goals → JSON spec · tests · attestations",
+        "type": "web",
+        "port": 3000,
+        "healthCheck": "/api/integrity-check",
+        "dependencies": ["ledger-api", "indexer-api", "eomm-api", "shield-api", "broker-api"],
+        "repository": "https://github.com/kaizencycle/OAA-API-Library",
+        "path": "apps/hub-web"
+      },
+      "ledger-api": {
+        "name": "Civic Ledger Core",
+        "description": "Proof-of-Integrity ledger (GI ≥ 0.95) + GIC UBI economy",
+        "type": "api",
+        "port": 4001,
+        "healthCheck": "/healthz",
+        "dependencies": [],
+        "repository": "https://github.com/kaizencycle/Civic-Protocol-Core",
+        "path": "apps/ledger-api"
+      },
+      "indexer-api": {
+        "name": "GIC Indexer",
+        "description": "GIC economy indexing and attestation storage",
+        "type": "api",
+        "port": 4002,
+        "healthCheck": "/healthz",
+        "dependencies": ["ledger-api"],
+        "repository": "https://github.com/kaizencycle/gic-indexer",
+        "path": "apps/indexer-api"
+      },
+      "eomm-api": {
+        "name": "E.O.M.M. Reflections",
+        "description": "End of Month Memo - Command Ledger reflections",
+        "type": "api",
+        "port": 4003,
+        "healthCheck": "/healthz",
+        "dependencies": ["ledger-api"],
+        "repository": "https://github.com/kaizencycle/lab4-proof",
+        "path": "apps/eomm-api"
+      },
+      "shield-api": {
+        "name": "Citizen Shield",
+        "description": "IDS/IPS + 2FA · sandbox · policy-as-code security",
+        "type": "api",
+        "port": 4004,
+        "healthCheck": "/healthz",
+        "dependencies": ["ledger-api"],
+        "repository": "https://github.com/kaizencycle/lab6-proof",
+        "path": "apps/shield-api"
+      },
+      "broker-api": {
+        "name": "Thought Broker",
+        "description": "Multi-LLM consensus engine → DelibProof",
+        "type": "api",
+        "port": 4005,
+        "healthCheck": "/v1/loop/health",
+        "dependencies": ["ledger-api"],
+        "repository": "https://github.com/kaizencycle/thought-broker",
+        "path": "apps/broker-api"
+      },
+      "hive-app": {
+        "name": "Hive",
+        "description": "Citizen interface and collaboration tools",
+        "type": "web",
+        "port": 3001,
+        "healthCheck": "/health",
+        "dependencies": ["ledger-api", "shield-api"],
+        "repository": "https://github.com/kaizencycle/hive",
+        "path": "apps/hive-app"
+      },
+      "cathedral-app": {
+        "name": "Cathedral",
+        "description": "Governance and policy management interface",
+        "type": "web",
+        "port": 3002,
+        "healthCheck": "/health",
+        "dependencies": ["ledger-api", "broker-api"],
+        "repository": "https://github.com/kaizencycle/cathedral",
+        "path": "apps/cathedral-app"
+      },
+      "genesisdome-app": {
+        "name": "Genesis Dome",
+        "description": "Genesis and initialization interface",
+        "type": "web",
+        "port": 3003,
+        "healthCheck": "/health",
+        "dependencies": ["ledger-api"],
+        "repository": "https://github.com/kaizencycle/genesisdome",
+        "path": "apps/genesisdome-app"
+      }
+    },
+    "packages": {
+      "civic-sdk": {
+        "name": "Civic SDK",
+        "description": "Shared API clients and types for all services",
+        "type": "library",
+        "path": "packages/civic-sdk"
+      },
+      "integrity-core": {
+        "name": "Integrity Core",
+        "description": "GI scoring, /integrity-check helpers, middleware",
+        "type": "library",
+        "path": "packages/integrity-core"
+      },
+      "oaa-memory": {
+        "name": "OAA Memory",
+        "description": ".oaa parsers, schemas, and memory management",
+        "type": "library",
+        "path": "packages/oaa-memory"
+      },
+      "ui-kit": {
+        "name": "UI Kit",
+        "description": "Shared React components (ProofCard, GI Badge, ServiceTable)",
+        "type": "library",
+        "path": "packages/ui-kit"
+      },
+      "shield-policies": {
+        "name": "Shield Policies",
+        "description": "JSON schemas & request guards (rate limits, sanitation)",
+        "type": "library",
+        "path": "packages/shield-policies"
+      }
+    },
+    "thresholds": {
+      "gi_min": 0.90,
+      "integrity_grace_ms": 15000,
+      "health_check_timeout": 5000
+    },
+    "environments": {
+      "development": {
+        "civic_env": "dev",
+        "region": "us-west",
+        "debug": true
+      },
+      "staging": {
+        "civic_env": "staging",
+        "region": "us-west",
+        "debug": false
+      },
+      "production": {
+        "civic_env": "prod",
+        "region": "us-west",
+        "debug": false
+      }
+    }
+  }
+}

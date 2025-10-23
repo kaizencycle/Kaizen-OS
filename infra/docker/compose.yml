@@ -1,0 +1,230 @@
+version: '3.8'
+
+services:
+  # Database
+  db:
+    image: postgres:16
+    environment:
+      POSTGRES_PASSWORD: civic
+      POSTGRES_DB: civic_ledger
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # Civic Ledger Core
+  ledger:
+    build: 
+      context: ../../
+      dockerfile: apps/ledger-api/Dockerfile
+    environment:
+      - NODE_ENV=development
+      - CIVIC_ENV=dev
+      - PORT=4001
+      - DATABASE_URL=postgres://postgres:civic@db:5432/civic_ledger
+    ports:
+      - "4001:4001"
+    depends_on:
+      db:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:4001/healthz"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # GIC Indexer
+  indexer:
+    build:
+      context: ../../
+      dockerfile: apps/indexer-api/Dockerfile
+    environment:
+      - NODE_ENV=development
+      - CIVIC_ENV=dev
+      - PORT=4002
+      - LEDGER_BASE_URL=http://ledger:4001
+      - DATABASE_URL=postgres://postgres:civic@db:5432/civic_ledger
+    ports:
+      - "4002:4002"
+    depends_on:
+      ledger:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:4002/healthz"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # E.O.M.M. Reflections
+  eomm:
+    build:
+      context: ../../
+      dockerfile: apps/eomm-api/Dockerfile
+    environment:
+      - NODE_ENV=development
+      - CIVIC_ENV=dev
+      - PORT=4003
+      - LEDGER_BASE_URL=http://ledger:4001
+    ports:
+      - "4003:4003"
+    depends_on:
+      ledger:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:4003/healthz"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # Citizen Shield
+  shield:
+    build:
+      context: ../../
+      dockerfile: apps/shield-api/Dockerfile
+    environment:
+      - NODE_ENV=development
+      - CIVIC_ENV=dev
+      - PORT=4004
+      - LEDGER_BASE_URL=http://ledger:4001
+    ports:
+      - "4004:4004"
+    depends_on:
+      ledger:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:4004/healthz"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # Thought Broker
+  broker:
+    build:
+      context: ../../
+      dockerfile: apps/broker-api/Dockerfile
+    environment:
+      - NODE_ENV=development
+      - CIVIC_ENV=dev
+      - PORT=4005
+      - LEDGER_BASE_URL=http://ledger:4001
+      - CURSOR_API_URL=https://api.cursor.sh
+    ports:
+      - "4005:4005"
+    depends_on:
+      ledger:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:4005/v1/loop/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # OAA Hub (Main Interface)
+  hub:
+    build:
+      context: ../../
+      dockerfile: apps/hub-web/Dockerfile
+    environment:
+      - NODE_ENV=development
+      - CIVIC_ENV=dev
+      - PORT=3000
+      - LEDGER_BASE_URL=http://ledger:4001
+      - INDEXER_BASE_URL=http://indexer:4002
+      - EOMM_BASE_URL=http://eomm:4003
+      - SHIELD_BASE_URL=http://shield:4004
+      - BROKER_BASE_URL=http://broker:4005
+    ports:
+      - "3000:3000"
+    depends_on:
+      ledger:
+        condition: service_healthy
+      indexer:
+        condition: service_healthy
+      eomm:
+        condition: service_healthy
+      shield:
+        condition: service_healthy
+      broker:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000/api/integrity-check"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # Hive App
+  hive:
+    build:
+      context: ../../
+      dockerfile: apps/hive-app/Dockerfile
+    environment:
+      - NODE_ENV=development
+      - CIVIC_ENV=dev
+      - PORT=3001
+      - LEDGER_BASE_URL=http://ledger:4001
+      - SHIELD_BASE_URL=http://shield:4004
+    ports:
+      - "3001:3001"
+    depends_on:
+      ledger:
+        condition: service_healthy
+      shield:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3001/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # Cathedral App
+  cathedral:
+    build:
+      context: ../../
+      dockerfile: apps/cathedral-app/Dockerfile
+    environment:
+      - NODE_ENV=development
+      - CIVIC_ENV=dev
+      - PORT=3002
+      - LEDGER_BASE_URL=http://ledger:4001
+      - BROKER_BASE_URL=http://broker:4005
+    ports:
+      - "3002:3002"
+    depends_on:
+      ledger:
+        condition: service_healthy
+      broker:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3002/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # Genesis Dome App
+  genesisdome:
+    build:
+      context: ../../
+      dockerfile: apps/genesisdome-app/Dockerfile
+    environment:
+      - NODE_ENV=development
+      - CIVIC_ENV=dev
+      - PORT=3003
+      - LEDGER_BASE_URL=http://ledger:4001
+    ports:
+      - "3003:3003"
+    depends_on:
+      ledger:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3003/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+volumes:
+  postgres_data:

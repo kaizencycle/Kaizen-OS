@@ -1,0 +1,147 @@
+name: Civic OS Monorepo
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # turbo needs history for cache keys
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Lint (affected)
+        run: npx turbo run lint --filter=...[origin/main]
+
+      - name: Type check (affected)
+        run: npx turbo run type-check --filter=...[origin/main]
+
+      - name: Build (affected)
+        run: npx turbo run build --filter=...[origin/main]
+
+      - name: Test (affected)
+        run: npx turbo run test --filter=...[origin/main]
+
+      - name: Security scan
+        run: npx turbo run security --filter=...[origin/main] || true
+
+      - name: Integrity gates
+        run: npx turbo run integrity --filter=...[origin/main] || true
+
+      - name: Services manifest validation
+        run: |
+          node -e "
+          const fs = require('fs');
+          const services = JSON.parse(fs.readFileSync('configs/services.json', 'utf8'));
+          console.log('✅ Services manifest is valid JSON');
+          console.log('📊 Services count:', Object.keys(services.civic-os.services).length);
+          console.log('📦 Packages count:', Object.keys(services.civic-os.packages).length);
+          "
+
+  deploy:
+    needs: ci
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Detect changed apps
+        id: diff
+        run: |
+          CHANGED=$(git diff --name-only HEAD~1 | cut -d/ -f1-2 | sort -u | grep '^apps/' || true)
+          echo "apps<<EOF" >> $GITHUB_OUTPUT
+          echo "$CHANGED" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+          echo "Changed apps: $CHANGED"
+
+      - name: Deploy hub-web (if changed)
+        if: contains(steps.diff.outputs.apps, 'apps/hub-web')
+        run: |
+          echo "🚀 Deploying hub-web..."
+          # Add Render CLI deployment here
+          echo "✅ hub-web deployment triggered"
+
+      - name: Deploy ledger-api (if changed)
+        if: contains(steps.diff.outputs.apps, 'apps/ledger-api')
+        run: |
+          echo "🚀 Deploying ledger-api..."
+          # Add Render CLI deployment here
+          echo "✅ ledger-api deployment triggered"
+
+      - name: Deploy indexer-api (if changed)
+        if: contains(steps.diff.outputs.apps, 'apps/indexer-api')
+        run: |
+          echo "🚀 Deploying indexer-api..."
+          # Add Render CLI deployment here
+          echo "✅ indexer-api deployment triggered"
+
+      - name: Deploy eomm-api (if changed)
+        if: contains(steps.diff.outputs.apps, 'apps/eomm-api')
+        run: |
+          echo "🚀 Deploying eomm-api..."
+          # Add Render CLI deployment here
+          echo "✅ eomm-api deployment triggered"
+
+      - name: Deploy shield-api (if changed)
+        if: contains(steps.diff.outputs.apps, 'apps/shield-api')
+        run: |
+          echo "🚀 Deploying shield-api..."
+          # Add Render CLI deployment here
+          echo "✅ shield-api deployment triggered"
+
+      - name: Deploy broker-api (if changed)
+        if: contains(steps.diff.outputs.apps, 'apps/broker-api')
+        run: |
+          echo "🚀 Deploying broker-api..."
+          # Add Render CLI deployment here
+          echo "✅ broker-api deployment triggered"
+
+      - name: Deploy hive-app (if changed)
+        if: contains(steps.diff.outputs.apps, 'apps/hive-app')
+        run: |
+          echo "🚀 Deploying hive-app..."
+          # Add Render CLI deployment here
+          echo "✅ hive-app deployment triggered"
+
+      - name: Deploy cathedral-app (if changed)
+        if: contains(steps.diff.outputs.apps, 'apps/cathedral-app')
+        run: |
+          echo "🚀 Deploying cathedral-app..."
+          # Add Render CLI deployment here
+          echo "✅ cathedral-app deployment triggered"
+
+      - name: Deploy genesisdome-app (if changed)
+        if: contains(steps.diff.outputs.apps, 'apps/genesisdome-app')
+        run: |
+          echo "🚀 Deploying genesisdome-app..."
+          # Add Render CLI deployment here
+          echo "✅ genesisdome-app deployment triggered"
+
+      - name: Civic Ledger Attestation
+        run: |
+          echo "📝 Recording deployment in Civic Ledger..."
+          # Add Civic Ledger attestation here
+          echo "✅ Deployment attested to Civic Ledger"

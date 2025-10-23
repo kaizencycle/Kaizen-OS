@@ -1,0 +1,203 @@
+services:
+  - type: web
+    name: hub-web
+    env: node
+    rootDir: apps/hub-web
+    buildCommand: npm ci && npm run build
+    startCommand: npm start
+    healthCheckPath: /api/integrity-check
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: CIVIC_ENV
+        value: prod
+      - key: LEDGER_BASE_URL
+        fromService:
+          type: web
+          name: ledger-api
+          property: host
+      - key: INDEXER_BASE_URL
+        fromService:
+          type: web
+          name: indexer-api
+          property: host
+      - key: EOMM_BASE_URL
+        fromService:
+          type: web
+          name: eomm-api
+          property: host
+      - key: SHIELD_BASE_URL
+        fromService:
+          type: web
+          name: shield-api
+          property: host
+      - key: BROKER_BASE_URL
+        fromService:
+          type: web
+          name: broker-api
+          property: host
+
+  - type: web
+    name: ledger-api
+    env: node
+    rootDir: apps/ledger-api
+    buildCommand: npm ci && npm run build
+    startCommand: npm start
+    healthCheckPath: /healthz
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: CIVIC_ENV
+        value: prod
+      - key: PORT
+        value: 4001
+
+  - type: web
+    name: indexer-api
+    env: node
+    rootDir: apps/indexer-api
+    buildCommand: npm ci && npm run build
+    startCommand: npm start
+    healthCheckPath: /healthz
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: CIVIC_ENV
+        value: prod
+      - key: PORT
+        value: 4002
+      - key: LEDGER_BASE_URL
+        fromService:
+          type: web
+          name: ledger-api
+          property: host
+
+  - type: web
+    name: eomm-api
+    env: node
+    rootDir: apps/eomm-api
+    buildCommand: npm ci && npm run build
+    startCommand: npm start
+    healthCheckPath: /healthz
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: CIVIC_ENV
+        value: prod
+      - key: PORT
+        value: 4003
+      - key: LEDGER_BASE_URL
+        fromService:
+          type: web
+          name: ledger-api
+          property: host
+
+  - type: web
+    name: shield-api
+    env: node
+    rootDir: apps/shield-api
+    buildCommand: npm ci && npm run build
+    startCommand: npm start
+    healthCheckPath: /healthz
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: CIVIC_ENV
+        value: prod
+      - key: PORT
+        value: 4004
+      - key: LEDGER_BASE_URL
+        fromService:
+          type: web
+          name: ledger-api
+          property: host
+
+  - type: web
+    name: broker-api
+    env: node
+    rootDir: apps/broker-api
+    buildCommand: npm ci && npm run build
+    startCommand: npm start
+    healthCheckPath: /v1/loop/health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: CIVIC_ENV
+        value: prod
+      - key: PORT
+        value: 4005
+      - key: LEDGER_BASE_URL
+        fromService:
+          type: web
+          name: ledger-api
+          property: host
+
+  - type: web
+    name: hive-app
+    env: node
+    rootDir: apps/hive-app
+    buildCommand: npm ci && npm run build
+    startCommand: npm start
+    healthCheckPath: /health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: CIVIC_ENV
+        value: prod
+      - key: PORT
+        value: 3001
+      - key: LEDGER_BASE_URL
+        fromService:
+          type: web
+          name: ledger-api
+          property: host
+      - key: SHIELD_BASE_URL
+        fromService:
+          type: web
+          name: shield-api
+          property: host
+
+  - type: web
+    name: cathedral-app
+    env: node
+    rootDir: apps/cathedral-app
+    buildCommand: npm ci && npm run build
+    startCommand: npm start
+    healthCheckPath: /health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: CIVIC_ENV
+        value: prod
+      - key: PORT
+        value: 3002
+      - key: LEDGER_BASE_URL
+        fromService:
+          type: web
+          name: ledger-api
+          property: host
+      - key: BROKER_BASE_URL
+        fromService:
+          type: web
+          name: broker-api
+          property: host
+
+  - type: web
+    name: genesisdome-app
+    env: node
+    rootDir: apps/genesisdome-app
+    buildCommand: npm ci && npm run build
+    startCommand: npm start
+    healthCheckPath: /health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: CIVIC_ENV
+        value: prod
+      - key: PORT
+        value: 3003
+      - key: LEDGER_BASE_URL
+        fromService:
+          type: web
+          name: ledger-api
+          property: host
