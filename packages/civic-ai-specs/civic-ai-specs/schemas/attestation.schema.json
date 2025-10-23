@@ -1,0 +1,201 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Attestation Schema",
+  "description": "Schema for cryptographic attestations of AI actions, decisions, and outcomes",
+  "type": "object",
+  "required": ["id", "timestamp", "signer", "signature", "content", "proof"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier for the attestation",
+      "pattern": "^[a-zA-Z0-9_-]{1,64}$"
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO 8601 timestamp of when the attestation was created"
+    },
+    "signer": {
+      "type": "string",
+      "description": "Identifier of the entity that signed the attestation",
+      "pattern": "^[a-zA-Z0-9_-]{1,64}$"
+    },
+    "signature": {
+      "type": "string",
+      "description": "Cryptographic signature of the attestation",
+      "pattern": "^[a-zA-Z0-9+/=]{1,512}$"
+    },
+    "content": {
+      "type": "object",
+      "description": "The content being attested to",
+      "required": ["action", "context", "outcome"],
+      "properties": {
+        "action": {
+          "type": "string",
+          "description": "Description of the action or decision being attested to",
+          "minLength": 1,
+          "maxLength": 1000
+        },
+        "context": {
+          "type": "object",
+          "description": "Contextual information about the action",
+          "properties": {
+            "environment": {
+              "type": "string",
+              "description": "Environment where the action took place"
+            },
+            "inputs": {
+              "type": "array",
+              "description": "Inputs that influenced the action",
+              "items": {
+                "type": "string"
+              }
+            },
+            "constraints": {
+              "type": "array",
+              "description": "Constraints that were applied",
+              "items": {
+                "type": "string"
+              }
+            },
+            "cultural_context": {
+              "type": "object",
+              "description": "Cultural context information",
+              "properties": {
+                "culture": {
+                  "type": "string",
+                  "description": "Cultural identifier"
+                },
+                "values": {
+                  "type": "array",
+                  "description": "Cultural values that influenced the action",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "norms": {
+                  "type": "array",
+                  "description": "Cultural norms that were considered",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "outcome": {
+          "type": "object",
+          "description": "The outcome or result of the action",
+          "required": ["result", "success"],
+          "properties": {
+            "result": {
+              "type": "string",
+              "description": "Description of the actual result"
+            },
+            "success": {
+              "type": "boolean",
+              "description": "Whether the action was successful"
+            },
+            "metrics": {
+              "type": "object",
+              "description": "Quantitative metrics of the outcome",
+              "additionalProperties": {
+                "type": "number"
+              }
+            },
+            "errors": {
+              "type": "array",
+              "description": "Any errors that occurred",
+              "items": {
+                "type": "string"
+              }
+            },
+            "lessons_learned": {
+              "type": "array",
+              "description": "Lessons learned from the action",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "metadata": {
+          "type": "object",
+          "description": "Additional metadata about the attestation",
+          "properties": {
+            "version": {
+              "type": "string",
+              "description": "Version of the attestation schema"
+            },
+            "tags": {
+              "type": "array",
+              "description": "Tags for categorizing the attestation",
+              "items": {
+                "type": "string"
+              }
+            },
+            "references": {
+              "type": "array",
+              "description": "References to related attestations or documents",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "proof": {
+      "type": "object",
+      "description": "Cryptographic proof of the attestation",
+      "required": ["merkle_root", "witnesses", "nonce"],
+      "properties": {
+        "merkle_root": {
+          "type": "string",
+          "description": "Root of the Merkle tree containing this attestation",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "witnesses": {
+          "type": "array",
+          "description": "List of witness signatures",
+          "items": {
+            "type": "object",
+            "required": ["witness_id", "signature"],
+            "properties": {
+              "witness_id": {
+                "type": "string",
+                "description": "Identifier of the witness"
+              },
+              "signature": {
+                "type": "string",
+                "description": "Witness signature"
+              },
+              "timestamp": {
+                "type": "string",
+                "format": "date-time",
+                "description": "When the witness signed"
+              }
+            }
+          }
+        },
+        "nonce": {
+          "type": "string",
+          "description": "Nonce to prevent replay attacks",
+          "pattern": "^[a-f0-9]{32}$"
+        },
+        "block_height": {
+          "type": "integer",
+          "description": "Block height when the attestation was recorded",
+          "minimum": 0
+        },
+        "transaction_hash": {
+          "type": "string",
+          "description": "Hash of the transaction containing this attestation",
+          "pattern": "^[a-f0-9]{64}$"
+        }
+      }
+    }
+  },
+  "additionalProperties": false
+}

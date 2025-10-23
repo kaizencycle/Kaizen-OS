@@ -1,0 +1,133 @@
+name: Lore Build
+
+on:
+  push:
+    paths:
+      - "lore/**"
+  workflow_dispatch:
+
+jobs:
+  build-lore:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm install js-yaml
+
+      - name: Run lore linter
+        run: |
+          echo "Running lore linter..."
+          node scripts/lore-lint.mjs
+
+      - name: Build lore indexes
+        run: |
+          echo "Building lore indexes..."
+          node scripts/build-lore-index.mjs
+
+      - name: Validate lore structure
+        run: |
+          echo "Validating lore structure..."
+          
+          # Check required directories exist
+          for dir in factions places relics quests indexes; do
+            if [ ! -d "lore/$dir" ]; then
+              echo "❌ Missing lore directory: lore/$dir"
+              exit 1
+            fi
+          done
+          
+          # Check for required files
+          if [ ! -f "lore/indexes/lore-index.json" ]; then
+            echo "❌ Lore index not generated"
+            exit 1
+          fi
+          
+          echo "✓ Lore structure is valid"
+
+      - name: Generate AI-SEO beacons
+        run: |
+          echo "Generating AI-SEO beacons from lore..."
+          
+          # Create AI-SEO directory if it doesn't exist
+          mkdir -p public/ai-seo/beacons
+          
+          # Generate beacons from lore index
+          node -e "
+            const fs = require('fs');
+            const loreIndex = JSON.parse(fs.readFileSync('lore/indexes/lore-index.json', 'utf8'));
+            
+            const beacons = [];
+            for (const item of loreIndex.items) {
+              if (item.category && item.title) {
+                const beacon = {
+                  id: \`beacon-\${item.id || item.file.replace(/[^a-zA-Z0-9]/g, '-')}\`,
+                  timestamp: new Date().toISOString(),
+                  type: 'cultural_knowledge',
+                  content: {
+                    title: item.title,
+                    description: item.description || '',
+                    keywords: item.keywords || []
+                  },
+                  location: {
+                    coordinates: {
+                      latitude: 0,
+                      longitude: 0
+                    },
+                    cultural_context: {
+                      primary_culture: item.category,
+                      languages: ['en']
+                    }
+                  },
+                  topics: [
+                    {
+                      name: item.category,
+                      relevance_score: 0.8
+                    }
+                  ],
+                  ai_seo: {
+                    search_intent: 'informational',
+                    authority_score: 0.7,
+                    relevance_score: 0.8
+                  },
+                  metadata: {
+                    source: 'lore',
+                    file: item.file,
+                    category: item.category
+                  }
+                };
+                beacons.push(beacon);
+              }
+            }
+            
+            // Write beacons to file
+            fs.writeFileSync(
+              'public/ai-seo/beacons/lore-beacons.json',
+              JSON.stringify(beacons, null, 2)
+            );
+            
+            console.log(\`Generated \${beacons.length} beacons from lore\`);
+          "
+
+      - name: Commit changes
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add lore/indexes/ public/ai-seo/beacons/
+          git diff --staged --quiet || git commit -m "chore: update lore indexes and AI-SEO beacons [skip ci]"
+          git push || echo "No changes to commit"
+
+      - name: Upload lore artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: lore-artifacts
+          path: |
+            lore/indexes/
+            public/ai-seo/beacons/

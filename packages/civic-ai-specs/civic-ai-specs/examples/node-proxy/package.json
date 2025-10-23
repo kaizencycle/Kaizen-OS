@@ -1,0 +1,34 @@
+{
+  "name": "civic-proof-proxy",
+  "version": "1.0.0",
+  "description": "A simple Node.js proxy for Civic AI proof verification",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js",
+    "test": "node test.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "node-fetch": "^3.3.2",
+    "cors": "^2.8.5",
+    "helmet": "^7.1.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.2"
+  },
+  "keywords": [
+    "civic-ai",
+    "proof",
+    "verification",
+    "proxy",
+    "nodejs"
+  ],
+  "author": "Kaizen Cycle / Michael Judan",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kaizencycle/civic-ai-specs.git"
+  }
+}

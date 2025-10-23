@@ -1,0 +1,35 @@
+{
+  "name": "civic-topic-pages",
+  "version": "1.0.0",
+  "description": "Next.js topic pages for Civic AI Standard",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "export": "next export",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "next": "^14.0.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "@next/font": "^14.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.0.0",
+    "eslint-config-next": "^14.0.0"
+  },
+  "keywords": [
+    "civic-ai",
+    "nextjs",
+    "topic-pages",
+    "ai-seo"
+  ],
+  "author": "Kaizen Cycle / Michael Judan",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kaizencycle/civic-ai-specs.git"
+  }
+}
