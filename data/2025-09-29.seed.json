@@ -1,0 +1,13 @@
+{
+  "type": "seed",
+  "date": "2025-09-29",
+  "time": "09:43:21",
+  "intent": "dual-writer-example",
+  "meta": {
+    "author": "Cursor AI (Kaizen Node)",
+    "node_id": "cursor",
+    "network_id": "Kaizen-DVA",
+    "version": "0.1.0"
+  },
+  "ts": "2025-09-22T13:43:21.786171Z"
+}

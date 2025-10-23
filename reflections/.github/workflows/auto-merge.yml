@@ -1,0 +1,41 @@
+name: Auto Commit & Merge (Lab4-proof)
+
+on:
+  push:
+    branches-ignore: [ main ]
+  schedule:
+    - cron: "*/30 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  auto-merge:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: { fetch-depth: 0 }
+      - name: Configure Git
+        run: |
+          git config user.name "Hermes AutoMerge"
+          git config user.email "hermes@civic.ai"
+      - name: Commit uncommitted edits (if any)
+        run: |
+          if [[ -n "$(git status --porcelain)" ]]; then
+            git add -A
+            git commit -m "auto: commit by Hermes $(date -u +'%Y-%m-%dT%H:%M:%SZ')" || true
+            git push origin HEAD
+          fi
+      - name: Install GitHub CLI
+        run: sudo apt-get update && sudo apt-get install -y gh jq
+      - name: Auth
+        env: { GH_TOKEN: ${{ secrets.GITHUB_TOKEN }} }
+        run: gh auth setup-git
+      - name: Enable auto-merge on all open PRs to main
+        env: { GH_TOKEN: ${{ secrets.GITHUB_TOKEN }} }
+        run: |
+          for n in $(gh pr list --state open --base main --json number --jq '.[].number'); do
+            gh pr merge $n --auto --merge
+          done

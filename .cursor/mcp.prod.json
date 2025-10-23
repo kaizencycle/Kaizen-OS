@@ -1,0 +1,83 @@
+{
+  "name": "Lab4 Ledger (PROD)",
+  "version": "1.0.0",
+  "description": "Render-hosted FastAPI",
+  "baseUrl": "https://YOUR-RENDER-APP.onrender.com",
+  "tools": [
+    {
+      "name": "seed",
+      "description": "Create a seed entry in the ledger",
+      "method": "POST",
+      "path": "/seed",
+      "headers": {
+        "Content-Type": "application/json",
+        "x-api-key": "${env:PROD_API_KEY}"
+      }
+    },
+    {
+      "name": "sweep",
+      "description": "Log a sweep reflection",
+      "method": "POST",
+      "path": "/sweep",
+      "headers": {
+        "Content-Type": "application/json",
+        "x-api-key": "${env:PROD_API_KEY}"
+      }
+    },
+    {
+      "name": "seal",
+      "description": "Seal the day with wins/blocks/intent",
+      "method": "POST",
+      "path": "/seal",
+      "headers": {
+        "Content-Type": "application/json",
+        "x-api-key": "${env:PROD_API_KEY}"
+      }
+    },
+    {
+      "name": "verify",
+      "description": "Verify a day's ledger",
+      "method": "GET",
+      "path": "/verify/{date}",
+      "headers": {
+        "x-api-key": "${env:PROD_API_KEY}"
+      }
+    },
+    {
+      "name": "index",
+      "description": "List all ledger days",
+      "method": "GET",
+      "path": "/index",
+      "headers": {
+        "x-api-key": "${env:PROD_API_KEY}"
+      }
+    },
+    {
+      "name": "export",
+      "description": "Export a day's complete data",
+      "method": "GET",
+      "path": "/export/{date}",
+      "headers": {
+        "x-api-key": "${env:PROD_API_KEY}"
+      }
+    },
+    {
+      "name": "ledger",
+      "description": "Get ledger for a specific date",
+      "method": "GET",
+      "path": "/ledger/{date}",
+      "headers": {
+        "x-api-key": "${env:PROD_API_KEY}"
+      }
+    },
+    {
+      "name": "health",
+      "description": "Check API health status",
+      "method": "GET",
+      "path": "/health",
+      "headers": {
+        "x-api-key": "${env:PROD_API_KEY}"
+      }
+    }
+  ]
+}

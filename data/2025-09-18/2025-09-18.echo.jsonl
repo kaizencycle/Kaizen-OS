@@ -1,0 +1,20 @@
+[
+  {
+    "type": "sweep",
+    "date": "2025-09-18",
+    "chamber": "LAB4",
+    "note": "first sweep",
+    "meta": {},
+    "ts": "2025-09-18T23:45:20.442600Z"
+  },
+  {
+    "type": "sweep",
+    "date": "2025-09-18",
+    "chamber": "LAB4",
+    "note": "second sweep (QA pass)",
+    "meta": {
+      "who": "MJ"
+    },
+    "ts": "2025-09-18T23:46:31.336491Z"
+  }
+]
