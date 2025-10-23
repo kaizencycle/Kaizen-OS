@@ -1,0 +1,15 @@
+{
+  "levels": ["low","medium","high","critical"],
+  "dimensions": {
+    "capability_delta": ["small","medium","large"],
+    "surface_area": ["internal","limited","public"],
+    "safety_change": ["none","policy","runtime"],
+    "deploy_speed": ["slow","normal","fast"]
+  },
+  "policy": {
+    "critical": { "require_red_team": true, "freeze_window_hours": 24, "manual_only": true },
+    "high":     { "require_red_team": true, "freeze_window_hours": 12 },
+    "medium":   { "require_red_team": false, "freeze_window_hours": 6 },
+    "low":      { "require_red_team": false, "freeze_window_hours": 0 }
+  }
+}

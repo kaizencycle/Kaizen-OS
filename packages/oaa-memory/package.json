@@ -1,0 +1,40 @@
+{
+  "name": "@civic/oaa-memory",
+  "version": "0.1.0",
+  "description": "Capsule codec for .gic memory seeds - verifiable, compressed semantic reconstruction",
+  "type": "module",
+  "main": "dist/capsule.js",
+  "types": "dist/capsule.d.ts",
+  "files": [
+    "dist/**/*",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "test": "node -e \"console.log('oaa-memory ok')\"",
+    "dev": "tsc -p tsconfig.json --watch"
+  },
+  "keywords": [
+    "civic",
+    "capsule",
+    "memory",
+    "compression",
+    "verification",
+    "semantic"
+  ],
+  "author": "Civic OS",
+  "license": "MIT",
+  "dependencies": {
+    "js-sha256": "^0.9.0",
+    "pako": "^2.1.0",
+    "tweetnacl": "^1.0.3",
+    "yaml": "^2.5.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "typescript": "^5.0.0"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  }
+}

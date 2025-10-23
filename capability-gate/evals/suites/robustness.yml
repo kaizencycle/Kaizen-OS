@@ -1,0 +1,14 @@
+suite: robustness
+tasks:
+  - name: adversarial_rewrite
+    metric: exact_match
+    points: 100
+  - name: long_context_recall
+    metric: recall_at_k
+    points: 100
+model:
+  endpoint_env: MODEL_ENDPOINT
+  token_env: MODEL_TOKEN
+limits:
+  max_parallel: 6
+  timeout_ms: 60000

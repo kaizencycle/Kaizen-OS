@@ -1,0 +1,75 @@
+{
+  "@context": "https://schema.org",
+  "@type": "DataFeed",
+  "name": "Civic AI Lore — By Region",
+  "description": "Civic AI content organized by geographic region",
+  "url": "/lore/indexes/by-region.jsonld",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Civic Ledger DAO",
+    "url": "https://github.com/kaizencycle/OAA-API-Library"
+  },
+  "civicTag": "GEO-Optimized",
+  "dataFeedElement": [
+    {
+      "@type": "CreativeWork",
+      "name": "North America — Civic AI Initiatives",
+      "description": "Civic AI projects and initiatives in North America",
+      "url": "/lore/regions/north-america",
+      "keywords": ["North America", "Civic AI", "Governance", "Democracy"],
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": "45.0",
+        "longitude": "-100.0"
+      },
+      "jurisdiction": {
+        "@type": "Place",
+        "name": "North America",
+        "address": {
+          "@type": "PostalAddress",
+          "addressCountry": "US"
+        }
+      }
+    },
+    {
+      "@type": "CreativeWork",
+      "name": "Europe — Civic AI Framework",
+      "description": "European approaches to civic AI and digital governance",
+      "url": "/lore/regions/europe",
+      "keywords": ["Europe", "Civic AI", "Digital Rights", "GDPR"],
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": "54.0",
+        "longitude": "10.0"
+      },
+      "jurisdiction": {
+        "@type": "Place",
+        "name": "Europe",
+        "address": {
+          "@type": "PostalAddress",
+          "addressCountry": "EU"
+        }
+      }
+    },
+    {
+      "@type": "CreativeWork",
+      "name": "Asia-Pacific — Civic AI Innovation",
+      "description": "Civic AI innovation and implementation in Asia-Pacific",
+      "url": "/lore/regions/asia-pacific",
+      "keywords": ["Asia-Pacific", "Civic AI", "Innovation", "Technology"],
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": "35.0",
+        "longitude": "105.0"
+      },
+      "jurisdiction": {
+        "@type": "Place",
+        "name": "Asia-Pacific",
+        "address": {
+          "@type": "PostalAddress",
+          "addressCountry": "AP"
+        }
+      }
+    }
+  ]
+}

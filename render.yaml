@@ -1,0 +1,124 @@
+# OAA API Library - Comprehensive Deployment Configuration
+services:
+  # FastAPI Backend Service
+  - type: web
+    name: oaa-api-backend
+    env: python
+    plan: starter
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "uvicorn app.main:app --host 0.0.0.0 --port $PORT"
+    envVars:
+      - key: ORIGINS
+        value: "https://kaizencycle.org,https://reflections-app.onrender.com,http://localhost:3000"
+      - key: CIVIC_LEDGER_URL
+        value: "https://civic-protocol-core-ledger.onrender.com"
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: REDIS_URL
+        fromService:
+          type: redis
+          name: civic-redis
+          property: connectionString
+    healthCheckPath: /health
+
+  # Next.js Frontend Service
+  - type: web
+    name: oaa-hub
+    env: node
+    buildCommand: npm ci && npm run build
+    startCommand: npm run start
+    plan: starter
+    autoDeploy: true
+    envVars:
+      - key: GIC_RPC_URL
+        value: # e.g. https://sepolia.infura.io/v3/XXXX
+      - key: GIC_REGISTRY_ADDR
+        value: # 0x...
+      - key: GIC_GATEWAY_BASE_URL
+        value: # https://gic-gateway.onrender.com
+      - key: GATEWAY_HMAC_SECRET
+        generateValue: true
+      - key: LEDGER_BASE_URL
+        value: https://civic-protocol-core-ledger.onrender.com
+      - key: LEDGER_ADMIN_TOKEN
+        generateValue: true
+      - key: IPFS_PIN_ENDPOINT
+        value: https://api.web3.storage/upload
+      - key: IPFS_PIN_TOKEN
+        sync: false
+      - key: REDIS_URL
+        fromService:
+          type: redis
+          name: civic-redis
+          property: connectionString
+      - key: GIC_COMPANION_LABELS
+        value: jade,zeus,eve,hermes
+      - key: GIC_REGISTRAR_PRIVATE_KEY
+        sync: false
+      - key: MEMORY_HMAC_SECRET
+        generateValue: true
+      - key: EVE_HMAC_SECRET
+        generateValue: true
+      - key: DEV_MODE
+        value: "1"
+    healthCheckPath: /
+
+  # GIC Gateway Service
+  - type: web
+    name: gic-gateway
+    env: node
+    rootDir: oaa-central-hub/closed_loop_safety_pack
+    buildCommand: npm ci
+    startCommand: npm run start
+    plan: starter
+    autoDeploy: true
+    healthCheckPath: /
+    envVars:
+      - key: RPC_URL
+        value: # e.g. https://sepolia.infura.io/v3/XXXX
+      - key: REGISTRY_ADDR
+        value: # 0x...
+      - key: IPFS_HTTP_GATEWAY
+        value: https://ipfs.io/ipfs/
+      - key: GATEWAY_NAME
+        value: gic-gateway
+      - key: GATEWAY_HMAC_SECRET
+        generateValue: true
+
+  # Publish Worker
+  - type: worker
+    name: oaa-publish-worker
+    env: node
+    buildCommand: npm ci
+    startCommand: node -r esbuild-register oaa-central-hub/companion_site_starter/workers/publishWorker.ts
+    autoDeploy: true
+    envVars:
+      - key: REDIS_URL
+        fromService:
+          type: redis
+          name: civic-redis
+          property: connectionString
+      - key: QUEUE_PUBLISH_CONCURRENCY
+        value: "5"
+      - key: GIC_RPC_URL
+        value: # same as hub
+      - key: GIC_REGISTRY_ADDR
+        value: # 0x...
+      - key: GIC_REGISTRAR_PRIVATE_KEY
+        sync: false
+      - key: GIC_GATEWAY_BASE_URL
+        fromService:
+          type: web
+          name: gic-gateway
+          property: url
+      - key: GATEWAY_HMAC_SECRET
+        fromService:
+          type: web
+          name: gic-gateway
+          envVarKey: GATEWAY_HMAC_SECRET
+
+  # Redis Cache
+  - type: redis
+    name: civic-redis
+    ipAllowList: []
+    plan: starter

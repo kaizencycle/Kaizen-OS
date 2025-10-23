@@ -1,0 +1,25 @@
+services:
+  - type: web
+    name: gic-indexer
+    env: node
+    plan: starter
+    buildCommand: npm ci
+    startCommand: npm run dev
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: postgres-kaizen
+          property: connectionString
+      - key: REDIS_URL
+        sync: false
+      - key: LEDGER_BASE_URL
+        value: https://civic-ledger.onrender.com
+      - key: LEDGER_ADMIN_TOKEN
+        generateValue: true
+      - key: UBI_BASE
+        value: 10
+      - key: MAX_MERIT_CAP
+        value: 250
+      - key: REGION_DEFAULT
+        value: 1.0
+    healthCheckPath: /ubi/summary

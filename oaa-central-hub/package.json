@@ -1,0 +1,53 @@
+{
+  "name": "oaa-central-hub",
+  "version": "1.0.0",
+  "description": "OAA Central Hub with GIC TLD Integration",
+  "main": "oaa/server.js",
+  "scripts": {
+    "start": "node oaa/server.js",
+    "dev": "nodemon oaa/server.js",
+    "build": "tsc",
+    "test": "jest",
+    "gic:deploy": "cd services/gic_registry_contracts && npm run deploy:local",
+    "gic:gateway": "cd services/gic_gateway_service && npm start",
+    "gic:gateway:dev": "cd services/gic_gateway_service && npm run dev",
+    "setup": "npm install && cd services/gic_gateway_service && npm install && cd ../gic_registry_contracts && npm install",
+    "start:all": "concurrently \"npm start\" \"npm run gic:gateway\"",
+    "dev:all": "concurrently \"npm run dev\" \"npm run gic:gateway:dev\""
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "body-parser": "^1.20.2",
+    "cors": "^2.8.5",
+    "helmet": "^7.1.0",
+    "ethers": "^6.8.1",
+    "ipfs-http-client": "^60.0.1",
+    "node-fetch": "^3.3.2",
+    "dotenv": "^16.3.1",
+    "typescript": "^5.3.0",
+    "@types/node": "^20.10.0",
+    "@types/express": "^4.17.21",
+    "@types/cors": "^2.8.17"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.2",
+    "jest": "^29.7.0",
+    "@types/jest": "^29.5.8",
+    "concurrently": "^8.2.2"
+  },
+  "keywords": [
+    "oaa",
+    "ai",
+    "agents",
+    "gic",
+    "domain",
+    "blockchain",
+    "ipfs",
+    "civic-web"
+  ],
+  "author": "OAA-API-Library",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

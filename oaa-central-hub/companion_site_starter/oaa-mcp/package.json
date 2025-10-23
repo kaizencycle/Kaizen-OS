@@ -1,0 +1,13 @@
+{
+  "name": "oaa-mcp",
+  "private": true,
+  "type": "module",
+  "version": "0.1.0",
+  "bin": {
+    "oaa-mcp": "./src/index.mjs"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^0.1.0",
+    "zod": "^3.22.0"
+  }
+}

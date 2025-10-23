@@ -1,0 +1,15 @@
+{
+  "name": "gic-indexer",
+  "type": "module",
+  "scripts": {
+    "start": "node dist/server.js",
+    "dev": "tsx src/server.ts",
+    "migrate": "node scripts/migrate.js"
+  },
+  "dependencies": {
+    "express": "^4",
+    "node-fetch": "^3",
+    "pg": "^8",
+    "tsx": "^4"
+  }
+}

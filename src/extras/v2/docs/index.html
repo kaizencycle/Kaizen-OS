@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8"/>
+    <title>OAA API Library — Docs</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+      body { margin:0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, "Helvetica Neue", "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji"; }
+      nav { position: fixed; top:0; left:0; right:0; height:48px; background:#0b1020; color:#cfe0ff; display:flex; align-items:center; padding:0 12px; z-index:10; border-bottom:1px solid #1f2a44; }
+      nav a { color:#cfe0ff; text-decoration:none; margin-right:12px; }
+      .wrap { display:flex; height: calc(100vh - 48px); padding-top:48px; }
+      aside { width: 300px; border-right:1px solid #1f2a44; background:#0d1428; color:#cfe0ff; padding:10px; overflow:auto; }
+      main { flex:1; }
+      .hint { color:#93a4c8; font-size:12px; margin:8px 0; }
+      input, select { width:100%; padding:8px; background:#0b1020; color:#cfe0ff; border:1px solid #1f2a44; border-radius:6px; }
+      ul { list-style:none; padding:0; margin:8px 0; }
+      li { margin:6px 0; }
+      .capsule { padding:6px 8px; border:1px solid #1f2a44; border-radius:6px; }
+      .capsule:hover { background:#0b1020; }
+    </style>
+    <script src="https://cdn.redoc.ly/redoc/latest/bundles/redoc.standalone.js"></script>
+  </head>
+  <body>
+    <nav>
+      <strong>OAA API Library</strong>
+      <span style="flex:1"></span>
+      <a href="https://github.com/your-org/oaa-api-library">GitHub</a>
+    </nav>
+    <div class="wrap">
+      <aside>
+        <h3>Capsules</h3>
+        <div class="hint">Pick a capsule to load its OpenAPI below.</div>
+        <ul id="capsules"></ul>
+        <hr style="border-color:#1f2a44"/>
+        <div class="hint">Or paste a spec path:</div>
+        <input id="specInput" placeholder="apis/math/openapi.yaml"/>
+        <button onclick="loadSpec()" style="margin-top:8px;">Load</button>
+      </aside>
+      <main id="redoc-container"></main>
+    </div>
+    <script>
+      async function fetchRegistry(){
+        try {
+          const res = await fetch('../registry/registry.json', { cache: 'no-store' });
+          if(!res.ok) return [];
+          const data = await res.json();
+          const caps = (data.hubs||[]).flatMap(h => h.capsules || []);
+          return caps;
+        } catch { return []; }
+      }
+      async function renderCapsules(){
+        const list = document.getElementById('capsules');
+        const caps = await fetchRegistry();
+        list.innerHTML = '';
+        caps.forEach(c => {
+          const li = document.createElement('li');
+          const a = document.createElement('a');
+          a.href = '#'; a.textContent = c.id + ' — ' + (c.title || '');
+          a.onclick = (e)=>{ e.preventDefault(); mountRedoc('../'+(c.openapi_path||'')); };
+          const div = document.createElement('div');
+          div.className = 'capsule';
+          div.appendChild(a); li.appendChild(div); list.appendChild(li);
+        });
+      }
+      function mountRedoc(specUrl){
+        Redoc.init(specUrl, { hideHostname: true }, document.getElementById('redoc-container'));
+      }
+      function loadSpec(){
+        const v = (document.getElementById('specInput')).value.trim();
+        if(v) mountRedoc(v);
+      }
+      // auto-load first capsule
+      (async () => {
+        await renderCapsules();
+        const caps = await fetchRegistry();
+        if (caps[0]?.openapi_path) { mountRedoc('../'+caps[0].openapi_path); }
+      })();
+    </script>
+  </body>
+</html>

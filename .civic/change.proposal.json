@@ -1,0 +1,135 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200
+    },
+    "chamber": {
+      "type": "string",
+      "minLength": 1
+    },
+    "cycle": {
+      "type": "string",
+      "pattern": "^C-\\d+$"
+    },
+    "motivation": {
+      "type": "string",
+      "minLength": 10
+    },
+    "scope": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": ["API", "Docs", "UI", "Database", "Infrastructure", "Security", "Testing", "Monitoring"]
+      },
+      "minItems": 1
+    },
+    "risk": {
+      "type": "string",
+      "enum": ["low", "medium", "high", "critical"]
+    },
+    "rollback": {
+      "type": "string",
+      "minLength": 10
+    },
+    "citations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "hash": {
+            "type": "string",
+            "pattern": "^sha256:[a-f0-9]{64}$"
+          },
+          "title": {
+            "type": "string"
+          },
+          "relevance": {
+            "type": "string",
+            "enum": ["direct", "supporting", "background"]
+          }
+        },
+        "required": ["url", "hash", "title", "relevance"]
+      }
+    },
+    "stakeholders": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "timeline": {
+      "type": "object",
+      "properties": {
+        "estimated_hours": {
+          "type": "number",
+          "minimum": 0
+        },
+        "deadline": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "milestones": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {"type": "string"},
+              "target_date": {"type": "string", "format": "date-time"},
+              "dependencies": {"type": "array", "items": {"type": "string"}}
+            },
+            "required": ["name", "target_date"]
+          }
+        }
+      }
+    },
+    "acceptance_criteria": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "security_considerations": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "performance_impact": {
+      "type": "object",
+      "properties": {
+        "expected_latency_change": {
+          "type": "string",
+          "enum": ["none", "minimal", "moderate", "significant"]
+        },
+        "resource_usage_change": {
+          "type": "string",
+          "enum": ["none", "minimal", "moderate", "significant"]
+        },
+        "scalability_impact": {
+          "type": "string",
+          "enum": ["positive", "neutral", "negative"]
+        }
+      }
+    }
+  },
+  "required": [
+    "title",
+    "chamber", 
+    "cycle",
+    "motivation",
+    "scope",
+    "risk",
+    "rollback",
+    "citations",
+    "acceptance_criteria"
+  ]
+}
