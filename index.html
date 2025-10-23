@@ -1,0 +1,109 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+  <title>HIVE — 8-bit Starter</title>
+  <style>
+    body{margin:0;background:#0b0d10;color:#eaeff2;font-family:system-ui}
+    #hud{position:fixed;left:8px;top:8px;background:#12161b;padding:8px 10px;border-radius:8px;border:1px solid #1d232a;font-size:14px;z-index:5}
+    .btn{padding:6px 10px;margin:4px;border-radius:6px;border:1px solid #1d232a;cursor:pointer}
+    .btn.primary{background:#1b263b;color:#fff}
+    canvas{display:block;margin:0 auto}
+
+    /* Touchpad */
+    #touchpad{
+      position:fixed; right:14px; bottom:14px; width:160px; height:160px;
+      display:grid; grid-template-columns:repeat(3,1fr); grid-template-rows:repeat(3,1fr);
+      gap:6px; z-index:6; opacity:.9; user-select:none;
+    }
+    #touchpad button{
+      background:#12161b; color:#eaeff2; border:1px solid #1d232a; border-radius:10px;
+      font-size:16px; touch-action:none; 
+    }
+    #touchpad button:active{transform:scale(.98)}
+    /* hide on large screens if you want */
+    @media (min-width: 900px){ #touchpad{ opacity:.65 } }
+  </style>
+</head>
+<body>
+  <!-- Tiny Pause overlay -->
+<style>
+  #pauseBtn{
+    position:fixed; left:14px; bottom:14px; z-index:7;
+    background:#12161b; color:#eaeff2; border:1px solid #1d232a; border-radius:10px;
+    padding:8px 12px; font:14px system-ui; opacity:.9; cursor:pointer;
+  }
+  #pauseOverlay{
+    display:none; position:fixed; inset:0; z-index:10;
+    background:rgba(0,0,0,.7); backdrop-filter:blur(2px);
+    align-items:center; justify-content:center;
+  }
+  #pauseCard{
+    background:#12161b; border:1px solid #1d232a; border-radius:12px;
+    padding:16px; width:260px; text-align:center; color:#eaeff2; font-family:system-ui;
+  }
+  #pauseCard .btn{
+    display:block; width:100%; margin:8px 0; padding:8px 10px; border-radius:8px;
+    border:1px solid #1d232a; background:#0f1318; color:#eaeff2; cursor:pointer;
+  }
+  #pauseCard .btn.primary{ background:#1b263b; }
+</style>
+
+<button id="pauseBtn" type="button">Pause</button>
+
+<div id="pauseOverlay">
+  <div id="pauseCard">
+    <h3 style="margin:6px 0 10px">Paused</h3>
+    <button class="btn primary" id="btnResume">Resume</button>
+    <button class="btn" id="btnReturn">Return to Dome</button>
+    <button class="btn" id="btnReset">Reset Save</button>
+  </div>
+</div>
+<div id="hud">
+  Shards: <b id="shards">0</b>/7 |
+  Cycles: <b id="cycles">0</b> |
+  Path: <b id="path">—</b> |
+  Shield: <b id="shield">—</b> |
+  Sword: <b id="sword">—</b> |
+  Compass: <b id="compass">—</b>
+</div>
+
+  <!-- Touch D-pad (shows on mobile, works on desktop too) -->
+  <div id="touchpad" aria-hidden="false">
+    <div></div>                              <button data-dir="up">▲</button>      <div></div>
+    <button data-dir="left">◀</button>       <div></div>                           <button data-dir="right">▶</button>
+    <div></div>                              <button data-dir="down">▼</button>    <div></div>
+  </div>
+
+  <!-- Pure/Haste modal -->
+  <div id="modal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.7);display:flex;align-items:center;justify-content:center;z-index:10">
+    <div style="background:#12161b;border:1px solid #1d232a;padding:20px;border-radius:10px;text-align:center;max-width:320px">
+      <h3>Choose Path</h3>
+      <p>Pure = patience (full reveal @300)<br>Haste = survive 500 cycles</p>
+      <button class="btn primary" id="choose-pure">Pure</button>
+      <button class="btn" id="choose-haste">Haste</button>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/phaser@3.80.0/dist/phaser.min.js"></script>
+  <script>
+    /* Simple touch controller → sets window.touchDir {left,right,up,down} */
+    (function(){
+      const dir = {left:false,right:false,up:false,down:false};
+      const pad = document.getElementById('touchpad');
+      function set(d, val){ dir[d]=val; window.touchDir = dir; }
+      function bind(btn, d){
+        btn.addEventListener('touchstart', e=>{ e.preventDefault(); set(d,true); });
+        btn.addEventListener('touchend',   e=>{ e.preventDefault(); set(d,false);});
+        btn.addEventListener('mousedown',  e=>{ set(d,true); });
+        btn.addEventListener('mouseup',    e=>{ set(d,false);});
+        btn.addEventListener('mouseleave', e=>{ set(d,false);});
+      }
+      pad.querySelectorAll('button').forEach(b=>bind(b, b.dataset.dir));
+      window.touchDir = dir; // expose
+    })();
+  </script>
+  <script src="main.js"></script>
+</body>
+</html>
