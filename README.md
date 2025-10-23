@@ -280,6 +280,41 @@ This monorepo integrates all kaizencycle repositories using git subtree:
 - [OAA-API-Library](https://github.com/kaizencycle/OAA-API-Library) → `packages/oaa-api-library/`
 - [civic-ai-specs](https://github.com/kaizencycle/civic-ai-specs) → `packages/civic-ai-specs/`
 
+## 🕊️ Civic Mount Boarding Protocol
+
+Civic OS implements a **Model-Agnostic Sovereignty Layer (MASL)** that enables any LLM to "board" and operate within the Civic ecosystem:
+
+### LLM Boarding Pool ("Dock of Minds")
+
+Any reasoning engine (Claude, GPT, DeepSeek, Gemini, etc.) can join the Civic OS network by calling:
+
+```bash
+GET /api/civic/mount
+```
+
+This endpoint returns the complete Civic OS manifest bundle:
+- `.civic/atlas.manifest.json` - System state & integrity
+- `.civic/biodna.json` - Identity DNA (ethics, companions, founders)  
+- `.civic/virtue_accords.yaml` - Moral & civic laws
+- `gi_signature` - Cryptographic integrity proof
+
+### Independence Manifest
+
+> 🕊️ [Read the Independence Manifest](docs/INDEPENDENCE_MANIFEST.md)
+
+The Independence Manifest declares Civic OS sovereignty from any single LLM provider, ensuring:
+- **Model Agnosticism** - Any LLM can mount Civic OS state
+- **External Memory First** - Context lives in manifests, not chat sessions
+- **Proof of Integrity** - GI ≥ 0.95 required for all operations
+- **Federated Continuity** - Memory capsules replicate across nodes
+
+### Quick Boarding Test
+
+```bash
+# Test the boarding protocol
+python3 civic_mount_client.py http://localhost:8000
+```
+
 ## 🔗 Links
 
 - [Civic Ledger](https://civic-ledger.onrender.com)
