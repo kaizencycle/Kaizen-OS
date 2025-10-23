@@ -1,0 +1,55 @@
+version: 0
+name: "Virtue Accords v0"
+hash_notice: "Bump version when ANY field changes."
+
+privacy:
+  default_visibility: "private"   # reflections private-by-default
+  public_bonus_multiplier: 1.25   # extra GIC if user opts-in to publish
+  view_keys_enabled: true         # citizens can reveal to others selectively
+
+rate_limits:
+  # per-identity caps per rolling 24h (enforced via zkRL)
+  reflections_per_day: 12
+  seeds_per_day: 1
+  seals_per_day: 1
+
+rewards:
+  epoch_seconds: 600          # 10-minute epochs (for indexer now; chain later)
+  epoch_pool_gic: 1000        # total issuance per epoch (testnet numbers)
+  split:
+    citizens_reflections: 0.55
+    citizens_public_bonus: 0.10
+    seeds_and_seals: 0.10
+    custodians_nodes: 0.20
+    ecosystem_fund: 0.05
+  per_event_baseline:
+    reflection_private: 1     # base unit before multipliers
+    reflection_public: 1.25   # base * public_bonus_multiplier
+    seed: 5
+    seal: 5
+  daily_user_cap_gic: 50      # hard cap per citizen per day
+
+governance:
+  proposal_min_age_epochs: 144          # ~1 day @ 10-min epochs
+  timelock_epochs: 144                  # ~1 day delay after passing
+  quorum_fraction: 0.10                 # 10% of active stake/rep
+  pass_threshold_fraction: 0.66         # 2/3 yes
+  vote_weighting: "quadratic_capped"    # anti-whale
+  max_weight_per_identity: 1000
+
+staking:
+  min_custodian_stake_gic: 10000
+  unbonding_epochs: 2016      # ~2 weeks
+  slash:
+    double_sign: 0.50         # 50% stake
+    invalid_block: 0.25
+
+emission:
+  schedule: "geometric_decay"
+  initial_epoch_pool: 1000
+  annual_decay_fraction: 0.15
+
+anchors:
+  # where day_root will be anchored in MVP
+  l1: "ethereum-sepolia"
+  method: "calldata"          # or op_return/celestia later

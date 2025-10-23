@@ -1,0 +1,1 @@
+{"root":["./src/app.tsx","./src/main.tsx","./src/vite-env.d.ts","./src/api/client.ts","./src/components/sealcard.tsx","./src/pages/enroll.tsx","./src/pages/groupstatus.tsx","./src/pages/onboard.tsx","./src/pages/verify.tsx"],"version":"5.9.3"}
