@@ -1,0 +1,114 @@
+[
+  {
+    "type": "sweep",
+    "date": "2025-09-18",
+    "chamber": "Lab4",
+    "note": "fourth sweep",
+    "meta": {},
+    "ts": "2025-09-18T23:21:29.142942Z"
+  },
+  {
+    "type": "sweep",
+    "date": "2025-09-18",
+    "chamber": "lab4",
+    "note": "sweep",
+    "meta": {
+      "additionalProp1": {}
+    },
+    "ts": "2025-09-18T23:32:38.875507Z"
+  },
+  {
+    "type": "sweep",
+    "date": "2025-09-18",
+    "chamber": "LAB4",
+    "note": "second sweep (QA pass)",
+    "meta": {
+      "who": "MJ"
+    },
+    "ts": "2025-09-18T23:50:14.092035Z"
+  },
+  {
+    "type": "sweep",
+    "date": "2025-09-18",
+    "chamber": "LAB4",
+    "note": "second sweep",
+    "meta": {
+      "who": "MJ"
+    },
+    "ts": "2025-09-18T23:52:35.196332Z"
+  },
+  {
+    "type": "sweep",
+    "date": "2025-09-18",
+    "chamber": "LAB4",
+    "note": "second sweep",
+    "meta": {
+      "who": "MJ"
+    },
+    "ts": "2025-09-18T23:54:47.696537Z"
+  },
+  {
+    "type": "sweep",
+    "date": "2025-09-18",
+    "chamber": "LAB4",
+    "note": "first sweep",
+    "meta": {},
+    "ts": "2025-09-18T23:56:09.197272Z"
+  },
+  {
+    "type": "sweep",
+    "date": "2025-09-18",
+    "chamber": "LAB4",
+    "note": "first sweep",
+    "meta": {},
+    "ts": "2025-09-18T23:57:28.746183Z"
+  },
+  {
+    "type": "sweep",
+    "date": "2025-09-18",
+    "chamber": "LAB4",
+    "note": "first sweep",
+    "meta": {},
+    "ts": "2025-09-18T23:58:54.875838Z"
+  },
+  {
+    "type": "sweep",
+    "date": "2025-09-18",
+    "chamber": "lab4",
+    "note": "sweep",
+    "meta": {},
+    "ts": "2025-09-19T00:31:40.530413Z"
+  },
+  {
+    "type": "sweep",
+    "date": "2025-09-18",
+    "chamber": "lab4",
+    "note": "sweep",
+    "meta": {},
+    "ts": "2025-09-19T00:33:53.652141Z"
+  },
+  {
+    "type": "sweep",
+    "date": "2025-09-18",
+    "chamber": "LAB4",
+    "note": "first sweep",
+    "meta": {},
+    "ts": "2025-09-19T00:41:17.856776Z"
+  },
+  {
+    "type": "sweep",
+    "date": "2025-09-18",
+    "chamber": "LAB4",
+    "note": "first sweep",
+    "meta": {},
+    "ts": "2025-09-19T01:09:46.988045Z"
+  },
+  {
+    "type": "sweep",
+    "date": "2025-09-18",
+    "chamber": "LAB4",
+    "note": "first sweep",
+    "meta": {},
+    "ts": "2025-09-19T01:23:10.118935Z"
+  }
+]

@@ -1,0 +1,258 @@
+[
+  {
+    "type": "sweep",
+    "date": "2025-09-22",
+    "chamber": "LAB",
+    "note": "first",
+    "meta": {},
+    "ts": "T"
+  },
+  {
+    "type": "sweep",
+    "date": "2025-09-22",
+    "chamber": "LAB",
+    "note": "second",
+    "meta": {},
+    "ts": "T"
+  },
+  {
+    "type": "sweep",
+    "date": "2025-09-22",
+    "chamber": "LAB4",
+    "note": "sweep 1",
+    "meta": {},
+    "ts": "2025-09-21T12:52:43.802343Z"
+  },
+  {
+    "type": "sweep",
+    "date": "2025-09-22",
+    "chamber": "LAB4",
+    "note": "sweep 2",
+    "meta": {},
+    "ts": "2025-09-21T12:52:43.818985Z"
+  },
+  {
+    "type": "sweep",
+    "date": "2025-09-22",
+    "chamber": "LAB4",
+    "note": "sweep 3",
+    "meta": {},
+    "ts": "2025-09-21T12:52:43.838197Z"
+  },
+  {
+    "type": "sweep",
+    "date": "2025-09-22",
+    "chamber": "Reflections",
+    "note": "This is a test reflection for GIC rewards",
+    "meta": {
+      "gic_intent": "publish",
+      "user": "test-user",
+      "content_hash": "test-hash-123",
+      "node_id": "cursor",
+      "author": "Cursor AI (Kaizen Node)",
+      "network_id": "Kaizen-DVA",
+      "version": "0.1.0"
+    },
+    "ts": "2025-09-22T00:07:29.973233Z"
+  },
+  {
+    "type": "sweep",
+    "date": "2025-09-22",
+    "chamber": "Reflections",
+    "note": "This is a longer reflection that should qualify for the publish tier since it has more than 200 characters. This is a test of the GIC reward system where private reflections get 10 GIC and published reflections get 25 GIC. The system should detect this as a publish tier reflection based on length and the gic_intent flag.",
+    "meta": {
+      "gic_intent": "publish",
+      "user": "test-user",
+      "content_hash": "publish-test-hash-456",
+      "node_id": "cursor",
+      "author": "Cursor AI (Kaizen Node)",
+      "network_id": "Kaizen-DVA",
+      "version": "0.1.0"
+    },
+    "ts": "2025-09-22T00:07:47.919628Z"
+  },
+  {
+    "type": "sweep",
+    "date": "2025-09-22",
+    "chamber": "Reflections",
+    "note": "This is a duplicate test with the same content hash",
+    "meta": {
+      "gic_intent": "private",
+      "user": "test-user",
+      "content_hash": "test-hash-123",
+      "node_id": "cursor",
+      "author": "Cursor AI (Kaizen Node)",
+      "network_id": "Kaizen-DVA",
+      "version": "0.1.0"
+    },
+    "ts": "2025-09-22T00:09:10.950363Z"
+  },
+  {
+    "type": "sweep",
+    "date": "2025-09-22",
+    "chamber": "Reflections",
+    "note": "This is a duplicate test with the same content hash",
+    "meta": {
+      "gic_intent": "private",
+      "user": "test-user",
+      "content_hash": "test-hash-123",
+      "node_id": "cursor",
+      "author": "Cursor AI (Kaizen Node)",
+      "network_id": "Kaizen-DVA",
+      "version": "0.1.0"
+    },
+    "ts": "2025-09-22T00:09:21.086039Z"
+  },
+  {
+    "type": "sweep",
+    "date": "2025-09-22",
+    "chamber": "Reflections",
+    "note": "This is a featured reflection that should qualify for the publish_feature tier with enough substance to clear the minimum length threshold and be eligible for weekly bonus consideration...",
+    "meta": {
+      "gic_intent": "publish_feature",
+      "user": "test-user",
+      "content_hash": "featured-test-hash-789",
+      "ui": "mcp",
+      "node_id": "cursor",
+      "author": "Cursor AI (Kaizen Node)",
+      "network_id": "Kaizen-DVA",
+      "version": "0.1.0"
+    },
+    "ts": "2025-09-22T00:33:49.819698Z"
+  },
+  {
+    "type": "sweep",
+    "date": "2025-09-22",
+    "chamber": "Reflections",
+    "note": "This is a featured reflection that should qualify for the publish_feature tier with enough substance to clear the minimum length threshold and be eligible for weekly bonus consideration. This reflection contains substantial content about the importance of daily journaling, personal growth, and the value of sharing insights with the community. It discusses how the GIC reward system encourages both private reflection and public sharing, creating a balanced approach to personal development. The featured tier allows for additional recognition through weekly bonuses, motivating users to create high-quality content that benefits the entire community. This system promotes both individual growth and collective knowledge sharing, making it a powerful tool for personal and professional development.",
+    "meta": {
+      "gic_intent": "publish_feature",
+      "user": "test-user",
+      "content_hash": "featured-test-hash-789",
+      "ui": "mcp",
+      "node_id": "cursor",
+      "author": "Cursor AI (Kaizen Node)",
+      "network_id": "Kaizen-DVA",
+      "version": "0.1.0"
+    },
+    "ts": "2025-09-22T00:33:57.110469Z"
+  },
+  {
+    "type": "sweep",
+    "date": "2025-09-22",
+    "chamber": "Reflections",
+    "note": "This is a test featured reflection with enough content to qualify for the publish_feature tier and be eligible for weekly bonus consideration. This reflection discusses the importance of daily journaling and personal growth through the GIC reward system.",
+    "meta": {
+      "gic_intent": "publish_feature",
+      "user": "test-user-new",
+      "content_hash": "new-featured-hash-123",
+      "ui": "mcp",
+      "node_id": "cursor",
+      "author": "Cursor AI (Kaizen Node)",
+      "network_id": "Kaizen-DVA",
+      "version": "0.1.0"
+    },
+    "ts": "2025-09-22T00:34:56.814106Z"
+  },
+  {
+    "type": "sweep",
+    "date": "2025-09-22",
+    "chamber": "Lab4",
+    "note": "smoke test reflection",
+    "meta": {
+      "user": "smoke-tester",
+      "gic_intent": "private",
+      "node_id": "cursor",
+      "author": "Cursor AI (Kaizen Node)",
+      "network_id": "Kaizen-DVA",
+      "version": "0.1.0"
+    },
+    "ts": "2025-09-22T01:07:36.482605Z"
+  },
+  {
+    "type": "sweep",
+    "date": "2025-09-22",
+    "chamber": "Reflections",
+    "note": "This is a test featured reflection with enough content to qualify for the publish_feature tier and be eligible for weekly bonus consideration. This reflection discusses the importance of daily journaling and personal growth through the GIC reward system.",
+    "meta": {
+      "gic_intent": "publish_feature",
+      "user": "smoke-tester",
+      "content_hash": "smoke-test-featured-hash-123",
+      "node_id": "cursor",
+      "author": "Cursor AI (Kaizen Node)",
+      "network_id": "Kaizen-DVA",
+      "version": "0.1.0"
+    },
+    "ts": "2025-09-22T01:08:11.312602Z"
+  },
+  {
+    "type": "sweep",
+    "date": "2025-09-22",
+    "chamber": "J1",
+    "note": "smoke test sweep",
+    "meta": {
+      "user": "smoke-tester",
+      "gic_intent": "private",
+      "node_id": "cursor",
+      "author": "Cursor AI (Kaizen Node)",
+      "network_id": "Kaizen-DVA",
+      "version": "0.1.0"
+    },
+    "ts": "2025-09-22T01:13:34.370376Z"
+  },
+  {
+    "type": "sweep",
+    "date": "2025-09-22",
+    "chamber": "LAB4",
+    "note": "sweep 1",
+    "meta": {
+      "node_id": "cursor",
+      "author": "Cursor AI (Kaizen Node)",
+      "network_id": "Kaizen-DVA",
+      "version": "0.1.0"
+    },
+    "ts": "2025-09-22T13:20:39.489097Z"
+  },
+  {
+    "type": "sweep",
+    "date": "2025-09-22",
+    "chamber": "LAB4",
+    "note": "sweep 2",
+    "meta": {
+      "node_id": "cursor",
+      "author": "Cursor AI (Kaizen Node)",
+      "network_id": "Kaizen-DVA",
+      "version": "0.1.0"
+    },
+    "ts": "2025-09-22T13:20:39.503964Z"
+  },
+  {
+    "type": "sweep",
+    "date": "2025-09-22",
+    "chamber": "LAB4",
+    "note": "sweep 3",
+    "meta": {
+      "node_id": "cursor",
+      "author": "Cursor AI (Kaizen Node)",
+      "network_id": "Kaizen-DVA",
+      "version": "0.1.0"
+    },
+    "ts": "2025-09-22T13:20:39.515513Z"
+  },
+  {
+    "type": "sweep",
+    "date": "2025-09-22",
+    "chamber": "LAB4",
+    "note": "Lab4 Research & Study smoke test sweep",
+    "meta": {
+      "gic_intent": "publish",
+      "user": "lab4-tester",
+      "content_hash": "smoke-test-hash",
+      "node_id": "cursor",
+      "author": "Cursor AI (Kaizen Node)",
+      "network_id": "Kaizen-DVA",
+      "version": "0.1.0"
+    },
+    "ts": "2025-09-22T13:21:39.819574Z"
+  }
+]

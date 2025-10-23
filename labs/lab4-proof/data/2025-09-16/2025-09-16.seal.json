@@ -1,0 +1,13 @@
+{
+  "type": "seal",
+  "date": "2025-09-16",
+  "wins": "none",
+  "blocks": "none",
+  "tomorrow_intent": "good",
+  "ts": "2025-09-17T00:07:09.571606Z",
+  "links": {
+    "seed": "2025-09-16/2025-09-16.seed.json",
+    "echo": "2025-09-16/2025-09-16.echo.jsonl"
+  },
+  "day_root": "c2c8838ad2f72eab80d9b3499be7659785d9a04ccac239baf057153bc884eb89"
+}

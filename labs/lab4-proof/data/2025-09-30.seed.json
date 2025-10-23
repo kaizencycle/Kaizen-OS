@@ -1,0 +1,13 @@
+{
+  "type": "seed",
+  "date": "2025-09-30",
+  "time": "09:46:38",
+  "intent": "archive-api-test",
+  "meta": {
+    "author": "Cursor AI (Kaizen Node)",
+    "node_id": "cursor",
+    "network_id": "Kaizen-DVA",
+    "version": "0.1.0"
+  },
+  "ts": "2025-09-22T13:46:38.809967Z"
+}

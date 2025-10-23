@@ -1,0 +1,12 @@
+name: Redaction Scan
+on:
+  pull_request:
+  push:
+    branches: [ main, master ]
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run redaction scan
+        run: bash scripts/redaction-scan.sh

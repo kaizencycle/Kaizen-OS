@@ -1,0 +1,14 @@
+{
+  "type": "day_root",
+  "date": "2025-09-30",
+  "inputs": {
+    "seed": "0b6c7299b5ca47e0072270ba2d6087b05ebfbafb5b846dcf7b1ffc70b52094fa",
+    "echo": [
+      "25b858b2483d688e18dcf6192b5ae224152990427e9de008958238d56da6ea51"
+    ],
+    "seal": "5599a1f7e858eaefb1054b7876134809999c033f1902572889f638696f1e9a03"
+  },
+  "root": "d953e6ac3e075a1fe0d8e5a5c258f86eb24a18bd50ac4ba194dfedfc9e6feb20",
+  "method": "pairwise-merkle-sha256(hex-concat)",
+  "ts": "2025-09-22T13:46:38.841723Z"
+}

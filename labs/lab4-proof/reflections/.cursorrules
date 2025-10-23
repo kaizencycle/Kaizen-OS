@@ -1,0 +1,6 @@
+autoCommit: true
+autoPush: true
+gitBranch: main
+commitMessage:
+  format: "auto: {changeSummary}"
+  maxLength: 72

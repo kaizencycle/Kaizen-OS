@@ -1,0 +1,20 @@
+@app.get("/admin/metrics")
+async def admin_metrics(x_admin_token: Optional[str] = Header(None)):
+    _require_admin(x_admin_token)
+    async with pool.acquire() as c:
+        row = await c.fetchrow("""
+          WITH agg AS (
+            SELECT
+              (SELECT COUNT(*) FROM users)        AS users,
+              (SELECT COUNT(*) FROM companions)   AS companions,
+              (SELECT COUNT(*) FROM reflections)  AS reflections,
+              (SELECT COALESCE(SUM(gic_awarded),0) FROM reflections) AS gic
+          )
+          SELECT * FROM agg;
+        """)
+        totals = {
+            "users": int(row["users"]),
+            "companions": int(row["companions"]),
+            "reflections": int(row["reflections"]),
+            "gic": int(row["gic"]),
+        }
