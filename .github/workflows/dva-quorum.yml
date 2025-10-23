@@ -1,0 +1,63 @@
+name: DVA Ethical CI (ECI) — Quorum & Attestation
+
+on:
+  workflow_dispatch:
+    inputs:
+      title:
+        description: "Change title"
+        required: true
+        default: "Automated change via ECI"
+  pull_request:
+    branches: [ main, trunk ]
+
+jobs:
+  quorum:
+    runs-on: ubuntu-latest
+    env:
+      # Ledger + controls
+      LEDGER_URL: ${{ secrets.LEDGER_URL }}
+      LEDGER_API_KEY: ${{ secrets.LEDGER_API_KEY }}
+      DRY_RUN: "true"  # flip to false only after testing
+      # Dual-seal (environment-protected secrets or required reviewers)
+      ANCHOR_SIGNER: ${{ secrets.ANCHOR_SIGNER }}   # set to "yes" via environment secret
+      CUSTODIAN_SIGNER: ${{ secrets.CUSTODIAN_SIGNER }}
+      ARTIFACT_DIR: artifacts
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install deps
+        run: |
+          python -m pip install --upgrade pip
+          pip install pyyaml requests pytest
+
+      - name: Ensure prompt exists
+        run: |
+          echo "Refactor module for DVA integrity test." > PROMPT.md
+
+      - name: Run ECI Orchestrator (author → parse → repo → audit → quorum → attest)
+        run: |
+          python tools/quorum_orchestrator.py --prompt PROMPT.md --workdir workrepo --title "${{ github.event.inputs.title || 'PR: ' + github.event.pull_request.title }}"
+
+      - name: Upload artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: eci-artifacts
+          path: artifacts/
+
+  # Optional guarded canary deploy (requires environment protection approvals)
+  canary:
+    needs: quorum
+    runs-on: ubuntu-latest
+    environment:
+      name: production
+      url: https://your-canary.example.com
+    steps:
+      - name: Canary gated
+        run: |
+          echo "Canary would deploy here after environment approval."

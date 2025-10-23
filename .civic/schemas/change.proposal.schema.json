@@ -1,0 +1,88 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "title": "Change Proposal Schema",
+  "description": "Schema for civic-grade change proposals",
+  "required": [
+    "title",
+    "chamber",
+    "cycle",
+    "motivation",
+    "scope",
+    "risk",
+    "rollback",
+    "citations",
+    "author",
+    "timestamp",
+    "parent_chamber",
+    "integrity_anchor"
+  ],
+  "properties": {
+    "title": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200
+    },
+    "chamber": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9\\-_]+$"
+    },
+    "cycle": {
+      "type": "string",
+      "pattern": "^C-\\d+$"
+    },
+    "motivation": {
+      "type": "string",
+      "minLength": 10
+    },
+    "scope": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": ["API", "Docs", "UI", "Database", "Infrastructure", "Security", "Performance"]
+      },
+      "minItems": 1
+    },
+    "risk": {
+      "type": "string",
+      "enum": ["low", "medium", "high", "critical"]
+    },
+    "rollback": {
+      "type": "string",
+      "minLength": 10
+    },
+    "citations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["url", "hash"],
+        "properties": {
+          "url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "hash": {
+            "type": "string",
+            "pattern": "^sha256:[a-f0-9]{64}$"
+          }
+        }
+      }
+    },
+    "author": {
+      "type": "string",
+      "minLength": 1
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "parent_chamber": {
+      "type": "string",
+      "minLength": 1
+    },
+    "integrity_anchor": {
+      "type": "string",
+      "pattern": "^sha256:[a-f0-9]{64}$"
+    }
+  }
+}

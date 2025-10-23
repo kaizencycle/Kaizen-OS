@@ -1,0 +1,64 @@
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "lab7-proof"
+version = "0.1.0"
+description = "Lab7 – Open Attestation Authority (OAA) API"
+authors = [{ name = "Michael Judan" }]
+requires-python = ">=3.11"
+dependencies = [
+    "fastapi",
+    "uvicorn[standard]",
+    "pydantic",
+    "httpx",
+    "redis[hiredis]",
+    "pynacl",
+    "pyyaml",
+    "python-dotenv",
+]
+
+[tool.black]
+line-length = 88
+target-version = ["py311"]
+skip-string-normalization = false
+include = '\.pyi?$'
+exclude = '''
+/(
+  \.git
+  | \.venv
+  | build
+  | dist
+)/
+'''
+
+[tool.ruff]
+target-version = "py311"
+line-length = 88
+select = ["E", "F", "I", "B", "UP"]
+ignore = ["E501"]  # line-length handled by Black
+fix = true
+exclude = ["build", "dist", ".venv"]
+
+[tool.mypy]
+python_version = "3.11"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+disallow_incomplete_defs = true
+ignore_missing_imports = true
+show_error_codes = true
+pretty = true
+
+[tool.pytest.ini_options]
+minversion = "7.0"
+addopts = "-q --tb=short"
+testpaths = ["tests"]
+
+[tool.isort]
+profile = "black"
+line_length = 88
+multi_line_output = 3
+include_trailing_comma = true
+known_first_party = ["app"]

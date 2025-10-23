@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>OAA Keys — Lab7</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    :root { --bg:#0b0b0c; --card:#121214; --ink:#e8e6df; --muted:#b2ab99; --gold:#c8a24f; --accent:#8fb3ff; }
+    * { box-sizing: border-box; }
+    html,body { margin:0; padding:0; background:var(--bg); color:var(--ink); font-family: "Ibarra Real Nova", "Georgia", serif; }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .wrap { max-width: 960px; margin: 40px auto; padding: 0 20px; }
+    header { margin-bottom: 24px; }
+    h1 { margin: 0 0 6px; font-weight: 600; letter-spacing: .3px; }
+    .sub { color: var(--muted); font-size: .95rem; }
+    .links { margin-top: 8px; font-size: .95rem; }
+    .card { background: linear-gradient(180deg, #151516 0%, #0f0f10 100%); border: 1px solid #262628; border-radius: 14px; padding: 18px; margin: 16px 0 24px; }
+    .badge { display: inline-block; padding: 2px 8px; border-radius: 999px; font-size: .8rem; border: 1px solid #2a2a2d; }
+    .active { color:#121214; background: var(--gold); border-color: #c19a3f; }
+    .arch { color: var(--gold); background: transparent; }
+    table { width:100%; border-collapse: collapse; margin-top: 10px; }
+    th, td { text-align:left; padding: 10px 8px; border-bottom: 1px solid #262628; vertical-align: top; }
+    th { color: var(--muted); font-weight: 600; }
+    code, .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace; font-size: .9rem; }
+    .small { font-size: .9rem; color: var(--muted); }
+    .grid { display:grid; grid-template-columns: 1fr; gap:16px; }
+    @media (min-width: 720px) { .grid { grid-template-columns: 1fr 1fr; } }
+    .pill { border:1px dashed #3a3a3e; padding:10px 12px; border-radius:10px; background:#121215; }
+    .goldline { height: 2px; background: linear-gradient(90deg, transparent, var(--gold), transparent); margin: 16px 0 8px; }
+    .muted { color: var(--muted); }
+    .copy { cursor: pointer; border:1px solid #2a2a2d; padding:2px 6px; border-radius:8px; margin-left:8px; font-size:.8rem; }
+    .copy:hover { border-color:#3a3a3e; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <h1>OAA Signing Keys <span class="badge active">Lab7</span></h1>
+      <div class="sub">Issuer: <strong>{{ data.issuer }}</strong> · Updated: {{ data.updated }}</div>
+      <div class="links">
+        JSON: <a href="{{ data.json_history_url }}">/oaa/keys/history</a> &nbsp;•&nbsp;
+        Well-Known: <a href="{{ data.well_known_url }}">/.well-known/oaa-keys.json</a>
+      </div>
+    </header>
+
+    <div class="card">
+      <h3 style="margin:0 0 4px;">Active Key</h3>
+      <div class="goldline"></div>
+      <div class="grid">
+        <div class="pill">
+          <div class="small">Key ID (kid)</div>
+          <div class="mono">{{ data.active_key.kid or "—" }}</div>
+        </div>
+        <div class="pill">
+          <div class="small">Created</div>
+          <div class="mono">{{ data.active_key.created or "—" }}</div>
+        </div>
+      </div>
+      <div class="pill" style="margin-top:12px;">
+        <div class="small">Public Key (Base64)</div>
+        <div class="mono" id="active-x">{{ data.active_key.x or "—" }}</div>
+        {% if data.active_key.x %}
+        <button class="copy" onclick="copyText('active-x')">Copy</button>
+        {% endif %}
+      </div>
+    </div>
+
+    <div class="card">
+      <h3 style="margin:0 0 4px;">Archived Keys <span class="badge arch">{{ data.archived|length }}</span></h3>
+      <div class="goldline"></div>
+      {% if data.archived|length == 0 %}
+        <div class="muted">No archived keys yet.</div>
+      {% else %}
+        <table>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>kid</th>
+              <th>created</th>
+              <th>public key (base64)</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for k in data.archived %}
+            <tr>
+              <td class="small">{{ k.history_index }}</td>
+              <td class="mono">{{ k.kid or "—" }}</td>
+              <td class="mono">{{ k.created or "—" }}</td>
+              <td class="mono" id="arch-{{ loop.index }}">{{ k.x or "—" }}
+                {% if k.x %}<button class="copy" onclick="copyText('arch-{{ loop.index }}')">Copy</button>{% endif %}
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      {% endif %}
+    </div>
+
+    <div class="small muted">We heal as we walk. — Trinity Seal</div>
+  </div>
+
+  <script>
+    function copyText(id){
+      const el = document.getElementById(id);
+      if(!el) return;
+      const range = document.createRange();
+      range.selectNodeContents(el);
+      const sel = window.getSelection();
+      sel.removeAllRanges();
+      sel.addRange(range);
+      try { document.execCommand('copy'); } catch (e) {}
+      sel.removeAllRanges();
+    }
+  </script>
+</body>
+</html>

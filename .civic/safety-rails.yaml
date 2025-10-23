@@ -1,0 +1,157 @@
+# Safety Rails Configuration
+# Defines security and operational boundaries for civic-grade AI systems
+
+security:
+  write_isolation:
+    enabled: true
+    description: "Agents never push directly to main; only via PRs"
+    enforcement:
+      - branch_protection: true
+      - required_reviews: 2
+      - required_status_checks: true
+      - dismiss_stale_reviews: true
+  
+  secrets_separation:
+    enabled: true
+    description: "OAA (public) never sees private keys; Ledger/Indexer keep secrets"
+    boundaries:
+      - oaa_hub: "public_only"
+      - ledger_service: "secrets_ok"
+      - indexer_service: "secrets_ok"
+      - citizen_shield: "secrets_ok"
+  
+  policy_as_code:
+    enabled: true
+    tools:
+      - kyverno: true
+      - gatekeeper: true
+    policies:
+      - name: "civic-annotations-required"
+        description: "All services must have civic annotations"
+        rules:
+          - apiGroups: ["apps"]
+            resources: ["deployments", "services"]
+            required_annotations:
+              - "civic.ai/integrity-check": "true"
+              - "civic.ai/chamber": "required"
+              - "civic.ai/cycle": "required"
+      
+      - name: "integrity-check-endpoint"
+        description: "All services must expose /api/integrity-check"
+        rules:
+          - apiGroups: ["apps"]
+            resources: ["deployments"]
+            validation:
+              - expression: "has(object.spec.template.spec.containers[0].ports) && any(port, object.spec.template.spec.containers[0].ports, port.name == 'integrity-check')"
+
+operational:
+  health_checks:
+    required_endpoints:
+      - "/api/health"
+      - "/api/integrity-check"
+    timeout_seconds: 30
+    retry_attempts: 3
+  
+  monitoring:
+    required_metrics:
+      - "http_requests_total"
+      - "http_request_duration_seconds"
+      - "civic_integrity_score"
+      - "civic_gi_score"
+    alerting_rules:
+      - alert: "CivicIntegrityCheckFailed"
+        expr: "civic_integrity_score < 0.9"
+        for: "5m"
+        labels:
+          severity: "critical"
+        annotations:
+          summary: "Civic integrity check failed"
+          description: "Service {{ $labels.instance }} has integrity score below threshold"
+      
+      - alert: "CivicGIScoreLow"
+        expr: "civic_gi_score < 0.85"
+        for: "10m"
+        labels:
+          severity: "warning"
+        annotations:
+          summary: "Civic GI score is low"
+          description: "Service {{ $labels.instance }} has GI score below threshold"
+
+deployment:
+  progressive_rollout:
+    enabled: true
+    stages:
+      - name: "canary"
+        traffic_percentage: 5
+        duration: "10m"
+        success_criteria:
+          error_rate: "< 0.01"
+          p95_latency: "< 1000ms"
+      
+      - name: "partial"
+        traffic_percentage: 50
+        duration: "30m"
+        success_criteria:
+          error_rate: "< 0.005"
+          p95_latency: "< 800ms"
+      
+      - name: "full"
+        traffic_percentage: 100
+        duration: "60m"
+        success_criteria:
+          error_rate: "< 0.001"
+          p95_latency: "< 500ms"
+  
+  rollback:
+    automatic: true
+    triggers:
+      - error_rate_exceeds: 0.05
+      - p95_latency_exceeds: "2000ms"
+      - health_check_failures: 3
+      - integrity_check_failures: 1
+    rollback_timeout: "5m"
+
+citizen_shield:
+  enabled: true
+  policy_file: ".civic/shield-policy.json"
+  validation_rules:
+    - name: "input_sanitization"
+      description: "All inputs must be sanitized"
+      enforcement: "block"
+    
+    - name: "output_encoding"
+      description: "All outputs must be properly encoded"
+      enforcement: "block"
+    
+    - name: "authentication_required"
+      description: "All endpoints require authentication"
+      enforcement: "block"
+      exceptions:
+        - "/api/health"
+        - "/api/integrity-check"
+  
+  anomaly_detection:
+    enabled: true
+    thresholds:
+      request_rate_spike: 2.0
+      error_rate_spike: 5.0
+      latency_spike: 3.0
+    response: "alert_and_log"
+
+compliance:
+  data_governance:
+    retention_policy: "90d"
+    encryption_at_rest: true
+    encryption_in_transit: true
+  
+  audit_logging:
+    enabled: true
+    log_level: "INFO"
+    sensitive_data_masking: true
+    retention_days: 365
+  
+  gdpr_compliance:
+    enabled: true
+    data_subject_rights: true
+    consent_management: true
+    data_portability: true

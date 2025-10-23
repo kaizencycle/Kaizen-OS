@@ -1,0 +1,14 @@
+name: copilot-verify
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+  push:
+    branches: [ main ]
+jobs:
+  verify:
+    uses: kaizencycle/lab7-proof/.github/workflows/reusable-copilot-verify.yml@main
+    secrets: inherit
+    with:
+      min_score: "0.35"     # tune per-repo if desired
+      fail_on_low: "false"  # set "true" to hard-gate merges
+      post_comment: "true"  # set "false" to disable PR comments

@@ -1,0 +1,81 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://kaizen/lab7/global-health/pulse.schema.json",
+  "title": "Global Health Pulse Attestation",
+  "type": "object",
+  "required": ["timestamp", "regions", "signals", "summary", "fingerprint_sha256"],
+  "properties": {
+    "timestamp": { "type": "string", "format": "date-time" },
+    "run_id": { "type": "string", "description": "Optional unique ID for this pulse" },
+    "regions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["code"],
+        "properties": {
+          "code": { "type": "string", "description": "ISO-3166 code or custom region key" },
+          "notes": { "type": "string" }
+        }
+      }
+    },
+    "signals": {
+      "type": "object",
+      "description": "Key metrics by topic",
+      "properties": {
+        "epidemic": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["region", "indicator", "value"],
+            "properties": {
+              "region": { "type": "string" },
+              "indicator": { "type": "string", "description": "e.g., R_t, positivity, admissions_index" },
+              "value": { "type": "number" },
+              "delta_7d": { "type": "number" },
+              "confidence": { "type": "number", "minimum": 0, "maximum": 1 },
+              "source": { "type": "string" }
+            }
+          }
+        },
+        "climate_health": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["region", "indicator", "value"],
+            "properties": {
+              "region": { "type": "string" },
+              "indicator": { "type": "string", "description": "e.g., AQI, heat_index, wildfire_smoke" },
+              "value": { "type": "number" },
+              "delta_7d": { "type": "number" },
+              "confidence": { "type": "number", "minimum": 0, "maximum": 1 },
+              "source": { "type": "string" }
+            }
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "risk_flags": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["region", "level", "reason"],
+        "properties": {
+          "region": { "type": "string" },
+          "level": { "type": "string", "enum": ["LOW", "MODERATE", "ELEVATED", "HIGH"] },
+          "reason": { "type": "string" }
+        }
+      }
+    },
+    "summary": {
+      "type": "object",
+      "required": ["headline", "one_liner"],
+      "properties": {
+        "headline": { "type": "string" },
+        "one_liner": { "type": "string" },
+        "analyst_notes": { "type": "string" }
+      }
+    },
+    "fingerprint_sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" }
+  }
+}

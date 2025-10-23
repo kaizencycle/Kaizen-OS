@@ -1,0 +1,15 @@
+{
+  "version": "v1",
+  "created": "2025-10-14T14:26:59.940425Z",
+  "policy": "linucb",
+  "data_hash": "sha256:example",
+  "metrics": {
+    "offline_reward": 0.55,
+    "safety_score": 0.98
+  },
+  "safety_notes": "Shadow-only; deny privileged actions; abstain on high uncertainty.",
+  "rollout": {
+    "mode": "shadow",
+    "traffic_pct": 0
+  }
+}

@@ -1,0 +1,58 @@
+# render.yaml — Lab7 OAA FastAPI Application
+services:
+  - type: web
+    name: oaa-api-library
+    env: python
+    plan: starter
+    region: oregon
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "uvicorn app.main:app --host 0.0.0.0 --port $PORT"
+    envVars:
+      # Core OAA Configuration
+      - key: OAA_ISSUER
+        value: oaa_hub
+      - key: OAA_VERIFY_PIN_KEYS
+        value: "true"
+      - key: OAA_VERIFY_TS_WINDOW_MIN
+        value: "10"
+      - key: OAA_VERIFY_REQUIRE_NONCE
+        value: "false"
+      
+      # Cryptographic Keys (set in Render dashboard)
+      - key: OAA_ED25519_PRIVATE_B64
+        sync: false
+      - key: OAA_ED25519_PUBLIC_B64
+        sync: false
+      - key: OAA_SIGNING_VERSION
+        value: "oaa:ed25519:v1"
+      - key: OAA_SIGNING_CREATED
+        value: "2025-01-27T00:00:00Z"
+      
+      # External Service URLs (set in Render dashboard)
+      - key: HUB_BASE_URL
+        value: https://oaa-api-library.onrender.com
+      - key: LEDGER_URL
+        sync: false
+      - key: LEDGER_BASE_URL
+        sync: false
+      - key: LEDGER_ADMIN_TOKEN
+        sync: false
+      
+      # Optional Redis for nonce replay defense
+      - key: OAA_NONCE_REDIS_URL
+        sync: false
+      - key: OAA_NONCE_TTL_SEC
+        value: "600"
+      
+      # Echo system configuration
+      - key: ECHO_LOG_DIR
+        value: "./echo_logs"
+      - key: OAA_BEARER
+        sync: false
+      
+      # API Authentication
+      - key: ADMIN_TOKEN
+        sync: false
+      - key: API_KEY
+        sync: false
+    healthCheckPath: /health

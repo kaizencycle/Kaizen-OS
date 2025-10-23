@@ -1,0 +1,48 @@
+# PAL Integration Configuration for Lab7-Proof
+# This file uses environment variables for all sensitive values
+
+# Service Configuration
+services:
+  backend:
+    service_id_env: LAB7_BACKEND_SERVICE_ID
+    health_url_env: LAB7_BACKEND_HEALTH_URL
+  
+  frontend:
+    service_id_env: LAB7_FRONTEND_SERVICE_ID
+    health_url_env: LAB7_FRONTEND_HEALTH_URL
+
+# Render Integration
+render:
+  api_key_env: LAB7_RENDER_API_KEY
+  base_url: https://api.render.com
+
+# GitHub Integration
+github:
+  token_env: LAB7_AUTOLABEL_TOKEN  # GitHub Personal Access Token
+
+# PAL Learning Configuration
+learning:
+  policy_path: ledger/policies/linucb_v1.json
+  model_card_dir: ledger/model_cards
+  episodes_file: ledger/episodes.jsonl
+
+# Training Configuration
+training:
+  reward_model:
+    epochs: 100
+    learning_rate: 0.001
+    batch_size: 32
+  
+  bandit:
+    alpha: 0.1
+    confidence: 0.95
+    exploration_rate: 0.1
+
+# Deployment Configuration
+deployment:
+  health_check_timeout: 30
+  max_retries: 3
+  rollout_gates:
+    - shadow
+    - canary
+    - full

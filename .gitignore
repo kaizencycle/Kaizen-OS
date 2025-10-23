@@ -1,0 +1,85 @@
+# ───────────────────────────────
+# Core environment & secrets
+# ───────────────────────────────
+.env
+*.env
+!*.env.example
+!*.env.template
+
+# Private keys / certificates
+*.pem
+*.key
+*.crt
+*.pub
+*_private.json
+*_private.key
+*_secret.txt
+
+# Sentinel / state / logs
+*_state.json
+*.log
+logs/
+debug.log
+nohup.out
+
+# Compiled / cache / build
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.class
+build/
+dist/
+*.egg-info/
+node_modules/
+.next/
+out/
+coverage/
+*.lock
+
+# IDE / editor / system
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Test / temp
+test_output/
+tmp/
+temp/
+.cache/
+*.sqlite3
+*.db
+
+# Render / deployment artifacts
+render.yaml.local
+.tmp/
+
+# Keys & attestations (keep only samples)
+keys/
+attestations/*.raw.json
+attestations/*.signed.json
+
+# Local data
+data/
+!data/.gitkeep
+
+# Virtualenv / tooling
+.venv/
+.venv*/
+env/
+.ruff_cache/
+.mypy_cache/
+.pytest_cache/
+.dmypy.json
+.pyre/
+
+# Coverage
+htmlcov/
+.coverage*
+.tox/
+
+# Node (if you add a minimal client or tooling)
+npm-debug.log*
+yarn.lock
+pnpm-lock.yaml

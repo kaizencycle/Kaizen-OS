@@ -1,0 +1,46 @@
+{
+  "timestamp": "2025-10-14T01:02:07+00:00",
+  "kind": "echo_heartbeat",
+  "services": {
+    "Lab4": {
+      "status": "UP",
+      "latency_ms": 104.5,
+      "error": null
+    },
+    "Lab6": {
+      "status": "UP",
+      "latency_ms": 70.44,
+      "error": null
+    },
+    "CivicLedger": {
+      "status": "UP",
+      "latency_ms": 71.11,
+      "error": null
+    },
+    "GICIndexer": {
+      "status": "UP",
+      "latency_ms": 92.15,
+      "error": null
+    },
+    "Lab7": {
+      "status": "UP",
+      "latency_ms": 61.76,
+      "error": null
+    }
+  },
+  "global_health": {
+    "attached": false,
+    "fingerprint_sha256": null
+  },
+  "summary": {
+    "up": [
+      "Lab4",
+      "Lab6",
+      "CivicLedger",
+      "GICIndexer",
+      "Lab7"
+    ],
+    "down": []
+  },
+  "fingerprint_sha256": "b0d6eb0e9b667f6981a44712d9e6ce4791b41e9b25bc6d2aedd23a52bfe3b200"
+}

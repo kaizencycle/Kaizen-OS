@@ -1,0 +1,66 @@
+name: pal-nightly-train
+on:
+  schedule:
+    - cron: '0 2 * * *'   # 02:00 UTC nightly
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  retrain-and-propose:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install deps (trainers + eval)
+        run: |
+          python -m pip install --upgrade pip
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+          pip install scikit-learn numpy
+
+      - name: Ensure ledger structure
+        run: |
+          mkdir -p ledger/reward_models ledger/policies ledger/model_cards
+          touch ledger/episodes.jsonl
+
+      - name: Retrain Reward Model (Eve)
+        run: |
+          python trainers/reward_model/train_rm.py             --episodes ledger/episodes.jsonl             --out ledger/reward_models/rm_$(date +%F).pkl || true
+
+      - name: Retrain Policy (Hermes / LinUCB)
+        run: |
+          LATEST_RM=$(ls -t ledger/reward_models/*.pkl 2>/dev/null | head -n1 || true)
+          if [ -z "$LATEST_RM" ]; then echo "No RM found; proceeding without RM."; fi
+          python trainers/bandit/train_linucb.py             --episodes ledger/episodes.jsonl             --rm "$LATEST_RM"             --out ledger/policies/linucb_$(date +%F).json
+
+      - name: Evaluate & write model card (Jade + Eve)
+        run: |
+          python scripts/pal_eval.py --episodes ledger/episodes.jsonl             --policy ledger/policies/linucb_$(date +%F).json             --out ledger/model_cards/v$(date +%F).json > PAL_EVAL_SUMMARY.md
+          cat PAL_EVAL_SUMMARY.md
+
+      - name: Create PR with updated policy & card (Zeus gate follows)
+        uses: peter-evans/create-pull-request@v6
+        with:
+          commit-message: "chore(pal): nightly retrain + policy candidate ($(date +%F))"
+          title: "PAL: nightly policy candidate ($(date +%F))"
+          body-path: PAL_EVAL_SUMMARY.md
+          branch: "pal/policy-$(date +%F)"
+          labels: "pal,candidate-policy"
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: pal-nightly-outputs
+          path: |
+            ledger/policies/linucb_*.json
+            ledger/model_cards/v*.json
+            PAL_EVAL_SUMMARY.md

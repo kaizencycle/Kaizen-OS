@@ -1,0 +1,32 @@
+services:
+  - type: web
+    name: lab7-auto-merge
+    env: python
+    buildCommand: |
+      pip install -r requirements.txt
+      pip install mcp
+    startCommand: python scripts/mcp_github_render_integration.py
+    envVars:
+      - key: GITHUB_TOKEN
+        sync: false
+      - key: RENDER_API_TOKEN
+        sync: false
+      - key: PAL_CARD_GLOB
+        value: "ledger/model_cards/*.json"
+      - key: API_DIR
+        value: "docs/api"
+      - key: README_PATH
+        value: "README.md"
+
+  - type: cron
+    name: lab7-merge-scheduler
+    schedule: "*/5 * * * *"  # Every 5 minutes
+    buildCommand: |
+      pip install -r requirements.txt
+      pip install mcp
+    startCommand: python scripts/auto_merge_edits.py
+    envVars:
+      - key: GITHUB_TOKEN
+        sync: false
+      - key: RENDER_API_TOKEN
+        sync: false

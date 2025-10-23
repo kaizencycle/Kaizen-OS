@@ -1,0 +1,80 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id         String    @id @default(uuid())
+  handle     String    @unique
+  email_hash String?   @unique
+  wallet     String?   @unique
+  reputation Int       @default(50)
+  created_at DateTime  @default(now())
+  sessions   Session[]
+  xp_events  XpEvent[]
+  attests    Attestation[]
+  rewards    Reward[]
+}
+
+model Session {
+  id           String    @id @default(uuid())
+  user         User      @relation(fields: [user_id], references: [id], onDelete: Cascade)
+  user_id      String
+  mentors_used String[]  @db.Text
+  total_xp     Int       @default(0)
+  level        Int       @default(1)
+  started_at   DateTime  @default(now())
+  ended_at     DateTime?
+  xp_events    XpEvent[]
+  attests      Attestation[]
+  @@index([user_id])
+}
+
+model XpEvent {
+  id          String   @id @default(uuid())
+  user        User     @relation(fields: [user_id], references: [id], onDelete: Cascade)
+  user_id     String
+  session     Session  @relation(fields: [session_id], references: [id], onDelete: Cascade)
+  session_id  String
+  rubric_hash String
+  xp          Int
+  reason      String
+  created_at  DateTime @default(now())
+  @@index([user_id])
+  @@index([session_id])
+}
+
+model Attestation {
+  id             String   @id @default(uuid())
+  attestation_id String   @unique
+  user           User     @relation(fields: [user_id], references: [id], onDelete: Cascade)
+  user_id        String
+  session        Session  @relation(fields: [session_id], references: [id], onDelete: Cascade)
+  session_id     String
+  mentors_used   String[] @db.Text
+  rubric_json    Json
+  xp_awarded     Int
+  gi_snapshot    Decimal  @db.Decimal(4, 3)
+  merkle_root    String
+  sig            String
+  created_at     DateTime @default(now())
+  @@index([user_id])
+  @@index([session_id])
+}
+
+model Reward {
+  id            String   @id @default(uuid())
+  user          User     @relation(fields: [user_id], references: [id], onDelete: Cascade)
+  user_id       String
+  attestation_id String
+  level_before  Int
+  level_after   Int
+  amount_gic    Decimal  @db.Decimal(16, 6)
+  tx_id         String?  @unique
+  status        String   @default("pending")
+  created_at    DateTime @default(now())
+}

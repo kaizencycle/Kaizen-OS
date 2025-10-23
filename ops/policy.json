@@ -1,0 +1,117 @@
+{
+  "version": "1.0.0",
+  "description": "OAA Central Hub Policy Configuration",
+  "allowed_domains": [
+    "github.com",
+    "render.com",
+    "localhost",
+    "127.0.0.1",
+    "*.onrender.com",
+    "*.github.io",
+    "status.render.com",
+    "raw.githubusercontent.com",
+    "api.github.com"
+  ],
+  "blocked_domains": [
+    "*admin*",
+    "*login*",
+    "*checkout*"
+  ],
+  "allowed_paths": [
+    "^\\.github/workflows/",
+    "^docs/",
+    "^scripts/",
+    "^routes/api/",
+    "^lib/",
+    "^gateway/"
+  ],
+  "protected_paths": [
+    "^ledger/",
+    "^migrations/",
+    "^policy/",
+    "^gateway/prod/"
+  ],
+  "circuit_breakers": {
+    "global_timeout_ms": 30000,
+    "max_concurrent_requests": 100,
+    "error_threshold_pct": 50,
+    "recovery_timeout_ms": 60000,
+    "scout_error_rate_pct": 20,
+    "deploy_rollback_on": [
+      "p95_latency_ms>1500",
+      "5xx_rate_pct>3"
+    ]
+  },
+  "rate_limits": {
+    "requests_per_minute": 1000,
+    "burst_limit": 100,
+    "window_size_ms": 60000,
+    "scout_reads_per_min": 10,
+    "deploys_per_day": 5
+  },
+  "security": {
+    "require_https": false,
+    "allowed_origins": ["*"],
+    "max_request_size_mb": 10,
+    "timeout_ms": 30000
+  },
+  "tools": {
+    "webDataScout": {
+      "allowed_domains": ["github.com", "render.com", "localhost"],
+      "max_depth": 3,
+      "timeout_ms": 20000,
+      "rate_limit_per_minute": 60
+    },
+    "healthSentinel": {
+      "internal_only": true,
+      "timeout_ms": 5000,
+      "rate_limit_per_minute": 120
+    }
+  },
+  "labs": {
+    "lab7-oaa": {
+      "status": "active",
+      "health_check_interval_ms": 30000,
+      "circuit_breaker": true
+    },
+    "lab4-frontend": {
+      "status": "active",
+      "health_check_interval_ms": 30000,
+      "circuit_breaker": true
+    },
+    "lab6-citizen-shield": {
+      "status": "active",
+      "health_check_interval_ms": 30000,
+      "circuit_breaker": true,
+      "require_hmac": true
+    },
+    "civic-ledger": {
+      "status": "active",
+      "health_check_interval_ms": 60000,
+      "circuit_breaker": true
+    },
+    "gic-indexer": {
+      "status": "active",
+      "health_check_interval_ms": 60000,
+      "circuit_breaker": true
+    }
+  },
+  "logging": {
+    "level": "info",
+    "format": "json",
+    "include_request_body": false,
+    "include_response_body": false,
+    "redact_fields": ["password", "token", "secret", "key"]
+  },
+  "observability": {
+    "metrics_enabled": true,
+    "tracing_enabled": true,
+    "health_checks_enabled": true,
+    "performance_monitoring": true
+  },
+  "require_human_for": [
+    "protected_paths",
+    "new_external_endpoint",
+    "schema_change"
+  ]
+}

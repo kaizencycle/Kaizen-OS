@@ -1,0 +1,14 @@
+{
+  "ok": true,
+  "version": "v1",
+  "source": "ledger/model_cards\\v1.json",
+  "updated": "2025-10-14T22:41:34.546354Z",
+  "metrics": {
+    "offline_reward": 0.55,
+    "safety_score": 0.98
+  },
+  "rollout": {
+    "mode": "shadow",
+    "traffic_pct": 0
+  }
+}

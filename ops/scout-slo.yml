@@ -1,0 +1,247 @@
+# WebDataScout SLO Configuration
+# Defines Service Level Objectives and monitoring for the web data extraction system
+
+version: 1.0
+service: web-data-scout
+environment: production
+
+# Service Level Objectives
+slos:
+  availability:
+    target: 99.9%
+    measurement_window: 24h
+    description: "WebDataScout API availability"
+    alert_threshold: 99.5%
+    
+  latency:
+    target: "p95 < 5s"
+    measurement_window: 1h
+    description: "95th percentile response time"
+    alert_threshold: "p95 > 10s"
+    
+  success_rate:
+    target: 95%
+    measurement_window: 1h
+    description: "Successful data extraction rate"
+    alert_threshold: 90%
+    
+  cache_hit_rate:
+    target: 80%
+    measurement_window: 1h
+    description: "Cache hit rate for repeated requests"
+    alert_threshold: 60%
+    
+  pii_detection_accuracy:
+    target: 95%
+    measurement_window: 24h
+    description: "PII detection accuracy rate"
+    alert_threshold: 90%
+
+# Error budgets
+error_budgets:
+  availability:
+    budget: 0.1%  # 8.64 minutes per day
+    burn_rate: 2.0
+    alert_threshold: 0.05%
+    
+  latency:
+    budget: 5%  # 5% of requests can be slow
+    burn_rate: 1.5
+    alert_threshold: 2.5%
+
+# Monitoring metrics
+metrics:
+  - name: scout_requests_total
+    type: counter
+    labels: [url_domain, provider, status]
+    description: "Total number of extraction requests"
+    
+  - name: scout_request_duration_seconds
+    type: histogram
+    labels: [url_domain, provider, status]
+    buckets: [0.1, 0.5, 1, 2, 5, 10, 30, 60]
+    description: "Request duration in seconds"
+    
+  - name: scout_cache_hits_total
+    type: counter
+    labels: [url_domain]
+    description: "Number of cache hits"
+    
+  - name: scout_cache_misses_total
+    type: counter
+    labels: [url_domain]
+    description: "Number of cache misses"
+    
+  - name: scout_pii_detections_total
+    type: counter
+    labels: [pii_type, confidence_level]
+    description: "Number of PII detections"
+    
+  - name: scout_layout_drift_detections_total
+    type: counter
+    labels: [url_domain, severity]
+    description: "Number of layout drift detections"
+    
+  - name: scout_ops_guard_blocks_total
+    type: counter
+    labels: [block_reason, risk_level]
+    description: "Number of requests blocked by Ops Guard"
+    
+  - name: scout_provider_errors_total
+    type: counter
+    labels: [provider, error_type]
+    description: "Number of provider errors"
+
+# Alerting rules
+alerts:
+  - name: scout_high_error_rate
+    condition: "rate(scout_requests_total{status='error'}[5m]) / rate(scout_requests_total[5m]) > 0.1"
+    severity: warning
+    description: "High error rate detected"
+    runbook: "https://docs.lab7.com/runbooks/scout-high-error-rate"
+    
+  - name: scout_high_latency
+    condition: "histogram_quantile(0.95, rate(scout_request_duration_seconds_bucket[5m])) > 10"
+    severity: warning
+    description: "High latency detected"
+    runbook: "https://docs.lab7.com/runbooks/scout-high-latency"
+    
+  - name: scout_low_cache_hit_rate
+    condition: "rate(scout_cache_hits_total[5m]) / (rate(scout_cache_hits_total[5m]) + rate(scout_cache_misses_total[5m])) < 0.6"
+    severity: warning
+    description: "Low cache hit rate"
+    runbook: "https://docs.lab7.com/runbooks/scout-low-cache-hit-rate"
+    
+  - name: scout_pii_leak_detected
+    condition: "rate(scout_pii_detections_total{confidence_level='high'}[1m]) > 0"
+    severity: critical
+    description: "High-confidence PII detected"
+    runbook: "https://docs.lab7.com/runbooks/scout-pii-leak"
+    
+  - name: scout_layout_drift_detected
+    condition: "rate(scout_layout_drift_detections_total{severity='high'}[5m]) > 0"
+    severity: warning
+    description: "Layout drift detected"
+    runbook: "https://docs.lab7.com/runbooks/scout-layout-drift"
+    
+  - name: scout_ops_guard_blocking
+    condition: "rate(scout_ops_guard_blocks_total[5m]) > 0"
+    severity: warning
+    description: "Ops Guard blocking requests"
+    runbook: "https://docs.lab7.com/runbooks/scout-ops-guard-blocks"
+
+# Circuit breaker configuration
+circuit_breaker:
+  failure_threshold: 5
+  recovery_timeout: 30s
+  half_open_max_calls: 3
+  
+  providers:
+    scout:
+      failure_threshold: 3
+      recovery_timeout: 60s
+    fallback:
+      failure_threshold: 2
+      recovery_timeout: 120s
+
+# Rate limiting
+rate_limits:
+  per_user:
+    requests_per_minute: 60
+    burst_size: 10
+    
+  per_domain:
+    requests_per_minute: 100
+    burst_size: 20
+    
+  global:
+    requests_per_minute: 1000
+    burst_size: 100
+
+# Cache configuration
+cache:
+  default_ttl: 3600  # 1 hour
+  max_size: 10000    # 10k entries
+  cleanup_interval: 300  # 5 minutes
+  
+  ttl_by_domain:
+    "status.*": 300      # 5 minutes for status pages
+    "news.*": 1800       # 30 minutes for news
+    "data.*": 3600       # 1 hour for data sources
+    "jobs.*": 1800       # 30 minutes for job feeds
+
+# Provider configuration
+providers:
+  scout:
+    endpoint: "${SCOUT_ENDPOINT}"
+    api_key: "${SCOUT_API_KEY}"
+    timeout: 20s
+    retry_count: 2
+    retry_delay: 1s
+    
+  fallback:
+    endpoint: "${SCOUT_FALLBACK_ENDPOINT}"
+    api_key: "${SCOUT_FALLBACK_API_KEY}"
+    timeout: 30s
+    retry_count: 1
+    retry_delay: 2s
+
+# Ops Guard integration
+ops_guard:
+  enable_pii_detection: true
+  enable_content_safety: true
+  enable_policy_evaluation: true
+  pii_threshold: 0.2
+  safety_threshold: 0.8
+  policy_endpoint: "/api/ops-guard/policy"
+  redaction_endpoint: "/api/ops-guard/redact"
+
+# Logging configuration
+logging:
+  level: info
+  format: json
+  
+  fields:
+    - service: web-data-scout
+    - version: "1.0.0"
+    - environment: "${ENVIRONMENT:-development}"
+    
+  sensitive_fields:
+    - api_key
+    - password
+    - token
+    - secret
+
+# Health check configuration
+health_checks:
+  - name: scout_provider
+    endpoint: "/api/scout-test"
+    interval: 30s
+    timeout: 5s
+    failure_threshold: 3
+    
+  - name: ops_guard
+    endpoint: "/api/ops-guard/health"
+    interval: 60s
+    timeout: 10s
+    failure_threshold: 2
+    
+  - name: cache
+    endpoint: "/api/scout-test/cache"
+    interval: 120s
+    timeout: 5s
+    failure_threshold: 1
+
+# Dashboard configuration
+dashboards:
+  - name: scout-overview
+    title: "WebDataScout Overview"
+    refresh_interval: 30s
+    
+  - name: scout-detailed
+    title: "WebDataScout Detailed Metrics"
+    refresh_interval: 10s
+    
+  - name: scout-alerts
+    title: "WebDataScout Alerts"
+    refresh_interval: 5s

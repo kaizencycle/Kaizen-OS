@@ -1,0 +1,83 @@
+# Progressive Delivery Configuration
+# Defines rollout strategy for civic-grade deployments
+
+deployment:
+  strategy: progressive
+  stages:
+    - name: canary
+      traffic_percentage: 5
+      duration_minutes: 10
+      health_checks:
+        - endpoint: "/api/health"
+          expected_status: 200
+          timeout_seconds: 5
+        - endpoint: "/api/integrity-check"
+          expected_status: 200
+          timeout_seconds: 10
+      success_criteria:
+        error_rate_threshold: 0.01
+        p95_latency_threshold_ms: 1000
+        throughput_threshold_rps: 100
+    
+    - name: partial
+      traffic_percentage: 50
+      duration_minutes: 30
+      health_checks:
+        - endpoint: "/api/health"
+          expected_status: 200
+          timeout_seconds: 5
+        - endpoint: "/api/integrity-check"
+          expected_status: 200
+          timeout_seconds: 10
+      success_criteria:
+        error_rate_threshold: 0.005
+        p95_latency_threshold_ms: 800
+        throughput_threshold_rps: 500
+    
+    - name: full
+      traffic_percentage: 100
+      duration_minutes: 60
+      health_checks:
+        - endpoint: "/api/health"
+          expected_status: 200
+          timeout_seconds: 5
+        - endpoint: "/api/integrity-check"
+          expected_status: 200
+          timeout_seconds: 10
+      success_criteria:
+        error_rate_threshold: 0.001
+        p95_latency_threshold_ms: 500
+        throughput_threshold_rps: 1000
+
+rollback:
+  automatic: true
+  triggers:
+    - error_rate_exceeds: 0.05
+    - p95_latency_exceeds_ms: 2000
+    - health_check_failures: 3
+    - integrity_check_failures: 1
+  rollback_timeout_seconds: 300
+
+monitoring:
+  metrics_endpoint: "/api/metrics"
+  alerting:
+    - name: "High Error Rate"
+      condition: "error_rate > 0.02"
+      severity: "warning"
+    - name: "High Latency"
+      condition: "p95_latency > 1000"
+      severity: "warning"
+    - name: "Integrity Check Failed"
+      condition: "integrity_check_failed == true"
+      severity: "critical"
+
+citizen_shield:
+  enabled: true
+  policy_file: ".civic/shield-policy.json"
+  validation_endpoints:
+    - "/api/ubi/summary"
+    - "/api/ledger/attestations"
+  required_headers:
+    - "X-Content-Type-Options"
+    - "X-Frame-Options"
+    - "X-XSS-Protection"

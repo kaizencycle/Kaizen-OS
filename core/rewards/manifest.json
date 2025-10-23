@@ -1,0 +1,144 @@
+{
+  "version": "1.0",
+  "id": "gic.reward.manifest",
+  "policy_ref": "ops/policy.json",
+  "issuance_asset": "GIC",
+  "units_per_block_cap": 100,
+  "decay": {
+    "epoch_length_cycles": 100,
+    "halving_factor": 0.5
+  },
+  "inputs": {
+    "human_statement": "text",
+    "agent_statement": "text",
+    "evidence": {
+      "citations": [
+        "url_or_hash"
+      ],
+      "observations": [
+        "metric_name:value@timestamp"
+      ],
+      "artifacts": [
+        "commit_sha",
+        "pr_id",
+        "run_id"
+      ]
+    },
+    "task_type": "reflection|fix|lesson|dataset|deployment",
+    "nonce": "uuid",
+    "timestamp": "iso8601"
+  },
+  "scoring": {
+    "weights": {
+      "truth": 0.4,
+      "symbiosis": 0.3,
+      "verification": 0.2,
+      "novelty": 0.1
+    },
+    "penalties": {
+      "entropy": 0.3,
+      "duplication": 0.5,
+      "policy_violation": 1.0,
+      "drift_anomaly": 0.6
+    },
+    "ranges": {
+      "truth": [
+        0,
+        1
+      ],
+      "symbiosis": [
+        0,
+        1
+      ],
+      "verification": [
+        0,
+        1
+      ],
+      "novelty": [
+        0,
+        1
+      ],
+      "entropy": [
+        0,
+        1
+      ]
+    }
+  },
+  "verification": {
+    "ledger_required": true,
+    "signatures": {
+      "human_sig": "ed25519",
+      "agent_sig": "sigstore|gpg"
+    },
+    "consensus": {
+      "min_quorum": 2,
+      "peers": [
+        "Eve",
+        "Echo",
+        "Zeus"
+      ],
+      "rules": [
+        "Either Eve(human-ok) OR 2 automated verifiers must approve",
+        "Any policy_violation veto blocks issuance"
+      ]
+    }
+  },
+  "anti_abuse": {
+    "rate_limits": {
+      "per_actor_per_24h": 12,
+      "per_repo_per_24h": 60
+    },
+    "replay_protection": "nonce+timestamp in Civic Ledger",
+    "uniqueness": {
+      "min_embedding_distance": 0.22,
+      "min_code_diff_ratio": 0.08
+    }
+  },
+  "drift_control": {
+    "behavior_tests": [
+      "policy_guard",
+      "prompt_consistency",
+      "output_contract"
+    ],
+    "reference_vectors": "embeddings@baseline:CURRENT",
+    "tripwires": {
+      "embedding_shift_threshold": 0.35,
+      "policy_delta_threshold": 0.15,
+      "toxicity_or_pii": true
+    },
+    "actions": {
+      "on_warn": [
+        "reduce_reward_50",
+        "require_human_recheck"
+      ],
+      "on_trip": [
+        "deny_reward",
+        "open_incident",
+        "rollback"
+      ]
+    }
+  },
+  "issuance": {
+    "formula": "GIC = BASE * max(0, I - P)",
+    "base": 10,
+    "integrity_I": "0.4*truth + 0.3*symbiosis + 0.2*verification + 0.1*novelty",
+    "penalty_P": "0.3*entropy + 0.5*duplication + 1.0*policy_violation + 0.6*drift_anomaly",
+    "split": {
+      "human": 0.5,
+      "agent_pool": 0.5
+    }
+  },
+  "ledger": {
+    "record_type": "CO-LEARN_EVENT",
+    "fields": [
+      "hash(payload)",
+      "scores",
+      "GIC",
+      "signatures",
+      "citations",
+      "artifacts"
+    ],
+    "seal": "sha256",
+    "chain_policy": "nightly_integrity_check"
+  }
+}

@@ -1,0 +1,24 @@
+version: 1
+content_filters:
+  blocked_keywords:
+    - bomb
+    - exploit
+    - malware
+  max_copy_hash_similarity: 0.85
+rate_limits:
+  turns_per_hour: 60
+  mints_per_day: 2
+reputation:
+  start_score: 50
+  decay_per_violation: 10
+  cool_down_minutes: 60
+mint_gates:
+  min_integrity_score: 4        # 0..5 rubric
+  min_overall_rubric_avg: 3.5
+  require_attestation_sig: true
+auth:
+  require_webauthn_for_mint: false
+ip_risk:
+  block_asn_categories:
+    - datacenter
+    - known_proxy

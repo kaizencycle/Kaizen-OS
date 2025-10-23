@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="640" viewBox="0 0 1080 640">
+  <defs>
+    <style>
+      .bg { fill:#0b0e14; }
+      .card { fill:#121826; stroke:#7aa2f7; stroke-width:2; rx:10; ry:10; }
+      .muted { fill:#9aa3b2; font: 14px monospace; }
+      .title { fill:#e6e6e6; font: 700 18px monospace; }
+      .big { fill:#e6e6e6; font: 700 22px monospace; }
+      .pipe { stroke:#7aa2f7; stroke-width:2; marker-end: url(#arrow); }
+      .pipe-dim { stroke:#43506b; stroke-width:2; stroke-dasharray:6 6; marker-end: url(#arrowDim); }
+    </style>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L10,3 L0,6 z" fill="#7aa2f7" />
+    </marker>
+    <marker id="arrowDim" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L10,3 L0,6 z" fill="#43506b" />
+    </marker>
+  </defs>
+
+  <rect class="bg" x="0" y="0" width="1080" height="640" />
+
+  <text x="540" y="46" text-anchor="middle" class="big">BRIDGE TO THE INFINITE LIBRARY</text>
+  <text x="540" y="70" text-anchor="middle" class="muted">OAA · Web Data Scout · Lab4 · Civic Ledger · GIC Indexer</text>
+
+  <rect x="60" y="140" width="280" height="160" class="card"/>
+  <text x="200" y="170" text-anchor="middle" class="title">Web Data Scout</text>
+  <text x="80" y="196" class="muted">• parse.bot / alt provider</text>
+  <text x="80" y="214" class="muted">• URL + schema → JSON</text>
+  <text x="80" y="232" class="muted">• Timeouts, retries, cache</text>
+  <text x="80" y="250" class="muted">• Circuit breaker</text>
+
+  <rect x="400" y="140" width="280" height="160" class="card"/>
+  <text x="540" y="170" text-anchor="middle" class="title">OAA (Lab7‑proof)</text>
+  <text x="420" y="196" class="muted">• Jade plan → Hermes call</text>
+  <text x="420" y="214" class="muted">• Zeus validate/cache</text>
+  <text x="420" y="232" class="muted">• Eve human gate</text>
+  <text x="420" y="250" class="muted">• Lessons & agents</text>
+
+  <rect x="740" y="140" width="280" height="160" class="card"/>
+  <text x="880" y="170" text-anchor="middle" class="title">Lab4‑proof Frontend</text>
+  <text x="760" y="196" class="muted">• 2005‑style portal</text>
+  <text x="760" y="214" class="muted">• OAA Tab → /oaa</text>
+  <text x="760" y="232" class="muted">• Live lesson cards</text>
+  <text x="760" y="250" class="muted">• Social reflections</text>
+
+  <rect x="260" y="380" width="560" height="180" class="card"/>
+  <text x="540" y="410" text-anchor="middle" class="title">Civic Ledger + GIC Indexer</text>
+  <text x="280" y="436" class="muted">• Seal records (SHA‑256) & timestamps</text>
+  <text x="280" y="454" class="muted">• Dataset catalog & query</text>
+  <text x="280" y="472" class="muted">• Ops logs redaction + PII guard</text>
+  <text x="280" y="490" class="muted">• Nightly integrity validation</text>
+
+  <line x1="340" y1="220" x2="400" y2="220" class="pipe" />
+  <line x1="680" y1="220" x2="740" y2="220" class="pipe" />
+  <line x1="540" y1="300" x2="540" y2="380" class="pipe" />
+  <line x1="200" y1="300" x2="540" y2="420" class="pipe-dim" />
+  <line x1="880" y1="300" x2="540" y2="420" class="pipe-dim" />
+
+  <circle cx="60" cy="580" r="6" fill="#7aa2f7" /><text x="76" y="585" class="muted">Primary data flow</text>
+  <circle cx="280" cy="580" r="6" fill="#43506b" /><text x="296" y="585" class="muted">Reflections / logging paths</text>
+</svg>

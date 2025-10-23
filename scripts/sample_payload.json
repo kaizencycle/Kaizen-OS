@@ -1,0 +1,26 @@
+{
+  "human_statement": "I need help implementing a secure authentication system for our web application. The system should support OAuth2, JWT tokens, and have proper rate limiting to prevent brute force attacks. I've researched best practices from OWASP and found some good examples in the FastAPI documentation.",
+  "agent_statement": "I'll help you implement a comprehensive authentication system. Based on your requirements, I recommend using FastAPI with python-jose for JWT handling, python-oauthlib for OAuth2, and slowapi for rate limiting. Here's a secure implementation approach: 1) Use bcrypt for password hashing, 2) Implement proper token expiration and refresh, 3) Add CSRF protection, 4) Set up rate limiting per IP and user, 5) Include proper error handling and logging. I can provide code examples for each component.",
+  "evidence": {
+    "citations": [
+      "https://owasp.org/www-project-authentication-cheat-sheet/",
+      "https://fastapi.tiangolo.com/tutorial/security/",
+      "https://tools.ietf.org/html/rfc6749"
+    ],
+    "observations": [
+      "security_scan:passed@2024-01-15T10:30:00Z",
+      "test_coverage:85@2024-01-15T10:30:00Z",
+      "performance_score:92@2024-01-15T10:30:00Z"
+    ],
+    "artifacts": [
+      "abc123def456",
+      "pr-789",
+      "run-456"
+    ]
+  },
+  "task_type": "reflection",
+  "nonce": "550e8400-e29b-41d4-a716-446655440000",
+  "timestamp": "2024-01-15T10:30:00Z",
+  "scores": {},
+  "penalties": {}
+}

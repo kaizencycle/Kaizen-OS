@@ -1,0 +1,26 @@
+{
+  "timestamp": "2025-10-14T00:58:15+00:00",
+  "services": {
+    "Lab4": {
+      "status": "DOWN",
+      "latency_ms": null
+    },
+    "Lab6": {
+      "status": "DOWN",
+      "latency_ms": null
+    },
+    "CivicLedger": {
+      "status": "DOWN",
+      "latency_ms": null
+    },
+    "GICIndexer": {
+      "status": "DOWN",
+      "latency_ms": null
+    },
+    "Lab7": {
+      "status": "UP",
+      "latency_ms": 346.92
+    }
+  },
+  "fingerprint_sha256": "8fc065d2b3cb67f3dbc0c94bd50a0a3193b4c45b80ff1d7154c21661b6abe39e"
+}

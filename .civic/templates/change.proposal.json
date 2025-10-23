@@ -1,0 +1,19 @@
+{
+  "title": "Add GIC UBI endpoints to OAA Hub",
+  "chamber": "OAA-API-Library",
+  "cycle": "C-109",
+  "motivation": "Public read of payouts with proof backlinks",
+  "scope": ["API", "Docs", "UI"],
+  "risk": "low",
+  "rollback": "revert commit + disable route flag",
+  "citations": [
+    {
+      "url": "/specs/07-incentives-gic.md",
+      "hash": "sha256:..."
+    }
+  ],
+  "author": "Command Ledger III",
+  "timestamp": "2024-01-01T00:00:00Z",
+  "parent_chamber": "Command Ledger III",
+  "integrity_anchor": "sha256:..."
+}

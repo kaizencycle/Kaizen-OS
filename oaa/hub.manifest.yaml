@@ -1,0 +1,115 @@
+# OAA Central Hub Manifest
+# The central nervous system configuration for all labs and tools
+
+hub:
+  name: OAA Central
+  version: 0.1.0
+  description: "Central Hub for Plan • Act • Learn • Seal orchestration"
+
+labs:
+  - id: lab7-oaa
+    name: "Open Attestation Authority"
+    routes: ["/oaa", "/api/oaa/*"]
+    status: "active"
+    description: "Cryptographic verification and digital integrity services"
+    
+  - id: lab4-frontend
+    name: "Frontend Dashboard"
+    routes: ["/", "/oaa"]
+    status: "active"
+    description: "User interface and dashboard components"
+    
+  - id: lab6-citizen-shield
+    name: "Citizen Shield Gateway"
+    routes: ["/gateway/*", "/agent/*"]
+    status: "active"
+    description: "HMAC authentication and agent endpoint protection"
+    
+  - id: civic-ledger
+    name: "Civic Ledger"
+    routes: ["/ledger/*"]
+    status: "active"
+    description: "Immutable storage and audit trail services"
+    
+  - id: gic-indexer
+    name: "GIC Indexer"
+    routes: ["/gic/*"]
+    status: "active"
+    description: "Global Integrity Chain indexing services"
+
+tools:
+  webDataScout:
+    name: "Web Data Scout"
+    endpoint: "${SCOUT_ENDPOINT}"
+    description: "Web data extraction and monitoring"
+    breaker:
+      error_rate_pct: 20
+      timeout_ms: 20000
+      max_retries: 3
+    policy: "allowlist_domains"
+    
+  healthSentinel:
+    name: "Health Sentinel"
+    endpoint: "${SENTINEL_ENDPOINT}"
+    description: "System health monitoring and pulse collection"
+    breaker:
+      error_rate_pct: 10
+      timeout_ms: 5000
+      max_retries: 2
+    policy: "internal_only"
+
+policies:
+  file: "ops/policy.json"
+  fallback: "app/routers/oaa/default_policy.yaml"
+  enforcement: "strict"
+  
+  allowlist_domains:
+    - "github.com"
+    - "render.com"
+    - "localhost"
+    - "127.0.0.1"
+    
+  circuit_breakers:
+    global_timeout_ms: 30000
+    max_concurrent_requests: 100
+
+logging:
+  ops_logs_dir: ".github/ops_logs"
+  seal: true
+  retention_days: 90
+  format: "json"
+  
+  levels:
+    debug: "oaa.hub"
+    info: "oaa.*"
+    warn: "*"
+    error: "*"
+
+observability:
+  metrics:
+    enabled: true
+    endpoint: "/metrics"
+    port: 9090
+    
+  tracing:
+    enabled: true
+    service_name: "oaa-central-hub"
+    
+  health_checks:
+    interval_seconds: 30
+    timeout_seconds: 5
+    endpoints:
+      - "/health"
+      - "/oaa/health"
+      - "/gateway/health"
+
+learning:
+  lessons_dir: "lessons"
+  playbooks_dir: "playbooks"
+  runbooks_dir: "runbooks"
+  auto_improve: true
+  
+  feedback_loops:
+    - "pulse_analysis"
+    - "error_patterns"
+    - "performance_metrics"

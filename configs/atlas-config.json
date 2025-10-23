@@ -1,0 +1,112 @@
+{
+  "prohibited_patterns": [
+    "eval(",
+    "exec(",
+    "new Function(",
+    "__import__",
+    "dangerouslySetInnerHTML",
+    "localStorage.setItem",
+    "sessionStorage",
+    "document.write(",
+    "innerHTML =",
+    "outerHTML =",
+    "document.cookie",
+    "window.location.href =",
+    "window.open(",
+    "setTimeout(",
+    "setInterval(",
+    "XMLHttpRequest",
+    "fetch(",
+    "require(",
+    "import(",
+    "process.env",
+    "os.system(",
+    "subprocess.call(",
+    "subprocess.run(",
+    "shell=True"
+  ],
+  "required_virtue_tags": [
+    "Doctrine-ID",
+    "Ethics",
+    "Policy",
+    "Governance",
+    "Security",
+    "Privacy",
+    "Transparency",
+    "Accountability"
+  ],
+  "thresholds": {
+    "gi_score": 0.95,
+    "quality_score": 0.90,
+    "max_violations": 0,
+    "min_coverage": 80.0
+  },
+  "file_patterns": {
+    "include": [
+      "*.py",
+      "*.js",
+      "*.ts",
+      "*.tsx",
+      "*.jsx",
+      "*.md",
+      "*.yml",
+      "*.yaml",
+      "*.json"
+    ],
+    "exclude": [
+      "node_modules/**",
+      ".git/**",
+      "dist/**",
+      "build/**",
+      "*.min.js",
+      "*.bundle.js",
+      "__pycache__/**",
+      "*.pyc",
+      ".venv/**",
+      "venv/**"
+    ]
+  },
+  "quality_checks": {
+    "lint_enabled": true,
+    "type_check_enabled": true,
+    "test_coverage_enabled": true,
+    "security_scan_enabled": true
+  },
+  "drift_detection": {
+    "enabled": true,
+    "severity_levels": {
+      "low": 0,
+      "medium": 2,
+      "high": 5
+    },
+    "custom_patterns": []
+  },
+  "charter_compliance": {
+    "enabled": true,
+    "strict_mode": false,
+    "policy_file_extensions": [".md", ".yml", ".yaml", ".json"],
+    "required_sections": [
+      "Doctrine-ID",
+      "Ethics",
+      "Policy"
+    ]
+  },
+  "attestation": {
+    "include_hash": true,
+    "include_timestamp": true,
+    "include_commit_sha": true,
+    "sign_attestation": false
+  },
+  "ledger": {
+    "enabled": false,
+    "api_url": "",
+    "timeout_seconds": 30,
+    "retry_attempts": 3
+  },
+  "reporting": {
+    "verbose": true,
+    "save_artifacts": true,
+    "artifact_retention_days": 90,
+    "include_detailed_logs": true
+  }
+}

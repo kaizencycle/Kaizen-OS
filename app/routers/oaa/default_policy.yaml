@@ -1,0 +1,19 @@
+version: 1
+rules:
+  - id: allow-open-licensed
+    when: "license in {'MIT','APACHE-2.0','BSD-3-CLAUSE','CC-BY-4.0','CC0'}"
+    effect: pass
+
+  - id: block-pii-leak
+    when: "has_pii_leak or ('pii' in meta and float(meta.get('pii','0')) > 0.2)"
+    effect: deny
+
+  - id: require-fresh-or-review
+    when: "last_update_days is not None and last_update_days > 180"
+    effect: review
+
+  - id: min-composite
+    when: "composite < 0.80"
+    effect: deny
+
+defaults: review

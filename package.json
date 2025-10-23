@@ -1,0 +1,27 @@
+{
+  "name": "@gic/oaa-verify",
+  "version": "0.1.0",
+  "type": "module",
+  "bin": {
+    "oaa-verify": "./bin/oaa-verify.js"
+  },
+  "dependencies": {
+    "tweetnacl": "^1.0.3",
+    "yaml": "^2.8.1",
+    "node-fetch": "^3.3.2"
+  },
+  "scripts": {
+    "prepare": "husky install",
+    "civic:validate": "python3 .civic/ledger-hook.py --help",
+    "civic:sweep": "python3 .civic/ledger-hook.py",
+    "civic:setup": "python3 .civic/setup-civic-system.py",
+    "civic:status": "python3 -c \"import json; print(json.dumps({\"civic_system\": \"active\", \"version\": \"1.0.0\"}, indent=2))\"",
+    "broker:run": "node scripts/broker-client.ts",
+    "broker:test": "node scripts/test-thought-broker.ts",
+    "broker:validate": "ajv validate -s schemas/civic-services.schema.json -d configs/services.json --strict=false || true"
+  },
+  "devDependencies": {
+    "husky": "^9.1.7",
+    "ajv-cli": "^5.0.0"
+  }
+}

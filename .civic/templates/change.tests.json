@@ -1,0 +1,50 @@
+{
+  "chamber": "OAA-API-Library",
+  "cycle": "C-109",
+  "test_suite": "civic-patch-tests",
+  "tests": [
+    {
+      "name": "API endpoint returns 200",
+      "type": "unit",
+      "input": {
+        "method": "GET",
+        "path": "/api/ubi/summary",
+        "headers": {"Authorization": "Bearer test-token"}
+      },
+      "expected_output": {
+        "status": 200,
+        "content_type": "application/json"
+      }
+    },
+    {
+      "name": "Security headers present",
+      "type": "security",
+      "input": {
+        "method": "GET",
+        "path": "/api/ubi/summary"
+      },
+      "expected_output": {
+        "headers": {
+          "X-Content-Type-Options": "nosniff",
+          "X-Frame-Options": "DENY",
+          "X-XSS-Protection": "1; mode=block"
+        }
+      }
+    },
+    {
+      "name": "Performance within SLO",
+      "type": "performance",
+      "input": {
+        "method": "GET",
+        "path": "/api/ubi/summary",
+        "concurrent_requests": 100
+      },
+      "expected_output": {
+        "p95_latency_ms": "< 500",
+        "error_rate": "< 0.01"
+      }
+    }
+  ],
+  "integrity_anchor": "sha256:...",
+  "parent_chamber": "Command Ledger III"
+}
