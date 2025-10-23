@@ -1,0 +1,96 @@
+name: incident-close-on-green
+on:
+  schedule:
+    - cron: "*/5 * * * *"   # every 5 minutes
+  workflow_dispatch: {}
+
+jobs:
+  probe-and-close:
+    runs-on: ubuntu-latest
+    env:
+      HUB_BASE_URL: ${{ vars.HUB_BASE_URL }}          # e.g. https://oaa-hub.onrender.com
+      HUB_AUTH_HEADER: ${{ secrets.HUB_AUTH_HEADER }} # optional, if your /api/dev needs auth
+      CLOSE_GRACE_MIN: ${{ vars.CLOSE_GRACE_MIN || 10 }}  # wait this many minutes "green" before closing
+    steps:
+      - name: Fetch Sentinel status + vitals
+        id: pull
+        shell: bash
+        run: |
+          HDR=""
+          if [ -n "${HUB_AUTH_HEADER}" ]; then HDR="-H '${HUB_AUTH_HEADER}'"; fi
+
+          STATUS_JSON=$(bash -lc "curl -sS ${HDR} ${HUB_BASE_URL}/api/dev/sentinel/status || echo '{}'")
+          VITALS_JSON=$(bash -lc "curl -sS ${HDR} ${HUB_BASE_URL}/api/dev/sentinel/vitals || echo '{}'")
+
+          echo "status=${STATUS_JSON//%/%25}" >> $GITHUB_OUTPUT
+          echo "vitals=${VITALS_JSON//%/%25}" >> $GITHUB_OUTPUT
+
+          S_STATE=$(echo "${STATUS_JSON}" | jq -r '.state // "unknown"')
+          V_STATE=$(echo "${VITALS_JSON}" | jq -r '.state // "unknown"')
+
+          # choose worst (red > amber > green > unknown)
+          rank(){ case "$1" in red) echo 3;; amber) echo 2;; green) echo 1;; *) echo 0;; esac; }
+          if [ $(rank "$S_STATE") -ge $(rank "$V_STATE") ]; then WORST="$S_STATE"; else WORST="$V_STATE"; fi
+          echo "worst=${WORST}" >> $GITHUB_OUTPUT
+
+      - name: Exit if not green
+        if: ${{ steps.pull.outputs.worst != 'green' }}
+        run: echo "Not green; nothing to close."
+
+      - name: Compute grace cutoff
+        id: grace
+        if: ${{ steps.pull.outputs.worst == 'green' }}
+        run: |
+          GRACE_MIN=${CLOSE_GRACE_MIN:-10}
+          CUTOFF_EPOCH=$(( $(date -u +%s) - GRACE_MIN*60 ))
+          echo "cutoff=${CUTOFF_EPOCH}" >> $GITHUB_OUTPUT
+          echo "Using grace = ${GRACE_MIN} min (cutoff epoch ${CUTOFF_EPOCH})"
+
+      - name: Find open incidents
+        id: list
+        if: ${{ steps.pull.outputs.worst == 'green' }}
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const { data: issues } = await github.rest.issues.listForRepo({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: "open",
+              labels: "incident,sentinel"
+            });
+            core.setOutput("json", JSON.stringify(issues || []))
+
+      - name: Close eligible incidents (updated before grace cutoff)
+        if: ${{ steps.pull.outputs.worst == 'green' }}
+        uses: actions/github-script@v7
+        env:
+          CUTOFF: ${{ steps.grace.outputs.cutoff }}
+        with:
+          script: |
+            const issues = JSON.parse(core.getInput('issues_json') || '[]');
+            const cutoff = Number(process.env.CUTOFF || 0);
+            const toClose = issues.filter(i => {
+              const updated = new Date(i.updated_at).getTime()/1000;
+              return updated <= cutoff;
+            });
+            for (const i of toClose) {
+              const body = [
+                "✅ **Recovery detected** — Sentinel returned to **GREEN**.",
+                "",
+                "- Auto-closer: `incident-close-on-green`",
+                `- Last updated: ${i.updated_at}`,
+                "",
+                "If this was premature, re-open or create a follow-up."
+              ].join("\n");
+              await github.rest.issues.createComment({
+                owner: context.repo.owner, repo: context.repo.repo,
+                issue_number: i.number, body
+              });
+              await github.rest.issues.update({
+                owner: context.repo.owner, repo: context.repo.repo,
+                issue_number: i.number, state: "closed"
+              });
+              core.info(`Closed incident #${i.number}`);
+            }
+        with:
+          issues_json: ${{ steps.list.outputs.json }}

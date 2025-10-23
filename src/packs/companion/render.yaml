@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: companion-site
+    env: node
+    plan: free
+    buildCommand: npm install && npm run build
+    startCommand: npm run start
+    envVars:
+      - key: COMPANION_NAME
+        value: Companion
+      - key: GATEWAY_HMAC_SECRET
+        generateValue: true

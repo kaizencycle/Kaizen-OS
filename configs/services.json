@@ -1,0 +1,131 @@
+{
+  "$schema": "https://kaizencycle.org/schemas/civic-services.schema.json",
+  "version": "1.0.0",
+  "project": "Kaizen Civic AI Stack",
+  "cycle": "C-109",
+  "services": [
+    {
+      "id": "oaa-hub",
+      "alias": ["OAA-API-Library", "OAA Hub"],
+      "type": "web",
+      "repo": "github.com/kaizencycle/OAA-API-Library",
+      "envBaseUrl": "NEXT_PUBLIC_BASE_URL",
+      "healthPath": "/api/integrity-check",
+      "public": true,
+      "routes": [
+        "/api/health",
+        "/api/integrity-check",
+        "/api/proof/:id",
+        "/api/gic/ubi/:userId",
+        "/ai-seo/index.jsonld",
+        "/sitemap.xml"
+      ],
+      "dependsOn": ["civic-ledger", "gic-indexer"],
+      "env": {
+        "required": [
+          "LEDGER_BASE_URL",
+          "PROOF_CACHE_SECONDS",
+          "AGENT_ID",
+          "GI_MIN",
+          "INTEGRITY_GRACE_MS"
+        ],
+        "optional": ["GIC_INDEXER_URL", "LEDGER_READ_TOKEN", "OAA_ISSUER", "OAA_VERIFY_PIN_KEYS", "OAA_ED25519_PUBLIC_B64"]
+      }
+    },
+    {
+      "id": "civic-ledger",
+      "alias": ["Civic Ledger Core", "Ledger"],
+      "type": "web",
+      "repo": "github.com/kaizencycle/civic-ledger-core",
+      "envBaseUrl": "LEDGER_BASE_URL",
+      "healthPath": "/healthz",
+      "public": "read-optional",
+      "routes": [
+        "/ledger/attest",
+        "/ledger/proofs/:id",
+        "/ledger/gi"
+      ],
+      "dependsOn": [],
+      "env": {
+        "required": ["DATABASE_URL", "JWT_SECRET", "LEDGER_ADMIN_TOKEN"],
+        "optional": ["REDIS_URL"]
+      }
+    },
+    {
+      "id": "citizen-shield",
+      "alias": ["Lab6-Proof", "Shield"],
+      "type": "web",
+      "repo": "github.com/kaizencycle/lab6-proof",
+      "envBaseUrl": "SHIELD_BASE_URL",
+      "healthPath": "/healthz",
+      "public": false,
+      "routes": [
+        "/shield/inspect",
+        "/shield/quarantine",
+        "/shield/incidents"
+      ],
+      "dependsOn": ["civic-ledger"],
+      "env": {
+        "required": ["LEDGER_BASE_URL", "LEDGER_ADMIN_TOKEN"],
+        "optional": []
+      }
+    },
+    {
+      "id": "gic-indexer",
+      "alias": ["GIC Indexer"],
+      "type": "web",
+      "repo": "github.com/kaizencycle/gic-indexer",
+      "envBaseUrl": "GIC_INDEXER_URL",
+      "healthPath": "/ubi/summary",
+      "public": true,
+      "routes": [
+        "/ubi/run",
+        "/ubi/:userId",
+        "/ubi/summary"
+      ],
+      "dependsOn": ["civic-ledger"],
+      "env": {
+        "required": ["DATABASE_URL", "LEDGER_BASE_URL", "LEDGER_ADMIN_TOKEN", "UBI_BASE", "MAX_MERIT_CAP", "REGION_DEFAULT"],
+        "optional": ["REDIS_URL"]
+      }
+    },
+    {
+      "id": "eomm-vault",
+      "alias": ["Lab4-Proof", "Vault"],
+      "type": "web",
+      "repo": "github.com/kaizencycle/lab4-proof",
+      "envBaseUrl": "EOMM_BASE_URL",
+      "healthPath": "/healthz",
+      "public": "read-optional",
+      "routes": [
+        "/eomm/entry",
+        "/eomm/entry/:id",
+        "/eomm/validate"
+      ],
+      "dependsOn": ["civic-ledger"],
+      "env": {
+        "required": ["LEDGER_BASE_URL"],
+        "optional": []
+      }
+    },
+    {
+      "id": "beacon-api",
+      "alias": ["AI-SEO/GEO", "Discovery"],
+      "type": "web",
+      "repo": "github.com/kaizencycle/OAA-API-Library",
+      "envBaseUrl": "NEXT_PUBLIC_BASE_URL",
+      "healthPath": "/api/health",
+      "public": true,
+      "routes": [
+        "/ai-seo/beacons/:slug.jsonld",
+        "/ai-seo/index.jsonld",
+        "/sitemap.xml"
+      ],
+      "dependsOn": [],
+      "env": {
+        "required": [],
+        "optional": []
+      }
+    }
+  ]
+}

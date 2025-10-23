@@ -1,0 +1,42 @@
+{
+  "allowed_domains": [
+    "status.render.com",
+    "raw.githubusercontent.com",
+    "api.github.com"
+  ],
+  "blocked_domains": [
+    "*admin*",
+    "*login*",
+    "*checkout*"
+  ],
+  "allowed_paths": [
+    "^\\.github/workflows/",
+    "^docs/",
+    "^scripts/",
+    "^routes/api/",
+    "^lib/",
+    "^gateway/"
+  ],
+  "protected_paths": [
+    "^ledger/",
+    "^migrations/",
+    "^policy/",
+    "^gateway/prod/"
+  ],
+  "rate_limits": {
+    "scout_reads_per_min": 10,
+    "deploys_per_day": 5
+  },
+  "circuit_breakers": {
+    "scout_error_rate_pct": 20,
+    "deploy_rollback_on": [
+      "p95_latency_ms>1500",
+      "5xx_rate_pct>3"
+    ]
+  },
+  "require_human_for": [
+    "protected_paths",
+    "new_external_endpoint",
+    "schema_change"
+  ]
+}

@@ -1,0 +1,69 @@
+{
+  "@context": "https://schema.org",
+  "@type": "DataFeed",
+  "name": "Civic AI Lore — By Accord",
+  "description": "Civic AI content organized by Virtue Accord",
+  "url": "/lore/indexes/by-accord.jsonld",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Civic Ledger DAO",
+    "url": "https://github.com/kaizencycle/OAA-API-Library"
+  },
+  "civicTag": "GEO-Optimized",
+  "dataFeedElement": [
+    {
+      "@type": "CreativeWork",
+      "name": "Truth Accord — Content",
+      "description": "Content focused on truth, accuracy, and verifiability",
+      "url": "/lore/accords/truth",
+      "keywords": ["Truth", "Accuracy", "Verifiability", "Fact-checking"],
+      "accord": "Truth",
+      "virtue": "Truth"
+    },
+    {
+      "@type": "CreativeWork",
+      "name": "Trust Accord — Content",
+      "description": "Content focused on trust, transparency, and reliability",
+      "url": "/lore/accords/trust",
+      "keywords": ["Trust", "Transparency", "Reliability", "Provenance"],
+      "accord": "Trust",
+      "virtue": "Trust"
+    },
+    {
+      "@type": "CreativeWork",
+      "name": "Care Accord — Content",
+      "description": "Content focused on care, wellbeing, and positive impact",
+      "url": "/lore/accords/care",
+      "keywords": ["Care", "Wellbeing", "Positive Impact", "Harm Prevention"],
+      "accord": "Care",
+      "virtue": "Care"
+    },
+    {
+      "@type": "CreativeWork",
+      "name": "Honor Accord — Content",
+      "description": "Content focused on honor, respect, and dignity",
+      "url": "/lore/accords/honor",
+      "keywords": ["Honor", "Respect", "Dignity", "Recognition"],
+      "accord": "Honor",
+      "virtue": "Honor"
+    },
+    {
+      "@type": "CreativeWork",
+      "name": "Wisdom Accord — Content",
+      "description": "Content focused on wisdom, learning, and knowledge",
+      "url": "/lore/accords/wisdom",
+      "keywords": ["Wisdom", "Learning", "Knowledge", "Teaching"],
+      "accord": "Wisdom",
+      "virtue": "Wisdom"
+    },
+    {
+      "@type": "CreativeWork",
+      "name": "Courage Accord — Content",
+      "description": "Content focused on courage, innovation, and standing up",
+      "url": "/lore/accords/courage",
+      "keywords": ["Courage", "Innovation", "Standing Up", "Persistence"],
+      "accord": "Courage",
+      "virtue": "Courage"
+    }
+  ]
+}
