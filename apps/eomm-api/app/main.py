@@ -111,6 +111,13 @@ try:
 except Exception as e:
     log.error(f"❌ Failed to load genesis router: {e}")
 
+try:
+    from app.routers import charter as charter_router
+    app.include_router(charter_router.router)
+    log.info("✅ Charter router loaded")
+except Exception as e:
+    log.error(f"❌ Failed to load charter router: {e}")
+
 # Admin token configuration
 ADMIN_TOKEN = os.getenv("ADMIN_TOKEN", "")
 
