@@ -1,0 +1,10 @@
+{
+  "cline.mcpServers": {
+    "atlas-sentinel": {
+      "command": "node",
+      "args": [
+        "${workspaceFolder}/apps/atlas-mcp-server/dist/index.js"
+      ]
+    }
+  }
+}

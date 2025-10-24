@@ -1,0 +1,13 @@
+{
+  "mcpServers": {
+    "atlas-sentinel": {
+      "command": "node",
+      "args": [
+        "C:\\Users\\mikej\\Desktop\\Civic-OS\\Civic-OS\\apps\\atlas-mcp-server\\dist\\index.js"
+      ],
+      "env": {
+        "CIVIC_OS_ROOT": "C:\\Users\\mikej\\Desktop\\Civic-OS\\Civic-OS"
+      }
+    }
+  }
+}
