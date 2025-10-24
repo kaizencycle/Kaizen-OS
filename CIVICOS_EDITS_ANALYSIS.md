@@ -15,7 +15,7 @@ I've successfully analyzed and reorganized all files from the `CivicOS-Edits` fo
 
 | Original Location | New Location | Type | Status |
 |------------------|--------------|------|--------|
-| `v1/base44_scaffold/` | `apps/base44-scaffold/` | Next.js App | ✅ Moved |
+| `v1/website_creator/` | `apps/website-creator/` | Next.js App | ✅ Moved |
 | `v1/civic-stack/` | `apps/civic-stack/` | PWA Stack | ✅ Moved |
 | `v1/kaizencycle-gic-site-repo/` | `apps/kaizencycle-hub/` | Landing Page | ✅ Moved |
 | `v1/kaizencycle_gic_site/` | `apps/kaizencycle-gic-site/` | Static Site | ✅ Moved |
@@ -24,7 +24,7 @@ I've successfully analyzed and reorganized all files from the `CivicOS-Edits` fo
 
 ### 🎯 Project Analysis
 
-#### 1. **Base44 Scaffold** (`apps/base44-scaffold/`)
+#### 1. **Website Creator** (`apps/website-creator/`)
 - **Purpose**: Next.js app for claiming `.gic` domains
 - **Features**: 
   - Domain registration API (`/api/names/register`)
