@@ -4,6 +4,7 @@ export * from './types';
 export * from './utils';
 export * from './civic-os-gateway';
 export * from './CivicOSHub';
+export * from './constitution';
 
 // Re-export common types
 export interface CivicService {
