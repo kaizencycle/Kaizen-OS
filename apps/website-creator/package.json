@@ -1,6 +1,7 @@
 {
-  "name": "base44",
-  "version": "0.1.0",
+  "name": "@civic/website-creator",
+  "version": "1.0.0",
+  "description": "Civic OS Website Creator - Build .gic domain websites",
   "private": true,
   "scripts": {
     "dev": "next dev -p 3000",
@@ -9,16 +10,16 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "next": "14.2.5",
-    "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "next": "^14.2.5",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
     "@types/node": "^20.11.19",
     "@types/react": "^18.2.15",
     "@types/react-dom": "^18.2.7",
-    "typescript": "^5.4.5",
     "eslint": "^8.57.0",
-    "eslint-config-next": "14.2.5"
+    "eslint-config-next": "14.2.5",
+    "typescript": "^5.4.5"
   }
 }

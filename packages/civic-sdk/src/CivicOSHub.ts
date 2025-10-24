@@ -13,7 +13,7 @@
  * 5. Civic Ledger - https://civic-protocol-core-ledger.onrender.com
  * 6. GIC Indexer - https://gic-indexer.onrender.com
  * 7. GIC Gateway (local) - apps/gic-gateway
- * 8. .gic Registry (local) - apps/base44-scaffold
+ * 8. .gic Registry (local) - apps/website-creator
  */
 
 export interface CivicConfig {

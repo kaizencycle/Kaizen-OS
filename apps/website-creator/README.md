@@ -1,13 +1,22 @@
-# Base44 — Civic Home Builder (Next.js + TypeScript)
+# 🌐 Website Creator — Civic .gic Domain Builder
 
-Spin up sovereign **Civic Homes** that bind a `name.gic` to a DID, profile JSON-LD, and ledger proofs.
-This is a **scaffold**: API routes are implemented with in-memory mocks; wire them to your **Civic Ledger**.
+**Build beautiful websites for your `.gic` domains!** 
 
-## Quick start
+Create sovereign **Civic Homes** that bind a `name.gic` to a DID, profile JSON-LD, and ledger proofs. This is the public-facing tool for anyone to create their own `.gic` website in the Civic OS ecosystem.
+
+## 🚀 Quick Start
+
 ```bash
-pnpm i   # or npm i / yarn
-pnpm dev # open http://localhost:3000
+# Install dependencies
+npm install
+
+# Start development server
+npm run dev
+
+# Open http://localhost:3000
 ```
+
+**Create your first .gic website in minutes!**
 
 ## Key routes
 - `POST /api/names/register` → reserve a name (mock reservation, returns reservation_id)

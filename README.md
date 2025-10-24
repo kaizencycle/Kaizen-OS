@@ -88,7 +88,7 @@
 ```
 civic-os/
 ├─ apps/                          # Core Applications
-│  ├─ hub-web/                    # OAA Hub + .gic site maker (Next.js)
+│  ├─ website-creator/            # .gic Website Creator (Next.js)
 │  ├─ ledger-api/                 # Civic Ledger Core
 │  ├─ indexer-api/                # GIC Indexer
 │  ├─ eomm-api/                   # E.O.M.M. Reflections
@@ -175,7 +175,7 @@ npm run clean
 
 ### Core Services
 
-- **hub-web** (Port 3000) - Main OAA Hub interface
+- **website-creator** (Port 3000) - .gic Website Creator interface
 - **ledger-api** (Port 4001) - Civic Ledger Core
 - **indexer-api** (Port 4002) - GIC Indexer
 - **eomm-api** (Port 4003) - E.O.M.M. Reflections
