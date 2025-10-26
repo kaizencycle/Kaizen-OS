@@ -1,0 +1,57 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "VIPRecord",
+  "description": "Vector Integrity Protocol record schema",
+  "type": "object",
+  "properties": {
+    "embedding_id": {
+      "type": "string",
+      "description": "SHA-256 hash of content + metadata"
+    },
+    "source": {
+      "type": "string",
+      "description": "Source of content (e.g., 'lab4.reflection', 'oaa.lesson')"
+    },
+    "user": {
+      "type": "string",
+      "description": "User ID"
+    },
+    "constitutional_score": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 100,
+      "description": "AI Integrity Constitution compliance score"
+    },
+    "gi_score": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1,
+      "description": "User Good Intent score"
+    },
+    "integrity_score": {
+      "type": "number",
+      "description": "Weighted composite (0.6*constitutional + 0.4*gi*100)"
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO 8601 timestamp"
+    },
+    "ledger_hash": {
+      "type": ["string", "null"],
+      "description": "Attestation hash from Kaizen Ledger"
+    },
+    "metadata": {
+      "type": "object",
+      "description": "Additional metadata (source, companion, etc.)"
+    }
+  },
+  "required": [
+    "embedding_id",
+    "source",
+    "user",
+    "integrity_score",
+    "timestamp"
+  ]
+}
+
