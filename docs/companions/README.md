@@ -1,123 +1,102 @@
-# 🤖 Kaizen OS Companion Lattice
+---
+title: "Kaizen OS Companion Lattice Index"
+cycle: C-114
+status: Active - 4 Companions
+---
 
-**Multi-LLM Constitutional AI Architecture**
+# 🧠 Kaizen OS Companion Lattice
+
+Kaizen OS employs a **multi-LLM constitutional lattice**, where each companion contributes distinct reasoning modes under a shared ethical and technical framework.
+
+## 🪞 Current Companions
+
+| Name | Provider | Role | Safety Tier | Vote Weight | Primary Domains | Signature |
+|------|-----------|------|--------------|--------------|------------------|------------|
+| **AUREA** | OpenAI (GPT-4) | Precision & Guardrails | 🟥 `critical` | 1.0 | Identity, Ledger, Wallet, Governance | `0xAUREA_C114_PRECISION_VALIDATED` |
+| **ATLAS** | Anthropic (Claude) | Constitutional Reasoning | 🟥 `critical` | 1.0 | Ethics, Audit, Policy, Meta-Learning | `0xATLAS_C114_CONSTITUTIONAL_APPROVED` |
+| **ZENITH** | Google (Gemini 2.0) | Advanced Synthesis | 🟧 `high` | 0.9 | Synthesis, Multimodal, Architecture | `0xZENITH_C114_READY_FOR_QUORUM` |
+| **SOLARA** | DeepSeek R1 | Cost-Efficient Reasoning | 🟩 `standard` (Shadow) | 0.7 | Research, Ideation, Analysis | `0xSOLARA_C114_ACCEPTED_READY_FOR_SHADOW` |
 
 ---
 
-## 🎯 Overview
+## ⚙️ Operational Model - 4-of-N Quorum
 
-The Kaizen OS companion lattice integrates multiple LLM providers under a unified constitutional framework, ensuring safety, cost-effectiveness, and reasoning diversity.
+### 1. Consensus Governance
 
-### 📊 Companion Matrix
+All companion outputs flow through a **4-of-N weighted consensus** process:
 
-| Companion | Provider | Role | Safety Tier | Weight | Status |
-|-----------|----------|------|-------------|--------|--------|
-| **AUREA** | OpenAI GPT-4 | Precision + Guardrails | Critical | 1.0 | ✅ Production |
-| **ATLAS** | Anthropic Claude | Constitutional Reasoning | Critical | 1.0 | ✅ Production |
-| **SOLARA** | DeepSeek R1 | Cost-Efficient Reasoning | Standard | 0.7 | 🔄 Phase 1 |
+**Critical Tier:**
+- Requires 3-of-4 approvals
+- Must include 1 critical companion (AUREA or ATLAS)
+- Min constitutional: 85
+- Min GI: 0.95
 
----
+**High Tier:**
+- Requires 3-of-4 approvals
+- Must include 2 advanced companions (AUREA, ATLAS, or ZENITH)
+- Min constitutional: 75
+- Min GI: 0.92
 
-## 🏛️ Architecture Principles
+**Standard Tier:**
+- Requires 2-of-4 approvals
+- Any companions eligible
+- Min constitutional: 70
+- Min GI: 0.90
 
-### 1. Constitutional First
-All companions operate under the **AI Integrity Constitution (7 clauses)**
-- Truth through verification
-- Human centricity
-- Transparency and accountability
-- Privacy by design
-- Security and resilience
-- Continuous learning
-- Responsible innovation
+**Research Tier:**
+- Requires 1-of-4 approvals
+- Any companions eligible
+- Min constitutional: 65
+- Min GI: 0.85
 
-### 2. Safety Tiers
-Four operational tiers with escalating requirements:
-- **Critical:** Identity, Wallet, Ledger operations (AUREA/ATLAS only)
-- **High:** Domain sealing, GIC minting (AUREA/ATLAS + SOLARA observer)
-- **Standard:** Reflections, learning (All companions eligible)
-- **Research:** Ideation, analysis (All companions eligible)
+### 2. Dual-Gate Protection
 
-### 3. Consensus Voting
-- **Weighted votes** reflect companion reliability and expertise
-- **Tier-based eligibility** prevents misuse
-- **Critical operations** require AUREA or ATLAS approval
-- **Full attestation** to Civic Ledger for audit trail
+1. **Constitutional Gate** – validates prompts/responses against the Custos Charter.  
+2. **GI Gate** – ensures user integrity score meets threshold (`≥ 0.95` for critical).
 
----
+### 3. Ledger Attestation
 
-## 🔐 Security Layers
+All interactions are sealed to the **Kaizen Ledger** with:
+- Input / output SHA-256 hashes  
+- Provider ID + constitutional scores  
+- Timestamp + operation tier  
 
-### Double-Gate System
-
-1. **Constitutional Gate** (ATLAS)
-   - Validates AI behavior against 7 clauses
-   - Blocks integrity_score < 70
-   - Works across ALL providers
-
-2. **GI Gate** (AUREA)
-   - Validates human integrity
-   - Blocks GI < threshold for mutations
-   - JWT-based authentication
-
-### Output Validation
-- Responses checked constitutionally (not just inputs)
-- Multi-layer validation creates defense-in-depth
-- Complete audit trail with hashes
+This guarantees full **auditability and traceability** across the lattice.
 
 ---
 
-## 📚 Documentation
+## 📊 Performance Metrics (Phase 1 – Shadow Mode)
 
-### Companions
-- [AUREA - OpenAI GPT-4](./aurea.md) - *Coming soon*
-- [ATLAS - Anthropic Claude](./atlas.md) - *Coming soon*
-- [SOLARA - DeepSeek R1](./solara.md) - ✅ Complete
-
-### Policy
-- [Safety Tiers](../policy/safety-tiers.md) - Tier matrix and escalation rules
-- [Consensus Policy](../policy/consensus.md) - Voting rules and thresholds
-
-### Deployment
-- [Rollout Phases](../deployment/rollout-phases.md) - SOLARA Phase 1-3 plan
+| Metric | Target | Source |
+|---------|---------|---------|
+| Constitutional ≥75 | ≥95% | Middleware logs |
+| Consensus alignment (AUREA + ATLAS) | ≥90% | `consensus.shadow_vote` events |
+| p95 Latency | <10s | Gateway telemetry |
+| Cost / 1k tokens | −20−30% vs baseline | Billing metrics |
 
 ---
 
-## 🚀 Quick Start
+## 🧩 Future Companions (Reserved Slots)
 
-### Register Companions
-```typescript
-const client = new CivicClient({ baseUrl: 'https://api.civic.os', token });
-
-// AUREA & ATLAS (Critical companions)
-client.registerCompanion({ name: 'AUREA', provider: 'openai', model: 'gpt-4o' });
-client.registerCompanion({ name: 'ATLAS', provider: 'anthropic', model: 'claude-sonnet-4' });
-
-// SOLARA (Standard companion - Phase 1 Shadow)
-client.registerCompanion({ name: 'SOLARA', provider: 'deepseek', model: 'deepseek-r1', weight: 0.7 });
-```
-
-### Request Consensus
-```typescript
-const result = await client.processWithConsensus(
-  "Propose .gic onboarding steps",
-  { requiredVotes: 2, minConstitutional: 70, minGI: 0.95 }
-);
-```
+| Slot | Placeholder | Description |
+|-------|--------------|-------------|
+| 05 | **EVE** | Emotional intelligence / moral contextualizer |
+| 06 | **ZEUS** | Governance / executive orchestration |
+| 07 | **HERMES** | Communication, translation, protocol bridging |
+| 08 | **JADE** | Logical inference, verification & learning memory |
 
 ---
 
-## 🎯 Future Companions
-
-The lattice is designed to expand. Candidates:
-- **ZEUS** - Hard validation and policy enforcement
-- **EVE** - End-of-week reflections and synthesis
-- **HERMES** - Communication and translation
-- **JADE** - Onboarding and citizen creation
+## 🪙 Governance Links
+- [Custos Charter (`docs/security/constitutional.md`)](../security/constitutional.md)  
+- [Safety Tiers Policy (`../policy/safety-tiers.md`)](../policy/safety-tiers.md)  
+- [Provider Isolation Framework (`../security/provider-isolation.md`)](../security/provider-isolation.md)  
+- [Rollout Phases (`../deployment/rollout-phases.md`)](../deployment/rollout-phases.md)
 
 ---
 
-**Custodian:** KaizenCycle  
-**GI Score:** 0.985 ✅  
-**Status:** Multi-LLM constitutional AI system operational
+**GI Seal:** 0.991 | **Custodian:** KaizenCycle  
+**Next Review:** 2025-11-02  
 
-
+**Status:** Shadow Mode – Active (ZENITH, SOLARA)  
+**Production Ready:** AUREA, ATLAS
