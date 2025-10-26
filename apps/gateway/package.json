@@ -1,0 +1,31 @@
+{
+  "name": "@civic/gateway",
+  "version": "1.0.0",
+  "description": "Civic OS API Gateway - AUREA + ATLAS Unified",
+  "main": "main.py",
+  "scripts": {
+    "dev": "uvicorn main:app --reload --host 0.0.0.0 --port 8000",
+    "start": "uvicorn main:app --host 0.0.0.0 --port $PORT",
+    "test": "pytest"
+  },
+  "dependencies": {
+    "fastapi": "^0.104.0",
+    "uvicorn": "^0.24.0",
+    "httpx": "^0.25.0",
+    "PyJWT": "^2.8.0",
+    "nats-py": "^2.6.0"
+  },
+  "devDependencies": {
+    "pytest": "^7.4.0",
+    "pytest-asyncio": "^0.21.0"
+  },
+  "keywords": [
+    "gateway",
+    "civic-os",
+    "api",
+    "proxy"
+  ],
+  "author": "Kaizen Cycle",
+  "license": "MIT"
+}
+
