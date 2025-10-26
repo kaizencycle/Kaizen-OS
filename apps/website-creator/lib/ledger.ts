@@ -53,3 +53,4 @@ export async function resolveName(name: string): Promise<Resolution> {
 export async function submitAttestation(body: any) {
   return { ok: true, received: body, ts: new Date().toISOString() };
 }
+

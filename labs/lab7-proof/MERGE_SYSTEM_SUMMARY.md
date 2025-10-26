@@ -73,3 +73,4 @@ The system is now fully configured to:
 4. **Prepare** for the next batch of edits
 
 **Command Prompt: "made lab7 edit"** 🚀
+

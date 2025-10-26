@@ -28,3 +28,4 @@
   },
   "required": ["cycle","userId","ubiBase","geoWeight","merit","penalty","total"]
 }
+

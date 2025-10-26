@@ -27,3 +27,4 @@ def archive_day(date: str):
         return {"ok": True, "archive_status": "Archive sealed successfully.", "zip_file": zip_file}
     except FileNotFoundError as e:
         raise HTTPException(status_code=409, detail=str(e))
+

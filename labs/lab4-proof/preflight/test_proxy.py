@@ -68,3 +68,4 @@ if __name__ == "__main__":
     test_malformed_json()
     test_missing_fields()
     test_trailing_comma()
+

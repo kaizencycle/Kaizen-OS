@@ -271,3 +271,4 @@ graph TB
 ---
 
 *This manifest is part of the Civic AI Native Stack — a living, breathing architecture for digital civilization.*
+

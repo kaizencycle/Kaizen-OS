@@ -53,3 +53,4 @@ export function ensureAgentGuards(root:string){
 
   return { smoked, guard: guard!, cooldown: cool!, now, remainingSec, paths: { guardPath, coolPath } };
 }
+

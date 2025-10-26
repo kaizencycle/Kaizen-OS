@@ -112,3 +112,4 @@ def write_bundle(
             out["archive_status"] = "skipped: Merkle root missing"
 
     return out
+

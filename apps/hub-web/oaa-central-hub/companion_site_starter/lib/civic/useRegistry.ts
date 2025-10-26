@@ -20,3 +20,4 @@ export function useRegistry(label: string) {
   
   return { data, loading, error };
 }
+

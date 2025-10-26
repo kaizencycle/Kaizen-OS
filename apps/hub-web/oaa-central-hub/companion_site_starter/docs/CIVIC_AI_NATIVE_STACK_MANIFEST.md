@@ -199,3 +199,4 @@ To become a citizen of the Civic AI Native Stack:
 ---
 
 *This manifest is part of the Civic AI Native Stack — a living, breathing architecture for digital civilization.*
+

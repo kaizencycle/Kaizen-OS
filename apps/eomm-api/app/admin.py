@@ -31,3 +31,4 @@ def config():
         "version": "0.1.0",
         "features": ["reflections", "agora", "attestations", "hooks", "auth"]
     }
+

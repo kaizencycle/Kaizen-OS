@@ -1,4 +1,4 @@
-// Shared types for Civic OS services
+// Shared types for Kaizen OS services
 
 export interface LedgerEntry {
   id: string;
@@ -96,3 +96,4 @@ export interface IntegrityCheck {
     errorRate: number;
   };
 }
+

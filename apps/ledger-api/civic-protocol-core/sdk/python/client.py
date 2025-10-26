@@ -398,3 +398,4 @@ if __name__ == "__main__":
     # Get balance
     balance = client.get_balance("citizen_001")
     print(f"Balance: {balance.balance} GIC")
+

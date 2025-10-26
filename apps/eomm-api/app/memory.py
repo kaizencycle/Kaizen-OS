@@ -160,3 +160,4 @@ def get_recent_events(
         "count": len(recent),
         "total_available": len(events)
     }
+

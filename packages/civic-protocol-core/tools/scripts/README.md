@@ -54,3 +54,4 @@ Create `.commit-scope.map.regex` in your repo root for local overrides.
 ## Security
 
 The system includes redaction checks to prevent sensitive terms from being committed. See `.redaction/` directory for configuration.
+

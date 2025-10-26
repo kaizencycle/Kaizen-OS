@@ -48,3 +48,4 @@ asyncio.run(main())
 **Errors**  
   
 Requests raise ApiError(code, message, details) on non-2xx responses.
+

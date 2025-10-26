@@ -43,3 +43,4 @@ jobs:
             git push origin "$BR"
             gh pr create --title "chore(sentinel): auto-patch" --body "Automated patch from Echo Health Sentinel." --base main --head "$BR" || true
           fi
+

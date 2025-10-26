@@ -151,3 +151,4 @@ class AsyncOAAClient:
         if r.status_code >= 400: await self._handle_error(r)
         data = r.json()
         return CritiqueResponse(rubric=RubricScores(**data["rubric"]), critique=data["critique"])
+

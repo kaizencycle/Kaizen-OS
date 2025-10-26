@@ -36,3 +36,4 @@ Static, PWA-ready starter for GenesisDome.org. Includes:
 - Add blog/changelog for Festivals.
 - Add newsletter capture.
 - Swap placeholders with live links as they canonize.
+

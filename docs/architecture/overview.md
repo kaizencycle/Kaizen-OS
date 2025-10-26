@@ -60,3 +60,4 @@ Threshold: GI ≥ 0.95
 4. **GI Score** - Integrity formula calculation
 5. **Attestation** - Cryptographic proof generation
 6. **Ledger Seal** - Immutable audit trail
+

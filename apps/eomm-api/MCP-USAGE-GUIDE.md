@@ -147,3 +147,4 @@ When deploying to Render:
 - Use strong, unique API keys for production
 - The local dev environment doesn't require authentication
 - Production environment requires API key authentication
+

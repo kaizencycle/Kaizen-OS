@@ -31,3 +31,4 @@ export default async function handler(_req: NextApiRequest, res: NextApiResponse
   res.setHeader("Content-Type", "audio/wav");
   res.send(buffer);
 }
+

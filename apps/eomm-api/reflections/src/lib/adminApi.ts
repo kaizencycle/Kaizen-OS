@@ -4,3 +4,4 @@ export async function adminFetch(path: string, token: string) {
   if (!res.ok) throw new Error(`${res.status} ${await res.text()}`);
   return res.json();
 }
+

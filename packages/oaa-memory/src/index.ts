@@ -1,4 +1,4 @@
-// OAA Memory - Parsers, schemas, and memory management for Civic OS
+// OAA Memory - Parsers, schemas, and memory management for Kaizen OS
 export * from './parser';
 export * from './validator';
 export * from './memory-manager';
@@ -19,3 +19,5 @@ export function validateOAA(intent: OAAIntent): ValidationResult {
   const validator = new OAAValidator();
   return validator.validate(intent);
 }
+
+

@@ -1,4 +1,4 @@
-// Shield Policies - Security policies and request guards for Civic OS
+// Shield Policies - Security policies and request guards for Kaizen OS
 export * from './policies';
 export * from './guards';
 export * from './middleware';
@@ -42,3 +42,5 @@ export class ShieldPolicyManager {
     };
   }
 }
+
+

@@ -1,7 +1,7 @@
 {
   "name": "@civic/integrity-core",
   "version": "1.0.0",
-  "description": "GI scoring, integrity checks, and middleware for Civic OS",
+  "description": "GI scoring, integrity checks, and middleware for Kaizen OS",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
@@ -24,3 +24,5 @@
     }
   }
 }
+
+

@@ -14,3 +14,4 @@
 - [ ] Canary plan defined (population %, time window, auto-rollback)
 - [ ] Staged rollout dates set (25% → 50% → 100%)
 - [ ] Kill-switch tested (secrets revoke + queue pause)
+

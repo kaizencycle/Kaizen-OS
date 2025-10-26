@@ -1,7 +1,7 @@
 {
   "name": "@civic/lab7-proof",
   "version": "1.0.0",
-  "description": "Lab7 Proof - OAA Hub and Civic OS shell/init system",
+  "description": "Lab7 Proof - OAA Hub and Kaizen OS shell/init system",
   "private": true,
   "scripts": {
     "dev": "python start-dev.py",

@@ -1,7 +1,7 @@
 {
   "name": "@civic/oaa-memory",
   "version": "1.0.0",
-  "description": "OAA parsers, schemas, and memory management for Civic OS",
+  "description": "OAA parsers, schemas, and memory management for Kaizen OS",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
@@ -24,3 +24,5 @@
     }
   }
 }
+
+

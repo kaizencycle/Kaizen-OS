@@ -11,3 +11,4 @@ def validate_payload(payload: dict, schema_path: str):
     v = Draft202012Validator(schema)
     errors = sorted(v.iter_errors(payload), key=lambda e: e.path)
     return [f"{'/'.join(map(str,e.path))}: {e.message}" for e in errors]
+

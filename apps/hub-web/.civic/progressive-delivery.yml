@@ -196,3 +196,4 @@ performance:
     max_replicas: 10
     target_cpu_utilization: 70
     target_memory_utilization: 80
+

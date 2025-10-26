@@ -234,3 +234,4 @@ components:
                   ok: { type: boolean }
                   received: { type: object }
                   at: { type: string, format: date-time }
+

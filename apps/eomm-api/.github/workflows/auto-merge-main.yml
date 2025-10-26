@@ -52,3 +52,4 @@ jobs:
               gh pr merge "$pr" --squash --delete-branch || true
             fi
           done
+

@@ -1,7 +1,7 @@
 {
   "name": "@civic/sdk",
   "version": "1.0.0",
-  "description": "Shared API clients and types for Civic OS services",
+  "description": "Shared API clients and types for Kaizen OS services",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
@@ -26,3 +26,5 @@
     }
   }
 }
+
+

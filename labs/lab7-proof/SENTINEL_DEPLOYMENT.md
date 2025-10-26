@@ -218,3 +218,4 @@ tail -f echo_logs/echo_*.json
 - **Log Rotation** - Implement log rotation to manage storage costs
 - **Alert Throttling** - Configure alert thresholds to avoid spam
 - **Resource Limits** - Set appropriate CPU/memory limits for each service
+

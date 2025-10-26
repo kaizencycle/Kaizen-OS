@@ -9,3 +9,5 @@ const reg = new ethers.Contract(process.env.REGISTRY_ADDR, abi, wallet);
 const price = await reg.basePriceWei();
 const tx = await reg.register(name, cid, proofHex, { value: price });
 console.log("tx:", tx.hash); await tx.wait(); console.log("registered", name);
+
+

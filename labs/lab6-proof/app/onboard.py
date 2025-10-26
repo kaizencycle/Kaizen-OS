@@ -70,3 +70,4 @@ async def onboard(
     background.add_task(anchor_event, token, "onboarding_seal_attested", covenant)
 
     return OnboardRes(ok=True, onboarded=covenant, attestation=None)
+

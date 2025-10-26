@@ -13,3 +13,4 @@
     "low":      { "require_red_team": false, "freeze_window_hours": 0 }
   }
 }
+

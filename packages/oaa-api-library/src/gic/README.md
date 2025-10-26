@@ -14,3 +14,4 @@ call register/update on GICRegistry → gateway resolves <name>.gic to that IPFS
 Run this pilot now (ENS/alt-root). When ready, apply for .gic TLD:
 - Keep on-chain integrity proofs mirrored as DNS TXT records
 - Keep gateway for legacy clients; native DNS will resolve .gic directly
+

@@ -30,3 +30,4 @@ class Balance(Base):
     xp: Mapped[float] = mapped_column(Float, default=0.0)
     gic: Mapped[float] = mapped_column(Float, default=0.0)
     __table_args__ = (UniqueConstraint("account_id", name="uniq_account_balance"),)
+

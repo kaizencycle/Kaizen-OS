@@ -1,4 +1,4 @@
-// Utility functions for Civic OS SDK
+// Utility functions for Kaizen OS SDK
 
 export function createServiceUrl(service: string, baseUrl: string): string {
   return `${baseUrl}/api/${service}`;
@@ -101,3 +101,5 @@ export function sanitizeInput(input: any): any {
   
   return input;
 }
+
+

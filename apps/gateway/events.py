@@ -1,5 +1,5 @@
 """
-Civic OS Event Bus with Ledger Attestation
+Kaizen OS Event Bus with Ledger Attestation
 ATLAS: Every event is sealed to the ledger for full audit trail
 """
 import json
@@ -119,4 +119,5 @@ class CivicEventBus:
             print(f"✅ Subscribed to: {topic}")
         except Exception as e:
             print(f"⚠️ Failed to subscribe to {topic}: {e}")
+
 

@@ -60,3 +60,4 @@ def apply_policy(policy: Policy, src: Source, score: SourceScore) -> SourceScore
     eff, reasons = policy.eval(src, score)
     score.policy_gate = eff  # mutate
     return score, reasons
+

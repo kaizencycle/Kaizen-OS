@@ -294,7 +294,7 @@ To contribute to the AI Integrity Constitution:
 
 ## License
 
-This implementation is part of the Civic OS project and follows the same licensing terms.
+This implementation is part of the Kaizen OS project and follows the same licensing terms.
 
 ---
 

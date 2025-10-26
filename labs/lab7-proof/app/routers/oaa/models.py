@@ -65,3 +65,4 @@ class VerifyResponse(BaseModel):
     signer_known: Optional[bool] = None
     ts_ok: Optional[bool] = None
     nonce_ok: Optional[bool] = None
+

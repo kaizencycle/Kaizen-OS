@@ -80,3 +80,4 @@ make echo  # Includes latest global health pulse
  - epidemic[2]: confidence 0.3 < 0.5
  - climate_health[5]: region 'XX' not allowed
 ```
+

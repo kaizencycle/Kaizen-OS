@@ -108,3 +108,4 @@ git check-ignore .env
 - Verify secrets are set in repository settings
 - Check secret names match exactly
 - Ensure secrets are not variables (they're different)
+

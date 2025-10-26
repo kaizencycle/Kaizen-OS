@@ -15,3 +15,4 @@ export function authedFetchJSON(input: RequestInfo | URL, init?: RequestInit) {
   } catch {}
   return fetch(input, { ...init, headers, credentials: "include" });
 }
+

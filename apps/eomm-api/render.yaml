@@ -24,3 +24,4 @@ services:
       - key: LEGER_HMAC_KEY
         sync: false        # set in Render dashboard
     healthCheckPath: /health
+

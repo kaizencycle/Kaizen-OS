@@ -1,7 +1,7 @@
-# 🕊️ Civic OS — Repository Sunset Checklist
+# 🕊️ Kaizen OS — Repository Sunset Checklist
 
 **Purpose:**  
-This checklist gracefully retires this repository and points contributors to the new **Civic OS Monorepo** at  
+This checklist gracefully retires this repository and points contributors to the new **Kaizen OS Monorepo** at  
 👉 [https://github.com/kaizencycle/civic-os](https://github.com/kaizencycle/civic-os)
 
 ## 🧭 Step 1 — Context
@@ -17,13 +17,13 @@ This checklist gracefully retires this repository and points contributors to the
 ```markdown
 > **Status: Deprecated / Archived**
 >
-> This project has been merged into the **Civic OS Monorepo**:  
+> This project has been merged into the **Kaizen OS Monorepo**:  
 > https://github.com/kaizencycle/civic-os  
 >  
 > Future work and issues will occur there. This repo remains read-only for historical reference.
 ```
 
-- [ ] Update repo description to "📦 Archived — merged into Civic OS Monorepo"
+- [ ] Update repo description to "📦 Archived — merged into Kaizen OS Monorepo"
 
 ## 🗄️ Step 3 — Code Lockdown
 
@@ -41,7 +41,7 @@ git push origin v0-archived
 ## 🧱 Step 4 — Ledger Traceability
 
 - [ ] Record the archive hash and date in your Civic Ledger (Cycle log entry)
-- [ ] Note which Civic OS directory the code migrated into (e.g., /apps/hive-app)
+- [ ] Note which Kaizen OS directory the code migrated into (e.g., /apps/hive-app)
 
 ## ⚙️ Step 5 — Optional Transfer
 
@@ -53,9 +53,10 @@ If you want to keep a clean namespace:
 
 Once all above are checked:
 - [ ] Post final comment:  
-🕊️ *Archived successfully — merged into Civic OS Monorepo at commit [hash].*  
+🕊️ *Archived successfully — merged into Kaizen OS Monorepo at commit [hash].*  
 *Integrity and lineage preserved.*
 
 ---
 
-**Note:** This checklist ensures a clean transition while preserving the integrity and provenance of your codebase within the Civic OS ecosystem.
+**Note:** This checklist ensures a clean transition while preserving the integrity and provenance of your codebase within the Kaizen OS ecosystem.
+

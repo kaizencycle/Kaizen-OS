@@ -352,3 +352,4 @@ def logout(ctx: AdminContext = Depends(admin_required)):
             "message": f"App '{ctx.app_id}' logged out, all tokens invalidated."
         }
     return {"ok": False, "reason": "not registered"}
+

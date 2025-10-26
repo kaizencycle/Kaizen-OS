@@ -28,3 +28,4 @@ def get_wallet(wallet_id: str):
     if wallet_id not in _DB:
         raise HTTPException(status_code=404, detail="wallet not found")
     return _DB[wallet_id]
+

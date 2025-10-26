@@ -11,3 +11,4 @@ export function getCompanion(key: string) {
   const k = (key || "jade").toLowerCase() as CompanionKey;
   return COMPANIONS[k] ?? COMPANIONS.jade;
 }
+

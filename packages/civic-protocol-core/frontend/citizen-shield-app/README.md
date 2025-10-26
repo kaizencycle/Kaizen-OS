@@ -32,3 +32,4 @@ Open http://localhost:5173
 ## 🛡️ Notes
 - The `/onboard` endpoint may not exist yet on your backend. The app will **store a local acceptance** and show a helpful message until you add it server-side.
 - Set `VITE_LAB6_API` to point at staging/dev if needed.
+

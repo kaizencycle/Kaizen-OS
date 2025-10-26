@@ -564,3 +564,4 @@ if __name__ == "__main__":
     # Get voting power
     alice_power = agora.get_voting_power("alice")
     print(f"Alice voting power: {alice_power.governance_power:.2f}")
+

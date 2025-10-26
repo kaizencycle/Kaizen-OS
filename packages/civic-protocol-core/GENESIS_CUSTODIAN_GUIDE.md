@@ -236,3 +236,4 @@ After successfully posting your Genesis Custodian Event:
 ---
 
 **The Genesis Custodian Event marks the beginning of your journey in the Civic Protocol ecosystem. May your keys open many doors and your seals protect the continuity of trust.**
+

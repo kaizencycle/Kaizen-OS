@@ -60,3 +60,4 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
   res.setHeader('Cache-Control', 'public, max-age=3600'); // Cache for 1 hour
   res.status(200).json(faqData);
 }
+

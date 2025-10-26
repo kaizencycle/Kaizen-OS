@@ -1,4 +1,4 @@
-// Types for Civic OS Integrity Core
+// Types for Kaizen OS Integrity Core
 
 export interface IntegrityChecks {
   responseTime: number; // milliseconds
@@ -42,3 +42,5 @@ export interface ServiceMetrics {
   gi: number;
   status: string;
 }
+
+

@@ -1,5 +1,5 @@
 /**
- * Civic OS Companion Lattice
+ * Kaizen OS Companion Lattice
  * 
  * AUREA (OpenAI) - Precision + Guardrails
  * ATLAS (Anthropic) - Constitutional Reasoning  
@@ -71,4 +71,5 @@ export function isEligibleForTier(
 export function getCompanion(name: string): CompanionConfig | undefined {
   return companions.find(c => c.name === name);
 }
+
 

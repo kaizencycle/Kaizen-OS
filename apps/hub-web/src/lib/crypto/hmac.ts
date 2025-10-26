@@ -9,3 +9,4 @@ export function hmacValid(raw: string, secret: string, provided?: string | null)
   const b = Buffer.from(provided);
   return a.length === b.length && crypto.timingSafeEqual(a, b);
 }
+

@@ -21,3 +21,4 @@ if __name__ == "__main__":
     if args.token:
         payload = json.loads(raw.decode())
         print("approval_token:", token_for(payload))
+

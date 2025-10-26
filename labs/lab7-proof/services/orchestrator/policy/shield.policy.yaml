@@ -22,3 +22,4 @@ ip_risk:
   block_asn_categories:
     - datacenter
     - known_proxy
+

@@ -2,7 +2,7 @@
 
 **Build beautiful websites for your `.gic` domains!** 
 
-Create sovereign **Civic Homes** that bind a `name.gic` to a DID, profile JSON-LD, and ledger proofs. This is the public-facing tool for anyone to create their own `.gic` website in the Civic OS ecosystem.
+Create sovereign **Civic Homes** that bind a `name.gic` to a DID, profile JSON-LD, and ledger proofs. This is the public-facing tool for anyone to create their own `.gic` website in the Kaizen OS ecosystem.
 
 ## 🚀 Quick Start
 
@@ -45,3 +45,4 @@ Replace functions in `lib/ledger.ts` to call your real endpoints:
 - Cache `/api/resolve` at the edge; purge on commit.
 
 Generated 2025-10-19T21:09:49.333180Z
+

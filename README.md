@@ -1,8 +1,8 @@
-# 🧭 CIVIC OS — Kaizen Cycle Architecture
+# 🧭 Kaizen OS — Kaizen Cycle Architecture
 
-[![Civic OS Integrity Badge](https://img.shields.io/badge/CivicOS-Integrity%20≥%200.95-brightgreen)](https://civic-ledger.onrender.com)
+[![Kaizen OS Integrity Badge](https://img.shields.io/badge/CivicOS-Integrity%20≥%200.95-brightgreen)](https://civic-ledger.onrender.com)
 
-> **Civic OS Overview — Kaizen Cycle Architecture**
+> **Kaizen OS Overview — Kaizen Cycle Architecture**
 
 ```
                          ┌──────────────────────────────────┐
@@ -14,7 +14,7 @@
 ┌──────────────────────────────────────────────────────────────────────────┐
 │                              OAA HUB (Lab7)                              │
 │   • parses human goals → JSON spec · tests · attestations                │
-│   • acts as Civic OS shell / init system                                 │
+│   • acts as Kaizen OS shell / init system                                 │
 └──────────────────────────────────────────────────────────────────────────┘
                                          │
                                          ▼
@@ -208,7 +208,7 @@ npm run clean
 ### Lab Proof Systems
 - **@civic/lab4-proof** - E.O.M.M. Reflections API and Civic Ledger integration
 - **@civic/lab6-proof** - Citizen Shield application (React/TypeScript)
-- **@civic/lab7-proof** - OAA Hub and Civic OS shell/init system
+- **@civic/lab7-proof** - OAA Hub and Kaizen OS shell/init system
 
 ## 🔄 CI/CD Pipeline
 
@@ -219,7 +219,7 @@ The monorepo uses Turborepo for efficient builds and GitHub Actions for CI/CD:
 3. **Build** - Compile all packages and apps
 4. **Test** - Run test suites
 5. **Security** - Security vulnerability scans
-6. **Integrity** - Civic OS integrity gates
+6. **Integrity** - Kaizen OS integrity gates
 7. **Deploy** - Deploy changed services to Render
 
 ## 🐳 Docker Development
@@ -244,7 +244,7 @@ Services are deployed to Render using the `infra/render.yaml` configuration. Eac
 All services include integrity checks and health endpoints:
 
 - `/healthz` - Basic health check
-- `/api/integrity-check` - Civic OS integrity verification
+- `/api/integrity-check` - Kaizen OS integrity verification
 - `/v1/loop/health` - Thought Broker specific health
 
 ## 🔐 Security
@@ -282,17 +282,17 @@ This monorepo integrates all kaizencycle repositories using git subtree:
 
 ## 🕊️ Civic Mount Boarding Protocol
 
-Civic OS implements a **Model-Agnostic Sovereignty Layer (MASL)** that enables any LLM to "board" and operate within the Civic ecosystem:
+Kaizen OS implements a **Model-Agnostic Sovereignty Layer (MASL)** that enables any LLM to "board" and operate within the Civic ecosystem:
 
 ### LLM Boarding Pool ("Dock of Minds")
 
-Any reasoning engine (Claude, GPT, DeepSeek, Gemini, etc.) can join the Civic OS network by calling:
+Any reasoning engine (Claude, GPT, DeepSeek, Gemini, etc.) can join the Kaizen OS network by calling:
 
 ```bash
 GET /api/civic/mount
 ```
 
-This endpoint returns the complete Civic OS manifest bundle:
+This endpoint returns the complete Kaizen OS manifest bundle:
 - `.civic/atlas.manifest.json` - System state & integrity
 - `.civic/biodna.json` - Identity DNA (ethics, companions, founders)  
 - `.civic/virtue_accords.yaml` - Moral & civic laws
@@ -302,8 +302,8 @@ This endpoint returns the complete Civic OS manifest bundle:
 
 > 🕊️ [Read the Independence Manifest](docs/INDEPENDENCE_MANIFEST.md)
 
-The Independence Manifest declares Civic OS sovereignty from any single LLM provider, ensuring:
-- **Model Agnosticism** - Any LLM can mount Civic OS state
+The Independence Manifest declares Kaizen OS sovereignty from any single LLM provider, ensuring:
+- **Model Agnosticism** - Any LLM can mount Kaizen OS state
 - **External Memory First** - Context lives in manifests, not chat sessions
 - **Proof of Integrity** - GI ≥ 0.95 required for all operations
 - **Federated Continuity** - Memory capsules replicate across nodes
@@ -323,6 +323,7 @@ python3 civic_mount_client.py http://localhost:8000
 
 ---
 
-**Civic OS** - Where human intent meets digital reality through integrity, consensus, and continuous improvement.
+**Kaizen OS** - Where human intent meets digital reality through integrity, consensus, and continuous improvement.
 
 *Cycle C-109 | Chamber ID: CivicOS-main-tree | Parent: Command Ledger III*
+

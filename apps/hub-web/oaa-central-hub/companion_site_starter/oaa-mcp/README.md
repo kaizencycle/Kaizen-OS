@@ -35,3 +35,4 @@ Once configured, you can use these tools in Cursor chats:
 The MCP server uses these environment variables (configured in `.cursor/mcp.json`):
 - `LEDGER_BASE_URL` - Civic Ledger base URL
 - `LEDGER_ADMIN_TOKEN` - Admin token for ledger operations
+

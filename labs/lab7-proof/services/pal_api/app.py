@@ -81,3 +81,4 @@ def pal_model_card(version: str):
         return {"error": "model card not found"}
     return json.load(open(p))
 
+

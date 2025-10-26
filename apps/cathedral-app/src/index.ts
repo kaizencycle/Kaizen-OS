@@ -23,7 +23,7 @@ app.get('/health', (req, res) => {
 app.get('/', (req, res) => {
   res.json({
     name: 'Cathedral App',
-    description: 'Governance and policy management interface for Civic OS',
+    description: 'Governance and policy management interface for Kaizen OS',
     version: '1.0.0',
     endpoints: {
       health: '/health',
@@ -51,3 +51,5 @@ app.listen(PORT, () => {
 });
 
 export default app;
+
+

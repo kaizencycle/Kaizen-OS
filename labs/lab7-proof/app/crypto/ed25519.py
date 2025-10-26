@@ -43,3 +43,4 @@ def pub_from_priv(b64_priv: str) -> str:
     sk = load_signing_key(b64_priv)
     vk = sk.verify_key
     return base64.b64encode(vk.encode()).decode("ascii")
+

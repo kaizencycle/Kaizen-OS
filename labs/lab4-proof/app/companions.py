@@ -156,3 +156,4 @@ The user just shared a reflection. Reply in 1–3 sentences, in character.
         reply = await llm_generate(prompt)
 
     return {"ok": True, "response": reply.strip()}
+

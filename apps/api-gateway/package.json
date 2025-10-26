@@ -1,7 +1,7 @@
 {
   "name": "api-gateway",
   "version": "1.0.0",
-  "description": "Civic OS API Gateway - Unified routing and middleware",
+  "description": "Kaizen OS API Gateway - Unified routing and middleware",
   "main": "dist/index.js",
   "scripts": {
     "build": "tsc",
@@ -34,3 +34,5 @@
     "jest": "^29.0.0"
   }
 }
+
+

@@ -513,3 +513,4 @@ Update required for:
 - **Event Filtering**: Added to reduce noise and improve performance
 - **Rate Limiting**: Added to prevent abuse and ensure fair usage
 - **Retry Policies**: Configurable to balance reliability and performance
+

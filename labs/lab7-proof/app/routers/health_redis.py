@@ -12,3 +12,4 @@ async def redis_health():
         return {"ok": bool(pong)}
     except Exception as e:
         return {"ok": False, "error": str(e)}
+

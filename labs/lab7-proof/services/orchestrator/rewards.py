@@ -10,3 +10,4 @@ def maybe_mint(req: RewardIntentRequest) -> RewardIntentResponse | None:
     amount = base + bonus
     tx_id = hashlib.sha256(f"{req.user_id}|{req.attestation_id}|{amount}".encode()).hexdigest()[:24]
     return RewardIntentResponse(tx_id=tx_id, amount=amount, status="pending")
+

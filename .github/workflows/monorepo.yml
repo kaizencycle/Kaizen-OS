@@ -1,4 +1,4 @@
-name: Civic OS Monorepo
+name: Kaizen OS Monorepo
 
 on:
   pull_request:
@@ -145,3 +145,4 @@ jobs:
           echo "📝 Recording deployment in Civic Ledger..."
           # Add Civic Ledger attestation here
           echo "✅ Deployment attested to Civic Ledger"
+

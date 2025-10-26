@@ -19,3 +19,4 @@ services:
     envVars:
       - key: VITE_LAB6_API
         value: https://lab6-proof-api.onrender.com
+

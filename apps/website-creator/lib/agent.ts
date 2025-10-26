@@ -9,3 +9,4 @@ export async function scaffoldProfile(input: { name: string; bio?: string; links
     proof: {}
   };
 }
+

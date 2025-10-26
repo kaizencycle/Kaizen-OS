@@ -42,3 +42,4 @@ The Attestation Protocol provides cryptographic proof of civic contributions and
 - **Transparent**: Public verification
 - **Auditable**: Complete history tracking
 - **Appealable**: Dispute resolution process
+

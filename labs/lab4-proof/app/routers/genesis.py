@@ -130,3 +130,4 @@ def seed():
         "custodian": CUSTODIAN_WALLET_ID,
         "commons": COMMONS_WALLET_ID
     }}
+

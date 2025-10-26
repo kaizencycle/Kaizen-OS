@@ -49,3 +49,4 @@ npm run build
 - ✅ Mock mentor system for demo
 - ✅ Static export ready
 - ✅ Responsive design
+

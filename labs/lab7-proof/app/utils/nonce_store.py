@@ -24,3 +24,4 @@ async def nonce_seen(voter_id: str, nonce: str) -> bool:
     ok = await r.set(key, "1", ex=_ttl, nx=True)
     # redis.set returns True if key was set, None if exists
     return ok is None  # True means replay (already exists)
+

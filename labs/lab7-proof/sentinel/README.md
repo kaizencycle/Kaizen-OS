@@ -70,3 +70,4 @@ If ≥2 services are DOWN for ≥15 minutes:
 [ALERT] 3 services DOWN for ≥15m: Lab4, GICIndexer, Lab7
 ```
 (Optional webhook notification sent)
+

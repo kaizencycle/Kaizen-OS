@@ -38,3 +38,4 @@ def score(req: ScoreRequest):
     scores = RubricScores(accuracy=acc, depth=depth, originality=originality, integrity=integrity)
 
     return ScoreResponse(scores=scores, meta={"length_words": length})
+

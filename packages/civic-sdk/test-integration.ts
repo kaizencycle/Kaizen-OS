@@ -2,7 +2,7 @@
 import { CivicOSGateway, Lab7Client, Lab4Client, Lab6Client, OAAAPIClient, CivicLedgerClient, GICIndexerClient } from './src/index';
 
 async function testCivicSDK() {
-  console.log('🚀 Testing Civic OS SDK Integration...\n');
+  console.log('🚀 Testing Kaizen OS SDK Integration...\n');
 
   // Test individual clients
   console.log('1. Testing individual API clients...');
@@ -55,7 +55,7 @@ async function testCivicSDK() {
     console.log('❌ GIC Indexer:', error instanceof Error ? error.message : 'Unknown error');
   }
 
-  console.log('\n2. Testing Civic OS Gateway...');
+  console.log('\n2. Testing Kaizen OS Gateway...');
 
   try {
     const gateway = new CivicOSGateway();
@@ -72,7 +72,7 @@ async function testCivicSDK() {
   try {
     const gateway = new CivicOSGateway();
     const result = await gateway.createCitizen(
-      'I want to become a .gic citizen and contribute to Civic OS',
+      'I want to become a .gic citizen and contribute to Kaizen OS',
       'testuser'
     );
     
@@ -94,3 +94,5 @@ async function testCivicSDK() {
 
 // Run the test
 testCivicSDK().catch(console.error);
+
+

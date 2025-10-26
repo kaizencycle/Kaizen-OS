@@ -12,3 +12,4 @@ Do not include implementation details or internal algorithms in issues/PRs.
 > Core algorithms, Dynamic Virtual Architecture logic,  
 > and proprietary resonance protocols remain sealed  
 > within the Founder's private manifest.
+

@@ -40,3 +40,4 @@ node replay-worker.js
 ## Drill
 - Set `SIMULATE_DEGRADED=true` in `apps/web/.env.local` to force degraded mode.
 - Queue writes, then start replay worker to drain when healthy.
+

@@ -32,3 +32,4 @@ def report(body: ReportReq, background: BackgroundTasks, authorization: str = He
     payload = {"category": body.category, "details": body.details, "ts": nowz()}
     background.add_task(anchor_event, token, "shield_report", payload)
     return {"ok": True, "report": payload}
+

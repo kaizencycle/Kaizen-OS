@@ -289,3 +289,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ---
 
 **🌐 The Civic Internet is here. AI Companions now have their own digital homes on the .gic network.**
+

@@ -11,3 +11,4 @@ export async function updateGicRecord({ label, cid, integrityHex }: { label: str
   const receipt = await tx.wait();
   return receipt?.hash;
 }
+

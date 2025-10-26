@@ -1,6 +1,6 @@
 # KaizenCycle Hub (kaizencycle.org / kaizencycle.gic)
 
-Public landing page for the KaizenCycle Initiative and Civic OS.
+Public landing page for the KaizenCycle Initiative and Kaizen OS.
 Serves as the index hub for Lab4 (Reflections), Lab6 (Citizen Shield), Lab7 (OAA), and the Civic Ledger.
 
 ## Structure
@@ -22,3 +22,4 @@ Serves as the index hub for Lab4 (Reflections), Lab6 (Citizen Shield), Lab7 (OAA
 
 ## License
 © 2025 KaizenCycle Initiative — “We heal as we walk.”
+

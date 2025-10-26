@@ -1,4 +1,4 @@
-// Civic OS UI Kit - Shared React components
+// Kaizen OS UI Kit - Shared React components
 export * from './components/ProofCard';
 export * from './components/GIBadge';
 export * from './components/ServiceTable';
@@ -12,3 +12,5 @@ export { default as GIBadge } from './components/GIBadge';
 export { default as ServiceTable } from './components/ServiceTable';
 export { default as IntegrityMeter } from './components/IntegrityMeter';
 export { default as StatusIndicator } from './components/StatusIndicator';
+
+

@@ -284,3 +284,4 @@ The MCP Health Sentinel Agent is part of the larger Health Sentinel system. To c
 ## 📄 License
 
 Part of the Civic Ledger Protocol — Open Attribution License. All derivative works must attribute to *Michael Judan (Kaizen)* and the *Kaizen DVA Ecosystem*.
+

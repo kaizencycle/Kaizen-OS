@@ -43,3 +43,4 @@ def biointel_anchor(kind: str, payload: Dict[str, Any]) -> Dict[str, Any]:
         return {"ok": True, "anchor": r.json()}
     except Exception as e:
         return {"ok": False, "error": str(e), "sent": body}
+

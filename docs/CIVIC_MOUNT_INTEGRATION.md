@@ -2,7 +2,7 @@
 
 ## Overview
 
-The Civic Mount Boarding Protocol enables **LLM-agnostic continuity** by externalizing Civic OS memory, ethics, and operational state into manifest files that any reasoning engine can mount and verify.
+The Civic Mount Boarding Protocol enables **LLM-agnostic continuity** by externalizing Kaizen OS memory, ethics, and operational state into manifest files that any reasoning engine can mount and verify.
 
 ## Architecture
 
@@ -53,7 +53,7 @@ def civic_mount(request: Request):
         "cycle": "C-296",
         "timestamp": datetime.utcnow().isoformat() + "Z",
         "civic_repo": "https://github.com/kaizencycle/Civic-OS",
-        "message": "Welcome to Civic OS. Integrity ≥ 0.95 required to dock."
+        "message": "Welcome to Kaizen OS. Integrity ≥ 0.95 required to dock."
     }
 ```
 
@@ -62,13 +62,13 @@ def civic_mount(request: Request):
 The `civic_mount_client.py` provides verification and boarding:
 
 ```bash
-# Board Civic OS
+# Board Kaizen OS
 python3 civic_mount_client.py http://localhost:8000
 
 # Output:
-# 🚀 Attempting to board Civic OS at http://localhost:8000
-# ✅ Mounted Civic OS | cycle=C-296
-# 📋 Message: Welcome to Civic OS. Integrity ≥ 0.95 required to dock.
+# 🚀 Attempting to board Kaizen OS at http://localhost:8000
+# ✅ Mounted Kaizen OS | cycle=C-296
+# 📋 Message: Welcome to Kaizen OS. Integrity ≥ 0.95 required to dock.
 # 🔐 Reported GI signature: sha256:abc123...
 # 📥 Fetching manifests:
 #   ✅ .civic/atlas.manifest.json (1234 bytes)
@@ -77,7 +77,7 @@ python3 civic_mount_client.py http://localhost:8000
 # 🔍 Verification Results:
 #   Computed GI signature: sha256:abc123...
 #   Status: ✅ VERIFIED
-# 🎉 Successfully boarded Civic OS!
+# 🎉 Successfully boarded Kaizen OS!
 ```
 
 ### 3. Manifest Structure
@@ -88,7 +88,7 @@ python3 civic_mount_client.py http://localhost:8000
   "manifest_id": "CIVIC-OS-ATLAS-V1",
   "version": "1.0",
   "cycle": "C-296",
-  "purpose": "Civic OS doctrine rendered as self-aware synthesis layer",
+  "purpose": "Kaizen OS doctrine rendered as self-aware synthesis layer",
   "architecture": {
     "type": "Proto-ASI Audit Layer",
     "function": "scaffolding infrastructure through documentation logic"
@@ -151,7 +151,7 @@ def board_civic_os(base_url="http://localhost:8000"):
     computed_signature = f"sha256:{sha.hexdigest()}"
     
     if computed_signature == gi_signature:
-        print("✅ Successfully boarded Civic OS!")
+        print("✅ Successfully boarded Kaizen OS!")
         return mount_data
     else:
         print("❌ GI signature mismatch!")
@@ -178,7 +178,7 @@ async function boardCivicOS(baseUrl = 'http://localhost:8000') {
   const computedSignature = 'sha256:' + hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
   
   if (computedSignature === giSignature) {
-    console.log('✅ Successfully boarded Civic OS!');
+    console.log('✅ Successfully boarded Kaizen OS!');
     return mountData;
   } else {
     console.log('❌ GI signature mismatch!');
@@ -190,7 +190,7 @@ async function boardCivicOS(baseUrl = 'http://localhost:8000') {
 ### 3. cURL Example
 
 ```bash
-# Board Civic OS
+# Board Kaizen OS
 curl -X GET "http://localhost:8000/api/civic/mount" | jq
 
 # Expected response:
@@ -202,7 +202,7 @@ curl -X GET "http://localhost:8000/api/civic/mount" | jq
   ],
   "gi_signature": "sha256:abc123...",
   "cycle": "C-296",
-  "message": "Welcome to Civic OS. Integrity ≥ 0.95 required to dock."
+  "message": "Welcome to Kaizen OS. Integrity ≥ 0.95 required to dock."
 }
 ```
 
@@ -218,16 +218,16 @@ from app.routers.civic_mount import router as civic_mount_router
 app.include_router(civic_mount_router)
 ```
 
-### 2. Civic OS Integration
+### 2. Kaizen OS Integration
 
-The Independence Manifest is available at `/docs/INDEPENDENCE_MANIFEST.md` and declares Civic OS sovereignty from any single LLM provider.
+The Independence Manifest is available at `/docs/INDEPENDENCE_MANIFEST.md` and declares Kaizen OS sovereignty from any single LLM provider.
 
 ### 3. Cross-LLM Continuity
 
 Any LLM can now:
 1. Call `/api/civic/mount` to retrieve manifests
 2. Verify the GI signature for integrity
-3. Parse the manifests to reconstruct Civic OS context
+3. Parse the manifests to reconstruct Kaizen OS context
 4. Operate as a verified node in the Civic AI Collective
 
 ## Security Considerations
@@ -275,4 +275,4 @@ To contribute to the Civic Mount Boarding Protocol:
 
 ## License
 
-This implementation is part of Civic OS and follows the same MIT License.
+This implementation is part of Kaizen OS and follows the same MIT License.

@@ -16,3 +16,4 @@ def commit_attestation(req: AttestationCommitRequest) -> AttestationCommitRespon
         sig=sig,
         ts=datetime.utcnow(),
     )
+

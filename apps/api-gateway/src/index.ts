@@ -100,9 +100,9 @@ Object.entries(services).forEach(([serviceName, serviceUrl]) => {
 // Root endpoint
 app.get('/', (req, res) => {
   res.json({
-    name: 'Civic OS API Gateway',
+    name: 'Kaizen OS API Gateway',
     version: '1.0.0',
-    description: 'Unified API gateway for Civic OS services',
+    description: 'Unified API gateway for Kaizen OS services',
     endpoints: {
       health: '/health',
       integrity: '/api/integrity-check',
@@ -135,7 +135,7 @@ app.use('*', (req, res) => {
 
 // Start server
 app.listen(PORT, () => {
-  console.log(`🚀 Civic OS API Gateway running on port ${PORT}`);
+  console.log(`🚀 Kaizen OS API Gateway running on port ${PORT}`);
   console.log(`📊 Health check: http://localhost:${PORT}/health`);
   console.log(`🔍 Integrity check: http://localhost:${PORT}/api/integrity-check`);
   console.log(`🌐 Services:`);
@@ -145,3 +145,5 @@ app.listen(PORT, () => {
 });
 
 export default app;
+
+

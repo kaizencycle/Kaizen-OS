@@ -75,3 +75,4 @@ def test_count_consistency():
     assert ledger["counts"]["seeds"] == 1
     assert ledger["counts"]["sweeps"] == 2
     assert ledger["counts"]["seals"] == 1
+

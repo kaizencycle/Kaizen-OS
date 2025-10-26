@@ -1,6 +1,6 @@
 /**
  * SOLARA (DeepSeek R1) Provider Adapter
- * Cost-efficient reasoning companion for Civic OS
+ * Cost-efficient reasoning companion for Kaizen OS
  * 
  * Features:
  * - Timeout protection (default 20s)
@@ -115,4 +115,5 @@ export function createSolaraProvider(): SolaraProvider {
     parseInt(process.env.SOLARA_MAX_RETRIES || '3')
   );
 }
+
 

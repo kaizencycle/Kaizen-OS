@@ -33,3 +33,4 @@ The Civic AI ecosystem consists of three core components working together to cre
 - Works alongside existing frameworks
 - Adds ethical governance layers
 - Maintains backward compatibility
+

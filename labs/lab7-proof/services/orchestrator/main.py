@@ -195,3 +195,4 @@ def reward_intent_legacy(req: RewardIntentRequest):
 @app.get("/ledger/balance/{user_id}", response_model=BalanceResponse)
 def ledger_balance_legacy(user_id: str):
     return ledger_balance(user_id)
+

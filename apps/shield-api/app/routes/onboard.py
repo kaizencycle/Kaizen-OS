@@ -81,3 +81,5 @@ async def onboard(payload: OnboardIn):
         seals_hash=TWIN_SEALS_HASH,
         attestation=attestation_result,
     )
+
+

@@ -10,3 +10,4 @@ def load_policy(path: str | None = None) -> dict:
     with open(p, "r") as f:
         _policy_cache = yaml.safe_load(f) or {}
     return _policy_cache
+

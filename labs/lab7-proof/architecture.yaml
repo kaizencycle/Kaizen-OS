@@ -205,3 +205,4 @@ configs:
     max_mints_per_day: 2
 
 copy_hash_tolerance: 0.85
+

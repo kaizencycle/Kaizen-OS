@@ -8,3 +8,4 @@ def apply_tx(wallet: str, amount: float, tx_id: str) -> None:
 def get_balance(wallet: str) -> BalanceResponse:
     bal = _FAKE_BALANCES.get(wallet, 0.0)
     return BalanceResponse(wallet=wallet, balance=bal, last_tx_id=None)
+

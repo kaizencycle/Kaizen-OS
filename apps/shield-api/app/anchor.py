@@ -18,3 +18,5 @@ async def anchor_event(token: str, att_type: str, payload: Dict[str, Any]) -> Op
     except Exception:
         pass
     return None
+
+

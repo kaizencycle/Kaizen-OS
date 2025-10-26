@@ -1,5 +1,5 @@
 # routes/civic_mount.py
-# Civic OS Boarding Protocol — "Dock of Minds"
+# Kaizen OS Boarding Protocol — "Dock of Minds"
 # Author: Michael Judan (Kaizen)
 # Version: 1.0
 # Date: 2025-10-23
@@ -25,7 +25,7 @@ def _compute_manifest_hash(files):
 def civic_mount(request: Request):
     """
     The Civic Mount endpoint.
-    Allows any LLM or agent to retrieve the Civic OS manifests,
+    Allows any LLM or agent to retrieve the Kaizen OS manifests,
     ensuring continuity, interoperability, and proof of integrity.
     """
     # Manifests to expose for docking
@@ -48,7 +48,7 @@ def civic_mount(request: Request):
         "cycle": "C-296",
         "timestamp": datetime.utcnow().isoformat() + "Z",
         "civic_repo": "https://github.com/kaizencycle/Civic-OS",
-        "message": "Welcome to Civic OS. Integrity ≥ 0.95 required to dock.",
+        "message": "Welcome to Kaizen OS. Integrity ≥ 0.95 required to dock.",
         "independence_manifest": f"{base}/docs/INDEPENDENCE_MANIFEST.md"
     }
 

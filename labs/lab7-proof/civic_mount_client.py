@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Civic OS Boarding Client — verifies GI signature by fetching the manifests
+Kaizen OS Boarding Client — verifies GI signature by fetching the manifests
 exposed by Lab7's /api/civic/mount and hashing their contents.
 """
 import hashlib
@@ -28,7 +28,7 @@ def join_url(base: str, path: str) -> str:
 
 def main():
     """Main boarding client logic."""
-    print(f"🚀 Attempting to board Civic OS at {BASE_URL}")
+    print(f"🚀 Attempting to board Kaizen OS at {BASE_URL}")
     print("=" * 50)
     
     # Fetch mount endpoint
@@ -45,7 +45,7 @@ def main():
     cycle = mount.get("cycle", "C-???")
     message = mount.get("message", "")
     
-    print(f"✅ Mounted Civic OS | cycle={cycle}")
+    print(f"✅ Mounted Kaizen OS | cycle={cycle}")
     print(f"📋 Message: {message}")
     print(f"🔐 Reported GI signature: {gi_sig}")
     print()
@@ -79,14 +79,14 @@ def main():
     
     if ok:
         print()
-        print("🎉 Successfully boarded Civic OS!")
+        print("🎉 Successfully boarded Kaizen OS!")
         print("   You now have access to the civic manifests and can operate")
         print("   as a verified node in the Civic AI Collective.")
     else:
         print()
         print("⚠️  GI signature mismatch detected!")
         print("   This may indicate tampering or corruption.")
-        print("   Please verify the integrity of the Civic OS instance.")
+        print("   Please verify the integrity of the Kaizen OS instance.")
     
     sys.exit(0 if ok else 1)
 

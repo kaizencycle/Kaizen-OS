@@ -49,3 +49,4 @@ async def anchor_to_ledger(attestation: Dict[str, Any]) -> Dict[str, Any]:
         r = await client.post(f"{ledger_url}/attest", json=attestation)
         r.raise_for_status()
         return r.json()
+

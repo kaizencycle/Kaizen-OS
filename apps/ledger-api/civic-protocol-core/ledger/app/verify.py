@@ -228,3 +228,4 @@ if __name__ == "__main__":
         print("✓ Signature verification passed")
     except HTTPException as e:
         print(f"✗ Signature verification failed: {e.detail}")
+

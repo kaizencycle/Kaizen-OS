@@ -27,3 +27,4 @@ def merkle_root(leaves: Iterable[str]) -> str:
         layer = nxt
     return layer[0]
 
+

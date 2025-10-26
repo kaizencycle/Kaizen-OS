@@ -264,3 +264,4 @@ This project operates under the Virtue Accords (Cycle 0) - see the Civic Ledger 
 ---
 
 **Remember**: Human-in-the-loop coding; proofs logged to Ledger; rewards via GIC for shared agreements.
+

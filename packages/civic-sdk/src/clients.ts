@@ -1,7 +1,7 @@
 import axios, { AxiosInstance, AxiosResponse } from 'axios';
 import { LedgerEntry, GICTransaction, ServiceHealth, OAAIntent, DeliberationProof, ShieldPolicy, EOMMReflection, GICAttestation, IntegrityCheck } from './types';
 
-// Base client class for all Civic OS services
+// Base client class for all Kaizen OS services
 export abstract class CivicClient {
   protected client: AxiosInstance;
   protected baseUrl: string;
@@ -505,3 +505,5 @@ export class GICIndexerClient extends CivicClient {
     };
   }
 }
+
+

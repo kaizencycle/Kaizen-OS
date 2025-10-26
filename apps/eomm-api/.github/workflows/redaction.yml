@@ -10,3 +10,4 @@ jobs:
       - uses: actions/checkout@v4
       - name: Run redaction scan
         run: bash scripts/redaction-scan.sh
+

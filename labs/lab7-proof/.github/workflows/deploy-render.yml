@@ -72,3 +72,4 @@ jobs:
           done
           echo "Frontend health check failed"
           exit 1
+

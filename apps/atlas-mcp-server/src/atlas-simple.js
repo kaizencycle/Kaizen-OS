@@ -142,7 +142,7 @@ ${status === 'PASS' ? '✅ System integrity maintained' :
     return `🔍 **ATLAS Code Quality Audit**
 
 **Overall Rating:** ${auditResults.overall}
-**Repository:** ${repository || 'All Civic OS repositories'}
+**Repository:** ${repository || 'All Kaizen OS repositories'}
 
 **Metrics:**
 - Test Coverage: ${auditResults.metrics.testCoverage}%
@@ -347,3 +347,4 @@ if (import.meta.url === `file://${process.argv[1]}`) {
 }
 
 export default ATLASSentinel;
+

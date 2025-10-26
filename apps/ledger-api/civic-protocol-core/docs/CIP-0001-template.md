@@ -248,3 +248,4 @@ For questions about the CIP process:
 ---
 
 *This template is based on the Ethereum Improvement Proposal (EIP) process and adapted for the Civic Protocol ecosystem.*
+

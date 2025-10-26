@@ -71,3 +71,4 @@ jobs:
         with:
           name: citizen-shield-dist
           path: frontend/citizen-shield-app/dist
+

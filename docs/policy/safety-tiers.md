@@ -1,5 +1,5 @@
 ---
-title: "Civic OS Safety Tier Policy"
+title: "Kaizen OS Safety Tier Policy"
 cycle: C-113
 ---
 
@@ -61,4 +61,5 @@ cycle: C-113
 
 **Last Updated:** 2025-10-26  
 **GI Seal:** 0.985 ✅
+
 

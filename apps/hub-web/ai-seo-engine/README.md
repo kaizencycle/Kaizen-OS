@@ -14,3 +14,4 @@ NODE_OPTIONS=--experimental-strip-types \
 node ai-seo-engine/src/crawler.mjs && \
 node ai-seo-engine/src/ranker.mjs  && \
 node ai-seo-engine/src/publisher.mjs
+

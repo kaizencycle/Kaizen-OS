@@ -86,3 +86,4 @@ class CritiqueRequest(BaseModel):
 class CritiqueResponse(BaseModel):
     rubric: RubricScores
     critique: str
+

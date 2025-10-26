@@ -16,3 +16,4 @@ export default function useTokenRefresh(intervalMs = 2 * 60 * 1000) {
     return () => clearInterval(id);
   }, [intervalMs]);
 }
+

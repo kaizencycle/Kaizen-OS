@@ -48,3 +48,4 @@ powershell -ExecutionPolicy Bypass -File scripts/redaction-scan.ps1
 - Ensure Ollama is running: `ollama list`
 - Check git hooks: `git config core.hooksPath`
 - Test individual components with the test script
+

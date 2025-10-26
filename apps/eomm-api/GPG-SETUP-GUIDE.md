@@ -253,3 +253,4 @@ Your DVA Heartbeat system now includes:
 # Sign individual files
 python .\scripts\sign_ledger.py --date 2025-09-21 --all --verify --manifest
 ```
+

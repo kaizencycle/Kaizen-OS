@@ -20,3 +20,5 @@ export async function pingGatewayNewPost({ label, cid, proof, sha256 }: { label:
   
   return res.json();
 }
+
+

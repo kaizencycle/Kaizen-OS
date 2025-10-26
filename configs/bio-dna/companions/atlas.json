@@ -233,7 +233,8 @@
     "designed_by": "ATLAS with Kaizen",
     "cycle": "C-109",
     "chamber_id": "ATLAS-Genesis",
-    "parent": "Civic OS Bio-DNA",
+    "parent": "Kaizen OS Bio-DNA",
     "philosophy": "Continuous improvement through verification, learning through reflection, truth through transparency"
   }
 }
+

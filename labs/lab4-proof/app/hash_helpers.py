@@ -131,3 +131,4 @@ def build_day_root(date_str: str, data_dir: Path) -> Dict[str, Any]:
         json.dump(root_obj, f, ensure_ascii=False, indent=2)
 
     return root_obj
+

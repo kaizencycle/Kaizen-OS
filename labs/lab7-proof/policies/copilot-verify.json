@@ -3,3 +3,4 @@
   "fail_on_low": false,
   "enforce_on": ["main", "release/*"]
 }
+

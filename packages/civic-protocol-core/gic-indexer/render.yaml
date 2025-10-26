@@ -16,3 +16,4 @@ services:
         value: ./policy.yaml
       - key: INDEX_DB
         value: ./data/index.db
+

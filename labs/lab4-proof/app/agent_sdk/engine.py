@@ -46,3 +46,4 @@ def run_agent(name: str, prompt: str) -> dict:
         )
         text = res2.choices[0].message.content or text
     return {"agent": agent.name, "reply": text, "tool_used": tool_used, "tool_result": tool_result}
+

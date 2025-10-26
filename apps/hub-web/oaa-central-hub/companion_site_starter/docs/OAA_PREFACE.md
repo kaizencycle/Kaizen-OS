@@ -8,3 +8,4 @@
 - **Infra:** Render (hub/gateway/worker/redis), BullMQ queue (`publishEvents`)
 - **Dev Tools:** /dev/context • /dev/ledger • /dev/queue • /dev/reports (+ Sentinel badge)
 - **Principle:** Human-in-the-loop coding; proofs logged to Ledger; rewards via GIC
+

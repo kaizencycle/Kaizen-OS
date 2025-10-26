@@ -47,3 +47,4 @@ def shield_precheck(payload: Dict[str, Any], rules: Dict[str, Any] = None) -> Di
         errors.append("suspicious indicator suggests potential PII content")
 
     return {"ok": len(errors)==0, "errors": errors, "warnings": warnings}
+

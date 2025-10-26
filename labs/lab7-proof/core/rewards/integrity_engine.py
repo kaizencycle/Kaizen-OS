@@ -373,3 +373,4 @@ if __name__ == "__main__":
     result = evaluate_reward(payload, manifest)
     
     print(json.dumps(result, indent=2))
+

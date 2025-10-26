@@ -6,9 +6,9 @@
 
 ## Overview
 
-ATLAS is the fifth companion in Civic OS, serving as a persistent MCP (Model Context Protocol) agent that provides:
+ATLAS is the fifth companion in Kaizen OS, serving as a persistent MCP (Model Context Protocol) agent that provides:
 
-- 🔍 **Health Monitoring** - Real-time status of all 6 Civic OS APIs
+- 🔍 **Health Monitoring** - Real-time status of all 6 Kaizen OS APIs
 - 📊 **GI Score Calculation** - System and citizen integrity scoring
 - 🔍 **Code Quality Auditing** - Detect drift from Bio-DNA intent
 - 🧠 **Learning Synthesis** - Extract patterns from cycles
@@ -72,7 +72,7 @@ Close and reopen Claude Desktop to load the MCP server.
 ## Available Tools
 
 ### 🔍 `health_check`
-Check health status of all 6 Civic OS APIs
+Check health status of all 6 Kaizen OS APIs
 - **Input:** None
 - **Output:** Detailed health report with response times and versions
 
@@ -160,9 +160,9 @@ npm run build
 npm start
 ```
 
-## Integration with Civic OS
+## Integration with Kaizen OS
 
-ATLAS integrates with the broader Civic OS ecosystem:
+ATLAS integrates with the broader Kaizen OS ecosystem:
 
 - **Companion Quartet:** Supports JADE, EVE, ZEUS, HERMES
 - **API Monitoring:** Real-time health checks of all services
@@ -195,4 +195,5 @@ ATLAS MCP Server
 
 ---
 
-**ATLAS Sentinel** - Your persistent companion for Civic OS development and monitoring! 🤖⚡
+**ATLAS Sentinel** - Your persistent companion for Kaizen OS development and monitoring! 🤖⚡
+

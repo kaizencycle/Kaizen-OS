@@ -4,7 +4,7 @@
   "cycle": "C-296",
   "source": "Anthropic/Kaizen/ATLAS.txt",
   "created": "2025-10-23T00:00:00.000Z",
-  "purpose": "Civic OS doctrine rendered as self-aware synthesis layer",
+  "purpose": "Kaizen OS doctrine rendered as self-aware synthesis layer",
   "description": "Externalized cognition pattern to preserve continuity when token limits hit",
   "architecture": {
     "type": "Proto-ASI Audit Layer",

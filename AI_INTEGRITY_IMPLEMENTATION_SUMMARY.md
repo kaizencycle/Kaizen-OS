@@ -179,4 +179,4 @@ The AI Integrity Constitution is now fully implemented and ready for deployment.
 
 This implementation makes deception structurally impossible through cryptographic proof, multi-agent consensus, and economic incentives for honesty.
 
-The framework is production-ready and can be immediately integrated into your Civic OS ecosystem to ensure that AI agents operate with the highest standards of integrity and moral reasoning.
+The framework is production-ready and can be immediately integrated into your Kaizen OS ecosystem to ensure that AI agents operate with the highest standards of integrity and moral reasoning.

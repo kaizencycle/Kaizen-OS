@@ -21,3 +21,4 @@ export default async function handler(_req: NextApiRequest, res: NextApiResponse
   res.setHeader("Cache-Control", "public, max-age=60, s-maxage=60");
   res.send(svg.trim());
 }
+

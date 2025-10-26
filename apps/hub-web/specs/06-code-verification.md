@@ -81,3 +81,4 @@ The Code Verification Protocol ensures that all code contributions to the Civic 
 - **Unit Tests**: Component testing
 - **Integration Tests**: System testing
 - **User Tests**: User acceptance testing
+

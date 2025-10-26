@@ -7,3 +7,5 @@ export default async function handler(_req: NextApiRequest, res: NextApiResponse
     ts: new Date().toISOString()
   });
 }
+
+

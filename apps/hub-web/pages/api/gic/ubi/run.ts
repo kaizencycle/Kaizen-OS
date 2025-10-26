@@ -9,3 +9,4 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   const body = await r.json().catch(()=> ({}));
   return res.status(r.ok?200:r.status).json(body);
 }
+

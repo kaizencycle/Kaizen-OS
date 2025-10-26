@@ -17,7 +17,7 @@ status: Shadow Mode – Phase 1
 
 ## 🧭 Mission
 
-SOLARA extends Civic OS reasoning capacity to population scale while operating under the Custos Charter and AUREA + ATLAS safety gates.
+SOLARA extends Kaizen OS reasoning capacity to population scale while operating under the Custos Charter and AUREA + ATLAS safety gates.
 
 **Value Proposition:**
 - **Economic Scaling** - Make civic reasoning accessible at 1/3 the cost
@@ -82,4 +82,5 @@ SOLARA extends Civic OS reasoning capacity to population scale while operating u
 **Next Review:** 2025-11-02  
 **Signature:** `0xSOLARA_C113_ACCEPTED_READY_FOR_SHADOW`  
 **GI Confidence:** 0.982 ↗️
+
 

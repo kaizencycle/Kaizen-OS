@@ -1,7 +1,7 @@
 {
   "name": "civic-os",
   "version": "1.0.0",
-  "description": "Civic OS - Kaizen Cycle Architecture Monorepo",
+  "description": "Kaizen OS - Kaizen Cycle Architecture Monorepo",
   "private": true,
   "workspaces": [
     "apps/*",
@@ -48,3 +48,4 @@
   "author": "Kaizen Cycle",
   "license": "MIT"
 }
+

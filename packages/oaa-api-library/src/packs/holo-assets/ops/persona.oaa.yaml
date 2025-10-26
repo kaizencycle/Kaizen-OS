@@ -7,3 +7,4 @@ persona:
     - success: head_tilt + soft_glow
     - no_data: hand_wave + "let’s fetch more context"
   closing: "Shall I file this to the Civic Ledger and add a lesson?"
+

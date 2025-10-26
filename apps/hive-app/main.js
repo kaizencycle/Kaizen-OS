@@ -697,3 +697,4 @@ OwlShrineScene.prototype.update = function(){
     }
   }
 };
+

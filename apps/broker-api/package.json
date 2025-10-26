@@ -1,7 +1,7 @@
 {
   "name": "broker-api",
   "version": "1.0.0",
-  "description": "Thought Broker - Multi-LLM consensus engine for Civic OS",
+  "description": "Thought Broker - Multi-LLM consensus engine for Kaizen OS",
   "main": "dist/index.js",
   "scripts": {
     "build": "tsc",
@@ -28,3 +28,5 @@
     "jest": "^29.0.0"
   }
 }
+
+

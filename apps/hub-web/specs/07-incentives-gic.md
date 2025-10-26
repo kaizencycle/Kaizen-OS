@@ -83,3 +83,4 @@ GIC = Integrity Score × Civic Impact Score × Geographic Weight
 - **Reputation System**: Persistent contributor recognition
 - **Governance Rights**: Voting and decision-making power
 - **Ecosystem Access**: Premium features and services
+

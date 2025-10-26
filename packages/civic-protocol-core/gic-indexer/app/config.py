@@ -8,3 +8,4 @@ class Settings(BaseModel):
     CORS_ALLOW_ORIGINS: str = os.getenv("CORS_ALLOW_ORIGINS", "*")
 
 settings = Settings()
+

@@ -21,3 +21,4 @@ FOUNDER_NODE_ID   = "NOD-CUSTODIAN-001"
 
 # Opening balances (Genesis dormant)
 GENESIS_BALANCE_GIC = 1_100_000
+

@@ -1,7 +1,7 @@
 {
   "name": "@civic/atlas-mcp-server",
   "version": "1.0.0",
-  "description": "ATLAS Sentinel as MCP Agent for Civic OS",
+  "description": "ATLAS Sentinel as MCP Agent for Kaizen OS",
   "type": "module",
   "bin": {
     "atlas-mcp": "./dist/index.js"
@@ -29,3 +29,4 @@
   "author": "Kaizen Cycle",
   "license": "MIT"
 }
+

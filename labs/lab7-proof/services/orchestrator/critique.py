@@ -28,3 +28,4 @@ Prompt: {prompt}
 3) Add two concrete examples (everyday + technical).
 4) End with a 1–2 sentence takeaway the learner can act on.
 """
+

@@ -54,3 +54,4 @@ def oaa_keys_page(request: Request):
     }
 
     return templates.TemplateResponse("oaa_keys.html", {"request": request, "data": data})
+

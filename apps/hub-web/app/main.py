@@ -61,3 +61,5 @@ def submit_learning(a: LearnArtifact):
     # STUB: write to Civic Ledger if CIVIC_LEDGER_URL set
     att = uuid.uuid4().hex
     return {"ok": True, "attestation": att, "module": a.module_id}
+
+

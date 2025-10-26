@@ -712,3 +712,4 @@ if __name__ == "__main__":
     
     print(f"Chain height: {len(poc.blocks)}")
     print(f"Citizen 1 balance: {poc.balances[citizen1].balance / 10**18} GIC")
+

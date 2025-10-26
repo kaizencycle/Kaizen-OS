@@ -31,3 +31,4 @@ export const defaultJobOpts: JobsOptions = {
   removeOnComplete: { age: 3600, count: 1000 },
   removeOnFail: { age: 24 * 3600 }
 };
+

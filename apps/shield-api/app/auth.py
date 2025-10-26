@@ -46,3 +46,5 @@ def introspect(authorization: str = Header(None)):
     if not app_id or time.time() > exp:
         raise HTTPException(401, "expired/invalid")
     return {"ok": True, "admin": app_id, "expires_in_seconds": exp - int(time.time())}
+
+

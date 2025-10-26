@@ -2,8 +2,8 @@
 // INTEGRATION HUB - Connects all 6 APIs + GIC Gateway + .gic Registry
 
 /**
- * Civic OS Integration Hub
- * Single orchestration point for all Civic OS services
+ * Kaizen OS Integration Hub
+ * Single orchestration point for all Kaizen OS services
  * 
  * Services Connected:
  * 1. Lab7 (OAA Hub) - https://lab7-proof.onrender.com
@@ -317,7 +317,7 @@ export async function example() {
   // Create a new citizen
   const identity = await hub.createCitizen(
     'michael',
-    'I want to join Civic OS and contribute to the digital renaissance'
+    'I want to join Kaizen OS and contribute to the digital renaissance'
   );
 
   console.log('Created identity:', identity);
@@ -328,3 +328,5 @@ export async function example() {
 }
 
 export default CivicOSHub;
+
+

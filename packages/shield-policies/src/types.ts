@@ -96,3 +96,5 @@ export interface HSTSConfig {
   includeSubDomains?: boolean;
   preload?: boolean;
 }
+
+

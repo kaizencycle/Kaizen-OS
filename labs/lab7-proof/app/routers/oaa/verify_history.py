@@ -167,3 +167,4 @@ def verify_key_history(body: VerifyKeyHistoryBody):
         "ts": _now_iso(),
         "meta": body.meta or {}
     }
+

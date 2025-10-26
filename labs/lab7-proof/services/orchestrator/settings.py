@@ -13,3 +13,4 @@ class Settings(BaseModel):
     ENABLE_REWARDS: bool = os.getenv("ENABLE_REWARDS", "true").lower() == "true"
 
 settings = Settings()
+

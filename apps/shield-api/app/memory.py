@@ -29,3 +29,5 @@ def append(body: AppendReq, background: BackgroundTasks, authorization: str = He
         background.add_task(anchor_event, token, att_type, {"content": e.content, "ts": rec["ts"]})
     if len(b["events"]) > 200: b["events"] = b["events"][-200:]
     return {"ok": True, "count": len(b["events"])}
+
+

@@ -5,3 +5,4 @@ export function openSSE(url: string, headers: Record<string,string>) {
   // For now, we’ll put it in query and forward to header via a small API proxy, or we’ll modify backend to read query.
   return new EventSource(u.toString());
 }
+

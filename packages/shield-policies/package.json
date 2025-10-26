@@ -1,7 +1,7 @@
 {
   "name": "@civic/shield-policies",
   "version": "1.0.0",
-  "description": "Security policies and request guards for Civic OS",
+  "description": "Security policies and request guards for Kaizen OS",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
@@ -26,3 +26,5 @@
     }
   }
 }
+
+

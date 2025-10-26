@@ -17,3 +17,4 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
     res.status(500).json({ error: 'Failed to read agent cooldown file' });
   }
 }
+

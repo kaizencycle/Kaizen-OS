@@ -36,3 +36,5 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   const audioUrl = `/api/oaa/voice/mock/audio?t=${Date.now()}`;
   return res.status(200).json({ ok:true, provider, audioUrl, visemes });
 }
+
+

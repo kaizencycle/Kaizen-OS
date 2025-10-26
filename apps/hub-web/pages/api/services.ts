@@ -12,3 +12,4 @@ export default function handler(_req: NextApiRequest, res: NextApiResponse) {
     res.status(500).json({ ok: false, error: "services_manifest_unavailable", message: e?.message });
   }
 }
+

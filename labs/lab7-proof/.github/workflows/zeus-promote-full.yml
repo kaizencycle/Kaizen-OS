@@ -63,3 +63,4 @@ jobs:
           else
             echo "No LAB7_AUTOLABEL_TOKEN; skipping merge. You can merge manually."
           fi
+

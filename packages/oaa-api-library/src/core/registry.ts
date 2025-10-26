@@ -26,3 +26,4 @@ try {
 export const tools: Record<string, Tool> = {
   webDataScout: { name: "webDataScout", call: webDataScout }
 };
+

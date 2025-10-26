@@ -2,7 +2,7 @@
 import { CivicOSHub } from './src/CivicOSHub';
 
 async function testCivicOSHub() {
-  console.log('🚀 Testing Civic OS Hub Integration...\n');
+  console.log('🚀 Testing Kaizen OS Hub Integration...\n');
 
   const hub = new CivicOSHub();
 
@@ -24,7 +24,7 @@ async function testCivicOSHub() {
     // Test citizen creation
     const identity = await hub.createCitizen(
       'testuser',
-      'I want to join Civic OS and contribute to the digital renaissance'
+      'I want to join Kaizen OS and contribute to the digital renaissance'
     );
     
     console.log('✅ Citizen Created Successfully!');
@@ -60,7 +60,7 @@ async function testCivicOSHub() {
     console.log('   ❌ Lab4: Connection failed');
   }
 
-  console.log('\n🎉 Civic OS Hub Integration Test Complete!');
+  console.log('\n🎉 Kaizen OS Hub Integration Test Complete!');
   console.log('\n📋 Next Steps:');
   console.log('   1. Deploy the missing APIs (Lab6, OAA, Ledger, GIC Indexer)');
   console.log('   2. Start the GIC Gateway service');
@@ -70,3 +70,5 @@ async function testCivicOSHub() {
 
 // Run the test
 testCivicOSHub().catch(console.error);
+
+

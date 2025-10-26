@@ -14,3 +14,4 @@ def live():
 def ready():
     # add any dependency checks here later (db, ledger reachability, etc.)
     return {"status": "ready"}
+

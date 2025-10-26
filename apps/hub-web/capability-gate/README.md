@@ -9,3 +9,4 @@ This gate enforces a **standard promotion flow** for model/agent upgrades:
 6) Canary rollout → staged promotion → post-roll checks
 
 All artifacts are committed to the repo (JSON + Markdown) and linked in the **Civic Ledger**.
+

@@ -174,3 +174,4 @@ echo "ADMIN_KEY=your-admin-key" >> .env
 - **Notifications**: Weekly bonus announcements
 
 Your Reflections app now has a complete three-tier GIC reward system with weekly bonus capabilities! 🎯✨
+

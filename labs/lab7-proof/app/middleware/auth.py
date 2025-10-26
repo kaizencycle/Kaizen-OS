@@ -33,3 +33,4 @@ async def verify_api_key(request: Request):
 
     # Return lab name to routes if needed
     return {"ok": True, "lab": lab_name, "time": timestamp}
+

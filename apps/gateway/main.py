@@ -1,5 +1,5 @@
 """
-Civic OS API Gateway
+Kaizen OS API Gateway
 AUREA + ATLAS Unified Architecture
 
 Features:
@@ -28,9 +28,9 @@ JWT_ALG = CFG["JWT_ALG"]
 
 # Create app
 app = FastAPI(
-    title="Civic OS Gateway",
+    title="Kaizen OS Gateway",
     version="1.0.0",
-    description="Single entry point for all Civic OS services"
+    description="Single entry point for all Kaizen OS services"
 )
 
 # CORS middleware
@@ -270,4 +270,5 @@ async def gic(req: Request, path: str):
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run(app, host="0.0.0.0", port=int(os.getenv("PORT", "8000")))
+
 

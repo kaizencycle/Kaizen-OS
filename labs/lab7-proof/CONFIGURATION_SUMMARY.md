@@ -47,3 +47,4 @@ Your Lab7-Proof system is now configured with a security-first approach:
 - [x] GitHub workflows use variables/secrets
 - [x] No hardcoded values in public files
 - [x] Configuration centralized in `env.example`
+

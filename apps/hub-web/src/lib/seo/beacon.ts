@@ -57,3 +57,5 @@ export function beaconFromRankedItem(item: any) {
     oaa: item.oaa
   };
 }
+
+

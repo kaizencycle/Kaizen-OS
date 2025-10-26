@@ -81,3 +81,4 @@ Then set LEDGER_BASE_URL for your oaa-hub preview to the mock's URL.
   - /api/posts/seal → uses mock → returns proof
   - /api/companions/feed → can lookup proofs via mock
   - Auto-seal workflow: run locally or trigger in preview with mock URL
+

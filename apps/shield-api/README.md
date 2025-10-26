@@ -11,3 +11,5 @@ Run:
   uvicorn app.main:app --reload --port 8001
 Docs:
   http://localhost:8001/docs
+
+

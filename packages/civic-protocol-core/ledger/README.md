@@ -297,3 +297,4 @@ See the main Civic Protocol Core repository for contribution guidelines.
 ## License
 
 MIT License - see the main repository for details.
+

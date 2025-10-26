@@ -54,7 +54,7 @@ const memory = new Map<string, any>();
 const ATLAS_TOOLS: Tool[] = [
   {
     name: 'health_check',
-    description: 'Check health status of all 6 Civic OS APIs',
+    description: 'Check health status of all 6 Kaizen OS APIs',
     inputSchema: {
       type: 'object',
       properties: {},
@@ -364,7 +364,7 @@ ${status === 'PASS' ? '✅ System integrity maintained' :
     const report = `🔍 **ATLAS Code Quality Audit**
 
 **Overall Rating:** ${auditResults.overall}
-**Repository:** ${repository || 'All Civic OS repositories'}
+**Repository:** ${repository || 'All Kaizen OS repositories'}
 
 **Metrics:**
 - Test Coverage: ${auditResults.metrics.testCoverage}%
@@ -557,3 +557,4 @@ ${nextIntent.length > 0 ? nextIntent.map(i => `- ${i}`).join('\n') : '- Continue
 // Start ATLAS
 const atlas = new ATLASSentinel();
 atlas.start().catch(console.error);
+

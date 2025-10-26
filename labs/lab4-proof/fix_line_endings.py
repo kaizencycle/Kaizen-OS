@@ -8,3 +8,4 @@ with open('requirements.txt', 'w', encoding='utf-8', newline='\n') as f:
     f.write(content)
 
 print("Converted requirements.txt to Unix line endings")
+

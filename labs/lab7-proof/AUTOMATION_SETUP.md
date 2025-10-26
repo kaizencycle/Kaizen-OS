@@ -165,3 +165,4 @@ async def custom_operation(self):
 ---
 
 🎉 **You're all set!** The autonomous merge loop will now process your `lab7-edits` folders automatically!
+

@@ -10,3 +10,4 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   const text = (req.body?.text || '').toString();
   return res.status(200).json({ ok:true, echo:text });
 }
+

@@ -7,3 +7,5 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   const p = await plan(req.body);
   res.status(200).json({ ok:true, plan: p });
 }
+
+

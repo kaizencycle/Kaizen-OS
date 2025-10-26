@@ -82,3 +82,4 @@
 - Focus on one rung at a time.  
 - Each rung = one concept + one practice.  
 - Keep a **Notepad log of bugs & fixes** — that’s your engineer’s diary.  
+

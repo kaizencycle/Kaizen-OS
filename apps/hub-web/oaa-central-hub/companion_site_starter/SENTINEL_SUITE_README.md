@@ -345,3 +345,4 @@ When extending the Sentinel Suite:
 ---
 
 **The Sentinel Suite transforms operational monitoring from reactive to proactive, giving your team the tools they need to maintain a healthy, self-healing system.**
+

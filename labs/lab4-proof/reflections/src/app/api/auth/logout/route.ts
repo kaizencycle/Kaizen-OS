@@ -9,3 +9,4 @@ export async function POST(req: NextRequest) {
   session.destroy();
   return res;
 }
+

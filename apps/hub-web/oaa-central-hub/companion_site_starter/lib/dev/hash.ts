@@ -5,3 +5,4 @@ export async function shaHex(text: string) {
   const hex = [...new Uint8Array(digest)].map(b => b.toString(16).padStart(2, "0")).join("");
   return "0x" + hex;
 }
+

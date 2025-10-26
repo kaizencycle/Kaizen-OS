@@ -207,3 +207,4 @@ Use the included `heartbeat.ps1` script for automated daily checks:
 **Port Configuration:**
 - Main API: `http://127.0.0.1:8000`
 - Preflight Proxy: `http://127.0.0.1:8999` ← **Use this for all requests**
+

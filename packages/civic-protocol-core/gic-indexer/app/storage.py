@@ -51,3 +51,4 @@ def compute_supply(db):
         "total_gic": float(gic_direct + gic_from_xp),
         "circulating_gic": float(gic_direct)  # direct GIC grants/transfers considered circulating
     }
+

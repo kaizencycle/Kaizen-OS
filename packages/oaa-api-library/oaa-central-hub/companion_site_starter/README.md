@@ -31,3 +31,4 @@ GATEWAY_HMAC_SECRET=change-me
 ## Notes
 - Hologram lives at `/holo` and uses browser STT/TTS for a quick demo.
 - Swap in your real voice adapter (`/api/oaa/voice`) and Citizen Shield gateway when ready.
+

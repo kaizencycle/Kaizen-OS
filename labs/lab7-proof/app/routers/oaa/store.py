@@ -39,3 +39,4 @@ def summarize_reputation(source_id: str) -> float:
     stake_bonus = sum(v["stake_gic"] * (1 if v["opinion"] == "up" else -1) for v in votes)
     rep = 0.7 + 0.15*base + 0.001*stake_bonus
     return max(0.0, min(1.0, rep))
+

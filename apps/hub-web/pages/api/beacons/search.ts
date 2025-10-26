@@ -170,3 +170,4 @@ function getRelevanceScore(beacon: BeaconItem, query: string): number {
   
   return score;
 }
+

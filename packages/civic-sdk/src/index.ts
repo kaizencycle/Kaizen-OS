@@ -1,4 +1,4 @@
-// Civic OS SDK - Shared API clients and types
+// Kaizen OS SDK - Shared API clients and types
 export * from './clients';
 export * from './types';
 export * from './utils';
@@ -33,3 +33,5 @@ export interface GICAttestation {
   integrity: number;
   proof: string;
 }
+
+

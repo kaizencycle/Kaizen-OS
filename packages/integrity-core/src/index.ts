@@ -1,4 +1,4 @@
-// Civic OS Integrity Core - GI scoring and integrity checks
+// Kaizen OS Integrity Core - GI scoring and integrity checks
 export * from './gi-calculator';
 export * from './integrity-checker';
 export * from './middleware';
@@ -25,3 +25,5 @@ export async function checkIntegrity(service: string, checks: IntegrityChecks): 
     recommendations: checker.getRecommendations(gi, checks)
   };
 }
+
+

@@ -20,3 +20,4 @@ def passes_mint_gates(rubric: RubricScores, attestation_sig_present: bool) -> tu
     if avg < p.get("min_overall_rubric_avg", 3.5):
         issues.append("avg_rubric_below_threshold")
     return (len(issues) == 0, issues)
+

@@ -178,3 +178,4 @@ pm2 start companion_site_starter --name "hub"
 1. Add new routes in `services/gic_gateway_service/src/index.js`
 2. Update cache logic in `src/events.js`
 3. Add new environment variables as needed
+

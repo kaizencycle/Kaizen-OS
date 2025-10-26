@@ -35,3 +35,5 @@ A lightweight pattern to let agents write code while **you remain the safety anc
 - The whitelist prevents accidental writes to risky paths. Tune it as your repos evolve.
 - The pre-push hook is a **local guard**; CI still runs secret scanning in GitHub.
 - Pair this with your **Auto-Merge Pulse** or your Cursor agent for a safe, rhythmic workflow.
+
+

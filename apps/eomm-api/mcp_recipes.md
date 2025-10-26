@@ -91,3 +91,4 @@ Copy-Item .cursor\mcp.prod.json .cursor\mcp.json -Force
 - Replace "private encrypted sweep" or "publish reflection" with your actual notes.
 - content_hash should ideally be a real SHA-256 of your reflection text (use reflect.ps1 for auto-hashing).
 - For publish tier, ensure your note is ≥200 characters to get the full +25 GIC reward.
+

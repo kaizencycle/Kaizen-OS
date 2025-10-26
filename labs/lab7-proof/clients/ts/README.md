@@ -52,3 +52,4 @@ const oaa = new OAAClient("https://api.example.com", fetch, { Authorization: "Be
 **Types**  
   
 Exposes request/response interfaces for all four endpoints.
+

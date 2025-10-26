@@ -33,3 +33,4 @@ class EventOut(BaseModel):
     target: str | None = None
     created_at: str
     meta: dict = {}
+

@@ -15,3 +15,4 @@ def level_after(total_xp: int) -> int:
         level += 1
         threshold *= 1.35
     return level
+

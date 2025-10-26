@@ -411,3 +411,4 @@ If you have questions about contributing, please:
 4. Join community discussions
 
 Thank you for contributing to Civic Protocol Core! Together, we're building a more democratic and transparent future.
+

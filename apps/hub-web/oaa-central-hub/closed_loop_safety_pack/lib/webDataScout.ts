@@ -72,3 +72,5 @@ export async function extract(url: string, fields: ScoutSchema): Promise<ScoutRe
   }
   return res;
 }
+
+

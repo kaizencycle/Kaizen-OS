@@ -39,3 +39,4 @@ atlas.healthCheck().then(result => {
 }).catch(error => {
   console.error('❌ Error:', error.message);
 });
+

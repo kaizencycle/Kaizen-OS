@@ -14,3 +14,5 @@ This pack adds a minimal hologram interface (like *The Time Machine* 2002 librar
 2. Visit `/holo` and click **Ask**.
 3. Replace the ledger API with your Civic Ledger enqueue.
 4. (Optional) Enable WebXR / AR later; this 2D holo works in any browser.
+
+

@@ -109,3 +109,4 @@ Common issues and solutions:
 - **Build failures**: Check for missing dependencies or syntax errors
 - **API connection issues**: Verify the API endpoint configuration
 - **Styling issues**: Check CSS module imports and class names
+

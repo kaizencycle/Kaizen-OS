@@ -34,3 +34,4 @@ export async function signMessage(secretKey, msg) {
   const sigBuf = await crypto.subtle.sign("HMAC", secretKey, enc.encode(msg));
   return toBase64(sigBuf);
 }
+

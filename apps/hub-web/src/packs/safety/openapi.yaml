@@ -32,3 +32,5 @@ components:
       type: http
       scheme: bearer
       description: Use X-Hub-Signature-256 header with sha256 HMAC of raw body
+
+

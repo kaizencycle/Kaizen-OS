@@ -10,3 +10,4 @@ services:
         value: Companion
       - key: GATEWAY_HMAC_SECRET
         generateValue: true
+

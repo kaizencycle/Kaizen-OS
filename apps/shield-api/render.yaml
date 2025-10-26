@@ -16,3 +16,4 @@ services:
       - key: OAA_ISSUER
         value: oaa_hub
     healthCheckPath: /health
+

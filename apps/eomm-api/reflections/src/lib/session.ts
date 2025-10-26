@@ -15,3 +15,4 @@ export const sessionOptions: SessionOptions = {
 export async function getSession(req: Request, res?: Response) {
   return await getIronSession<UserSession>(req, res as any, sessionOptions);
 }
+

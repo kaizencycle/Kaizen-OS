@@ -9,3 +9,4 @@ async def score_async(prompt: str, answer: str, prev_answer: str | None = None) 
         r.raise_for_status()
         data = r.json()["scores"]
         return RubricScores(**data)
+

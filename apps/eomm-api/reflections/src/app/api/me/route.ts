@@ -8,3 +8,4 @@ export async function GET(req: NextRequest) {
   const session = await getSession(req, res);
   return NextResponse.json({ handle: session.handle || null });
 }
+

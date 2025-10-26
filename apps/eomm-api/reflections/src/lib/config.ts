@@ -18,3 +18,4 @@ export async function fetchLiveConfig(): Promise<LiveConfig | null> {
     return null;
   }
 }
+

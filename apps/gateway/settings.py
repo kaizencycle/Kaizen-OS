@@ -1,5 +1,5 @@
 """
-Civic OS Gateway Configuration
+Kaizen OS Gateway Configuration
 AUREA + ATLAS Unified Settings
 """
 import os
@@ -26,4 +26,5 @@ CFG = {
     "CHARTER_URL": os.getenv("CHARTER_URL", "https://hive-api-2le8.onrender.com"),
     "NATS_URL": os.getenv("NATS_URL", "nats://localhost:4222"),
 }
+
 

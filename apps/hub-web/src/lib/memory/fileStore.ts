@@ -16,3 +16,4 @@ export function writeMemory(obj: any, filePath = process.env.OAA_MEMORY_PATH || 
   obj.updatedAt = new Date().toISOString();
   fs.writeFileSync(filePath, JSON.stringify(obj, null, 2));
 }
+

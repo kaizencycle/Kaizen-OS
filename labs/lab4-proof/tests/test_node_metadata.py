@@ -231,3 +231,4 @@ def test_export_includes_all_files():
                 if isinstance(item, dict) and "meta" in item:
                     assert item["meta"]["node_id"] == "cursor"
                     assert item["meta"]["author"] == "Cursor AI (Kaizen Node)"
+

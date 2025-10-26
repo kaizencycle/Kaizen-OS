@@ -1,4 +1,4 @@
-// Types for Civic OS UI Kit
+// Types for Kaizen OS UI Kit
 
 export interface ProofCardProps {
   title: string;
@@ -91,3 +91,5 @@ export interface CivicTheme {
     lg: string;
   };
 }
+
+
