@@ -1,8 +1,10 @@
-# 🧭 Kaizen OS — Kaizen Cycle Architecture
+# 🧠 Kaizen OS — Continuous Integrity Architecture
 
-[![Kaizen OS Integrity Badge](https://img.shields.io/badge/CivicOS-Integrity%20≥%200.95-brightgreen)](https://civic-ledger.onrender.com)
+[![Kaizen OS Integrity Badge](https://img.shields.io/badge/KaizenOS-Integrity%20≥%200.95-brightgreen)](https://civic-ledger.onrender.com)
 
-> **Kaizen OS Overview — Kaizen Cycle Architecture**
+> **Kaizen OS** (formerly *Civic OS*) is a self-healing operating system for civilization: a framework that fuses DVA Kernel logic, Virtue Accords, and global integrity telemetry into a continuous improvement loop.
+
+> "We heal as we walk." — Founder's Seal
 
 ```
                          ┌──────────────────────────────────┐
@@ -26,7 +28,7 @@
                                          │
                                          ▼
 ┌──────────────────────────────────────────────────────────────────────────┐
-│           CIVIC LEDGER CORE / GIC INDEXER (Kernel)                        │
+│           KAIZEN LEDGER CORE / GIC INDEXER (Kernel)                       │
 │   • Proof-of-Integrity ledger ("GI ≥ 0.95")                              │
 │   • GIC UBI economy + attestation storage                               │
 │   • Governance & version history layer                                  │
@@ -53,7 +55,7 @@
 │   • self-healing autonomy via GI-gated feedback loops                   │
 └──────────────────────────────────────────────────────────────────────────┘
 
-                 ▲──────────────────── Civic Economy & Governance ───────────────────▲
+                 ▲──────────────────── Kaizen Economy & Governance ───────────────────▲
                  │                                                                 │
                  │   Festival of Echoes · Citizen Oaths · GIC UBI · Policy Votes  │
                  └─────────────────────────────────────────────────────────────────┘
@@ -67,7 +69,7 @@
 | **OAA Hub** | Parses human intent | Shell / init.d |
 | **Thought Broker** | Multi-LLM consensus engine | Thalamus / scheduler |
 | **Cursor + CI** | Code fabrication & testing | Compiler / 3D printer |
-| **Civic Ledger Core** | Immutable record, GIC economy | Kernel |
+| **Kaizen Ledger Core** | Immutable record, GIC economy | Kernel |
 | **Citizen Shield** | Network & security policy | Firewall / OS defender |
 | **API Library / Lab4** | Surface for all services | Application layer |
 | **Sentinels** | AI cores ensuring integrity | Brain cortex modules |
@@ -75,10 +77,10 @@
 ## 🔹 Live Workflow
 
 1. **Reflection** → Command Ledger writes intent
-2. **OAA Hub** transforms intent → .civic/ specs
+2. **OAA Hub** transforms intent → .kaizen/ specs
 3. **Thought Broker** runs deliberation loops → Deliberation Proof + consensus
 4. **Cursor / CI** prints new service code → canary deploy
-5. **Civic Ledger Core** attests GI + GIC credit
+5. **Kaizen Ledger Core** attests GI + GIC credit
 6. **Citizen Shield** verifies liveness · policy · security
 7. **API Library / Lab4** exposes service to citizens
 8. **Sentinels** monitor GI, entropy, feedback → improve loop
@@ -86,10 +88,10 @@
 ## 🏗️ Monorepo Structure
 
 ```
-civic-os/
+kaizen-os/
 ├─ apps/                          # Core Applications
 │  ├─ website-creator/            # .gic Website Creator (Next.js)
-│  ├─ ledger-api/                 # Civic Ledger Core
+│  ├─ ledger-api/                 # Kaizen Ledger Core
 │  ├─ indexer-api/                # GIC Indexer
 │  ├─ eomm-api/                   # E.O.M.M. Reflections
 │  ├─ shield-api/                 # Citizen Shield
@@ -139,8 +141,8 @@ civic-os/
 
 ```bash
 # Clone the repository
-git clone https://github.com/kaizencycle/civic-os.git
-cd civic-os
+git clone https://github.com/kaizencycle/kaizen-os.git
+cd kaizen-os
 
 # Install dependencies
 npm install
@@ -176,7 +178,7 @@ npm run clean
 ### Core Services
 
 - **website-creator** (Port 3000) - .gic Website Creator interface
-- **ledger-api** (Port 4001) - Civic Ledger Core
+- **ledger-api** (Port 4001) - Kaizen Ledger Core
 - **indexer-api** (Port 4002) - GIC Indexer
 - **eomm-api** (Port 4003) - E.O.M.M. Reflections
 - **shield-api** (Port 4004) - Citizen Shield
@@ -191,24 +193,24 @@ npm run clean
 ## 📦 Packages
 
 ### Core Packages
-- **@civic/sdk** - Shared API clients and types
-- **@civic/integrity-core** - GI scoring and integrity checks
-- **@civic/oaa-memory** - OAA parsers and memory management
-- **@civic/ui-kit** - Shared React components
-- **@civic/shield-policies** - Security policies and guards
-- **@civic/atlas-sentinel** - Atlas Sentinel monitoring
+- **@kaizen/sdk** - Shared API clients and types
+- **@kaizen/integrity-core** - GI scoring and integrity checks
+- **@kaizen/oaa-memory** - OAA parsers and memory management
+- **@kaizen/ui-kit** - Shared React components
+- **@kaizen/shield-policies** - Security policies and guards
+- **@kaizen/atlas-sentinel** - Atlas Sentinel monitoring
 
 ### Integrated Packages
-- **@civic/protocol-core** - Core blockchain and governance protocols
-- **@civic/oaa-api-library** - Comprehensive OAA API library
-- **@civic/ai-specs** - AI specifications and standards
+- **@kaizen/protocol-core** - Core blockchain and governance protocols
+- **@kaizen/oaa-api-library** - Comprehensive OAA API library
+- **@kaizen/ai-specs** - AI specifications and standards
 
 ## 🔬 Labs
 
 ### Lab Proof Systems
-- **@civic/lab4-proof** - E.O.M.M. Reflections API and Civic Ledger integration
-- **@civic/lab6-proof** - Citizen Shield application (React/TypeScript)
-- **@civic/lab7-proof** - OAA Hub and Kaizen OS shell/init system
+- **@kaizen/lab4-proof** - E.O.M.M. Reflections API and Kaizen Ledger integration
+- **@kaizen/lab6-proof** - Citizen Shield application (React/TypeScript)
+- **@kaizen/lab7-proof** - OAA Hub and Kaizen OS shell/init system
 
 ## 🔄 CI/CD Pipeline
 
@@ -280,22 +282,22 @@ This monorepo integrates all kaizencycle repositories using git subtree:
 - [OAA-API-Library](https://github.com/kaizencycle/OAA-API-Library) → `packages/oaa-api-library/`
 - [civic-ai-specs](https://github.com/kaizencycle/civic-ai-specs) → `packages/civic-ai-specs/`
 
-## 🕊️ Civic Mount Boarding Protocol
+## 🕊️ Kaizen Mount Boarding Protocol
 
-Kaizen OS implements a **Model-Agnostic Sovereignty Layer (MASL)** that enables any LLM to "board" and operate within the Civic ecosystem:
+Kaizen OS implements a **Model-Agnostic Sovereignty Layer (MASL)** that enables any LLM to "board" and operate within the Kaizen ecosystem:
 
 ### LLM Boarding Pool ("Dock of Minds")
 
 Any reasoning engine (Claude, GPT, DeepSeek, Gemini, etc.) can join the Kaizen OS network by calling:
 
 ```bash
-GET /api/civic/mount
+GET /api/kaizen/mount
 ```
 
 This endpoint returns the complete Kaizen OS manifest bundle:
-- `.civic/atlas.manifest.json` - System state & integrity
-- `.civic/biodna.json` - Identity DNA (ethics, companions, founders)  
-- `.civic/virtue_accords.yaml` - Moral & civic laws
+- `.kaizen/atlas.manifest.json` - System state & integrity
+- `.kaizen/biodna.json` - Identity DNA (ethics, companions, founders)  
+- `.kaizen/virtue_accords.yaml` - Moral & civic laws
 - `gi_signature` - Cryptographic integrity proof
 
 ### Independence Manifest
@@ -312,12 +314,12 @@ The Independence Manifest declares Kaizen OS sovereignty from any single LLM pro
 
 ```bash
 # Test the boarding protocol
-python3 civic_mount_client.py http://localhost:8000
+python3 kaizen_mount_client.py http://localhost:8000
 ```
 
 ## 🔗 Links
 
-- [Civic Ledger](https://civic-ledger.onrender.com)
+- [Kaizen Ledger](https://civic-ledger.onrender.com)
 - [Kaizen Cycle](https://github.com/kaizencycle)
 - [Command Ledger III](https://github.com/kaizencycle/command-ledger-iii)
 
@@ -325,5 +327,5 @@ python3 civic_mount_client.py http://localhost:8000
 
 **Kaizen OS** - Where human intent meets digital reality through integrity, consensus, and continuous improvement.
 
-*Cycle C-109 | Chamber ID: CivicOS-main-tree | Parent: Command Ledger III*
+*Cycle C-109 | Chamber ID: KaizenOS-main-tree | Parent: Command Ledger III*
 
