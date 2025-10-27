@@ -1,0 +1,17 @@
+flowchart TD
+  A[Apply: POST /api/onboard/apply] --> B[ATLAS Constitutional Review]
+  B -->|approved| C[Mount: GET /api/civic/mount<br/>Receive: atlas.manifest, biodna, virtue_accords, gi_signature]
+  B -->|rework| A
+  C --> D[Implement Required Endpoints<br/>/health • /v1/deliberate • /constitutional/validate]
+  D --> E[Shadow Mode Week 1<br/>Votes not counted; metrics tracked]
+  E -->|meets targets| F[Activate Production Voting<br/>Tiered permissions enabled]
+  E -->|falls short| D
+  F --> G[Continuous Evaluation<br/>GI, consensus, latency, cost]
+  G -->|exceeds| H[Promotion Tier ↑]
+  G -->|violations| I[Demotion/Suspension + Appeal]
+  
+  style A fill:#e1f5fe
+  style C fill:#f3e5f5
+  style F fill:#e8f5e8
+  style H fill:#fff3e0
+  style I fill:#ffebee

@@ -1,0 +1,131 @@
+{
+  "name": "kaizen-os",
+  "description": "Kaizen OS MCP: ADR, PR, GI checks, ledger attestation, consensus views",
+  "version": "1.0.0",
+  "tools": [
+    {
+      "name": "adr.create",
+      "description": "Create an Architecture Decision Record (ADR)",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string",
+            "description": "Title of the ADR"
+          },
+          "context": {
+            "type": "string",
+            "description": "Additional context for the ADR",
+            "default": ""
+          }
+        },
+        "required": ["title"]
+      }
+    },
+    {
+      "name": "pr.draft",
+      "description": "Draft a Pull Request with template and checklist",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "scope": {
+            "type": "string",
+            "description": "Scope of the changes"
+          },
+          "risk": {
+            "type": "string",
+            "description": "Risk level (low, medium, high)",
+            "default": "low"
+          }
+        },
+        "required": ["scope"]
+      }
+    },
+    {
+      "name": "gi.check",
+      "description": "Run Governance Integrity checks on code diff",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "diff": {
+            "type": "string",
+            "description": "Git diff to check"
+          }
+        },
+        "required": ["diff"]
+      }
+    },
+    {
+      "name": "ledger.attest",
+      "description": "Attest an event to the Kaizen OS ledger",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "event": {
+            "type": "string",
+            "description": "Event type to attest"
+          },
+          "meta": {
+            "type": "object",
+            "description": "Additional metadata",
+            "default": {}
+          }
+        },
+        "required": ["event"]
+      }
+    },
+    {
+      "name": "consensus.review",
+      "description": "Review consensus votes and constitutional scores for a PR",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "pr_id": {
+            "type": "string",
+            "description": "Pull Request ID to review"
+          }
+        },
+        "required": ["pr_id"]
+      }
+    },
+    {
+      "name": "scaffold.gen",
+      "description": "Generate code scaffolding for services, components, docs, or tests",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "kind": {
+            "type": "string",
+            "enum": ["service", "component", "documentation", "test"],
+            "description": "Type of scaffolding to generate"
+          },
+          "name": {
+            "type": "string",
+            "description": "Name of the item to scaffold"
+          }
+        },
+        "required": ["kind", "name"]
+      }
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "description": "Kaizen OS API token"
+  },
+  "server": {
+    "command": "node",
+    "args": ["apps/mcp-server/dist/index.js"],
+    "env": {
+      "KAIZEN_GW_BASE": "https://api.kaizen-os.civic.ai",
+      "KAIZEN_TOKEN": "${KAIZEN_TOKEN}",
+      "CONSENSUS_READONLY": "true"
+    }
+  },
+  "capabilities": {
+    "readonly": true,
+    "constitutional_validation": true,
+    "gi_scoring": true,
+    "ledger_attestation": true,
+    "consensus_participation": false
+  }
+}

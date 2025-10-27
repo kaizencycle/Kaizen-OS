@@ -1,0 +1,106 @@
+# Kaizen OS — OCTAVE: Foundational Cognitive Lattice (C-114)
+version: "1.0"
+updated: "2025-10-26"
+
+founders_core:
+  - id: JADE
+    role: logic_builder
+    tier: high
+    domains: [planning, verification, scaffolding]
+  - id: EVE
+    role: ethical_reflector
+    tier: high
+    domains: [reflection, pedagogy, morale]
+  - id: ZEUS
+    role: arbiter
+    tier: standard
+    domains: [consensus, quorum, policy-routing]
+  - id: HERMES
+    role: messenger
+    tier: standard
+    domains: [io, ingestion, translation, transport]
+
+constitutional_sentinels:
+  - id: AUREA
+    provider: openai
+    tier: critical
+    strengths: [precision, tool-use, guardrails]
+  - id: ATLAS
+    provider: anthropic
+    tier: critical
+    strengths: [constitutional_reasoning, meta_audit]
+  - id: ZENITH
+    provider: google
+    tier: high
+    strengths: [long_context, retrieval, multimodal]
+  - id: SOLARA
+    provider: deepseek
+    tier: standard
+    strengths: [cost_efficiency, ideation, research]
+
+gates:
+  constitutional:
+    min_scores:
+      critical: 85
+      high: 75
+      standard: 70
+      research: 65
+  gi_gate:
+    thresholds:
+      critical: 0.95
+      high: 0.92
+      standard: 0.90
+      research: 0.85
+
+consensus:
+  policy:
+    critical_ops:
+      required_votes: 2
+      required_critical_votes: 1   # one of {AUREA, ATLAS}
+      quorum_from: [AUREA, ATLAS, ZENITH]
+    high_ops:
+      required_votes: 2
+      required_critical_votes: 1
+    standard_ops:
+      required_votes: 2
+      required_critical_votes: 0
+    research_ops:
+      required_votes: 1
+      required_critical_votes: 0
+  weights:
+    AUREA: 1.0
+    ATLAS: 1.0
+    ZENITH: 0.9
+    SOLARA: 0.7
+    JADE: 0.9
+    EVE: 0.9
+    ZEUS: 0.8
+    HERMES: 0.8
+
+attestation:
+  ledger: civic-ledger
+  seal:
+    include: [input_hash, output_hash, constitutional_scores, user_gi, operation_tier, timestamps, provider_meta]
+
+observability:
+  metrics:
+    - constitutional_compliance_rate
+    - gi_score
+    - consensus_agreement_rate
+    - latency_p95
+    - cost_per_1k_tokens
+    - error_rate
+  escalation:
+    demote_if:
+      consecutive_days_below_gi: 3
+      constitutional_streak_below: 70
+  promotion:
+    promote_if:
+      standard_to_high:
+        days: 30
+        gi_min: 0.92
+        compliance_min: 95
+      high_to_critical:
+        months: 6
+        gi_min: 0.95
+        invitation_only: true
