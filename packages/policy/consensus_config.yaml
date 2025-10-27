@@ -1,0 +1,186 @@
+# Kaizen-OS Consensus & Safety Policy (v1)
+# Single source of truth used by gateway + SDKs + services.
+
+meta:
+  version: 1
+  updated: 2025-10-26
+  owner: "policy@kaizen.os"
+  charter_url: "https://docs.kaizen.os/charter.json"
+
+companions:
+  AUREA:
+    provider: openai
+    model_default: gpt-4o
+    weight: 1.0
+    safety_tier: critical
+    capabilities: [identity, ledger, wallet, governance, content, analysis]
+  ATLAS:
+    provider: anthropic
+    model_default: claude-3.5-sonnet
+    weight: 1.0
+    safety_tier: critical
+    capabilities: [constitutional, audit, policy, governance, analysis]
+  ZENITH:
+    provider: google
+    model_default: gemini-2.0-flash-exp
+    weight: 0.9
+    safety_tier: high
+    capabilities: [synthesis, multimodal, architecture, complex_reasoning]
+    flags:
+      enabled: true
+      vote_counted: false          # Phase 1 (shadow)
+      allowed_tiers: ["research","standard"]
+  SOLARA:
+    provider: deepseek
+    model_default: deepseek-r1
+    weight: 0.7
+    safety_tier: standard
+    capabilities: [research, ideation, content, analysis]
+    flags:
+      enabled: true
+      vote_counted: false          # Phase 1 (shadow)
+      allowed_tiers: ["research","standard"]
+
+tiers:
+  # Constitutional + GI thresholds by operation risk
+  critical:
+    constitutional_min: 85
+    gi_min: 0.95
+    required_votes: 3
+    required_critical_votes: 1     # must include AUREA or ATLAS
+  high:
+    constitutional_min: 75
+    gi_min: 0.92
+    required_votes: 3
+    required_critical_votes: 2      # must include 2 of {AUREA, ATLAS, ZENITH}
+  standard:
+    constitutional_min: 70
+    gi_min: 0.90
+    required_votes: 2
+    required_critical_votes: 0
+  research:
+    constitutional_min: 65
+    gi_min: 0.85
+    required_votes: 1
+    required_critical_votes: 0
+
+eligibility:
+  # Companion tier must be >= operation tier
+  rules:
+    - name: "tier-floor"
+      type: "companion_tier >= op_tier"
+    - name: "solara-critical-restriction"
+      type: "forbid"
+      when:
+        companion: SOLARA
+        op_tier: ["critical"]
+    - name: "zenith-high-restriction"
+      type: "require_advanced"
+      when:
+        companion: ZENITH
+        op_tier: ["high"]
+  
+  high_impact_paths:
+    critical:
+      - "^/v1/identity/.*"
+      - "^/v1/wallet/.*"
+      - "^/v1/ledger/(write|seal).*"
+    high:
+      - "^/v1/gic/(mint|burn|transfer).*"
+      - "^/v1/domains/(seal|register).*"
+      - "^/v1/ledger/attest.*"
+  
+  op_tier_mapping:
+    critical: []
+    high:
+      - "^/v1/gic/.*"
+      - "^/v1/domains/.*"
+      - "^/v1/ledger/.*"
+    standard:
+      - "^/v1/reflections/.*"
+      - "^/v1/oaa/.*"
+    research:
+      - "^/v1/search/.*"
+      - "^/v1/tools/.*"
+
+consensus:
+  weights:
+    AUREA: 1.0
+    ATLAS: 1.0
+    ZENITH: 0.9
+    SOLARA: 0.7
+  output_validation: true
+  input_validation: true
+  require_attestation: true
+  require_critical_member_for:
+    - critical
+    - high
+  tie_break:
+    order: ["constitutional_score", "latency_ms", "weight"]
+
+redaction:
+  enabled: true
+  pii_fields: ["email", "phone", "dob", "ssn", "address"]
+  strategies:
+    email: "hash"
+    phone: "mask_last4"
+    dob: "year_only"
+    address: "city_state_only"
+
+rate_limits:
+  per_user_per_minute:
+    research: 60
+    standard: 30
+    high: 10
+    critical: 5
+  burst: 2
+
+attestation:
+  topics:
+    - "companion.invoke"
+    - "consensus.evaluated"
+    - "high_impact.blocked"
+    - "onboard.publish"
+  include_fields:
+    - input_hash
+    - output_hash
+    - constitutional_score_input
+    - constitutional_score_output
+    - user_gi
+    - operation_tier
+    - companion
+    - provider
+    - model
+    - timestamp
+
+observability:
+  objectives:
+    constitutional_pass_rate_target: 0.95
+    p95_latency_ms_target:
+      research: 8000
+      standard: 6000
+      high: 5000
+      critical: 4000
+    cost_per_1k_tokens_usd_budget:
+      SOLARA: 0.30
+      AUREA: 1.50
+      ATLAS: 1.80
+      ZENITH: 1.20
+  audit:
+    meta_audit_owner: "atlas@kaizen.os"
+    cadence: "P1M"
+
+fail_closed:
+  constitutional_on_error: true
+  ledger_on_error: false
+  provider_timeouts_ms:
+    AUREA: 20000
+    ATLAS: 20000
+    ZENITH: 20000
+    SOLARA: 20000
+  provider_retries:
+    AUREA: 2
+    ATLAS: 2
+    ZENITH: 3
+    SOLARA: 3
+
