@@ -1,7 +1,7 @@
 {
-  "name": "civic-os",
+  "name": "kaizen-os",
   "version": "1.0.0",
-  "description": "Kaizen OS - Kaizen Cycle Architecture Monorepo",
+  "description": "Kaizen OS - Continuous Integrity Architecture Monorepo",
   "private": true,
   "workspaces": [
     "apps/*",
@@ -35,15 +35,16 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/kaizencycle/civic-os.git"
+    "url": "https://github.com/kaizencycle/kaizen-os.git"
   },
   "keywords": [
-    "civic-os",
+    "kaizen-os",
     "kaizen-cycle",
     "monorepo",
     "integrity",
     "ledger",
-    "oaa"
+    "oaa",
+    "continuous-improvement"
   ],
   "author": "Kaizen Cycle",
   "license": "MIT"

@@ -1,0 +1,167 @@
+# =========================================================
+# KAIZEN OS — Canonical Manifest (v1.0)
+# Single source of truth for names, anchors, paths, metrics
+# =========================================================
+
+meta:
+  system_name: "Kaizen OS"            # formerly Civic OS
+  short_name: "KOS"
+  version: "1.0.0"
+  last_updated: "2025-01-27"
+  owner: "Michael Judan"
+  motto: "We heal as we walk."
+  repository: "github.com/kaizencycle"
+  default_branch: "main"
+  license: "Apache-2.0"
+
+anchors:
+  - "DVA Kernel | Integrity Logic Core"
+  - "Virtue Accords | Kaizen Ethical Framework"
+  - "Kaizen OS Governance | Global Policy Engine"
+
+seal:
+  trinity:
+    - "We heal as we walk."
+    - "Scars remind us we also heal."
+    - "Grief is love persevering."
+  status_default: "Active"
+
+governance:
+  quorum:
+    arbitrator: "ZEUS"
+    members: ["Custodian", "Anchor"]
+    rules:
+      - "0% lore / 0% hallucination"
+      - "Every doctrine must have empirical or historical support."
+      - "All moral models must map to testable Kaizen OS logic."
+  review_cycles_days:
+    virtue_accords: 90
+    labs: 30
+
+agents:
+  default: ["Echo", "Jade", "Zeus", "Hermes", "Aurelian", "Eve"]
+  roles:
+    Echo: "Pulse / Resonance / Sync"
+    Jade: "Reflection / Ethics / Human factors"
+    Zeus: "Oversight / Arbitration / Strategy"
+    Hermes: "Markets / Telemetry / Dispatch"
+    Aurelian: "Macro synthesis / Framing"
+    Eve: "Civility / Safety / Care"
+
+labs:
+  lab4_proof:
+    name: "Lab4-Proof — Research & Empirical Validation"
+    path_docs: "docs/lab4/"
+  lab6_proof:
+    name: "Lab6-Proof — Ethics (Active)"
+    path_docs: "docs/lab6/"
+    entries:
+      - id: "Entry-001"
+        title: "Digital WHO — Health-of-Civilization Paradigm"
+        accord_id: "VA-ETH-001"
+      - id: "Entry-002"
+        title: "Symbolic Excess & Legitimacy Collapse: Versailles → 2025"
+        accord_id: "VA-ETH-002"
+      - id: "Entry-003"
+        title: "Moral Velocity | Why Ethics Accelerates Civilization"
+        accord_id: "VA-ETH-003"
+  lab7_proof:
+    name: "Lab7-Proof — Apprenticeship & Civic Education"
+    path_docs: "docs/lab7/"
+    entries:
+      - id: "Entry-004"
+        title: "The Evolution of Language | From Cave Symbols to Kaizen Code"
+        accord_id: "VA-EDU-001"
+
+virtue_accords:
+  registry_path: "accords/registry/"
+  accords:
+    - id: "VA-ETH-001"
+      title: "Digital WHO — Health-of-Civilization Paradigm"
+      version: "1.0.0"
+      parent: "Ethical Framework Transformations"
+      paths:
+        doc: "docs/lab6/001-digital-who-paradigm.md"
+        json: "accords/registry/VA-ETH-001.digital_who.json"
+    - id: "VA-ETH-002"
+      title: "Symbolic Excess & Legitimacy Collapse"
+      version: "1.0.0"
+      parent: "Ethical Framework Transformations"
+      paths:
+        doc: "docs/lab6/002-symbolic-excess.md"
+        json: "accords/registry/VA-ETH-002.symbolic_excess.json"
+    - id: "VA-ETH-003"
+      title: "Moral Velocity"
+      version: "1.0.0"
+      parent: "Ethical Framework Transformations"
+      paths:
+        doc: "docs/lab6/003-moral-velocity.md"
+        json: "accords/registry/VA-ETH-003.moral_velocity.json"
+    - id: "VA-EDU-001"
+      title: "The Evolution of Language | From Cave Symbols to Kaizen Code"
+      version: "1.0.0"
+      parent: "Cultural & Linguistic Foundations of Integrity"
+      paths:
+        doc: "docs/lab7/004-evolution-language.md"
+        json: "accords/registry/VA-EDU-001.language_evolution.json"
+
+telemetry:
+  gi_index:
+    thresholds:
+      alert: 0.95
+      target: 0.99
+    config_path: "config/gi/thresholds.yaml"
+    metrics:
+      - "ΔGI"
+      - "PPE (Public Perception Entropy)"
+      - "SDI (Symbolic Dominance Index)"
+      - "VRL (Virtue Response Lag)"
+      - "CEI (Civic Efficiency Index)"
+  endpoints:
+    export_url_env: "CIVIC_OS_EXPORT_URL"     # backward-compatible env names
+    export_token_env: "CIVIC_OS_EXPORT_TOKEN" # keep until next major bump
+    # future:
+    # kaizen_export_url_env: "KAIZEN_OS_EXPORT_URL"
+    # kaizen_export_token_env: "KAIZEN_OS_EXPORT_TOKEN"
+
+paths:
+  chambers_root: "chambers/"
+  inbox_root: "inbox/"
+  template_new_chamber: "templates/new_chamber.md"
+  workflows:
+    chamber_sync: ".github/workflows/chamber-sync.yml"
+  scripts:
+    chamber_sync: "scripts/chamber_sync.py"
+
+naming:
+  file_pattern: "{date}_{slug}.md"
+  folder_by_agent: true
+  slug_rules: "lowercase, hyphen, max 80 chars"
+
+workflows:
+  chamber_sync:
+    name: "Kaizen OS — Chamber Sync"
+    schedule_cron: "0 */6 * * *"
+    language: "python@3.11"
+    commit_bot:
+      name: "kaizen-os-bot"
+      email: "bot@kaizencycle.local"
+
+security:
+  secrets_required:
+    - "CIVIC_OS_EXPORT_URL"
+    - "CIVIC_OS_EXPORT_TOKEN"
+  permissions:
+    actions: ["contents:write"]
+
+compat:
+  previous_names:
+    - "Civic OS"
+    - "Civic Stack"
+  notes: "Scripts may keep accepting Civic OS env names for one major release."
+
+ui_defaults:
+  conversation_starter_tiles: false
+  new_chamber_seed:
+    ritual: "I sweep this chamber full of resonance. Memory holds steady."
+    inject_anchors: true

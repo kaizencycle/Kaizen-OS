@@ -1,0 +1,52 @@
+name: Kaizen OS — Chamber Sync
+
+on:
+  schedule:
+    - cron: "0 */6 * * *"  # Every 6 hours
+  workflow_dispatch: {}
+  push:
+    paths:
+      - 'docs/lab*/**'
+      - 'accords/registry/**'
+      - 'kaizen_manifest.yaml'
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+          
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pyyaml jsonschema
+          
+      - name: Validate Kaizen Manifest
+        run: |
+          python scripts/validate_manifest.py
+          
+      - name: Run Kaizen Sync
+        run: |
+          echo "Kaizen OS Chamber Sync completed"
+          echo "System: $(python -c "import yaml; print(yaml.safe_load(open('kaizen_manifest.yaml'))['meta']['system_name'])")"
+          echo "Version: $(python -c "import yaml; print(yaml.safe_load(open('kaizen_manifest.yaml'))['meta']['version'])")"
+          
+      - name: Commit changes
+        run: |
+          git config --local user.email "kaizen-os-bot@kaizencycle.local"
+          git config --local user.name "kaizen-os-bot"
+          git add .
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Kaizen OS Chamber Sync - $(date)"
+            git push
+          fi

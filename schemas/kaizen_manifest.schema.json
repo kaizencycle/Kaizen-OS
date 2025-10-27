@@ -1,0 +1,196 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Kaizen OS Manifest",
+  "type": "object",
+  "required": ["meta", "anchors", "governance", "agents", "labs", "virtue_accords", "telemetry", "paths", "workflows"],
+  "properties": {
+    "meta": {
+      "type": "object",
+      "required": ["system_name", "version", "owner", "repository"],
+      "properties": {
+        "system_name": {"type": "string"},
+        "short_name": {"type": "string"},
+        "version": {"type": "string"},
+        "last_updated": {"type": "string"},
+        "owner": {"type": "string"},
+        "motto": {"type": "string"},
+        "repository": {"type": "string"},
+        "default_branch": {"type": "string"},
+        "license": {"type": "string"}
+      }
+    },
+    "anchors": {
+      "type": "array",
+      "items": {"type": "string"},
+      "minItems": 1
+    },
+    "seal": {
+      "type": "object",
+      "properties": {
+        "trinity": {
+          "type": "array",
+          "items": {"type": "string"},
+          "minItems": 3,
+          "maxItems": 3
+        },
+        "status_default": {"type": "string"}
+      }
+    },
+    "governance": {
+      "type": "object",
+      "properties": {
+        "quorum": {
+          "type": "object",
+          "properties": {
+            "arbitrator": {"type": "string"},
+            "members": {"type": "array", "items": {"type": "string"}},
+            "rules": {"type": "array", "items": {"type": "string"}}
+          }
+        },
+        "review_cycles_days": {
+          "type": "object",
+          "properties": {
+            "virtue_accords": {"type": "number"},
+            "labs": {"type": "number"}
+          }
+        }
+      }
+    },
+    "agents": {
+      "type": "object",
+      "properties": {
+        "default": {"type": "array", "items": {"type": "string"}},
+        "roles": {"type": "object", "additionalProperties": {"type": "string"}}
+      }
+    },
+    "labs": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "name": {"type": "string"},
+          "path_docs": {"type": "string"},
+          "entries": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {"type": "string"},
+                "title": {"type": "string"},
+                "accord_id": {"type": "string"}
+              }
+            }
+          }
+        }
+      }
+    },
+    "virtue_accords": {
+      "type": "object",
+      "properties": {
+        "registry_path": {"type": "string"},
+        "accords": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {"type": "string"},
+              "title": {"type": "string"},
+              "version": {"type": "string"},
+              "parent": {"type": "string"},
+              "paths": {
+                "type": "object",
+                "properties": {
+                  "doc": {"type": "string"},
+                  "json": {"type": "string"}
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "telemetry": {
+      "type": "object",
+      "properties": {
+        "gi_index": {
+          "type": "object",
+          "properties": {
+            "thresholds": {
+              "type": "object",
+              "properties": {
+                "alert": {"type": "number"},
+                "target": {"type": "number"}
+              }
+            },
+            "config_path": {"type": "string"},
+            "metrics": {"type": "array", "items": {"type": "string"}}
+          }
+        },
+        "endpoints": {
+          "type": "object",
+          "properties": {
+            "export_url_env": {"type": "string"},
+            "export_token_env": {"type": "string"}
+          }
+        }
+      }
+    },
+    "paths": {
+      "type": "object",
+      "properties": {
+        "chambers_root": {"type": "string"},
+        "inbox_root": {"type": "string"},
+        "template_new_chamber": {"type": "string"},
+        "workflows": {"type": "object"},
+        "scripts": {"type": "object"}
+      }
+    },
+    "workflows": {
+      "type": "object",
+      "properties": {
+        "chamber_sync": {
+          "type": "object",
+          "properties": {
+            "name": {"type": "string"},
+            "schedule_cron": {"type": "string"},
+            "language": {"type": "string"},
+            "commit_bot": {
+              "type": "object",
+              "properties": {
+                "name": {"type": "string"},
+                "email": {"type": "string"}
+              }
+            }
+          }
+        }
+      }
+    },
+    "security": {
+      "type": "object",
+      "properties": {
+        "secrets_required": {"type": "array", "items": {"type": "string"}},
+        "permissions": {"type": "object"}
+      }
+    },
+    "compat": {
+      "type": "object",
+      "properties": {
+        "previous_names": {"type": "array", "items": {"type": "string"}},
+        "notes": {"type": "string"}
+      }
+    },
+    "ui_defaults": {
+      "type": "object",
+      "properties": {
+        "conversation_starter_tiles": {"type": "boolean"},
+        "new_chamber_seed": {
+          "type": "object",
+          "properties": {
+            "ritual": {"type": "string"},
+            "inject_anchors": {"type": "boolean"}
+          }
+        }
+      }
+    }
+  }
+}
