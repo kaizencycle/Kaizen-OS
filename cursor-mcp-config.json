@@ -1,0 +1,14 @@
+{
+  "mcpServers": {
+    "kaizen-os": {
+      "command": "node",
+      "args": ["/workspace/apps/mcp-server/dist/index.js"],
+      "env": {
+        "KAIZEN_TOKEN": "dev_token_for_testing_12345",
+        "KAIZEN_GW_BASE": "https://api.kaizen-os.civic.ai",
+        "CONSENSUS_READONLY": "true",
+        "PORT": "9999"
+      }
+    }
+  }
+}
