@@ -1,0 +1,25 @@
+# Exclude blockchain contracts from Vercel deployment
+packages/gic-registry-contracts
+
+# Exclude other non-frontend packages
+packages/gic-registry-contracts/**
+**/hardhat.config.ts
+**/hardhat.config.js
+
+# Python labs (not needed for frontend)
+labs/lab1-proof/src/**/*.py
+labs/lab2-proof/src/**/*.py
+labs/lab3-proof/src/**/*.py
+
+# Test files
+**/*.test.ts
+**/*.test.tsx
+**/*.spec.ts
+**/*.spec.tsx
+**/test/**
+**/__tests__/**
+
+# Development files
+**/.env.local
+**/.env.development
+**/tsconfig.tsbuildinfo
