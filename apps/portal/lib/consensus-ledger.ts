@@ -76,16 +76,39 @@ export async function openConsensusSession(params: {
   // Mark session as active
   activeSessions.add(sessionId);
 
-  // TODO: In production, emit to actual Civic Ledger (Lab1)
-  // For now, log to console
+  // Log to console for development visibility
   console.log('🏛️ Consensus Session Opened:', JSON.stringify(event, null, 2));
 
-  // TODO: Call Lab1 API to commit to ledger
-  // await fetch('http://localhost:8000/api/v1/ledger/event', {
-  //   method: 'POST',
-  //   headers: { 'Content-Type': 'application/json' },
-  //   body: JSON.stringify(event)
-  // });
+  // Emit to Civic Ledger (Lab1) API
+  try {
+    const ledgerBase = process.env.LEDGER_BASE || process.env.NEXT_PUBLIC_LEDGER_BASE;
+
+    if (ledgerBase) {
+      const response = await fetch(`${ledgerBase}/api/v1/ledger/event`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          // Add auth header if JWT token available
+          ...(process.env.JWT_TOKEN && {
+            'Authorization': `Bearer ${process.env.JWT_TOKEN}`
+          })
+        },
+        body: JSON.stringify(event)
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        console.log('✅ Ledger commit successful:', data);
+      } else {
+        console.error('❌ Ledger commit failed:', response.status, await response.text());
+      }
+    } else {
+      console.warn('⚠️ LEDGER_BASE not configured, skipping ledger commit');
+    }
+  } catch (error) {
+    console.error('❌ Failed to emit to ledger:', error);
+    // Don't throw - session should still open even if ledger fails
+  }
 
   return { sessionId, event };
 }
@@ -118,15 +141,37 @@ export async function closeConsensusSession(params: {
   // Remove from active sessions
   activeSessions.delete(params.sessionId);
 
-  // TODO: In production, emit to actual Civic Ledger (Lab1)
+  // Log to console for development visibility
   console.log('🏛️ Consensus Session Closed:', JSON.stringify(event, null, 2));
 
-  // TODO: Call Lab1 API to commit to ledger
-  // await fetch('http://localhost:8000/api/v1/ledger/event', {
-  //   method: 'POST',
-  //   headers: { 'Content-Type': 'application/json' },
-  //   body: JSON.stringify(event)
-  // });
+  // Emit to Civic Ledger (Lab1) API
+  try {
+    const ledgerBase = process.env.LEDGER_BASE || process.env.NEXT_PUBLIC_LEDGER_BASE;
+
+    if (ledgerBase) {
+      const response = await fetch(`${ledgerBase}/api/v1/ledger/event`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          ...(process.env.JWT_TOKEN && {
+            'Authorization': `Bearer ${process.env.JWT_TOKEN}`
+          })
+        },
+        body: JSON.stringify(event)
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        console.log('✅ Ledger commit successful:', data);
+      } else {
+        console.error('❌ Ledger commit failed:', response.status, await response.text());
+      }
+    } else {
+      console.warn('⚠️ LEDGER_BASE not configured, skipping ledger commit');
+    }
+  } catch (error) {
+    console.error('❌ Failed to emit to ledger:', error);
+  }
 }
 
 /**
