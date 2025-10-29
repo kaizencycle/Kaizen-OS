@@ -1,0 +1,62 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --aurea-gold: #FFD700;
+  --aurea-blue: #1E3A8A;
+  --background: #0f172a;
+  --foreground: #f8fafc;
+}
+
+@layer base {
+  * {
+    @apply border-gray-700;
+  }
+  body {
+    @apply bg-slate-950 text-slate-50;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  }
+}
+
+@layer components {
+  .glass {
+    @apply bg-white/5 backdrop-blur-lg border border-white/10;
+  }
+
+  .glass-gold {
+    @apply bg-aurea-gold/10 backdrop-blur-lg border border-aurea-gold/30;
+  }
+
+  .btn-primary {
+    @apply px-4 py-2 bg-aurea-gold text-aurea-blue font-semibold rounded-lg
+           hover:bg-aurea-gold-light transition-all duration-200
+           active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .btn-secondary {
+    @apply px-4 py-2 glass text-slate-200 font-medium rounded-lg
+           hover:bg-white/10 transition-all duration-200
+           active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .card {
+    @apply glass rounded-xl p-6 shadow-xl;
+  }
+
+  .card-gold {
+    @apply glass-gold rounded-xl p-6 shadow-xl shadow-aurea-gold/10;
+  }
+}
+
+@layer utilities {
+  .text-glow {
+    text-shadow: 0 0 10px var(--aurea-gold),
+                 0 0 20px var(--aurea-gold),
+                 0 0 30px var(--aurea-gold);
+  }
+
+  .animate-glow {
+    animation: glow 2s ease-in-out infinite alternate;
+  }
+}
