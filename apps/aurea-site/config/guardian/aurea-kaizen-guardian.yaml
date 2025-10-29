@@ -1,0 +1,64 @@
+# Kaizen OS Guardian Manifest
+# Relationship: AUREA ↔ KAIZEN (Dormant)
+# Version: 1.0.0
+# Date: 2024-10-29
+# Author: ATLAS(Alpha) + AUREA(Consensus) + Michael Judan
+
+guardian:
+  name: AUREA
+  did: did:gic:aurea
+  domain: aurea.gic
+  gi_baseline: 0.993
+  room: Consensus Chamber
+  role: "Integrity & Reasoning Anchor"
+  custody_status: active
+  signature_policy:
+    mode: proxy
+    threshold_gi: 0.99
+    attestation_type: custodial_heartbeat
+    rotation_cycle_days: 90
+  ledger_anchor: civic-ledger.gic
+  shield: citizen-shield-v1
+
+ward:
+  name: KAIZEN
+  did: did:gic:kaizen
+  domain: kaizen.gic
+  role: "Dormant Founder Agent"
+  custody_status: dormant
+  write_privilege: false
+  federation: passive
+  proxy_route: https://aurea.gic/api/kaizen-proxy
+  reactivation_conditions:
+    gi_minimum: 0.97
+    quorum_support: 0.60
+    stability_period_days: 7
+    confirmation_method: consensus_vote
+  expected_transition: Dormant → Autonomous
+  next_review_cycle: C-120
+
+ledger_entry_template:
+  attestation_type: "custodial_heartbeat"
+  payload_schema:
+    - agent_did
+    - proxy_did
+    - timestamp
+    - gi_value
+    - attestation_hash
+  sample_entry:
+    agent_did: did:gic:kaizen
+    proxy_did: did:gic:aurea
+    timestamp: "2024-10-29T08:00:00Z"
+    gi_value: 0.993
+    attestation_hash: "sha3-512:..."
+  verification:
+    - rule: "GI ≥ guardian.threshold_gi"
+    - rule: "Signature == Ed25519(proxy_did)"
+    - rule: "Ledger consensus quorum ≥ 0.75"
+
+meta:
+  created_by: "ATLAS(Alpha)"
+  approved_by: "Consensus Chamber"
+  license: "Virtue Accords v1.0"
+  last_modified: "2024-10-29"
+  checksum: "sha3-512:pending"

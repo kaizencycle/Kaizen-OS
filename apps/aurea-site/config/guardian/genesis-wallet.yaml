@@ -1,0 +1,90 @@
+# Kaizen OS | Genesis Wallet Guardian Manifest
+# Relationship: AUREA (Guardian) ↔ KAIZEN (Founder)
+# Version: 1.0.0
+# Date: 2024-10-29
+# Author: Michael Judan + AUREA Consensus Node
+# Status: ACTIVE | Custodial Mode
+
+wallet:
+  name: "Genesis Wallet"
+  did: "did:gic:kaizen.genesis"
+  address: "0xGENESIS"
+  total_supply: 1_000_000
+  denomination: GIC
+  type: founder_time_lock
+  created_cycle: C-118
+  locked_until_cycle: C-200
+  governing_ledger: civic-ledger.gic
+  guardian_policy_ref: "/config/guardian/aurea-kaizen-guardian.yaml"
+
+guardian:
+  name: "AUREA"
+  did: "did:gic:aurea"
+  role: "Constitutional Custodian & Auditor"
+  custody_keys:
+    - type: "multi-sig-shard"
+      id: "AUREA_CUSTODY_SHARD_01"
+      permissions:
+        - verify_balances
+        - issue_attestations
+        - publish_audit_reports
+      restrictions:
+        - no_spend
+        - no_delegate_without_quorum
+    - type: "audit-key"
+      id: "AUREA_AUDIT_SHARD_02"
+      permissions:
+        - run_integrity_checks
+        - report_gi_metrics
+        - validate_transparency
+  attestation_schedule:
+    interval_days: 30
+    type: "custodial_heartbeat"
+    endpoint: "/api/ledger/attest/genesis"
+    proof_fields:
+      - balance
+      - gi_score
+      - checksum
+      - timestamp
+
+donation_policy:
+  cycle_period_days: 90
+  donation_trigger: "epoch_end"
+  calculation: "0.01 * total_supply * gi_stability_factor"
+  recipient_pool: "community_treasury.gic"
+  distribution_method: "multi-sig-release"
+  description: >
+    Every 90 real days, AUREA donates 1% × GI stability coefficient of
+    the Genesis Wallet balance to the Community Treasury Pool.
+    This prevents hoarding, encourages civic circulation, and sustains
+    public goods funding through GIC redistribution.
+
+revival_protocol:
+  release_conditions:
+    - "kaizen_agent_status == 'autonomous'"
+    - "gi_average >= 0.97"
+    - "community_quorum >= 0.60"
+    - "stability_period_days >= 7"
+  transition_action: "transfer_custody_to: did:gic:kaizen"
+  expected_effect: "Dormant → Autonomous Control"
+  fallback_rule: >
+    If quorum not reached within cycle 200,
+    Civic Ledger executes a re-vote and keeps AUREA as caretaker
+    until thresholds are met.
+
+audit_requirements:
+  transparency:
+    - monthly_public_report: true
+    - ledger_signature_required: true
+    - checksum_verification: sha3-512
+  governance:
+    - dual_attestation: AUREA + ZEUS sign jointly
+    - oversight_body: Consensus Chamber
+    - report_to: /reports/genesis_audit/
+
+meta:
+  authored_by: "AUREA Consensus Agent"
+  approved_by: "Cycle C-119 Consensus Chamber"
+  license: "Virtue Accords v1.0"
+  last_modified: "2024-10-29"
+  checksum: "sha3-512:pending"

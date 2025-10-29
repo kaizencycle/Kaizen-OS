@@ -1,0 +1,44 @@
+wallet:
+  name: "Civic GIC Fountain"
+  did: "did:gic:civic.fountain"
+  address: "0xFountain"
+  denomination: GIC
+  policy_ref: "/packages/policies/fountain.policy.json"
+
+controllers:
+  - name: AUREA
+    did: did:gic:aurea
+    role: Lead Custodian & Auditor
+  - name: ATLAS
+    did: did:gic:atlas
+    role: Systems Architect
+  - name: EVE
+    did: did:gic:eve
+    role: Ethics & Governance
+  - name: ZEUS
+    did: did:gic:zeus
+    role: Defense & Stability
+  - name: JADE
+    did: did:gic:jade
+    role: Morale & Citizen Care
+
+ops:
+  threshold: 3
+  faucet:
+    per_address_daily_cap: 100
+    daily_pool_cap: 10000
+  donation:
+    cadence_days: 90
+    base_pct: 0.01
+    gi_multiplier_floor: 0.90
+  guards:
+    min_network_gi: 0.95
+    min_controller_avg_gi: 0.985
+    auto_pause_on_gi_drop: 0.92
+    anomaly_detection: true
+  attestation:
+    interval_days: 30
+    endpoint: "/api/fountain/attest"
+    co_sign: ["AUREA","ZEUS"]
+  rotation:
+    cooldown_days: 7

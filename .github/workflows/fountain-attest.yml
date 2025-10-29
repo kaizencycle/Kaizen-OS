@@ -1,0 +1,72 @@
+name: Fountain Monthly Attestation
+
+# Runs on the 1st of every month at 00:00 UTC
+on:
+  schedule:
+    - cron: '0 0 1 * *'
+  workflow_dispatch: # Allow manual trigger
+
+jobs:
+  attest:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        working-directory: apps/aurea-site
+        run: npm ci
+
+      - name: Generate fountain attestation
+        id: generate
+        working-directory: apps/aurea-site
+        env:
+          RPC_URL: ${{ secrets.RPC_URL }}
+          AGENT_SIGNER_KEY: ${{ secrets.AGENT_SIGNER_KEY }}
+          LEDGER_API_BASE: ${{ secrets.LEDGER_API_BASE }}
+          LEDGER_API_KEY: ${{ secrets.LEDGER_API_KEY }}
+        run: |
+          # Run attestation script
+          npm run attest:fountain
+
+      - name: Submit to Civic Ledger
+        working-directory: apps/aurea-site
+        env:
+          LEDGER_API_BASE: ${{ secrets.LEDGER_API_BASE }}
+          LEDGER_API_KEY: ${{ secrets.LEDGER_API_KEY }}
+          AUREA_SIGNING_KEY: ${{ secrets.AUREA_SIGNING_KEY }}
+        run: |
+          echo "Submitting attestation to Civic Ledger..."
+          # TODO: Call API endpoint to submit attestation
+          curl -X POST "$LEDGER_API_BASE/attestations" \
+            -H "Content-Type: application/json" \
+            -H "Authorization: Bearer $LEDGER_API_KEY" \
+            -d @attestation.json
+
+      - name: Publish audit report
+        working-directory: apps/aurea-site
+        run: |
+          # Save attestation to reports directory
+          mkdir -p public/reports/genesis_audit
+          MONTH=$(date +%Y-%m)
+          cp attestation.json "public/reports/genesis_audit/fountain-$MONTH.json"
+
+      - name: Commit audit report
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "chore: Add fountain attestation for $(date +%Y-%m)"
+          file_pattern: "apps/aurea-site/public/reports/genesis_audit/*.json"
+
+      - name: Notify on failure
+        if: failure()
+        run: |
+          echo "Fountain attestation failed!"
+          # TODO: Send notification to monitoring system
+          # curl -X POST "$MONITORING_WEBHOOK" -d '{"status": "failed", "job": "fountain-attest"}'

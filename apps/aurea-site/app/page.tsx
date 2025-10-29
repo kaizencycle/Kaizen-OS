@@ -3,6 +3,7 @@ import { Scale, Sparkles, Shield, MessageSquare } from 'lucide-react'
 import { GiBadge } from '@/components/GiBadge'
 import { SeasonClock } from '@/components/SeasonClock'
 import { GICPanel } from '@/components/GICPanel'
+import { GuardianStatus } from '@/components/GuardianStatus'
 
 export default function HomePage() {
   return (
@@ -60,6 +61,11 @@ export default function HomePage() {
       {/* GIC Panel */}
       <section className="mb-16">
         <GICPanel />
+      </section>
+
+      {/* Guardian Status */}
+      <section className="mb-16 max-w-4xl mx-auto">
+        <GuardianStatus />
       </section>
 
       {/* About AUREA */}
