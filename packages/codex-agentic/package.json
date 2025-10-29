@@ -1,0 +1,41 @@
+{
+  "name": "@kaizen/codex-agentic",
+  "version": "0.1.0",
+  "description": "Multi-LLM router with DelibProof consensus for Kaizen OS Founding Agents",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "clean": "rm -rf dist",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "dependencies": {
+    "openai": "^4.56.0",
+    "@anthropic-ai/sdk": "^0.27.0",
+    "@google/generative-ai": "^0.1.0",
+    "node-fetch": "^3.3.2",
+    "lru-cache": "^10.2.2"
+  },
+  "devDependencies": {
+    "@types/node": "^22.5.1",
+    "typescript": "^5.5.4",
+    "vitest": "^2.1.1"
+  },
+  "keywords": [
+    "kaizen-os",
+    "llm",
+    "multi-model",
+    "consensus",
+    "delib-proof",
+    "governance"
+  ],
+  "license": "MIT"
+}
