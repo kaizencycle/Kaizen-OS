@@ -1,6 +1,6 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "buildCommand": "cd ../.. && npm install --legacy-peer-deps && npm run build --workspace=kaizen-portal",
+  "buildCommand": "cd ../.. && npm install --legacy-peer-deps && npm run build --workspace=apps/portal",
   "devCommand": "npm run dev",
   "installCommand": "npm install --legacy-peer-deps",
   "framework": "nextjs",

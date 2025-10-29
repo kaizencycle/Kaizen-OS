@@ -6,10 +6,25 @@ packages/gic-registry-contracts/**
 **/hardhat.config.ts
 **/hardhat.config.js
 
-# Python labs (not needed for frontend)
+# Python labs and APIs (not needed for frontend)
 labs/lab1-proof/src/**/*.py
 labs/lab2-proof/src/**/*.py
 labs/lab3-proof/src/**/*.py
+apps/eomm-api/**/*.py
+apps/gateway/**/*.py
+apps/ledger-api/**/*.py
+apps/shield-api/**/*.py
+apps/broker-api/**/*.py
+apps/orchestrator/**/*.py
+apps/indexer-api/**/*.py
+apps/mcp-server/**/*.py
+apps/api-gateway/**/*.py
+apps/cathedral-app/**/*.py
+apps/gic-gateway/**/*.py
+
+# Python requirements files
+**/requirements.txt
+**/requirements_simple.txt
 
 # Test files
 **/*.test.ts
@@ -23,3 +38,34 @@ labs/lab3-proof/src/**/*.py
 **/.env.local
 **/.env.development
 **/tsconfig.tsbuildinfo
+
+# Python cache and build files
+**/__pycache__/**
+**/*.pyc
+**/*.pyo
+**/*.pyd
+**/.Python
+**/env/**
+**/venv/**
+**/.venv/**
+**/pip-log.txt
+**/pip-delete-this-directory.txt
+**/.tox/**
+**/.coverage
+**/.coverage.*
+**/.cache
+**/nosetests.xml
+**/coverage.xml
+**/*.cover
+**/.hypothesis/**
+**/.pytest_cache/**
+**/logs/**
+**/archive/**
+**/backups/**
+**/data/**
+
+# MCP and cursor configs
+**/.cursor/**
+**/mcp-config.json
+**/claude-desktop-config.json
+**/cline-config.json
