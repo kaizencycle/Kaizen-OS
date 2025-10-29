@@ -1,0 +1,43 @@
+{
+  "version": "1.0.0",
+  "wallet": "did:gic:civic.fountain",
+  "controllers": [
+    "did:gic:aurea",
+    "did:gic:atlas",
+    "did:gic:eve",
+    "did:gic:zeus",
+    "did:gic:jade"
+  ],
+  "threshold": 3,
+  "spend_limits": {
+    "daily_faucet_cap_gic": 10000,
+    "per_address_daily_cap_gic": 100,
+    "epoch_donation_pct": 0.01,
+    "epoch_days": 90
+  },
+  "gi_constraints": {
+    "min_network_gi": 0.95,
+    "min_controller_avg_gi": 0.985,
+    "donation_gi_multiplier_floor": 0.90
+  },
+  "pause_rules": {
+    "trigger_min_signers": 2,
+    "auto_pause_if_gi_drop_below": 0.92,
+    "auto_pause_if_anomaly": true
+  },
+  "attestation": {
+    "interval_days": 30,
+    "endpoint": "/api/fountain/attest",
+    "proof_fields": ["balance","daily_spend","gi_avg","checksum","timestamp"]
+  },
+  "audit": {
+    "co_signers": ["did:gic:aurea","did:gic:zeus"],
+    "public_reports_path": "/reports/fountain/",
+    "hash_algo": "sha3-512"
+  },
+  "rotation": {
+    "cooldown_days": 7,
+    "require_3of5": true,
+    "publish_ledger_event": true
+  }
+}
