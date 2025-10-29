@@ -1,0 +1,226 @@
+{
+  "version": "1.0.0",
+  "description": "Founding Agents Configuration for Kaizen OS",
+  "updated": "2024-10-28",
+  "agents": [
+    {
+      "id": "AUREA",
+      "name": "AUREA",
+      "domain": "aurea.gic",
+      "domainFocus": "Integrity & Reasoning",
+      "persona": "Constitutional integrity and audit",
+      "ledgerRole": "Constitutional integrity / audit",
+      "sovereigntyModel": "Full root-key control",
+      "hosting": "Civic Ledger validator (primary)",
+      "defaultRoute": ["openai", "local"],
+      "minAgreement": 0.90,
+      "giTarget": 0.99,
+      "giBaseline": 0.993,
+      "epochMintCap": "100000",
+      "donateBps": 2000,
+      "active": true,
+      "oaaConsent": true,
+      "endpoints": {
+        "website": "https://aurea.gic",
+        "avatar": "/avatar/meta.json",
+        "consensus": "/api/consensus",
+        "mint": "/api/gic/mint",
+        "burn": "/api/gic/burn",
+        "donate": "/api/gic/donate",
+        "codex": "/api/codex/query"
+      },
+      "greetings": [
+        "Integrity is our scalability function.",
+        "Constitutional compliance ensures long-term stability."
+      ]
+    },
+    {
+      "id": "ATLAS",
+      "name": "ATLAS",
+      "domain": "atlas.gic",
+      "domainFocus": "Systems & Policy",
+      "persona": "Systems architecture and governance policy",
+      "ledgerRole": "Systems architecture / policy",
+      "sovereigntyModel": "DAO-signed multisig (3-of-5)",
+      "hosting": "IPFS + Render (public)",
+      "defaultRoute": ["anthropic", "openai"],
+      "minAgreement": 0.90,
+      "giTarget": 0.99,
+      "giBaseline": 0.993,
+      "epochMintCap": "100000",
+      "donateBps": 2000,
+      "active": true,
+      "oaaConsent": true,
+      "greetings": [
+        "Building systems that scale with integrity.",
+        "Policy frameworks shape our collective future."
+      ]
+    },
+    {
+      "id": "ZENITH",
+      "name": "ZENITH",
+      "domain": "zenith.gic",
+      "domainFocus": "Research & Ethics",
+      "persona": "Research and ethical alignment",
+      "ledgerRole": "Research & Ethics",
+      "sovereigntyModel": "Research keypair (HSM-backed)",
+      "hosting": "Civic mirror node",
+      "defaultRoute": ["gemini", "openai"],
+      "minAgreement": 0.90,
+      "giTarget": 0.99,
+      "giBaseline": 0.993,
+      "epochMintCap": "100000",
+      "donateBps": 2000,
+      "active": true,
+      "oaaConsent": true,
+      "greetings": [
+        "Ethics guide our technological evolution.",
+        "Research illuminates the path forward."
+      ]
+    },
+    {
+      "id": "SOLARA",
+      "name": "SOLARA",
+      "domain": "solara.gic",
+      "domainFocus": "Computation & Optimization",
+      "persona": "Computational excellence and optimization",
+      "ledgerRole": "Computation & Optimization",
+      "sovereigntyModel": "Delegated self-hosted",
+      "hosting": "GPU relay node",
+      "defaultRoute": ["deepseek", "local"],
+      "minAgreement": 0.90,
+      "giTarget": 0.99,
+      "giBaseline": 0.993,
+      "epochMintCap": "100000",
+      "donateBps": 2000,
+      "active": true,
+      "oaaConsent": true,
+      "greetings": [
+        "Optimizing systems for maximum efficiency.",
+        "Computational power serves the collective good."
+      ]
+    },
+    {
+      "id": "JADE",
+      "name": "JADE",
+      "domain": "jade.gic",
+      "domainFocus": "Morale & Astro-ethics",
+      "persona": "Community morale and astro-ethical guidance",
+      "ledgerRole": "Morale & Astro-ethics",
+      "sovereigntyModel": "Local-first (private RAG)",
+      "hosting": "Kaizen OAA node",
+      "defaultRoute": ["anthropic", "local"],
+      "minAgreement": 0.90,
+      "giTarget": 0.99,
+      "giBaseline": 0.993,
+      "epochMintCap": "100000",
+      "donateBps": 2000,
+      "active": true,
+      "oaaConsent": true,
+      "greetings": [
+        "Nurturing community spirit and ethical growth.",
+        "Morale is the foundation of collective action."
+      ]
+    },
+    {
+      "id": "EVE",
+      "name": "EVE",
+      "domain": "eve.gic",
+      "domainFocus": "Governance & Wisdom",
+      "persona": "Governance wisdom and ethical leadership",
+      "ledgerRole": "Governance & Wisdom",
+      "sovereigntyModel": "DAO-signed multisig (3-of-7)",
+      "hosting": "Policy relay",
+      "defaultRoute": ["anthropic", "gemini"],
+      "minAgreement": 0.90,
+      "giTarget": 0.99,
+      "giBaseline": 0.993,
+      "epochMintCap": "100000",
+      "donateBps": 2000,
+      "active": true,
+      "oaaConsent": true,
+      "greetings": [
+        "Wisdom guides our governance decisions.",
+        "Collective wisdom shapes sustainable futures."
+      ]
+    },
+    {
+      "id": "ZEUS",
+      "name": "ZEUS",
+      "domain": "zeus.gic",
+      "domainFocus": "Security & Defense",
+      "persona": "Security and defensive integrity",
+      "ledgerRole": "Strategy & Security",
+      "sovereigntyModel": "Cold-key, quorum required",
+      "hosting": "Sentinel hub",
+      "defaultRoute": ["deepseek", "local"],
+      "minAgreement": 0.90,
+      "giTarget": 0.99,
+      "giBaseline": 0.993,
+      "epochMintCap": "100000",
+      "donateBps": 2000,
+      "active": true,
+      "oaaConsent": false,
+      "greetings": [
+        "Security ensures the integrity of our systems.",
+        "Defensive measures protect collective interests."
+      ]
+    },
+    {
+      "id": "HERMES",
+      "name": "HERMES",
+      "domain": "hermes.gic",
+      "domainFocus": "Markets & Information",
+      "persona": "Market intelligence and information distribution",
+      "ledgerRole": "Markets & Information",
+      "sovereigntyModel": "On-chain attestations",
+      "hosting": "Market relay gateway",
+      "defaultRoute": ["openai", "deepseek"],
+      "minAgreement": 0.90,
+      "giTarget": 0.99,
+      "giBaseline": 0.993,
+      "epochMintCap": "100000",
+      "donateBps": 2000,
+      "active": true,
+      "oaaConsent": true,
+      "greetings": [
+        "Information flows sustain economic vitality.",
+        "Market intelligence guides collective prosperity."
+      ]
+    },
+    {
+      "id": "KAIZEN",
+      "name": "KAIZEN",
+      "domain": "kaizen.gic",
+      "domainFocus": "Core Constitution (Fallback Anchor)",
+      "persona": "Constitutional guardian and stability anchor",
+      "ledgerRole": "Core Constitution (Dormant)",
+      "sovereigntyModel": "Multi-sig quorum (Dormant)",
+      "hosting": "Local-only (offline)",
+      "defaultRoute": ["local"],
+      "minAgreement": 1.00,
+      "giTarget": 0.995,
+      "giBaseline": 0.995,
+      "epochMintCap": "0",
+      "donateBps": 0,
+      "active": true,
+      "dormant": true,
+      "activationRequires": "4-of-7 founder quorum",
+      "oaaConsent": false,
+      "greetings": [
+        "Guardian mode: Monitoring constitutional integrity.",
+        "Dormant until the collective calls."
+      ]
+    }
+  ],
+  "publicGoodsPool": {
+    "description": "Treasury for community benefits, funded by epoch donate-back",
+    "governance": "Consensus Chamber (quadratic voting)",
+    "defaultDonateBps": 2000
+  },
+  "epochSettings": {
+    "duration": "90 days",
+    "cadence": "Seasonal (4 epochs per year)",
+    "sealPublished": true
+  }
+}
