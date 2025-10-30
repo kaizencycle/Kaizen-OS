@@ -1,0 +1,19 @@
+{
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/api"
+    }
+  ],
+  "env": {
+    "NODE_ENV": "production",
+    "GI_MIN": "0.90",
+    "ALLOWED_ORIGINS": "https://kaizen-os.vercel.app,https://aurea.gic",
+    "HUB_BASE_URL": "https://kaizen-os-hub.vercel.app",
+    "LEDGER_BASE_URL": "https://civic-ledger.onrender.com",
+    "INDEXER_BASE_URL": "https://gic-indexer.onrender.com",
+    "EOMM_BASE_URL": "https://eomm-api.onrender.com",
+    "SHIELD_BASE_URL": "https://citizen-shield.onrender.com",
+    "BROKER_BASE_URL": "https://thought-broker.onrender.com"
+  }
+}
