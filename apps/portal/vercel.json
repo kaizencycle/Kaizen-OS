@@ -9,6 +9,5 @@
   "env": {
     "KAIZEN_CURRENT_CYCLE": "C-118",
     "KAIZEN_GI_BASELINE": "0.993"
-  },
-  "_comment": "Updated to force fresh deployment with fastify fix"
+  }
 }
