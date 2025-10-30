@@ -32,12 +32,12 @@ app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 
 // Service routing configuration
 const services = {
-  'hub': process.env.HUB_BASE_URL || 'https://kaizen-os-hub.vercel.app',
-  'ledger': process.env.LEDGER_BASE_URL || 'https://civic-ledger.onrender.com',
-  'indexer': process.env.INDEXER_BASE_URL || 'https://gic-indexer.onrender.com',
-  'eomm': process.env.EOMM_BASE_URL || 'https://eomm-api.onrender.com',
-  'shield': process.env.SHIELD_BASE_URL || 'https://citizen-shield.onrender.com',
-  'broker': process.env.BROKER_BASE_URL || 'https://thought-broker.onrender.com'
+  'lab4': process.env.LAB4_BASE_URL || 'https://hive-api-2le8.onrender.com',
+  'lab6': process.env.LAB6_BASE_URL || 'https://lab6-proof-api.onrender.com',
+  'lab7': process.env.LAB7_BASE_URL || 'https://lab7-proof.onrender.com',
+  'ledger': process.env.LEDGER_BASE_URL || 'https://civic-protocol-core-ledger.onrender.com',
+  'gic': process.env.GIC_BASE_URL || 'https://gic-indexer.onrender.com',
+  'oaa': process.env.OAA_API_LIBRARY_URL || 'https://oaa-api-library.onrender.com'
 };
 
 // Health check endpoint
