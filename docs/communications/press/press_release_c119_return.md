@@ -8,7 +8,7 @@
 
 ## Kaizen OS Announces the Matrilineal Covenant: A Specification to Restore Balance Through Architecture
 
-**San Francisco, CA** — Kaizen OS, the open-source framework for integrity-backed universal basic income and federated AI governance, today released *The Return to Balance* (Cycle C-119), a foundational document outlining its **Matrilineal Covenant** — a technical and philosophical specification designed to restore economic, social, and ecological balance after 6,000 years of extractive systems.
+**New York CIty, New York** — Kaizen OS, the open-source framework for integrity-backed universal basic income and federated AI governance, today released *The Return to Balance* (Cycle C-119), a foundational document outlining its **Matrilineal Covenant** — a technical and philosophical specification designed to restore economic, social, and ecological balance after 6,000 years of extractive systems.
 
 ### Key Announcements
 
