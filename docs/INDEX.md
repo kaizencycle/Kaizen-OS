@@ -27,6 +27,7 @@
 - **[FOUNDING_AGENTS_SOVEREIGN_STACK.md](./architecture/FOUNDING_AGENTS_SOVEREIGN_STACK.md)** - Complete architecture of the 8 founding agents and their sovereign domains
 - **[octave.yaml](./architecture/octave.yaml)** - Cognitive lattice manifest
 - **[overview.md](./architecture/overview.md)** - High-level system overview
+- **[GIC_Architecture_Spec_v1.md](./architecture/GIC_Architecture_Spec_v1.md)** ⭐ NEW - Commit-ready GIC service contracts, DB schemas, and runbooks
 
 ### Implementation Details
 
@@ -74,7 +75,8 @@
 
 ### Economic Framework
 
-- **[GIC_WHITEPAPER.md](./economics/GIC_WHITEPAPER.md)** ⭐ **NEW** - Complete GIC economic whitepaper by ATLAS
+- **[GIC_WHITEPAPER.md](./economics/GIC_WHITEPAPER.md)** - GIC economic whitepaper (canonical)
+  - **[GIC_WHITEPAPER_ATLAS_v1_2025-10-29.md](./economics/GIC_WHITEPAPER_ATLAS_v1_2025-10-29.md)** ⭐ NEW - ATLAS V1 release with peg, issuance, and UBI path
   - UBI Trilemma solution
   - 20-year planetary simulation (330M citizens)
   - Path to $3,000/month UBI by 2045
