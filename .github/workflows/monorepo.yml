@@ -48,8 +48,8 @@ jobs:
           const fs = require('fs');
           const services = JSON.parse(fs.readFileSync('configs/services.json', 'utf8'));
           console.log('✅ Services manifest is valid JSON');
-          console.log('📊 Services count:', Object.keys(services.civic-os.services).length);
-          console.log('📦 Packages count:', Object.keys(services.civic-os.packages).length);
+          console.log('📊 Services count:', Object.keys(services['civic-os'].services).length);
+          console.log('📦 Packages count:', Object.keys(services['civic-os'].packages).length);
           "
 
   deploy:
