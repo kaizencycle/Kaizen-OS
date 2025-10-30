@@ -1,0 +1,14 @@
+% Figure: Task Ledger Architecture (simplified)
+\begin{tikzpicture}[node distance=14mm,>=Stealth]
+  \tikzstyle{comp}=[rectangle,draw,rounded corners,align=center,minimum width=28mm,minimum height=8mm]
+  \node[comp] (agent) {Agent};
+  \node[comp,below left=of agent] (ledger) {Purpose Ledger};
+  \node[comp,below right=of agent] (gic) {GIC / GI Module};
+  \node[comp,below=20mm of agent] (kaizen) {Kaizen OS Scheduler};
+  \draw[->] (agent) -- node[left]{tasks} (ledger);
+  \draw[->] (ledger) -- node[left]{next action} (agent);
+  \draw[->] (agent) -- node[right]{actions} (gic);
+  \draw[->] (gic) -- node[right]{$\Delta GI$, +GIC} (agent);
+  \draw[->] (kaizen) -- node[left]{heartbeat tasks} (ledger);
+  \draw[->] (gic) -- node[below]{telemetry} (kaizen);
+\end{tikzpicture}

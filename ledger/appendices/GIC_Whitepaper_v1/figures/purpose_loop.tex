@@ -1,0 +1,13 @@
+% Figure: Purpose Loop with GIC and GI Feedback
+\begin{tikzpicture}[node distance=15mm,>=Stealth]
+  \tikzstyle{b}=[rectangle,draw,rounded corners,align=center,minimum width=26mm,minimum height=8mm]
+  \node[b] (tasks) {Task Ledger};
+  \node[b,right=of tasks] (act) {Aligned Action};
+  \node[b,right=of act] (eval) {GI Evaluation};
+  \node[b,below=of act] (reflect) {Reflection if $\Delta GI < 0$};
+  \draw[->] (tasks) -- (act);
+  \draw[->] (act) -- (eval);
+  \draw[->] (eval) -- node[above]{+GIC, GI $\uparrow$} (tasks);
+  \draw[->] (eval) |- node[pos=0.25,right]{GI $\downarrow$} (reflect);
+  \draw[->] (reflect) -| (tasks);
+\end{tikzpicture}

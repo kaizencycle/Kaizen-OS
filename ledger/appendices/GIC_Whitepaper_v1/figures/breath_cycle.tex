@@ -1,0 +1,14 @@
+% Figure: Breath Cycle (0 -> 1 -> 2 -> P -> 0)
+\begin{tikzpicture}[node distance=16mm,>=Stealth]
+  \tikzstyle{state}=[circle,draw,minimum size=8mm,align=center]
+  \node[state] (s0a) {0\\Rest};
+  \node[state,right=of s0a] (s1) {1\\Activation};
+  \node[state,right=of s1] (s2) {2\\Action};
+  \node[state,right=of s2] (sp) {P\\Harvest};
+  \node[state,right=of sp] (s0b) {0\\Rest};
+  \draw[->] (s0a) -- (s1);
+  \draw[->] (s1) -- (s2);
+  \draw[->] (s2) -- (sp);
+  \draw[->] (sp) -- (s0b);
+  \node[below=8mm of s2] (cond) {$GI \ge 0.95$ triggers rest; otherwise continue cycle};
+\end{tikzpicture}
