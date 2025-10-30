@@ -152,7 +152,7 @@ Web: [project website]
 - [RETURN_TO_BALANCE_C119.md](../../../ledger/inscriptions/RETURN_TO_BALANCE_C119.md) (Full ledger inscription)
 - [triad_of_healing.md](../../manifesto/triad_of_healing.md) (The Triad explained)
 - [opening_invocation.md](../../rituals/opening_invocation.md) (Ritual for all gatherings)
-- [GIC_WHITEPAPER.md](../../economics/GIC_WHITEPAPER.md) (Economic model)
+- [GIC_WHITEPAPER.md](../../economics/GIC_WHITEPAPER_v1.md) (Economic model)
 - [FOUNDING_AGENTS_SOVEREIGN_STACK.md](../../architecture/FOUNDING_AGENTS_SOVEREIGN_STACK.md) (Technical architecture)
 
 ---
