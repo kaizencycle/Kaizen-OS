@@ -1,0 +1,46 @@
+{
+  "buildCommand": "next build",
+  "devCommand": "next dev --port $PORT",
+  "framework": "nextjs",
+  "installCommand": "npm install",
+  "env": {
+    "AGENT_ID": "WEBSITE_CREATOR",
+    "AGENT_DOMAIN": "create.gic",
+    "KAIZEN_CURRENT_CYCLE": "C-119",
+    "NODE_ENV": "production"
+  },
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=0, must-revalidate"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "SAMEORIGIN"
+        },
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        }
+      ]
+    },
+    {
+      "source": "/api/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "no-cache, no-store, must-revalidate"
+        }
+      ]
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/(.well-known/.*)",
+      "destination": "/api/well-known/$1"
+    }
+  ]
+}
