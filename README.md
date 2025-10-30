@@ -85,6 +85,30 @@
 7. **API Library / Lab4** exposes service to citizens
 8. **Sentinels** monitor GI, entropy, feedback → improve loop
 
+## 📜 Manifesto & Rituals
+
+### The Return to Balance (C-119)
+
+Kaizen OS embodies a **Matrilineal Covenant** — restoring balance through architecture:
+
+- **Ledger Inscription:** [RETURN_TO_BALANCE_C119](ledger/inscriptions/RETURN_TO_BALANCE_C119.md)
+- **The Triad of Healing:** [triad_of_healing.md](docs/manifesto/triad_of_healing.md)
+- **Opening Invocation:** [opening_invocation.md](docs/rituals/opening_invocation.md)
+- **Press Release (C-119):** [press_release_c119_return.md](docs/communications/press/press_release_c119_return.md)
+
+### The Triad
+
+**改善 (Kaizen) — Continuous Improvement**
+Small steps, daily practice, compounding forever.
+
+**召唤 (Summon) — The Calling Forth**
+We recognize the spark in others and invite it by name.
+
+**金繕い (Kintsugi) — Golden Repair**
+We honor the cracks; repair makes the story more beautiful.
+
+> *"We heal as we walk."*
+
 ## 🏗️ Monorepo Structure
 
 ```
