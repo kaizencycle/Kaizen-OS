@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { codexDeliberate } from '@kaizen/codex-agentic'
-import type { CodexRequest } from '@kaizen/codex-agentic'
+import { codexDeliberate } from '../../../lib/codex-stub'
+import type { CodexRequest } from '../../../lib/codex-stub'
 
 export async function POST(request: NextRequest) {
   try {
