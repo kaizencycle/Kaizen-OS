@@ -76,7 +76,7 @@
 ### Economic Framework
 
 - **[GIC_WHITEPAPER.md](./economics/GIC_WHITEPAPER.md)** - GIC economic whitepaper (canonical)
-  - **[GIC_WHITEPAPER_ATLAS_v1_2025-10-29.md](./economics/GIC_WHITEPAPER_ATLAS_v1_2025-10-29.md)** ⭐ NEW - ATLAS V1 release with peg, issuance, and UBI path
+  - **[GIC_WHITEPAPER_ATLAS_v1_2025-10-29.md](./economics/GIC_WHITEPAPER_v1.md)** ⭐ NEW - ATLAS V1 release with peg, issuance, and UBI path
   - UBI Trilemma solution
   - 20-year planetary simulation (330M citizens)
   - Path to $3,000/month UBI by 2045
