@@ -22,7 +22,7 @@ Wealth generation FROM ecosystem regeneration: forests, wetlands, coral reefs ea
 Power is borrowed, not owned. Leadership passes through stewards via ceremonial succession, ensuring no single individual or entity can monopolize governance.
 
 **4. Federated Intelligence**
-Multi-agent AI consensus (AUREA, ATLAS, EVE, ZEUS, GAIA, HESTIA) replaces centralized AI kingship. No single model, no single corporation, no single nation controls the system.
+Multi-agent AI consensus (AUREA, ATLAS, EVE, ZEUS, JADE, SOLARA) replaces centralized AI kingship. No single model, no single corporation, no single nation controls the system.
 
 **5. Restorative Justice Framework**
 Repair harm, don't exile. Community accountability circles replace punitive systems. Focus on healing relationships, not punishment.
