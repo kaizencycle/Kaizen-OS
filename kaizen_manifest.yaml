@@ -125,13 +125,30 @@ telemetry:
     # kaizen_export_token_env: "KAIZEN_OS_EXPORT_TOKEN"
 
 paths:
-  chambers_root: "chambers/"
-  inbox_root: "inbox/"
-  template_new_chamber: "templates/new_chamber.md"
+  # Monorepo structure (updated 2025-10-30)
+  apps_root: "apps/"
+  packages_root: "packages/"
+  labs_root: "labs/"
+  sentinels_root: "sentinels/"
+  docs_root: "docs/"
+  config_root: "config/"
+  configs_root: "configs/"
+  # Legacy paths (for backward compatibility)
+  # chambers_root: "chambers/"  # Deprecated - use apps/packages/labs
+  # inbox_root: "inbox/"          # Not currently used
   workflows:
-    chamber_sync: ".github/workflows/chamber-sync.yml"
+    monorepo: ".github/workflows/monorepo.yml"
+    guardian: ".github/workflows/guardian.yml"
+    atlas_sentinel: ".github/workflows/atlas-sentinel.yml"
+    kaizen_sync: ".github/workflows/kaizen-sync.yml"
+    fountain_attest: ".github/workflows/fountain-attest.yml"
+    portal_ci: ".github/workflows/portal-ci.yml"
   scripts:
-    chamber_sync: "scripts/chamber_sync.py"
+    validate_manifest: "scripts/validate_manifest.py"
+    integrity_report: "scripts/integrity-report.sh"
+    sentinel_health: "scripts/sentinel-health.sh"
+    attest_charter: "scripts/attest-charter.py"
+    sign_charter: "scripts/sign-charter.py"
 
 naming:
   file_pattern: "{date}_{slug}.md"
@@ -139,13 +156,20 @@ naming:
   slug_rules: "lowercase, hyphen, max 80 chars"
 
 workflows:
-  chamber_sync:
-    name: "Kaizen OS — Chamber Sync"
-    schedule_cron: "0 */6 * * *"
-    language: "python@3.11"
-    commit_bot:
-      name: "kaizen-os-bot"
-      email: "bot@kaizencycle.local"
+  monorepo_ci:
+    name: "Kaizen OS Monorepo CI/CD"
+    triggers: ["push", "pull_request"]
+    branches: ["main"]
+    jobs:
+      - lint
+      - type-check
+      - build
+      - test
+      - security
+      - integrity
+    language: "node@20"
+  # Legacy chamber_sync workflow removed (2025-10-30)
+  # Now using monorepo-based workflow automation
 
 security:
   secrets_required:
