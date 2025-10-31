@@ -199,9 +199,20 @@ npm run clean
 
 ## 🔧 Services
 
-### Core Services
+### Frontend Applications
 
 - **website-creator** (Port 3000) - .gic Website Creator interface
+- **aurea-site** (Port 3001) - AUREA Founding Agent Site
+- **portal** (Port 3002) - Main Kaizen OS portal interface
+- **hub-web** (Port 3004) - OAA Central Hub interface
+- **hive-app** (Port 3005) - 8-bit Starter Game
+- **genesisdome-app** (Port 3006) - Genesis Dome PWA site
+- **citizen-shield-app** (Port 3007) - Citizen Shield security interface
+
+📖 **[Complete Frontend Development Guide](docs/FRONTEND_DEVELOPMENT.md)** - Detailed setup and port assignments
+
+### Core Services
+
 - **ledger-api** (Port 4001) - Kaizen Ledger Core
 - **indexer-api** (Port 4002) - GIC Indexer
 - **eomm-api** (Port 4003) - E.O.M.M. Reflections

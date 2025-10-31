@@ -12,6 +12,7 @@
   "scripts": {
     "build": "turbo run build",
     "dev": "turbo run dev --parallel",
+    "dev:frontend": "turbo run dev --filter='./apps/*' --parallel",
     "test": "turbo run test",
     "lint": "turbo run lint",
     "ci": "turbo run build test",

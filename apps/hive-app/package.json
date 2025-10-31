@@ -1,0 +1,18 @@
+{
+  "name": "@kaizen/hive-app",
+  "version": "0.1.0",
+  "private": true,
+  "description": "HIVE - 8-bit Starter Game",
+  "scripts": {
+    "dev": "npx serve -p 3005 -s",
+    "build": "echo 'Static site - no build needed'",
+    "start": "npx serve -p 3005 -s",
+    "lint": "echo 'No linting configured for static HTML'"
+  },
+  "devDependencies": {
+    "serve": "^14.2.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

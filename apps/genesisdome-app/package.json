@@ -1,0 +1,18 @@
+{
+  "name": "@kaizen/genesisdome-app",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Genesis Dome - PWA Site Starter",
+  "scripts": {
+    "dev": "npx serve -p 3006 -s",
+    "build": "echo 'Static site - no build needed'",
+    "start": "npx serve -p 3006 -s",
+    "lint": "echo 'No linting configured for static HTML'"
+  },
+  "devDependencies": {
+    "serve": "^14.2.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
