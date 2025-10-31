@@ -1,0 +1,80 @@
+apiVersion: accords.kaizen.os/v1
+kind: HumanValueConstraint
+metadata:
+  name: hvc-autonomy
+  priority: 80 # High: Citizen Sovereignty & Consent Enforcement
+spec:
+  # ----------------------------------------------------------------------
+  # 1. CORE PRINCIPLE: AUTONOMIA (Self-Governance and Sovereignty)
+  # ----------------------------------------------------------------------
+  principle: Autonomy
+  description: |
+    Guarantees the citizen's right to informed consent, data sovereignty,
+    revocation of access, and transparent explainability regarding all
+    Kaizen OS automated decisions affecting personal health, life, and data.
+
+  # ----------------------------------------------------------------------
+  # 2. TARGETED DATA & INTERVENTION POINTS
+  # ----------------------------------------------------------------------
+  targets:
+    - service: Pillar1-HealthCommons.MedicalAIIntegration # Diagnostic consent
+    - service: Pillar1-HealthCommons.MentalHealthResponse # E.O.M.M. analysis consent
+    - service: Pillar4-CreativeExpression.StorytellingNetworks # Reflection sharing consent
+    - service: CivicLedger.PII_Access                        # Any access to encrypted PII
+
+  # ----------------------------------------------------------------------
+  # 3. CONSENT AND CONTROL MECHANISMS
+  # ----------------------------------------------------------------------
+  consent_mechanisms:
+    - name: informed_consent_token
+      required: true
+      scope: "Pillar1-HealthCommons.MedicalAIIntegration"
+      log_to_ledger: true
+      revocation_protocol: "immediate_data_masking"
+
+    - name: reflection_sharing_opt_in
+      required: false
+      scope: "Pillar4-CreativeExpression.StorytellingNetworks"
+      default_state: "opt_out"
+      cooldown_period: "P7D" # Citizen can change consent state only once per 7 days
+
+    - name: advisory_override_token
+      required: true
+      scope: "Pillar1-HealthCommons.MentalHealthResponse"
+      veto_on_override: false # Citizen can always override AI advice (Autonomy over AI)
+      override_log_reason: true # Must log citizen's reason for overriding
+
+  # ----------------------------------------------------------------------
+  # 4. EXPLAINABILITY & TRANSPARENCY
+  # ----------------------------------------------------------------------
+  explainability_mandate:
+    required: true
+    algorithm_transparency_level: "post_hoc_explanation" # Must explain decision logic after action
+    decision_types: ["diagnosis", "allocation_veto", "urgent_alert"]
+    explanation_format: "natural_language_summary"
+
+  # ----------------------------------------------------------------------
+  # 5. ACTIONS ON VIOLATION (Breach of Consent)
+  # ----------------------------------------------------------------------
+  action_on_violation:
+    - type: VETO_OPERATION_AND_SHUTDOWN
+      condition: "pii_accessed_without_token == true"
+      message: "Security veto: Citizen autonomy violation."
+    - type: GI_CATASTROPHE_PENALTY
+      gi_penalty_factor: 0.999 # Near-total GI collapse for violating consent
+      cooldown: "P90D"
+
+  # ----------------------------------------------------------------------
+  # 6. INCENTIVES & PENALTIES
+  # ----------------------------------------------------------------------
+  incentives:
+    gi_penalty_factor: 0.999 # Severe penalty for violating sovereignty
+    gi_reward_factor: +0.001 # Small reward for logging successful consent/revocation
+
+  # ----------------------------------------------------------------------
+  # 7. IMPLEMENTATION HOOKS
+  # ----------------------------------------------------------------------
+  hooks:
+    pre_access: "autonomy.check_token()"
+    post_decision: "autonomy.generate_explanation()"
+    revocation_protocol: "autonomy.mask_data()"

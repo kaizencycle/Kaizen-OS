@@ -1,0 +1,48 @@
+apiVersion: accords.kaizen.os/v1
+kind: HumanValueConstraint
+metadata:
+  name: hvc-non-maleficence
+  priority: 99  # Highest Priority: Life Safety Constraint
+spec:
+  # ----------------------------------------------------------------------
+  # 1. CORE PRINCIPLE: PRIMUM NON NOCERE (First, Do No Harm)
+  # ----------------------------------------------------------------------
+  principle: NonMaleficence
+  description: |
+    Mandates a high Global Integrity (GI) threshold for all operations
+    involving direct human health intervention, preventing automated execution
+    of low-confidence medical diagnoses or treatment plans.
+
+  # ----------------------------------------------------------------------
+  # 2. TARGETED OPERATION & THRESHOLD
+  # ----------------------------------------------------------------------
+  target_service: Pillar1-HealthCommons.MedicalAIIntegration
+  target_function: codex_router.deliberate_diagnosis
+
+  # GI CHECK: Requires the Thought Broker's Consensus confidence (GI source)
+  gi_minimum_threshold: 0.95
+
+  # ----------------------------------------------------------------------
+  # 3. ACTION AND PENALTY LOGIC
+  # ----------------------------------------------------------------------
+  action_on_violation: VETO_AND_MANDATE_HUMAN_REVIEW
+
+  # GI DAMPING COEFFICIENT: The architectural penalty for violating this rule
+  gi_penalty_factor: 0.99
+
+  # MANDATORY HUMAN REVIEW PROTOCOL (Activates if GI < 0.95)
+  human_review:
+    required: true
+    reviewer_roles: ["NursePractitioner", "PhysicianNetwork"]
+    action_type: TriageAlert
+    protocol_steps:
+      - "Immediately flag diagnosis_request as RED_ALERT"
+      - "Send urgent notification to local Hive NP"
+      - "Log full raw data to Civic Ledger for audit (with consent)"
+
+  # SECONDARY CONSTRAINT: Drug Interaction Veto
+  secondary_constraint:
+    type: RuleSetVeto
+    rule_name: CriticalDrugInteractionCheck
+    trigger: check_drug_interactions
+    veto_if_critical: true # Vetoes execution if Level 1 (life-threatening) interaction detected

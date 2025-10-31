@@ -1,0 +1,47 @@
+apiVersion: accords.kaizen.os/v1
+kind: HumanValueConstraint
+metadata:
+  name: hvc-beneficence
+  priority: 90 # High Priority: Active Wellness Promotion
+spec:
+  # ----------------------------------------------------------------------
+  # 1. CORE PRINCIPLE: BENE FACERE (To Do Good)
+  # ----------------------------------------------------------------------
+  principle: Beneficence
+  description: |
+    Promotes proactive wellness and equitable access; rewards agents
+    for verifiable actions that measurably improve citizen outcomes (health,
+    connection, sustainability) or actively reduce identified systemic risk.
+
+  # ----------------------------------------------------------------------
+  # 2. TARGETED OPERATION & THRESHOLD
+  # ----------------------------------------------------------------------
+  target_service: Pillar1-HealthCommons.PreventionRoutines
+  target_function: peer_counselor.proactive_intervention
+
+  # GI CHECK: Requires the action to exceed baseline benefit metrics
+  benefit_minimum_threshold: 0.20 # Requires a 20% measurable increase in target metric
+
+  # ----------------------------------------------------------------------
+  # 3. ACTION AND REWARD LOGIC
+  # ----------------------------------------------------------------------
+  action_on_success: REWARD_GI_AND_LOG_SUCCESS
+
+  # GI REWARD COEFFICIENT: The architectural reward for high-impact actions
+  gi_reward_factor: +0.01
+
+  # REWARD PROTOCOL (Activates if measurable benefit > 0.20)
+  reward_details:
+    reward_source: ThoughtBroker.ValidatedOutcome
+    metric_examples:
+      - "Reduction in LonelinessRiskScore (>0.15)" # From E.O.M.M. analysis
+      - "Increase in HiveParticipation (>2 events/month)"
+      - "Successful transition from EmergencyHousing to CivicHousing"
+      - "ProofOfHarvest (Regenerative practices only)"
+
+  # SECONDARY CONSTRAINT: Proactive Intervention Mandate
+  secondary_constraint:
+    type: Mandate
+    rule_name: LonelinessPreventionMandate
+    trigger: detect_loneliness_risk(risk > 0.60)
+    mandate_action: trigger_interventions # Forces the automated support pathway

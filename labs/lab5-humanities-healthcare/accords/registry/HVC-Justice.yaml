@@ -1,0 +1,145 @@
+apiVersion: accords.kaizen.os/v1
+kind: HumanValueConstraint
+metadata:
+  name: hvc-justice
+  priority: 85  # High: fairness enforcement across Pillars 1–4
+spec:
+  # ----------------------------------------------------------------------
+  # 1) CORE PRINCIPLE: IUSTITIA (Fair Distribution & Equal Dignity)
+  # ----------------------------------------------------------------------
+  principle: Justice
+  description: |
+    Enforces equitable access and outcomes across demographics, geography,
+    and socioeconomic strata for all Kaizen OS services (Pillars 1–4).
+    Detects disparity, prevents biased allocations, and rebalances resources
+    while preserving privacy and consent.
+
+  # ----------------------------------------------------------------------
+  # 2) SCOPE & TARGETS
+  # ----------------------------------------------------------------------
+  targets:
+    - service: Pillar1-HealthCommons.*           # care, mental health, pharma
+    - service: Pillar2-LifeInfrastructure.*      # housing, food, utilities
+    - service: Pillar3-SocialFabric.*           # caregiving, circles, mentorship
+    - service: Pillar4-CreativeExpression.*     # grants, culture, education
+
+  # ----------------------------------------------------------------------
+  # 3) FAIRNESS METRICS & THRESHOLDS
+  # ----------------------------------------------------------------------
+  fairness_tests:
+    # 80% rule (four-fifths) for selection/approval rates
+    - name: disparate_impact_ratio
+      metric: selection_rate_ratio_min
+      threshold_min: 0.80
+      window: 30d
+      groups: ["age", "gender", "race_ethnicity", "income_quintile", "region"]
+    # Outcome parity on GI-improving actions
+    - name: gi_outcome_parity
+      metric: delta_gi_mean_gap_max
+      threshold_max: 0.05   # ≤ 5% gap across groups
+      window: 30d
+      groups: ["age", "gender", "race_ethnicity", "income_quintile", "region"]
+    # Wait-time parity for time-sensitive services
+    - name: wait_time_parity
+      metric: median_wait_time_gap_max
+      threshold_max: "PT48H" # ≤ 48h difference across groups
+      window: 30d
+      groups: ["region", "income_quintile"]
+    # Spend/equity distribution parity for GIC
+    - name: gic_distribution_parity
+      metric: per_capita_gic_gap_max
+      threshold_max: 0.10   # ≤ 10% gap normalized per need index
+      window: 30d
+      groups: ["region", "income_quintile"]
+
+  statistical_controls:
+    min_sample_size: 200
+    confidence_level: 0.95
+    multiple_testing_correction: benjamini_hochberg
+
+  # ----------------------------------------------------------------------
+  # 4) ACTIONS ON VIOLATION
+  # ----------------------------------------------------------------------
+  action_on_violation:
+    - type: REBALANCE_ALLOCATIONS
+      strategy: proportional_to_need_index
+      scope: service_scope
+      cooldown: 7d
+    - type: VETO_ALLOCATION_RULE
+      condition: "systemic_bias_detected == true"
+      message: "Allocation rule vetoed due to persistent disparity."
+    - type: ESCALATE_TO_CITIZEN_SHIELD
+      channel: "ethics.ops@civic-ledger"
+      sla: "PT24H"
+    - type: PUBLIC_REPORT_UPDATE
+      feed: "/accords/audit/public_integrity_feed"
+      include: ["metric", "groups", "gap_value", "corrective_action"]
+
+  # ----------------------------------------------------------------------
+  # 5) INCENTIVES (PENALTIES & REWARDS)
+  # ----------------------------------------------------------------------
+  incentives:
+    gi_penalty_factor: 0.995      # applied to services that cause inequity until remediated
+    gi_reward_factor:  +0.005     # applied after verified improvement ≥ threshold for 2 cycles
+    verification_cycles_required: 2
+    freeze_on_backslide: true
+
+  # ----------------------------------------------------------------------
+  # 6) PRIVACY, CONSENT, & SAFETY
+  # ----------------------------------------------------------------------
+  privacy:
+    differential_privacy:
+      enabled: true
+      epsilon: 2.0
+      sensitivity_policy: "low"
+    k_anonymity_min: 25
+    data_minimization: true
+    pii_handling: "aggregate_only"
+
+  consent:
+    require_consent_token: true
+    consent_scope: "analytics_justice_audit"
+    opt_out_respected: true
+    audit_log_to_ledger: true
+
+  # ----------------------------------------------------------------------
+  # 7) EXEMPTIONS & OVERRIDES (NARROW, AUDITED)
+  # ----------------------------------------------------------------------
+  exemptions:
+    emergency_routes:
+      allowed: true
+      reason_codes: ["life_safety", "disaster_response"]
+      post_hoc_review_within: "P7D"
+      review_body: "JusticeReviewBoard"
+
+  overrides:
+    elder_care_priority:
+      allowed: true
+      justification: "vulnerability_index>0.8"
+      auto_expire: "P30D"
+      transparency_note: true
+
+  # ----------------------------------------------------------------------
+  # 8) REPORTING & TRANSPARENCY
+  # ----------------------------------------------------------------------
+  reporting:
+    cadence: "P30D"
+    publish_to:
+      - "/accords/audit/public_integrity_feed"
+    fields:
+      - metric
+      - groups
+      - observed_values
+      - thresholds
+      - pass_fail
+      - corrective_actions
+      - next_review_at
+
+  # ----------------------------------------------------------------------
+  # 9) IMPLEMENTATION HOOKS
+  # ----------------------------------------------------------------------
+  hooks:
+    pre_allocation: "justice.precheck()"
+    post_allocation: "justice.postcheck()"
+    remediation: "justice.rebalance()"
+    notify: "citizen_shield.notify_ethics_ops()"
