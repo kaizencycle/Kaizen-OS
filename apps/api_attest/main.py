@@ -8,11 +8,15 @@ import os
 app = FastAPI(title="Kaizen Attest API", version="0.1.0")
 
 # CORS middleware
-origins = os.getenv("ALLOWED_ORIGINS", "*").split(",") if os.getenv("ALLOWED_ORIGINS") else ["*"]
+allowed_origins_env = os.getenv("ALLOWED_ORIGINS", "*")
+origins = allowed_origins_env.split(",") if allowed_origins_env and allowed_origins_env != "*" else ["*"]
+# Security: cannot use allow_credentials=True with allow_origins=["*"]
+# Browsers reject credentialed requests when Access-Control-Allow-Origin is "*"
+is_wildcard = origins == ["*"] or "*" in origins
 app.add_middleware(
     CORSMiddleware,
     allow_origins=origins,
-    allow_credentials=True,
+    allow_credentials=not is_wildcard,  # Must be False when using "*"
     allow_methods=["*"],
     allow_headers=["*"],
 )
