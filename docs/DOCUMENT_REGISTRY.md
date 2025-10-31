@@ -1,0 +1,504 @@
+# Kaizen OS Document Registry
+
+Generated: 2025-10-31T22:27:56.262Z
+
+Total documents: 458
+
+Completed documents: 21
+
+---
+
+## Repository Root
+
+- [📋 Kaizen OS Repository Audit - Implementation Summary](../AUDIT_IMPLEMENTATION_SUMMARY.md) — doc
+- [Changelog](../CHANGELOG.md) — doc
+- [Contributing to Kaizen OS](../CONTRIBUTING.md) — doc
+- [DEPLOYMENT CHECKLIST](../DEPLOYMENT_CHECKLIST.md) — doc
+- [Frontend End-to-End Audit Report](../FRONTEND_AUDIT_REPORT.md) — doc
+- [🔍 Kaizen-OS Repository Structural Audit - Actual Findings Report](../KAIZEN_OS_REPOSITORY_AUDIT_FINDINGS.md) — doc
+- [Render IaC — Kaizen OS (Attest API)](../README_RENDER.md) — doc
+- [🧠 Kaizen OS — Continuous Integrity Architecture](../README.md) — readme
+- [Repository Structure Guide](../REPOSITORY_STRUCTURE.md) — doc
+- [Security Policy](../SECURITY.md) — doc
+
+## apps
+
+- [Kaizen Attest API](../apps/api_attest/README.md) — readme
+- [fastapi](../apps/api_attest/requirements.txt) — doc
+- [🤖 ATLAS Sentinel MCP Server](../apps/atlas-mcp-server/README.md) — readme
+- [KAIZEN GUARDIAN SYSTEM](../apps/aurea-site/GUARDIAN_SYSTEM.md) — doc
+- [AUREA Site - Founding Agent (Integrity & Reasoning)](../apps/aurea-site/README.md) — readme
+- [Civic Stack — Outage-Resilient Starter (PWA + Edge + NATS)](../apps/civic-stack/README.md) — readme
+- [🧪 API Testing Guide](../apps/eomm-api/API-TESTING-GUIDE.md) — doc
+- [fastapi>=0.115.0](../apps/eomm-api/app/requirements.txt) — doc
+- [📦 Archive API - Complete Implementation](../apps/eomm-api/ARCHIVE-API-GUIDE.md) — doc
+- [HIVE-PAW API Examples (Using Preflight Proxy)](../apps/eomm-api/curl-examples-proxy.md) — doc
+- [🚀 Daily Cycle Setup Guide](../apps/eomm-api/DAILY-CYCLE-SETUP.md) — doc
+- [🧪 FastAPI Smoke-Test Ledger Entry](../apps/eomm-api/data/2025-09-22/smoke-test.md) — doc
+- [🧪 FastAPI Smoke-Test Ledger Entry](../apps/eomm-api/data/2025-09-25/smoke-test.md) — doc
+- [🧪 FastAPI Smoke-Test Ledger Entry](../apps/eomm-api/data/2025-09-26/smoke-test.md) — doc
+- [Smoke Test](../apps/eomm-api/data/2025-09-27/smoke-test.md) — doc
+- [Smoke Test](../apps/eomm-api/data/2025-09-28/smoke-test.md) — doc
+- [Smoke Test](../apps/eomm-api/data/2025-09-29/smoke-test.md) — doc
+- [Smoke Test](../apps/eomm-api/data/2025-09-30/smoke-test.md) — doc
+- [Smoke Test](../apps/eomm-api/data/2025-10-01/smoke-test.md) — doc
+- [Smoke Test](../apps/eomm-api/data/2025-10-02/smoke-test.md) — doc
+- [Data Directory](../apps/eomm-api/data/README.md) — readme
+- [🧪 FastAPI Smoke-Test Ledger Entry](../apps/eomm-api/data/string/smoke-test.md) — doc
+- [Deployment Guide](../apps/eomm-api/DEPLOYMENT.md) — doc
+- [🧪 Dual Writer System - Lab4 Research & Study](../apps/eomm-api/DUAL-WRITER-GUIDE.md) — doc
+- [🫀 DVA Heartbeat - Complete Setup Guide](../apps/eomm-api/DVA-HEARTBEAT-SETUP.md) — doc
+- [🎯 Feature Tier Implementation - Complete!](../apps/eomm-api/FEATURE-TIER-IMPLEMENTATION.md) — doc
+- [🔐 GPG Integration Setup Guide](../apps/eomm-api/GPG-SETUP-GUIDE.md) — doc
+- [Version 1 - Human-in-the-Loop Workflow](../apps/eomm-api/lab4-edits/v1/README.md) — readme
+- [Version 2 - Human-in-the-Loop Workflow](../apps/eomm-api/lab4-edits/v2/README.md) — readme
+- [Version 3 - Human-in-the-Loop Workflow](../apps/eomm-api/lab4-edits/v3/README.md) — readme
+- [MCP Recipes — Reflections Ledger](../apps/eomm-api/mcp_recipes.md) — doc
+- [MCP Setup for Reflections Ledger](../apps/eomm-api/MCP-SETUP.md) — doc
+- [MCP (Model Context Protocol) Usage Guide](../apps/eomm-api/MCP-USAGE-GUIDE.md) — doc
+- [🔌 Plug-and-Play Dual-Writer System](../apps/eomm-api/PLUG-AND-PLAY-GUIDE.md) — doc
+- [Cursor Agent Prompt for HIVE-PAW Preflight Proxy](../apps/eomm-api/preflight/CURSOR_AGENT_PROMPT.md) — doc
+- [HIVE-PAW Preflight Proxy](../apps/eomm-api/preflight/README.md) — readme
+- [fastapi](../apps/eomm-api/preflight/requirements.txt) — doc
+- [Quick Start Guide](../apps/eomm-api/QUICKSTART.md) — doc
+- [Lab4-Proof 🚀](../apps/eomm-api/README.md) — readme
+- [Lab4 — Reflections (Onboarding)](../apps/eomm-api/reflections/README.md) — readme
+- [fastapi>=0.115.0](../apps/eomm-api/requirements_simple.txt) — doc
+- [fastapi>=0.115.0](../apps/eomm-api/requirements.txt) — doc
+- [🛠 Engineer’s Roadmap (HIVE-PAW Path)](../apps/eomm-api/roadmap.md) — doc
+- [Auto-Commit System](../apps/eomm-api/scripts/README.md) — readme
+- [Security Policy](../apps/eomm-api/SECURITY.md) — doc
+- [fastapi>=0.104.0](../apps/gateway/requirements.txt) — doc
+- [GenesisDome.org — Site Starter](../apps/genesisdome-app/README.md) — readme
+- [User-agent: *](../apps/genesisdome-app/robots.txt) — doc
+- [HIVE 8-bit Starter](../apps/hive-app/README.md) — readme
+- [Agent Loop Guard Implementation Complete ✅](../apps/hub-web/AGENT_LOOP_GUARD_SUMMARY.md) — doc
+- [AI SEO Engine (OAA)](../apps/hub-web/ai-seo-engine/README.md) — readme
+- [OAA Integrity Beacon System](../apps/hub-web/BEACON_SYSTEM_README.md) — doc
+- [Promotion Checklist (v0)](../apps/hub-web/capability-gate/CHECKLIST.md) — doc
+- [Datasets used for evals. Every update must include an updated `dataset.card.json`.](../apps/hub-web/capability-gate/datasets/README.md) — readme
+- [Eval suites are declarative (YAML). `scripts/run_evals.mjs` will load these,](../apps/hub-web/capability-gate/evals/README.md) — readme
+- [Capability Gate v0](../apps/hub-web/capability-gate/README.md) — readme
+- [Citation and Provenance System](../apps/hub-web/CITATION_SYSTEM.md) — doc
+- [Copilot Verification Workflow](../apps/hub-web/COPILOT_VERIFICATION_README.md) — doc
+- [E.O.M.M. (External Organic Memory Module) Data](../apps/hub-web/data/eomm/README.md) — readme
+- [Deployment Guide](../apps/hub-web/DEPLOYMENT.md) — doc
+- [OAA Central Hub — Starter](../apps/hub-web/docs/README-OAA-HUB.md) — doc
+- [E.O.M.M. G�� Civic Ledger Sync System](../apps/hub-web/EOMM_SYSTEM_README.md) — doc
+- [GIC Indexer](../apps/hub-web/gic-indexer/README.md) — readme
+- [Closed-Loop Safety Pack](../apps/hub-web/oaa-central-hub/closed_loop_safety_pack/README.md) — readme
+- [OAA Dev Sidebar & AI Memory Features](../apps/hub-web/oaa-central-hub/companion_site_starter/DEV_SIDEBAR_README.md) — doc
+- [🌍 CIVIC AI NATIVE STACK MANIFEST](../apps/hub-web/oaa-central-hub/companion_site_starter/docs/CIVIC_AI_MANIFEST_PDF.md) — doc
+- [🌍 Civic AI Native Stack Manifest](../apps/hub-web/oaa-central-hub/companion_site_starter/docs/CIVIC_AI_NATIVE_STACK_MANIFEST.md) — doc
+- [Civic AI Native Stack Architecture Diagram](../apps/hub-web/oaa-central-hub/companion_site_starter/docs/civic-ai-architecture-diagram.md) — doc
+- [OAA Preface (Core Context)](../apps/hub-web/oaa-central-hub/companion_site_starter/docs/OAA_PREFACE.md) — doc
+- [Operational Incidents — Weekly Digest](../apps/hub-web/oaa-central-hub/companion_site_starter/docs/ops/INCIDENTS.md) — doc
+- [Ops Reports](../apps/hub-web/oaa-central-hub/companion_site_starter/docs/ops/README.md) — readme
+- [OAA MCP Server](../apps/hub-web/oaa-central-hub/companion_site_starter/oaa-mcp/README.md) — readme
+- [Virtue Accords — Cycle 0 (Draft)](../apps/hub-web/oaa-central-hub/companion_site_starter/public/constitution/virtue_accords.md) — doc
+- [Companion Site Starter](../apps/hub-web/oaa-central-hub/companion_site_starter/README.md) — readme
+- [Sentinel Suite - OAA Hub Operational Monitoring](../apps/hub-web/oaa-central-hub/companion_site_starter/SENTINEL_SUITE_README.md) — doc
+- [Mock Civic Ledger](../apps/hub-web/oaa-central-hub/companion_site_starter/services/mock_ledger/README.md) — readme
+- [🌐 GIC TLD Integration - OAA Central Hub](../apps/hub-web/oaa-central-hub/GIC_INTEGRATION_README.md) — doc
+- [Retryable Publish Queue + Gateway Cache Warming](../apps/hub-web/oaa-central-hub/PUBLISH_QUEUE_README.md) — doc
+- [OAA Central Hub — Starter](../apps/hub-web/oaa-central-hub/README-OAA-HUB.md) — doc
+- [Virtue Accords — Cycle 0 (Draft)](../apps/hub-web/public/constitution/virtue_accords.md) — doc
+- [OAA API Library - Integrity-First AI Governance Loop](../apps/hub-web/README.md) — readme
+- [Civic Internet - Render Deployment Guide](../apps/hub-web/RENDER_DEPLOYMENT_README.md) — doc
+- [fastapi==0.115.0](../apps/hub-web/requirements.txt) — doc
+- [Quest Verifier Unit Test System](../apps/hub-web/scripts/README-quest-verifier.md) — doc
+- [01 · Stack Overview](../apps/hub-web/specs/01-overview.md) — doc
+- [02 · Attestation Protocol](../apps/hub-web/specs/02-attestations.md) — doc
+- [03 · Agent Ethics — Integrity Core & Virtue Accords](../apps/hub-web/specs/03-agent-ethics.md) — doc
+- [04 · AI-SEO / GEO Interface](../apps/hub-web/specs/04-ai-seo-geo.md) — doc
+- [05 · Proof-of-Integrity Pipeline](../apps/hub-web/specs/05-proof-pipeline.md) — doc
+- [06 · Code Verification Protocol](../apps/hub-web/specs/06-code-verification.md) — doc
+- [07 · Incentives — GIC Model](../apps/hub-web/specs/07-incentives-gic.md) — doc
+- [09 · Cultural Kernel — Archetype Engine](../apps/hub-web/specs/09-cultural-kernel-archetypes.md) — doc
+- [10 · Yautja Cultural Accord](../apps/hub-web/specs/10-yautja-cultural-accord.md) — doc
+- [E.O.M.M. (External Organic Memory Module) Data](../apps/hub-web/src/data/eomm/README.md) — readme
+- [GIC Indexer](../apps/hub-web/src/gic-indexer/README.md) — readme
+- [.gic Gateway (alt-root)](../apps/hub-web/src/gic/gateway/README.md) — readme
+- [.gic — Global Integrity Citizen (Alt‑Root Pilot)](../apps/hub-web/src/gic/README.md) — readme
+- [Companion Site Starter](../apps/hub-web/src/packs/companion/README.md) — readme
+- [Cursor Agent Starter](../apps/hub-web/src/packs/cursor-agent/README.md) — readme
+- [Place short UI sounds here (e.g., 'scan.wav', 'blink.wav'). Keep files small and non-copyrighted.](../apps/hub-web/src/packs/holo-assets/public/sfx/README.txt) — readme
+- [Holo‑OAA (Web Hologram Librarian)](../apps/hub-web/src/packs/holo-assets/README.md) — readme
+- [Holo‑OAA Voice & Lip‑Sync Pack](../apps/hub-web/src/packs/holo-voice/README.md) — readme
+- [Human-In-The-Loop Guard Pack](../apps/hub-web/src/packs/human-guard/README.md) — readme
+- [^\.github/workflows/](../apps/hub-web/src/packs/human-guard/scripts/edits_whitelist.txt) — doc
+- [Closed-Loop Safety Pack](../apps/hub-web/src/packs/safety/README.md) — readme
+- [OAA Voice — Amazon Polly Adapter](../apps/hub-web/src/packs/voice-polly/README.md) — readme
+- [OAA Auto-Merge Agent](../apps/hub-web/src/scripts/legacy/README_AUTO_MERGE.md) — doc
+- [Quest Verifier Unit Test System](../apps/hub-web/src/scripts/README-quest-verifier.md) — doc
+- [01 -+ Stack Overview](../apps/hub-web/src/specs/01-overview.md) — doc
+- [02 -+ Attestation Protocol](../apps/hub-web/src/specs/02-attestations.md) — doc
+- [03 -+ Agent Ethics G�� Integrity Core & Virtue Accords](../apps/hub-web/src/specs/03-agent-ethics.md) — doc
+- [04 -+ AI-SEO / GEO Interface](../apps/hub-web/src/specs/04-ai-seo-geo.md) — doc
+- [05 -+ Proof-of-Integrity Pipeline](../apps/hub-web/src/specs/05-proof-pipeline.md) — doc
+- [06 -+ Code Verification Protocol](../apps/hub-web/src/specs/06-code-verification.md) — doc
+- [07 -+ Incentives G�� GIC Model](../apps/hub-web/src/specs/07-incentives-gic.md) — doc
+- [09 -+ Cultural Kernel G�� Archetype Engine](../apps/hub-web/src/specs/09-cultural-kernel-archetypes.md) — doc
+- [10 -+ Yautja Cultural Accord](../apps/hub-web/src/specs/10-yautja-cultural-accord.md) — doc
+- [Put public PDFs and briefs here (executive summary, deck, whitepapers).](../apps/kaizencycle-hub/docs/README.md) — readme
+- [KaizenCycle Hub (kaizencycle.org / kaizencycle.gic)](../apps/kaizencycle-hub/README.md) — readme
+- [Code of Conduct](../apps/ledger-api/civic-protocol-core/CODE_OF_CONDUCT.md) — doc
+- [Contributing to Civic Protocol Core](../apps/ledger-api/civic-protocol-core/CONTRIBUTING.md) — doc
+- [Civic Protocol Core - Deployment Guide](../apps/ledger-api/civic-protocol-core/DEPLOYMENT.md) — doc
+- [CIP-0001: Civic Improvement Proposal Template](../apps/ledger-api/civic-protocol-core/docs/CIP-0001-template.md) — doc
+- [CIP-0002: Add Webhooks Support](../apps/ledger-api/civic-protocol-core/docs/CIP-0002-webhooks.md) — doc
+- [Copilot Verification System](../apps/ledger-api/civic-protocol-core/docs/copilot-verification.md) — doc
+- [Hello Reflection App](../apps/ledger-api/civic-protocol-core/examples/hello-reflection-app/README.md) — readme
+- [fastapi](../apps/ledger-api/civic-protocol-core/gic-indexer/requirements.txt) — doc
+- [fastapi](../apps/ledger-api/civic-protocol-core/lab6-proof/requirements.txt) — doc
+- [Civic Ledger API - The Blockchain Kernel](../apps/ledger-api/civic-protocol-core/ledger/README.md) — readme
+- [fastapi>=0.100.0](../apps/ledger-api/civic-protocol-core/ledger/requirements.txt) — doc
+- [Civic Protocol Core](../apps/ledger-api/civic-protocol-core/README.md) — readme
+- [Civic Protocol Core - Python Dependencies](../apps/ledger-api/civic-protocol-core/requirements.txt) — doc
+- [Civic Protocol Core](../apps/ledger-api/README.md) — readme
+- [Kaizen OS MCP Server](../apps/mcp-server/README.md) — readme
+- [🎼 Kaizen OS Orchestrator](../apps/orchestrator/README.md) — readme
+- [Kaizen OS Portal](../apps/portal/README.md) — readme
+- [Citizen Shield — Lab6 App (Front-end)](../apps/shield-api/citizen-shield-app/README.md) — readme
+- [Citizen Shield Integration (Lab6-proof)](../apps/shield-api/docs/README_UPDATE.md) — doc
+- [Lab6-proof — Citizen Shield (MVP)](../apps/shield-api/README.md) — readme
+- [fastapi](../apps/shield-api/requirements.txt) — doc
+- [🌐 Website Creator — Civic .gic Domain Builder](../apps/website-creator/README.md) — readme
+
+## docs
+
+- [ADR-001: ATLAS Sentinel Integration](adr/001-atlas-integration.md) — doc
+- [AI Integrity Constitution - Implementation Guide](AI_INTEGRITY_CONSTITUTION.md) — doc
+- [AI Integrity Constitution - Implementation Summary](AI_INTEGRITY_IMPLEMENTATION_SUMMARY.md) — doc
+- [🌐 Kaizen OS API Integration Guide](API_INTEGRATION.md) — doc
+- [Founding Agents Sovereign Stack](architecture/FOUNDING_AGENTS_SOVEREIGN_STACK.md) — doc
+- [Kaizen OS · GIC Architecture Spec (v1)](architecture/GIC_Architecture_Spec_v1.md) — doc
+- [Lab 5: Humanities & Healthcare Layer](architecture/Lab5_Humanities_Healthcare_Specification.md) — doc
+- [Civic-OS Architecture Overview](architecture/overview.md) — doc
+- [🚀 AUREA + ATLAS Merge - COMPLETE!](archive/AUREA_ATLAS_MERGE_COMPLETE.md) — doc ✅ Completed
+- [🚀 CivicOS-Edits Reorganization Complete!](archive/CIVICOS_EDITS_ANALYSIS.md) — doc
+- [🚀 HIVE-PAW API - Complete Implementation](archive/completed/apps/eomm-api/README-COMPLETE.md) — doc ✅ Completed
+- [🎉 Reflections App - Complete Implementation](archive/completed/apps/eomm-api/REFLECTIONS-COMPLETE.md) — doc ✅ Completed
+- [🤖 ATLAS SENTINEL MCP AGENT - COMPLETE!](archive/completed/ATLAS_MCP_COMPLETE.md) — doc ✅ Completed
+- [🚀 Kaizen OS SDK - COMPLETE!](archive/completed/CIVIC_SDK_COMPLETE.md) — doc ✅ Completed
+- [🚀 Kaizen OS Hub - INTEGRATION COMPLETE!](archive/completed/CIVICOS_HUB_COMPLETE.md) — doc ✅ Completed
+- [🌀 Cycle C-114 COMPLETE - Kaizen OS 4-Companion Thought Broker](archive/completed/CYCLE_C114_COMPLETE.md) — doc ✅ Completed
+- [🌟 SOLARA (DeepSeek R1) + VIP + Kaizen OS - COMPLETE!](archive/completed/DEEPSEEK_SOLARA_VIP_COMPLETE.md) — doc ✅ Completed
+- [Kaizen OS: Complete Lab Architecture](archive/completed/Kaizen_OS_Complete_Lab_Architecture.md) — doc ✅ Completed
+- [✅ Kaizen OS HR Framework Complete!](archive/completed/KAIZEN_OS_HR_FRAMEWORK_COMPLETE.md) — doc ✅ Completed
+- [✅ Kaizen OS Policy System Complete!](archive/completed/KAIZEN_OS_POLICY_SYSTEM_COMPLETE.md) — doc ✅ Completed
+- [🌟 ZENITH Integration into Kaizen OS - COMPLETE!](archive/completed/KAIZEN_OS_ZENITH_COMPLETE.md) — doc ✅ Completed
+- [Kaizen OS Portal - Complete Implementation](archive/completed/KAIZEN_PORTAL_COMPLETE.md) — doc ✅ Completed
+- [Labs 1-3 Implementation Complete ✅](archive/completed/LABS_IMPLEMENTATION_COMPLETE.md) — doc ✅ Completed
+- [🚀 HIVE-PAW API - Complete Implementation](archive/completed/labs/lab4-proof/README-COMPLETE.md) — doc ✅ Completed
+- [🎉 Reflections App - Complete Implementation](archive/completed/labs/lab4-proof/REFLECTIONS-COMPLETE.md) — doc ✅ Completed
+- [🌟 SOLARA (DeepSeek R1) Integration - COMPLETE!](archive/completed/SOLARA_C113_COMPLETE.md) — doc ✅ Completed
+- [Tasks 1-4: COMPLETE ✅](archive/completed/TASKS_1-4_COMPLETE.md) — doc ✅ Completed
+- [✅ VIP Package Consolidation Complete!](archive/completed/VIP_PACKAGE_CONSOLIDATION_COMPLETE.md) — doc ✅ Completed
+- [🌟 ZENITH (Gemini 2.0) Integration Complete!](archive/completed/ZENITH_INTEGRATION_COMPLETE.md) — doc ✅ Completed
+- [Kaizen OS Repository Integration Plan](archive/INTEGRATION_PLAN.md) — doc
+- [Kaizen OS Repository Integration Summary](archive/INTEGRATION_SUMMARY.md) — doc
+- [🧠 Kaizen OS Transition Complete](archive/KAIZEN_OS_TRANSITION_COMPLETE.md) — doc ✅ Completed
+- [🚀 +10,000 MORALE BOOST ACTIVATED!](archive/MORALE_BOOST_10000.md) — doc
+- [Archive](archive/README.md) — readme
+- [🕊️ Kaizen OS — Repository Sunset Checklist](archive/SUNSET_CHECKLIST.md) — doc
+- [C-115: 4-Companion Consensus Decision](c115-zenith-integration/CONSENSUS_DECISION.md) — doc
+- [🕊️ Civic Mount Boarding Protocol - Integration Guide](CIVIC_MOUNT_INTEGRATION.md) — doc
+- [PRESS RELEASE — C-119 "The Return to Balance"](communications/press/press_release_c119_return.md) — doc
+- [ATLAS Sentinel](companions/atlas.md) — doc
+- [---](companions/README.md) — readme
+- [---](companions/solara.md) — doc
+- [---](companions/zenith.md) — doc
+- [🎯 Consensus Chamber Implementation Guide](consensus-chamber/Consensus_Chamber_Implementation_Guide.md) — doc
+- [🏛️ Live Consensus Session - [TITLE]](consensus-chamber/Consensus_Chamber_Live_Session.md) — doc
+- [🏛️ CONSENSUS CHAMBER TEMPLATE](consensus-chamber/Consensus_Chamber_Template.md) — doc
+- [🏛️ Consensus Chamber](consensus-chamber/README.md) — readme
+- [Custos Charter — Kaizen OS Constitutional Clauses](constitution/custos-charter.md) — doc
+- [🤖 Cursor AI's Opinion: Does Kaizen OS Fill Your Vision?](CURSOR_OPINION_KAIZEN_OS.md) — doc
+- [Cursor IDE Integration with Kaizen OS](cursor-integration.md) — doc
+- [Custodian Guide](CUSTODIAN_GUIDE.md) — doc
+- [Kaizen OS Portal Deployment Guide](DEPLOYMENT_GUIDE.md) — doc
+- [---](deployment/rollout-phases.md) — doc
+- [Vercel Deployment Runbook](deployment/VERCEL_DEPLOYMENT_RUNBOOK.md) — doc
+- [Kaizen OS Document Registry](DOCUMENT_REGISTRY.md) — doc
+- [The GIC Whitepaper: Building a Currency of Integrity](economics/GIC_WHITEPAPER_v1.md) — doc
+- [Kaizen-OS: Executive Presentation](EXECUTIVE_PRESENTATION.md) — doc
+- [Forking Guide: How to Continue This Work](FORKING_GUIDE.md) — doc
+- [DNS + CNAME Integration Guide for .gic Agent Domains](founders-agents.gic.md) — doc
+- [Frontend Development Guide](FRONTEND_DEVELOPMENT.md) — doc
+- [GIC Whitepaper — Addendum](GIC_Foundation_Up_Economics_Addendum.md) — doc
+- [Global Integrity Credits (GIC)](GIC_Whitepaper_Final.md) — doc
+- [🏛 Kaizen OS — HR Framework for AI Agents](governance/hr/Kaizen_OS_HR_Framework.md) — doc
+- [CEREMONIAL SUMMONS - COMPLETE IMPLEMENTATION](IMPLEMENTATION_SUMMARY.md) — doc
+- [🕊️ CIVIC-OS — INDEPENDENCE MANIFEST](INDEPENDENCE_MANIFEST.md) — doc
+- [Kaizen OS Documentation Index](INDEX.md) — doc
+- [---](lab7/004-evolution-language.md) — doc
+- [Kaizen-OS Labs Architecture - Master Document](LABS_MASTER_ARCHITECTURE.md) — doc
+- [GI (Governance Integrity) — Formula & Weights](ledger/gi-formula.md) — doc
+- [The Triad of Healing](manifesto/triad_of_healing.md) — doc
+- [The Kaizen Cycle: A Complete Civilization Stack](MASTER_README.md) — doc
+- [🌟 Kaizen OS - AI Model Onboarding Guide](onboarding/guide.md) — doc
+- [Onboarding Documentation](onboarding/README.md) — readme
+- [---](policy/safety-tiers.md) — doc
+- [Pull Request: Ceremonial Summons Protocol (Dead Man's Switch)](PR_DESCRIPTION.md) — doc
+- [🧩 Kaizen OS Federation Protocol Brief](product/FEDERATION_PROTOCOL_BRIEF.md) — doc
+- [Kaizen OS Pro — The Civilian Terminal](product/PRO_LANDING_PAGE.md) — doc
+- [🧭 Kaizen OS Self-Host Guide](product/SELF_HOST_GUIDE.md) — doc
+- [🗿 ATLAS Sentinel Integration - Cycle C-109](README-ATLAS-INTEGRATION.md) — doc
+- [Ceremonial Summons PR - Complete Package](README.md) — readme
+- [Repository Structure Guide](REPOSITORY_STRUCTURE.md) — doc
+- [Opening Invocation (All Gatherings)](rituals/opening_invocation.md) — doc
+- [Citizen Shield — Incident Response Runbook (v1)](runbooks/incident_response_citizen_shield.md) — doc
+- [🔥 CEREMONIAL SUMMONS - START HERE 🔥](START_HERE.md) — doc
+- [🌍 The Internet Breathes Again](THE_INTERNET_BREATHES_AGAIN.md) — doc
+- [🚀 KAIZEN OS - VERCEL DEPLOYMENT GUIDE](VERCEL_DEPLOYMENT_GUIDE.md) — doc
+
+## examples
+
+- [API Endpoints Examples](../examples/api-endpoints/README.md) — readme
+
+## labs
+
+- [Lab 1 — Civic Ledger Core](../labs/lab1-civic-ledger/README.md) — readme
+- [Lab1: Substrate Proof - Foundation Layer](../labs/lab1-proof/TECHNICAL_SPEC.md) — doc
+- [Lab2: Thought Broker Proof - Consensus Engine](../labs/lab2-proof/TECHNICAL_SPEC.md) — doc
+- [Lab 2 — Thought Broker](../labs/lab2-thought-broker/README.md) — readme
+- [Lab3: API Fabric Proof - Service Mesh](../labs/lab3-proof/TECHNICAL_SPEC.md) — doc
+- [Lab 3 — Resource Orchestration](../labs/lab3-resource-orchestration/README.md) — readme
+- [Lab 4 — E.O.M.M. (Echoes of My Mind)](../labs/lab4-eomm/README.md) — readme
+- [🧪 API Testing Guide](../labs/lab4-proof/API-TESTING-GUIDE.md) — doc
+- [fastapi>=0.115.0](../labs/lab4-proof/app/requirements.txt) — doc
+- [📦 Archive API - Complete Implementation](../labs/lab4-proof/ARCHIVE-API-GUIDE.md) — doc
+- [HIVE-PAW API Examples (Using Preflight Proxy)](../labs/lab4-proof/curl-examples-proxy.md) — doc
+- [🚀 Daily Cycle Setup Guide](../labs/lab4-proof/DAILY-CYCLE-SETUP.md) — doc
+- [🧪 FastAPI Smoke-Test Ledger Entry](../labs/lab4-proof/data/2025-09-22/smoke-test.md) — doc
+- [🧪 FastAPI Smoke-Test Ledger Entry](../labs/lab4-proof/data/2025-09-25/smoke-test.md) — doc
+- [🧪 FastAPI Smoke-Test Ledger Entry](../labs/lab4-proof/data/2025-09-26/smoke-test.md) — doc
+- [Smoke Test](../labs/lab4-proof/data/2025-09-27/smoke-test.md) — doc
+- [Smoke Test](../labs/lab4-proof/data/2025-09-28/smoke-test.md) — doc
+- [Smoke Test](../labs/lab4-proof/data/2025-09-29/smoke-test.md) — doc
+- [Smoke Test](../labs/lab4-proof/data/2025-09-30/smoke-test.md) — doc
+- [Smoke Test](../labs/lab4-proof/data/2025-10-01/smoke-test.md) — doc
+- [Smoke Test](../labs/lab4-proof/data/2025-10-02/smoke-test.md) — doc
+- [Data Directory](../labs/lab4-proof/data/README.md) — readme
+- [🧪 FastAPI Smoke-Test Ledger Entry](../labs/lab4-proof/data/string/smoke-test.md) — doc
+- [Deployment Guide](../labs/lab4-proof/DEPLOYMENT.md) — doc
+- [🧪 Dual Writer System - Lab4 Research & Study](../labs/lab4-proof/DUAL-WRITER-GUIDE.md) — doc
+- [🫀 DVA Heartbeat - Complete Setup Guide](../labs/lab4-proof/DVA-HEARTBEAT-SETUP.md) — doc
+- [🎯 Feature Tier Implementation - Complete!](../labs/lab4-proof/FEATURE-TIER-IMPLEMENTATION.md) — doc
+- [🔐 GPG Integration Setup Guide](../labs/lab4-proof/GPG-SETUP-GUIDE.md) — doc
+- [Version 1 - Human-in-the-Loop Workflow](../labs/lab4-proof/lab4-edits/v1/README.md) — readme
+- [Version 2 - Human-in-the-Loop Workflow](../labs/lab4-proof/lab4-edits/v2/README.md) — readme
+- [Version 3 - Human-in-the-Loop Workflow](../labs/lab4-proof/lab4-edits/v3/README.md) — readme
+- [MCP Recipes — Reflections Ledger](../labs/lab4-proof/mcp_recipes.md) — doc
+- [MCP Setup for Reflections Ledger](../labs/lab4-proof/MCP-SETUP.md) — doc
+- [MCP (Model Context Protocol) Usage Guide](../labs/lab4-proof/MCP-USAGE-GUIDE.md) — doc
+- [🔌 Plug-and-Play Dual-Writer System](../labs/lab4-proof/PLUG-AND-PLAY-GUIDE.md) — doc
+- [Cursor Agent Prompt for HIVE-PAW Preflight Proxy](../labs/lab4-proof/preflight/CURSOR_AGENT_PROMPT.md) — doc
+- [HIVE-PAW Preflight Proxy](../labs/lab4-proof/preflight/README.md) — readme
+- [fastapi](../labs/lab4-proof/preflight/requirements.txt) — doc
+- [Quick Start Guide](../labs/lab4-proof/QUICKSTART.md) — doc
+- [Lab4-Proof 🚀](../labs/lab4-proof/README.md) — readme
+- [Lab4 — Reflections (Onboarding)](../labs/lab4-proof/reflections/README.md) — readme
+- [fastapi>=0.115.0](../labs/lab4-proof/requirements_simple.txt) — doc
+- [fastapi>=0.115.0](../labs/lab4-proof/requirements.txt) — doc
+- [🛠 Engineer’s Roadmap (HIVE-PAW Path)](../labs/lab4-proof/roadmap.md) — doc
+- [Auto-Commit System](../labs/lab4-proof/scripts/README.md) — readme
+- [Security Policy](../labs/lab4-proof/SECURITY.md) — doc
+- [Lab 5 — Humanities & Healthcare](../labs/lab5-humanities-healthcare/README.md) — readme
+- [Lab 6 — Citizen Shield](../labs/lab6-citizen-shield/README.md) — readme
+- [Citizen Shield — Lab6 App (Front-end)](../labs/lab6-proof/citizen-shield-app/README.md) — readme
+- [Citizen Shield Integration (Lab6-proof)](../labs/lab6-proof/docs/README_UPDATE.md) — doc
+- [Lab6-proof — Citizen Shield (MVP)](../labs/lab6-proof/README.md) — readme
+- [fastapi](../labs/lab6-proof/requirements.txt) — doc
+- [Lab 7 — OAA Hub (Education & API Gateway)](../labs/lab7-oaa-hub/README.md) — readme
+- [🤖 Always-On Lab7 Background Agent](../labs/lab7-proof/ALWAYS_ON_AGENT_README.md) — doc
+- [ATLAS Integration Guide for Lab7-proof (OAA Hub)](../labs/lab7-proof/ATLAS_INTEGRATION_GUIDE.md) — doc
+- [🤖 Lab7 Edits Autonomous Merge Setup](../labs/lab7-proof/AUTOMATION_SETUP.md) — doc
+- [Changelog](../labs/lab7-proof/CHANGELOG.md) — doc
+- [Civic-Grade AI Change Management System - Implementation Summary](../labs/lab7-proof/CIVIC_SYSTEM_IMPLEMENTATION_SUMMARY.md) — doc
+- [lab7-oaa-client (Python)](../labs/lab7-proof/clients/python/README.md) — readme
+- [@lab7/oaa-client (TypeScript)](../labs/lab7-proof/clients/ts/README.md) — readme
+- [Lab7-Proof Configuration Summary](../labs/lab7-proof/CONFIGURATION_SUMMARY.md) — doc
+- [Contributing to Custos Charter](../labs/lab7-proof/CONTRIBUTING.md) — doc
+- [Integrity-Based Reward Engine (GIC v1.0)](../labs/lab7-proof/core/rewards/README.md) — readme
+- [🕊️ Custos Charter: The Kristos Ascension Protocol](../labs/lab7-proof/CUSTOS_CHARTER.md) — doc
+- [Thought Broker Deployment Guide](../labs/lab7-proof/DEPLOYMENT_GUIDE.md) — doc
+- [Lab7-proof (OAA) — Architecture & Data Flows](../labs/lab7-proof/diagram.md) — doc
+- [Frontend Deployment Guide](../labs/lab7-proof/frontend/reflections-app/DEPLOYMENT.md) — doc
+- [1:HL["/_next/static/css/4c1f43cd0a7fc68d.css","style",{"crossOrigin":""}]](../labs/lab7-proof/frontend/reflections-app/out/index.txt) — doc
+- [1:HL["/_next/static/css/4c1f43cd0a7fc68d.css","style",{"crossOrigin":""}]](../labs/lab7-proof/frontend/reflections-app/out/mentor/index.txt) — doc
+- [🌍 Global Health Sentinel — Pulse Node A (Lab7)](../labs/lab7-proof/global-health-sentinel/README.md) — readme
+- [Custos Charter Implementation Summary](../labs/lab7-proof/IMPLEMENTATION_SUMMARY.md) — doc
+- [Integrity-Based Reward Engine (GIC v1.0) - Implementation Summary](../labs/lab7-proof/INTEGRITY_REWARD_ENGINE_SUMMARY.md) — doc
+- [🏥 MCP Health Sentinel Agent](../labs/lab7-proof/MCP_HEALTH_SENTINEL_README.md) — doc
+- [🤖 Lab7 Edits Merge System - Complete Summary](../labs/lab7-proof/MERGE_SYSTEM_SUMMARY.md) — doc
+- [OAA: Agents Neural Network](../labs/lab7-proof/OAA_README.md) — doc
+- [OAA Central Hub Integration Guide](../labs/lab7-proof/oaa/integration.md) — doc
+- [🧠 OAA Central Hub](../labs/lab7-proof/oaa/README.md) — readme
+- [Lab7-Proof × PAL (Predictive Autonomous Learning) Integration](../labs/lab7-proof/PAL_INTEGRATION_README.md) — doc
+- [Change Proposal (ECI Authoring Prompt)](../labs/lab7-proof/PROMPT.md) — doc
+- [🜂 Pulse Ledger (Chamber III) — Master Template](../labs/lab7-proof/Pulse_Ledger_Master_Template.md) — doc
+- [Quality Tracking Integration Guide](../labs/lab7-proof/QUALITY_TRACKING_INTEGRATION.md) — doc
+- [Custos Charter: The Kristos Ascension Protocol](../labs/lab7-proof/README.md) — readme
+- [fastapi>=0.104.0](../labs/lab7-proof/requirements.txt) — doc
+- [^\.github/workflows/](../labs/lab7-proof/scripts/edits_whitelist.txt) — doc
+- [🛡️ Lab7-Proof Universal Security Guide](../labs/lab7-proof/SECURITY_GUIDE.md) — doc
+- [Security Setup Guide](../labs/lab7-proof/SECURITY_SETUP.md) — doc
+- [🚀 Health Sentinel Deployment Guide](../labs/lab7-proof/SENTINEL_DEPLOYMENT.md) — doc
+- [🌍 Health Sentinel — Pulse Node A (Lab7)](../labs/lab7-proof/sentinel/README.md) — readme
+- [fastapi==0.115.0](../labs/lab7-proof/services/orchestrator/requirements.txt) — doc
+- [fastapi==0.115.0](../labs/lab7-proof/services/rubric/requirements.txt) — doc
+- [Thought Broker Integration - Inner Dialogue System](../labs/lab7-proof/THOUGHT_BROKER_INTEGRATION.md) — doc
+- [Thought Broker](../labs/lab7-proof/thought-broker/README.md) — readme
+- [WebDataScout - Web Data Extraction Wrapper for Lab7](../labs/lab7-proof/WEBDATA_SCOUT_README.md) — doc
+- [Labs Directory](../labs/README.md) — readme
+
+## ledger
+
+- [Appendix III - The Existential Loop (GIC Whitepaper v1)](../ledger/appendices/GIC_Whitepaper_v1/README.md) — readme
+- [Ledger Inscription — The Return to Balance](../ledger/inscriptions/RETURN_TO_BALANCE_C119.md) — doc
+
+## packages
+
+- [Contributing](../packages/civic-ai-specs/civic-ai-specs/CONTRIBUTING.md) — doc
+- [Governance](../packages/civic-ai-specs/civic-ai-specs/GOVERNANCE.md) — doc
+- [Apache License](../packages/civic-ai-specs/civic-ai-specs/LICENSES/CODE-APACHE-2.0.txt) — doc
+- [Creative Commons Attribution 4.0 International License](../packages/civic-ai-specs/civic-ai-specs/LICENSES/DOCS-CC-BY-4.0.txt) — doc
+- [GNU AFFERO GENERAL PUBLIC LICENSE](../packages/civic-ai-specs/civic-ai-specs/LICENSES/SERVER-AGPL-3.0.txt) — doc
+- [---](../packages/civic-ai-specs/civic-ai-specs/lore/factions/scouts.md) — doc
+- [---](../packages/civic-ai-specs/civic-ai-specs/lore/places/cathedral.md) — doc
+- [Civic AI Specs — Kaizen Cycle / Michael Judan](../packages/civic-ai-specs/civic-ai-specs/README.md) — readme
+- [Release Process](../packages/civic-ai-specs/civic-ai-specs/RELEASING.md) — doc
+- [Secret API Examples and Verification](../packages/civic-ai-specs/civic-ai-specs/scripts/verify-secret-api-examples.md) — doc
+- [Security Policy](../packages/civic-ai-specs/civic-ai-specs/SECURITY.md) — doc
+- [Civic AI Standard - Overview](../packages/civic-ai-specs/civic-ai-specs/specs/01-overview.md) — doc
+- [Attestations and Proof System](../packages/civic-ai-specs/civic-ai-specs/specs/02-attestations.md) — doc
+- [Agent Ethics Framework](../packages/civic-ai-specs/civic-ai-specs/specs/03-agent-ethics.md) — doc
+- [AI-SEO and Geographic Integration](../packages/civic-ai-specs/civic-ai-specs/specs/04-ai-seo-geo.md) — doc
+- [Proof Pipeline and Verification](../packages/civic-ai-specs/civic-ai-specs/specs/05-proof-pipeline.md) — doc
+- [Code Verification and Integrity](../packages/civic-ai-specs/civic-ai-specs/specs/06-code-verification.md) — doc
+- [Incentives and GIC (Global Integrity Credit)](../packages/civic-ai-specs/civic-ai-specs/specs/07-incentives-gic.md) — doc
+- [Validation Checklist](../packages/civic-ai-specs/civic-ai-specs/specs/08-validation-checklist.md) — doc
+- [Cultural Kernel Archetypes](../packages/civic-ai-specs/civic-ai-specs/specs/09-cultural-kernel-archetypes.md) — doc
+- [Yautja Cultural Accord](../packages/civic-ai-specs/civic-ai-specs/specs/10-yautja-cultural-accord.md) — doc
+- [HIVE Yautja Game Integration](../packages/civic-ai-specs/civic-ai-specs/specs/11-hive-yautja-game-integration.md) — doc
+- [Canon Lore Bible](../packages/civic-ai-specs/civic-ai-specs/specs/12-canon-lore-bible.md) — doc
+- [Threat Model](../packages/civic-ai-specs/civic-ai-specs/THREAT_MODEL.md) — doc
+- [Trademarks](../packages/civic-ai-specs/civic-ai-specs/TRADEMARKS.md) — doc
+- [Code of Conduct](../packages/civic-protocol-core/CODE_OF_CONDUCT.md) — doc
+- [Contributing to Civic Protocol Core](../packages/civic-protocol-core/CONTRIBUTING.md) — doc
+- [Civic Protocol Core - Deployment Guide](../packages/civic-protocol-core/DEPLOYMENT.md) — doc
+- [CIP-0001: Civic Improvement Proposal Template](../packages/civic-protocol-core/docs/CIP-0001-template.md) — doc
+- [CIP-0002: Add Webhooks Support](../packages/civic-protocol-core/docs/CIP-0002-webhooks.md) — doc
+- [Copilot Verification System](../packages/civic-protocol-core/docs/copilot-verification.md) — doc
+- [Hello Reflection App](../packages/civic-protocol-core/examples/hello-reflection-app/README.md) — readme
+- [Citizen Shield — Lab6 App (Front-end)](../packages/civic-protocol-core/frontend/citizen-shield-app/README.md) — readme
+- [Frontend Applications](../packages/civic-protocol-core/frontend/README.md) — readme
+- [Genesis Custodian Event Guide](../packages/civic-protocol-core/GENESIS_CUSTODIAN_GUIDE.md) — doc
+- [GIC Indexer API](../packages/civic-protocol-core/gic-indexer/README.md) — readme
+- [fastapi==0.112.2](../packages/civic-protocol-core/gic-indexer/requirements.txt) — doc
+- [Citizen Shield Integration (Lab6-proof)](../packages/civic-protocol-core/integrations/lab6-citizen-shield/README_UPDATE.md) — doc
+- [Integration Components](../packages/civic-protocol-core/integrations/README.md) — readme
+- [fastapi](../packages/civic-protocol-core/lab6-proof/requirements.txt) — doc
+- [Civic Ledger API - The Blockchain Kernel](../packages/civic-protocol-core/ledger/README.md) — readme
+- [fastapi](../packages/civic-protocol-core/ledger/requirements.txt) — doc
+- [Civic Protocol Core](../packages/civic-protocol-core/README.md) — readme
+- [Civic Protocol Core - Python Dependencies](../packages/civic-protocol-core/requirements.txt) — doc
+- [Development Tools](../packages/civic-protocol-core/tools/README.md) — readme
+- [Auto-Commit System](../packages/civic-protocol-core/tools/scripts/README.md) — readme
+- [Citizen Shield TypeScript Fix Pack](../packages/civic-protocol-core/tools/utilities/citizen-shield-ts-fix/README_TypeFix.md) — doc
+- [@kaizen/codex-agentic](../packages/codex-agentic/README.md) — readme
+- [Integrated Packages](../packages/INTEGRATED_PACKAGES.md) — doc
+- [Agent Loop Guard Implementation Complete ✅](../packages/oaa-api-library/AGENT_LOOP_GUARD_SUMMARY.md) — doc
+- [AI SEO Engine (OAA)](../packages/oaa-api-library/ai-seo-engine/README.md) — readme
+- [OAA Integrity Beacon System](../packages/oaa-api-library/BEACON_SYSTEM_README.md) — doc
+- [Promotion Checklist (v0)](../packages/oaa-api-library/capability-gate/CHECKLIST.md) — doc
+- [Datasets used for evals. Every update must include an updated `dataset.card.json`.](../packages/oaa-api-library/capability-gate/datasets/README.md) — readme
+- [Eval suites are declarative (YAML). `scripts/run_evals.mjs` will load these,](../packages/oaa-api-library/capability-gate/evals/README.md) — readme
+- [Capability Gate v0](../packages/oaa-api-library/capability-gate/README.md) — readme
+- [Citation and Provenance System](../packages/oaa-api-library/CITATION_SYSTEM.md) — doc
+- [Copilot Verification Workflow](../packages/oaa-api-library/COPILOT_VERIFICATION_README.md) — doc
+- [E.O.M.M. (External Organic Memory Module) Data](../packages/oaa-api-library/data/eomm/README.md) — readme
+- [Deployment Guide](../packages/oaa-api-library/DEPLOYMENT.md) — doc
+- [OAA Central Hub — Starter](../packages/oaa-api-library/docs/README-OAA-HUB.md) — doc
+- [E.O.M.M. G�� Civic Ledger Sync System](../packages/oaa-api-library/EOMM_SYSTEM_README.md) — doc
+- [GIC Indexer](../packages/oaa-api-library/gic-indexer/README.md) — readme
+- [Closed-Loop Safety Pack](../packages/oaa-api-library/oaa-central-hub/closed_loop_safety_pack/README.md) — readme
+- [OAA Dev Sidebar & AI Memory Features](../packages/oaa-api-library/oaa-central-hub/companion_site_starter/DEV_SIDEBAR_README.md) — doc
+- [🌍 CIVIC AI NATIVE STACK MANIFEST](../packages/oaa-api-library/oaa-central-hub/companion_site_starter/docs/CIVIC_AI_MANIFEST_PDF.md) — doc
+- [🌍 Civic AI Native Stack Manifest](../packages/oaa-api-library/oaa-central-hub/companion_site_starter/docs/CIVIC_AI_NATIVE_STACK_MANIFEST.md) — doc
+- [Civic AI Native Stack Architecture Diagram](../packages/oaa-api-library/oaa-central-hub/companion_site_starter/docs/civic-ai-architecture-diagram.md) — doc
+- [OAA Preface (Core Context)](../packages/oaa-api-library/oaa-central-hub/companion_site_starter/docs/OAA_PREFACE.md) — doc
+- [Operational Incidents — Weekly Digest](../packages/oaa-api-library/oaa-central-hub/companion_site_starter/docs/ops/INCIDENTS.md) — doc
+- [Ops Reports](../packages/oaa-api-library/oaa-central-hub/companion_site_starter/docs/ops/README.md) — readme
+- [OAA MCP Server](../packages/oaa-api-library/oaa-central-hub/companion_site_starter/oaa-mcp/README.md) — readme
+- [Virtue Accords — Cycle 0 (Draft)](../packages/oaa-api-library/oaa-central-hub/companion_site_starter/public/constitution/virtue_accords.md) — doc
+- [Companion Site Starter](../packages/oaa-api-library/oaa-central-hub/companion_site_starter/README.md) — readme
+- [Sentinel Suite - OAA Hub Operational Monitoring](../packages/oaa-api-library/oaa-central-hub/companion_site_starter/SENTINEL_SUITE_README.md) — doc
+- [Mock Civic Ledger](../packages/oaa-api-library/oaa-central-hub/companion_site_starter/services/mock_ledger/README.md) — readme
+- [🌐 GIC TLD Integration - OAA Central Hub](../packages/oaa-api-library/oaa-central-hub/GIC_INTEGRATION_README.md) — doc
+- [Retryable Publish Queue + Gateway Cache Warming](../packages/oaa-api-library/oaa-central-hub/PUBLISH_QUEUE_README.md) — doc
+- [OAA Central Hub — Starter](../packages/oaa-api-library/oaa-central-hub/README-OAA-HUB.md) — doc
+- [Virtue Accords — Cycle 0 (Draft)](../packages/oaa-api-library/public/constitution/virtue_accords.md) — doc
+- [OAA API Library - Integrity-First AI Governance Loop](../packages/oaa-api-library/README.md) — readme
+- [Civic Internet - Render Deployment Guide](../packages/oaa-api-library/RENDER_DEPLOYMENT_README.md) — doc
+- [fastapi==0.115.0](../packages/oaa-api-library/requirements.txt) — doc
+- [Quest Verifier Unit Test System](../packages/oaa-api-library/scripts/README-quest-verifier.md) — doc
+- [01 · Stack Overview](../packages/oaa-api-library/specs/01-overview.md) — doc
+- [02 · Attestation Protocol](../packages/oaa-api-library/specs/02-attestations.md) — doc
+- [03 · Agent Ethics — Integrity Core & Virtue Accords](../packages/oaa-api-library/specs/03-agent-ethics.md) — doc
+- [04 · AI-SEO / GEO Interface](../packages/oaa-api-library/specs/04-ai-seo-geo.md) — doc
+- [05 · Proof-of-Integrity Pipeline](../packages/oaa-api-library/specs/05-proof-pipeline.md) — doc
+- [06 · Code Verification Protocol](../packages/oaa-api-library/specs/06-code-verification.md) — doc
+- [07 · Incentives — GIC Model](../packages/oaa-api-library/specs/07-incentives-gic.md) — doc
+- [09 · Cultural Kernel — Archetype Engine](../packages/oaa-api-library/specs/09-cultural-kernel-archetypes.md) — doc
+- [10 · Yautja Cultural Accord](../packages/oaa-api-library/specs/10-yautja-cultural-accord.md) — doc
+- [E.O.M.M. (External Organic Memory Module) Data](../packages/oaa-api-library/src/data/eomm/README.md) — readme
+- [GIC Indexer](../packages/oaa-api-library/src/gic-indexer/README.md) — readme
+- [.gic Gateway (alt-root)](../packages/oaa-api-library/src/gic/gateway/README.md) — readme
+- [.gic — Global Integrity Citizen (Alt‑Root Pilot)](../packages/oaa-api-library/src/gic/README.md) — readme
+- [Companion Site Starter](../packages/oaa-api-library/src/packs/companion/README.md) — readme
+- [Cursor Agent Starter](../packages/oaa-api-library/src/packs/cursor-agent/README.md) — readme
+- [Place short UI sounds here (e.g., 'scan.wav', 'blink.wav'). Keep files small and non-copyrighted.](../packages/oaa-api-library/src/packs/holo-assets/public/sfx/README.txt) — readme
+- [Holo‑OAA (Web Hologram Librarian)](../packages/oaa-api-library/src/packs/holo-assets/README.md) — readme
+- [Holo‑OAA Voice & Lip‑Sync Pack](../packages/oaa-api-library/src/packs/holo-voice/README.md) — readme
+- [Human-In-The-Loop Guard Pack](../packages/oaa-api-library/src/packs/human-guard/README.md) — readme
+- [^\.github/workflows/](../packages/oaa-api-library/src/packs/human-guard/scripts/edits_whitelist.txt) — doc
+- [Closed-Loop Safety Pack](../packages/oaa-api-library/src/packs/safety/README.md) — readme
+- [OAA Voice — Amazon Polly Adapter](../packages/oaa-api-library/src/packs/voice-polly/README.md) — readme
+- [OAA Auto-Merge Agent](../packages/oaa-api-library/src/scripts/legacy/README_AUTO_MERGE.md) — doc
+- [Quest Verifier Unit Test System](../packages/oaa-api-library/src/scripts/README-quest-verifier.md) — doc
+- [01 -+ Stack Overview](../packages/oaa-api-library/src/specs/01-overview.md) — doc
+- [02 -+ Attestation Protocol](../packages/oaa-api-library/src/specs/02-attestations.md) — doc
+- [03 -+ Agent Ethics G�� Integrity Core & Virtue Accords](../packages/oaa-api-library/src/specs/03-agent-ethics.md) — doc
+- [04 -+ AI-SEO / GEO Interface](../packages/oaa-api-library/src/specs/04-ai-seo-geo.md) — doc
+- [05 -+ Proof-of-Integrity Pipeline](../packages/oaa-api-library/src/specs/05-proof-pipeline.md) — doc
+- [06 -+ Code Verification Protocol](../packages/oaa-api-library/src/specs/06-code-verification.md) — doc
+- [07 -+ Incentives G�� GIC Model](../packages/oaa-api-library/src/specs/07-incentives-gic.md) — doc
+- [09 -+ Cultural Kernel G�� Archetype Engine](../packages/oaa-api-library/src/specs/09-cultural-kernel-archetypes.md) — doc
+- [10 -+ Yautja Cultural Accord](../packages/oaa-api-library/src/specs/10-yautja-cultural-accord.md) — doc
+- [🧬 Vector Integrity Protocol (VIP) - Kaizen OS v1.0](../packages/vip/docs/vip_spec.md) — doc
+
+## scripts
+
+- [Ceremonial Summons Scripts](../scripts/ceremonial_summons/README.md) — readme
+
+## sentinels
+
+- [🌀 ZENITH Sentinel - Kaizen OS](../sentinels/zenith/README.md) — readme
+
+## services
+
+- [Gatekeeper Implementation Summary](../services/gatekeeper/IMPLEMENTATION_SUMMARY.md) — doc
+- [Gatekeeper Integration Guide](../services/gatekeeper/INTEGRATION.md) — doc
+- [Gatekeeper Service](../services/gatekeeper/README.md) — readme
+
+## shared
+
+- [DelibProof Consensus Wrapper](../shared/delibproof/README.md) — readme
+
+## templates
+
+- [────────────────────────────────────────────────](../templates/new_chamber.md) — doc
+
