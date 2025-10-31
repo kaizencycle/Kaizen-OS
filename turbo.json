@@ -3,7 +3,8 @@
   "pipeline": {
     "build": {
       "dependsOn": ["^build"],
-      "outputs": ["dist/**", ".next/**", "build/**", "out/**", "__pycache__/**"]
+      "outputs": ["dist/**", ".next/**", "build/**", "out/**", "__pycache__/**"],
+      "cache": true
     },
     "dev": {
       "cache": false,
@@ -11,23 +12,32 @@
     },
     "test": {
       "dependsOn": ["build"],
-      "outputs": ["coverage/**"]
+      "outputs": ["coverage/**"],
+      "cache": true
     },
     "lint": {
-      "outputs": []
+      "outputs": [],
+      "cache": true,
+      "inputs": ["**/*.ts", "**/*.tsx", "**/*.js", "**/*.jsx", "**/*.json", "**/.eslintrc*", "**/eslint.config.*"]
     },
     "type-check": {
       "dependsOn": ["^build"],
-      "outputs": []
+      "outputs": [],
+      "cache": true,
+      "inputs": ["**/*.ts", "**/*.tsx", "**/*.json", "**/tsconfig.json"]
     },
     "clean": {
       "cache": false
     },
     "security": {
-      "outputs": []
+      "outputs": [],
+      "cache": true,
+      "inputs": ["**/package.json", "**/package-lock.json", "**/yarn.lock", "**/pnpm-lock.yaml"]
     },
     "integrity": {
-      "outputs": []
+      "outputs": [],
+      "cache": true,
+      "inputs": ["**/*.ts", "**/*.tsx", "**/*.js", "**/*.jsx", "**/*.py", "**/*.md", "**/*.yaml", "**/*.yml"]
     }
   },
   "globalDependencies": [
@@ -35,6 +45,10 @@
     "turbo.json",
     ".env",
     ".env.local"
+  ],
+  "globalEnv": [
+    "NODE_ENV",
+    "CI"
   ]
 }
 
