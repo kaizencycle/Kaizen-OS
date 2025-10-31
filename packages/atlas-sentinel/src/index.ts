@@ -78,18 +78,19 @@ export class AtlasSentinel {
     const cycle = this.getCurrentCycle();
     const timestamp = new Date().toISOString();
     const commit = await this.getCommitHash();
+    const codeSnapshot = await this.resolveCodebaseSnapshot(codebase);
 
     // Phase 1: Quality Analysis
     console.log('📊 Phase 1: Code Quality Analysis');
-    const quality = await this.analyzeQuality(codebase);
+    const quality = await this.analyzeQuality(codeSnapshot);
 
     // Phase 2: Anti-Drift Detection
     console.log('🔒 Phase 2: Anti-Drift Detection');
-    const drift = await this.detectDrift(codebase);
+    const drift = await this.detectDrift(codeSnapshot);
 
     // Phase 3: Charter Compliance
     console.log('📜 Phase 3: Charter Compliance Check');
-    const charter = await this.checkCharterCompliance(codebase);
+    const charter = await this.checkCharterCompliance(codeSnapshot);
 
     // Phase 4: Calculate GI Score
     console.log('🎯 Phase 4: GI Score Calculation');
@@ -124,7 +125,7 @@ export class AtlasSentinel {
   /**
    * Analyze code quality metrics
    */
-  private async analyzeQuality(codebase: string): Promise<QualityMetrics> {
+  private async analyzeQuality(codeSnapshot: string): Promise<QualityMetrics> {
     // This would integrate with actual linting/testing tools
     // For now, return mock structure
     return {
@@ -139,7 +140,7 @@ export class AtlasSentinel {
   /**
    * Detect drift from original intent
    */
-  private async detectDrift(codebase: string): Promise<DriftAnalysis> {
+  private async detectDrift(codeSnapshot: string): Promise<DriftAnalysis> {
     const prohibitedPatterns = [
       'eval(',
       'new Function(',
@@ -151,7 +152,7 @@ export class AtlasSentinel {
     const violations: string[] = [];
     
     for (const pattern of prohibitedPatterns) {
-      if (codebase.includes(pattern)) {
+      if (this.containsPatternOutsideStrings(codeSnapshot, pattern)) {
         violations.push(pattern);
       }
     }
@@ -169,9 +170,9 @@ export class AtlasSentinel {
   /**
    * Check Custos Charter compliance
    */
-  private async checkCharterCompliance(codebase: string): Promise<CharterCompliance> {
-    const hasVirtueTags = /Doctrine-ID|Ethics|Policy|Governance/.test(codebase);
-    const hasAttestation = /HMAC|SHA256|ledger/.test(codebase);
+  private async checkCharterCompliance(codeSnapshot: string): Promise<CharterCompliance> {
+    const hasVirtueTags = /Doctrine-ID|Ethics|Policy|Governance/.test(codeSnapshot);
+    const hasAttestation = /HMAC|SHA256|ledger/.test(codeSnapshot);
     
     const missingTags: string[] = [];
     if (!hasVirtueTags) missingTags.push('virtue-tags');
@@ -300,6 +301,124 @@ export class AtlasSentinel {
     }
 
     return recommendations;
+  }
+
+  /**
+   * Resolve provided codebase reference into a merged textual snapshot.
+   * Accepts raw code strings, file paths, or directory paths.
+   */
+  private async resolveCodebaseSnapshot(codebase: string): Promise<string> {
+    const fs = require('fs');
+    const path = require('path');
+
+    if (!codebase) {
+      return '';
+    }
+
+    try {
+      const stats = fs.statSync(codebase);
+
+      if (stats.isFile()) {
+        return fs.readFileSync(codebase, 'utf8');
+      }
+
+      if (stats.isDirectory()) {
+        const collected: string[] = [];
+        const maxFiles = 200;
+        const maxFileSize = 200 * 1024; // 200 KB per file snapshot
+        const stack: string[] = [codebase];
+
+        while (stack.length && collected.length < maxFiles) {
+          const current = stack.pop() as string;
+          const entries = fs.readdirSync(current, { withFileTypes: true });
+
+          for (const entry of entries) {
+            const entryPath = path.join(current, entry.name);
+            const relativePath = path.relative(codebase, entryPath);
+
+            if (relativePath.startsWith('packages/atlas-sentinel') || relativePath.startsWith('sentinels/atlas')) {
+              continue;
+            }
+
+            if (entry.isDirectory()) {
+              if (this.shouldSkipDirectory(entry.name)) {
+                continue;
+              }
+              stack.push(entryPath);
+            } else if (entry.isFile()) {
+              if (!this.isAllowedExtension(entry.name)) {
+                continue;
+              }
+
+              const { size } = fs.statSync(entryPath);
+              if (size > maxFileSize) {
+                continue;
+              }
+
+              try {
+                const content = fs.readFileSync(entryPath, 'utf8');
+                collected.push(`\n/* ${relativePath} */\n${content}`);
+              } catch (error) {
+                // Ignore read errors to keep audit resilient
+              }
+
+              if (collected.length >= maxFiles) {
+                break;
+              }
+            }
+          }
+        }
+
+        return collected.join('\n');
+      }
+    } catch (error) {
+      // Fall back to treating the provided value as raw code content
+    }
+
+    return codebase;
+  }
+
+  private shouldSkipDirectory(name: string): boolean {
+    const lower = name.toLowerCase();
+    return [
+      'node_modules',
+      '.git',
+      '.turbo',
+      'dist',
+      'build',
+      '.next',
+      '.cache',
+      '__pycache__'
+    ].includes(lower) || lower.startsWith('.');
+  }
+
+  private isAllowedExtension(filename: string): boolean {
+    const path = require('path');
+    const ext = path.extname(filename).toLowerCase();
+    const allowed = new Set([
+      '.ts', '.tsx', '.js', '.jsx', '.json', '.md', '.py', '.yml', '.yaml', '.sh', '.mjs', '.cjs'
+    ]);
+    return allowed.has(ext);
+  }
+
+  private containsPatternOutsideStrings(source: string, pattern: string): boolean {
+    if (!pattern) {
+      return false;
+    }
+
+    let index = source.indexOf(pattern);
+
+    while (index !== -1) {
+      const charBefore = index > 0 ? source[index - 1] : '';
+
+      if (charBefore !== '\'' && charBefore !== '"' && charBefore !== '`') {
+        return true;
+      }
+
+      index = source.indexOf(pattern, index + pattern.length);
+    }
+
+    return false;
   }
 }
 
