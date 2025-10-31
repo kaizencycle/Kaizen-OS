@@ -28,6 +28,7 @@
 - **[octave.yaml](./architecture/octave.yaml)** - Cognitive lattice manifest
 - **[overview.md](./architecture/overview.md)** - High-level system overview
 - **[GIC_Architecture_Spec_v1.md](./architecture/GIC_Architecture_Spec_v1.md)** ⭐ NEW - Commit-ready GIC service contracts, DB schemas, and runbooks
+- **[living_interface_layer.md](./living_interface_layer.md)** ⭐ NEW - Living Interface Layer (LIL) architecture for avatar-citizen bridge
 
 ### Implementation Details
 
