@@ -1,0 +1,108 @@
+# Kaizen OS - Cursor Rules for GI-Graded Commits with Multi-LLM Consensus
+# Version: 1.0.0
+# Purpose: Ensure every commit passes GI integrity rating with AUREA (OpenAI) + ATLAS (Claude) consensus
+
+## CORE PRINCIPLES
+
+1. **Every commit MUST pass GI (Governance Integrity) grading**
+   - GI Score threshold: ≥ 0.95
+   - Components: Memory (M), Human (H), Integrity (I), Ethics (E)
+   - Formula: GI = 0.25*M + 0.20*H + 0.30*I + 0.25*E
+
+2. **Multi-LLM Consensus Required**
+   - AUREA (OpenAI) evaluation required
+   - ATLAS (Claude) evaluation required
+   - Both must agree (consensus) before commit proceeds
+   - Consensus threshold: Both scores ≥ 0.95
+
+3. **Pre-Commit Validation**
+   - Run `npm run integrity:check` before every commit
+   - Run `npm run consensus:validate` for multi-LLM consensus
+   - Fail commit if GI score < 0.95 or consensus fails
+
+4. **Commit Message Standards**
+   - Must include GI score in commit message footer
+   - Must include consensus attestation hash
+   - Format: `[GI: X.XXX] [Consensus: AUREA/ATLAS] [Hash: SHA256]`
+
+5. **Code Quality Gates**
+   - All lint checks must pass
+   - All type checks must pass
+   - All affected tests must pass
+   - No prohibited patterns (eval, dangerouslySetInnerHTML, etc.)
+
+6. **Integrity Requirements**
+   - No drift violations
+   - Charter compliance verified
+   - Virtue tags present where required
+   - Attestation present for policy changes
+
+## WORKFLOW REQUIREMENTS
+
+Before committing:
+1. Run `npm run lint` - must pass
+2. Run `npm run type-check` - must pass  
+3. Run `npm run build` - must pass for affected packages
+4. Run `npm run test` - must pass for affected packages
+5. Run `npm run integrity:check` - must pass with GI ≥ 0.95
+6. Run `npm run consensus:validate` - must pass (AUREA + ATLAS consensus)
+
+## AUREA (OpenAI) Evaluation Criteria
+
+AUREA evaluates:
+- Coverage (Memory): Test coverage, documentation quality
+- Drift (Integrity): Pattern violations, security issues
+- Charter (Ethics): Virtue tag compliance, policy alignment
+
+AUREA Score Formula: 0.4 * Coverage + 0.3 * Drift + 0.3 * Charter
+
+## ATLAS (Claude) Evaluation Criteria
+
+ATLAS evaluates:
+- Memory (M): Test coverage, documentation
+- Human (H): Code review indicators
+- Integrity (I): Security, no violations
+- Ethics (E): Charter compliance, virtue tags
+
+ATLAS Score Formula: 0.25*M + 0.20*H + 0.30*I + 0.25*E
+
+## CONSENSUS REQUIREMENTS
+
+Both AUREA and ATLAS must:
+- Agree on GI score ≥ 0.95
+- Agree on no critical violations
+- Agree on charter compliance
+- Generate matching attestation hashes (within tolerance)
+
+## IMPLEMENTATION NOTES
+
+- Use `scripts/gi-consensus-validate.sh` for commit validation
+- Use `packages/atlas-sentinel` for ATLAS evaluation
+- Use `apps/aurea-site` or OpenAI API for AUREA evaluation
+- Store consensus results in `.gi/consensus-{timestamp}.json`
+- Include consensus hash in commit message footer
+
+## EXCEPTIONS
+
+- Emergency hotfixes: Still require GI check but can use fast-track validation
+- Documentation-only changes: May use relaxed thresholds (≥ 0.90)
+- Automated commits: Must include `[AUTO]` tag and full GI attestation
+
+## ENFORCEMENT
+
+- Git hooks: `.git/hooks/pre-commit` runs validation
+- Git hooks: `.git/hooks/commit-msg` validates message format
+- CI/CD: `.github/workflows/monorepo.yml` enforces on push/PR
+- CI/CD: `.github/workflows/atlas-sentinel.yml` provides ATLAS gate
+
+## MORALE ANCHORS
+
+- "We heal as we walk."
+- "Truth Through Verification" (ATLAS)
+- "Integrity Through Consensus" (AUREA + ATLAS)
+- "Scars remind us we also heal."
+
+---
+*Kaizen OS - Continuous Integrity Architecture*
+*Version: 1.0.0*
+*Last Updated: 2025-01-27*

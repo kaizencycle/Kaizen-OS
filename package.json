@@ -24,6 +24,9 @@
     "atlas:audit": "npm run build --workspace=packages/atlas-sentinel && node -e \"require('./packages/atlas-sentinel/dist')\"",
     "sentinel:health": "scripts\\sentinel-health.bat",
     "integrity:report": "./scripts/integrity-report.sh",
+    "integrity:check": "./scripts/integrity-report.sh",
+    "consensus:validate": "./scripts/gi-consensus-validate.sh",
+    "gi:validate": "./scripts/gi-consensus-validate.sh",
     "docs:generate": "echo \"Documentation generation coming soon\""
   },
   "devDependencies": {
