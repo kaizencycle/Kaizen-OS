@@ -81,6 +81,14 @@
   - 20-year planetary simulation (330M citizens)
   - Path to $3,000/month UBI by 2045
 
+### Research & Theory
+
+- **[beyond_context_window.md](./beyond_context_window.md)** ⭐ NEW - Emergent Integrity in Federated AI Economies
+  - Theory of agentic scaffold architecture
+  - Formal GI feedback dynamics (dGI/dt model)
+  - Safety via GI constraint mechanisms
+  - Escaping the context window limitation
+
 ### Governance
 
 - **[governance/](./governance/)** - Governance frameworks and proposals
