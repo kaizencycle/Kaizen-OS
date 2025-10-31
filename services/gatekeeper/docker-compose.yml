@@ -1,0 +1,35 @@
+version: '3.8'
+
+services:
+  gatekeeper:
+    build: .
+    ports:
+      - "8080:8080"
+    environment:
+      - GI_FLOOR=0.95
+      - GI_INDEXER_URL=${GI_INDEXER_URL:-https://gic-indexer.onrender.com}
+      - LEDGER_URL=${LEDGER_URL:-https://civic-protocol-core-ledger.onrender.com}
+      - SENTINEL_AUREA_URL=${SENTINEL_AUREA_URL:-https://aurea.svc/assess}
+      - SENTINEL_EVE_URL=${SENTINEL_EVE_URL:-https://eve.svc/assess}
+      - SENTINEL_ATLAS_URL=${SENTINEL_ATLAS_URL:-https://atlas.svc/assess}
+      - SENTINEL_ZEUS_URL=${SENTINEL_ZEUS_URL:-https://zeus.svc/assess}
+    security_opt:
+      - no-new-privileges:true
+    read_only: true
+    tmpfs:
+      - /tmp
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 512M
+        reservations:
+          cpus: '0.25'
+          memory: 256M
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "python", "-c", "import httpx; httpx.get('http://localhost:8080/health', timeout=2)"]
+      interval: 30s
+      timeout: 3s
+      retries: 3
+      start_period: 10s
