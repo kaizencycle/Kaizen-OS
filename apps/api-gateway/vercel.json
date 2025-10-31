@@ -1,4 +1,6 @@
 {
+  "buildCommand": "cd ../.. && npm run build --workspace=apps/api-gateway",
+  "installCommand": "cd ../.. && npm install",
   "rewrites": [
     {
       "source": "/(.*)",

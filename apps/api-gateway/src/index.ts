@@ -1,4 +1,4 @@
-import express from 'express';
+import express, { type Request, type Response, type NextFunction } from 'express';
 import cors from 'cors';
 import helmet from 'helmet';
 import rateLimit from 'express-rate-limit';
@@ -79,7 +79,7 @@ Object.entries(services).forEach(([serviceName, serviceUrl]) => {
     pathRewrite: {
       [`^/api/${serviceName}`]: ''
     },
-    onError: (err, req, res) => {
+    onError: (err: unknown, req: Request, res: Response) => {
       console.error(`Proxy error for ${serviceName}:`, err);
       res.status(503).json({
         error: 'Service temporarily unavailable',
@@ -87,7 +87,7 @@ Object.entries(services).forEach(([serviceName, serviceUrl]) => {
         timestamp: new Date().toISOString()
       });
     },
-    onProxyReq: (proxyReq, req, res) => {
+    onProxyReq: (proxyReq: any, req: Request, _res: Response) => {
       // Add service identification header
       proxyReq.setHeader('X-Service-Name', serviceName);
       proxyReq.setHeader('X-Gateway-Request', 'true');
@@ -115,11 +115,11 @@ app.get('/', (req, res) => {
 });
 
 // Error handling middleware
-app.use((err: any, req: express.Request, res: express.Response, next: express.NextFunction) => {
+app.use((err: unknown, _req: Request, res: Response, _next: NextFunction) => {
   console.error('Gateway error:', err);
   res.status(500).json({
     error: 'Internal server error',
-    message: process.env.NODE_ENV === 'development' ? err.message : 'Something went wrong',
+    message: process.env.NODE_ENV === 'development' && err instanceof Error ? err.message : 'Something went wrong',
     timestamp: new Date().toISOString()
   });
 });
