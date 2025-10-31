@@ -1,0 +1,34 @@
+{
+  "timestamp": "2025-10-31T22:40:20Z",
+  "commit": "0a5e6fe274abdbf2fe021d358738c989da4b6912",
+  "threshold": 0.95,
+  "aurea": {
+    "giScore": .976,
+    "passed": 1,
+    "components": {
+      "coverage": .940,
+      "drift": 1.000,
+      "charter": 1
+    }
+  },
+  "atlas": {
+    "giScore": 0.985,
+    "passed": true,
+    "components": {
+      "memory": 0.94,
+      "human": 1,
+      "integrity": 1,
+      "ethics": 1
+    }
+  },
+  "consensus": {
+    "passed": true,
+    "aligned": 1,
+    "scoreDiff": .009,
+    "hash": "7f0e494cd952a9ad9c985536713998ae104daf3bfc6813b9d7d1572d05d6a29f"
+  },
+  "attestation": {
+    "atlasHash": "d7b3f57d524e05f0789ebdb26b8495512304634d7a3047d17f686006f863da4b",
+    "consensusHash": "7f0e494cd952a9ad9c985536713998ae104daf3bfc6813b9d7d1572d05d6a29f"
+  }
+}

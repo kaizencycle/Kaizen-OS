@@ -1,0 +1,11 @@
+{
+  "agent": "AUREA",
+  "timestamp": "2025-10-31T22:40:16Z",
+  "giScore": .976,
+  "components": {
+    "coverage": .940,
+    "drift": 1.000,
+    "charter": 1
+  },
+  "passed": 1
+}
