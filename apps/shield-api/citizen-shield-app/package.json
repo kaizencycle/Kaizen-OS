@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --port 3007",
     "build": "npx vite build",
     "preview": "vite preview",
     "type-check": "tsc --noEmit"

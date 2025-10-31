@@ -8,7 +8,7 @@ export default defineConfig({
   plugins: [react()],
 
   // Local dev
-  server: { host: true, port: 5173 },
+  server: { host: true, port: 3007 },
 
   // Render web service uses Vite preview
   preview: {
