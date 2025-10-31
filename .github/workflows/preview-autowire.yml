@@ -1,0 +1,74 @@
+name: Autowire Render Preview → Vercel
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, labeled]
+  workflow_dispatch:
+
+jobs:
+  autowire:
+    if: github.event.pull_request.draft == false
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout (shallow)
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Get Render Preview URL for this PR
+        id: render
+        env:
+          RENDER_API_KEY: ${{ secrets.RENDER_API_KEY }}
+          RENDER_SERVICE_ID: ${{ secrets.RENDER_SERVICE_ID }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          BRANCH: ${{ github.head_ref || github.ref_name }}
+        run: |
+          node .github/scripts/render-get-preview-url.js > /tmp/render_url.txt
+          echo "url=$(cat /tmp/render_url.txt)" >> $GITHUB_OUTPUT
+          echo "Render Preview: $(cat /tmp/render_url.txt)"
+
+      - name: Upsert Vercel preview env (ATTEST_UPSTREAM)
+        id: vercel_env
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+          VERCEL_TEAM_ID: ${{ secrets.VERCEL_TEAM_ID }}
+          ATTEST_UPSTREAM: ${{ steps.render.outputs.url }}
+        run: |
+          set -eu
+          BASE="https://api.vercel.com"
+          TEAMQ=""
+          if [ -n "${VERCEL_TEAM_ID:-}" ]; then TEAMQ="?teamId=${VERCEL_TEAM_ID}"; fi
+
+          # delete existing preview var with same key (ignore errors)
+          curl -s -X GET "$BASE/v9/projects/${VERCEL_PROJECT_ID}/env$TEAMQ" -H "Authorization: Bearer $VERCEL_TOKEN" \
+            | jq -r '.envs[] | select(.key=="ATTEST_UPSTREAM" and (.target|index("preview"))) | .id' \
+            | while read -r id; do
+                [ -n "$id" ] && curl -s -X DELETE "$BASE/v9/projects/${VERCEL_PROJECT_ID}/env/$id$TEAMQ" \
+                  -H "Authorization: Bearer $VERCEL_TOKEN" > /dev/null || true
+              done
+
+          # create new preview var
+          curl -s -X POST "$BASE/v9/projects/${VERCEL_PROJECT_ID}/env$TEAMQ" \
+            -H "Authorization: Bearer $VERCEL_TOKEN" -H "Content-Type: application/json" \
+            -d @- <<EOF >/tmp/vercel_env_create.json
+          {
+            "key": "ATTEST_UPSTREAM",
+            "value": "${ATTEST_UPSTREAM}",
+            "target": ["preview"],
+            "type": "plain"
+          }
+          EOF
+          cat /tmp/vercel_env_create.json | jq -r '.id // "ok"'
+
+      - name: Trigger Vercel redeploy (Preview)
+        env:
+          VERCEL_DEPLOY_HOOK_URL: ${{ secrets.VERCEL_DEPLOY_HOOK_URL }}
+        run: |
+          if [ -n "${VERCEL_DEPLOY_HOOK_URL:-}" ]; then
+            curl -s -X POST "$VERCEL_DEPLOY_HOOK_URL" >/dev/null
+            echo "Triggered Vercel redeploy via deploy hook."
+          else
+            echo "No VERCEL_DEPLOY_HOOK_URL provided. Redeploy will occur on next Preview build."
+          fi
+

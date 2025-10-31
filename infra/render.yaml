@@ -202,3 +202,19 @@ services:
           name: ledger-api
           property: host
 
+  - type: web
+    name: kaizen-attest
+    env: python
+    plan: starter
+    region: oregon
+    rootDir: apps/api_attest
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
+    autoDeploy: true
+    healthCheckPath: /healthz
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.9
+      - key: ALLOWED_ORIGINS
+        value: "*"
+

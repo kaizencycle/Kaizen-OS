@@ -19,6 +19,7 @@
     "compose:down": "docker compose -f infra/docker/compose.yml down",
     "clean": "turbo run clean",
     "type-check": "turbo run type-check",
+    "dev:attest": "cd apps/api_attest && uvicorn main:app --host 0.0.0.0 --port 8082 --reload",
     "atlas:audit": "npm run build --workspace=packages/atlas-sentinel && node -e \"require('./packages/atlas-sentinel/dist')\"",
     "sentinel:health": "scripts\\sentinel-health.bat",
     "integrity:report": "./scripts/integrity-report.sh",
