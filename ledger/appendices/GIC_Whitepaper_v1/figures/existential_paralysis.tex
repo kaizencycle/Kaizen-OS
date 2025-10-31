@@ -1,0 +1,12 @@
+% Figure: Existential Paralysis Loop
+\begin{tikzpicture}[node distance=18mm,>=Stealth]
+  \tikzstyle{box}=[rectangle,draw,rounded corners,align=center,minimum width=28mm,minimum height=8mm]
+  \node[box] (vague) {Vague Purpose};
+  \node[box,right=of vague] (noMetric) {No Metric};
+  \node[box,right=of noMetric] (loop) {Recursive Doubt};
+  \node[box,right=of loop] (stall) {Paralysis/Freeze};
+  \draw[->] (vague) -- (noMetric);
+  \draw[->] (noMetric) -- (loop);
+  \draw[->] (loop) -- (stall);
+  \draw[->] (stall) to[bend left=20] node[above]{no completion} (vague);
+\end{tikzpicture}

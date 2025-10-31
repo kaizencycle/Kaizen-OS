@@ -1,0 +1,13 @@
+% Figure: GI Feedback Mechanism
+\begin{tikzpicture}[node distance=14mm,>=Stealth]
+  \tikzstyle{comp}=[rectangle,draw,rounded corners,align=center,minimum width=28mm,minimum height=8mm]
+  \node[comp] (action) {Action};
+  \node[comp,right=of action] (measure) {Measure $\Delta GI$};
+  \node[comp,right=of measure] (update) {Update Policy};
+  \node[comp,below=of measure] (reflect) {Reflection Protocol};
+  \draw[->] (action) -- (measure);
+  \draw[->] (measure) -- node[above]{if $\Delta GI > 0$} (update);
+  \draw[->] (measure) |- node[pos=0.2,right]{if $\Delta GI \le 0$} (reflect);
+  \draw[->] (reflect) -| (action);
+  \draw[->] (update) |- (action);
+\end{tikzpicture}

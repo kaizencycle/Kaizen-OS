@@ -15,7 +15,7 @@
     "type-check": "tsc --noEmit",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "prepare": "cd ../.. && test -d .git && husky install || exit 0",
+    "prepare": "sh -c 'if [ -d .git ]; then husky install; else echo \"skip husky (no .git)\"; fi'",
     "eomm-sync": "node src/scripts/eomm-sync.mjs",
     "citation-hygiene": "bash src/scripts/citation-hygiene.sh",
     "hmac:note": "node scripts/hmacNote.mjs",
