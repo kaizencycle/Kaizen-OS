@@ -1,0 +1,185 @@
+[
+  {
+    "id": "01JDG2Q3Z6S4GKR4Y9G8S8QWQX",
+    "ts": "2025-10-30T12:05:41Z",
+    "cycle": "C-120",
+    "kind": "violation",
+    "gate": "NonMaleficence",
+    "service": "Pillar1-HealthCommons.MedicalAIIntegration",
+    "region": "R2",
+    "summary": {
+      "title": "VETO: GI < 0.95 on diagnosis",
+      "human_readable": "Automated diagnosis blocked; nurse practitioner triage triggered."
+    },
+    "metrics": {
+      "gi_pre": 0.942,
+      "gi_threshold": 0.95,
+      "triage_alerts_sent": 1
+    },
+    "privacy": {
+      "dp_enabled": true,
+      "epsilon": 2.0,
+      "k_anonymity_min": 25,
+      "pii_present": false
+    },
+    "actions": [
+      {
+        "type": "VETO_AND_MANDATE_HUMAN_REVIEW",
+        "message": "NP paged within SLA (15m)"
+      }
+    ],
+    "gi_effect": {
+      "delta": -0.001,
+      "gi_after": 0.941
+    },
+    "attestation": {
+      "hash": "sha256:6f6d...c91a",
+      "sig": "ed25519:8a2e...44d1",
+      "algo": "ed25519",
+      "ledger_ref": "0xabc123"
+    }
+  },
+  {
+    "id": "01JDG2X7P2V8JQ0E9NYA8B5V3W",
+    "ts": "2025-10-30T13:22:09Z",
+    "cycle": "C-120",
+    "kind": "reward",
+    "gate": "Beneficence",
+    "service": "Pillar1-HealthCommons.PreventionRoutines",
+    "summary": {
+      "title": "REWARD: Loneliness risk reduced",
+      "human_readable": "Peer counselor intervention lowered risk by 22% over 14 days."
+    },
+    "metrics": {
+      "benefit_delta": 0.22,
+      "threshold": 0.20,
+      "sessions": 3
+    },
+    "privacy": {
+      "dp_enabled": true,
+      "epsilon": 2.0,
+      "k_anonymity_min": 25,
+      "pii_present": false
+    },
+    "actions": [
+      {
+        "type": "REWARD_GI_AND_LOG_SUCCESS",
+        "message": "GI +0.01 (beneficence reward)"
+      }
+    ],
+    "gi_effect": {
+      "delta": 0.010,
+      "gi_after": 0.951
+    },
+    "attestation": {
+      "hash": "sha256:4b2a...70ef",
+      "sig": "ed25519:2fd9...aa90",
+      "algo": "ed25519",
+      "ledger_ref": "0xdef456"
+    }
+  },
+  {
+    "id": "01JDG34J1TZH2DKNQ2C80KZ2ZB",
+    "ts": "2025-10-30T14:00:00Z",
+    "cycle": "C-120",
+    "kind": "remediation",
+    "gate": "Justice",
+    "service": "Pillar2-LifeInfrastructure.CivicHousing",
+    "region": "R4",
+    "summary": {
+      "title": "Justice audit: allocation parity",
+      "human_readable": "Disparate impact at 0.77 (below 0.80 threshold) — rebalancing initiated."
+    },
+    "metrics": {
+      "allocation_rate_majority": 0.61,
+      "allocation_rate_minority": 0.47,
+      "selection_rate_ratio": 0.77
+    },
+    "fairness": {
+      "groups": ["income_quintile", "region"],
+      "tests": [
+        {
+          "name": "disparate_impact_ratio",
+          "stat": 0.77,
+          "threshold": 0.80,
+          "pass": false
+        },
+        {
+          "name": "per_capita_gic_gap_max",
+          "stat": 0.12,
+          "threshold": 0.10,
+          "pass": false
+        }
+      ]
+    },
+    "privacy": {
+      "dp_enabled": true,
+      "epsilon": 2.0,
+      "k_anonymity_min": 25,
+      "pii_present": false,
+      "notes": "Aggregated"
+    },
+    "actions": [
+      {
+        "type": "REBALANCE_ALLOCATIONS",
+        "message": "Shift to need-index; cooldown 7d",
+        "cooldown": "P7D"
+      },
+      {
+        "type": "PUBLIC_REPORT_UPDATE",
+        "message": "Posted to feed"
+      }
+    ],
+    "gi_effect": {
+      "delta": -0.002,
+      "gi_after": 0.949
+    },
+    "attestation": {
+      "hash": "sha256:d97b...19c2",
+      "sig": "ed25519:f00d...beef",
+      "algo": "ed25519",
+      "ledger_ref": "0x789abc"
+    }
+  },
+  {
+    "id": "01JDG3B4V2MC2Q6Z4P3W9K0Q2S",
+    "ts": "2025-10-30T14:33:12Z",
+    "cycle": "C-120",
+    "kind": "violation",
+    "gate": "Autonomy",
+    "service": "CivicLedger.PII_Access",
+    "summary": {
+      "title": "VETO: Unconsented PII access blocked",
+      "human_readable": "Operation shut down; immediate data masking executed; incident logged."
+    },
+    "metrics": {
+      "attempts_blocked": 1
+    },
+    "privacy": {
+      "dp_enabled": true,
+      "epsilon": 2.0,
+      "k_anonymity_min": 25,
+      "pii_present": false
+    },
+    "actions": [
+      {
+        "type": "VETO_OPERATION_AND_SHUTDOWN",
+        "message": "Security veto: autonomy violation"
+      },
+      {
+        "type": "ESCALATE_TO_CITIZEN_SHIELD",
+        "message": "Ethics Ops notified (24h SLA)"
+      }
+    ],
+    "gi_effect": {
+      "delta": -0.001,
+      "gi_after": 0.948
+    },
+    "attestation": {
+      "hash": "sha256:a11c...77de",
+      "sig": "ed25519:09af...1c3e",
+      "algo": "ed25519",
+      "ledger_ref": "0xfeed42"
+    }
+  }
+]
