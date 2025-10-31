@@ -4,7 +4,8 @@
     "build": {
       "dependsOn": ["^build"],
       "outputs": ["dist/**", ".next/**", "build/**", "out/**", "__pycache__/**"],
-      "cache": true
+      "cache": true,
+      "env": ["NODE_ENV", "CI"]
     },
     "dev": {
       "cache": false,
@@ -18,13 +19,15 @@
     "lint": {
       "outputs": [],
       "cache": true,
-      "inputs": ["**/*.ts", "**/*.tsx", "**/*.js", "**/*.jsx", "**/*.json", "**/.eslintrc*", "**/eslint.config.*"]
+      "inputs": ["**/*.ts", "**/*.tsx", "**/*.js", "**/*.jsx", "**/*.json", "**/.eslintrc*", "**/eslint.config.*"],
+      "env": ["NODE_ENV"]
     },
     "type-check": {
       "dependsOn": ["^build"],
       "outputs": [],
       "cache": true,
-      "inputs": ["**/*.ts", "**/*.tsx", "**/*.json", "**/tsconfig.json"]
+      "inputs": ["**/*.ts", "**/*.tsx", "**/*.json", "**/tsconfig.json"],
+      "env": ["NODE_ENV"]
     },
     "clean": {
       "cache": false

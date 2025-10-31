@@ -22,7 +22,7 @@
     "type-check": "turbo run type-check",
     "dev:attest": "cd apps/api_attest && uvicorn main:app --host 0.0.0.0 --port 8082 --reload",
     "atlas:audit": "npm run build --workspace=packages/atlas-sentinel && node -e \"require('./packages/atlas-sentinel/dist')\"",
-    "sentinel:health": "scripts\\sentinel-health.bat",
+    "sentinel:health": "bash scripts/sentinel-health.sh",
     "integrity:report": "./scripts/integrity-report.sh",
     "integrity:check": "./scripts/integrity-report.sh",
     "consensus:validate": "./scripts/gi-consensus-validate.sh",
@@ -30,8 +30,8 @@
     "docs:generate": "echo \"Documentation generation coming soon\""
   },
   "devDependencies": {
-    "turbo": "^1.10.12",
     "@types/node": "^20.0.0",
+    "turbo": "^2.6.0",
     "typescript": "^5.0.0"
   },
   "engines": {
@@ -54,4 +54,3 @@
   "author": "Kaizen Cycle",
   "license": "MIT"
 }
-
