@@ -6,6 +6,7 @@ Tests the complete system flow across all 7 labs
 import pytest
 import asyncio
 import httpx
+import json
 from datetime import datetime
 
 
@@ -321,7 +322,7 @@ class TestFullSystemIntegration:
                 async with asyncio.timeout(30):
                     while True:
                         message = await websocket.recv()
-                        update = eval(message)  # Convert string to dict
+                        update = json.loads(message)
                         updates.append(update)
 
                         if update.get("type") == "deliberation_complete":

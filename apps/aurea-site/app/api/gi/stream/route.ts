@@ -1,5 +1,8 @@
 import { NextRequest } from 'next/server'
 
+export const runtime = 'edge'
+export const dynamic = 'force-dynamic'
+
 export async function GET(request: NextRequest) {
   // Create a TransformStream for SSE
   const encoder = new TextEncoder()

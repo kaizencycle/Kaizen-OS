@@ -1,8 +1,8 @@
 {
-  "buildCommand": "next build",
-  "devCommand": "next dev --port $PORT",
+  "buildCommand": "cd ../.. && npm run build --workspace=apps/website-creator",
+  "devCommand": "npm run dev",
   "framework": "nextjs",
-  "installCommand": "npm install",
+  "installCommand": "cd ../.. && npm install",
   "env": {
     "AGENT_ID": "WEBSITE_CREATOR",
     "AGENT_DOMAIN": "create.gic",
