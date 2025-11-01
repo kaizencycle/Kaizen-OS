@@ -1,6 +1,9 @@
 {
-  "buildCommand": "cd ../.. && npm run build --workspace=apps/api-gateway",
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "version": 2,
+  "buildCommand": "cd ../.. && npm run build --workspace=packages/integrity-core --workspace=packages/shield-policies",
   "installCommand": "cd ../.. && npm install",
+  "framework": null,
   "rewrites": [
     {
       "source": "/(.*)",
@@ -10,11 +13,16 @@
   "env": {
     "NODE_ENV": "production",
     "GI_MIN": "0.90",
-    "ALLOWED_ORIGINS": "https://kaizen-os.vercel.app,https://aurea.gic",
+    "ALLOWED_ORIGINS": "https://kaizen-os.vercel.app,https://aurea.gic,http://localhost:3000",
+    "RESPONSE_TIME_MAX": "5000",
+    "MEMORY_USAGE_MAX": "80",
+    "ERROR_RATE_MAX": "5",
+    "RATE_LIMIT_MAX": "100",
+    "HUB_BASE_URL": "https://kaizen-os.vercel.app",
+    "LEDGER_BASE_URL": "https://civic-protocol-core-ledger.onrender.com",
     "LAB4_BASE_URL": "https://hive-api-2le8.onrender.com",
     "LAB6_BASE_URL": "https://lab6-proof-api.onrender.com",
     "LAB7_BASE_URL": "https://lab7-proof.onrender.com",
-    "LEDGER_BASE_URL": "https://civic-protocol-core-ledger.onrender.com",
     "GIC_BASE_URL": "https://gic-indexer.onrender.com",
     "OAA_API_LIBRARY_URL": "https://oaa-api-library.onrender.com"
   }
