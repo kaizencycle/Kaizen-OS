@@ -1,4 +1,3 @@
-import type { VercelRequest, VercelResponse } from '@vercel/node';
 import express, { type Request, type Response, type NextFunction } from 'express';
 import cors from 'cors';
 import helmet from 'helmet';
@@ -147,6 +146,5 @@ app.use('*', (req: Request, res: Response) => {
 });
 
 // Export for Vercel serverless
-export default (req: VercelRequest, res: VercelResponse) => {
-  return app(req as any, res as any);
-};
+// @vercel/node automatically handles Express apps when exported as default
+export default app;
