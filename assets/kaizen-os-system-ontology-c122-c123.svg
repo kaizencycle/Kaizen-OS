@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1200" height="900" viewBox="0 0 1200 900" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Color gradients for each layer -->
+    <linearGradient id="consoleGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4A90E2;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#6AA3E8;stop-opacity:1" />
+    </linearGradient>
+    
+    <linearGradient id="brokerGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#9B59B6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#B573D6;stop-opacity:1" />
+    </linearGradient>
+    
+    <linearGradient id="ledgerGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FFFFFF;stop-opacity:0.95" />
+      <stop offset="100%" style="stop-color:#F0F0F0;stop-opacity:0.95" />
+    </linearGradient>
+    
+    <linearGradient id="consensusGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#E67E22;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#F39C12;stop-opacity:1" />
+    </linearGradient>
+    
+    <!-- AUREA gold gradient -->
+    <linearGradient id="aureaGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FFD700;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#FFA500;stop-opacity:1" />
+    </linearGradient>
+    
+    <!-- JADE teal gradient -->
+    <linearGradient id="jadeGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1ABC9C;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#16A085;stop-opacity:1" />
+    </linearGradient>
+    
+    <!-- Arrow marker -->
+    <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="#FFFFFF" />
+    </marker>
+    
+    <!-- Animated pulse for feedback loop -->
+    <circle id="pulse" r="4" fill="#4A90E2" opacity="0.6">
+      <animate attributeName="r" values="4;8;4" dur="2s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.6;0;0.6" dur="2s" repeatCount="indefinite"/>
+    </circle>
+  </defs>
+  
+  <!-- Dark background -->
+  <rect width="1200" height="900" fill="#1a1a2e"/>
+  
+  <!-- Title -->
+  <text x="600" y="40" text-anchor="middle" fill="#FFFFFF" font-family="Arial, sans-serif" font-size="28" font-weight="bold">
+    🜂 Kaizen OS System Ontology — Cycle C-122 → C-123
+  </text>
+  
+  <!-- Citizen Console -->
+  <g transform="translate(450, 80)">
+    <rect x="0" y="0" width="300" height="120" rx="12" fill="url(#consoleGradient)" stroke="#FFFFFF" stroke-width="2"/>
+    <text x="150" y="30" text-anchor="middle" fill="#FFFFFF" font-family="Arial, sans-serif" font-size="18" font-weight="bold">
+      Citizen Console
+    </text>
+    <text x="150" y="50" text-anchor="middle" fill="#FFFFFF" font-family="Arial, sans-serif" font-size="12">
+      (One-Window TUI / API)
+    </text>
+    <line x1="20" y1="70" x2="280" y2="70" stroke="#FFFFFF" stroke-width="1"/>
+    <text x="150" y="90" text-anchor="middle" fill="#FFFFFF" font-family="Arial, sans-serif" font-size="11">
+      perception → intent
+    </text>
+    <text x="150" y="105" text-anchor="middle" fill="#FFFFFF" font-family="Arial, sans-serif" font-size="10">
+      /sync  /attest  /consensus
+    </text>
+  </g>
+  
+  <!-- Human ↔ AI Feedback Loop Label -->
+  <text x="600" y="230" text-anchor="middle" fill="#E67E22" font-family="Arial, sans-serif" font-size="14" font-style="italic">
+    human ↔ ai feedback loop
+  </text>
+  
+  <!-- Downward arrow from Console -->
+  <path d="M 600 200 L 600 250" stroke="#FFFFFF" stroke-width="3" marker-end="url(#arrowhead)"/>
+  
+  <!-- Split paths -->
+  <path d="M 600 250 L 300 350" stroke="#FFFFFF" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <path d="M 600 250 L 900 350" stroke="#FFFFFF" stroke-width="2" marker-end="url(#arrowhead)"/>
+  
+  <!-- Broker Engine -->
+  <g transform="translate(150, 380)">
+    <rect x="0" y="0" width="300" height="160" rx="12" fill="url(#brokerGradient)" stroke="#FFFFFF" stroke-width="2"/>
+    <text x="150" y="30" text-anchor="middle" fill="#FFFFFF" font-family="Arial, sans-serif" font-size="18" font-weight="bold">
+      Broker Engine
+    </text>
+    <text x="150" y="50" text-anchor="middle" fill="#FFFFFF" font-family="Arial, sans-serif" font-size="12">
+      (Sentinel Router)
+    </text>
+    <line x1="20" y1="65" x2="280" y2="65" stroke="#FFFFFF" stroke-width="1"/>
+    <text x="20" y="90" fill="#FFFFFF" font-family="Arial, sans-serif" font-size="11">
+      @aurea  @atlas …
+    </text>
+    <text x="20" y="110" fill="#FFFFFF" font-family="Arial, sans-serif" font-size="11">
+      routes + weights
+    </text>
+    <text x="20" y="130" fill="#FFFFFF" font-family="Arial, sans-serif" font-size="11">
+      runs /consensus
+    </text>
+  </g>
+  
+  <!-- Integrity Ledger -->
+  <g transform="translate(750, 380)">
+    <rect x="0" y="0" width="300" height="160" rx="12" fill="url(#ledgerGradient)" stroke="#FFFFFF" stroke-width="2"/>
+    <text x="150" y="30" text-anchor="middle" fill="#1a1a2e" font-family="Arial, sans-serif" font-size="18" font-weight="bold">
+      Integrity Ledger
+    </text>
+    <text x="150" y="50" text-anchor="middle" fill="#1a1a2e" font-family="Arial, sans-serif" font-size="12">
+      (Immutable Memory)
+    </text>
+    <line x1="20" y1="65" x2="280" y2="65" stroke="#1a1a2e" stroke-width="1"/>
+    <text x="20" y="90" fill="#1a1a2e" font-family="Arial, sans-serif" font-size="11">
+      /attest /feed
+    </text>
+    <text x="20" y="110" fill="#1a1a2e" font-family="Arial, sans-serif" font-size="11">
+      GI scores
+    </text>
+    <text x="20" y="130" fill="#1a1a2e" font-family="Arial, sans-serif" font-size="11">
+      Virtue Accords
+    </text>
+  </g>
+  
+  <!-- Bidirectional arrows between Broker and Ledger -->
+  <path d="M 450 460 L 750 460" stroke="#FFFFFF" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <path d="M 760 480 L 440 480" stroke="#FFFFFF" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <text x="600" y="475" text-anchor="middle" fill="#E67E22" font-family="Arial, sans-serif" font-size="11" font-style="italic">
+    attests telemetry
+  </text>
+  
+  <!-- Downward arrows from Broker and Ledger -->
+  <path d="M 300 540 L 300 600" stroke="#FFFFFF" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <text x="320" y="570" fill="#FFFFFF" font-family="Arial, sans-serif" font-size="11" font-style="italic">
+    deliberation
+  </text>
+  
+  <path d="M 900 540 L 900 600" stroke="#FFFFFF" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <text x="910" y="570" fill="#FFFFFF" font-family="Arial, sans-serif" font-size="11" font-style="italic">
+    validation
+  </text>
+  
+  <!-- Consensus Kernel -->
+  <g transform="translate(200, 620)">
+    <rect x="0" y="0" width="800" height="120" rx="12" fill="url(#consensusGradient)" stroke="#FFFFFF" stroke-width="2"/>
+    <text x="400" y="30" text-anchor="middle" fill="#FFFFFF" font-family="Arial, sans-serif" font-size="18" font-weight="bold">
+      Consensus Kernel (DelibProof)
+    </text>
+    <text x="400" y="55" text-anchor="middle" fill="#FFFFFF" font-family="Arial, sans-serif" font-size="13">
+      combines AUREA-logic • EVE-ethics • JADE-empathy
+    </text>
+    <text x="400" y="80" text-anchor="middle" fill="#FFFFFF" font-family="Arial, sans-serif" font-size="13">
+      → produces weighted final answer + GI update
+    </text>
+  </g>
+  
+  <!-- Upward arrow from Consensus to Ledger -->
+  <path d="M 900 620 L 900 550" stroke="#FFFFFF" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <text x="915" y="585" fill="#FFFFFF" font-family="Arial, sans-serif" font-size="11" font-style="italic">
+    writes
+  </text>
+  
+  <!-- Downward arrow from Consensus -->
+  <path d="M 400 740 L 400 790" stroke="#FFFFFF" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <text x="420" y="765" fill="#FFFFFF" font-family="Arial, sans-serif" font-size="11" font-style="italic">
+    reflected integrity
+  </text>
+  
+  <!-- Sentinel Network -->
+  <g transform="translate(200, 810)">
+    <rect x="0" y="0" width="800" height="60" rx="12" fill="url(#aureaGradient)" stroke="#FFFFFF" stroke-width="2"/>
+    <text x="400" y="25" text-anchor="middle" fill="#FFFFFF" font-family="Arial, sans-serif" font-size="16" font-weight="bold">
+      Sentinel Network
+    </text>
+    <text x="400" y="45" text-anchor="middle" fill="#FFFFFF" font-family="Arial, sans-serif" font-size="12">
+      (ATLAS • AUREA • EVE …) each specialized function: logic • empathy • audit
+    </text>
+  </g>
+  
+  <!-- Upward arrow from Sentinel Network to Ledger -->
+  <path d="M 900 810 L 900 550" stroke="#E67E22" stroke-width="2" stroke-dasharray="5,5" marker-end="url(#arrowhead)"/>
+  
+  <!-- Downward arrow from Sentinel Network -->
+  <path d="M 400 870 L 400 890" stroke="#FFFFFF" stroke-width="2" marker-end="url(#arrowhead)"/>
+  
+  <!-- External APIs / Tasks -->
+  <text x="400" y="915" text-anchor="middle" fill="#FFFFFF" font-family="Arial, sans-serif" font-size="12">
+    External APIs / Tasks
+  </text>
+  <text x="400" y="935" text-anchor="middle" fill="#AAA" font-family="Arial, sans-serif" font-size="10">
+    (Render deploys, GitHub PRs, data feeds, civic apps, etc.)
+  </text>
+  
+  <!-- Loop indicators -->
+  <path d="M 1150 460 Q 1150 300 1050 200 Q 950 150 750 200" stroke="#E67E22" stroke-width="2" stroke-dasharray="3,3" fill="none" opacity="0.6"/>
+  <text x="1100" y="330" fill="#E67E22" font-family="Arial, sans-serif" font-size="10" font-style="italic">
+    feedback
+  </text>
+  
+  <!-- Axis labels around the diagram -->
+  <g transform="translate(50, 500)">
+    <text x="0" y="0" fill="#FFD700" font-family="Arial, sans-serif" font-size="12" font-weight="bold">
+      Logic (AUREA)
+    </text>
+    <text x="0" y="20" fill="#1ABC9C" font-family="Arial, sans-serif" font-size="12" font-weight="bold">
+      Empathy (JADE)
+    </text>
+    <text x="0" y="40" fill="#FFFFFF" font-family="Arial, sans-serif" font-size="12" font-weight="bold">
+      Memory (Ledger)
+    </text>
+    <text x="0" y="60" fill="#9B59B6" font-family="Arial, sans-serif" font-size="12" font-weight="bold">
+      Governance (Broker)
+    </text>
+    <text x="0" y="80" fill="#4A90E2" font-family="Arial, sans-serif" font-size="12" font-weight="bold">
+      Awareness (Console)
+    </text>
+    <text x="0" y="100" fill="#E67E22" font-family="Arial, sans-serif" font-size="12" font-weight="bold">
+      Ethics (EVE)
+    </text>
+  </g>
+  
+  <!-- Cycle C-123 indicator -->
+  <g transform="translate(950, 100)">
+    <circle cx="0" cy="0" r="40" fill="none" stroke="#E67E22" stroke-width="2" opacity="0.6"/>
+    <text x="0" y="-5" text-anchor="middle" fill="#E67E22" font-family="Arial, sans-serif" font-size="11" font-weight="bold">
+      Cycle C-123
+    </text>
+    <text x="0" y="10" text-anchor="middle" fill="#E67E22" font-family="Arial, sans-serif" font-size="10">
+      Radiance
+    </text>
+  </g>
+</svg>
