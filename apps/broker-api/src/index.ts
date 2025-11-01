@@ -209,6 +209,65 @@ app.post('/api/sentinels/uriel/query', async (req, res) => {
   }
 });
 
+// Consensus endpoint
+app.post('/api/consensus/run', async (req, res) => {
+  try {
+    const { question, agents, rounds = 2, timeout_s = 20, weights = {} } = req.body;
+
+    if (!question || !agents || !Array.isArray(agents) || agents.length === 0) {
+      return res.status(400).json({
+        error: 'question and agents (array) are required'
+      });
+    }
+
+    // Run consensus through deliberation routing
+    const context = { agents, rounds, weights };
+    const deliberation = await routeDeliberation(question, context);
+
+    // Transform to consensus format
+    const votes = (agents as string[]).map(agent => ({
+      agent,
+      vote: deliberation.consensus >= 0.95 ? 'YES' : 'NO',
+      why: deliberation.reasoning.join('; ') || deliberation.decision
+    }));
+
+    res.json({
+      gi: deliberation.consensus,
+      final_answer: deliberation.decision,
+      votes,
+      reasoning: deliberation.reasoning,
+      timestamp: deliberation.timestamp
+    });
+  } catch (error) {
+    console.error('Consensus run failed:', error);
+    res.status(500).json({
+      error: 'Consensus failed',
+      message: error.message
+    });
+  }
+});
+
+// Sync endpoints
+app.get('/sync/get_cycle_status', (req, res) => {
+  // Return cycle status (mock for now, integrate with actual cycle tracking)
+  res.json({
+    cycle_id: 'C-122',
+    date_local: new Date().toISOString(),
+    gi_baseline: parseFloat(process.env.GI_MIN || '0.95'),
+    next_epoch_eta_sec: 86400 // 24 hours
+  });
+});
+
+app.get('/api/sentinels/aurea/status', (req, res) => {
+  // Return AUREA snapshot (mock for now)
+  res.json({
+    gi: 0.999,
+    epoch: 'E-561',
+    last_attestation_id: 'att-latest',
+    ts: new Date().toISOString()
+  });
+});
+
 // Start server
 app.listen(PORT, () => {
   console.log(`🚀 Thought Broker API running on port ${PORT}`);
