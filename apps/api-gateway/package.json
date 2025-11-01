@@ -5,11 +5,12 @@
   "main": "dist/index.js",
   "scripts": {
     "build": "tsc",
+    "build:vercel": "echo 'Vercel handles TypeScript compilation for api/ directory'",
     "dev": "tsx watch src/index.ts",
     "start": "node dist/index.js",
     "clean": "rm -rf dist",
     "type-check": "tsc --noEmit",
-    "lint": "eslint src --ext .ts",
+    "lint": "eslint src api --ext .ts",
     "test": "jest"
   },
   "dependencies": {
@@ -19,7 +20,6 @@
     "express-rate-limit": "^7.1.0",
     "http-proxy-middleware": "^2.0.6",
     "jsonwebtoken": "^9.0.0",
-    "dotenv": "^16.0.0",
     "@vercel/node": "^3.0.0",
     "@civic/integrity-core": "*",
     "@civic/shield-policies": "*"
