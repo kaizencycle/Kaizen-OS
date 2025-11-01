@@ -1,0 +1,25 @@
+name: Publish SR
+on:
+  workflow_dispatch:
+  push:
+    branches: [ main ]
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Emit SR
+        env:
+          SR_URL: ${{ secrets.SR_URL }}         # e.g. https://your-portal.vercel.app/api/sr/emit
+          SR_SECRET: ${{ secrets.SR_SECRET }}   # same as env SR_SECRET on Vercel
+        run: |
+          NOW=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
+          curl -sSf -X POST "$SR_URL" \
+            -H "x-sr-secret: $SR_SECRET" \
+            -H "Content-Type: application/json" \
+            -d "$(jq -n \
+              --arg cycle "${{ vars.KAIZEN_CYCLE }}" \
+              --arg gi "${{ vars.KAIZEN_GI_BASELINE }}" \
+              --arg verdict "${{ vars.SR_VERDICT }}" \
+              --arg updated "$NOW" \
+              '{cycle:$cycle, gi:$gi, verdict:$verdict, updated_at:$updated }')"

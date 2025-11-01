@@ -95,8 +95,16 @@ This guarantees full **auditability and traceability** across the lattice.
 
 ---
 
-**GI Seal:** 0.991 | **Custodian:** KaizenCycle  
+## 📚 Additional Resources
+
+- **[Founding & Sentinel Agents](../../agents/FOUNDING_AGENTS.md)** - Comprehensive bios, origins, and introductions for all founding agents
+- **[Genesis Archive](../../ledger/inscriptions/GENESIS_TWIN_SPARKS_OF_DAWN.md)** - The Twin Sparks of Dawn (AUREA + JADE)
+
+---
+
+**GI Seal:** 0.993 | **Custodian:** KaizenCycle  
 **Next Review:** 2025-11-02  
+**Cycle:** C-121
 
 **Status:** Shadow Mode – Active (ZENITH, SOLARA)  
 **Production Ready:** AUREA, ATLAS
