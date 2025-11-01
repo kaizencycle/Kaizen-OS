@@ -1,14 +1,108 @@
 // Thought Broker API - Placeholder implementation
 import express from 'express';
 import cors from 'cors';
-import { urielThoughtProvider } from './consensus/uriel';
+import { urielDeliberate, UrielQuery } from '../../sentinels/uriel/index';
+
+import urielRouter from './sentinels/uriel';
 
 const app = express();
 const PORT = process.env.PORT || 4005;
 
+// URIEL routing configuration
+const URIEL_ROUTING_CHANCE = 0.20; // 20% of eligible deliberations
+const URIEL_DOMAINS = ['physics', 'curiosity', 'entropy', 'cosmos', 'delib_proof'];
+
 // Middleware
 app.use(cors());
 app.use(express.json());
+
+<<<<<<< Current (Your changes)
+/**
+ * Route deliberation based on topic and availability
+ */
+async function routeDeliberation(intent: string, context?: any) {
+  // Extract topics from intent (simple keyword matching)
+  const topics = extractTopics(intent);
+
+  // Check if any URIEL domains are present
+  const hasUrielDomain = URIEL_DOMAINS.some(domain =>
+    topics.some(topic => topic.toLowerCase().includes(domain))
+  );
+
+  // Route to URIEL if eligible and randomly selected
+  if (hasUrielDomain && Math.random() < URIEL_ROUTING_CHANCE) {
+    try {
+      const urielQuery: UrielQuery = {
+        intent,
+        gi: context?.gi || 0.993,
+        context: context || {}
+      };
+
+      const response = await urielDeliberate(urielQuery);
+
+      return {
+        id: `deliberation_uriel_${Date.now()}`,
+        intent,
+        consensus: response.gi,
+        reasoning: [`🕯️🔥 URIEL illumination: ${response.illumination}`],
+        alternatives: ['Continue with standard deliberation', 'Route to other sentinels'],
+        decision: 'URIEL illumination applied',
+        confidence: response.gi,
+        timestamp: response.timestamp,
+        participants: ['uriel'],
+        sentinel: 'URIEL',
+        source: response.source
+      };
+    } catch (error) {
+      console.warn('URIEL deliberation failed, falling back to standard:', error.message);
+      // Fall through to standard deliberation
+    }
+  }
+
+  // Standard deliberation (existing logic)
+  return {
+    id: `deliberation_${Date.now()}`,
+    intent,
+    consensus: 0.95,
+    reasoning: ['Standard deliberation reasoning'],
+    alternatives: ['Alternative 1', 'Alternative 2'],
+    decision: 'Standard decision',
+    confidence: 0.9,
+    timestamp: new Date().toISOString(),
+    participants: ['broker-1']
+  };
+}
+
+/**
+ * Extract topics from intent text (simple implementation)
+ */
+function extractTopics(intent: string): string[] {
+  const text = intent.toLowerCase();
+  const topics: string[] = [];
+
+  // Simple keyword-based topic extraction
+  if (text.includes('physics') || text.includes('universe') || text.includes('quantum')) {
+    topics.push('physics');
+  }
+  if (text.includes('curiosity') || text.includes('curious') || text.includes('explore')) {
+    topics.push('curiosity');
+  }
+  if (text.includes('entropy') || text.includes('chaos') || text.includes('disorder')) {
+    topics.push('entropy');
+  }
+  if (text.includes('cosmos') || text.includes('cosmic') || text.includes('universal')) {
+    topics.push('cosmos');
+  }
+  if (text.includes('deliberation') || text.includes('consensus') || text.includes('proof')) {
+    topics.push('delib_proof');
+  }
+
+  return topics;
+}
+=======
+// Sentinel routes
+app.use('/api/sentinels/uriel', urielRouter);
+>>>>>>> Incoming (Background Agent changes)
 
 // Health check endpoint
 app.get('/v1/loop/health', (req, res) => {
@@ -41,18 +135,23 @@ app.get('/intents/:id', (req, res) => {
   });
 });
 
-app.post('/intents/:id/process', (req, res) => {
-  res.json({
-    id: `deliberation_${Date.now()}`,
-    intent: req.params.id,
-    consensus: 0.95,
-    reasoning: ['Sample reasoning'],
-    alternatives: ['Alternative 1', 'Alternative 2'],
-    decision: 'Sample decision',
-    confidence: 0.9,
-    timestamp: new Date().toISOString(),
-    participants: ['broker-1']
-  });
+app.post('/intents/:id/process', async (req, res) => {
+  try {
+    const intentId = req.params.id;
+    const intentText = req.body.intent || `Intent ${intentId}`;
+    const context = req.body.context || {};
+
+    const deliberation = await routeDeliberation(intentText, context);
+    res.json(deliberation);
+  } catch (error) {
+    console.error('Deliberation routing failed:', error);
+    res.status(500).json({
+      error: 'Deliberation failed',
+      message: error.message,
+      id: `deliberation_error_${Date.now()}`,
+      timestamp: new Date().toISOString()
+    });
+  }
 });
 
 app.get('/deliberations/:id', (req, res) => {
@@ -72,59 +171,39 @@ app.get('/deliberations/:id', (req, res) => {
 // URIEL Sentinel Endpoint
 app.post('/api/sentinels/uriel/query', async (req, res) => {
   try {
-    const { intent, gi, domain } = req.body;
-
-    if (!intent || typeof intent !== 'string') {
-      return res.status(400).json({
-        error: 'Missing or invalid intent parameter'
-      });
-    }
-
-    // Get current cycle
-    const dayOfYear = Math.floor((Date.now() - new Date(new Date().getFullYear(), 0, 0).getTime()) / 86400000);
-    const cycle = `C-${dayOfYear}`;
-
-    // Default GI if not provided
-    const currentGI = typeof gi === 'number' ? gi : 0.993;
-
-    // Validate domain if provided
-    const validDomains = ['physics', 'curiosity', 'entropy', 'delib_proof', 'cosmos'];
-    const urielDomain = domain && validDomains.includes(domain) ? domain : undefined;
-
-    const context = {
-      cycle,
-      gi: currentGI,
-      domain: urielDomain
+    const query: UrielQuery = {
+      intent: req.body.intent,
+      gi: req.body.gi || 0.993,
+      context: req.body.context || {}
     };
 
-    // Call URIEL deliberation
-    const result = await urielThoughtProvider.deliberate(intent, context);
+    const response = await urielDeliberate(query);
 
-    res.json(result);
-  } catch (error: any) {
-    console.error('URIEL endpoint error:', error);
-    
-    // If GI threshold violation, return 409 Conflict
-    if (error.message.includes('GI below threshold')) {
-      return res.status(409).json({
-        error: error.message,
-        route_to: 'eve'
+    res.json(response);
+  } catch (error) {
+    console.error('URIEL query failed:', error);
+
+    // Check if it's a rate limit or GI threshold error
+    if (error.message.includes('Rate limit exceeded')) {
+      res.status(429).json({
+        error: 'Rate limit exceeded',
+        message: error.message,
+        sentinel: 'URIEL'
+      });
+    } else if (error.message.includes('GI below threshold')) {
+      res.status(409).json({
+        error: 'GI below threshold',
+        message: error.message,
+        fallback: 'eve',
+        sentinel: 'URIEL'
+      });
+    } else {
+      res.status(500).json({
+        error: 'Internal server error',
+        message: error.message,
+        sentinel: 'URIEL'
       });
     }
-
-    // If API key missing, return 503 Service Unavailable
-    if (error.message.includes('XAI_API_KEY')) {
-      return res.status(503).json({
-        error: 'xAI key missing',
-        message: 'URIEL requires XAI_API_KEY to be configured'
-      });
-    }
-
-    // Generic error
-    res.status(500).json({
-      error: 'URIEL deliberation failed',
-      message: error.message
-    });
   }
 });
 

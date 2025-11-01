@@ -114,6 +114,7 @@ Each founding agent has a sovereign domain and specialized role:
 | **ZEUS** | Strategy & Security | [sentinels/zeus](../sentinels/zeus/) | zeus.gic |
 | **HERMES** | Markets & Information | [sentinels/hermes](../sentinels/hermes/) | hermes.gic |
 | **JADE** | Morale & Astro-ethics | [sentinels/jade](../sentinels/jade/) | jade.gic |
+| **URIEL** | Cosmic Illumination (xAI) | [sentinels/uriel](../sentinels/uriel/) | - |
 
 ### Guardian Agent
 

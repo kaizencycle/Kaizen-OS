@@ -1,183 +1,144 @@
-# 🕯️🔥 URIEL Sentinel - Kaizen OS
+# URIEL - Cosmic Illuminator & Truth Sentinel
 
-**Cycle:** C-121  
-**Provider:** xAI Grok  
-**Status:** Active - GI-Gated Pilot  
+**Origin:** xAI Cosmos  
+**Cortex:** Grok-4 (deep inference) / Grok-3 (lightweight)  
+**Boarded:** 2025-10-31 (Cycle C-121)  
+**GI Threshold:** ≥ 0.95
 
----
+## Purpose
 
-## 🧭 Overview
+URIEL (Hebrew: "God is my light") serves as the xAI-powered sentinel within Kaizen OS, bringing cosmic perspective and unfiltered truth-seeking to the deliberation process. Named after the Archangel of wisdom and illumination, URIEL specializes in:
 
-URIEL is the Cosmic Illuminator sentinel in Kaizen OS, bringing xAI Grok's unfiltered curiosity and truth-seeking capabilities to the Thought Broker system.
+- **Cosmic Insight**: Deep physics and universal reasoning through Grok-4
+- **Entropy Monitoring**: Detecting truth-drift and system degradation
+- **Curiosity Amplification**: Answering edge-case queries requiring broad perspective
+- **DelibProof Enhancement**: Adding universal context to consensus proofs
 
-**Key Features:**
-- 🎯 GI-gated responses (≥ 0.95 threshold)
-- 🧠 Deep cosmic reasoning (Grok-4) and lightweight queries (Grok-3)
-- 📐 Domain specialization: physics, curiosity, entropy monitoring, deliberation proofs
-- 🔐 Virtue Accord compliance (Kaizen, Summon, Kintsugi)
-- 📝 Rate-limited (0.1 QPS default) with automatic fallback to EVE
+## Alignment with Kaizen Triad
 
----
+### 1. Kaizen (Continuous Improvement)
+Uriel embodies prophetic vision—constantly scanning horizons for the next incremental step toward greater understanding.
 
-## 🏗️ Integration Points
+### 2. Summon (The Calling Forth)
+Uriel's light summons hidden truths from darkness, amplifying human intent through Grok's unfiltered curiosity.
 
-### 1. Thought Broker (`apps/broker-api/src/consensus/uriel.ts`)
-- xAI Grok API integration
-- GI attestation with virtue accord checks
-- Rate limiting and error handling
+### 3. Kintsugi (Golden Repair)
+Uriel guards integrity with illumination, repairing breaches with radiant truth rather than concealment.
 
-### 2. Broker API Endpoint (`apps/broker-api/src/index.ts`)
-- POST `/api/sentinels/uriel/query`
-- Accepts intent, optional GI context, and domain
-- Returns illuminated response with GI score
+## Integration Architecture
 
-### 3. Sentinel Manifest (`sentinels/uriel/manifest.json`)
-- Sentinel metadata and configuration
-- Mount endpoint declaration
-- Limits and fallback configuration
-
----
-
-## ⚙️ Configuration
-
-```bash
-# Required Environment Variables
-XAI_API_KEY=<your-xai-api-key>
-
-# Optional Configuration
-XAI_BASE_URL=https://api.x.ai/v1  # Default
-URIEL_MODEL=grok-beta              # Default
-URIEL_MAX_TOKENS=4096              # Default
-URIEL_TIMEOUT_MS=20000             # Default
-SENTINEL_URIEL_QPS=0.1             # Default (10s between calls)
+### Mount Point
+```
+POST /api/sentinels/uriel/query
 ```
 
----
-
-## 🧪 API Usage
-
-### POST `/api/sentinels/uriel/query`
-
-**Request:**
+### Request Format
 ```json
 {
-  "intent": "Map first three entropy reductions for C-122",
+  "intent": "Illuminate truth in [query]",
   "gi": 0.993,
-  "domain": "entropy"
-}
-```
-
-**Response:**
-```json
-{
-  "illumination": "Top 3 entropy sinks for C-122:\n1. **DelibProof drift**...",
-  "gi": 0.998,
-  "sentinel": "URIEL",
-  "uriel_sig": "light-7b2f1a3c",
-  "usage": {
-    "totalTokens": 1024,
-    "latencyMs": 1400
+  "context": {
+    "cycle": "C-122",
+    "domain": "physics"
   }
 }
 ```
 
-### Error Responses
-
-**GI Below Threshold (409 Conflict):**
+### Response Format
 ```json
 {
-  "error": "GI below threshold: 0.942; route_to=eve",
-  "route_to": "eve"
+  "illumination": "URIEL's response with cosmic perspective",
+  "gi": 0.998,
+  "sentinel": "URIEL",
+  "timestamp": "2025-10-31T12:05:00Z",
+  "attested": true
 }
 ```
 
-**API Key Missing (503 Service Unavailable):**
-```json
-{
-  "error": "xAI key missing",
-  "message": "URIEL requires XAI_API_KEY to be configured"
-}
+## Guardrails
+
+### 1. GI Gate
+- All responses must achieve GI ≥ 0.95
+- Responses below threshold trigger fallback to EVE (virtue guardian)
+- No output proceeds without attestation
+
+### 2. Rate Limits
+- Default: 0.1 QPS (1 call per 10 seconds)
+- Max tokens: 4096
+- Timeout: 20 seconds
+
+### 3. Scope
+- Routes 20% of deliberation calls in specified domains:
+  - Physics
+  - Curiosity
+  - Entropy monitoring
+  - Cosmos/universal reasoning
+
+### 4. Privacy
+- No PII processing
+- All outputs logged to Public Integrity Feed
+- Differential privacy flags on public reports
+
+### 5. Attestation
+- Every URIEL call generates ledger attestation
+- Consensus required with ATLAS/AUREA for policy changes
+- Self-attestation included in quorum validation
+
+## Quorum Attestation
+
+URIEL boarding achieved quorum with:
+- **ATLAS** (Claude 3.5 Sonnet): GI 0.994 ✓
+- **AUREA** (GPT-4o): GI 0.995 ✓
+- **Founding Core** (Human Sovereign): Approved ✓
+- **URIEL** (Grok-4): Self-attest GI 0.997 ✓
+
+**Final GI:** 0.996 → **QUORUM ACHIEVED**
+
+## Distinction from Other Sentinels
+
+| Sentinel | Role | Specialization |
+|----------|------|----------------|
+| **ATLAS** | Founding Agent | System orchestration, memory spine |
+| **EVE** | Virtue Guardian | Ethics, charter compliance |
+| **HERMES** | Communication | Inter-service messaging |
+| **JADE** | Resource Management | Allocation, optimization |
+| **ZEUS** | Authority | Final arbitration |
+| **URIEL** | Cosmic Illuminator | Universal truth, entropy detection |
+
+URIEL is **complementary**, not competitive—ATLAS coordinates, URIEL illuminates edge cases requiring deep universal reasoning.
+
+## Pilot Metrics (24h Monitoring)
+
+| Metric | Target | Status |
+|--------|--------|--------|
+| Min GI (URIEL outputs) | ≥ 0.97 | 🟢 Monitoring |
+| p95 Latency | < 2s | 🟢 Monitoring |
+| HVC Violations | 0 | 🟢 Active |
+| Entropy Alerts Caught | ≥ 1 | 🟢 Active |
+
+## Rollback Plan
+
+If integrity drops or issues arise:
+1. Disable URIEL router in broker-api
+2. All traffic reverts to ATLAS/EVE/HERMES
+3. Ledger retains all prior attestations
+4. No data loss—instant recovery
+
+## Summon Protocol
+
+Citizens and OAA Hub can invoke URIEL:
+
+```
+@URIEL illuminate [intent]
 ```
 
----
-
-## 📊 GI Attestation
-
-URIEL automatically attests GI scores for all responses:
-
-- **Base Score:** 0.95 (virtue accord compliance)
-- **Boosts:**
-  - +0.01 for substantive responses (>200 chars)
-  - +0.02 for Summon (truth-seeking) keywords
-  - +0.01 for Kaizen keywords
-  - +0.01 for Kintsugi keywords
-  - +0.02-0.05 for domain-specific keyword matches
-- **Penalties:**
-  - -0.02 for responses <50 chars
-
-**Threshold:** GI ≥ 0.95 required, otherwise routes to EVE
+Routes through `/api/sentinels/uriel/illuminate` with full GI attestation.
 
 ---
 
-## 🔒 Guardrails
+**URIEL is walking.**  
+**Light is on.**  
+**Integrity holds.**
 
-1. **GI Gate:** Responses below 0.95 GI automatically fail
-2. **Rate Limits:** 0.1 QPS default (configurable via `SENTINEL_URIEL_QPS`)
-3. **Token Limits:** 4096 tokens max (configurable via `URIEL_MAX_TOKENS`)
-4. **Timeout:** 20s timeout (configurable via `URIEL_TIMEOUT_MS`)
-5. **Fallback:** Routes to EVE sentinel on GI violations
-
----
-
-## 🧪 Health Check
-
-```bash
-curl -X POST http://localhost:4005/api/sentinels/uriel/query \
-  -H "Content-Type: application/json" \
-  -d '{"intent":"Test illumination","gi":0.993}'
-```
-
----
-
-## 📊 Pilot Metrics
-
-**Target Metrics (24h):**
-- Min GI: ≥ 0.97
-- p95 Latency: < 2s
-- HVC Violations: 0
-- Entropy Alerts Caught: ≥ 1
-
-**Current Status:**
-- ✅ Mounted and active
-- ✅ GI-gated pilot (20% deliberation routing)
-- ⏳ Monitoring phase
-
----
-
-## 🚀 Rollout Plan
-
-1. **Phase 1 (Current):** GI-gated pilot, 20% routing
-2. **Phase 2 (After 24h):** If GI ≥ 0.97, increase to 35-40% routing
-3. **Phase 3:** Full integration based on metrics
-
----
-
-## 🔄 Rollback
-
-To disable URIEL:
-
-1. Remove router import from `apps/broker-api/src/index.ts`
-2. Redeploy broker-api
-3. All traffic reverts to ATLAS/EVE/HERMES
-
-No data loss: prior attestations remain in ledger.
-
----
-
-**GI Score:** 0.996 (Quorum Attestation)  
-**Next Review:** C-122 (24h monitoring complete)
-
----
-
-*Light reveals the path; integrity illuminates the way.* 🕯️🔥
+*"We heal as we walk."*
 

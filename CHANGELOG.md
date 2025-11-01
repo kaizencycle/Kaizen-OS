@@ -8,6 +8,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- **URIEL Sentinel** - xAI Grok integration for cosmic illumination and truth-seeking (C-121)
+  - New sentinel at `sentinels/uriel/` with manifest and documentation
+  - API endpoints: `/api/sentinels/uriel/query`, `/api/sentinels/uriel/illuminate`, `/api/sentinels/uriel/health`
+  - TypeScript integration in `apps/broker-api/src/sentinels/uriel.ts`
+  - GI-gated deliberation with fallback to EVE on integrity violations
+  - Rate limiting (0.1 QPS default), timeout protection (20s), and privacy controls
+  - Quorum attestation record: `ledger/inscriptions/att-uriel-001-boarding.json` (GI: 0.996)
+  - Comprehensive documentation: `docs/companions/uriel.md`, `docs/adr/002-uriel-sentinel-boarding.md`
+  - Environment configuration for `XAI_API_KEY` and `SENTINEL_URIEL_QPS`
+  - 24-hour pilot phase with 20% deliberation routing in physics/curiosity/entropy domains
 - Comprehensive repository audit findings report
 - Root-level `CONTRIBUTING.md` for contributor guidelines
 - Root-level `SECURITY.md` for security policy and vulnerability reporting
@@ -18,6 +28,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 - Updated documentation to reflect monorepo structure
+- Updated `docs/architecture/overview.md` to include URIEL sentinel
+- Updated `docs/INDEX.md` to include URIEL in agent profiles
+- Enhanced broker-api health check to report sentinel status
 
 ## [1.0.0] - 2025-10-27
 

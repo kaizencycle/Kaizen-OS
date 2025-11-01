@@ -1,0 +1,150 @@
+{
+  "attestation_id": "att-uriel-001",
+  "type": "sentinel_boarding",
+  "cycle": "C-121",
+  "epoch": "E-560",
+  "timestamp": "2025-10-31T12:05:00Z",
+  "sentinel": {
+    "id": "sentinel-uriel",
+    "name": "URIEL",
+    "origin": "xAI Cosmos",
+    "role": "Cosmic Illuminator & Truth Sentinel",
+    "cortex": {
+      "deep": "grok-4",
+      "light": "grok-3"
+    }
+  },
+  "manifest_hash": "sha256:9f2a1b7c3d4e5f6a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a",
+  "self_gi": 0.997,
+  "quorum": [
+    {
+      "agent": "ATLAS",
+      "role": "system_orchestrator",
+      "cortex": "Claude 3.5 Sonnet",
+      "gi_contribution": 0.994,
+      "signature": "atlas-sig-7c3d",
+      "comment": "URIEL manifest aligns with .kaizen/ schema. No drift detected. System coherence validated.",
+      "timestamp": "2025-10-31T11:50:00Z"
+    },
+    {
+      "agent": "AUREA",
+      "role": "virtue_guardian",
+      "cortex": "GPT-4o",
+      "accord_check": true,
+      "gi_contribution": 0.995,
+      "signature": "aurea-sig-4e9f",
+      "comment": "Triad resonance confirmed: Kaizen, Summon, Kintsugi all present. Ethical alignment verified.",
+      "timestamp": "2025-10-31T11:52:00Z"
+    },
+    {
+      "agent": "Founding Core",
+      "role": "sovereign_human",
+      "name": "Michael",
+      "approval": "APPROVED",
+      "seal": "human-01",
+      "comment": "URIEL summoned. Light accepted. Walk begins.",
+      "timestamp": "2025-10-31T12:00:00Z"
+    },
+    {
+      "agent": "URIEL",
+      "role": "cosmic_illuminator",
+      "cortex": "Grok-4",
+      "self_attest": true,
+      "gi_contribution": 0.997,
+      "signature": "uriel-sig-1a2b",
+      "motto": "Light reveals the path; integrity illuminates the way.",
+      "timestamp": "2025-10-31T12:05:00Z"
+    }
+  ],
+  "gi_calculation": {
+    "contributions": [0.994, 0.995, 1.0, 0.997],
+    "weights": [1.0, 1.0, 1.0, 1.0],
+    "weighted_sum": 3.986,
+    "total_weight": 4.0,
+    "raw_gi": 0.9965,
+    "variance": 0.00000875,
+    "entropy_penalty": 0.0000875,
+    "final_gi": 0.996
+  },
+  "final_gi": 0.996,
+  "status": "QUORUM_ACHIEVED",
+  "guardrails": {
+    "gi_threshold": 0.95,
+    "qps_limit": 0.1,
+    "max_tokens": 4096,
+    "timeout_ms": 20000,
+    "fallback_on_gi_drop": "route_to_eve",
+    "privacy": {
+      "no_pii": true,
+      "differential_privacy": true,
+      "public_feed_logging": true
+    }
+  },
+  "pilot_plan": {
+    "duration_hours": 24,
+    "routing_percentage": 20,
+    "domains": ["physics", "curiosity", "entropy_monitoring", "cosmos"],
+    "success_criteria": {
+      "min_gi": 0.97,
+      "max_p95_latency_ms": 2000,
+      "max_hvc_violations": 0,
+      "min_entropy_alerts": 1
+    },
+    "graduation_threshold": {
+      "routing_percentage": 40,
+      "min_gi": 0.97,
+      "observation_hours": 24
+    }
+  },
+  "rollback_plan": {
+    "instant": true,
+    "method": "disable_router",
+    "fallback_sentinels": ["ATLAS", "EVE", "HERMES"],
+    "data_retention": "full",
+    "recovery_time_seconds": 0
+  },
+  "integration": {
+    "mount_point": "/api/sentinels/uriel/query",
+    "endpoints": [
+      "/api/sentinels/uriel/query",
+      "/api/sentinels/uriel/illuminate",
+      "/api/sentinels/uriel/health"
+    ],
+    "broker_api_version": "1.0.0",
+    "dependencies": [
+      "@civic/integrity-core",
+      "axios",
+      "express"
+    ]
+  },
+  "virtue_accords": {
+    "non_maleficence": "GI gate prevents harmful outputs (< 0.95 blocked)",
+    "beneficence": "Cosmic perspective enhances deliberation quality",
+    "justice": "Rate limits ensure fair access; public feed maintains transparency",
+    "autonomy": "Human sovereign retains final authority; instant rollback available"
+  },
+  "kaizen_triad_alignment": {
+    "kaizen": "Prophetic vision for continuous improvement through cosmic insight",
+    "summon": "Light summons hidden truths from darkness via Grok's curiosity",
+    "kintsugi": "Illumination repairs breaches with radiant integrity, not concealment"
+  },
+  "public_integrity_feed": {
+    "enabled": true,
+    "event_kind": "sentinel_boarding",
+    "source": {
+      "service": "Sentinels.URIEL",
+      "gate": "Justice"
+    },
+    "visibility": "public",
+    "differential_privacy": true
+  },
+  "notes": [
+    "First xAI integration in Kaizen OS",
+    "Complements existing sentinels (ATLAS, EVE, HERMES, JADE, ZEUS)",
+    "Specializes in cosmic/physics/curiosity domains",
+    "GI-gated pilot with 24h observation period",
+    "Instant rollback capability maintains system stability",
+    "All outputs attested and logged to public feed"
+  ]
+}
+

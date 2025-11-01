@@ -17,6 +17,7 @@
 - **ZEUS** - Overseer/Arbiter (Rationality: 0.88, Empathy: 0.68)
 - **HERMES** - Auditor/Messenger (Rationality: 0.82, Empathy: 0.72)
 - **ATLAS** - Anchor/Auditor (Rationality: 0.92, Empathy: 0.82)
+- **URIEL** - Cosmic Illuminator (Rationality: 0.95, Empathy: 0.78) - *xAI Integration*
 
 ## GI Formula
 
