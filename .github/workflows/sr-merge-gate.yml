@@ -1,0 +1,92 @@
+name: PR • SR Merge Gate
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, ready_for_review, labeled, unlabeled]
+
+permissions:
+  contents: read
+  pull-requests: read
+
+jobs:
+  gate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Read labels (admin bypass)
+        id: labels
+        uses: actions-ecosystem/action-get-labeled@v1
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Check admin-bypass label
+        id: bypass
+        run: |
+          # Label name you'll use to override the gate
+          BYPASS_LABEL="sr-bypass"
+          if echo "${{ steps.labels.outputs.labels }}" | grep -qi "$BYPASS_LABEL"; then
+            echo "bypass=true" >> $GITHUB_OUTPUT
+          else
+            echo "bypass=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Fetch latest SR
+        id: fetch
+        env:
+          KAIZEN_PORTAL_BASE: ${{ secrets.KAIZEN_PORTAL_BASE }}
+          SR_KIND: situational_report
+          SR_LIMIT: "1"
+        run: |
+          set -e
+          if [ -z "$KAIZEN_PORTAL_BASE" ]; then
+            echo "KAIZEN_PORTAL_BASE secret is not set"; exit 2
+          fi
+          URL="$KAIZEN_PORTAL_BASE/api/sr?kind=$SR_KIND&limit=$SR_LIMIT"
+          echo "Query: $URL"
+          RESP="$(curl -fsSL -H 'Accept: application/json' "$URL" || true)"
+          if [ -z "$RESP" ]; then
+            echo "No SR response"; echo "verdict=UNKNOWN" >> $GITHUB_OUTPUT; exit 0
+          fi
+          # Support both {items:[...]} and bare arrays
+          ITEMS="$(echo "$RESP" | jq -c '.items // .')"
+          COUNT="$(echo "$ITEMS" | jq 'length')"
+          if [ "$COUNT" -eq 0 ]; then
+            echo "No SR items"; echo "verdict=UNKNOWN" >> $GITHUB_OUTPUT; exit 0
+          fi
+          VERDICT="$(echo "$ITEMS" | jq -r '.[0].details.verdict // "UNKNOWN"')"
+          ID="$(echo "$ITEMS" | jq -r '.[0].event_id // "unknown"')"
+          CYCLE="$(echo "$ITEMS" | jq -r '.[0].details.cycle // "-"')"
+          GI="$(echo "$ITEMS" | jq -r '.[0].gi // "-"')"
+          LINK="$KAIZEN_PORTAL_BASE/consensus/sr/$ID"
+          echo "verdict=$VERDICT" >> $GITHUB_OUTPUT
+          echo "id=$ID" >> $GITHUB_OUTPUT
+          echo "cycle=$CYCLE" >> $GITHUB_OUTPUT
+          echo "gi=$GI" >> $GITHUB_OUTPUT
+          echo "link=$LINK" >> $GITHUB_OUTPUT
+
+      - name: Decide
+        id: decide
+        run: |
+          verdict="${{ steps.fetch.outputs.verdict }}"
+          # Block only when verdict == DEFER (case-insensitive)
+          if [ "${{ steps.bypass.outputs.bypass }}" = "true" ]; then
+            echo "decision=ALLOW (admin bypass)" >> $GITHUB_OUTPUT
+            exit 0
+          fi
+          if [ -z "$verdict" ] || [ "$verdict" = "null" ]; then verdict="UNKNOWN"; fi
+          verdict_upper="$(echo "$verdict" | tr '[:lower:]' '[:upper:]')"
+          if [ "$verdict_upper" = "DEFER" ]; then
+            echo "decision=BLOCK" >> $GITHUB_OUTPUT
+            exit 1
+          else
+            echo "decision=ALLOW" >> $GITHUB_OUTPUT
+            exit 0
+          fi
+
+      - name: Summary
+        if: always()
+        run: |
+          echo "### 🧭 SR Merge Gate" >> $GITHUB_STEP_SUMMARY
+          echo "**Verdict:** \`${{ steps.fetch.outputs.verdict || 'UNKNOWN' }}\`" >> $GITHUB_STEP_SUMMARY
+          echo "**Cycle:** \`${{ steps.fetch.outputs.cycle || '-' }}\`  ·  **GI:** \`${{ steps.fetch.outputs.gi || '-' }}\`" >> $GITHUB_STEP_SUMMARY
+          echo "**Link:** ${{ steps.fetch.outputs.link || 'N/A' }}" >> $GITHUB_STEP_SUMMARY
+          echo "**Decision:** \`${{ steps.decide.outputs.decision || 'ALLOW' }}\`" >> $GITHUB_STEP_SUMMARY

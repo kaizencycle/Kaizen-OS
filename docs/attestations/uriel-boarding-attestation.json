@@ -1,0 +1,12 @@
+{
+  "kind": "sentinel_boarding",
+  "sentinel": "URIEL",
+  "provider": "xAI",
+  "cycle": "C-121",
+  "gi": 0.998,
+  "routing_weight": 0.20,
+  "qps": 0.1,
+  "domains": ["physics","curiosity","entropy","delib_proof"],
+  "fallback": "EVE",
+  "timestamp": "2025-10-31T13:10:22Z"
+}

@@ -1,0 +1,20 @@
+name: URIEL Smoke
+on: [push, workflow_dispatch]
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: pip install httpx
+      - name: Probe
+        run: |
+          python - << 'PY'
+          import os, httpx, json
+          url = os.getenv("BROKER_URL","https://api.kaizen-os.com")+"/api/sentinels/uriel/query"
+          r = httpx.post(url, json={"intent":"Entropy preview C-122","gi":0.993}, timeout=20)
+          assert r.status_code==200, r.text
+          j=r.json(); assert j["gi"]>=0.95
+          print("OK", json.dumps(j)[:200])
+          PY
+        env:
+          BROKER_URL: ${{ secrets.BROKER_URL }}
