@@ -27,6 +27,7 @@
     "integrity:check": "./scripts/integrity-report.sh",
     "consensus:validate": "./scripts/gi-consensus-validate.sh",
     "gi:validate": "./scripts/gi-consensus-validate.sh",
+    "console": "cd apps/console && python main.py",
     "docs:generate": "echo \"Documentation generation coming soon\""
   },
   "devDependencies": {

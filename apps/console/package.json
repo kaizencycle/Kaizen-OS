@@ -1,0 +1,18 @@
+{
+  "name": "kaizen-console",
+  "version": "1.0.0",
+  "description": "Kaizen OS — One-Window Console for Sentinel interaction and consensus",
+  "scripts": {
+    "start": "python main.py",
+    "dev": "python main.py"
+  },
+  "keywords": [
+    "kaizen-os",
+    "console",
+    "tui",
+    "sentinels",
+    "consensus"
+  ],
+  "author": "Kaizen Cycle",
+  "license": "MIT"
+}
