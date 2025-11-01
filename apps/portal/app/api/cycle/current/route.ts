@@ -1,10 +1,10 @@
 import { NextResponse } from 'next/server';
 
 // Single authority for cycle math/override.
-// For now we hardcode to C-118 and allow ENV override.
+// For now we hardcode to C-121 and allow ENV override.
 // Later: compute from ledger or Command Ledger service.
 export async function GET() {
-  const cycle = process.env.KAIZEN_CURRENT_CYCLE ?? 'C-118';
+  const cycle = process.env.KAIZEN_CURRENT_CYCLE ?? 'C-121';
   const gi    = Number(process.env.KAIZEN_GI_BASELINE ?? '0.993');
   const room  = 'Consensus Chamber';
 
@@ -32,7 +32,7 @@ export async function POST(request: Request) {
 
     return NextResponse.json({
       success: true,
-      cycle: cycle ?? process.env.KAIZEN_CURRENT_CYCLE ?? 'C-118',
+      cycle: cycle ?? process.env.KAIZEN_CURRENT_CYCLE ?? 'C-121',
       gi: gi ?? Number(process.env.KAIZEN_GI_BASELINE ?? '0.993'),
       room: room ?? 'Consensus Chamber',
       timestamp: new Date().toISOString()

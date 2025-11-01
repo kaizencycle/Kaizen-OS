@@ -1,0 +1,40 @@
+name: SR verdict on PR
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  comment-sr:
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+      contents: read
+    steps:
+      - name: Fetch latest SR
+        id: fetch
+        env:
+          SR_LATEST_URL: ${{ secrets.SR_LATEST_URL }}   # e.g. https://<your-portal>/api/sr/latest
+        run: |
+          RESP=$(curl -sSf "$SR_LATEST_URL")
+          echo "resp=$RESP" >> $GITHUB_OUTPUT
+          CYCLE=$(echo "$RESP" | jq -r '.cycle')
+          GI=$(echo "$RESP" | jq -r '.gi')
+          VERDICT=$(echo "$RESP" | jq -r '.details.verdict')
+          UPDATED=$(echo "$RESP" | jq -r '.details.updated_at')
+          echo "cycle=$CYCLE"   >> $GITHUB_OUTPUT
+          echo "gi=$GI"         >> $GITHUB_OUTPUT
+          echo "verdict=$VERDICT" >> $GITHUB_OUTPUT
+          echo "updated=$UPDATED" >> $GITHUB_OUTPUT
+
+      - name: Post PR comment
+        uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          recreate: true
+          message: |
+            🧭 **Situational Report (SR) — Latest**
+            - Cycle: `${{ steps.fetch.outputs.cycle }}`
+            - GI Baseline: `${{ steps.fetch.outputs.gi }}`
+            - Verdict: **${{ steps.fetch.outputs.verdict }}**
+            - Updated: `${{ steps.fetch.outputs.updated }}`
+            
+            > This PR auto-syncs with `/api/sr/latest`. If the SR changes, re-run the workflow to refresh.

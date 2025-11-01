@@ -1,0 +1,18 @@
+name: Ping ATLAS on repo change
+on:
+  push:
+  pull_request:
+  release:
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Notify ATLAS sync
+        env:
+          ATLAS_SYNC_URL: ${{ secrets.ATLAS_SYNC_URL }}
+          ATLAS_SYNC_TOKEN: ${{ secrets.ATLAS_SYNC_TOKEN }}
+        run: |
+          curl -sSf -X POST "$ATLAS_SYNC_URL/sync/post_repo_sync_ack" \
+            -H "Authorization: Bearer $ATLAS_SYNC_TOKEN" \
+            -H "Content-Type: application/json" \
+            -d "{\"repo\":\"kaizencycle/Kaizen-OS\",\"sha\":\"${{ github.sha }}\"}"

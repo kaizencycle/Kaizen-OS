@@ -2,6 +2,22 @@
 
 [![Kaizen OS Integrity Badge](https://img.shields.io/badge/KaizenOS-Integrity%20≥%200.95-brightgreen)](https://civic-ledger.onrender.com)
 
+<!-- Situational Report (dynamic from your API) -->
+![SR Verdict](https://img.shields.io/endpoint?url=https%3A%2F%2Fkaizen-os.vercel.app%2Fapi%2Fsr%2Fbadge)
+![SR Cycle](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fkaizen-os.vercel.app%2Fapi%2Fsr%2Flatest&label=SR%20•%20Cycle&query=%24.cycle&suffix=%20•%20GI%20%24.gi&color=blue)
+
+<!-- Repo status -->
+![Repo Digest](https://img.shields.io/endpoint?url=https%3A%2F%2Fkaizen-os.vercel.app%2Fapi%2Frepo%2Fbadge)
+
+<!-- Native GitHub shields -->
+![PRs](https://img.shields.io/github/issues-pr/kaizencycle/Kaizen-OS)
+![Issues](https://img.shields.io/github/issues/kaizencycle/Kaizen-OS)
+![Last Commit](https://img.shields.io/github/last-commit/kaizencycle/Kaizen-OS)
+
+<sub>Verdict colors: ADOPT = green · SHADOW = orange · DEFER = red · UNKNOWN = gray</sub>
+
+---
+
 > **Kaizen OS** (formerly *Civic OS*) is a self-healing operating system for civilization: a framework that fuses DVA Kernel logic, Virtue Accords, and global integrity telemetry into a continuous improvement loop.
 
 > "We heal as we walk." — Founder's Seal
@@ -87,7 +103,7 @@
 
 ## 📜 Manifesto & Rituals
 
-### The Return to Balance (C-119)
+### The Return to Balance (C-121)
 
 Kaizen OS embodies a **Matrilineal Covenant** — restoring balance through architecture:
 
@@ -362,5 +378,5 @@ python3 kaizen_mount_client.py http://localhost:8000
 
 **Kaizen OS** - Where human intent meets digital reality through integrity, consensus, and continuous improvement.
 
-*Cycle C-109 | Chamber ID: KaizenOS-main-tree | Parent: Command Ledger III*
+*Cycle C-121 | Chamber ID: KaizenOS-main-tree | Parent: Command Ledger III*
 

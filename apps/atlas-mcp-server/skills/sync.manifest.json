@@ -1,0 +1,38 @@
+{
+  "skill": "atlas_sync",
+  "version": "1.0.0",
+  "triggers": ["startup", "every_20_turns", "user_mentions:cycle,epoch,GI"],
+  "tools": [
+    "get_cycle_status",
+    "get_aurea_snapshot",
+    "get_recent_events",
+    "get_hvc_flags",
+    "post_sync_ack",
+    "get_repo_digest",
+    "get_repo_changes_since",
+    "post_repo_sync_ack"
+  ],
+  "guards": {
+    "max_sync_age_min": 30,
+    "min_gi": 0.95,
+    "retry_policy": {
+      "retries": 1,
+      "backoff_ms": 300
+    }
+  },
+  "outputs": {
+    "prefix_on_sync": true,
+    "emit_integrity_note_if_low_gi": true
+  },
+  "endpoints": {
+    "base_url": "https://kaizen-os.vercel.app/api/sync",
+    "cycle_status": "/get_cycle_status",
+    "aurea_snapshot": "/get_aurea_snapshot",
+    "recent_events": "/get_recent_events",
+    "hvc_flags": "/get_hvc_flags",
+    "sync_ack": "/post_sync_ack",
+    "repo_digest": "/get_repo_digest",
+    "repo_changes": "/get_repo_changes_since",
+    "repo_sync_ack": "/post_repo_sync_ack"
+  }
+}
