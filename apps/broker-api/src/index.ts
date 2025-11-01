@@ -16,25 +16,31 @@ const URIEL_DOMAINS = ['physics', 'curiosity', 'entropy', 'cosmos', 'delib_proof
 app.use(cors());
 app.use(express.json());
 
-<<<<<<< Current (Your changes)
+// Sentinel routes
+app.use('/api/sentinels/uriel', urielRouter);
+
 /**
  * Route deliberation based on topic and availability
  */
+const ALLOWED_URIEL_TOPICS = ['physics', 'cosmos', 'curiosity', 'entropy', 'delib_proof'];
+const URIEL_WEIGHT = parseFloat(process.env.SENTINEL_URIEL_WEIGHT || '0.20');
+
 async function routeDeliberation(intent: string, context?: any) {
   // Extract topics from intent (simple keyword matching)
   const topics = extractTopics(intent);
+  const gi = context?.gi || 0.993;
 
-  // Check if any URIEL domains are present
-  const hasUrielDomain = URIEL_DOMAINS.some(domain =>
+  // Check if any URIEL domains are present and GI gate passes
+  const hasUrielDomain = ALLOWED_URIEL_TOPICS.some(domain =>
     topics.some(topic => topic.toLowerCase().includes(domain))
   );
 
-  // Route to URIEL if eligible and randomly selected
-  if (hasUrielDomain && Math.random() < URIEL_ROUTING_CHANCE) {
+  // Route to URIEL if eligible, GI >= 0.95, and randomly selected
+  if (hasUrielDomain && gi >= 0.95 && Math.random() < URIEL_WEIGHT) {
     try {
       const urielQuery: UrielQuery = {
         intent,
-        gi: context?.gi || 0.993,
+        gi,
         context: context || {}
       };
 
@@ -99,10 +105,6 @@ function extractTopics(intent: string): string[] {
 
   return topics;
 }
-=======
-// Sentinel routes
-app.use('/api/sentinels/uriel', urielRouter);
->>>>>>> Incoming (Background Agent changes)
 
 // Health check endpoint
 app.get('/v1/loop/health', (req, res) => {

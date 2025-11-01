@@ -8,6 +8,12 @@ export function Nav() {
         Kaizen OS
       </Link>
       <div className="flex items-center gap-6">
+        <Link href="/consensus" className="text-slate-700 hover:text-indigo-600 transition-colors">
+          Consensus
+        </Link>
+        <Link href="/consensus/sr" className="text-slate-700 hover:text-indigo-600 transition-colors">
+          SR Reports
+        </Link>
         <Link href="/companions" className="text-slate-700 hover:text-indigo-600 transition-colors">
           Companions
         </Link>
