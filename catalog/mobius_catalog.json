@@ -1,6 +1,6 @@
 {
   "mobius_catalog_version": "1.0.0",
-  "generated_at": "2026-01-31T16:48:51.599Z",
+  "generated_at": "2026-01-31T16:50:26.142Z",
   "repo": {
     "name": "Mobius-Substrate",
     "url": "https://github.com/kaizencycle/Mobius-Substrate",
@@ -9,7 +9,7 @@
   },
   "stats": {
     "epiconCount": 0,
-    "docCount": 907
+    "docCount": 908
   },
   "epicons": [],
   "docs": [
@@ -506,7 +506,7 @@
       "title": "Mobius Contributor Classes",
       "category": "03-GOVERNANCE-AND-POLICY",
       "tags": [],
-      "content_hash": "sha256:6af4b3f773a2a9e9147fae41af14cbd882a35b9852717b9897ea9bee85cbed28",
+      "content_hash": "sha256:6ceb35d3ec201b0ada67c42418f7d009cfc9f9a280ae85810046b36deeff0efc",
       "summary": ""
     },
     {
@@ -7156,6 +7156,22 @@
       ],
       "content_hash": "sha256:3ae2d578e30fb15700752c13b60c54d4005060c1fc50bad420c0d6a6321e0494",
       "summary": "Ship repo-ready documentation and evaluation scaffold for legitimacy-preservation substrate"
+    },
+    {
+      "path": "docs/epicon/cycles/C-208/EPICON_C-208_DOCS_mobius-contributors-v1_v1.md",
+      "title": "Mobius Contributors v1 Pack — Oversight, Microcopy, and Trust Documentation",
+      "category": "epicon",
+      "tags": [
+        "governance",
+        "contributors",
+        "oversight",
+        "microcopy",
+        "trust-scores",
+        "MIC",
+        "documentation"
+      ],
+      "content_hash": "sha256:087c5c145715a4f9351495c9b338e824847694b5903e9e30fe6189f7fa85d8b1",
+      "summary": "Comprehensive contributor governance documentation including role classes, citizen oversight dashboard specs, and MIC incentive structures"
     },
     {
       "path": "docs/mobius/README.md",
