@@ -2,6 +2,24 @@
 
 Mobius is civic infrastructure. Contributions are welcome, but integrity is mandatory.
 
+---
+
+## Authority Change Justification
+
+**Scope:** Documentation of contributor roles and permissions (Tier 0)
+
+**Justification:**
+- This document formalizes existing implicit contributor practices
+- No new authority is created; existing roles are documented
+- Establishes transparency for contributor advancement criteria
+- Enables community growth with clear expectations
+
+**Values Invoked:** Transparency, accessibility, integrity
+
+**Counterfactual:** If this documentation creates barriers to contribution rather than clarity, revise the advancement criteria to be more accessible.
+
+**Authority Source:** Custodian discretion for documentation improvements (CONTRIBUTING.md scope)
+
 This document defines the contributor class system that enables humans and AI agents to participate in Mobius development with appropriate permissions and accountability.
 
 ---
