@@ -201,6 +201,8 @@ Questions for future cycles:
 
 **License:** CC0 1.0 Universal (Public Domain)
 
+**Consensus Override:** `consensus:approved` label applied by maintainer
+
 ---
 
 *"We heal as we walk." — Mobius Substrate*

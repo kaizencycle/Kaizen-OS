@@ -1,6 +1,6 @@
 {
   "mobius_catalog_version": "1.0.0",
-  "generated_at": "2026-01-31T16:50:26.142Z",
+  "generated_at": "2026-01-31T17:11:26.204Z",
   "repo": {
     "name": "Mobius-Substrate",
     "url": "https://github.com/kaizencycle/Mobius-Substrate",
@@ -7170,7 +7170,7 @@
         "MIC",
         "documentation"
       ],
-      "content_hash": "sha256:087c5c145715a4f9351495c9b338e824847694b5903e9e30fe6189f7fa85d8b1",
+      "content_hash": "sha256:73c6e213a2e3d65c0639f20f8685c65646728f128a8e39f414fd966b1ec5b94a",
       "summary": "Comprehensive contributor governance documentation including role classes, citizen oversight dashboard specs, and MIC incentive structures"
     },
     {
