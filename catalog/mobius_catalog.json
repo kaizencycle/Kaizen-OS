@@ -1,6 +1,6 @@
 {
   "mobius_catalog_version": "1.0.0",
-  "generated_at": "2026-01-24T16:09:13.609Z",
+  "generated_at": "2026-01-31T17:11:26.204Z",
   "repo": {
     "name": "Mobius-Substrate",
     "url": "https://github.com/kaizencycle/Mobius-Substrate",
@@ -9,7 +9,7 @@
   },
   "stats": {
     "epiconCount": 0,
-    "docCount": 896
+    "docCount": 908
   },
   "epicons": [],
   "docs": [
@@ -502,6 +502,14 @@
       "summary": ""
     },
     {
+      "path": "docs/03-GOVERNANCE-AND-POLICY/contributors/CONTRIBUTOR_CLASSES.md",
+      "title": "Mobius Contributor Classes",
+      "category": "03-GOVERNANCE-AND-POLICY",
+      "tags": [],
+      "content_hash": "sha256:6ceb35d3ec201b0ada67c42418f7d009cfc9f9a280ae85810046b36deeff0efc",
+      "summary": ""
+    },
+    {
       "path": "docs/03-GOVERNANCE-AND-POLICY/foundation/BYLAWS.md",
       "title": "Bylaws (v2)",
       "category": "03-GOVERNANCE-AND-POLICY",
@@ -678,6 +686,14 @@
       "summary": ""
     },
     {
+      "path": "docs/03-GOVERNANCE-AND-POLICY/governance/EPICON_INTENTS.md",
+      "title": "EPICON Intent System",
+      "category": "03-GOVERNANCE-AND-POLICY",
+      "tags": [],
+      "content_hash": "sha256:a53084285f26f33d91a60c719a68e948c92f0f3478b17b67e6d5a2444e47a336",
+      "summary": ""
+    },
+    {
       "path": "docs/03-GOVERNANCE-AND-POLICY/governance/GI_ENGINE_RULES.md",
       "title": "GI Engine Trust Rules",
       "category": "03-GOVERNANCE-AND-POLICY",
@@ -739,6 +755,14 @@
       "category": "03-GOVERNANCE-AND-POLICY",
       "tags": [],
       "content_hash": "sha256:4b1c4ef38087f1462f8a7c6d360719fb0d2cbb6bbd15f0a0be9857694661f9ce",
+      "summary": ""
+    },
+    {
+      "path": "docs/03-GOVERNANCE-AND-POLICY/governance/ZEUS_POLICY.md",
+      "title": "ZEUS Policy Rules",
+      "category": "03-GOVERNANCE-AND-POLICY",
+      "tags": [],
+      "content_hash": "sha256:3786a0db81669f68dfda243f3bbd5bcb3a66718371ee25fcc3b9dd3e93051db4",
       "summary": ""
     },
     {
@@ -1526,6 +1550,14 @@
       "summary": ""
     },
     {
+      "path": "docs/05-IMPLEMENTATION/onboarding/FIRST_HOUR.md",
+      "title": "Your First Hour in Mobius",
+      "category": "05-IMPLEMENTATION",
+      "tags": [],
+      "content_hash": "sha256:40571900f3de9391df11d169d7a47d07426818917bba988617fdd28e4d50156e",
+      "summary": ""
+    },
+    {
       "path": "docs/05-IMPLEMENTATION/onboarding/README.md",
       "title": "Onboarding Documentation",
       "category": "05-IMPLEMENTATION",
@@ -1603,6 +1635,54 @@
       "category": "06-OPERATIONS",
       "tags": [],
       "content_hash": "sha256:6a915e79c82d5f30fcfef00dd7eb0399491be3edea5d908ed812bb6f130d8e98",
+      "summary": ""
+    },
+    {
+      "path": "docs/06-OPERATIONS/citizen-oversight/API_CONTRACTS.md",
+      "title": "Citizen Oversight API Contracts",
+      "category": "06-OPERATIONS",
+      "tags": [],
+      "content_hash": "sha256:a0a1355aa1810898a74661fdf367047961cc8a752435777f687228172590f917",
+      "summary": ""
+    },
+    {
+      "path": "docs/06-OPERATIONS/citizen-oversight/DASHBOARD.md",
+      "title": "Citizen Oversight Dashboard",
+      "category": "06-OPERATIONS",
+      "tags": [],
+      "content_hash": "sha256:0c1298a27e91d823d24153430a89e911291d48e4692ddb5577656ff1691bc7fd",
+      "summary": ""
+    },
+    {
+      "path": "docs/06-OPERATIONS/citizen-oversight/MICROCOPY.md",
+      "title": "Dashboard Microcopy",
+      "category": "06-OPERATIONS",
+      "tags": [],
+      "content_hash": "sha256:d183698a7eb3ea2a275354fc7133ddb6cd3a2e99207ab3303c5584b873eb6c9d",
+      "summary": ""
+    },
+    {
+      "path": "docs/06-OPERATIONS/citizen-oversight/MIC_INCENTIVES.md",
+      "title": "MIC Incentives for Citizen Oversight",
+      "category": "06-OPERATIONS",
+      "tags": [],
+      "content_hash": "sha256:db5c457686e9e38cb587242fc9c865a6a93ceff8f49fcb29883f0bb66bec6e18",
+      "summary": ""
+    },
+    {
+      "path": "docs/06-OPERATIONS/citizen-oversight/README.md",
+      "title": "Citizen Oversight Module",
+      "category": "06-OPERATIONS",
+      "tags": [],
+      "content_hash": "sha256:38735f8de1393f07c2b7fa5eb6a876ac62ad4956b5c4c09b2479f9ab17aa4f9a",
+      "summary": ""
+    },
+    {
+      "path": "docs/06-OPERATIONS/citizen-oversight/TRUST_SCORES.md",
+      "title": "Citizen Trust Scores",
+      "category": "06-OPERATIONS",
+      "tags": [],
+      "content_hash": "sha256:2e42d8257e475de9e56304f66eb761c88728383e9afc5eb4f48d133d8017148f",
       "summary": ""
     },
     {
@@ -6922,7 +7002,7 @@
       "title": "Divergence Dashboard",
       "category": "divergence",
       "tags": [],
-      "content_hash": "sha256:6bf64384eb9951de508f49d788c21aa0786a0c994283abc378df167d2c9cd3d6",
+      "content_hash": "sha256:7b22ef30aef0795220143285ddac6fab366148cde351c7fe1adb263ef65aa071",
       "summary": ""
     },
     {
@@ -7078,6 +7158,22 @@
       "summary": "Ship repo-ready documentation and evaluation scaffold for legitimacy-preservation substrate"
     },
     {
+      "path": "docs/epicon/cycles/C-208/EPICON_C-208_DOCS_mobius-contributors-v1_v1.md",
+      "title": "Mobius Contributors v1 Pack — Oversight, Microcopy, and Trust Documentation",
+      "category": "epicon",
+      "tags": [
+        "governance",
+        "contributors",
+        "oversight",
+        "microcopy",
+        "trust-scores",
+        "MIC",
+        "documentation"
+      ],
+      "content_hash": "sha256:73c6e213a2e3d65c0639f20f8685c65646728f128a8e39f414fd966b1ec5b94a",
+      "summary": "Comprehensive contributor governance documentation including role classes, citizen oversight dashboard specs, and MIC incentive structures"
+    },
+    {
       "path": "docs/mobius/README.md",
       "title": "Mobius Substrate",
       "category": "mobius",
@@ -7131,6 +7227,14 @@
       "category": "mobius",
       "tags": [],
       "content_hash": "sha256:809375bfd9bf45198772f01dc62450a274d61ba6a45ea1862bac473040540031",
+      "summary": ""
+    },
+    {
+      "path": "docs/public/CITIZEN_WATCHDOG.md",
+      "title": "Mobius: Citizen AI Watchdog",
+      "category": "public",
+      "tags": [],
+      "content_hash": "sha256:6902a69d6e85091910f66dec4001373660fcc892ebdcc00f6148f2d0022a8141",
       "summary": ""
     },
     {

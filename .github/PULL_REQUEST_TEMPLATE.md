@@ -1,4 +1,4 @@
-# 🌀 Mobius PR — Cycle
+# Mobius PR — Cycle
 
 - **Cycle:** C-XXX
 - **Type:** Feature / Fix / Docs / Infra / Sentinel
@@ -8,120 +8,124 @@
 
 ## 1. Summary
 
-> Short description of what changed and why.
+**What changed?**
 
-- [ ] Aligns with Mobius Integrity Index (MII ≥ 0.95)
-- [ ] Does not weaken Anti-Nuke / Guardian guarantees
-- [ ] Keeps Sentinels (ATLAS/AUREA/ECHO) in sync
+> Short description of the change.
 
----
+**Why?**
 
-## Sentinel Review Requested
-
-> Add labels `review:aurea` and/or `review:atlas` to request sentinel review.
-
-- [ ] AUREA (legitimacy, governance, MII/MIC impact, contestability)
-- [ ] ATLAS (systems risk, adversarial thinking, failure modes)
-
-**Notes for Sentinels:**
-<!-- What should AUREA/ATLAS focus on? Leave blank if no specific concerns. -->
+> Problem being solved or value being added.
 
 ---
 
-## EPICON-02 INTENT PUBLICATION
+## 2. Risk Tier
+
+Select the appropriate tier based on change scope:
+
+- [ ] **Tier 0** — Docs/comments/formatting (1 reviewer, fast merge)
+- [ ] **Tier 1** — App code, no auth/security (1 maintainer, tests required)
+- [ ] **Tier 2** — Auth/ledger/integrity math (2 approvals incl. steward, benchmarks required)
+- [ ] **Tier 3** — MIC/consensus/production (steward + human token, simulation required)
+
+---
+
+## 3. EPICON Intent
 
 ```intent
-ledger_id: <your-github-username-or-ledger-id>
-scope: docs                    # docs | ci | core | infra | sentinels | labs | specs
-mode: normal                   # normal | emergency
-emergency_scope:               # REQUIRED if mode=emergency
-
-issued_at: 2025-12-20T23:00:00Z
-expires_at: 2026-03-20T23:00:00Z
-
-# INTENT EVOLUTION (required if changing intent mid-PR)
-intent_evolution: false
-supersedes_hash:               # Prior justification_hash if intent_evolution=true
-evolution_reason:
-  # Required if intent_evolution=true
-  # Briefly state what changed in your reasoning/assumptions.
+epicon_id: EPICON_C-XXX_SCOPE_description_v1
+ledger_id: <your-github-username>
+scope: docs | ci | core | infra | sentinels | labs | specs
+mode: normal | emergency
+issued_at: YYYY-MM-DDTHH:MM:SSZ
+expires_at: YYYY-MM-DDTHH:MM:SSZ
 
 justification:
-  # Paste your EPICON-01 EJ summary here:
-  # - Values invoked (e.g., integrity, transparency, safety)
-  # - Reasoning (why this change makes sense in context)
-  # - Anchors (≥2 independent supports: policy, practice, empirical)
-  # - Boundaries (when this does NOT apply)
-  # - Counterfactual (what would change the conclusion)
+  VALUES INVOKED: integrity, safety, transparency, [others]
+  REASONING: Why this change makes sense
+  ANCHORS: 
+    - [Independent support 1]
+    - [Independent support 2]
+  BOUNDARIES: When this does NOT apply
+  COUNTERFACTUAL: What would change the conclusion
 
 counterfactuals:
-  - If this PR exceeds declared scope, emit divergence and block merge.
-  - If tests fail or GI drops below threshold, do not merge.
+  - If tests fail, do not merge
+  - If MII drops below 0.95, revert immediately
 ```
 
 ---
 
-## 2. Testing
+## 4. Integrity Impact
 
-- [ ] `pnpm test`
-- [ ] `pnpm lint`
-- [ ] `pnpm typecheck`
-- [ ] Local verification of changed services
+**What could go wrong?**
 
-**Notes:**
+> Describe potential failure modes, security implications, or integrity risks.
 
-```text
-Add logs, screenshots, or curl outputs if relevant.
-```
-
----
-
-## 3. Integrity & Governance
+### Assessment
 
 - **Estimated MII for this PR:** 0.___
 - **Risk level:** Low / Medium / High
-- **Sentinel(s) consulted:** ATLAS / AUREA / ECHO / ZEUS / EVE
+- **Systems affected:** [list affected packages/services]
 
-If this PR touches:
-- **Ledger / Economics / Tokenomics** → mention NEGENTROPIC implications
-- **Reflections / Citizen Shield** → mention SML & HIL impacts
-- **Sentinels / Guardrails** → mention MCP & anti-drift
+### Checklist
+
+- [ ] Aligns with Mobius Integrity Index (MII ≥ 0.95)
+- [ ] Does not weaken Anti-Nuke / Guardian guarantees
+- [ ] Maintains SML safety and HIL loops
+- [ ] No unauthorized permission escalation
 
 ---
 
-## 4. Optional: Mobius Pulse Packet
+## 5. Rollback Plan
 
-If this is a large or structural change, generate a pulse.
+**How do we undo this if needed?**
 
 ```bash
-MOBIUS_CYCLE="C-___" MOBIUS_MII="0.___" ./scripts/mobius_pulse_json.sh > mobius_pulse_PR-<number>.json
+# Example:
+git revert <commit-sha>
+npm run deploy:production
+# Verify health checks pass
 ```
-
-<details>
-<summary>📦 Pulse Packet (click to expand)</summary>
-
-```json
-{
-  "meta": {
-    "timestamp": "2025-12-20T00:00:00Z",
-    "cycleLabel": "C-___",
-    "miiEstimate": "0.___"
-  }
-}
-```
-
-</details>
 
 ---
 
-## 5. Checklist
+## 6. Testing
 
-- [ ] This PR keeps Anti-Nuke guarantees intact
-- [ ] This PR keeps Guardian succession logic intact
-- [ ] This PR does not bypass MCP or Consensus Gate
-- [ ] This PR maintains SML safety and HIL loops
+- [ ] `npm test` passes
+- [ ] `npm run lint` passes
+- [ ] `npm run type-check` passes
+- [ ] Local verification of changed services
+- [ ] Benchmarks run (if Tier 2+)
+
+**Evidence:**
+
+```text
+Add logs, test output, or screenshots here.
+```
+
+---
+
+## 7. Sentinel Review Requested
+
+Add labels to request review:
+
+- [ ] `review:aurea` — Legitimacy, governance, MII/MIC impact
+- [ ] `review:atlas` — Systems risk, adversarial thinking, failure modes
+- [ ] `review:eve` — Ethics, safety, policy compliance
+
+**Notes for Sentinels:**
+<!-- What should reviewers focus on? -->
+
+---
+
+## 8. Final Checklist
+
+- [ ] Risk tier correctly assessed
+- [ ] EPICON intent block completed
+- [ ] Integrity impact documented
+- [ ] Rollback plan provided (if Tier 1+)
+- [ ] Tests pass
 - [ ] Documentation updated where needed
-- [ ] EPICON-02 Intent Publication block completed
 - [ ] I am okay with this appearing in the public cathedral
 
 ---
@@ -129,14 +133,6 @@ MOBIUS_CYCLE="C-___" MOBIUS_MII="0.___" ./scripts/mobius_pulse_json.sh > mobius_
 ## Related Issues
 
 Closes #
-
----
-
-## Integrity Impact
-
-- [ ] No MII impact
-- [ ] MII impact assessed (attach analysis)
-- [ ] Requires Council review
 
 ---
 

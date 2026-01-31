@@ -1,32 +1,87 @@
 ---
-name: Feature request
-about: Suggest an idea for Mobius Systems
+name: Feature Request
+about: Propose a change to Mobius Systems
 title: '[FEATURE] '
 labels: enhancement
 ---
 
-## Problem
+## Problem Statement
 
-Is your feature request related to a problem? Please describe.
-A clear and concise description of what the problem is. Ex. I'm always frustrated when [...]
+**Is your feature request related to a problem?**
+
+A clear description of the problem. Example: "I'm frustrated when [...]"
+
+---
 
 ## Proposal
 
-A clear and concise description of what you want to happen.
+**What do you want to happen?**
 
-## Alternatives
+Describe the proposed solution clearly and concisely.
 
-A clear and concise description of any alternative solutions or features you've considered.
+---
 
-## Impact on MII/MIC
+## Alternatives Considered
 
-How does this feature affect integrity, governance, or the economic model?
+**What other solutions have you thought about?**
 
-- [ ] No impact
-- [ ] Enhances integrity
-- [ ] Requires RFC (kernel/spec change)
+Describe any alternative approaches and why they were rejected.
+
+---
+
+## Integrity Impact
+
+**What risks does this introduce?**
+
+Consider how this change affects:
+- System integrity (MII)
+- Security surface
+- User privacy
+- Operational stability
+
+### Risk Assessment
+
+- [ ] **Tier 0** — Docs/comments only (no behavior change)
+- [ ] **Tier 1** — Application code (no auth/security changes)
+- [ ] **Tier 2** — Auth/ledger/integrity math changes
+- [ ] **Tier 3** — MIC/consensus/production ops changes
+
+### Impact Checklist
+
+- [ ] No impact on integrity systems
+- [ ] Enhances integrity/observability
+- [ ] Requires RFC (protocol/spec change)
+- [ ] Needs Steward review
 - [ ] Needs Council review
 
-## Additional context
+---
 
-Add any other context or screenshots about the feature request here.
+## Success Criteria
+
+**How do we know this worked?**
+
+Define measurable outcomes:
+- [ ] Criterion 1: [specific, measurable]
+- [ ] Criterion 2: [specific, measurable]
+- [ ] Criterion 3: [specific, measurable]
+
+---
+
+## Implementation Considerations
+
+**What should implementers know?**
+
+- **Affected packages:**
+- **Dependencies:**
+- **Breaking changes:**
+- **Migration needed:**
+
+---
+
+## Additional Context
+
+Add any other context, mockups, or references here.
+
+---
+
+*"We heal as we walk." — Mobius Substrate*

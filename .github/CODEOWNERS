@@ -77,3 +77,39 @@
 /sentinels/hermes/      @kaizencycle
 /sentinels/zeus/        @kaizencycle
 /sentinels/atlas/       @kaizencycle
+
+# =============================================================================
+# High-Risk Paths (Steward Approval Required)
+# =============================================================================
+# Ledger core — economic integrity
+/packages/ledger-core/           @kaizencycle/stewards
+
+# MIC core — token economics
+/packages/mic-core/              @kaizencycle/stewards
+
+# Integrity calculations
+/packages/integrity-core/        @kaizencycle/stewards
+/packages/integrity-units/       @kaizencycle/stewards
+
+# ZEUS policy engine
+/packages/zeus/                   @kaizencycle/stewards
+
+# EPICON specifications
+/packages/epicon/                 @kaizencycle/stewards
+/docs/epicon/                     @kaizencycle/stewards
+
+# Citizen Oversight module
+/docs/06-OPERATIONS/citizen-oversight/ @kaizencycle/aurea @kaizencycle/stewards
+
+# =============================================================================
+# Governance Documentation (AUREA + ATLAS Review)
+# =============================================================================
+/docs/03-GOVERNANCE-AND-POLICY/contributors/  @kaizencycle/aurea @kaizencycle/atlas
+/docs/03-GOVERNANCE-AND-POLICY/governance/    @kaizencycle/aurea @kaizencycle/atlas
+
+# =============================================================================
+# Security-Sensitive Paths
+# =============================================================================
+/.github/workflows/              @kaizencycle/atlas @kaizencycle/hermes
+/.github/CODEOWNERS              @kaizencycle/stewards
+/SECURITY.md                     @kaizencycle/eve @kaizencycle/stewards
