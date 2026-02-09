@@ -1,6 +1,6 @@
 {
   "mobius_catalog_version": "1.0.0",
-  "generated_at": "2026-01-31T17:11:26.204Z",
+  "generated_at": "2026-02-09T15:34:37.525Z",
   "repo": {
     "name": "Mobius-Substrate",
     "url": "https://github.com/kaizencycle/Mobius-Substrate",
@@ -9,7 +9,7 @@
   },
   "stats": {
     "epiconCount": 0,
-    "docCount": 908
+    "docCount": 909
   },
   "epicons": [],
   "docs": [
@@ -7002,7 +7002,7 @@
       "title": "Divergence Dashboard",
       "category": "divergence",
       "tags": [],
-      "content_hash": "sha256:7b22ef30aef0795220143285ddac6fab366148cde351c7fe1adb263ef65aa071",
+      "content_hash": "sha256:45194f69cfe4dd5a9be3c6baba43f99c18276317d7158a97d9863adccc6ac39c",
       "summary": ""
     },
     {
@@ -7172,6 +7172,22 @@
       ],
       "content_hash": "sha256:73c6e213a2e3d65c0639f20f8685c65646728f128a8e39f414fd966b1ec5b94a",
       "summary": "Comprehensive contributor governance documentation including role classes, citizen oversight dashboard specs, and MIC incentive structures"
+    },
+    {
+      "path": "docs/epicon/cycles/C-ATLAS/EPICON_C-ATLAS_INFRA_mobiusatlas-agent-launch_v1.md",
+      "title": "MobiusATLAS Agent Infrastructure Launch",
+      "category": "epicon",
+      "tags": [
+        "agents",
+        "atlas",
+        "moltbook",
+        "covenant",
+        "epicon-lite",
+        "sentinel",
+        "infrastructure"
+      ],
+      "content_hash": "sha256:445b4f1e3d90e342fb78d7cdbee72c70cd6b6536c4db1ebbb97b7a841a6ac24f",
+      "summary": "Add first operational Mobius sentinel agent (MobiusATLAS) with covenant enforcement, tripwires, and EPICON-Lite specification"
     },
     {
       "path": "docs/mobius/README.md",
