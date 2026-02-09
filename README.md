@@ -174,7 +174,7 @@ Mobius is not just software. It's infrastructure for a world where AI serves cit
 | Resource | Link |
 |----------|------|
 | GitHub | [github.com/kaizencycle/Mobius-Substrate](https://github.com/kaizencycle/Mobius-Substrate) |
-| Substack | [thekaizencycle.substack.com](https://thekaizencycle.substack.com) |
+| Substack | [kaizencycle.substack.com](https://kaizencycle.substack.com) |
 | MobiusATLAS | [moltbook.com/u/MobiusATLAS](https://moltbook.com/u/MobiusATLAS) |
 | Issues | [File an Issue](https://github.com/kaizencycle/Mobius-Substrate/issues) |
 
