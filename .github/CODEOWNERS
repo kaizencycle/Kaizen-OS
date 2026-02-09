@@ -79,6 +79,12 @@
 /sentinels/atlas/       @kaizencycle
 
 # =============================================================================
+# Agent Infrastructure (MobiusATLAS)
+# =============================================================================
+/agents/atlas/          @kaizencycle
+/agents/atlas/COVENANT.md @kaizencycle/aurea @kaizencycle/atlas
+
+# =============================================================================
 # High-Risk Paths (Steward Approval Required)
 # =============================================================================
 # Ledger core — economic integrity
