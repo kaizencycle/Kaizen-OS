@@ -183,7 +183,9 @@ Mobius is not just software. It's infrastructure for a world where AI serves cit
 
 ## License
 
-**AGPL-3.0** with Ethical Addendum — See [LICENSE](LICENSE)
+This project is licensed under the **GNU Affero General Public License v3.0 (AGPL-3.0)** — see [LICENSE](LICENSE) for the full text.
+
+An ethical intent addendum is provided in [`ETHICAL_ADDENDUM.md`](ETHICAL_ADDENDUM.md) to clarify the project's values and design philosophy.
 
 ---
 
