@@ -1,6 +1,6 @@
 {
   "mobius_catalog_version": "1.0.0",
-  "generated_at": "2026-02-11T15:59:49.957Z",
+  "generated_at": "2026-02-11T16:01:39.233Z",
   "repo": {
     "name": "Mobius-Substrate",
     "url": "https://github.com/kaizencycle/Mobius-Substrate",
@@ -7184,7 +7184,7 @@
         "developer-experience",
         "public-facing"
       ],
-      "content_hash": "sha256:57809b106f257b3f5b625abf6fb939f616fcb69f0e94889cf44fc7496e6de8ec",
+      "content_hash": "sha256:a649fb7a5d57f8944eca1adef03c196b392d4efbabe46b37af5905b73c82f470",
       "summary": "Rewrite README.md as a focused technical document — signal over noise for developer first impressions"
     },
     {

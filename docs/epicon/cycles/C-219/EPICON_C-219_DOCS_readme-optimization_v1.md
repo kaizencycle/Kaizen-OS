@@ -88,7 +88,7 @@ counterfactuals:
 | `services/*` | No |
 | `code.*` | No |
 
-### Authority Declaration
+## Authority Provenance
 
 - **Actor:** ATLAS Agent (on behalf of kaizencycle:michaeljudan)
 - **Authority Source:** CODEOWNERS approval
