@@ -1,6 +1,6 @@
 {
   "mobius_catalog_version": "1.0.0",
-  "generated_at": "2026-02-09T15:34:37.525Z",
+  "generated_at": "2026-02-11T16:01:39.233Z",
   "repo": {
     "name": "Mobius-Substrate",
     "url": "https://github.com/kaizencycle/Mobius-Substrate",
@@ -9,7 +9,7 @@
   },
   "stats": {
     "epiconCount": 0,
-    "docCount": 909
+    "docCount": 910
   },
   "epicons": [],
   "docs": [
@@ -7002,7 +7002,7 @@
       "title": "Divergence Dashboard",
       "category": "divergence",
       "tags": [],
-      "content_hash": "sha256:45194f69cfe4dd5a9be3c6baba43f99c18276317d7158a97d9863adccc6ac39c",
+      "content_hash": "sha256:62bc1c66aec622a0b425a3fee9bad303507b6f033ea7280094554c2cdf628a2b",
       "summary": ""
     },
     {
@@ -7172,6 +7172,20 @@
       ],
       "content_hash": "sha256:73c6e213a2e3d65c0639f20f8685c65646728f128a8e39f414fd966b1ec5b94a",
       "summary": "Comprehensive contributor governance documentation including role classes, citizen oversight dashboard specs, and MIC incentive structures"
+    },
+    {
+      "path": "docs/epicon/cycles/C-219/EPICON_C-219_DOCS_readme-optimization_v1.md",
+      "title": "README Optimization — Signal Over Noise",
+      "category": "epicon",
+      "tags": [
+        "documentation",
+        "readme",
+        "signal-to-noise",
+        "developer-experience",
+        "public-facing"
+      ],
+      "content_hash": "sha256:a649fb7a5d57f8944eca1adef03c196b392d4efbabe46b37af5905b73c82f470",
+      "summary": "Rewrite README.md as a focused technical document — signal over noise for developer first impressions"
     },
     {
       "path": "docs/epicon/cycles/C-ATLAS/EPICON_C-ATLAS_INFRA_mobiusatlas-agent-launch_v1.md",
