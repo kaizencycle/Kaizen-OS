@@ -1,6 +1,6 @@
 {
   "mobius_catalog_version": "1.0.0",
-  "generated_at": "2026-02-11T15:48:54.167Z",
+  "generated_at": "2026-02-11T15:59:49.957Z",
   "repo": {
     "name": "Mobius-Substrate",
     "url": "https://github.com/kaizencycle/Mobius-Substrate",
@@ -9,7 +9,7 @@
   },
   "stats": {
     "epiconCount": 0,
-    "docCount": 909
+    "docCount": 910
   },
   "epicons": [],
   "docs": [
@@ -7172,6 +7172,20 @@
       ],
       "content_hash": "sha256:73c6e213a2e3d65c0639f20f8685c65646728f128a8e39f414fd966b1ec5b94a",
       "summary": "Comprehensive contributor governance documentation including role classes, citizen oversight dashboard specs, and MIC incentive structures"
+    },
+    {
+      "path": "docs/epicon/cycles/C-219/EPICON_C-219_DOCS_readme-optimization_v1.md",
+      "title": "README Optimization — Signal Over Noise",
+      "category": "epicon",
+      "tags": [
+        "documentation",
+        "readme",
+        "signal-to-noise",
+        "developer-experience",
+        "public-facing"
+      ],
+      "content_hash": "sha256:57809b106f257b3f5b625abf6fb939f616fcb69f0e94889cf44fc7496e6de8ec",
+      "summary": "Rewrite README.md as a focused technical document — signal over noise for developer first impressions"
     },
     {
       "path": "docs/epicon/cycles/C-ATLAS/EPICON_C-ATLAS_INFRA_mobiusatlas-agent-launch_v1.md",
