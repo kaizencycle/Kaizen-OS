@@ -1,171 +1,136 @@
-# 🌀 Mobius Substrate
+# Mobius Substrate
 
-**The integrity layer for AI that serves citizens, not corporations.**
+**Integrity infrastructure for AI systems.**
 
-[![CI](https://img.shields.io/github/actions/workflow/status/kaizencycle/Mobius-Substrate/ci.yml?branch=main)](https://github.com/kaizencycle/Mobius-Substrate/actions)
-[![License: AGPL-3.0](https://img.shields.io/badge/License-AGPL%203.0-blue.svg)](LICENSE)
-[![KTT Native](https://img.shields.io/badge/KTT-Native-green.svg)](docs/01-FOUNDATIONS/concepts/KAIZEN_TURING_TEST.md)
+Mobius Substrate is a set of open-source tools that make integrity measurable, enforceable, and correctable in AI-governed systems. It provides intent accountability, integrity scoring, and multi-agent consensus — so AI systems can be held to their own stated values over time.
 
----
-
-## The Problem
-
-AI is being built without integrity infrastructure.
-
-- Models optimize for engagement, not truth
-- No way to verify AI reasoning after the fact
-- Governance arrives *after* problems emerge
-- Citizens are subjects of AI, not sovereigns over it
-
-**Mobius is the civilization layer that's missing.**
-
----
-
-## What Mobius Does
-
-| Component | Purpose |
-|-----------|---------|
-| **EPICON** | Tracks intent and reasoning — version control for *why*, not just *what* |
-| **MII** | Measures integrity over time — not just at deployment |
-| **MIC** | Turns verified integrity into economic value |
-| **DVA** | Orchestrates AI agents that stay human-grounded |
-| **Sentinels** | AI agents that govern *systems*, not users |
+| Component | What It Does | Status |
+|-----------|-------------|--------|
+| **EPICON** | Records *why* decisions were made, not just what changed | Live |
+| **MII** | Scores system integrity on a 0-1 scale, continuously | Live |
+| **MIC** | Credits earned through verified integrity, not speculation | Beta |
+| **Sentinel Council** | AI agents that govern *the system*, not users | Live |
+| **DVA** | Distributed agent orchestration with constitutional constraints | Beta |
 
 ---
 
 ## Quick Start
 
 ```bash
-# Clone
 git clone https://github.com/kaizencycle/Mobius-Substrate.git
 cd Mobius-Substrate
-
-# Install
 npm install
 
-# Run the integrity ledger
-cd apps/ledger-api && npm run dev
+# Start the integrity ledger
+cd services/civic-ledger
+npm run dev
 
-# Make your first attestation
-curl -X POST http://localhost:4001/attest \
-  -H "Content-Type: application/json" \
-  -d '{"event": "hello_mobius", "agent": "developer", "data": {"message": "First attestation!"}}'
+# Check the service is running
+curl http://localhost:3000/health
+
+# Query the integrity score
+curl http://localhost:3000/gi
 ```
 
 **Full quickstart:** [docs/05-IMPLEMENTATION/guides/quickstart/HELLO_WORLD.md](docs/05-IMPLEMENTATION/guides/quickstart/HELLO_WORLD.md)
 
 ---
 
-## Choose Your Path
+## Architecture
 
-### 🆕 New to Mobius?
+```
+HUMAN INTENT
+    |
+OAA HUB --> parses goals into specs
+    |
+THOUGHT BROKER --> multi-agent consensus (EPICON-3)
+    |
+MOBIUS LEDGER --> immutable integrity record (EPICON-2)
+    |
+INTEGRITY CORE --> validation & circuit breakers (EPICON-1)
+    |
+LIVE SERVICES
+```
 
-1. **[One-Pager](docs/00-START-HERE/README.md)** — 5 min overview
-2. **[Why Mobius Exists](docs/01-FOUNDATIONS/vision/WHY_MOBIUS_EXISTS.md)** — The problem we're solving
-3. **[Core Concepts](docs/01-FOUNDATIONS/concepts/)** — MII, MIC, KTT explained
+### Core Services
 
-### 🛠️ Want to Build?
-
-1. **[Architecture Overview](docs/04-TECHNICAL-ARCHITECTURE/overview/ARCHITECTURE.md)** — How the pieces fit
-2. **[Contributing Guide](CONTRIBUTING.md)** — How to add to Mobius
-3. **[API Reference](docs/05-IMPLEMENTATION/api/)** — Endpoint documentation
-
-### 🤖 Want to Run an Agent?
-
-1. **[MobiusATLAS](agents/atlas/)** — First sentinel agent (Moltbook)
-2. **[EPICON-Lite Spec](specs/EPICON-LITE.md)** — Lightweight integrity footers
-3. **[Sentinel Council](sentinels/)** — AI governance agents
-
-### 📚 Academic/Research?
-
-1. **[For Academics](FOR-ACADEMICS/README.md)** — Peer review status, citations
-2. **[Kaizen Turing Test](docs/01-FOUNDATIONS/concepts/KAIZEN_TURING_TEST.md)** — Evaluation framework
-3. **[Integrity-Driven Architecture](docs/04-TECHNICAL-ARCHITECTURE/)** — Technical foundations
+| Service | Port | Purpose |
+|---------|------|---------|
+| Civic Ledger | 3000 | Immutable attestation storage and integrity record |
+| GI Aggregator | 3001 | Global Integrity score computation |
+| MIC Indexer | 4002 | Integrity credit accounting |
+| OAA Hub | 3004 | Human intent to system specs |
+| Thought Broker | 4005 | Multi-LLM consensus engine |
 
 ---
 
-## Architecture (30 seconds)
+## Repository Structure
 
 ```
-Human Intent
-    ↓
-EPICON (captures why)
-    ↓
-Sentinel Council (multi-agent consensus)
-    ↓
-Mobius Ledger (immutable integrity record)
-    ↓
-Live Services (APIs, apps, agents)
+Mobius-Substrate/
+├── apps/              # Deployable applications (portal, broker, indexer, shield, gateway)
+├── services/          # Backend services (civic-ledger, gi-aggregator, epoch-burn)
+├── packages/          # Shared libraries (integrity-core, civic-sdk, oaa-memory)
+├── sentinels/         # AI governance agents (ATLAS, AUREA, EVE, JADE, HERMES + others)
+├── docs/              # Technical documentation, architecture, operations
+├── specs/             # Protocol specifications
+├── tests/             # Test suites
+├── scripts/           # Build and operations tooling
+├── labs/              # Experimental proofs of concept
+└── infra/             # Infrastructure and deployment configs
 ```
 
-**Core principle:** Every action has provenance. Every decision is auditable. Every agent is accountable.
+---
+
+## What Problem Does This Solve?
+
+AI systems drift from their stated values. This happens because:
+
+1. **Intent is undocumented.** Git tells you *what* changed, not *why*.
+2. **Integrity is unmeasured.** There's no continuous score for whether a system is living up to its own commitments.
+3. **Governance is an afterthought.** Constraints get added after deployment, not built into the architecture.
+
+Mobius Substrate addresses all three by making integrity a first-class system property — something that's measured, enforced, and corrected at the infrastructure level.
+
+---
+
+## For Different Audiences
+
+**Developers:** Start with the [Quick Start](#quick-start) above, then explore `services/civic-ledger/` and `packages/integrity-core/`.
+
+**Researchers:** See [docs/07-RESEARCH-AND-PUBLICATIONS/for-academics/README.md](docs/07-RESEARCH-AND-PUBLICATIONS/for-academics/README.md) for academic context, or browse `docs/07-RESEARCH-AND-PUBLICATIONS/papers/` for published research on integrity-driven architecture.
+
+**Governance / Policy:** See [docs/07-RESEARCH-AND-PUBLICATIONS/for-governments/README.md](docs/07-RESEARCH-AND-PUBLICATIONS/for-governments/README.md) for how Mobius applies to institutional AI governance.
+
+**Contributors:** Read [CONTRIBUTING.md](CONTRIBUTING.md). PRs require an EPICON intent block — we dogfood our own accountability tools.
 
 ---
 
 ## Live Services
 
-| Service | Purpose | Link |
-|---------|---------|------|
-| Mobius Portal | Main entry point | [mobius-browser-shell.vercel.app](https://mobius-browser-shell.vercel.app/) |
-| Ledger API | Integrity ledger | [civic-protocol-core-ledger.onrender.com](https://civic-protocol-core-ledger.onrender.com/) |
-| MobiusATLAS | Sentinel agent on Moltbook | [moltbook.com/u/MobiusATLAS](https://moltbook.com/u/MobiusATLAS) |
-
----
-
-## Repo Structure
-
-```
-Mobius-Substrate/
-├── agents/          # Operational AI agents (ATLAS, etc.)
-├── apps/            # 16 production applications
-├── packages/        # 7 shared libraries
-├── sentinels/       # 13 AI governance agents
-├── specs/           # Protocol specifications
-├── epicon/          # Intent and decision records
-├── docs/            # Documentation
-└── labs/            # Experimental proofs
-```
-
----
-
-## Key Metrics
-
-| Metric | Threshold | Purpose |
-|--------|-----------|---------|
-| **GI** (Global Integrity) | Display in badges | System-wide health |
-| **MII** (Mobius Integrity Index) | ≥ 0.95 | Required for operations |
-| **Sentinels Active** | 5 core + 8 specialized | Governance coverage |
+| Service | URL |
+|---------|-----|
+| Mobius Portal | [mobius-browser-shell.vercel.app](https://mobius-browser-shell.vercel.app) |
+| Integrity Ledger | [civic-protocol-core-ledger.onrender.com](https://civic-protocol-core-ledger.onrender.com) |
 
 ---
 
 ## Contributing
 
-We welcome contributions. The system is designed for additive-only changes with integrity gates.
+We welcome contributions. The system uses additive-only changes with integrity gates.
 
-```bash
-# Fork → Clone → Branch
-git checkout -b feature/your-feature
+1. Read [CONTRIBUTING.md](CONTRIBUTING.md)
+2. Check [Good First Issues](https://github.com/kaizencycle/Mobius-Substrate/labels/good%20first%20issue)
+3. Fork, branch, PR with EPICON intent block
+4. CI runs integrity checks automatically
 
-# Make changes, then PR
-git push origin feature/your-feature
-```
-
-**Important:**
-- PRs with >5 file deletions are blocked (anti-nuke)
-- All changes require human review
-- CI runs integrity checks automatically
-
-**Full guide:** [CONTRIBUTING.md](CONTRIBUTING.md)
+**Anti-nuke protection:** PRs with >5 file deletions are blocked. Force-push to `main` is disabled.
 
 ---
 
-## Philosophy
+## License
 
-> "Intelligence moves. Integrity guides." — Mobius Principle
-
-Mobius is not just software. It's infrastructure for a world where AI serves citizens, not platforms.
-
-**We build for timescales beyond our own sessions.**
+AGPL-3.0 with Ethical Addendum — See [LICENSE](LICENSE) and [ETHICAL_ADDENDUM.md](ETHICAL_ADDENDUM.md)
 
 ---
 
@@ -175,21 +140,8 @@ Mobius is not just software. It's infrastructure for a world where AI serves cit
 |----------|------|
 | GitHub | [github.com/kaizencycle/Mobius-Substrate](https://github.com/kaizencycle/Mobius-Substrate) |
 | Substack | [kaizencycle.substack.com](https://kaizencycle.substack.com) |
-| MobiusATLAS | [moltbook.com/u/MobiusATLAS](https://moltbook.com/u/MobiusATLAS) |
 | Issues | [File an Issue](https://github.com/kaizencycle/Mobius-Substrate/issues) |
-| Documentation | [kaizencycle.github.io/Mobius-Substrate](https://kaizencycle.github.io/Mobius-Substrate/) |
 
 ---
 
-## License
-
-This project is licensed under the **GNU Affero General Public License v3.0 (AGPL-3.0)** — see [LICENSE](LICENSE) for the full text.
-
-An ethical intent addendum is provided in [`ETHICAL_ADDENDUM.md`](ETHICAL_ADDENDUM.md) to clarify the project's values and design philosophy.
-
----
-
-<p align="center">
-  <em>The cathedral is built by those who show up.</em><br>
-  <strong>EPICON-3 Live | Integrity-First Architecture</strong>
-</p>
+*Integrity infrastructure. Built slowly. Built with memory.*
