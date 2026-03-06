@@ -26,8 +26,8 @@ python >= 3.11
 ## 1. Clone & Install (2 minutes)
 
 ```bash
-git clone https://github.com/kaizencycle/Mobius-Systems.git
-cd Mobius-Systems
+git clone https://github.com/kaizencycle/Mobius-Substrate.git
+cd Mobius-Substrate
 
 # Install dependencies
 npm install

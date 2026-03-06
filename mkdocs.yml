@@ -1,11 +1,11 @@
-site_name: Mobius-Systems Handbook
-site_url: https://kaizencycle.github.io/Mobius-Systems/
+site_name: Mobius-Substrate Handbook
+site_url: https://kaizencycle.github.io/Mobius-Substrate/
 site_description: "Continuous Integrity Architecture — We heal as we walk."
 site_author: Kaizen Cycle
 
 # Repository
-repo_name: kaizencycle/Mobius-Systems
-repo_url: https://github.com/kaizencycle/Mobius-Systems
+repo_name: kaizencycle/Mobius-Substrate
+repo_url: https://github.com/kaizencycle/Mobius-Substrate
 edit_uri: edit/main/docs/
 
 # Copyright
@@ -84,7 +84,7 @@ markdown_extensions:
       normalize_issue_symbols: true
       repo_url_shorthand: true
       user: kaizencycle
-      repo: Mobius-Systems
+      repo: Mobius-Substrate
   - pymdownx.mark
   - pymdownx.smartsymbols
   - pymdownx.superfences:
@@ -126,7 +126,7 @@ extra_javascript:
 nav:
   - Home: INDEX.md
   - Start Here: 00-START-HERE/README.md
-  - Mobius-Systems Handbook:
+  - Mobius-Substrate Handbook:
       - Handbook Index: 11-SUPPLEMENTARY/handbook/index.md
       - "Part I: Foundations": 11-SUPPLEMENTARY/handbook/part-i-foundations.md
       - "Part II: Technical Architecture": 11-SUPPLEMENTARY/handbook/part-ii-technical-architecture.md

@@ -309,7 +309,7 @@ The Daedalus Protocol transforms international cooperation from voluntary commit
 Michael Judan  
 Founder, Mobius Systems  
 kaizen@mobius.systems  
-github.com/kaizencycle/Mobius-Systems  
+github.com/kaizencycle/Mobius-Substrate  
 
 **Technical Documentation:**  
 - [Daedalus Technical Specification](../../docs/04-TECHNICAL-ARCHITECTURE/)

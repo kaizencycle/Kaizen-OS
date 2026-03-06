@@ -256,10 +256,10 @@ Category (00-10)
 1. Check [Master Index](./MASTER_INDEX.md) - most comprehensive
 2. Try [Subject Index](./SUBJECT_INDEX.md) - topic-based
 3. Search GitHub repository
-4. Ask in [GitHub Discussions](https://github.com/kaizencycle/Mobius-Systems/discussions)
+4. Ask in [GitHub Discussions](https://github.com/kaizencycle/Mobius-Substrate/discussions)
 
 ### Found a Broken Link?
-- Report it: [GitHub Issues](https://github.com/kaizencycle/Mobius-Systems/issues)
+- Report it: [GitHub Issues](https://github.com/kaizencycle/Mobius-Substrate/issues)
 - Label: "documentation"
 
 ### Want to Improve Documentation?

@@ -259,7 +259,7 @@ Deployed ⟹ ATLAS ≥ 0.95 ∧ AUREA ≥ 0.95
   author={Judan, Michael},
   journal={Submitted to IEEE TSE},
   year={2025},
-  note={Available at: github.com/kaizencycle/Mobius-Systems}
+  note={Available at: github.com/kaizencycle/Mobius-Substrate}
 }
 ```
 
@@ -275,8 +275,8 @@ Deployed ⟹ ATLAS ≥ 0.95 ∧ AUREA ≥ 0.95
 
 ### Quick Start
 ```bash
-git clone https://github.com/kaizencycle/Mobius-Systems
-cd Mobius-Systems
+git clone https://github.com/kaizencycle/Mobius-Substrate
+cd Mobius-Substrate
 npm install
 npm run integrity:check
 npm run consensus:validate

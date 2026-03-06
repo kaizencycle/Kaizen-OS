@@ -135,5 +135,5 @@ If you build with Mobius, you inherit not an obligation — but a responsibility
 ---
 
 **License:** [AGPL-3.0](./LICENSE)
-**Project:** [Mobius Systems](https://github.com/kaizencycle/Mobius-Systems)
+**Project:** [Mobius Systems](https://github.com/kaizencycle/Mobius-Substrate)
 **Steward:** Michael — [@kaizencycle](https://substack.com/@kaizencycle)

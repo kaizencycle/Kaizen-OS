@@ -81,7 +81,7 @@ Documents are heavily cross-referenced. Look for:
 
 ## 📞 Getting Help
 
-- **Documentation Issues**: Open issue at [GitHub](https://github.com/kaizencycle/Mobius-Systems/issues)
+- **Documentation Issues**: Open issue at [GitHub](https://github.com/kaizencycle/Mobius-Substrate/issues)
 - **General Questions**: community@mobius.systems
 - **Technical Support**: support@mobius.systems
 - **Security Concerns**: security@mobius.systems

@@ -173,7 +173,7 @@ Each translation should be reviewed by:
 
 **Mobius Systems Foundation**
 
-- **GitHub:** github.com/kaizencycle/Mobius-Systems
+- **GitHub:** github.com/kaizencycle/Mobius-Substrate
 - **Technical Docs:** `/docs/`
 - **Economic Docs:** `/FOR-ECONOMISTS/`
 - **Government Docs:** `/FOR-GOVERNMENTS/`

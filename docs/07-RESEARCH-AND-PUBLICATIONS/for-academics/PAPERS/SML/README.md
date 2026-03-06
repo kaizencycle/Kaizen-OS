@@ -214,7 +214,7 @@ d_t ≤ D_max / (1 - λ)
   author={Judan, Michael},
   journal={Submitted to NeurIPS},
   year={2025},
-  note={Available at: github.com/kaizencycle/Mobius-Systems}
+  note={Available at: github.com/kaizencycle/Mobius-Substrate}
 }
 ```
 
@@ -233,7 +233,7 @@ d_t ≤ D_max / (1 - λ)
 
 ### Code
 
-Available at: `github.com/kaizencycle/Mobius-Systems`
+Available at: `github.com/kaizencycle/Mobius-Substrate`
 
 ### Data
 

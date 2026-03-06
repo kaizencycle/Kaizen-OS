@@ -269,8 +269,8 @@ The INDEX.md file provides comprehensive navigation for:
 ## 📞 Getting Help
 
 ### Documentation Issues
-- 🐛 [Report doc issue](https://github.com/kaizencycle/Mobius-Systems/issues)
-- 💬 [Ask in discussions](https://github.com/kaizencycle/Mobius-Systems/discussions)
+- 🐛 [Report doc issue](https://github.com/kaizencycle/Mobius-Substrate/issues)
+- 💬 [Ask in discussions](https://github.com/kaizencycle/Mobius-Substrate/discussions)
 
 ### Community Support
 - **General**: community@mobius.systems

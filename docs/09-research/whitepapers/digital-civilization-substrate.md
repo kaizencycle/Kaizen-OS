@@ -647,7 +647,7 @@ If successful, Mobius demonstrates that:
 **License:** Creative Commons BY-NC-SA 4.0
 
 **Contact:**
-- Technical Questions: [GitHub Issues](https://github.com/kaizencycle/Mobius-Systems/issues)
+- Technical Questions: [GitHub Issues](https://github.com/kaizencycle/Mobius-Substrate/issues)
 - Research Collaboration: `docs/09-research/`
 - General Inquiries: `FOUNDATION/CHARTER.md`
 

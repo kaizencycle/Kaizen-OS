@@ -149,7 +149,7 @@ Communications materials (to be populated in Phase 2):
 - Governance: Constitutional AI with sentinel consensus
 
 **Contact:**
-- Website: github.com/kaizencycle/Mobius-Systems
+- Website: github.com/kaizencycle/Mobius-Substrate
 - Email: contact@mobius-systems.org (to be set up)
 - Community: [Discord/Forum] (to be set up)
 

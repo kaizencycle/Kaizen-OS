@@ -1508,7 +1508,7 @@ See page 6 of original MIC Whitepaper for visual timeline.
 
 ### Appendix F: References & Further Reading
 
-1. Kaizen OS GitHub: github.com/kaizencycle/Mobius-Systems
+1. Kaizen OS GitHub: github.com/kaizencycle/Mobius-Substrate
 1. Civic Protocol Core: [civic-protocol-core docs]
 1. OAA API Library: [oaa-api-library docs]
 1. Bitcoin Whitepaper (Nakamoto, 2008)

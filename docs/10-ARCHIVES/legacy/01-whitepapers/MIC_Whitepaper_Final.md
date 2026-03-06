@@ -440,7 +440,7 @@ Deploy MIC → Achieve planetary-scale UBI by 2050
 1. Alaska Permanent Fund: https://apfc.org
 2. GiveDirectly: https://givedirectly.org  
 3. Bitcoin Whitepaper: https://bitcoin.org/bitcoin.pdf
-4. Kaizen OS GitHub: https://github.com/kaizencycle/Mobius-Systems
+4. Kaizen OS GitHub: https://github.com/kaizencycle/Mobius-Substrate
 
 ---
 

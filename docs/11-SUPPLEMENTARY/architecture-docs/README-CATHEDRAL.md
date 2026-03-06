@@ -151,8 +151,8 @@ cd FOR-GOVERNMENTS/POLICY-BRIEFS/
 ### For Developers
 ```bash
 # Clone and install
-git clone https://github.com/kaizencycle/Mobius-Systems.git
-cd Mobius-Systems
+git clone https://github.com/kaizencycle/Mobius-Substrate.git
+cd Mobius-Substrate
 npm install
 
 # Start development
@@ -280,7 +280,7 @@ mobius-systems/
   title={Mobius Systems: Operating System for Recursive Intelligence},
   author={Judan, Michael},
   year={2025},
-  url={https://github.com/kaizencycle/Mobius-Systems},
+  url={https://github.com/kaizencycle/Mobius-Substrate},
   note={AGPL-3.0 with Ethical Addendum}
 }
 ```

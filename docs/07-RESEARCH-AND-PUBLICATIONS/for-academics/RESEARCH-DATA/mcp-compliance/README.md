@@ -302,7 +302,7 @@ jobs:
   author={Judan, Michael},
   year={2025},
   publisher={Mobius Systems},
-  url={https://github.com/kaizencycle/Mobius-Systems},
+  url={https://github.com/kaizencycle/Mobius-Substrate},
   note={46 cycles demonstrating systematic AI safety enforcement}
 }
 ```

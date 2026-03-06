@@ -269,7 +269,7 @@ Every action includes:
 
 ## Support
 
-- **GitHub Issues:** [kaizencycle/Mobius-Systems/issues](https://github.com/kaizencycle/Mobius-Systems/issues)
+- **GitHub Issues:** [kaizencycle/Mobius-Substrate/issues](https://github.com/kaizencycle/Mobius-Substrate/issues)
 - **Guardian Inquiries:** guardian@kaizen.os
 - **Emergency Contact:** security@kaizen.os
 

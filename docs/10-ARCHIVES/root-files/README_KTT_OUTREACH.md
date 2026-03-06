@@ -172,7 +172,7 @@ This is the equivalent of a constitutional convention for the AGI era.
 ## 11. Repository Structure
 
 ```
-Mobius-Systems/
+Mobius-Substrate/
 ├── apps/
 │   ├── broker-api/        # Thought Broker (multi-agent engine)
 │   ├── indexer/           # Telemetry + GI indexing

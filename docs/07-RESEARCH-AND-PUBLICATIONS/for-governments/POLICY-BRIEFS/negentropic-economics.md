@@ -289,7 +289,7 @@ Negentropic Economics offers a path to sustainable debt reduction without auster
 Michael Judan  
 Founder, Mobius Systems  
 kaizen@mobius.systems  
-github.com/kaizencycle/Mobius-Systems  
+github.com/kaizencycle/Mobius-Substrate  
 
 **Technical Documentation:**  
 - [FOR-ACADEMICS/PAPERS/NEGENTROPIC-ECONOMICS/](../../FOR-ACADEMICS/PAPERS/NEGENTROPIC-ECONOMICS/)

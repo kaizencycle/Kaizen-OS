@@ -58,7 +58,7 @@ Would you be willing to critique our mechanism design? Even a 30-minute conversa
 Best,  
 Michael Judan  
 Founder & Custodian, Mobius Systems  
-https://github.com/kaizencycle/Mobius-Systems  
+https://github.com/kaizencycle/Mobius-Substrate  
 
 ---
 

@@ -197,7 +197,7 @@ These are not restrictions on agent capability—they are *infrastructure* that 
 
 ## Relationship to Mobius Systems
 
-These MCP servers are part of the broader [Mobius Systems](https://github.com/kaizencycle/Mobius-Systems) project, which includes:
+These MCP servers are part of the broader [Mobius Systems](https://github.com/kaizencycle/Mobius-Substrate) project, which includes:
 
 - **Mobius Integrity Index (MII)** — Measuring institutional accountability
 - **Mobius Browser Shell** — Citizen-facing interface

@@ -1661,7 +1661,7 @@ shard_types:
 - *"MIC is not one currency — it is a four-layer integrity economy."*
 
 **Contact:**
-- Technical Questions: [GitHub Issues](https://github.com/kaizencycle/Mobius-Systems/issues)
+- Technical Questions: [GitHub Issues](https://github.com/kaizencycle/Mobius-Substrate/issues)
 - Economic Research: `FOR-ECONOMISTS/` directory
 - General Inquiries: FOUNDATION/CHARTER.md
 

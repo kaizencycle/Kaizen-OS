@@ -363,7 +363,7 @@ All GI scores are:
 
 ```bash
 # 1. Clone repository
-git clone https://github.com/kaizencycle/Mobius-Systems.git
+git clone https://github.com/kaizencycle/Mobius-Substrate.git
 cd Kaizen-OS
 
 # 2. Run deployment script

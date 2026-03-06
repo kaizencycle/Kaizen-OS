@@ -120,7 +120,7 @@ We provide complete dissertation frameworks:
   author={Judan, Michael},
   journal={Submitted to NeurIPS},
   year={2025},
-  note={Available at: github.com/kaizencycle/Mobius-Systems}
+  note={Available at: github.com/kaizencycle/Mobius-Substrate}
 }
 
 @article{mobius2025negentropic,
@@ -141,7 +141,7 @@ We provide complete dissertation frameworks:
   title={Mobius Systems: Operating System for Recursive Intelligence},
   author={Judan, Michael},
   year={2025},
-  url={https://github.com/kaizencycle/Mobius-Systems},
+  url={https://github.com/kaizencycle/Mobius-Substrate},
   note={CC0 1.0 Universal Public Domain}
 }
 ```

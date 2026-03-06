@@ -2,8 +2,8 @@
 # Kaizen OS — OpenCode federation config
 
 project:
-  name: Mobius-Systems
-  repo: kaizencycle/Mobius-Systems
+  name: Mobius-Substrate
+  repo: kaizencycle/Mobius-Substrate
   language_hint:
     - typescript
     - python

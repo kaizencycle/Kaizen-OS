@@ -598,7 +598,7 @@ This work builds on:
 
 ## ❖ CONTACT & CONTRIBUTION
 
-**Repository:** https://github.com/kaizen-core/Mobius-Systems  
+**Repository:** https://github.com/kaizen-core/Mobius-Substrate  
 **RFC Process:** See `/specs/civic-ledger/rfc-index.md`  
 **Community:** Join a HIVE City-State  
 **Questions:** Cathedral deliberation channels

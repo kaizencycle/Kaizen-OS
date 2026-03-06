@@ -609,7 +609,7 @@ See `/specs/mii_spec_v1.md` for MII/GI calculation details.
 ---
 
 **Correspondence**: michael@mobius-systems.com  
-**Code Repository**: https://github.com/kaizencycle/Mobius-Systems  
+**Code Repository**: https://github.com/kaizencycle/Mobius-Substrate  
 **Constitution**: docs/02-governance/SENTINEL_CONSTITUTION.md  
 **License**: MIT (with Constitutional obligations)
 

@@ -354,10 +354,10 @@ docs/
 ### Questions?
 - 📖 See [Navigation Guide](./NAVIGATION_GUIDE.md)
 - 🔍 Check [Master Index](./MASTER_INDEX.md)
-- 💬 [GitHub Discussions](https://github.com/kaizencycle/Mobius-Systems/discussions)
+- 💬 [GitHub Discussions](https://github.com/kaizencycle/Mobius-Substrate/discussions)
 
 ### Issues?
-- 🐛 [Report Issue](https://github.com/kaizencycle/Mobius-Systems/issues)
+- 🐛 [Report Issue](https://github.com/kaizencycle/Mobius-Substrate/issues)
 - Label: "documentation"
 
 ### Contributions?

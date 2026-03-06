@@ -2,7 +2,7 @@
 
 ## Executive Summary
 
-Based on scanning the Mobius-Systems monorepo, here's a strategic reorganization of the `docs/` folder that aligns with:
+Based on scanning the Mobius-Substrate monorepo, here's a strategic reorganization of the `docs/` folder that aligns with:
 - **Kaizen principles** (continuous improvement, discoverability)
 - **DVA architecture** (Democratic Virtual Architecture flows)
 - **Constitutional governance** (clarity, accountability, succession planning)

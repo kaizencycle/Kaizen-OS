@@ -58,7 +58,7 @@ vercel --prod
 # Option B: Via Dashboard (RECOMMENDED)
 # 1. Go to https://vercel.com/new
 # 2. Import Git Repository
-# 3. Select: kaizencycle/Mobius-Systems
+# 3. Select: kaizencycle/Mobius-Substrate
 # 4. Framework Preset: Next.js
 # 5. Root Directory: apps/portal
 # 6. Click "Deploy"

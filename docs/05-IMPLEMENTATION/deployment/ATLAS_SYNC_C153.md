@@ -74,7 +74,7 @@ Enabling agents to generate and propose PRs based on consensus creates a testabl
 
 ### Existing Self-Reflection Hooks
 
-From monorepo architecture at `github.com/kaizencycle/Mobius-Systems`:
+From monorepo architecture at `github.com/kaizencycle/Mobius-Substrate`:
 
 1. **Reflection Endpoints**
    - `apps/portal/app/reflections/` - Mobius Habits for cycle reviews

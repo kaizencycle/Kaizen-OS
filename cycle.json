@@ -68,7 +68,7 @@
   },
   "active_services": 16,
   "sentinel_count": 13,
-  "repository": "kaizencycle/Mobius-Systems",
+  "repository": "kaizencycle/Mobius-Substrate",
   "monorepo_structure": {
     "apps": 16,
     "packages": 7,

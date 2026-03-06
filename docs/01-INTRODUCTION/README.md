@@ -127,7 +127,7 @@ This directory contains all introductory and onboarding materials for Mobius Sub
 ### Documentation Resources
 - 📖 [Master Index](../00-META/MASTER_INDEX.md) - Find any document
 - 🔍 [Subject Index](../00-META/SUBJECT_INDEX.md) - Browse by topic
-- 💬 [GitHub Discussions](https://github.com/kaizencycle/Mobius-Systems/discussions)
+- 💬 [GitHub Discussions](https://github.com/kaizencycle/Mobius-Substrate/discussions)
 
 ### Community Support
 - **General**: community@mobius.systems

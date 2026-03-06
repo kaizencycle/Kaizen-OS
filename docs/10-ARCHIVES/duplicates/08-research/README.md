@@ -149,7 +149,7 @@ See [`collaboration-opportunities.md`](./collaboration-opportunities.md).
   title = {Mobius Systems: A Civilization Operating System},
   author = {Kaizen Collective},
   year = {2025},
-  url = {https://github.com/kaizencycle/Mobius-Systems},
+  url = {https://github.com/kaizencycle/Mobius-Substrate},
   note = {Cycle C-147}
 }
 ```
@@ -162,7 +162,7 @@ For specific components:
   institution = {Mobius Systems},
   year = {2025},
   type = {Technical Report},
-  url = {https://github.com/kaizencycle/Mobius-Systems/blob/main/docs/08-research/papers/ida-framework.md}
+  url = {https://github.com/kaizencycle/Mobius-Substrate/blob/main/docs/08-research/papers/ida-framework.md}
 }
 ```
 

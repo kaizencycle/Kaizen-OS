@@ -74,7 +74,7 @@ When citing Mobius research:
 
 ```
 Mobius Systems Foundation. (2025). [Document Title].
-Retrieved from https://github.com/kaizencycle/Mobius-Systems/
+Retrieved from https://github.com/kaizencycle/Mobius-Substrate/
 License: CC-BY-SA-4.0
 ```
 

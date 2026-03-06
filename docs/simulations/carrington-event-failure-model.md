@@ -498,7 +498,7 @@ if __name__ == "__main__":
 ### 5.2 Running the Simulation
 
 ```bash
-cd /path/to/Mobius-Systems
+cd /path/to/Mobius-Substrate
 mkdir -p simulations
 cd simulations
 

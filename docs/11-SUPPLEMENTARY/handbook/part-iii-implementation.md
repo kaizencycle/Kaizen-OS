@@ -6,7 +6,7 @@
 
 ```bash
 # Clone the repository
-git clone https://github.com/kaizencycle/Mobius-Systems
+git clone https://github.com/kaizencycle/Mobius-Substrate
 
 # Navigate to directory
 cd Kaizen-OS

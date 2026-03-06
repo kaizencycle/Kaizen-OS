@@ -27,7 +27,7 @@ This book establishes the philosophical and architectural foundation for Mobius 
   publisher={Mobius Press},
   year={2025},
   note={Kaizen Edition v0.2},
-  url={https://github.com/kaizencycle/Mobius-Systems/tree/main/book}
+  url={https://github.com/kaizencycle/Mobius-Substrate/tree/main/book}
 }
 ```
 

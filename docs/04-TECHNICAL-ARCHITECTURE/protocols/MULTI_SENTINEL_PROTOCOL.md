@@ -100,7 +100,7 @@ ECHO exports a **single canonical JSON payload** that all sentinels consume:
 
 ```bash
 # 1. Export once (ECHO)
-cd ~/Mobius-Systems
+cd ~/Mobius-Substrate
 python sentinels/echo/echo_sync.py export > state.json
 
 # 2. Analyze with ATLAS
@@ -225,7 +225,7 @@ For fork comparisons, **all sentinels must agree**:
 
 ```bash
 # Export canonical
-cd ~/Mobius-Systems
+cd ~/Mobius-Substrate
 python sentinels/echo/echo_sync.py export > canonical.json
 
 # Export fork

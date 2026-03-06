@@ -66,7 +66,7 @@ Would you be willing to critique our institutional design? Your expertise on law
 Best,  
 Michael Judan  
 Founder & Custodian, Mobius Systems  
-https://github.com/kaizencycle/Mobius-Systems  
+https://github.com/kaizencycle/Mobius-Substrate  
 
 ---
 
