@@ -168,4 +168,4 @@ broken-links-report.txt
 broken-links.json
 
 # Core dumps
-core
+/core

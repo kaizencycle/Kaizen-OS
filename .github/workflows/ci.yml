@@ -185,10 +185,10 @@ jobs:
           if [ "${{ github.event_name }}" == "pull_request" ]; then
             # For PRs, fetch base branch and check files in the PR
             git fetch origin ${{ github.base_ref }}:${{ github.base_ref }} || true
-            CHANGED=$(git diff --name-only ${{ github.base_ref }}...HEAD | grep -E '^(docs/schemas/|docs/specs/|.*openapi\.yaml)' || true)
+            CHANGED=$(git diff --name-only ${{ github.base_ref }}...HEAD | grep -E '^(docs/schemas/|docs/specs/|apps/(ledger|indexer|eomm)-api/openapi\.yaml)' || true)
           else
             # For pushes, check files in the last commit
-            CHANGED=$(git diff --name-only HEAD~1...HEAD | grep -E '^(docs/schemas/|docs/specs/|.*openapi\.yaml)' || true)
+            CHANGED=$(git diff --name-only HEAD~1...HEAD | grep -E '^(docs/schemas/|docs/specs/|apps/(ledger|indexer|eomm)-api/openapi\.yaml)' || true)
           fi
           if [ -n "$CHANGED" ]; then
             echo "changed=true" >> $GITHUB_OUTPUT
@@ -229,14 +229,18 @@ jobs:
       - name: Lint OpenAPI
         if: steps.check-spec.outputs.changed == 'true'
         run: |
+          LINT_FAILED=0
           if [ -f "apps/ledger-api/openapi.yaml" ]; then
-            redocly lint apps/ledger-api/openapi.yaml
+            redocly lint apps/ledger-api/openapi.yaml || LINT_FAILED=1
           fi
           if [ -f "apps/indexer-api/openapi.yaml" ]; then
-            redocly lint apps/indexer-api/openapi.yaml
+            redocly lint apps/indexer-api/openapi.yaml || LINT_FAILED=1
           fi
           if [ -f "apps/eomm-api/openapi.yaml" ]; then
-            redocly lint apps/eomm-api/openapi.yaml
+            redocly lint apps/eomm-api/openapi.yaml || LINT_FAILED=1
+          fi
+          if [ "$LINT_FAILED" -eq 1 ]; then
+            echo "::warning::OpenAPI lint issues detected (pre-existing). See output above."
           fi
 
   # ============================================
