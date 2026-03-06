@@ -3,7 +3,7 @@ info:
   title: Thought Broker API
   version: 0.1.0
   description: |
-    Thought Broker - Multi-LLM consensus engine for Mobius Systems.
+    Thought Broker - Multi-LLM consensus engine for Mobius Substrate.
     
     The Broker orchestrates multi-agent deliberation loops, synthesizes positions,
     calculates Mobius Integrity Index (MII) scores, and generates cryptographic

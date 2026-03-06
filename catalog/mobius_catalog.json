@@ -1,6 +1,6 @@
 {
   "mobius_catalog_version": "1.0.0",
-  "generated_at": "2026-02-11T16:01:39.233Z",
+  "generated_at": "2026-03-06T17:22:15.455Z",
   "repo": {
     "name": "Mobius-Substrate",
     "url": "https://github.com/kaizencycle/Mobius-Substrate",
@@ -9,7 +9,7 @@
   },
   "stats": {
     "epiconCount": 0,
-    "docCount": 910
+    "docCount": 911
   },
   "epicons": [],
   "docs": [
@@ -18,7 +18,7 @@
       "title": "📁 Mobius Systems Documentation — Folder Index",
       "category": "00-META",
       "tags": [],
-      "content_hash": "sha256:4238cab523f16b392f5e29842d427b379c5a33dba45c8b12d2c260e1f29f87e0",
+      "content_hash": "sha256:85d195c9e17c80ec3c322e40c04f99a944cc6f8e2bb56155a538852c165bded7",
       "summary": ""
     },
     {
@@ -34,7 +34,7 @@
       "title": "Navigation Guide",
       "category": "00-META",
       "tags": [],
-      "content_hash": "sha256:6ab68e59a9e434e02382aa80b7e722469fb36a6504b0d6befc83b8bd8e3add0d",
+      "content_hash": "sha256:11da43afae627c611adfc07661d2340d3cd905359cf9eb9867383d3f217ba0ac",
       "summary": ""
     },
     {
@@ -42,7 +42,7 @@
       "title": "🌀 MOBIUS SENTINEL ORCHESTRATION — COMPLETE",
       "category": "00-META",
       "tags": [],
-      "content_hash": "sha256:685b51332172285565ed8546ab7ef9b33f9f0962790c88851e46c392f21e94aa",
+      "content_hash": "sha256:5cca740d11219a81a29a33c870d8cd0ee4c7832bd336e5a233d7e92c3c3376c0",
       "summary": ""
     },
     {
@@ -66,7 +66,7 @@
       "title": "Mobius Substrate FAQ",
       "category": "00-START-HERE",
       "tags": [],
-      "content_hash": "sha256:c90c3169b41b79ff96fce6a16715cb2bba8dec737fef766e514fef83e6612fa3",
+      "content_hash": "sha256:d28ceea0d4eb81639a98253239b59d11279a8b11be1b3d6336bb9f6837c92e73",
       "summary": ""
     },
     {
@@ -98,7 +98,7 @@
       "title": "🌀 MOBIUS SUBSTRATE: COMPLETE SYSTEM OVERVIEW",
       "category": "00-START-HERE",
       "tags": [],
-      "content_hash": "sha256:2d371440d7da3f064bc768259329183157af4d5029471f052fe17dc0ec586247",
+      "content_hash": "sha256:49b591112da61be74842e5070dc1123ad4bf5d5669e1201cb09fcc8cef09b2be",
       "summary": ""
     },
     {
@@ -106,7 +106,7 @@
       "title": "🌀 Welcome to Mobius Substrate Documentation",
       "category": "00-START-HERE.md",
       "tags": [],
-      "content_hash": "sha256:f4ce698b5a6d9db15486aab89ea6fdd029e99b00cee0549c23ecd722a23e0ad6",
+      "content_hash": "sha256:3a73e384e67e455b1dde03b5100eff87ba8c5a9ebb5659d5f0ae04bb392660e9",
       "summary": ""
     },
     {
@@ -122,7 +122,7 @@
       "title": "Introduction and Getting Started",
       "category": "01-INTRODUCTION",
       "tags": [],
-      "content_hash": "sha256:88ebb61e42cc9c6288dc3223d6db0218da038b604922fbd0ae071b398a1228fe",
+      "content_hash": "sha256:072a291ad362437edc7525fdf42b5d940bb1fa46118d6b3faa948d4881329f03",
       "summary": ""
     },
     {
@@ -130,7 +130,7 @@
       "title": "Theoretical Foundations",
       "category": "02-THEORETICAL-FOUNDATIONS",
       "tags": [],
-      "content_hash": "sha256:9af0cae92ebdefec568888640ab5376e652a4962c05e6984198fb6bff51a1e71",
+      "content_hash": "sha256:1b55ac7485150a0ade0bfbb091125a93ac90c5a7b7599758b202e60d3169ac76",
       "summary": ""
     },
     {
@@ -818,7 +818,7 @@
       "title": "RFC Index",
       "category": "03-GOVERNANCE-AND-POLICY",
       "tags": [],
-      "content_hash": "sha256:8ace910c1acb3c59f75cfe9e9fe2d902780d3e5915ec7adc19dfd90f86105003",
+      "content_hash": "sha256:d1b0c784224add3bd7d3e4138884fea09eded29ba4d50555ce3788e7d888286d",
       "summary": ""
     },
     {
@@ -1162,7 +1162,7 @@
       "title": "Kaizen-OS Labs Architecture - Master Document",
       "category": "04-TECHNICAL-ARCHITECTURE",
       "tags": [],
-      "content_hash": "sha256:2f3c2cc8b7b8f25ee1cbb79f85fc6f17289e69c71d7baf7bb9c64ac012aba894",
+      "content_hash": "sha256:56aa0c4487c88270fab2947c6e43880472c0b0b5f00e1f652ccfed4451f028da",
       "summary": ""
     },
     {
@@ -1218,7 +1218,7 @@
       "title": "ECHO ↔ ATLAS ↔ AUREA — Multi-Sentinel Sync System (MCP)",
       "category": "04-TECHNICAL-ARCHITECTURE",
       "tags": [],
-      "content_hash": "sha256:1bb29c044f40de324f5107dda1275af7a989dac1a76628153dae265fcf690f17",
+      "content_hash": "sha256:16e6bb74425f322cc7c7040576bc26fdfa253febbabb795ea4c38e766a2abc95",
       "summary": ""
     },
     {
@@ -1226,7 +1226,7 @@
       "title": "Multi-Sentinel ECHO Protocol",
       "category": "04-TECHNICAL-ARCHITECTURE",
       "tags": [],
-      "content_hash": "sha256:0ce19d9d68c70db24c96e29162c9a760907895dea8bba38d116e3bf25e0b11a1",
+      "content_hash": "sha256:448aa176b24f815f46f3fa551de0f5f247b9b47c0675e721d8e1132130e4bb00",
       "summary": ""
     },
     {
@@ -1378,7 +1378,7 @@
       "title": "ATLAS Sync Skill - Mobius Systems Edition",
       "category": "05-IMPLEMENTATION",
       "tags": [],
-      "content_hash": "sha256:758b41f47e2425f33704fccc0a282e454c616c29abb31d54455ea6f14e2cdc81",
+      "content_hash": "sha256:06f5144a44cfa25d0e01038c7965c93fc3b5b4e9291c5343ba18f480139da1d3",
       "summary": ""
     },
     {
@@ -1418,7 +1418,7 @@
       "title": "🚀 KAIZEN OS - VERCEL DEPLOYMENT GUIDE",
       "category": "05-IMPLEMENTATION",
       "tags": [],
-      "content_hash": "sha256:9390a1c477325c9837fb282a76c8e98320aa2e34887610674ccebd2b053d6f68",
+      "content_hash": "sha256:83dbac8ded5e6618e66af0fa49eee8027ff5b50242bb99f17ee0c8c871392bcf",
       "summary": ""
     },
     {
@@ -1458,7 +1458,7 @@
       "title": "Cursor IDE Integration with Kaizen OS",
       "category": "05-IMPLEMENTATION",
       "tags": [],
-      "content_hash": "sha256:cd97e35abfe76a056319d9ca4f240dbde558960cb7d01e77f2e7c7a6f01e5aac",
+      "content_hash": "sha256:c32a506af805df672d63f1a3e92f15b41966975c21393413684087bfc7c799c8",
       "summary": ""
     },
     {
@@ -1522,7 +1522,7 @@
       "title": "Hello World - Mobius Systems MVP",
       "category": "05-IMPLEMENTATION",
       "tags": [],
-      "content_hash": "sha256:a8a425333fb30b565683aad0f95914432ffbb8ff3569c0af769c366f8a9f050e",
+      "content_hash": "sha256:197ee89653cd6e8b7b318efc3313f3efa5168c2e16e2c71aa084324ea33fc38a",
       "summary": ""
     },
     {
@@ -1562,7 +1562,7 @@
       "title": "Onboarding Documentation",
       "category": "05-IMPLEMENTATION",
       "tags": [],
-      "content_hash": "sha256:154c951de00ed04519a647ed30b0b7722024e9544e977a339176bccfa5eadefa",
+      "content_hash": "sha256:6c4adef4aa1d784db0973debf3f2791ae5344ac2bc7b301ea3730ab2e3e2becd",
       "summary": ""
     },
     {
@@ -1570,7 +1570,7 @@
       "title": "🌟 Kaizen OS - AI Model Onboarding Guide",
       "category": "05-IMPLEMENTATION",
       "tags": [],
-      "content_hash": "sha256:addac7af0b6cde084b96507043e015aa5a80d8262cf46b888192ed53c0a7b92f",
+      "content_hash": "sha256:3e984979603e95005d081f732af85c850b231990ce12534794d6b0a4f8a27e70",
       "summary": ""
     },
     {
@@ -1578,7 +1578,7 @@
       "title": "🧩 Kaizen OS Federation Protocol Brief",
       "category": "05-IMPLEMENTATION",
       "tags": [],
-      "content_hash": "sha256:01b1349ce093355dc5d864a51ffff4ba681695f05143f60a9d257aa374b95f83",
+      "content_hash": "sha256:96e0800f74d61fc4f08ebaa5c9affb50ed1c0ae534c2db9f996420266fefb851",
       "summary": ""
     },
     {
@@ -1594,7 +1594,7 @@
       "title": "🧭 Kaizen OS Self-Host Guide",
       "category": "05-IMPLEMENTATION",
       "tags": [],
-      "content_hash": "sha256:939682783431f55fc457d5d18087f8b0ef523df1ee0ac00030613bd6fa7e548c",
+      "content_hash": "sha256:e36f93c5f2332ec2e67048c3ec5e3ac95d81589d4ed89c33e1237420db309209",
       "summary": ""
     },
     {
@@ -1602,7 +1602,7 @@
       "title": "Fork Integrity Comparison Report — Mobius Systems",
       "category": "06-OPERATIONS",
       "tags": [],
-      "content_hash": "sha256:17a81900c44ad365a0b0203fccb43069cfd96c95e2f06fabe9bb68d85d751de0",
+      "content_hash": "sha256:cb4bb060ad3f0eda39acd99f950d574c5eee2aa0a5b3c6d8a97982c23ebbd683",
       "summary": ""
     },
     {
@@ -1610,7 +1610,7 @@
       "title": "Mobius Systems — Monorepo Health & Integrity Report",
       "category": "06-OPERATIONS",
       "tags": [],
-      "content_hash": "sha256:ee24bfe71cdee065447ab4d1fdf00fa88f50aec9fdb89e8a1f129e7907b9898d",
+      "content_hash": "sha256:3f840cd9941d7f6e167fe7968aa6b659a182ec14deb3b741b9c111eacda5c5ee",
       "summary": ""
     },
     {
@@ -1794,7 +1794,7 @@
       "title": "Vercel Deployment Runbook",
       "category": "06-OPERATIONS",
       "tags": [],
-      "content_hash": "sha256:11503ed772a6095e57f556385d089dae97bac5f41d4f314f32d0f0416adf1b60",
+      "content_hash": "sha256:2dba826f0def723d68e36dff9dff3144bb7c4f50bd816954fe803a614bb3061b",
       "summary": ""
     },
     {
@@ -1986,7 +1986,7 @@
       "title": "Integrity Before Intelligence",
       "category": "07-RESEARCH-AND-PUBLICATIONS",
       "tags": [],
-      "content_hash": "sha256:6d437e2b89aa01204344a552b864d64885259733080099ad816edba8f88f66d9",
+      "content_hash": "sha256:f8f32e0f62c1683f8f748d645cbb24eb26056b3f0860fc04a029984ea4d080be",
       "summary": ""
     },
     {
@@ -2082,7 +2082,7 @@
       "title": "Research Cathedral — API Endpoints",
       "category": "07-RESEARCH-AND-PUBLICATIONS",
       "tags": [],
-      "content_hash": "sha256:0c5e23e9ffbd000667644774559c829bbe586ab1e75cc4c79cd755837b8cb057",
+      "content_hash": "sha256:2faf6c182a26e3d15bf4caf46b48a77624fc438ec2ce4874c5b532ee998f1836",
       "summary": ""
     },
     {
@@ -2106,7 +2106,7 @@
       "title": "Mobius Cycle Protocol (MCP)",
       "category": "07-RESEARCH-AND-PUBLICATIONS",
       "tags": [],
-      "content_hash": "sha256:5cdcd1668455d7e14036f3bafdd23e5a7edc27627aad767ee268a95529545838",
+      "content_hash": "sha256:704399f0183e6f81397872b81e9f9e1c9889256a915a4774b1d428cc327bfd7d",
       "summary": ""
     },
     {
@@ -2122,7 +2122,7 @@
       "title": "Negentropic Economics Paper",
       "category": "07-RESEARCH-AND-PUBLICATIONS",
       "tags": [],
-      "content_hash": "sha256:734d7af150c135217c687c3db4771b02668eb973214b24c80a04be5020a11356",
+      "content_hash": "sha256:8728a8148fef6309f238d4b0800fbc94c7f078cfd54ecda0daa2240a9e5ae4ef",
       "summary": ""
     },
     {
@@ -2130,7 +2130,7 @@
       "title": "Strange Metamorphosis Loop (SML)",
       "category": "07-RESEARCH-AND-PUBLICATIONS",
       "tags": [],
-      "content_hash": "sha256:4090e82bc162aed03e382cc43b5d3c22c1db75c2c528826bca7e829e90d9902d",
+      "content_hash": "sha256:73f30f453af35f3572f6204a70cc424c2be042384cee738e99b5489dc802faab",
       "summary": ""
     },
     {
@@ -2146,7 +2146,7 @@
       "title": "🎓 For Academics — Research Cathedral",
       "category": "07-RESEARCH-AND-PUBLICATIONS",
       "tags": [],
-      "content_hash": "sha256:2b59a527337ec2c54ccdaec80f1d8fc53799610cae5477d883448c0d31c33007",
+      "content_hash": "sha256:0aac93f31ac8b04efccdbbfb121107a78b720087dafd568756b280a96f9e2a7c",
       "summary": ""
     },
     {
@@ -2154,7 +2154,7 @@
       "title": "Economic Validation Research Data",
       "category": "07-RESEARCH-AND-PUBLICATIONS",
       "tags": [],
-      "content_hash": "sha256:00a19848b2ef1debb98e0ab2957909b73e44d91459d50d43b947a477d4b8b21d",
+      "content_hash": "sha256:7583617dedf99f2549dabf119f1bb3222f816bda1b2801e4c924e7bf5704cd6b",
       "summary": ""
     },
     {
@@ -2162,7 +2162,7 @@
       "title": "MIC Economic Validation Dataset",
       "category": "07-RESEARCH-AND-PUBLICATIONS",
       "tags": [],
-      "content_hash": "sha256:76e5442d295004613d69e5307aa439ca4a1d0c87ebfb98c64199698fba48920b",
+      "content_hash": "sha256:4bf44be5f1e6076bc1c07b4b0bb0f812cefc2015b09eb62479c77ee543451530",
       "summary": ""
     },
     {
@@ -2170,7 +2170,7 @@
       "title": "MCP Compliance Research Data",
       "category": "07-RESEARCH-AND-PUBLICATIONS",
       "tags": [],
-      "content_hash": "sha256:7e2009dbc76303c93e61ab8b6f184e6e91cd8125f6a0ac6762f4058ab25e9ec6",
+      "content_hash": "sha256:35dff91505e6c028061bbda6a416a7d8f245a98df145e2551d28da4bc7399fc6",
       "summary": ""
     },
     {
@@ -2178,7 +2178,7 @@
       "title": "SML Drift Prevention Research Data",
       "category": "07-RESEARCH-AND-PUBLICATIONS",
       "tags": [],
-      "content_hash": "sha256:814e2e3ec55dd9c5061e03107322b5e0a59f0e70bdc2535f9c72ff2fa3dc31eb",
+      "content_hash": "sha256:10a35b3d640c6c64f1de1021b1b98855820c66aa0c715791205c2971eb13dafd",
       "summary": ""
     },
     {
@@ -2186,7 +2186,7 @@
       "title": "PhD Thesis Templates",
       "category": "07-RESEARCH-AND-PUBLICATIONS",
       "tags": [],
-      "content_hash": "sha256:5743421a9ee45cc17f63d590e7510a4b244f39788f025b8fc7eaf481d0cd6da9",
+      "content_hash": "sha256:f894a26b6268c9921dabcf7ebd039f7926ba6a207408dfd4593c1840e3b8c355",
       "summary": ""
     },
     {
@@ -2202,7 +2202,7 @@
       "title": "Debt-Entropy Unification Model",
       "category": "07-RESEARCH-AND-PUBLICATIONS",
       "tags": [],
-      "content_hash": "sha256:cd31581f47bd4ab9b514074c1303dcfc23203150e2397c5356b9b9d836bd145a",
+      "content_hash": "sha256:a562ff7d0ee241a58ada113739f6dd4e9f7bbedb3dc9e346342fe31445fc7f85",
       "summary": ""
     },
     {
@@ -2210,7 +2210,7 @@
       "title": "📈 Empirical Validation",
       "category": "07-RESEARCH-AND-PUBLICATIONS",
       "tags": [],
-      "content_hash": "sha256:6cdbf69961e171aba437563cc799ada501ed290124aa899b952acde29e0a6bdf",
+      "content_hash": "sha256:8dc29835a2d8fba82ab01b2e247e8d823e50915e3a6251339a49890e76c419e7",
       "summary": ""
     },
     {
@@ -2330,7 +2330,7 @@
       "title": "Negentropic Economics ROI Calculators",
       "category": "07-RESEARCH-AND-PUBLICATIONS",
       "tags": [],
-      "content_hash": "sha256:7065760b053e610995656370dd588607fc2ae27a9aafff832b554a1e3cae4b2c",
+      "content_hash": "sha256:d41461f521df0b69e5bf4e25bfeb332c2cb6030dc0c61f44bb609ce276b213fd",
       "summary": ""
     },
     {
@@ -2378,7 +2378,7 @@
       "title": "A Letter to World Leaders",
       "category": "07-RESEARCH-AND-PUBLICATIONS",
       "tags": [],
-      "content_hash": "sha256:336cc96881e4e0d5859e672707f6ad33c9a02ec7393bbe30c50e40516f037aa7",
+      "content_hash": "sha256:730cf60c0084249ef4843d3db661e6ba217765106e35507574b7ba467d87c1c3",
       "summary": ""
     },
     {
@@ -2394,7 +2394,7 @@
       "title": "MIC — The Integrity Standard for the 21st Century",
       "category": "07-RESEARCH-AND-PUBLICATIONS",
       "tags": [],
-      "content_hash": "sha256:1992b57698e827625acb68d52ec566aa131a6b17dc3d24da8b2f92b60ce6ffe6",
+      "content_hash": "sha256:38ee06c3526e0c9214681a8e8ff0d5b0eb25ed92af01afa4db99b199012a2384",
       "summary": ""
     },
     {
@@ -2402,7 +2402,7 @@
       "title": "MIC: The Integrity Standard for the 21st Century",
       "category": "07-RESEARCH-AND-PUBLICATIONS",
       "tags": [],
-      "content_hash": "sha256:36ef727e392b4e46c722e3e1b563c3ca6c08337d9897bcbac764a03c3afa221a",
+      "content_hash": "sha256:2f4f41c1e99bff858e83c84266963b2c5cb9b132f45a13c1bc59e435ef2bead2",
       "summary": ""
     },
     {
@@ -2426,7 +2426,7 @@
       "title": "DIPLOMACY — MIC Global Outreach Materials",
       "category": "07-RESEARCH-AND-PUBLICATIONS",
       "tags": [],
-      "content_hash": "sha256:f741c771f601babe912492d2410b2fbcfcc58406af126f194df6e91ec0bbf385",
+      "content_hash": "sha256:08c6231d9c3977e1914cba4f06d515b5e180a6c7de08374a777d212a9612ac25",
       "summary": ""
     },
     {
@@ -2586,7 +2586,7 @@
       "title": "Policy Brief: Daedalus Protocol",
       "category": "07-RESEARCH-AND-PUBLICATIONS",
       "tags": [],
-      "content_hash": "sha256:0979e3bb414c0672caea15a4d217e4e4e071b821be6d6df38af8429c3a8b50d1",
+      "content_hash": "sha256:743d7478da116050f2b357b28257b9955a028b64e2a77d28d6249d0c4ed4b120",
       "summary": ""
     },
     {
@@ -2594,7 +2594,7 @@
       "title": "Policy Brief: Mobius Cycle Protocol (MCP)",
       "category": "07-RESEARCH-AND-PUBLICATIONS",
       "tags": [],
-      "content_hash": "sha256:08809ed35ede0ff93fb7e91cd3e521c97b381c0d5224b83b5357203e0b907eef",
+      "content_hash": "sha256:5cad7029b7f22c61d6722f1d9abd43649f5f8a277ebc3086a7118dceb7fb315f",
       "summary": ""
     },
     {
@@ -2610,7 +2610,7 @@
       "title": "Policy Brief: Negentropic Economics",
       "category": "07-RESEARCH-AND-PUBLICATIONS",
       "tags": [],
-      "content_hash": "sha256:e0548262d063ce079acdd71ce718df60629ac5cea071233234e6220c2dcb2953",
+      "content_hash": "sha256:d4792d3e5e0ded93cb82e7225f5c083adff25c0ae0799ee8fb5417444f8c4ea9",
       "summary": ""
     },
     {
@@ -2618,7 +2618,7 @@
       "title": "Policy Brief: Strange Metamorphosis Loop (SML)",
       "category": "07-RESEARCH-AND-PUBLICATIONS",
       "tags": [],
-      "content_hash": "sha256:f1e413e1407c0e39dc51f814fc0981df7fe1bc0c5f4f746e06e969d380567e00",
+      "content_hash": "sha256:93437bbbc191952e01c5a6061946afc22c506acbb2c2662c9f57c4cb9fc86f08",
       "summary": ""
     },
     {
@@ -2674,7 +2674,7 @@
       "title": "The Kintsugi Principle",
       "category": "07-RESEARCH-AND-PUBLICATIONS",
       "tags": [],
-      "content_hash": "sha256:643f7aaac50fa6f076ccb4dd64f8be6702390dd82d68a20e3a63d2efbb24abbb",
+      "content_hash": "sha256:3fba59d3f882094837d0483d23e7b6d7e27475cdd641f1b414e68a6b9dec1aa0",
       "summary": ""
     },
     {
@@ -2690,7 +2690,7 @@
       "title": "The Virtue Accords",
       "category": "07-RESEARCH-AND-PUBLICATIONS",
       "tags": [],
-      "content_hash": "sha256:9359d55f8ca9cd989c621675606327ee671692ae6230bc0d7f276a6d08426877",
+      "content_hash": "sha256:bda60775bbf59271801b105e9eaacf7862367fbdd4201bd463da099fc60a7cee",
       "summary": ""
     },
     {
@@ -2866,7 +2866,7 @@
       "title": "MOBIUS SYSTEMS — POLICY BRIEF",
       "category": "07-RESEARCH-AND-PUBLICATIONS",
       "tags": [],
-      "content_hash": "sha256:fbafc35b42669985bbd53d27bca12353c1d2c75a0b728aae0a1edd2e1daaf779",
+      "content_hash": "sha256:340aa5dd11723f8695aa094cbde618ed2aee32284662b0d9aeb0e6f354f1383c",
       "summary": ""
     },
     {
@@ -2882,7 +2882,7 @@
       "title": "Email Outreach: Gillian Hadfield",
       "category": "07-RESEARCH-AND-PUBLICATIONS",
       "tags": [],
-      "content_hash": "sha256:d49f3d74921204797e8f88c5f6993e7ecfd97a52ac7a4bf2ad8fd7d2e387a642",
+      "content_hash": "sha256:83934bc666655bb8b6c7174724d19381ee6427612701210cbe471b48ab61ee61",
       "summary": ""
     },
     {
@@ -2890,7 +2890,7 @@
       "title": "Email Outreach: Glen Weyl",
       "category": "07-RESEARCH-AND-PUBLICATIONS",
       "tags": [],
-      "content_hash": "sha256:5e810d0643d2fcc11e1e3a917020303aaf3d766d5ad992ca9f273270c3707a7d",
+      "content_hash": "sha256:b23bbbb8c91723e84300e98dc032030fe90c03044247803b61fe14a463ccb0a1",
       "summary": ""
     },
     {
@@ -2906,7 +2906,7 @@
       "title": "AlphaCivilization",
       "category": "07-RESEARCH-AND-PUBLICATIONS",
       "tags": [],
-      "content_hash": "sha256:1142b6a260a8e1af3da94bd83fb54f222897433472dffe439dea1cbd64359763",
+      "content_hash": "sha256:1a60e91481b740aae59c312b58a7e960764add0eaea58bbf397b30a934ffe5b3",
       "summary": ""
     },
     {
@@ -2938,7 +2938,7 @@
       "title": "THE MOBIUS WHITEPAPER v1.0",
       "category": "07-RESEARCH-AND-PUBLICATIONS",
       "tags": [],
-      "content_hash": "sha256:16eb6b2091e72d3eb8b673d559fe4fcab253cc6d55b906752ce88af2278378e2",
+      "content_hash": "sha256:062c968697154c2bea077e5aedda9974469fa1d4f3fb4618dfba8179d2cc5d3f",
       "summary": ""
     },
     {
@@ -3122,7 +3122,7 @@
       "title": "Loop-Breaking Architecture for AGI Safety: Preventing Emergent Self-Modification Through Constitutional Checkpoints",
       "category": "07-RESEARCH-AND-PUBLICATIONS",
       "tags": [],
-      "content_hash": "sha256:15e6f3f70767950cc9e740923838c89d8ae820a7e6e2de398e9d5932dd474b40",
+      "content_hash": "sha256:d9f48b8e6bc60f1163d72cbba2a5864f909c4a336b1c8a5fa15d8ee695bd76db",
       "summary": ""
     },
     {
@@ -3138,7 +3138,7 @@
       "title": "Mobius Integrity Credits (MIC)",
       "category": "07-RESEARCH-AND-PUBLICATIONS",
       "tags": [],
-      "content_hash": "sha256:a000d68b6d08dede7db3edfa58147d3b95524c4156985bb4847fee8aa7d3a451",
+      "content_hash": "sha256:68c7764bbd69049449bc5160b65184ecc620274a23565c6d1ec2fa9bfe9463f7",
       "summary": ""
     },
     {
@@ -3146,7 +3146,7 @@
       "title": "Mobius Integrity Credits (MIC)",
       "category": "07-RESEARCH-AND-PUBLICATIONS",
       "tags": [],
-      "content_hash": "sha256:2ed437345d549e29f4216ed748bd66291c0ef741356d16987a619ada31af3926",
+      "content_hash": "sha256:c00f47c0e647f146bfbc8fb65f6293f37716a1e518a587256753bc1fb3f69e13",
       "summary": ""
     },
     {
@@ -3186,7 +3186,7 @@
       "title": "The MIC Whitepaper: Building a Currency of Integrity",
       "category": "07-RESEARCH-AND-PUBLICATIONS",
       "tags": [],
-      "content_hash": "sha256:f583f9f079a8a7a7790d7ae29940a6ce1a540a0f1476caa3adfe47bfe004f85e",
+      "content_hash": "sha256:e589f420f339c83b7369c9b30277a510dda7859a8b3e0ad516ee355c883ce604",
       "summary": ""
     },
     {
@@ -3218,7 +3218,7 @@
       "title": "MIC Documentation Package v2.0",
       "category": "07-RESEARCH-AND-PUBLICATIONS",
       "tags": [],
-      "content_hash": "sha256:152846fad267f477738c8d74b2c2e95223a2ac12db205c5351950b72d2e6aec6",
+      "content_hash": "sha256:1c4d5d46621dba9661594f74c24c8d33827312fce71d0a06ae8d88e769bc9832",
       "summary": ""
     },
     {
@@ -3290,7 +3290,7 @@
       "title": "📚 Reference — Quick Reference Documentation",
       "category": "08-REFERENCE",
       "tags": [],
-      "content_hash": "sha256:cc865d4e71e9883ca91924b2897a7082fd624a6aa09bdf54b510f5a6cd6eb3fb",
+      "content_hash": "sha256:f5b0c46a8f5e506af456f9aca596e37d28b2e4d8691d116b42319e2c97d15848",
       "summary": ""
     },
     {
@@ -3306,7 +3306,7 @@
       "title": "Repository Structure Guide",
       "category": "08-REFERENCE",
       "tags": [],
-      "content_hash": "sha256:edfcbd3c1ae99e0e6cc4e4c7da83c2e9e472baeb325a8920153c6b6208265efc",
+      "content_hash": "sha256:fe750e8b355ab6e28478367b04745bb7142e89c8c85579ae24ae037c3eab5293",
       "summary": ""
     },
     {
@@ -3498,7 +3498,7 @@
       "title": "The Digital Civilization Substrate",
       "category": "09-research",
       "tags": [],
-      "content_hash": "sha256:6b49773016ce3168d00021430d9decb9c2977efeddd2924a60885628d7094a6b",
+      "content_hash": "sha256:011834c8fc9e6ef9a83cea2d7bd01f650cf3e4ff1d18753439782148dd49fb5c",
       "summary": ""
     },
     {
@@ -3714,7 +3714,7 @@
       "title": "Labs 1-3 Implementation Complete ✅",
       "category": "10-ARCHIVES",
       "tags": [],
-      "content_hash": "sha256:c4a0907a41af6ea1a5cacce6c7e3f5bbfb5edd55934debd46d0b644ae9faba69",
+      "content_hash": "sha256:788bb714a05f6015ec8a3d69c4ea81f39d93c9e5b1474bfd757961e8d447761c",
       "summary": ""
     },
     {
@@ -3842,7 +3842,7 @@
       "title": "PRESS RELEASE — C-119 \"The Return to Balance\"",
       "category": "10-ARCHIVES",
       "tags": [],
-      "content_hash": "sha256:748001f1880d097eae8dbbd5256c3898c3885e60d96551e3aba967d35168b7d7",
+      "content_hash": "sha256:ea6bbb5b0157d9c648e096b0c7a5240c8702f22b5f6f89822665a417e7c2a010",
       "summary": ""
     },
     {
@@ -4058,7 +4058,7 @@
       "title": "🎯 Consensus Chamber Implementation Guide",
       "category": "10-ARCHIVES",
       "tags": [],
-      "content_hash": "sha256:e2145c0ffd69a8edc482c7b4b2e8f9b70da50136c032f709844431ea6524e88e",
+      "content_hash": "sha256:c1a1170a2d224178fd55d77d8e5b002eaebb7921c5448f26d3f88f2c5f90c840",
       "summary": ""
     },
     {
@@ -4082,7 +4082,7 @@
       "title": "🏛️ Consensus Chamber",
       "category": "10-ARCHIVES",
       "tags": [],
-      "content_hash": "sha256:8640d9de783435aab9b5187074df802f88acd18f2b29240721af82fe24199c37",
+      "content_hash": "sha256:ffb2307ffe6d33a4ed29bf552955f5940ecb864ac5af3fb74f812dfbbf9a97fd",
       "summary": ""
     },
     {
@@ -4170,7 +4170,7 @@
       "title": "C-156 Deliverables — Digital Civilization Substrate",
       "category": "10-ARCHIVES",
       "tags": [],
-      "content_hash": "sha256:03caadcad05191b26faa6c302a3259bb8272e00c34ba7d7356d26202ef94d251",
+      "content_hash": "sha256:fb7fcd604010877557a6c63aa777378f5819f443718dc2a76708f5069bd89efc",
       "summary": ""
     },
     {
@@ -4466,7 +4466,7 @@
       "title": "RFC Index",
       "category": "10-ARCHIVES",
       "tags": [],
-      "content_hash": "sha256:8ace910c1acb3c59f75cfe9e9fe2d902780d3e5915ec7adc19dfd90f86105003",
+      "content_hash": "sha256:d1b0c784224add3bd7d3e4138884fea09eded29ba4d50555ce3788e7d888286d",
       "summary": ""
     },
     {
@@ -4530,7 +4530,7 @@
       "title": "Research & Academia",
       "category": "10-ARCHIVES",
       "tags": [],
-      "content_hash": "sha256:4f8f462cb5ab36da0d7f7a436a59838faa51cd8bbd814c63bc84d04dfe5ab31e",
+      "content_hash": "sha256:f4d29d8d18520ded3050e5b249c09eda340ef2ba8644cce9dda9d7cecb3cf48f",
       "summary": ""
     },
     {
@@ -4674,7 +4674,7 @@
       "title": "Loop-Breaking Architecture for AGI Safety: Preventing Emergent Self-Modification Through Constitutional Checkpoints",
       "category": "10-ARCHIVES",
       "tags": [],
-      "content_hash": "sha256:15e6f3f70767950cc9e740923838c89d8ae820a7e6e2de398e9d5932dd474b40",
+      "content_hash": "sha256:d9f48b8e6bc60f1163d72cbba2a5864f909c4a336b1c8a5fa15d8ee695bd76db",
       "summary": ""
     },
     {
@@ -4690,7 +4690,7 @@
       "title": "Mobius Integrity Credits (MIC)",
       "category": "10-ARCHIVES",
       "tags": [],
-      "content_hash": "sha256:a000d68b6d08dede7db3edfa58147d3b95524c4156985bb4847fee8aa7d3a451",
+      "content_hash": "sha256:68c7764bbd69049449bc5160b65184ecc620274a23565c6d1ec2fa9bfe9463f7",
       "summary": ""
     },
     {
@@ -4738,7 +4738,7 @@
       "title": "The MIC Whitepaper: Building a Currency of Integrity",
       "category": "10-ARCHIVES",
       "tags": [],
-      "content_hash": "sha256:f583f9f079a8a7a7790d7ae29940a6ce1a540a0f1476caa3adfe47bfe004f85e",
+      "content_hash": "sha256:e589f420f339c83b7369c9b30277a510dda7859a8b3e0ad516ee355c883ce604",
       "summary": ""
     },
     {
@@ -4754,7 +4754,7 @@
       "title": "MIC Documentation Package v2.0",
       "category": "10-ARCHIVES",
       "tags": [],
-      "content_hash": "sha256:152846fad267f477738c8d74b2c2e95223a2ac12db205c5351950b72d2e6aec6",
+      "content_hash": "sha256:1c4d5d46621dba9661594f74c24c8d33827312fce71d0a06ae8d88e769bc9832",
       "summary": ""
     },
     {
@@ -4914,7 +4914,7 @@
       "title": "Kaizen-OS Labs Architecture - Master Document",
       "category": "10-ARCHIVES",
       "tags": [],
-      "content_hash": "sha256:2f3c2cc8b7b8f25ee1cbb79f85fc6f17289e69c71d7baf7bb9c64ac012aba894",
+      "content_hash": "sha256:56aa0c4487c88270fab2947c6e43880472c0b0b5f00e1f652ccfed4451f028da",
       "summary": ""
     },
     {
@@ -5010,7 +5010,7 @@
       "title": "🚀 KAIZEN OS - VERCEL DEPLOYMENT GUIDE",
       "category": "10-ARCHIVES",
       "tags": [],
-      "content_hash": "sha256:9390a1c477325c9837fb282a76c8e98320aa2e34887610674ccebd2b053d6f68",
+      "content_hash": "sha256:83dbac8ded5e6618e66af0fa49eee8027ff5b50242bb99f17ee0c8c871392bcf",
       "summary": ""
     },
     {
@@ -5058,7 +5058,7 @@
       "title": "Cursor IDE Integration with Kaizen OS",
       "category": "10-ARCHIVES",
       "tags": [],
-      "content_hash": "sha256:cd97e35abfe76a056319d9ca4f240dbde558960cb7d01e77f2e7c7a6f01e5aac",
+      "content_hash": "sha256:c32a506af805df672d63f1a3e92f15b41966975c21393413684087bfc7c799c8",
       "summary": ""
     },
     {
@@ -5098,7 +5098,7 @@
       "title": "Hello World - Mobius Systems MVP",
       "category": "10-ARCHIVES",
       "tags": [],
-      "content_hash": "sha256:a8a425333fb30b565683aad0f95914432ffbb8ff3569c0af769c366f8a9f050e",
+      "content_hash": "sha256:197ee89653cd6e8b7b318efc3313f3efa5168c2e16e2c71aa084324ea33fc38a",
       "summary": ""
     },
     {
@@ -5114,7 +5114,7 @@
       "title": "🔬 Research — Academic & Theoretical Foundations",
       "category": "10-ARCHIVES",
       "tags": [],
-      "content_hash": "sha256:2b1eeef009155f315fc302bcb9bfa341a21464b2e9fe9385e9e2d9309174648d",
+      "content_hash": "sha256:5f60cea2b549fb9d70d69eb2699affe5b554af32ce2898c28c06a9967f984028",
       "summary": ""
     },
     {
@@ -5354,7 +5354,7 @@
       "title": "Vercel Deployment Runbook",
       "category": "10-ARCHIVES",
       "tags": [],
-      "content_hash": "sha256:11503ed772a6095e57f556385d089dae97bac5f41d4f314f32d0f0416adf1b60",
+      "content_hash": "sha256:2dba826f0def723d68e36dff9dff3144bb7c4f50bd816954fe803a614bb3061b",
       "summary": ""
     },
     {
@@ -5370,7 +5370,7 @@
       "title": "Communications",
       "category": "10-ARCHIVES",
       "tags": [],
-      "content_hash": "sha256:18db28457e9e9afcb30a499f42e527dbdb6f0868c9d5d7b6a0e1cfa6bc3560a1",
+      "content_hash": "sha256:943727635a840337ab9b212f6a5c24a5d284de2fd0b7dc3c91374098e5520e3e",
       "summary": ""
     },
     {
@@ -5378,7 +5378,7 @@
       "title": "Kaizen-OS: Executive Presentation",
       "category": "10-ARCHIVES",
       "tags": [],
-      "content_hash": "sha256:f968ab2ee596a607b9128d034dcf1e70cc4eb9e84f4aa78cfb459993ecc95678",
+      "content_hash": "sha256:1d9f5cd49ff177b221d1482cb89d80c78a9b34eb06965f4ac8114b7ab03b0061",
       "summary": ""
     },
     {
@@ -5402,7 +5402,7 @@
       "title": "PRESS RELEASE — C-119 \"The Return to Balance\"",
       "category": "10-ARCHIVES",
       "tags": [],
-      "content_hash": "sha256:d16a589a40d112e2217ce39fe61146621fa6c118b5e7830b96c9f7691207e06f",
+      "content_hash": "sha256:3d29e0d1797202ce015260d975e73ab751127012118e9b30fe759f51568d5344",
       "summary": ""
     },
     {
@@ -5610,7 +5610,7 @@
       "title": "📘 Mobius Systems — KTT-001 Outreach README",
       "category": "10-ARCHIVES",
       "tags": [],
-      "content_hash": "sha256:ffb1aa4a42af3afbbb1645c2adebbb5a6db578f9712f6d2bc731bdbfd76eafbf",
+      "content_hash": "sha256:222d5c52bce551ffffd9dfcea48499510b645e818c5c4a94ef524af555264a97",
       "summary": ""
     },
     {
@@ -5626,7 +5626,7 @@
       "title": "Mobius Systems Documentation Organization Proposal",
       "category": "10-ARCHIVES",
       "tags": [],
-      "content_hash": "sha256:fb49fb423881560a25b0f25c7db09172863edd61f499fcb3d9a1732c9bf833ae",
+      "content_hash": "sha256:48b32b959cb85b38c858b60f0bd6d253b5a46c9e3375de2d0b281caf2a8a1940",
       "summary": ""
     },
     {
@@ -5842,7 +5842,7 @@
       "title": "Migration Guide: Mobius Systems → Mobius Systems (C-127)",
       "category": "11-SUPPLEMENTARY",
       "tags": [],
-      "content_hash": "sha256:b79f20503264a19391a1106d82e99abebbceee026b70dcf725b0507291a7eea0",
+      "content_hash": "sha256:b394e8ae190b31c3c4a3d203312c0ca08dbd46b693cf12c014c6a961a842d15d",
       "summary": ""
     },
     {
@@ -5850,7 +5850,7 @@
       "title": "🌀 Mobius Systems",
       "category": "11-SUPPLEMENTARY",
       "tags": [],
-      "content_hash": "sha256:6a4e064273148f7806e4e4e3829332f5deaf710dca1ca436b55d1d6d0d2fe6a7",
+      "content_hash": "sha256:e5b4f2259c51b600f995ec58a2efdf88b91d79dea867509b5ba4d4436ad8e0a2",
       "summary": ""
     },
     {
@@ -6026,7 +6026,7 @@
       "title": "🎯 Consensus Chamber Implementation Guide",
       "category": "11-SUPPLEMENTARY",
       "tags": [],
-      "content_hash": "sha256:e2145c0ffd69a8edc482c7b4b2e8f9b70da50136c032f709844431ea6524e88e",
+      "content_hash": "sha256:c1a1170a2d224178fd55d77d8e5b002eaebb7921c5448f26d3f88f2c5f90c840",
       "summary": ""
     },
     {
@@ -6050,7 +6050,7 @@
       "title": "🏛️ Consensus Chamber",
       "category": "11-SUPPLEMENTARY",
       "tags": [],
-      "content_hash": "sha256:8640d9de783435aab9b5187074df802f88acd18f2b29240721af82fe24199c37",
+      "content_hash": "sha256:ffb2307ffe6d33a4ed29bf552955f5940ecb864ac5af3fb74f812dfbbf9a97fd",
       "summary": ""
     },
     {
@@ -6378,7 +6378,7 @@
       "title": "Appendices",
       "category": "11-SUPPLEMENTARY",
       "tags": [],
-      "content_hash": "sha256:f30f065557344498b76b67ae650dc8b784b57df9ea7837f7cb95c23492b93840",
+      "content_hash": "sha256:beded8c2dea904558a67ec68e1594d15180daa1f67a6876947613165a5baeaf9",
       "summary": ""
     },
     {
@@ -6386,7 +6386,7 @@
       "title": "Kaizen-OS Handbook",
       "category": "11-SUPPLEMENTARY",
       "tags": [],
-      "content_hash": "sha256:cb15f1d6cb75626d31b4433e87b97ef31e77732326771078710f73dff89670f9",
+      "content_hash": "sha256:248e0434209db23006794bfb2b28632993d60def1b0541d881fff8755f60cd51",
       "summary": ""
     },
     {
@@ -6410,7 +6410,7 @@
       "title": "Part III: Implementation",
       "category": "11-SUPPLEMENTARY",
       "tags": [],
-      "content_hash": "sha256:5e550db8767f3aeae858cb39546e149bce8bf7540228570d89f05dddf4f8238d",
+      "content_hash": "sha256:f18aa1f73f477030ecc8a1cd3b182e38bd6bc9e971b4c9966f6d0bf18c510144",
       "summary": ""
     },
     {
@@ -6530,7 +6530,7 @@
       "title": "Onboarding Documentation",
       "category": "11-SUPPLEMENTARY",
       "tags": [],
-      "content_hash": "sha256:0fb8fdb2d68e9f2a382fcc3edf687e2aaaf50a229d87ae42c887926f51b32df9",
+      "content_hash": "sha256:f0fb375ce6a8624837f14c37fdfef0c87636e0ad23019ae5fe805c6640b5c112",
       "summary": ""
     },
     {
@@ -6538,7 +6538,7 @@
       "title": "🌟 Kaizen OS - AI Model Onboarding Guide",
       "category": "11-SUPPLEMENTARY",
       "tags": [],
-      "content_hash": "sha256:addac7af0b6cde084b96507043e015aa5a80d8262cf46b888192ed53c0a7b92f",
+      "content_hash": "sha256:3e984979603e95005d081f732af85c850b231990ce12534794d6b0a4f8a27e70",
       "summary": ""
     },
     {
@@ -6562,7 +6562,7 @@
       "title": "MOBIUS SYSTEMS — POLICY BRIEF",
       "category": "11-SUPPLEMENTARY",
       "tags": [],
-      "content_hash": "sha256:fbafc35b42669985bbd53d27bca12353c1d2c75a0b728aae0a1edd2e1daaf779",
+      "content_hash": "sha256:340aa5dd11723f8695aa094cbde618ed2aee32284662b0d9aeb0e6f354f1383c",
       "summary": ""
     },
     {
@@ -6578,7 +6578,7 @@
       "title": "Email Outreach: Gillian Hadfield",
       "category": "11-SUPPLEMENTARY",
       "tags": [],
-      "content_hash": "sha256:d49f3d74921204797e8f88c5f6993e7ecfd97a52ac7a4bf2ad8fd7d2e387a642",
+      "content_hash": "sha256:83934bc666655bb8b6c7174724d19381ee6427612701210cbe471b48ab61ee61",
       "summary": ""
     },
     {
@@ -6586,7 +6586,7 @@
       "title": "Email Outreach: Glen Weyl",
       "category": "11-SUPPLEMENTARY",
       "tags": [],
-      "content_hash": "sha256:5e810d0643d2fcc11e1e3a917020303aaf3d766d5ad992ca9f273270c3707a7d",
+      "content_hash": "sha256:b23bbbb8c91723e84300e98dc032030fe90c03044247803b61fe14a463ccb0a1",
       "summary": ""
     },
     {
@@ -6610,7 +6610,7 @@
       "title": "🧩 Kaizen OS Federation Protocol Brief",
       "category": "11-SUPPLEMENTARY",
       "tags": [],
-      "content_hash": "sha256:01b1349ce093355dc5d864a51ffff4ba681695f05143f60a9d257aa374b95f83",
+      "content_hash": "sha256:96e0800f74d61fc4f08ebaa5c9affb50ed1c0ae534c2db9f996420266fefb851",
       "summary": ""
     },
     {
@@ -6626,7 +6626,7 @@
       "title": "🧭 Kaizen OS Self-Host Guide",
       "category": "11-SUPPLEMENTARY",
       "tags": [],
-      "content_hash": "sha256:939682783431f55fc457d5d18087f8b0ef523df1ee0ac00030613bd6fa7e548c",
+      "content_hash": "sha256:e36f93c5f2332ec2e67048c3ec5e3ac95d81589d4ed89c33e1237420db309209",
       "summary": ""
     },
     {
@@ -6890,7 +6890,7 @@
       "title": "🌀 Mobius Systems Documentation Portal",
       "category": "README.md",
       "tags": [],
-      "content_hash": "sha256:efc136e49c1154cfbf0d7dfbb16e460289943d539c218ed1c3f1ff194134214b",
+      "content_hash": "sha256:d786bee4b6eb659d1c51bdd4c518112b20d8fc604b9f404a442e262749735d31",
       "summary": ""
     },
     {
@@ -6914,7 +6914,7 @@
       "title": "Mobius Systems — Technical Details",
       "category": "TECHNICAL_DETAILS.md",
       "tags": [],
-      "content_hash": "sha256:2f25cc4da0aaf7ebf3d3b54bfd5b55b6477ec27f2931346d6cf659a5987013f7",
+      "content_hash": "sha256:0e763059a8014d1d626548192d57ea6d1c3b57cd35d2bc7cb1a0d034dc7ad769",
       "summary": ""
     },
     {
@@ -7002,7 +7002,7 @@
       "title": "Divergence Dashboard",
       "category": "divergence",
       "tags": [],
-      "content_hash": "sha256:62bc1c66aec622a0b425a3fee9bad303507b6f033ea7280094554c2cdf628a2b",
+      "content_hash": "sha256:83ee62b10281e0f706884c7b219c9d54256d4b63f7641076935716dc9149caa0",
       "summary": ""
     },
     {
@@ -7010,7 +7010,7 @@
       "title": "EPICON-0001 — Mobius Substrate Naming Canon",
       "category": "epicon",
       "tags": [],
-      "content_hash": "sha256:e176bd31cfff9d9845ff9ae78277a2b96ee3a564e465d4227d6c962a97911fb0",
+      "content_hash": "sha256:8170502d12c89bb6e3ac233d4e73dcab2e201347f678a60aea027217e50418cd",
       "summary": ""
     },
     {
@@ -7042,7 +7042,7 @@
       "title": "EPICON-03: Multi-Agent Collective Epistemic Consensus",
       "category": "epicon",
       "tags": [],
-      "content_hash": "sha256:d23b5de9afafbf339b0b8f46ea4bf2dbc957b7735f8d8077fbd0813132c8778a",
+      "content_hash": "sha256:6796476bdb5e5d7e5fd98c588b5a7f99787d9a363e09874a52fef2fceebc9ba7",
       "summary": ""
     },
     {
@@ -7140,6 +7140,20 @@
       ],
       "content_hash": "sha256:1567beac948f33215027ccd1741592ff013ac09db46b7c6fc0177c3622660cf1",
       "summary": "Consolidate 15+ documentation folders from root to docs/ for cleaner public-facing repository"
+    },
+    {
+      "path": "docs/epicon/cycles/C-200/EPICON_C-200_DOCS_mobius-rename-fix_v1.md",
+      "title": "Mobius-Systems to Mobius-Substrate Rename — CI Fix",
+      "category": "epicon",
+      "tags": [
+        "rename",
+        "docs",
+        "ci-fix",
+        "catalog",
+        "authority-provenance"
+      ],
+      "content_hash": "sha256:2222f5f7ff79b3e085909d850a8798ab05aba6026a3807844ce5b942f7f3b42a",
+      "summary": "Fix CI failures for Mobius-Systems to Mobius-Substrate rename PR: authority provenance, catalog regeneration, and remaining text fixes"
     },
     {
       "path": "docs/epicon/cycles/C-202/EPICON_C-202_DOCS_legitimacy-substrate-docset_v1.md",
@@ -7344,7 +7358,7 @@
       "title": "Carrington-Class Failure Simulation Model",
       "category": "simulations",
       "tags": [],
-      "content_hash": "sha256:2f07b06d3d5f4406290794b7500c62924c4002d12ba96966811d6f17cca1a182",
+      "content_hash": "sha256:6f35c7db5092d8354e0cea65ecda051726de9d362cfad1e4b7fbb049e7d57b31",
       "summary": ""
     },
     {
