@@ -84,7 +84,7 @@ Economic mechanism rewarding aligned behavior, penalizing drift
 ## Contact
 
 Michael Judan, Founder & Custodian  
-GitHub: https://github.com/kaizencycle/Mobius-Systems  
+GitHub: https://github.com/kaizencycle/Mobius-Substrate  
 License: Public Domain (no corporate ownership)
 
 ---

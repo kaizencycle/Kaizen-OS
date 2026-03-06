@@ -10,8 +10,8 @@ profile:
     routing low-GI edge cases to humans. The civic stack spans Thought Broker,
     DVA.LITE telemetry, Civic OS labor protections, and Worker Autonomy agents—
     turning the monorepo into a living apprenticeship where integrity grades every loop.
-  icon: "https://raw.githubusercontent.com/kaizencycle/Mobius-Systems/main/assets/badges/v2/mobius-core.svg"
-  banner: "https://raw.githubusercontent.com/kaizencycle/Mobius-Systems/main/assets/kaizen-os-system-ontology-c122-c123.svg"
+  icon: "https://raw.githubusercontent.com/kaizencycle/Mobius-Substrate/main/assets/badges/v2/mobius-core.svg"
+  banner: "https://raw.githubusercontent.com/kaizencycle/Mobius-Substrate/main/assets/kaizen-os-system-ontology-c122-c123.svg"
   color_theme: "deep-space-indigo"
 
   categories:
@@ -65,7 +65,7 @@ profile:
   credits:
     founder: "Michael Judan (Kaizen)"
     license: "MIT (see FOUNDATION/LICENSES/)"
-    repository: "https://github.com/kaizencycle/Mobius-Systems"
+    repository: "https://github.com/kaizencycle/Mobius-Substrate"
     opencode_page: "https://opencode.io/kaizencycle/mobius-systems"
     docs_entry: "docs/architecture/ECHO_LAYER_CANON.md"
     telemetry: "docs/dva/ECHO_LAYER.md"

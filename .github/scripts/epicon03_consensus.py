@@ -693,7 +693,7 @@ def main():
     # Example usage
     request = ConsensusRequest(
         request_id=str(uuid.uuid4()),
-        repo="kaizencycle/Mobius-Systems",
+        repo="kaizencycle/Mobius-Substrate",
         pr=215,
         action="merge",
         scope=["governance", "code_ownership"],

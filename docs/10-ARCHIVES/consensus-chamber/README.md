@@ -502,7 +502,7 @@ This is expected behavior (duplicate guard). Use `getActiveSessions()` to see ac
 
 ## Support
 
-**Questions?** Open an issue in [Kaizen-OS repo](https://github.com/kaizencycle/Mobius-Systems)
+**Questions?** Open an issue in [Kaizen-OS repo](https://github.com/kaizencycle/Mobius-Substrate)
 **Bugs?** Report in Lab2 (Thought Broker) tracker
 **Feature Requests?** Submit to Consensus Chamber working group
 

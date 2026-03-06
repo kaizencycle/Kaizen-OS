@@ -304,7 +304,7 @@ Use [archive/README.md](./archive/README.md) for navigation plus `archive/legacy
 ## 📂 Repository Structure
 
 ```
-Mobius-Systems/
+Mobius-Substrate/
 ├── FOUNDATION/                 # Foundation governance & policies
 │   ├── CHARTER.md
 │   ├── BYLAWS.md
@@ -339,8 +339,8 @@ Mobius-Systems/
 ## 📞 Getting Help
 
 ### Documentation Issues
-- 🐛 [Report doc issue](https://github.com/kaizencycle/Mobius-Systems/issues)
-- 💬 [Ask in discussions](https://github.com/kaizencycle/Mobius-Systems/discussions)
+- 🐛 [Report doc issue](https://github.com/kaizencycle/Mobius-Substrate/issues)
+- 💬 [Ask in discussions](https://github.com/kaizencycle/Mobius-Substrate/discussions)
 
 ### Community Support
 - **General**: community@mobius.systems

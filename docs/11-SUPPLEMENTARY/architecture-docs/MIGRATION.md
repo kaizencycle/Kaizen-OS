@@ -37,7 +37,7 @@ This migration guide helps you update your code, configurations, and deployments
 - **Kaizen principles**: 改善 (Kaizen), 召唤 (Summon), 金繕い (Kintsugi)
 - The Triad of Healing
 - Manifesto & Rituals
-- Repository URL: `kaizencycle/Mobius-Systems` (GitHub org unchanged)
+- Repository URL: `kaizencycle/Mobius-Substrate` (GitHub org unchanged)
 - Package registry: `@civic/*` packages remain unchanged (specific civic components)
 
 ## Migration Steps
@@ -264,7 +264,7 @@ The **Kaizen Turing Test (KTT)** continues as the scientific framework for evalu
 ## Support
 
 - **Documentation**: [README.md](./README.md)
-- **Issues**: [GitHub Issues](https://github.com/kaizencycle/Mobius-Systems/issues)
+- **Issues**: [GitHub Issues](https://github.com/kaizencycle/Mobius-Substrate/issues)
 - **Discord**: [Mobius Systems Community](https://discord.gg/kaizenos)
 
 ---

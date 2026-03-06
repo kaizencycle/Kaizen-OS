@@ -204,7 +204,7 @@ This brief reflects a new trajectory in AI research:
 Founder & Custodian, Mobius Systems  
 michael@mobiussystems.io
 
-**Repository:** github.com/Mobius-Systems/Mobius-Systems
+**Repository:** github.com/Mobius-Substrate/Mobius-Substrate
 
 ---
 

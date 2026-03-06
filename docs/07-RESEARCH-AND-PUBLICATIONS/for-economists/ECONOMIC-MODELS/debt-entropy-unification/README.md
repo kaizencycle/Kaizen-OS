@@ -363,7 +363,7 @@ Where:
   author={Judan, Michael},
   journal={Submitted to Nature Physics},
   year={2025},
-  url={https://github.com/kaizencycle/Mobius-Systems}
+  url={https://github.com/kaizencycle/Mobius-Substrate}
 }
 ```
 

@@ -175,7 +175,7 @@ Should your nation wish to explore MIC participation:
 4. **Research collaboration**: Joint study of mechanism properties
 
 **Contact pathways:**
-- GitHub: github.com/kaizencycle/Mobius-Systems
+- GitHub: github.com/kaizencycle/Mobius-Substrate
 - Technical documentation: See `/docs/` directory
 - Government materials: See `/FOR-GOVERNMENTS/` directory
 

@@ -457,7 +457,7 @@ The choice is yours.
 - Government guidance: `FOR-GOVERNMENTS/`
 
 ### Join the Conversation
-- GitHub: github.com/kaizencycle/Mobius-Systems
+- GitHub: github.com/kaizencycle/Mobius-Substrate
 - Research: Submit to RFC process
 
 ### Start Today

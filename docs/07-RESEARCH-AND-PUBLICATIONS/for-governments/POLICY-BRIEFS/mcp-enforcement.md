@@ -314,7 +314,7 @@ MCP transforms AI governance from reactive auditing to proactive enforcement. By
 Michael Judan  
 Founder, Mobius Systems  
 kaizen@mobius.systems  
-github.com/kaizencycle/Mobius-Systems  
+github.com/kaizencycle/Mobius-Substrate  
 
 **Technical Documentation:**  
 - [FOR-ACADEMICS/PAPERS/MCP/](../../FOR-ACADEMICS/PAPERS/MCP/)

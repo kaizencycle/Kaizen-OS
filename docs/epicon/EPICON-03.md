@@ -177,7 +177,7 @@ w₄ = 0.10  (ConflictPenalty - subtracted)
 {
   "$schema": "https://mobius.systems/schemas/epicon03/consensus_request.schema.json",
   "request_id": "uuid",
-  "repo": "kaizencycle/Mobius-Systems",
+  "repo": "kaizencycle/Mobius-Substrate",
   "pr": 215,
   "action": "merge",
   "scope": ["governance", "code_ownership"],

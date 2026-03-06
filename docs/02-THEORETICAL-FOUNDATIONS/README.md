@@ -196,7 +196,7 @@ When citing Mobius Systems theoretical work:
   title={Mobius Systems: Theoretical Foundations},
   author={Mobius Systems Foundation},
   year={2025},
-  howpublished={\url{https://github.com/kaizencycle/Mobius-Systems}},
+  howpublished={\url{https://github.com/kaizencycle/Mobius-Substrate}},
   note={Documentation Version 1.0.0}
 }
 ```

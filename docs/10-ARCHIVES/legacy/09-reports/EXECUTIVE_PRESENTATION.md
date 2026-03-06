@@ -616,7 +616,7 @@ Operations (10%): $200K
 
 **Email:** [Your email]
 **Website:** https://kaizen.os
-**GitHub:** https://github.com/kaizencycle/Mobius-Systems
+**GitHub:** https://github.com/kaizencycle/Mobius-Substrate
 **Calendar:** [Scheduling link]
 
 ---

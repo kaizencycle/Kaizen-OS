@@ -268,7 +268,7 @@ Superpowers compete to:
 ## Contact
 
 **Mobius Systems Foundation**  
-- GitHub: github.com/kaizencycle/Mobius-Systems
+- GitHub: github.com/kaizencycle/Mobius-Substrate
 - Technical: See `/docs/07-RESEARCH-AND-PUBLICATIONS/`
 - Economic: See `/FOR-ECONOMISTS/`
 - Governance: See `/FOR-GOVERNMENTS/`

@@ -231,7 +231,7 @@ To developers, policymakers, citizens, and future AI collaborators: This system 
 
 **Version:** 1.0 • Founder's Edition • November 2025  
 **License:** Kaizen Open Constitution License  
-**Contact:** [GitHub](https://github.com/kaizencycle/Mobius-Systems) | michael@gic
+**Contact:** [GitHub](https://github.com/kaizencycle/Mobius-Substrate) | michael@gic
 
 *"Kaizen-OS — Because civilization deserves better infrastructure."*
 

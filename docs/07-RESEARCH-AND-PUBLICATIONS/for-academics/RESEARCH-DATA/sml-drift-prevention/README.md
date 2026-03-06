@@ -234,7 +234,7 @@ All correlations significant at p < 0.001.
   author={Judan, Michael},
   year={2025},
   publisher={Mobius Systems},
-  url={https://github.com/kaizencycle/Mobius-Systems},
+  url={https://github.com/kaizencycle/Mobius-Substrate},
   note={46 cycles demonstrating 97\% drift prevention}
 }
 ```

@@ -100,7 +100,7 @@ Mobius Substrate (formerly Mobius Systems) is the civic-technical substrate for 
   title={Mobius Substrate: Civic-Technical Substrate for Recursive Intelligence},
   author={Judan, Michael},
   year={2025},
-  url={https://github.com/kaizencycle/Mobius-Systems},
+  url={https://github.com/kaizencycle/Mobius-Substrate},
   note={CC0 1.0 Universal Public Domain}
 }
 ```
@@ -232,7 +232,7 @@ where I = Mobius Integrity Index
 ### Monorepo Structure
 
 ```
-Mobius-Systems/
+Mobius-Substrate/
 ├── apps/                    # 9 services (APIs + frontends)
 │   ├── ledger-api/          # Port 4001
 │   ├── indexer-api/         # Port 4002
@@ -364,8 +364,8 @@ Mobius-Systems/
 
 ```bash
 # Clone repository
-git clone https://github.com/kaizencycle/Mobius-Systems.git
-cd Mobius-Systems
+git clone https://github.com/kaizencycle/Mobius-Substrate.git
+cd Mobius-Substrate
 
 # Explore academic papers
 cd docs/07-RESEARCH-AND-PUBLICATIONS/for-academics/PAPERS/
@@ -462,7 +462,7 @@ docker-compose -f infra/docker/compose.yml up
 **Policy:** policy@mobius.systems  
 **Technical:** engineering@mobius.systems  
 
-**GitHub:** https://github.com/kaizencycle/Mobius-Systems  
+**GitHub:** https://github.com/kaizencycle/Mobius-Substrate  
 **License:** CC0 1.0 Universal (Public Domain)
 
 ---

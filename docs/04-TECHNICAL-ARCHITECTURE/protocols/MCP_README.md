@@ -18,7 +18,7 @@
 ```
 ┌─────────────────────────────────────────────┐
 │  YOU (Local Terminal)                       │
-│  cd ~/Mobius-Systems                        │
+│  cd ~/Mobius-Substrate                        │
 │  python sentinels/echo/echo_sync.py export  │
 └──────────────┬──────────────────────────────┘
                │
@@ -199,7 +199,7 @@ GI = 0.25*M + 0.20*H + 0.30*I + 0.25*E
     "protocol": "MCP",
     "cycle": "C-156",
     "timestamp": "2025-01-15T10:30:00Z",
-    "repo_path": "/path/to/Mobius-Systems",
+    "repo_path": "/path/to/Mobius-Substrate",
     "integrity_hash": "a1b2c3d4e5f6..."
   },
   "git": {
@@ -212,7 +212,7 @@ GI = 0.25*M + 0.20*H + 0.30*I + 0.25*E
   },
   "structure": {
     "type": "directory",
-    "name": "Mobius-Systems",
+    "name": "Mobius-Substrate",
     "path": ".",
     "children": [...]
   },
@@ -319,7 +319,7 @@ python sentinels/atlas/atlas_parser.py c156_snapshot.json
 
 ```bash
 # Export canonical repo
-cd ~/Mobius-Systems
+cd ~/Mobius-Substrate
 python sentinels/echo/echo_sync.py export > canonical.json
 
 # Export fork

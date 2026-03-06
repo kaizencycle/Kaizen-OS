@@ -162,3 +162,10 @@ temp/
 # Local Bio DNA archives 
 mobius-sys.edit/
 site/
+
+# Generated link check artifacts
+broken-links-report.txt
+broken-links.json
+
+# Core dumps
+/core

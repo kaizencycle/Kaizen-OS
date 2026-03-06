@@ -420,7 +420,7 @@ In a world that demands perfection, the Kintsugi Principle offers freedom: the f
   booktitle={FOR-PHILOSOPHERS/ETHICAL-FOUNDATIONS},
   year={2025},
   publisher={Mobius Systems},
-  url={https://github.com/kaizencycle/Mobius-Systems}
+  url={https://github.com/kaizencycle/Mobius-Substrate}
 }
 ```
 

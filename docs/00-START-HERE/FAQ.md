@@ -180,7 +180,7 @@ All constructive contributions earn MIC rewards.
 - **Documentation** — You're reading it! Start with [`00-START-HERE/`](./README.md)
 - **Architecture** — See [`02-architecture/`](../02-architecture/README.md)
 - **Research** — See [`08-research/`](../08-research/README.md)
-- **Main Repo** — [github.com/kaizencycle/Mobius-Systems](https://github.com/kaizencycle/Mobius-Systems)
+- **Main Repo** — [github.com/kaizencycle/Mobius-Substrate](https://github.com/kaizencycle/Mobius-Substrate)
 - **Civic Ledger** — [civic-ledger.onrender.com](https://civic-ledger.onrender.com)
 
 ---

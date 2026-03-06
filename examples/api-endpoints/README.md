@@ -260,5 +260,5 @@ Ensure all required environment variables are set in your deployment platform.
 ## Support
 
 For issues or questions:
-- GitHub Issues: [kaizencycle/Mobius-Systems/issues](https://github.com/kaizencycle/Mobius-Systems/issues)
+- GitHub Issues: [kaizencycle/Mobius-Substrate/issues](https://github.com/kaizencycle/Mobius-Substrate/issues)
 - Discord: Kaizen OS Community

@@ -196,7 +196,7 @@ SML solves the AI alignment problem through continuous democratic oversight, not
 Michael Judan  
 Founder, Mobius Systems  
 kaizen@mobius.systems  
-github.com/kaizencycle/Mobius-Systems  
+github.com/kaizencycle/Mobius-Substrate  
 
 **Technical Documentation:**  
 - [FOR-ACADEMICS/PAPERS/SML/](../../FOR-ACADEMICS/PAPERS/SML/)

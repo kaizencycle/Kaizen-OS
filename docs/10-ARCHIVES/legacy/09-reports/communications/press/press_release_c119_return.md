@@ -121,7 +121,7 @@ Kaizen OS invites:
 - **Funders:** Support open infrastructure, not extraction
 - **Citizens:** Begin daily reflections, earn GI score, prepare for UBI
 
-**GitHub:** github.com/kaizencycle/Mobius-Systems
+**GitHub:** github.com/kaizencycle/Mobius-Substrate
 **Documentation:** [docs/INDEX.md](../../INDEX.md)
 **License:** Apache 2.0 (code), CC0 (documentation)
 

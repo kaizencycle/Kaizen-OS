@@ -196,7 +196,7 @@ curl https://pulse.mobius.systems/academics/citations.bib
   title={Mobius Systems: Operating System for Recursive Intelligence},
   author={Judan, Michael},
   year={2025},
-  url={https://github.com/kaizencycle/Mobius-Systems},
+  url={https://github.com/kaizencycle/Mobius-Substrate},
   note={AGPL-3.0 with Ethical Addendum}
 }
 ```

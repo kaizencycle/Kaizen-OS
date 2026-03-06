@@ -7,7 +7,7 @@ Thank you for your interest in contributing to Mobius Substrate (formerly Mobius
 Mobius Substrate is a monorepo containing multiple applications, packages, labs, and AI sentinels:
 
 ```
-Mobius-Systems/
+Mobius-Substrate/
 ├── apps/          # Standalone applications
 ├── packages/      # Shared libraries and SDKs
 ├── labs/          # Lab proof systems (research & validation)
@@ -31,8 +31,8 @@ Mobius-Systems/
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/kaizencycle/Mobius-Systems.git
-   cd kaizen-os
+   git clone https://github.com/kaizencycle/Mobius-Substrate.git
+   cd Mobius-Substrate
    ```
 
 2. **Install dependencies:**
@@ -387,7 +387,7 @@ Look for issues labeled:
 
 ## 🏛️ Governance
 
-Mobius Systems is maintained by:
+Mobius Substrate is maintained by:
 - **Custodian:** Michael Judan
 - **Sentinels:** Zeus, Jade, Eve, Hermes, Atlas, Aurelian
 - **Contributors:** Community members like you!
@@ -396,14 +396,14 @@ For governance questions, see `docs/02-governance/`
 
 ## 📜 License
 
-By contributing to Mobius Systems, you agree that your contributions will be licensed under the MIT License.
+By contributing to Mobius Substrate, you agree that your contributions will be licensed under the MIT License.
 
 ## 🙏 Thank You
 
-Your contributions make Mobius Systems better for everyone. We appreciate your time and effort!
+Your contributions make Mobius Substrate better for everyone. We appreciate your time and effort!
 
 ---
 
-**Mobius Systems** - Continuous improvement through integrity, consensus, and collaboration.
+**Mobius Substrate** - Continuous improvement through integrity, consensus, and collaboration.
 
 *"We heal as we walk."*

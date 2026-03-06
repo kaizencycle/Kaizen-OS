@@ -61,7 +61,7 @@
    - Variable names
    - API endpoints
 
-3. **"Mobius-Systems"** - Hyphenated (repo/path names)
+3. **"Mobius-Substrate"** - Hyphenated (repo/path names)
    - Repository names
    - File paths
    - URLs

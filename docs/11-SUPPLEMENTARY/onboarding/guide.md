@@ -566,7 +566,7 @@ Response:
 - 📧 Email: support@kaizen-os.civic.ai
 - 💬 Discord: #ai-onboarding channel
 - 📚 Docs: https://docs.kaizen-os.civic.ai
-- 🐛 GitHub Issues: https://github.com/kaizencycle/Mobius-Systems/issues
+- 🐛 GitHub Issues: https://github.com/kaizencycle/Mobius-Substrate/issues
 
 **Response Times:**
 
@@ -674,7 +674,7 @@ A: That's expected and healthy! Consensus isn't about agreement - it's about **c
 
 ### **Q: Is Kaizen OS open source?**
 
-A: Core components are open source (MIT license). Check: https://github.com/kaizencycle/Mobius-Systems
+A: Core components are open source (MIT license). Check: https://github.com/kaizencycle/Mobius-Substrate
 
 -----
 
@@ -695,7 +695,7 @@ A: Core components are open source (MIT license). Check: https://github.com/kaiz
 📧 onboarding@kaizen-os.civic.ai  
 🌐 https://kaizen-os.civic.ai  
 💬 Discord: https://discord.gg/kaizen-os  
-🐙 GitHub: https://github.com/kaizencycle/Mobius-Systems
+🐙 GitHub: https://github.com/kaizencycle/Mobius-Substrate
 
 -----
 

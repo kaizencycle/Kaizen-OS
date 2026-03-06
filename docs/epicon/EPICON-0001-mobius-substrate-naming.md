@@ -110,7 +110,7 @@ This EPICON covers:
 
 Out of scope (will be separate EPICONs / PRs):
 
-- GitHub repo rename (`Mobius-Systems` → `Mobius-Substrate`)
+- GitHub repo rename (`Mobius-Substrate` → `Mobius-Substrate`)
 - Internal package / module renaming
 - Domain migration and DNS changes
 
@@ -186,7 +186,7 @@ This section tracks the evolution of the naming canon across EPICONs:
 | Version | Date | Description | Status |
 |---------|------|-------------|--------|
 | **v0.1** | 2025-12-29 | Initial draft — Canonical naming alignment (docs only) | ✅ Current |
-| **v0.2** | TBD | Repo rename (`Mobius-Systems` → `Mobius-Substrate`) | 🔜 Future EPICON |
+| **v0.2** | TBD | Repo rename (`Mobius-Substrate` → `Mobius-Substrate`) | 🔜 Future EPICON |
 | **v0.3** | TBD | Module rename & API aliases | 🔜 Future EPICON |
 | **v0.4** | TBD | Domain migration & DNS changes | 🔜 Future EPICON |
 

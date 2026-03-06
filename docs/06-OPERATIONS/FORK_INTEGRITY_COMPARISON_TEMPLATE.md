@@ -1,6 +1,6 @@
 # Fork Integrity Comparison Report — Mobius Systems
 
-**Base (Canonical) Repo:** kaizencycle/Mobius-Systems  
+**Base (Canonical) Repo:** kaizencycle/Mobius-Substrate  
 **Compared Fork:** _< FORKER-NAME / URL / Git commit >_  
 **Date:** YYYY-MM-DD  
 **Reviewer:** _< Name >_  

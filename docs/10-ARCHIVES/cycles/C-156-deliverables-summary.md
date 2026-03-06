@@ -325,7 +325,7 @@ Indicators of success:
 ### In Repository
 
 ```
-Mobius-Systems/
+Mobius-Substrate/
 ├─ docs/
 │  ├─ 09-research/
 │  │  └─ whitepapers/

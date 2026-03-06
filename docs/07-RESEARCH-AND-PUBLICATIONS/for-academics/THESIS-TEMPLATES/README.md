@@ -168,7 +168,7 @@ When citing Mobius Systems work:
   author={Judan, Michael},
   journal={Submitted to NeurIPS},
   year={2025},
-  note={Available at: github.com/kaizencycle/Mobius-Systems}
+  note={Available at: github.com/kaizencycle/Mobius-Substrate}
 }
 
 @article{mobius2025negentropic,

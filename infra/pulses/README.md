@@ -18,7 +18,7 @@ A **Mobius Pulse** is a lightweight JSON snapshot that captures:
 ### Generate a Pulse Manually
 
 ```bash
-cd /path/to/Mobius-Systems
+cd /path/to/Mobius-Substrate
 MOBIUS_CYCLE="C-150" MOBIUS_MII="0.972" ./scripts/mobius_pulse_json.sh > infra/pulses/mobius_pulse_$(date -u +'%Y%m%dT%H%M%SZ').json
 ```
 

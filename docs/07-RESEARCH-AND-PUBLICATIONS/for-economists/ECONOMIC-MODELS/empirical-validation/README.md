@@ -85,7 +85,7 @@ MIC_reward = f(coordination_score, cathedral_multiplier)
 
 ```bash
 # Clone repository
-git clone https://github.com/kaizencycle/Mobius-Systems.git
+git clone https://github.com/kaizencycle/Mobius-Substrate.git
 cd FOR-ECONOMISTS/ECONOMIC-MODELS/empirical-validation
 
 # Install dependencies
@@ -121,7 +121,7 @@ All datasets available at:
   author={Mobius Research Collective},
   year={2025},
   journal={Working Paper},
-  url={https://github.com/kaizencycle/Mobius-Systems}
+  url={https://github.com/kaizencycle/Mobius-Substrate}
 }
 ```
 

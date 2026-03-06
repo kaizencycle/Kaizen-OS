@@ -251,7 +251,7 @@ When using this dataset, please cite:
   author = {Mobius Systems Research},
   year = {2025},
   version = {1.0.0},
-  url = {https://github.com/kaizencycle/Mobius-Systems}
+  url = {https://github.com/kaizencycle/Mobius-Substrate}
 }
 ```
 

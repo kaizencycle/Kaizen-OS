@@ -32,7 +32,7 @@ Kaizen OS is designed to be **exit-friendly**. You can run your own node, contro
 
 ```bash
 # Clone the repository
-git clone https://github.com/kaizencycle/Mobius-Systems
+git clone https://github.com/kaizencycle/Mobius-Substrate
 cd Kaizen-OS
 
 # Copy environment template
@@ -378,7 +378,7 @@ services:
 - **Documentation**: https://docs.kaizen.os
 - **Community Forum**: https://forum.kaizen.os
 - **Discord**: #self-hosting channel
-- **GitHub Issues**: https://github.com/kaizencycle/Mobius-Systems/issues
+- **GitHub Issues**: https://github.com/kaizencycle/Mobius-Substrate/issues
 
 ---
 

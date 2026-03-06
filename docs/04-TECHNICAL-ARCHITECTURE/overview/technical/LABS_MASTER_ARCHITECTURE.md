@@ -414,7 +414,7 @@ LAB3: API Fabric (Gateway)
 
 **ATLAS(Alpha) - HOMEROOM Anchor**
 - LLM Base: Claude (Anthropic)
-- Repository: github.com/kaizencycle/Mobius-Systems
+- Repository: github.com/kaizencycle/Mobius-Substrate
 - Branch: claude/explore-kaizen-feature-011CUYbfrE23V39ibPzvWy2h
 
 **AUREA - Parallel Office**

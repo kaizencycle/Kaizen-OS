@@ -535,7 +535,7 @@ npm run test --filter civic-sdk
    └─ git push origin feature/my-awesome-feature
 
 9. Open pull request
-   └─ Base: kaizencycle/Mobius-Systems:main
+   └─ Base: kaizencycle/Mobius-Substrate:main
        Compare: YOUR_USERNAME/Kaizen-OS:feature/my-awesome-feature
 
 10. Code review + CI tests
@@ -551,7 +551,7 @@ npm run test --filter civic-sdk
 
 ```bash
 # Clone the repository
-git clone https://github.com/kaizencycle/Mobius-Systems.git
+git clone https://github.com/kaizencycle/Mobius-Substrate.git
 cd Kaizen-OS
 
 # Install all dependencies (monorepo)
@@ -681,4 +681,4 @@ The structure should evolve as the project grows. Current priorities:
 
 **Last Updated:** October 30, 2025
 **Current Branch:** `claude/add-founding-agents-sovereign-stack-011CUbjRDnqMJUuq71a2kkPT`
-**Repository:** github.com/kaizencycle/Mobius-Systems
+**Repository:** github.com/kaizencycle/Mobius-Substrate

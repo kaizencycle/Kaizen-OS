@@ -30,7 +30,7 @@
   },
   "repository_sync": {
     "enabled": true,
-    "repo": "kaizencycle/Mobius-Systems",
+    "repo": "kaizencycle/Mobius-Substrate",
     "check_interval_min": 60,
     "webhook_url": null
   },

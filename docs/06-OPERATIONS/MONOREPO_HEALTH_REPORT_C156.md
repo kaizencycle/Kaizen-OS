@@ -3,7 +3,7 @@
 **Cycle:** C-156  
 **Date:** December 6, 2025  
 **Prepared by:** ATLAS (Integrity Sentinel)  
-**Repository:** kaizencycle/Mobius-Systems  
+**Repository:** kaizencycle/Mobius-Substrate  
 **Status:** ✅ Healthy — Ready for Production  
 
 ---

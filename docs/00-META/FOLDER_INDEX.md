@@ -241,7 +241,7 @@ docs/
 
 ## 📞 Getting Help
 
-- **Documentation Issues**: [Report Issue](https://github.com/kaizencycle/Mobius-Systems/issues)
+- **Documentation Issues**: [Report Issue](https://github.com/kaizencycle/Mobius-Substrate/issues)
 - **Navigation Questions**: See [NAVIGATION_GUIDE.md](./NAVIGATION_GUIDE.md)
 - **Finding Documents**: See [MASTER_INDEX.md](./MASTER_INDEX.md)
 

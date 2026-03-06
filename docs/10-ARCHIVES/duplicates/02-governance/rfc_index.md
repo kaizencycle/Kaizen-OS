@@ -47,7 +47,7 @@ Community-identified topics for future RFCs:
 - Concord Epoch Governance Updates
 - Cross-Chain MIC Portability
 
-*Add your topic suggestions in [GitHub Discussions](https://github.com/kaizencycle/Mobius-Systems/discussions).*
+*Add your topic suggestions in [GitHub Discussions](https://github.com/kaizencycle/Mobius-Substrate/discussions).*
 
 ## How to Propose an RFC
 

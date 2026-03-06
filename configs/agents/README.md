@@ -109,7 +109,7 @@ kernel.can_agent_trigger_executors("DAEDALUS")  # Always False
 @software{mobius_stack_v1_1_1,
   title = {Mobius Agent Stack v1.1.1: Constitutional Pluralism in Multi-Agent AGI Systems},
   author = {{Mobius Systems Collective}},
-  url = {https://github.com/kaizencycle/Mobius-Systems},
+  url = {https://github.com/kaizencycle/Mobius-Substrate},
   version = {1.1.1},
   year = {2025},
   note = {Schema version 1.1.1; GI threshold >= 0.95}

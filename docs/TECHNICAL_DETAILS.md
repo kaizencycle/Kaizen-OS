@@ -22,8 +22,8 @@ This document contains advanced technical information extracted from the main RE
 ## Complete Badge Collection
 
 <!-- Mobius Core Badges -->
-[![CI](https://github.com/kaizencycle/Mobius-Systems/actions/workflows/ci.yml/badge.svg)](https://github.com/kaizencycle/Mobius-Systems/actions/workflows/ci.yml)
-[![CodeQL](https://github.com/kaizencycle/Mobius-Systems/actions/workflows/codeql.yml/badge.svg)](https://github.com/kaizencycle/Mobius-Systems/actions/workflows/codeql.yml)
+[![CI](https://github.com/kaizencycle/Mobius-Substrate/actions/workflows/ci.yml/badge.svg)](https://github.com/kaizencycle/Mobius-Substrate/actions/workflows/ci.yml)
+[![CodeQL](https://github.com/kaizencycle/Mobius-Substrate/actions/workflows/codeql.yml/badge.svg)](https://github.com/kaizencycle/Mobius-Substrate/actions/workflows/codeql.yml)
 [![OSSF Scorecard](https://img.shields.io/badge/OSSF-Scorecard-blue)](https://github.com/ossf/scorecard)
 [![License: AGPL-3.0](https://img.shields.io/badge/license-AGPL--3.0-blue)](FOUNDATION/LICENSES/LICENSE-Ethical-Addendum.md)
 [![Foundation](https://img.shields.io/badge/foundation-charter-8A2BE2)](FOUNDATION/CHARTER.md)
@@ -31,7 +31,7 @@ This document contains advanced technical information extracted from the main RE
 [![Ethical License](https://img.shields.io/badge/Ethics-Addendum-purple)](FOUNDATION/LICENSES/LICENSE-Ethical-Addendum.md)
 [![Node.js](https://img.shields.io/badge/Node.js-≥18.0.0-green.svg)](https://nodejs.org/)
 [![KTT Native](https://img.shields.io/badge/KTT-Native-6E00FF)](#)
-[![Spec CI](https://img.shields.io/github/actions/workflow/status/kaizencycle/Mobius-Systems/ci.yml?label=spec-ci&logo=github)](.github/workflows/ci.yml)
+[![Spec CI](https://img.shields.io/github/actions/workflow/status/kaizencycle/Mobius-Substrate/ci.yml?label=spec-ci&logo=github)](.github/workflows/ci.yml)
 [![Schemas Valid](https://img.shields.io/badge/Schemas-Valid-brightgreen)](schemas)
 [![OpenAPI Linted](https://img.shields.io/badge/OpenAPI-Linted-0AA5FF)](apps/ledger-api/openapi.yaml)
 
@@ -44,10 +44,10 @@ This document contains advanced technical information extracted from the main RE
 </p>
 
 <!-- MII Live badge (auto-updates) -->
-[![MII Live](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/kaizencycle/Mobius-Systems/main/badges/mii.json)](./00-START-HERE/MOBIUS_PULSE.md)
+[![MII Live](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/kaizencycle/Mobius-Substrate/main/badges/mii.json)](./00-START-HERE/MOBIUS_PULSE.md)
 
 <!-- Agent CI badge (auto-updates) -->
-[![Agent CI](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/kaizencycle/Mobius-Systems/main/.badges/agent-ci.json)](.github/workflows/agent-ci.yml)
+[![Agent CI](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/kaizencycle/Mobius-Substrate/main/.badges/agent-ci.json)](.github/workflows/agent-ci.yml)
 
 <!-- Mobius Pulse badges (live integrity heartbeat) -->
 [![Mobius GI/MII](https://img.shields.io/endpoint?url=https%3A%2F%2Findexer.mobius.sys%2Fapi%2Fv1%2Fpulse%2Fbadge)](./00-START-HERE/MOBIUS_PULSE.md)
@@ -56,22 +56,22 @@ This document contains advanced technical information extracted from the main RE
 
 <!-- Monorepo Structure Badges -->
 [![Turborepo](https://img.shields.io/badge/Build%20System-Turborepo-EF4444?logo=turborepo)](https://turborepo.org)
-[![Workspaces](https://img.shields.io/badge/Workspaces-43%20packages-7C3AED)](https://github.com/kaizencycle/Mobius-Systems)
+[![Workspaces](https://img.shields.io/badge/Workspaces-43%20packages-7C3AED)](https://github.com/kaizencycle/Mobius-Substrate)
 [![Apps](https://img.shields.io/badge/Apps-16-10B981)](apps)
 [![Packages](https://img.shields.io/badge/Packages-7-3B82F6)](packages)
 [![Sentinels](https://img.shields.io/badge/Sentinels-13-F59E0B)](sentinels)
 [![Labs](https://img.shields.io/badge/Labs-7-8B5CF6)](labs)
 
 <!-- Situational Report (repo-native badges) -->
-![Kaizen • Cycle](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/kaizencycle/Mobius-Systems/main/.badges/cycle.json)
-![Verdict](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/kaizencycle/Mobius-Systems/main/.badges/verdict.json)
+![Kaizen • Cycle](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/kaizencycle/Mobius-Substrate/main/.badges/cycle.json)
+![Verdict](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/kaizencycle/Mobius-Substrate/main/.badges/verdict.json)
 ![Repo Digest](https://img.shields.io/endpoint?url=https%3A%2F%2Fkaizen-os.vercel.app%2Fapi%2Frepo%2Fbadge)
 
 <!-- Native GitHub shields -->
-![PRs](https://img.shields.io/github/issues-pr/kaizencycle/Mobius-Systems)
-![Issues](https://img.shields.io/github/issues/kaizencycle/Mobius-Systems)
-![Last Commit](https://img.shields.io/github/last-commit/kaizencycle/Mobius-Systems)
-![Stars](https://img.shields.io/github/stars/kaizencycle/Mobius-Systems?style=social)
+![PRs](https://img.shields.io/github/issues-pr/kaizencycle/Mobius-Substrate)
+![Issues](https://img.shields.io/github/issues/kaizencycle/Mobius-Substrate)
+![Last Commit](https://img.shields.io/github/last-commit/kaizencycle/Mobius-Substrate)
+![Stars](https://img.shields.io/github/stars/kaizencycle/Mobius-Substrate?style=social)
 
 <sub>Verdict colors: ADOPT = green · SHADOW = orange · DEFER = red · UNKNOWN = gray</sub>
 
@@ -311,7 +311,7 @@ When integrity dips, the system halts gracefully before harm propagates.
 1. **Connect your repo to OpenCode**
 
 ```bash
-opencode connect kaizencycle/Mobius-Systems
+opencode connect kaizencycle/Mobius-Substrate
 ```
 
 2. **Start the Kaizen Council Workflow**

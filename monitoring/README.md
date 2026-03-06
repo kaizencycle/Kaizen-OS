@@ -191,7 +191,7 @@ Expected JSON log format for Promtail parsing:
 
 ## Support
 
-- Issues: [GitHub Issues](https://github.com/kaizencycle/Mobius-Systems/issues)
+- Issues: [GitHub Issues](https://github.com/kaizencycle/Mobius-Substrate/issues)
 - Docs: [Grafana Documentation](https://grafana.com/docs/)
 - Prometheus: [Prometheus Documentation](https://prometheus.io/docs/)
 - Loki: [Loki Documentation](https://grafana.com/docs/loki/)

@@ -178,7 +178,7 @@ Drawing from Schrödinger (1944):
   author={Judan, Michael},
   journal={Submitted to Nature Physics},
   year={2025},
-  note={Available at: github.com/kaizencycle/Mobius-Systems}
+  note={Available at: github.com/kaizencycle/Mobius-Substrate}
 }
 ```
 
@@ -202,7 +202,7 @@ Drawing from Schrödinger (1944):
 - Transparency International (corruption)
 
 ### Code
-Available at: `github.com/kaizencycle/Mobius-Systems`
+Available at: `github.com/kaizencycle/Mobius-Substrate`
 
 ---
 

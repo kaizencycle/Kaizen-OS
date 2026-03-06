@@ -150,7 +150,7 @@ docs/
 ### Documentation
 - 📖 [Reference Index](./08-REFERENCE/)
 - 🔍 Search this repository
-- 💬 [GitHub Discussions](https://github.com/kaizencycle/Mobius-Systems/discussions)
+- 💬 [GitHub Discussions](https://github.com/kaizencycle/Mobius-Substrate/discussions)
 
 ### Community
 - 💬 **General**: community@mobius.systems
@@ -159,7 +159,7 @@ docs/
 - 🔒 **Security**: security@mobius.systems
 
 ### Contributing
-- 🐛 [Report Issues](https://github.com/kaizencycle/Mobius-Systems/issues)
+- 🐛 [Report Issues](https://github.com/kaizencycle/Mobius-Substrate/issues)
 - 🤝 [Contribution Guide](../CONTRIBUTING.md)
 - 📝 [RFC Process](../FOUNDATION/PROCESS/RFC_PROCESS.md)
 
