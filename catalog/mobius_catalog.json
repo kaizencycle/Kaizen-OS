@@ -1,6 +1,6 @@
 {
   "mobius_catalog_version": "1.0.0",
-  "generated_at": "2026-03-08T15:16:10.581Z",
+  "generated_at": "2026-03-08T15:23:53.663Z",
   "repo": {
     "name": "Mobius-Substrate",
     "url": "https://github.com/kaizencycle/Mobius-Substrate",
@@ -9,7 +9,7 @@
   },
   "stats": {
     "epiconCount": 0,
-    "docCount": 912
+    "docCount": 913
   },
   "epicons": [],
   "docs": [
@@ -5858,7 +5858,7 @@
       "title": "Testing Strategy & Coverage",
       "category": "11-SUPPLEMENTARY",
       "tags": [],
-      "content_hash": "sha256:e3a9111ec6f77238a73fc1071e44ada80719437b8af75bf4a888404e06a4b7b2",
+      "content_hash": "sha256:3a13586417bc92cd05e8b8a9b0e1d1d0f4d02dc055598c73bfc263d640383cab",
       "summary": ""
     },
     {
@@ -7067,6 +7067,19 @@
       ],
       "content_hash": "sha256:b05eee6aba4569bbf0d9fee60970a1fc126645355794af56355cdb8fbdd5e736",
       "summary": "Defines the canonical DVA runtime loop for multi-agent cognitive processing with safe-stop guardrails"
+    },
+    {
+      "path": "docs/epicon/EPICON_C-200_DOCS_repo-health-analysis_v1.md",
+      "title": "Repository Health Analysis and Contributor Onboarding Docs",
+      "category": "epicon",
+      "tags": [
+        "documentation",
+        "onboarding",
+        "contributing",
+        "pr-template"
+      ],
+      "content_hash": "sha256:da2a8c7f3135d07a9a69458145c00d4db21b7852cdc7de3447d9d70b6955f3d2",
+      "summary": "Add canonical START_HERE, CONTRIBUTING, and CREATE_PR docs for contributor onboarding"
     },
     {
       "path": "docs/epicon/EXPLAIN_FAILURE.md",
