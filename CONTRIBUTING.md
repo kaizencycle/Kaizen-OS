@@ -86,7 +86,7 @@ npm run lint
 npm run type-check
 npm run build
 npm run test --workspaces --if-present
-node scripts/mii/compute.js --threshold 0.95
+npm run integrity:check
 ```
 
 ### Additional expectations
@@ -276,6 +276,14 @@ For governance questions, see `docs/03-GOVERNANCE-AND-POLICY/`.
 ## License
 
 By contributing to Mobius-Substrate, you agree that your contributions will be licensed under AGPL-3.0 with Ethical Addendum. See `LICENSE` and `ETHICAL_ADDENDUM.md`.
+
+---
+
+## Authority Provenance
+
+This document is maintained under founder standing as a policy document for the Mobius-Substrate monorepo. Changes to this file are governed by the Authority Provenance Guard workflow.
+
+Authority declared using EPICON_FOUNDER_STANDING.md
 
 ---
 

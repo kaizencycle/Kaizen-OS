@@ -65,7 +65,7 @@ Before requesting review, confirm:
 - [ ] `npm run type-check` passes
 - [ ] `npm run build` passes
 - [ ] `npm run test --workspaces --if-present` passes
-- [ ] `node scripts/mii/compute.js --threshold 0.95` passes
+- [ ] `npm run integrity:check` passes
 - [ ] Anti-nuke compliant (no unintended destructive changes)
 - [ ] `spec-ci` green if touching schemas or OpenAPI files
 

@@ -137,7 +137,7 @@ npm run lint
 npm run type-check
 npm run build
 npm run test --workspaces --if-present
-node scripts/mii/compute.js --threshold 0.95
+npm run integrity:check
 ```
 
 If your change is destructive, high-risk, or governance-sensitive, coordinate with maintainers and the owning Sentinel surface before merge.
