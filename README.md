@@ -1,8 +1,8 @@
-# Mobius Substrate
+# Mobius-Substrate
 
 **Integrity infrastructure for AI systems.**
 
-Mobius Substrate is a set of open-source tools that make integrity measurable, enforceable, and correctable in AI-governed systems. It provides intent accountability, integrity scoring, and multi-agent consensus — so AI systems can be held to their own stated values over time.
+Mobius-Substrate is a set of open-source tools that make integrity measurable, enforceable, and correctable in AI-governed systems. It provides intent accountability, integrity scoring, and multi-agent consensus — so AI systems can be held to their own stated values over time.
 
 | Component | What It Does | Status |
 |-----------|-------------|--------|
@@ -33,6 +33,17 @@ curl http://localhost:3000/gi
 ```
 
 **Full quickstart:** [docs/05-IMPLEMENTATION/guides/quickstart/HELLO_WORLD.md](docs/05-IMPLEMENTATION/guides/quickstart/HELLO_WORLD.md)
+
+---
+
+## Start Here
+
+New to the repo? Read in this order:
+
+1. `README.md` (this file)
+2. `CONTRIBUTING.md`
+3. `docs/START_HERE.md`
+4. `docs/05-IMPLEMENTATION/guides/quickstart/HELLO_WORLD.md`
 
 ---
 
@@ -90,7 +101,7 @@ AI systems drift from their stated values. This happens because:
 2. **Integrity is unmeasured.** There's no continuous score for whether a system is living up to its own commitments.
 3. **Governance is an afterthought.** Constraints get added after deployment, not built into the architecture.
 
-Mobius Substrate addresses all three by making integrity a first-class system property — something that's measured, enforced, and corrected at the infrastructure level.
+Mobius-Substrate addresses all three by making integrity a first-class system property — something that's measured, enforced, and corrected at the infrastructure level.
 
 ---
 
