@@ -1,20 +1,7 @@
 {
   "repo": "kaizencycle/Mobius-Substrate",
-  "updated_at": "2026-03-10T06:41:04Z",
+  "updated_at": "2026-03-10T12:48:31Z",
   "timeline": [
-    {
-      "repo": "kaizencycle/Mobius-Substrate",
-      "generated_at": "2026-01-24T06:24:40Z",
-      "open_pr_count": 0,
-      "counts": {
-        "high": 0,
-        "medium": 0,
-        "low": 0,
-        "unknown": 0
-      },
-      "emergency_count": 0,
-      "pr_sig": {}
-    },
     {
       "repo": "kaizencycle/Mobius-Substrate",
       "generated_at": "2026-01-24T12:31:06Z",
@@ -3698,6 +3685,27 @@
     {
       "repo": "kaizencycle/Mobius-Substrate",
       "generated_at": "2026-03-10T06:41:04Z",
+      "open_pr_count": 1,
+      "counts": {
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "unknown": 1
+      },
+      "emergency_count": 0,
+      "pr_sig": {
+        "250": {
+          "severity": "unknown",
+          "mode": "normal",
+          "epicon": "unknown",
+          "gate": "unknown",
+          "url": "https://github.com/kaizencycle/Mobius-Substrate/pull/250"
+        }
+      }
+    },
+    {
+      "repo": "kaizencycle/Mobius-Substrate",
+      "generated_at": "2026-03-10T12:48:31Z",
       "open_pr_count": 1,
       "counts": {
         "high": 0,
