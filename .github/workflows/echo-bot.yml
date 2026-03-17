@@ -1,0 +1,64 @@
+name: ECHO-bot — Cycle & Catalog Maintenance
+
+on:
+  workflow_dispatch:
+    inputs:
+      cycle:
+        description: "Cycle number to set (e.g. C-253). Leave blank to regenerate catalog only."
+        required: false
+        type: string
+      catalog_only:
+        description: "Regenerate catalog only (ignore cycle input)"
+        required: false
+        type: boolean
+        default: false
+
+  # Nightly catalog freshness check (runs at 02:00 UTC)
+  schedule:
+    - cron: "0 2 * * *"
+
+permissions:
+  contents: write
+
+jobs:
+  echo-bot:
+    name: "ECHO-bot: ${{ inputs.cycle || 'catalog-only' }}"
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Node 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install dependencies
+        run: npm install --prefer-offline 2>/dev/null || npm install
+
+      - name: Configure git identity
+        run: |
+          git config user.name  "ECHO-bot"
+          git config user.email "echo-bot@mobius-substrate.dev"
+
+      - name: Run ECHO-bot (cycle bump + catalog)
+        if: ${{ inputs.cycle && !inputs.catalog_only }}
+        run: |
+          node scripts/echo-bot.mjs ${{ inputs.cycle }} --commit
+        env:
+          KAIZEN_CURRENT_CYCLE: ${{ inputs.cycle }}
+
+      - name: Run ECHO-bot (catalog only)
+        if: ${{ !inputs.cycle || inputs.catalog_only || github.event_name == 'schedule' }}
+        run: |
+          node scripts/echo-bot.mjs --catalog-only --commit
+
+      - name: Push changes
+        run: |
+          BRANCH="${GITHUB_REF_NAME}"
+          git push -u origin "$BRANCH" || true

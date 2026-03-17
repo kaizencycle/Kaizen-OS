@@ -1,6 +1,6 @@
 {
   "mobius_catalog_version": "1.0.0",
-  "generated_at": "2026-03-17T18:45:32.599Z",
+  "generated_at": "2026-03-17T18:48:15.067Z",
   "repo": {
     "name": "Mobius-Substrate",
     "url": "https://github.com/kaizencycle/Mobius-Substrate",
@@ -90,7 +90,7 @@
       "title": "Welcome to Mobius Substrate Documentation",
       "category": "00-START-HERE",
       "tags": [],
-      "content_hash": "sha256:3816e5197c11caaab9c76b6774f9c0439bc547e95db9a3909945bb5a62ec3dd4",
+      "content_hash": "sha256:a1cd74c6969581e8807c614fd6733d6f97d83b1ec336dd675d1d4b6176aa70ad",
       "summary": ""
     },
     {
@@ -6890,7 +6890,7 @@
       "title": "🌀 Mobius Systems Documentation Portal",
       "category": "README.md",
       "tags": [],
-      "content_hash": "sha256:d786bee4b6eb659d1c51bdd4c518112b20d8fc604b9f404a442e262749735d31",
+      "content_hash": "sha256:907060f468b953bd91f436b73e08f38ec8ff88a2c934792b4d314665234f0e76",
       "summary": ""
     },
     {

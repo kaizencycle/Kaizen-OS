@@ -1,0 +1,95 @@
+name: mobius-bot — PR & Issue Command Handler
+
+on:
+  issue_comment:
+    types: [created]
+
+  workflow_dispatch:
+    inputs:
+      command:
+        description: "mobius-bot command (e.g. 'cycle C-253', 'catalog', 'status')"
+        required: true
+        type: string
+      pr_number:
+        description: "PR or issue number to post reply to (optional)"
+        required: false
+        type: string
+
+permissions:
+  contents: write
+  issues: write
+  pull-requests: write
+
+jobs:
+  # ── Gate: only fire on /mobius commands ──────────────────────────────────
+  check-trigger:
+    name: "Check trigger"
+    runs-on: ubuntu-latest
+    outputs:
+      should_run: ${{ steps.check.outputs.should_run }}
+    steps:
+      - name: Check for /mobius command
+        id: check
+        run: |
+          if [[ "${{ github.event_name }}" == "workflow_dispatch" ]]; then
+            echo "should_run=true" >> "$GITHUB_OUTPUT"
+          elif echo "${{ github.event.comment.body }}" | grep -qE '^/mobius\b'; then
+            echo "should_run=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "should_run=false" >> "$GITHUB_OUTPUT"
+          fi
+
+  # ── Main bot execution ────────────────────────────────────────────────────
+  run-bot:
+    name: "mobius-bot: ${{ inputs.command || github.event.comment.body }}"
+    runs-on: ubuntu-latest
+    needs: check-trigger
+    if: needs.check-trigger.outputs.should_run == 'true'
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Node 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install dependencies
+        run: npm install --prefer-offline 2>/dev/null || npm install
+
+      - name: Configure git identity
+        run: |
+          git config user.name  "mobius-bot"
+          git config user.email "mobius-bot@mobius-substrate.dev"
+
+      - name: Resolve PR/issue number
+        id: resolve_pr
+        run: |
+          if [[ "${{ github.event_name }}" == "issue_comment" ]]; then
+            echo "pr_number=${{ github.event.issue.number }}" >> "$GITHUB_OUTPUT"
+          else
+            echo "pr_number=${{ inputs.pr_number }}" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Run mobius-bot
+        run: node scripts/mobius-bot.mjs
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+          MOBIUS_COMMENT_BODY: ${{ github.event.comment.body || '' }}
+          MOBIUS_COMMAND: ${{ inputs.command || '' }}
+          MOBIUS_PR_NUMBER: ${{ steps.resolve_pr.outputs.pr_number }}
+          MOBIUS_ACTOR: ${{ github.event.comment.user.login || github.actor }}
+          MOBIUS_CYCLE: ${{ inputs.command }}
+          KAIZEN_CURRENT_CYCLE: ${{ vars.KAIZEN_CURRENT_CYCLE || 'C-253' }}
+          KAIZEN_GI_BASELINE: ${{ vars.KAIZEN_GI_BASELINE || '0.993' }}
+
+      - name: Push changes (if any)
+        run: |
+          BRANCH="${GITHUB_REF_NAME}"
+          git diff --quiet HEAD || git push -u origin "$BRANCH" || true
