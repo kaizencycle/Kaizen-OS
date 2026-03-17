@@ -1,6 +1,6 @@
 {
   "mobius_catalog_version": "1.0.0",
-  "generated_at": "2026-03-08T15:23:53.663Z",
+  "generated_at": "2026-03-17T18:45:32.599Z",
   "repo": {
     "name": "Mobius-Substrate",
     "url": "https://github.com/kaizencycle/Mobius-Substrate",
@@ -9,7 +9,7 @@
   },
   "stats": {
     "epiconCount": 0,
-    "docCount": 913
+    "docCount": 918
   },
   "epicons": [],
   "docs": [
@@ -7010,7 +7010,7 @@
       "title": "Divergence Dashboard",
       "category": "divergence",
       "tags": [],
-      "content_hash": "sha256:9fce6a2d15798dc50d525e392ae8598aa2794835c7c200179afb4c054904cd9d",
+      "content_hash": "sha256:122b2b4c3308b3fdb2633d35f63cb0450389f481f1929cfb9670fa8efd9802f2",
       "summary": ""
     },
     {
@@ -7221,6 +7221,86 @@
       ],
       "content_hash": "sha256:a649fb7a5d57f8944eca1adef03c196b392d4efbabe46b37af5905b73c82f470",
       "summary": "Rewrite README.md as a focused technical document — signal over noise for developer first impressions"
+    },
+    {
+      "path": "docs/epicon/cycles/C-238/EPICON_C-238_INFRA_trust-layer-formalization_v1.md",
+      "title": "Trust Layer Formalization — Production Governance + Real-Time Verification",
+      "category": "epicon",
+      "tags": [
+        "governance",
+        "trust-layer",
+        "verification",
+        "ECHO-ZEUS-HERMES",
+        "production",
+        "real-time"
+      ],
+      "content_hash": "sha256:bd0d828f067fdbdd0ee409f6343b9319ee63939bc1427463112bf1e8f96b3a40",
+      "summary": "Formalized the Mobius trust layer with production-ready governance documents, machine-readable schemas, and a live EPICON ledger record tied to a geopolitical verification challenge — demonstrating the ECHO-ZEUS-HERMES agent loop in practice"
+    },
+    {
+      "path": "docs/epicon/cycles/C-242/EPICON_C-242_INFRA_cursor-background-automations_v1.md",
+      "title": "Cursor Background Agent Automations — Seven Integrity Enforcement Loops",
+      "category": "epicon",
+      "tags": [
+        "cursor",
+        "automation",
+        "integrity-enforcement",
+        "background-agent",
+        "CI",
+        "EPICON-guard",
+        "sentinel"
+      ],
+      "content_hash": "sha256:12c5c734726486550c0cd15d4b75d9cf7b737c3590217f16529708d20f1bd7af",
+      "summary": "Configured seven Cursor Background Agent automations covering EPICON ledger integrity, PR checklist enforcement, broken link detection, schema drift, sentinel personality guard, onboarding sync, and Turborepo pipeline health"
+    },
+    {
+      "path": "docs/epicon/cycles/C-245/EPICON_C-245_INFRA_cortex-bridge-heartbeat_v1.md",
+      "title": "Cortex Bridge + Heartbeat Monitoring — Agent Operational Awareness",
+      "category": "epicon",
+      "tags": [
+        "cortex-bridge",
+        "heartbeat",
+        "slack",
+        "websocket",
+        "agent-monitoring",
+        "ATLAS",
+        "operational-awareness"
+      ],
+      "content_hash": "sha256:d09f3fba3c8a98a5aff1ab4430f112d09093037d8d8334ca28b882f2760271aa",
+      "summary": "Built the cortex bridge (Express + WebSocket on port 7842) connecting the Slack bot to a live dashboard, plus heartbeat monitoring system for agent operational status"
+    },
+    {
+      "path": "docs/epicon/cycles/C-249/EPICON_C-249_PRODUCT_civic-ai-terminal-scaffold_v1.md",
+      "title": "Mobius Civic AI Terminal — Scaffold and First Deploy",
+      "category": "epicon",
+      "tags": [
+        "terminal",
+        "civic-bloomberg",
+        "next-js",
+        "vercel",
+        "deploy",
+        "product",
+        "V1"
+      ],
+      "content_hash": "sha256:5bd421435301c496ab9762aecc42c77825ede5d52a9e6876b8bf957afad220f3",
+      "summary": "Scaffolded and deployed the Mobius Civic AI Terminal — a civic Bloomberg-style command interface with EPICON feed, Agent Cortex, GI Monitor, Tripwire Watch, Detail Inspector, and Command Palette"
+    },
+    {
+      "path": "docs/epicon/cycles/C-253/EPICON_C-253_PRODUCT_signal-engine-v1_v1.md",
+      "title": "Signal Engine V1 — Real-Time Signal vs Narrative Divergence Scoring",
+      "category": "epicon",
+      "tags": [
+        "signal-engine",
+        "narrative",
+        "divergence",
+        "verification",
+        "iran",
+        "hormuz",
+        "geopolitical",
+        "real-time"
+      ],
+      "content_hash": "sha256:d14d51935e27b96236602d18f5928f404902031cc3dc445edb19ea74bcaa8e19",
+      "summary": "Built and deployed Signal Engine V1 — scores every EPICON event across signal (verification strength), narrative (amplification level), and volatility (system reaction) dimensions, classifying events as SIGNAL, EMERGING, or DISTORTION. First real-world test against Iran-Hormuz crisis intelligence."
     },
     {
       "path": "docs/epicon/cycles/C-ATLAS/EPICON_C-ATLAS_INFRA_mobiusatlas-agent-launch_v1.md",
