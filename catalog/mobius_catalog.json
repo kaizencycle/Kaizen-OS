@@ -1,15 +1,15 @@
 {
   "mobius_catalog_version": "1.0.0",
-  "generated_at": "2026-04-07T04:37:24.333Z",
+  "generated_at": "2026-04-07T20:00:12.262Z",
   "repo": {
     "name": "Mobius-Substrate",
     "url": "https://github.com/kaizencycle/Mobius-Substrate",
     "default_branch": "main",
-    "commit": "614e505029ba42e55230e8f12283aa9e9f88bdaa"
+    "commit": ""
   },
   "stats": {
     "epiconCount": 0,
-    "docCount": 918
+    "docCount": 919
   },
   "epicons": [],
   "docs": [
@@ -1459,6 +1459,14 @@
       "category": "05-IMPLEMENTATION",
       "tags": [],
       "content_hash": "sha256:c32a506af805df672d63f1a3e92f15b41966975c21393413684087bfc7c799c8",
+      "summary": ""
+    },
+    {
+      "path": "docs/05-IMPLEMENTATION/guides/flywheel/FLYWHEEL_C274.md",
+      "title": "Mobius Flywheel — C-274 State",
+      "category": "05-IMPLEMENTATION",
+      "tags": [],
+      "content_hash": "sha256:07a3eeeac675eef945cfb67663229cb0ad56d2bfe1c01f94e51fbb66281050a3",
       "summary": ""
     },
     {
@@ -7010,7 +7018,7 @@
       "title": "Divergence Dashboard",
       "category": "divergence",
       "tags": [],
-      "content_hash": "sha256:119fba46beacd4124bbaa38e5e7dca73406faa0d394c71ea3f8aae53876f0dfc",
+      "content_hash": "sha256:32637da926a4dec70ad3ae6d877aa8a82f3cb289bf2ccaf1254740d7d979c5c5",
       "summary": ""
     },
     {
