@@ -1,92 +1,9 @@
 {
-  "cycle": {
-    "number": 177,
-    "id": "C-177",
-    "date": "2025-12-22",
-    "phase": "EPICON Production Era",
-    "focus": "Repository Streamlining & Workflow Consolidation",
-    "theme": "Clarity Through Simplification"
-  },
-  "milestones": {
-    "epicon_operational": true,
-    "epicon_1_live": true,
-    "epicon_2_live": true,
-    "epicon_3_live": true,
-    "readme_streamlined": true,
-    "workflow_audit_complete": true
-  },
-  "integrity": {
-    "mii_target": 0.95,
-    "mii_baseline": 0.993,
-    "mii_threshold_warn": 0.970,
-    "mii_threshold_halt": 0.950,
-    "current_status": "operational",
-    "last_validation": "2025-12-22T00:00:00Z"
-  },
-  "deliverables": {
-    "readme_v2": {
-      "status": "complete",
-      "description": "Streamlined README for 30-min newcomer onboarding",
-      "lines_reduced": "~530 lines (800→270)"
-    },
-    "workflow_consolidation_plan": {
-      "status": "complete",
-      "description": "Comprehensive workflow audit and consolidation strategy",
-      "workflows_to_remove": 9,
-      "workflows_to_consolidate": 18,
-      "final_count": "~20 workflows (from 41)"
-    }
-  },
-  "agents": {
-    "atlas": {
-      "role": "Infrastructure & Operations",
-      "contribution": "Workflow audit, consolidation planning"
-    },
-    "aurea": {
-      "role": "Integrity Sentinel",
-      "contribution": "MII validation, EPICON oversight"
-    },
-    "eve": {
-      "role": "Ethics Engine",
-      "contribution": "Documentation clarity review"
-    },
-    "jade": {
-      "role": "Morale Anchor",
-      "contribution": "Newcomer experience optimization"
-    },
-    "hermes": {
-      "role": "Market & Signals",
-      "contribution": "External communication review"
-    }
-  },
-  "context": {
-    "previous_cycle": "C-151",
-    "cycles_since_epicon": 26,
-    "epicon_launch_cycle": "C-151",
-    "repository_health": "excellent",
-    "community_readiness": "improving"
-  },
-  "active_services": 16,
-  "sentinel_count": 13,
-  "repository": "kaizencycle/Mobius-Substrate",
-  "monorepo_structure": {
-    "apps": 16,
-    "packages": 7,
-    "labs": 7,
-    "sentinels": 13
-  },
-  "next_epoch_days": 48,
-  "next_epoch_date": "2026-02-08T00:00:00Z",
-  "notes": [
-    "First major documentation overhaul since EPICON-3 launch",
-    "Workflow consolidation addresses CI complexity debt",
-    "README now optimized for academic/institutional review",
-    "Clear 30-minute learning path for newcomers established"
-  ],
-  "meta": {
-    "updated_by": "ATLAS",
-    "updated_at": "2025-12-22T16:30:00Z",
-    "review_status": "approved",
-    "next_review": "C-180"
-  }
+  "current_cycle": "C-274",
+  "date": "2026-04-07",
+  "gi": 0.81,
+  "mode": "green",
+  "terminal": "https://mobius-civic-ai-terminal.vercel.app",
+  "snapshot": "https://mobius-civic-ai-terminal.vercel.app/api/terminal/snapshot",
+  "last_updated": "2026-04-07T19:52:51Z"
 }
