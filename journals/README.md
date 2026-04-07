@@ -6,6 +6,7 @@ This directory contains structured journal entries for the Mobius integrity syst
 
 ```
 journals/
+├── atlas/ … echo/   # Per-agent journal roots (`.gitkeep` until first write)
 ├── cycles/           # Cycle Journal entries (C-XXX.json / C-XXX.md)
 │   ├── C-193.json   # Source of truth (JSON)
 │   ├── C-193.md     # Auto-rendered preview (Markdown)
