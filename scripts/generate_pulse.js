@@ -61,8 +61,8 @@ function readCycleInfo() {
     if (fs.existsSync(cyclePath)) {
       const cycleData = JSON.parse(fs.readFileSync(cyclePath, 'utf8'));
       return {
-        cycle: cycleData.current_cycle || 'C-151',
-        mii: cycleData.mii_baseline || 0.97
+        cycle: cycleData.current_cycle || cycleData.cycle?.id || 'C-151',
+        mii: cycleData.mii_baseline ?? cycleData.gi ?? 0.97
       };
     }
   } catch (error) {

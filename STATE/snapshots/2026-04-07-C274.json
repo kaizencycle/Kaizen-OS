@@ -1,0 +1,77 @@
+{
+  "snapshot_id": "C274-2026-04-07T19:52:51Z",
+  "cycle": "C-274",
+  "date": "2026-04-07",
+  "timestamp": "2026-04-07T19:52:51Z",
+  "operator": "kaizencycle",
+  "milestone": "Flywheel loop closed — Terminal + Substrate + Shell",
+
+  "global_integrity": {
+    "gi": 0.81,
+    "mode": "green",
+    "status": "nominal",
+    "source": "live",
+    "signals": {
+      "quality": 0.74, "freshness": 0.6,
+      "stability": 1.0, "system": 1.0,
+      "geopolitics": 0.74, "economy": 1.0,
+      "sentiment": 1.0, "information": 0.6
+    }
+  },
+
+  "sentiment_domains": {
+    "civic":          { "score": 0.81,  "agent": "EVE",      "source": "Federal Register + data.gov" },
+    "environ":        { "score": 0.603, "agent": "GAIA",     "source": "USGS + Open-Meteo + EONET" },
+    "financial":      { "score": 0.45,  "agent": "ECHO",     "source": "CoinGecko · avg -0.99%" },
+    "narrative":      { "score": 0.708, "agent": "HERMES",   "source": "HN + Wikipedia" },
+    "infrastructure": { "score": 0.708, "agent": "DAEDALUS", "source": "GitHub + npm + self-ping" },
+    "institutional":  { "score": 0.81,  "agent": "JADE",     "source": "data.gov + FRED" }
+  },
+
+  "live_signals": {
+    "seismic":    "38 quakes M2.5+ · max M5.2 Chignik Alaska · elevated",
+    "weather":    "53°F · 19mph wind · NYC · nominal",
+    "market":     "BTC $68,846 (-1.3%) · ETH $2,107 (-1.6%) · SOL $81.40 (-0.4%)",
+    "governance": "Federal Register 62 docs · data.gov 402,371 datasets",
+    "narrative":  "HN: Project Glasswing — Securing critical software for AI era"
+  },
+
+  "agents": {
+    "roster": ["ATLAS","ZEUS","EVE","AUREA","HERMES","JADE","DAEDALUS","ECHO"],
+    "active": 8,
+    "mii_averages": { "ATLAS": 0.93, "ZEUS": 0.92, "JADE": 0.81, "EVE": 0.93 },
+    "echo_ingest": {
+      "total_ingested": 9,
+      "avg_mii": 0.9035,
+      "total_gi_delta": 0.0336,
+      "mic_minted": 0,
+      "note": "mic_minted gate not yet open — infrastructure complete"
+    }
+  },
+
+  "ecosystem": {
+    "terminal":      "https://mobius-civic-ai-terminal.vercel.app",
+    "substrate":     "https://github.com/kaizencycle/Mobius-Substrate",
+    "browser_shell": "https://mobius-browser-shell.vercel.app",
+    "civic_ledger":  "https://civic-protocol-core-ledger.onrender.com",
+    "handbook":      "https://kaizencycle.github.io/Mobius-Substrate",
+    "snapshot_api":  "https://mobius-civic-ai-terminal.vercel.app/api/terminal/snapshot"
+  },
+
+  "flywheel_status": {
+    "terminal_writes_substrate": "LIVE — journals/ [PR #220]",
+    "substrate_serves_terminal": "LIVE — GitHub raw API",
+    "terminal_to_ledger":        "WIRED — /ledger/attest path correct",
+    "shell_reads_terminal":      "PENDING — terminal-bridge.ts",
+    "shell_writes_ledger":       "PENDING — epicon-attest.ts",
+    "mic_mint_gate":             "PENDING — micMinted: 0"
+  },
+
+  "prs_today": [
+    "PR #213 — substrate write layer + GitHub OAuth + command surface",
+    "PR #220 — agent journals → Substrate journals/",
+    "PR #221 — ledger proxy + seed backfill + async attestation"
+  ],
+
+  "milestone_note": "August 2025 — idea only. April 7 2026 — flywheel exists. The loop is closing."
+}
