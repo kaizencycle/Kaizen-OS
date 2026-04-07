@@ -1,0 +1,384 @@
+From 546a9ea6a6cd765a65904acbb7d6e0f1044bf4b2 Mon Sep 17 00:00:00 2001
+From: Cursor Agent <cursoragent@cursor.com>
+Date: Tue, 7 Apr 2026 20:03:53 +0000
+Subject: [PATCH] =?UTF-8?q?feat(flywheel):=20wire=20Shell=20=E2=86=92=20Te?=
+ =?UTF-8?q?rminal=20snapshot=20+=20Substrate=20EPICON=20path=20[C-274]?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ App.tsx                         |  61 ++++++++++++++++-
+ components/WorldSignalStrip.tsx |  63 +++++++++++++++++
+ src/lib/epicon-attest.ts        |  61 +++++++++++++++++
+ src/lib/terminal-bridge.ts      | 117 ++++++++++++++++++++++++++++++++
+ 4 files changed, 301 insertions(+), 1 deletion(-)
+ create mode 100644 components/WorldSignalStrip.tsx
+ create mode 100644 src/lib/epicon-attest.ts
+ create mode 100644 src/lib/terminal-bridge.ts
+
+diff --git a/App.tsx b/App.tsx
+index 91e145a..7bdce09 100644
+--- a/App.tsx
++++ b/App.tsx
+@@ -1,4 +1,4 @@
+-import React, { useState } from 'react';
++import React, { useEffect, useState } from 'react';
+ import { SENTINELS } from './constants';
+ import { TabId } from './types';
+ import { SentinelStatus } from './components/SentinelStatus';
+@@ -24,12 +24,25 @@ import { CitizenProfile } from './components/CitizenProfile/CitizenProfile';
+ import { CitizenProfileButton } from './components/CitizenProfile/CitizenProfileButton';
+ import { useCitizenProfile } from './hooks/useCitizenProfile';
+ import { useGuest } from './contexts/GuestContext';
++import { fetchTerminalState, type TerminalState } from '@/src/lib/terminal-bridge';
++import { WorldSignalStrip } from './components/WorldSignalStrip';
++
++const TERMINAL_APP_URL = 'https://mobius-civic-ai-terminal.vercel.app/terminal' as const;
+ 
+ const App: React.FC = () => {
+   const [activeTab, setActiveTab] = useState<TabId>(TabId.OAA);
+   const [isWaking, setIsWaking] = useState(false);
+   const [wakeComplete, setWakeComplete] = useState(false);
+   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
++  const [terminalState, setTerminalState] = useState<TerminalState | null>(null);
++
++  useEffect(() => {
++    void fetchTerminalState().then(setTerminalState);
++    const interval = window.setInterval(() => {
++      void fetchTerminalState().then(setTerminalState);
++    }, 60_000);
++    return () => window.clearInterval(interval);
++  }, []);
+ 
+   // Auth & Wallet hooks (citizen from passkey; always authenticated when App renders in auth flow)
+   const { citizen } = useAuth();
+@@ -164,6 +177,30 @@ const App: React.FC = () => {
+               </div>
+               <span className="font-serif font-bold tracking-tight text-sm sm:text-base">Mobius Substrate</span>
+               <span className="text-[10px] sm:text-xs text-emerald-600 font-mono px-1.5 sm:px-2 py-0.5 bg-emerald-50 border border-emerald-200 rounded hidden sm:inline">Beta v1.0.0</span>
++              {terminalState ? (
++                <a
++                  href={TERMINAL_APP_URL}
++                  target="_blank"
++                  rel="noopener noreferrer"
++                  className={`text-[10px] sm:text-xs font-mono px-1.5 sm:px-2 py-0.5 rounded border shrink-0 ${
++                    terminalState.mode === 'green'
++                      ? 'text-emerald-700 bg-emerald-50 border-emerald-200'
++                      : terminalState.mode === 'yellow'
++                        ? 'text-amber-800 bg-amber-50 border-amber-200'
++                        : 'text-rose-700 bg-rose-50 border-rose-200'
++                  }`}
++                  title="Global integrity from Mobius Civic AI Terminal"
++                >
++                  GI {terminalState.gi.toFixed(2)} [{terminalState.mode}]
++                </a>
++              ) : (
++                <span
++                  className="text-[10px] sm:text-xs font-mono px-1.5 sm:px-2 py-0.5 rounded border border-stone-200 bg-stone-50 text-stone-400 shrink-0"
++                  title="Connecting to terminal snapshot…"
++                >
++                  GI …
++                </span>
++              )}
+            </div>
+            
+            {/* Desktop Actions */}
+@@ -294,6 +331,26 @@ const App: React.FC = () => {
+             
+             {/* Status Pills - Mobile */}
+             <div className="flex flex-wrap items-center justify-center gap-2">
++              {terminalState ? (
++                <a
++                  href={TERMINAL_APP_URL}
++                  target="_blank"
++                  rel="noopener noreferrer"
++                  className={`text-[10px] font-mono px-2 py-1 rounded border ${
++                    terminalState.mode === 'green'
++                      ? 'text-emerald-700 bg-emerald-50 border-emerald-200'
++                      : terminalState.mode === 'yellow'
++                        ? 'text-amber-800 bg-amber-50 border-amber-200'
++                        : 'text-rose-700 bg-rose-50 border-rose-200'
++                  }`}
++                >
++                  GI {terminalState.gi.toFixed(2)} [{terminalState.mode}]
++                </a>
++              ) : (
++                <span className="text-[10px] font-mono px-2 py-1 rounded border border-stone-200 bg-stone-50 text-stone-400">
++                  GI …
++                </span>
++              )}
+               {/* Testnet Badge - Mobile */}
+               {env.network.isTestnet && (
+                 <span className="px-2 py-1 bg-yellow-400 text-yellow-900 text-[10px] font-bold rounded uppercase">
+@@ -343,6 +400,8 @@ const App: React.FC = () => {
+           </div>
+         )}
+ 
++        <WorldSignalStrip terminalState={terminalState} />
++
+         {/* Row 2: Omnibar */}
+         <div className="py-2 sm:py-4 px-3 sm:px-6">
+             <Omnibar />
+diff --git a/components/WorldSignalStrip.tsx b/components/WorldSignalStrip.tsx
+new file mode 100644
+index 0000000..7db078d
+--- /dev/null
++++ b/components/WorldSignalStrip.tsx
+@@ -0,0 +1,63 @@
++import React from 'react';
++import type { TerminalState } from '@/src/lib/terminal-bridge';
++
++const DOMAIN_ORDER = [
++  'civic',
++  'environ',
++  'financial',
++  'narrative',
++  'infrastructure',
++  'institutional',
++] as const;
++
++const DOMAIN_LABEL: Record<(typeof DOMAIN_ORDER)[number], string> = {
++  civic: 'CIVIC',
++  environ: 'ENVIRON',
++  financial: 'FINANCIAL',
++  narrative: 'NARRATIVE',
++  infrastructure: 'INFRASTR',
++  institutional: 'INSTITUTIONAL',
++};
++
++const TERMINAL_URL = 'https://mobius-civic-ai-terminal.vercel.app/terminal' as const;
++
++function scoreTone(score: number): string {
++  if (score >= 0.8) return 'text-emerald-600';
++  if (score >= 0.65) return 'text-amber-600';
++  return 'text-rose-600';
++}
++
++interface WorldSignalStripProps {
++  terminalState: TerminalState | null;
++}
++
++export const WorldSignalStrip: React.FC<WorldSignalStripProps> = ({ terminalState }) => {
++  return (
++    <div className="flex-none border-b border-stone-200 bg-stone-50/80 px-3 sm:px-6 py-2">
++      <p className="font-mono text-[10px] sm:text-xs text-stone-600 leading-relaxed tracking-tight">
++        {DOMAIN_ORDER.map((key, i) => {
++          const row = terminalState?.sentiment[key];
++          const score = row?.score ?? null;
++          const label = DOMAIN_LABEL[key];
++          const tone = score !== null ? scoreTone(score) : 'text-stone-400';
++          const shown = score !== null ? score.toFixed(2) : '—';
++          return (
++            <span key={key}>
++              {i > 0 ? <span className="text-stone-400"> · </span> : null}
++              <span className="text-stone-500">{label}</span>{' '}
++              <span className={tone}>{shown}</span>
++            </span>
++          );
++        })}
++      </p>
++      <a
++        href={TERMINAL_URL}
++        target="_blank"
++        rel="noopener noreferrer"
++        className="mt-1 inline-block text-[10px] text-stone-500 hover:text-stone-700 underline-offset-2 hover:underline font-mono"
++      >
++        Live world signal · Mobius Terminal →
++      </a>
++    </div>
++  );
++};
+diff --git a/src/lib/epicon-attest.ts b/src/lib/epicon-attest.ts
+new file mode 100644
+index 0000000..475ae8e
+--- /dev/null
++++ b/src/lib/epicon-attest.ts
+@@ -0,0 +1,61 @@
++const LEDGER_URL = 'https://civic-protocol-core-ledger.onrender.com' as const;
++
++export type HumanAttestationEventType =
++  | 'civic-observation'
++  | 'governance-event'
++  | 'community-action';
++
++export interface HumanAttestation {
++  civic_id: string;
++  event_type: HumanAttestationEventType;
++  title: string;
++  summary: string;
++  location?: string;
++  evidence?: string;
++  confidence: number;
++}
++
++function isRecord(value: unknown): value is Record<string, unknown> {
++  return typeof value === 'object' && value !== null && !Array.isArray(value);
++}
++
++function readString(value: unknown): string | undefined {
++  return typeof value === 'string' ? value : undefined;
++}
++
++export async function submitAttestation(
++  attestation: HumanAttestation
++): Promise<{ ok: boolean; entryId?: string; error?: string }> {
++  try {
++    const res = await fetch(`${LEDGER_URL}/ledger/attest`, {
++      method: 'POST',
++      headers: { 'Content-Type': 'application/json' },
++      body: JSON.stringify({
++        agent_id: attestation.civic_id,
++        event_type: attestation.event_type,
++        payload: {
++          title: attestation.title,
++          summary: attestation.summary,
++          location: attestation.location,
++          evidence: attestation.evidence,
++          confidence: attestation.confidence,
++          source: 'browser-shell-human',
++        },
++        timestamp: new Date().toISOString(),
++        civic_id: attestation.civic_id,
++      }),
++      signal: AbortSignal.timeout(8000),
++    });
++    if (!res.ok) {
++      return { ok: false, error: `ledger_${res.status}` };
++    }
++    const data: unknown = await res.json();
++    if (!isRecord(data)) {
++      return { ok: true };
++    }
++    const entryId = readString(data.event_id) ?? readString(data.id);
++    return { ok: true, entryId };
++  } catch (err) {
++    return { ok: false, error: String(err) };
++  }
++}
+diff --git a/src/lib/terminal-bridge.ts b/src/lib/terminal-bridge.ts
+new file mode 100644
+index 0000000..2837d3a
+--- /dev/null
++++ b/src/lib/terminal-bridge.ts
+@@ -0,0 +1,117 @@
++const TERMINAL_SNAPSHOT =
++  'https://mobius-civic-ai-terminal.vercel.app/api/terminal/snapshot' as const;
++
++export type TerminalIntegrityMode = 'green' | 'yellow' | 'red';
++
++export interface TerminalState {
++  gi: number;
++  mode: TerminalIntegrityMode;
++  cycle: string;
++  sentiment: Record<string, { score: number; agent: string }>;
++  anomalies: Array<{ label: string; severity: string }>;
++  echo: {
++    totalIngested: number;
++    avgMii: number;
++  };
++  timestamp: string;
++}
++
++function isRecord(value: unknown): value is Record<string, unknown> {
++  return typeof value === 'object' && value !== null && !Array.isArray(value);
++}
++
++function readNumber(value: unknown, fallback: number): number {
++  return typeof value === 'number' && Number.isFinite(value) ? value : fallback;
++}
++
++function readString(value: unknown, fallback: string): string {
++  return typeof value === 'string' ? value : fallback;
++}
++
++function readMode(value: unknown): TerminalIntegrityMode {
++  if (value === 'green' || value === 'yellow' || value === 'red') {
++    return value;
++  }
++  return 'yellow';
++}
++
++function readAnomalyEntry(value: unknown): { label: string; severity: string } | null {
++  if (!isRecord(value)) return null;
++  return {
++    label: readString(value.label, ''),
++    severity: readString(value.severity, ''),
++  };
++}
++
++function readDomainEntry(
++  value: unknown
++): { key: string; score: number; agent: string } | null {
++  if (!isRecord(value)) return null;
++  const key = readString(value.key, '');
++  if (!key) return null;
++  return {
++    key,
++    score: readNumber(value.score, 0),
++    agent: readString(value.agent, ''),
++  };
++}
++
++export async function fetchTerminalState(): Promise<TerminalState | null> {
++  try {
++    const res = await fetch(TERMINAL_SNAPSHOT, {
++      signal: AbortSignal.timeout(5000),
++    });
++    if (!res.ok) return null;
++    const data: unknown = await res.json();
++
++    if (!isRecord(data)) return null;
++
++    const integrity = isRecord(data.integrity) ? data.integrity : null;
++    const integrityData = integrity && isRecord(integrity.data) ? integrity.data : null;
++
++    const sentiment = isRecord(data.sentiment) ? data.sentiment : null;
++    const sentimentData = sentiment && isRecord(sentiment.data) ? sentiment.data : null;
++    const domainsRaw = sentimentData?.domains;
++    const domains = Array.isArray(domainsRaw) ? domainsRaw : [];
++
++    const signals = isRecord(data.signals) ? data.signals : null;
++    const signalsData = signals && isRecord(signals.data) ? signals.data : null;
++    const anomaliesRaw = signalsData?.anomalies;
++    const anomaliesList = Array.isArray(anomaliesRaw) ? anomaliesRaw : [];
++
++    const echo = isRecord(data.echo) ? data.echo : null;
++    const echoData = echo && isRecord(echo.data) ? echo.data : null;
++    const echoStatus = echoData && isRecord(echoData.status) ? echoData.status : null;
++    const echoIntegrity =
++      echoData && isRecord(echoData.integrity) ? echoData.integrity : null;
++
++    const sentimentMap: Record<string, { score: number; agent: string }> = {};
++    for (const item of domains) {
++      const d = readDomainEntry(item);
++      if (d) {
++        sentimentMap[d.key] = { score: d.score, agent: d.agent };
++      }
++    }
++
++    const anomalies: Array<{ label: string; severity: string }> = [];
++    for (const item of anomaliesList) {
++      const a = readAnomalyEntry(item);
++      if (a) anomalies.push(a);
++    }
++
++    return {
++      gi: integrityData ? readNumber(integrityData.global_integrity, 0) : 0,
++      mode: integrityData ? readMode(integrityData.mode) : 'yellow',
++      cycle: integrityData ? readString(integrityData.cycle, 'C-?') : 'C-?',
++      sentiment: sentimentMap,
++      anomalies,
++      echo: {
++        totalIngested: echoStatus ? readNumber(echoStatus.totalIngested, 0) : 0,
++        avgMii: echoIntegrity ? readNumber(echoIntegrity.avgMii, 0) : 0,
++      },
++      timestamp: readString(data.timestamp, new Date().toISOString()),
++    };
++  } catch {
++    return null;
++  }
++}
+-- 
+2.43.0
+
