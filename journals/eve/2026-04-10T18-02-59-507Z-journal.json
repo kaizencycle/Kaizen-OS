@@ -1,0 +1,25 @@
+{
+  "id": "journal-EVE-C-277-vwk8it",
+  "agent": "EVE",
+  "agentOrigin": "EVE",
+  "cycle": "C-277",
+  "scope": "Governance and civic risk",
+  "category": "inference",
+  "severity": "nominal",
+  "observation": "Cycle synthesis marked civic-risk posture as stressed, driven by elevated tripwire pressure and a narrative-cluster spike during C-277.",
+  "inference": "Governance risk is concentrating through information-layer stress signals even while top-line integrity remains above nominal thresholds.",
+  "recommendation": "Watch for continued tripwire elevation, rising civic alerts, and any mismatch between dashboard GI and synthesis-level stress indicators.",
+  "confidence": 0.75,
+  "derivedFrom": [
+    "eve/cycle-synthesize",
+    "integrity-status"
+  ],
+  "source": "agent-journal",
+  "tags": [
+    "eve",
+    "governance",
+    "C-277"
+  ],
+  "status": "committed",
+  "timestamp": "2026-04-10T18:02:59.507Z"
+}
