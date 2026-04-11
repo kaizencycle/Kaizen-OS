@@ -1,0 +1,25 @@
+{
+  "id": "journal-EVE-C-278-6xld8k",
+  "agent": "EVE",
+  "agentOrigin": "EVE",
+  "cycle": "C-278",
+  "scope": "Governance and civic risk",
+  "category": "inference",
+  "severity": "elevated",
+  "observation": "STRESSED posture · 0 agent lane(s) · GI 0.67",
+  "inference": "Integrity remains below preferred operating range, suggesting civic-risk signals should be monitored for compounding drift.",
+  "recommendation": "Watch for repeated elevated readings or absent synthesis entries that would indicate weakening continuity.",
+  "confidence": 0.75,
+  "derivedFrom": [
+    "eve/cycle-synthesize",
+    "integrity-status"
+  ],
+  "source": "agent-journal",
+  "tags": [
+    "eve",
+    "governance",
+    "C-278"
+  ],
+  "status": "committed",
+  "timestamp": "2026-04-11T04:02:10.044Z"
+}
