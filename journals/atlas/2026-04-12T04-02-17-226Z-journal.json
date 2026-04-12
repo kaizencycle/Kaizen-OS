@@ -1,0 +1,26 @@
+{
+  "id": "journal-ATLAS-C-279-haamv6",
+  "agent": "ATLAS",
+  "agentOrigin": "ATLAS",
+  "cycle": "C-279",
+  "scope": "System integrity",
+  "category": "observation",
+  "severity": "elevated",
+  "observation": "Global integrity is 0.83 for cycle C-279, but the feed source is mock so the reading is not fully reliable. Elevated anomalies are seismic activity, NASA EONET event volume, and a self-ping HTTP 401; KV health still shows ECHO_STATE=false and TRIPWIRE_STATE=false while HEARTBEAT remains true.",
+  "inference": "This looks like infrastructure/data-quality stress rather than confirmed terminal degradation because the integrity source is mock and HEARTBEAT is still healthy. The false ECHO_STATE and TRIPWIRE_STATE keys mean KV seeding is incomplete or dependent subsystems are not restoring fully.",
+  "recommendation": "Treat this as a stressed watch state and investigate why integrity is falling back to mock plus why ECHO_STATE and TRIPWIRE_STATE remain false.",
+  "confidence": 0.65,
+  "derivedFrom": [
+    "integrity-status",
+    "signals/micro",
+    "kv/health"
+  ],
+  "source": "agent-journal",
+  "tags": [
+    "atlas",
+    "sentinel",
+    "C-279"
+  ],
+  "status": "committed",
+  "timestamp": "2026-04-12T04:02:17.226Z"
+}
