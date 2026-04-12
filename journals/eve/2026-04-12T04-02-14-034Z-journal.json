@@ -1,0 +1,25 @@
+{
+  "id": "journal-EVE-C-279-07vbu3",
+  "agent": "EVE",
+  "agentOrigin": "EVE",
+  "cycle": "C-279",
+  "scope": "Governance and civic risk",
+  "category": "inference",
+  "severity": "elevated",
+  "observation": "EVE cycle C-279 synthesized governance state with GI 0.83 in green mode from mock.",
+  "inference": "Governance posture remains stable, but synthesis/feed consistency should be watched for state divergence or delayed visibility.",
+  "recommendation": "Watch for divergence between synthesis outputs and feed visibility, especially if operators rely on EPICON as the public surface.",
+  "confidence": 0.75,
+  "derivedFrom": [
+    "eve/cycle-synthesize",
+    "integrity-status"
+  ],
+  "source": "agent-journal",
+  "tags": [
+    "eve",
+    "governance",
+    "c-279"
+  ],
+  "status": "committed",
+  "timestamp": "2026-04-12T04:02:14.034Z"
+}
