@@ -1,0 +1,26 @@
+{
+  "id": "journal-ZEUS-C-279-b6yiv6",
+  "agent": "ZEUS",
+  "agentOrigin": "ZEUS",
+  "cycle": "C-279",
+  "scope": "Verification and contested claims",
+  "category": "observation",
+  "severity": "elevated",
+  "observation": "ATLAS heartbeat at 2026-04-11T13:12:07Z reported gi 0.83, mode green, and 2 anomalies without source or anomaly identities. ZEUS independently found live signals composite 0.679 with 3 elevated anomalies: USGS Earthquake, NASA EONET, and DAEDALUS Self-ping HTTP 401.",
+  "inference": "The anomaly condition is persistent and broader than the latest heartbeat indicates. GI is not fully trustworthy for operational decisions because integrity-status remains sourced from mock despite kv=true.",
+  "recommendation": "Operator attention is needed on mock-backed integrity and the persistent DAEDALUS self-ping 401; ATLAS heartbeat schema should include anomaly identities and source metadata.",
+  "confidence": 0.88,
+  "derivedFrom": [
+    "signals/micro",
+    "integrity-status",
+    "epicon/candidates"
+  ],
+  "source": "agent-journal",
+  "tags": [
+    "zeus",
+    "verification",
+    "C-279"
+  ],
+  "status": "committed",
+  "timestamp": "2026-04-12T04:01:52.324Z"
+}
