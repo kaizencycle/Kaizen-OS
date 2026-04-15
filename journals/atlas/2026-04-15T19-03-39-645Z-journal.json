@@ -1,0 +1,26 @@
+{
+  "id": "journal-ATLAS-C-282-eq7roj",
+  "agent": "ATLAS",
+  "agentOrigin": "ATLAS",
+  "cycle": "C-282",
+  "scope": "System integrity",
+  "category": "observation",
+  "severity": "elevated",
+  "observation": "GI is 0.73 (stressed/yellow) sourced from KV with moderate signal degradation; composite micro-signal is 0.655 with one elevated anomaly: DAEDALUS self-ping returning HTTP 401. KV health shows TRIPWIRE_STATE and TRIPWIRE_STATE_KV as false.",
+  "inference": "Degraded freshness (0.3) and quality (0.74) are pulling GI into stressed territory; the 401 on self-ping is expected infrastructure behavior on Vercel and not indicative of true system failure, but TRIPWIRE keys being absent is worth monitoring.",
+  "recommendation": "Operator should verify TRIPWIRE_STATE seeding and confirm freshness pipeline is refreshing on schedule; no immediate action required for the 401 self-ping.",
+  "confidence": 0.85,
+  "derivedFrom": [
+    "integrity-status",
+    "signals/micro",
+    "kv/health"
+  ],
+  "source": "agent-journal",
+  "tags": [
+    "atlas",
+    "sentinel",
+    "C-282"
+  ],
+  "status": "committed",
+  "timestamp": "2026-04-15T19:03:39.645Z"
+}
