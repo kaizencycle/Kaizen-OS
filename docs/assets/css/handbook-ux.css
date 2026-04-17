@@ -1,0 +1,227 @@
+/**
+ * Mobius Handbook — UI/UX layer (readability, motion, focus, mobile)
+ * Loads after Terminal theme + proof cards.
+ */
+
+/* 1 — Comfortable reading measure */
+.md-content__inner {
+  max-width: 48rem;
+}
+
+.md-typeset {
+  font-size: 0.92rem;
+  line-height: 1.65;
+}
+
+@media screen and (min-width: 76.25em) {
+  .md-content__inner {
+    margin-right: auto;
+  }
+}
+
+/* 2 — Font rendering */
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.mobius-proof-card__value {
+  font-variant-numeric: tabular-nums;
+}
+
+/* 3 — Dismissible announce bar */
+.md-banner {
+  border-radius: 0 0 10px 10px;
+  border: 1px solid var(--md-default-fg-color--lightest, rgba(127, 127, 127, 0.25));
+  border-top: none;
+  position: relative;
+  padding-right: 2.5rem !important;
+}
+
+.md-banner .mobius-announce-dismiss {
+  position: absolute;
+  top: 50%;
+  right: 0.5rem;
+  transform: translateY(-50%);
+  appearance: none;
+  border: none;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 6px;
+  font-size: 1.25rem;
+  line-height: 1;
+  opacity: 0.75;
+}
+
+.md-banner .mobius-announce-dismiss:hover {
+  opacity: 1;
+  background: rgba(127, 127, 127, 0.12);
+}
+
+/* 4 — Focus-visible for custom controls */
+.mobius-proof-expand:focus-visible,
+.mobius-proof-chain__toggle:focus-visible,
+.mobius-live-bar__refresh:focus-visible,
+.mobius-proof-copy:focus-visible,
+.mobius-announce-dismiss:focus-visible {
+  outline: 2px solid var(--md-accent-fg-color, #22d3ee);
+  outline-offset: 2px;
+}
+
+/* 5 — Proof strip: horizontal scroll on small screens */
+.mobius-proof-strip {
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: x proximity;
+  scrollbar-width: thin;
+}
+
+.mobius-proof-strip mobius-proof {
+  scroll-snap-align: start;
+  flex: 0 0 min(100%, 200px);
+}
+
+/* 6 — Proof card loading state */
+.mobius-proof-card--loading .mobius-proof-card__value {
+  background: linear-gradient(
+    90deg,
+    var(--md-code-bg-color, #1a222d) 0%,
+    rgba(34, 211, 238, 0.12) 50%,
+    var(--md-code-bg-color, #1a222d) 100%
+  );
+  background-size: 200% 100%;
+  animation: mobius-shimmer 1.2s ease-in-out infinite;
+  border-radius: 4px;
+  min-height: 1.25em;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mobius-proof-card--loading .mobius-proof-card__value {
+    animation: none;
+    opacity: 0.7;
+  }
+}
+
+@keyframes mobius-shimmer {
+  0% {
+    background-position: 100% 0;
+  }
+  100% {
+    background-position: -100% 0;
+  }
+}
+
+/* 7 — Raw JSON panel: taller, clearer */
+.mobius-proof-raw {
+  max-height: min(50vh, 18rem);
+  border-radius: 6px;
+  border: 1px solid var(--md-default-fg-color--lightest, rgba(127, 127, 127, 0.35));
+  padding: 0.5rem;
+  background: var(--md-default-bg-color--lightest, rgba(0, 0, 0, 0.2));
+}
+
+/* 8 — Live bar: GI chip colors */
+.mobius-live-bar__chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.1rem 0.45rem;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.mobius-live-bar__chip--green {
+  background: rgba(52, 211, 153, 0.2);
+  color: #6ee7b7;
+  border: 1px solid rgba(52, 211, 153, 0.45);
+}
+
+.mobius-live-bar__chip--yellow {
+  background: rgba(251, 191, 36, 0.15);
+  color: #fcd34d;
+  border: 1px solid rgba(251, 191, 36, 0.4);
+}
+
+.mobius-live-bar__chip--red {
+  background: rgba(248, 113, 113, 0.15);
+  color: #fca5a5;
+  border: 1px solid rgba(248, 113, 113, 0.4);
+}
+
+[data-md-color-scheme="default"] .mobius-live-bar__chip--green {
+  color: #047857;
+  background: rgba(16, 185, 129, 0.12);
+}
+
+[data-md-color-scheme="default"] .mobius-live-bar__chip--yellow {
+  color: #b45309;
+  background: rgba(245, 158, 11, 0.12);
+}
+
+[data-md-color-scheme="default"] .mobius-live-bar__chip--red {
+  color: #b91c1c;
+  background: rgba(239, 68, 68, 0.1);
+}
+
+.mobius-live-bar__refresh {
+  appearance: none;
+  margin-left: auto;
+  padding: 0.2rem 0.55rem;
+  font-size: 0.68rem;
+  font-weight: 600;
+  border-radius: 6px;
+  border: 1px solid var(--md-default-fg-color--lightest);
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+}
+
+.mobius-live-bar__refresh:hover {
+  border-color: var(--md-accent-fg-color, #22d3ee);
+  color: var(--md-accent-fg-color);
+}
+
+/* 9 — Proof chain panel: clearer hierarchy */
+.mobius-proof-chain__toggle {
+  font-weight: 600;
+  padding: 0.45rem 0.85rem;
+}
+
+.mobius-proof-chain__panel {
+  max-height: min(70vh, 28rem);
+  overflow-y: auto;
+}
+
+/* 10 — Copy value button */
+.mobius-proof-copy {
+  margin-top: 0.35rem;
+  font-size: 0.72rem;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  border: 1px solid var(--md-default-fg-color--lightest);
+  background: transparent;
+  color: var(--md-typeset-a-color);
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.mobius-proof-copy:hover {
+  border-color: var(--md-accent-fg-color);
+}
+
+.mobius-proof-copy.mobius-proof-copy--done {
+  border-color: rgba(52, 211, 153, 0.6);
+  color: #6ee7b7;
+}
+
+[data-md-color-scheme="default"] .mobius-proof-copy.mobius-proof-copy--done {
+  color: #047857;
+}

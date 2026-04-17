@@ -186,6 +186,11 @@
   opacity: 0.45;
 }
 
+.mobius-live-bar__muted {
+  opacity: 0.75;
+  font-weight: 400;
+}
+
 .mobius-live-bar__link {
   font-weight: 600;
   text-decoration: none !important;

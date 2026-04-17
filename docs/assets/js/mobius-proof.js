@@ -147,51 +147,123 @@
   }
 
   function renderCard(host, opts) {
+    if (!host.id) {
+      host.id = 'mobius-proof-' + Math.random().toString(36).slice(2, 11);
+    }
+    var rawId = host.id + '-raw';
+
     var label = opts.label || opts.path || 'Live';
     var value = opts.value;
     var url = opts.url;
     var err = opts.error;
+    var loading = !!opts.loading;
     var fetchedAt = new Date().toISOString();
 
     var badgeClass = 'mobius-proof-card__badge';
     var badgeText = 'LIVE';
-    if (err) {
+    if (loading) {
+      badgeClass += ' mobius-proof-card__badge--muted';
+      badgeText = 'LOAD';
+    } else if (err) {
       badgeClass += ' mobius-proof-card__badge--error';
       badgeText = 'UNAVAILABLE';
     }
 
+    var cardClass = 'mobius-proof-card' + (loading ? ' mobius-proof-card--loading' : '');
+    var valueHtml = loading
+      ? '\u00a0'
+      : err
+        ? escapeHtml(err)
+        : escapeHtml(formatValue(value));
+
+    var copyText = '';
+    if (!loading && !err && value !== undefined && value !== null) {
+      copyText = typeof value === 'object' ? JSON.stringify(value) : String(value);
+    }
+
     host.innerHTML =
-      '<div class="mobius-proof-card" role="region" aria-label="Live proof: ' + escapeAttr(label) + '">' +
+      '<div class="' +
+      cardClass +
+      '" role="region" aria-busy="' +
+      (loading ? 'true' : 'false') +
+      '" aria-label="Live proof: ' +
+      escapeAttr(label) +
+      '">' +
       '<div class="mobius-proof-card__header">' +
-      '<span>' + escapeHtml(label) + '</span>' +
-      '<span class="' + badgeClass + '">' + badgeText + '</span>' +
+      '<span>' +
+      escapeHtml(label) +
+      '</span>' +
+      '<span class="' +
+      badgeClass +
+      '">' +
+      badgeText +
+      '</span>' +
       '</div>' +
       '<div class="mobius-proof-card__value">' +
-      (err ? escapeHtml(err) : escapeHtml(formatValue(value))) +
+      valueHtml +
       '</div>' +
+      (!loading && copyText && copyText.length < 8000
+        ? '<button type="button" class="mobius-proof-copy" aria-label="Copy value to clipboard">Copy value</button>'
+        : '') +
       '<div class="mobius-proof-card__meta">' +
-      'Source: <a href="' + escapeAttr(url) + '" target="_blank" rel="noopener">' + escapeHtml(url) + '</a>' +
-      ' · fetched ' + escapeHtml(fetchedAt.slice(11, 19)) + 'Z' +
+      'Source: <a href="' +
+      escapeAttr(url) +
+      '" target="_blank" rel="noopener">' +
+      escapeHtml(url) +
+      '</a>' +
+      ' · fetched ' +
+      escapeHtml(fetchedAt.slice(11, 19)) +
+      'Z' +
       '</div>' +
-      (opts.rawJson && !err
-        ? '<div class="mobius-proof-expand" tabindex="0" role="button">View raw JSON</div>' +
-          '<pre class="mobius-proof-raw" aria-hidden="true">' + escapeHtml(opts.rawJson) + '</pre>'
+      (opts.rawJson && !err && !loading
+        ? '<div class="mobius-proof-expand" tabindex="0" role="button" aria-expanded="false" aria-controls="' +
+          escapeAttr(rawId) +
+          '">View raw JSON</div>' +
+          '<pre id="' +
+          escapeAttr(rawId) +
+          '" class="mobius-proof-raw" aria-hidden="true">' +
+          escapeHtml(opts.rawJson) +
+          '</pre>'
         : '') +
       '</div>';
 
-    var exp = host.querySelector('.mobius-proof-expand');
-    var raw = host.querySelector('.mobius-proof-raw');
-    if (exp && raw) {
-      function toggle() {
-        raw.classList.toggle('is-open');
-        raw.setAttribute('aria-hidden', raw.classList.contains('is-open') ? 'false' : 'true');
-      }
-      exp.addEventListener('click', toggle);
-      exp.addEventListener('keydown', function (e) {
-        if (e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault();
-          toggle();
+    var card = host.querySelector('.mobius-proof-card');
+    if (card && opts.rawJson && !err && !loading) {
+      var exp = card.querySelector('.mobius-proof-expand');
+      var raw = card.querySelector('.mobius-proof-raw');
+      if (exp && raw) {
+        exp.setAttribute('aria-controls', rawId);
+        function toggle() {
+          var open = raw.classList.toggle('is-open');
+          raw.setAttribute('aria-hidden', open ? 'false' : 'true');
+          exp.setAttribute('aria-expanded', open ? 'true' : 'false');
         }
+        exp.addEventListener('click', toggle);
+        exp.addEventListener('keydown', function (e) {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            toggle();
+          }
+        });
+      }
+    }
+
+    var copyBtn = host.querySelector('.mobius-proof-copy');
+    if (copyBtn && copyText && navigator.clipboard && navigator.clipboard.writeText) {
+      copyBtn.addEventListener('click', function () {
+        navigator.clipboard.writeText(copyText).then(
+          function () {
+            copyBtn.textContent = 'Copied';
+            copyBtn.classList.add('mobius-proof-copy--done');
+            setTimeout(function () {
+              copyBtn.textContent = 'Copy value';
+              copyBtn.classList.remove('mobius-proof-copy--done');
+            }, 2000);
+          },
+          function () {
+            copyBtn.textContent = 'Copy failed';
+          }
+        );
       });
     }
   }
@@ -218,7 +290,7 @@
     var terminal = (el.getAttribute('terminal') || getTerminalBase()).replace(/\/$/, '');
     var url = endpointUrl(endpoint, terminal);
 
-    renderCard(el, { label: label, value: '…', url: url, error: null });
+    renderCard(el, { label: label, value: null, url: url, error: null, loading: true });
     fetchJson(url)
       .then(function (data) {
         var v = path ? resolveValue(data, path, endpoint) : data;
@@ -288,6 +360,7 @@
         var panel = wrap.querySelector('.mobius-proof-chain__panel');
         if (!toggle || !panel) return;
 
+        toggle.setAttribute('aria-expanded', 'false');
         toggle.addEventListener('click', function () {
           var open = panel.classList.toggle('is-open');
           toggle.setAttribute('aria-expanded', open ? 'true' : 'false');

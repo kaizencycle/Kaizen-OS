@@ -1,6 +1,6 @@
 {
   "mobius_catalog_version": "1.0.0",
-  "generated_at": "2026-04-17T19:38:57.369Z",
+  "generated_at": "2026-04-17T20:24:55.943Z",
   "repo": {
     "name": "Mobius-Substrate",
     "url": "https://github.com/kaizencycle/Mobius-Substrate",
@@ -26,7 +26,7 @@
       "title": "Master Documentation Index",
       "category": "00-META",
       "tags": [],
-      "content_hash": "sha256:3121145de388fcdd2b24686022abf55c0ad3013ef6f925b0115058fb00afd0ee",
+      "content_hash": "sha256:00dee615ea2e72cbf987f49914d8702349343bf51f8856ec29ee7b4555b31bcc",
       "summary": ""
     },
     {
@@ -34,7 +34,7 @@
       "title": "Navigation Guide",
       "category": "00-META",
       "tags": [],
-      "content_hash": "sha256:11da43afae627c611adfc07661d2340d3cd905359cf9eb9867383d3f217ba0ac",
+      "content_hash": "sha256:058a48485dd05c57d702043826555aab43f6cbb180b04b011016b53cc6edff1c",
       "summary": ""
     },
     {
@@ -4682,7 +4682,7 @@
       "title": "Kaizen-OS Handbook (archived)",
       "category": "10-ARCHIVES",
       "tags": [],
-      "content_hash": "sha256:963ba99a763423d0ebdea192064cd439af1cc28dd9efc7fc7df6bdcf39b23e34",
+      "content_hash": "sha256:bdc720c8643f65324a0b60b776b3fe61e8e637af85469f5d95b5367009e5197e",
       "summary": ""
     },
     {
@@ -6482,7 +6482,7 @@
       "title": "Interactive handbook library (Levels 1–3)",
       "category": "11-SUPPLEMENTARY",
       "tags": [],
-      "content_hash": "sha256:0d74a573a3d033701e1fdcdd402a302b66cb18d4ece9c0c353413cd8967eddd7",
+      "content_hash": "sha256:167aa493440102ffaf6bfde91dd32d7aa002ad5f2cad9a70d7c5bfe8dd49d374",
       "summary": ""
     },
     {

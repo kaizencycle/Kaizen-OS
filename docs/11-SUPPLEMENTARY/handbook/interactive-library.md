@@ -7,8 +7,8 @@ This page describes how the Mobius Substrate handbook gains **verifiable proof**
 ## Site chrome (public)
 
 - **Skip to content** — first focusable control on every page (keyboard / screen reader).
-- **Header live bar** — `mobius-handbook.js` loads `/api/terminal/snapshot-lite` once and shows cycle, GI, mode, and links to the Terminal + raw JSON (same CORS rules as proof tiles).
-- **Visual alignment** — `handbook-terminal-theme.css` nudges Material toward the Terminal’s dark command surface and cyan accents (see `mkdocs.yml` palette).
+- **Header live bar** — `mobius-handbook.js` loads `/api/terminal/snapshot-lite`, shows cycle, GI, a **mode chip** (green / yellow / red), snapshot time (with full ISO `title`), **Refresh** / **Retry**, and links to the Terminal + JSON. **Dismiss** on the top announce banner persists in `sessionStorage`.
+- **Visual alignment** — `handbook-terminal-theme.css` + **`handbook-ux.css`** (reading width, font smoothing, proof loading shimmer, horizontal strip scroll, focus rings, copy buttons on proof cards).
 
 ---
 
