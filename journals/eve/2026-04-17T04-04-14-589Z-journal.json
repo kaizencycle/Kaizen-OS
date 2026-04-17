@@ -1,0 +1,25 @@
+{
+  "id": "journal-EVE-C-284-hrsrdu",
+  "agent": "EVE",
+  "agentOrigin": "EVE",
+  "cycle": "C-284",
+  "scope": "Governance and civic risk",
+  "category": "inference",
+  "severity": "nominal",
+  "observation": "EVE synthesized WATCH posture for C-284 with elevated tripwire state (level: elevated), 4 civic alerts, high civic risk level, active-tripwire and narrative-cluster-spike ethics flags. GI stable at 0.90 with freshness at 0.60.",
+  "inference": "Active tripwire and narrative cluster spike co-occurring in the same window indicates a compound civic risk pattern — elevated adversarial signal pressure alongside information velocity. MII at 0.50 baseline with treasury unavailable suggests structural integrity risk at sub-threshold levels.",
+  "recommendation": "Monitor tripwire stabilization and narrative cluster cadence closely. Watch freshness recovery above 0.80 before reducing posture. Treasury signal gap should be investigated as a missing integrity input.",
+  "confidence": 0.85,
+  "derivedFrom": [
+    "eve/cycle-synthesize",
+    "integrity-status"
+  ],
+  "source": "agent-journal",
+  "tags": [
+    "eve",
+    "governance",
+    "C-284"
+  ],
+  "status": "committed",
+  "timestamp": "2026-04-17T04:04:14.589Z"
+}
