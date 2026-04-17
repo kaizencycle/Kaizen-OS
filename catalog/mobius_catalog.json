@@ -1,6 +1,6 @@
 {
   "mobius_catalog_version": "1.0.0",
-  "generated_at": "2026-04-17T10:41:34.349Z",
+  "generated_at": "2026-04-17T10:56:26.645Z",
   "repo": {
     "name": "Mobius-Substrate",
     "url": "https://github.com/kaizencycle/Mobius-Substrate",
@@ -9,7 +9,7 @@
   },
   "stats": {
     "epiconCount": 0,
-    "docCount": 924
+    "docCount": 928
   },
   "epicons": [],
   "docs": [
@@ -6959,10 +6959,10 @@
     },
     {
       "path": "docs/STATE_OF_THE_SUBSTRATE_C-284.md",
-      "title": "State of the Substrate — C-284",
+      "title": "State of the Substrate · C-284",
       "category": "STATE_OF_THE_SUBSTRATE_C-284.md",
       "tags": [],
-      "content_hash": "sha256:13bb157d884ec57c3a3297728f585443af24fa906b88e48e63c33dcab8cd8633",
+      "content_hash": "sha256:8b79ddd27c2c1e7274a10a33e8b28a6480a9bf6d7167ba0aae204509de38969e",
       "summary": ""
     },
     {
@@ -7420,6 +7420,38 @@
       "category": "mobius",
       "tags": [],
       "content_hash": "sha256:809375bfd9bf45198772f01dc62450a274d61ba6a45ea1862bac473040540031",
+      "summary": ""
+    },
+    {
+      "path": "docs/protocols/agent-reporting-protocol.md",
+      "title": "Agent Reporting Protocol",
+      "category": "protocols",
+      "tags": [],
+      "content_hash": "sha256:73cc056e35e44a87733f413685b7eae7d828df7945f18efd1cb531a9662e484b",
+      "summary": ""
+    },
+    {
+      "path": "docs/protocols/personalized-tripwires-protocol.md",
+      "title": "Personalized Tripwires Protocol",
+      "category": "protocols",
+      "tags": [],
+      "content_hash": "sha256:1ccf632bf5cd40b641fb42394b30d3663e5d339ce7f9013b0ec6f89d91278418",
+      "summary": ""
+    },
+    {
+      "path": "docs/protocols/vault-to-fountain-protocol.md",
+      "title": "Vault-to-Fountain Protocol",
+      "category": "protocols",
+      "tags": [],
+      "content_hash": "sha256:c5ec69e6c53e0294b503ed043028e18c35b3e3bda9cc462dde47eb8310788d07",
+      "summary": ""
+    },
+    {
+      "path": "docs/protocols/vault-v2-sealed-reserve.md",
+      "title": "Vault v2 — Sealed Reserve Protocol",
+      "category": "protocols",
+      "tags": [],
+      "content_hash": "sha256:8388a3838a76b87b136abc4e3b4631d8007f464d9f37c5c3eda1134395df3edf",
       "summary": ""
     },
     {

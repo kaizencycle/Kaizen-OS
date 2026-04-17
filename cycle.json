@@ -5,8 +5,9 @@
   "mode": "yellow",
   "terminal": "https://mobius-civic-ai-terminal.vercel.app",
   "snapshot": "https://mobius-civic-ai-terminal.vercel.app/api/terminal/snapshot",
+  "snapshot_lite": "https://mobius-civic-ai-terminal.vercel.app/api/terminal/snapshot-lite",
   "vault_status": "https://mobius-civic-ai-terminal.vercel.app/api/vault/status",
-  "seal_status": "https://mobius-civic-ai-terminal.vercel.app/api/vault/seal",
-  "vault_version": 2,
-  "last_updated": "2026-04-17T00:00:00Z"
+  "vault_seals": "https://mobius-civic-ai-terminal.vercel.app/api/vault/seal",
+  "last_updated": "2026-04-17T09:40:00Z",
+  "notes": "Vault approaching threshold (44.24 / 50). Vault v2 Sealed Reserve protocol drafted C-284. Personalized tripwire backend shipped to ATLAS-PAW C-284."
 }
