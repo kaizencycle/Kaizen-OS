@@ -1,6 +1,6 @@
 {
   "mobius_catalog_version": "1.0.0",
-  "generated_at": "2026-04-17T15:26:10.822Z",
+  "generated_at": "2026-04-17T15:50:15.159Z",
   "repo": {
     "name": "Mobius-Substrate",
     "url": "https://github.com/kaizencycle/Mobius-Substrate",
@@ -90,7 +90,7 @@
       "title": "Welcome to Mobius Substrate Documentation",
       "category": "00-START-HERE",
       "tags": [],
-      "content_hash": "sha256:a1cd74c6969581e8807c614fd6733d6f97d83b1ec336dd675d1d4b6176aa70ad",
+      "content_hash": "sha256:7e4ccd86555d062ef6db09a8e3d5db6015212ec605e2eebed18570ac4e670b70",
       "summary": ""
     },
     {
@@ -6434,7 +6434,7 @@
       "title": "Interactive handbook library (Levels 1–3)",
       "category": "11-SUPPLEMENTARY",
       "tags": [],
-      "content_hash": "sha256:b754cd73b664f877b9051caf8847745b01f8fa12edbd11816a7ec06578d33489",
+      "content_hash": "sha256:0d74a573a3d033701e1fdcdd402a302b66cb18d4ece9c0c353413cd8967eddd7",
       "summary": ""
     },
     {
@@ -6906,7 +6906,7 @@
       "title": "Mobius Systems Documentation Index",
       "category": "INDEX.md",
       "tags": [],
-      "content_hash": "sha256:f261d1af392294bab061adff21e95ad26a95430705b4bffb7883e97055a75df9",
+      "content_hash": "sha256:9105c640fd3c783500433cdc390f5ad664a25e8baa230fa06288a0770f7c453c",
       "summary": ""
     },
     {
@@ -6978,7 +6978,7 @@
       "title": "State of the Substrate · C-284",
       "category": "STATE_OF_THE_SUBSTRATE_C-284.md",
       "tags": [],
-      "content_hash": "sha256:0043012577af2b47cbb87e6962ac01666730e01b9341de281e6b960e360d4cc6",
+      "content_hash": "sha256:db4247efd418dafdd06285a7d435391af1a166727e6e6c407373dd3ad54ad9df",
       "summary": ""
     },
     {

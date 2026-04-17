@@ -4,6 +4,14 @@ This page describes how the Mobius Substrate handbook gains **verifiable proof**
 
 ---
 
+## Site chrome (public)
+
+- **Skip to content** — first focusable control on every page (keyboard / screen reader).
+- **Header live bar** — `mobius-handbook.js` loads `/api/terminal/snapshot-lite` once and shows cycle, GI, mode, and links to the Terminal + raw JSON (same CORS rules as proof tiles).
+- **Visual alignment** — `handbook-terminal-theme.css` nudges Material toward the Terminal’s dark command surface and cyan accents (see `mkdocs.yml` palette).
+
+---
+
 ## Level 1 — Live proof tiles (`mobius-proof`)
 
 Custom elements fetch read-only Terminal endpoints (CORS permitting) and render a small card: value, source URL, fetch time, optional raw JSON.
@@ -17,7 +25,7 @@ Custom elements fetch read-only Terminal endpoints (CORS permitting) and render 
 | Attribute | Meaning |
 |-----------|---------|
 | `endpoint` | `snapshot-lite` (default), `vault-status`, `vault-seal`, `agents-status` |
-| `path` | Dot path into JSON (e.g. `integrity.gi`) |
+| `path` | Dot path into JSON (e.g. `integrity.gi` — aliases resolve top-level `gi` / `mode` on `snapshot-lite`) |
 | `label` | Card title |
 | `terminal` | Optional override base URL (default from `<meta name="mobius-terminal-base">`) |
 

@@ -1,9 +1,24 @@
 # Mobius Systems Documentation Index
 
-**Version:** 1.0.1  
+**Version:** 1.1.0  
 **Cycle:** C-284
 
 This index provides navigation to all key Mobius documentation.
+
+---
+
+## Public handbook and live proof
+
+The site you are reading is the **Mobius Handbook** (MkDocs). It stays close to the **Mobius Civic AI Terminal** — the live civic dashboard and API surface.
+
+| Link | Purpose |
+|------|---------|
+| [Mobius Civic AI Terminal](https://mobius-civic-ai-terminal.vercel.app/) | Live dashboard (hot truth) |
+| [Terminal repository](https://github.com/kaizencycle/mobius-civic-ai-terminal) | Source for API routes, snapshot, Vault |
+| [State of the Substrate (C-284)](./STATE_OF_THE_SUBSTRATE_C-284.md) | Snapshot narrative + live proof tiles |
+| [Interactive library](./11-SUPPLEMENTARY/handbook/interactive-library.md) | How proof tags and proof chains work |
+
+On many protocol pages, **Live** cards fetch public JSON from the Terminal. If a card shows “unavailable,” the prose is still canonical; enable CORS on the Terminal for this handbook origin when ready.
 
 ---
 

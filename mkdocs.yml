@@ -1,7 +1,7 @@
-site_name: Mobius-Substrate Handbook
+site_name: Mobius Handbook
 site_url: https://kaizencycle.github.io/Mobius-Substrate/
-site_description: "Continuous Integrity Architecture — We heal as we walk."
-site_author: Kaizen Cycle
+site_description: "Mobius Substrate — public handbook with live Terminal proof. Civic intelligence, auditable signals."
+site_author: Mobius Systems
 
 # Repository
 repo_name: kaizencycle/Mobius-Substrate
@@ -9,7 +9,7 @@ repo_url: https://github.com/kaizencycle/Mobius-Substrate
 edit_uri: edit/main/docs/
 
 # Copyright
-copyright: Copyright &copy; 2025 Kaizen Cycle — CC-BY-SA 4.0
+copyright: Copyright &copy; 2026 Mobius Systems — CC-BY-SA 4.0
 
 # Theme: Material for MkDocs
 theme:
@@ -18,17 +18,17 @@ theme:
   logo: assets/logo/kaizen-logo.svg
   favicon: assets/logo/kaizen-favicon.svg
   palette:
-    # Light mode
+    # Light mode (Terminal-inspired: slate text on cool background)
     - scheme: default
-      primary: teal
-      accent: amber
+      primary: cyan
+      accent: teal
       toggle:
         icon: material/brightness-7
         name: Switch to dark mode
-    # Dark mode (default for Kaizen)
+    # Dark mode — matches Mobius Civic AI Terminal command surface
     - scheme: slate
-      primary: teal
-      accent: amber
+      primary: black
+      accent: cyan
       toggle:
         icon: material/brightness-4
         name: Switch to light mode
@@ -118,21 +118,30 @@ plugins:
 # Extra CSS
 extra_css:
   - assets/css/kaizen-theme.css
+  - assets/css/handbook-terminal-theme.css
   - assets/css/mobius-proof.css
 
 # Extra JavaScript
 extra_javascript:
   - assets/js/kaizen-enhancements.js
+  - assets/js/mobius-handbook.js
   - assets/js/mobius-proof.js
+
+extra:
+  terminal_url: https://mobius-civic-ai-terminal.vercel.app
+  terminal_repo: https://github.com/kaizencycle/mobius-civic-ai-terminal
+  substrate_repo: https://github.com/kaizencycle/Mobius-Substrate
 
 # Navigation structure
 nav:
   - Home: INDEX.md
-  - Start Here: 00-START-HERE/README.md
+  - Public hub:
+      - Start Here: 00-START-HERE/README.md
+      - Live state (C-284): STATE_OF_THE_SUBSTRATE_C-284.md
+      - Interactive library: 11-SUPPLEMENTARY/handbook/interactive-library.md
+      - Proof tags (authoring): 11-SUPPLEMENTARY/handbook/proof-tags-authoring.md
   - Mobius-Substrate Handbook:
       - Handbook Index: 11-SUPPLEMENTARY/handbook/index.md
-      - Interactive library (Levels 1–3): 11-SUPPLEMENTARY/handbook/interactive-library.md
-      - Proof tags authoring: 11-SUPPLEMENTARY/handbook/proof-tags-authoring.md
       - "Part I: Foundations": 11-SUPPLEMENTARY/handbook/part-i-foundations.md
       - "Part II: Technical Architecture": 11-SUPPLEMENTARY/handbook/part-ii-technical-architecture.md
       - "Part III: Implementation": 11-SUPPLEMENTARY/handbook/part-iii-implementation.md

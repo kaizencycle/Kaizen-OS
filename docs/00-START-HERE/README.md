@@ -6,6 +6,12 @@ This folder is your **navigation hub** for the entire Mobius Substrate knowledge
 
 ---
 
+## Verify what you read (public)
+
+The handbook can show **live proof** next to protocol text: open **[State of the Substrate (C-284)](../STATE_OF_THE_SUBSTRATE_C-284.md)** or any doc under **Protocols** in the left nav. Green or cyan **Live** tiles pull from the [Mobius Civic AI Terminal](https://mobius-civic-ai-terminal.vercel.app/) (`/api/terminal/snapshot-lite`, `/api/vault/status`, …). Use **Show proof chain** where present to jump from claim → API → archive pattern.
+
+---
+
 ## Choose Your Path
 
 | 🎓 **Researcher** | 💰 **Economist** | 🧠 **Philosopher** | 🏛️ **Government** |

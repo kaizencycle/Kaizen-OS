@@ -1,0 +1,215 @@
+/**
+ * Mobius Handbook — Terminal-adjacent palette for MkDocs Material
+ * Aligns public handbook with Mobius Civic AI Terminal (dark command surface + cyan signal accents).
+ * Loaded after kaizen-theme.css to override.
+ */
+
+/* Terminal-inspired tokens */
+:root {
+  --mobius-terminal-bg: #0a0e14;
+  --mobius-terminal-surface: #121820;
+  --mobius-terminal-elevated: #1a222d;
+  --mobius-terminal-border: #2a3544;
+  --mobius-terminal-text: #e8edf4;
+  --mobius-terminal-muted: #8b9cb3;
+  --mobius-terminal-accent: #22d3ee;
+  --mobius-terminal-accent-dim: #0891b2;
+  --mobius-terminal-warn: #fbbf24;
+  --mobius-terminal-danger: #f87171;
+}
+
+/* Dark mode — primary Terminal look */
+[data-md-color-scheme="slate"] {
+  --md-primary-fg-color: #0f1419;
+  --md-primary-fg-color--light: #1a222d;
+  --md-primary-fg-color--dark: #05080c;
+  --md-accent-fg-color: var(--mobius-terminal-accent);
+  --md-accent-fg-color--transparent: rgba(34, 211, 238, 0.12);
+
+  --md-default-bg-color: var(--mobius-terminal-bg);
+  --md-default-bg-color--light: var(--mobius-terminal-surface);
+  --md-default-bg-color--lighter: var(--mobius-terminal-elevated);
+  --md-default-bg-color--lightest: var(--mobius-terminal-border);
+
+  --md-default-fg-color: var(--mobius-terminal-text);
+  --md-default-fg-color--light: var(--mobius-terminal-muted);
+  --md-default-fg-color--lighter: rgba(232, 237, 244, 0.72);
+  --md-default-fg-color--lightest: rgba(232, 237, 244, 0.45);
+
+  --md-code-bg-color: var(--mobius-terminal-elevated);
+  --md-code-fg-color: #c4d4e8;
+
+  --md-typeset-a-color: var(--mobius-terminal-accent);
+}
+
+[data-md-color-scheme="slate"] .md-header {
+  background: linear-gradient(180deg, #0f1419 0%, #0a0e14 100%);
+  border-bottom: 1px solid var(--mobius-terminal-border);
+  box-shadow: 0 1px 0 rgba(34, 211, 238, 0.06);
+}
+
+[data-md-color-scheme="slate"] .md-header__title {
+  color: var(--mobius-terminal-text);
+}
+
+[data-md-color-scheme="slate"] .md-search__form {
+  background: var(--mobius-terminal-surface);
+}
+
+[data-md-color-scheme="slate"] .md-search__input {
+  background: var(--mobius-terminal-elevated);
+  color: var(--mobius-terminal-text);
+  border: 1px solid var(--mobius-terminal-border);
+}
+
+[data-md-color-scheme="slate"] .md-tabs {
+  background-color: var(--mobius-terminal-surface);
+  border-bottom: 1px solid var(--mobius-terminal-border);
+}
+
+[data-md-color-scheme="slate"] .md-tabs__link--active {
+  color: var(--mobius-terminal-accent);
+}
+
+[data-md-color-scheme="slate"] .md-nav__link--active,
+[data-md-color-scheme="slate"] .md-nav__link:hover {
+  color: var(--mobius-terminal-accent);
+}
+
+[data-md-color-scheme="slate"] .md-typeset h1 {
+  color: var(--mobius-terminal-text);
+  border-bottom-color: var(--mobius-terminal-accent);
+}
+
+[data-md-color-scheme="slate"] .md-typeset h2 {
+  color: var(--mobius-terminal-text);
+  border-bottom-color: var(--mobius-terminal-border);
+}
+
+[data-md-color-scheme="slate"] .md-typeset h3 {
+  color: var(--mobius-terminal-muted);
+}
+
+[data-md-color-scheme="slate"] .md-typeset blockquote {
+  border-left-color: var(--mobius-terminal-accent);
+  background: var(--mobius-terminal-surface);
+  color: var(--mobius-terminal-text);
+}
+
+[data-md-color-scheme="slate"] .md-footer {
+  background: #05080c;
+  border-top: 1px solid var(--mobius-terminal-border);
+}
+
+/* Light mode — same family, higher contrast for daylight reading */
+[data-md-color-scheme="default"] {
+  --md-primary-fg-color: #0c4a6e;
+  --md-primary-fg-color--light: #0e7490;
+  --md-primary-fg-color--dark: #082f49;
+  --md-accent-fg-color: #0891b2;
+  --md-accent-fg-color--transparent: rgba(8, 145, 178, 0.1);
+
+  --md-default-bg-color: #f8fafc;
+  --md-default-bg-color--light: #f1f5f9;
+  --md-typeset-a-color: #0e7490;
+}
+
+[data-md-color-scheme="default"] .md-header {
+  background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%);
+  border-bottom: 1px solid #e2e8f0;
+}
+
+[data-md-color-scheme="default"] .md-tabs {
+  background-color: #f1f5f9;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+/* Skip link — public a11y */
+.mobius-skip-link {
+  position: absolute;
+  left: -9999px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  z-index: 500;
+}
+
+.mobius-skip-link:focus {
+  left: 0.75rem;
+  top: 0.5rem;
+  width: auto;
+  height: auto;
+  padding: 0.5rem 0.75rem;
+  background: var(--mobius-terminal-accent);
+  color: #0a0e14;
+  border-radius: 6px;
+  font-weight: 600;
+  text-decoration: none;
+  overflow: visible;
+}
+
+/* Header live bar (injected by mobius-handbook.js) */
+.mobius-live-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 1rem;
+  padding: 0.35rem 0.75rem;
+  margin: 0 0 0 0.25rem;
+  font-size: 0.72rem;
+  line-height: 1.35;
+  border-radius: 8px;
+  background: rgba(34, 211, 238, 0.06);
+  border: 1px solid rgba(42, 53, 68, 0.9);
+  max-width: min(52rem, 100%);
+}
+
+[data-md-color-scheme="default"] .mobius-live-bar {
+  background: rgba(14, 116, 144, 0.08);
+  border-color: #cbd5e1;
+}
+
+.mobius-live-bar__label {
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--mobius-terminal-accent);
+  margin-right: 0.25rem;
+}
+
+[data-md-color-scheme="default"] .mobius-live-bar__label {
+  color: #0e7490;
+}
+
+.mobius-live-bar__sep {
+  opacity: 0.45;
+}
+
+.mobius-live-bar__link {
+  font-weight: 600;
+  text-decoration: none !important;
+  color: var(--md-typeset-a-color) !important;
+}
+
+.mobius-live-bar__link:hover {
+  text-decoration: underline !important;
+}
+
+.mobius-live-bar--error {
+  border-color: rgba(248, 113, 113, 0.5);
+  color: var(--mobius-terminal-danger);
+}
+
+@media screen and (max-width: 59.9375em) {
+  .mobius-live-bar {
+    order: 10;
+    width: 100%;
+    margin: 0.35rem 0 0;
+    justify-content: flex-start;
+  }
+
+  .md-header__inner {
+    flex-wrap: wrap;
+  }
+}

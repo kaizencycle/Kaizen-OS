@@ -2,7 +2,7 @@
 
 **Date:** 2026-04-17
 **Cycle:** C-284
-**GI:** 0.74 (yellow mode)
+**GI:** 0.74 (yellow mode) — *figures in this paragraph are editorial; use the Live strip below for current GI, Vault, and mode.*
 **Vault:** 44.24 / 50 reserve units (sealed, 5.76 units from first Seal candidate)
 **Status:** active build cycle, Vault v2 protocol drafted, tripwire backend shipped
 
