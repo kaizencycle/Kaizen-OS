@@ -152,11 +152,12 @@ The Mobius Systems documentation follows a hierarchical classification system:
 |--------|-------|------|--------|---------|
 | INTRO-2025-001 | Introduction README | `01-INTRODUCTION/README.md` | Published | 1.0.0 |
 | START-2025-001 | Start Here Guide | `01-INTRODUCTION/00-START-HERE.md` | Published | 1.0.0 |
-| HAND-2025-001 | Handbook Index | `01-INTRODUCTION/handbook/index.md` | Published | 1.0.0 |
-| HAND-2025-002 | Part I: Foundations | `01-INTRODUCTION/handbook/part-i-foundations.md` | Published | 1.0.0 |
-| HAND-2025-003 | Part II: Technical Architecture | `01-INTRODUCTION/handbook/part-ii-architecture.md` | Published | 1.0.0 |
-| HAND-2025-004 | Part III: Implementation | `01-INTRODUCTION/handbook/part-iii-implementation.md` | Published | 1.0.0 |
-| HAND-2025-005 | Part IV: Future Vision | `01-INTRODUCTION/handbook/part-iv-future-vision.md` | Published | 1.0.0 |
+| HAND-2025-001 | Kaizen-OS Handbook Index (archived) | `10-ARCHIVES/handbook/kaizen-os-2025/index.md` | Archived | 1.0.0 |
+| HAND-2025-002 | Part I: Foundations (archived) | `10-ARCHIVES/handbook/kaizen-os-2025/part-i-foundations.md` | Archived | 1.0.0 |
+| HAND-2025-003 | Part II: Technical Architecture (archived) | `10-ARCHIVES/handbook/kaizen-os-2025/part-ii-technical-architecture.md` | Archived | 1.0.0 |
+| HAND-2025-004 | Part III: Implementation (archived) | `10-ARCHIVES/handbook/kaizen-os-2025/part-iii-implementation.md` | Archived | 1.0.0 |
+| HAND-2025-005 | Part IV: Future Vision (archived) | `10-ARCHIVES/handbook/kaizen-os-2025/part-iv-future-vision.md` | Archived | 1.0.0 |
+| HAND-2026-001 | Mobius Handbook hub (current) | `11-SUPPLEMENTARY/handbook/README.md` | Published | 1.1.0 |
 | ABOUT-2025-001 | Repository Structure | `01-INTRODUCTION/about/REPOSITORY_STRUCTURE.md` | Published | 1.0.0 |
 
 **Entry Points**:

@@ -1,6 +1,6 @@
 # Mobius Systems Documentation Index
 
-**Version:** 1.1.0  
+**Version:** 1.2.0  
 **Cycle:** C-284
 
 This index provides navigation to all key Mobius documentation.
@@ -16,7 +16,9 @@ The site you are reading is the **Mobius Handbook** (MkDocs). It stays close to 
 | [Mobius Civic AI Terminal](https://mobius-civic-ai-terminal.vercel.app/) | Live dashboard (hot truth) |
 | [Terminal repository](https://github.com/kaizencycle/mobius-civic-ai-terminal) | Source for API routes, snapshot, Vault |
 | [State of the Substrate (C-284)](./STATE_OF_THE_SUBSTRATE_C-284.md) | Snapshot narrative + live proof tiles |
+| [Handbook hub](./11-SUPPLEMENTARY/handbook/README.md) | Current Mobius handbook entry + map |
 | [Interactive library](./11-SUPPLEMENTARY/handbook/interactive-library.md) | How proof tags and proof chains work |
+| [Archived Kaizen-OS handbook (2025)](./10-ARCHIVES/handbook/kaizen-os-2025/index.md) | Historical “Kaizen-OS” narrative (superseded framing) |
 
 On many protocol pages, **Live** cards fetch public JSON from the Terminal. If a card shows “unavailable,” the prose is still canonical; enable CORS on the Terminal for this handbook origin when ready.
 
@@ -153,10 +155,11 @@ docs/
 ## 🧭 Quick Links
 
 - **Start Here:** [00-START-HERE/README.md](./00-START-HERE/README.md)
+- **Handbook hub:** [11-SUPPLEMENTARY/handbook/README.md](./11-SUPPLEMENTARY/handbook/README.md)
 - **FAQ:** [00-START-HERE/FAQ.md](./00-START-HERE/FAQ.md)
 - **Glossary:** [00-START-HERE/GLOSSARY.md](./00-START-HERE/GLOSSARY.md)
-- **Charter:** [../FOUNDATION/CHARTER.md](../FOUNDATION/CHARTER.md)
-- **Bylaws:** [../FOUNDATION/BYLAWS.md](../FOUNDATION/BYLAWS.md)
+- **Charter:** [03-GOVERNANCE-AND-POLICY/foundation/CHARTER.md](./03-GOVERNANCE-AND-POLICY/foundation/CHARTER.md)
+- **Bylaws:** [03-GOVERNANCE-AND-POLICY/foundation/BYLAWS.md](./03-GOVERNANCE-AND-POLICY/foundation/BYLAWS.md)
 
 ---
 

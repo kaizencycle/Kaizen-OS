@@ -182,7 +182,7 @@ The INDEX.md file provides comprehensive navigation for:
 **Path:** `11-SUPPLEMENTARY/`  
 **For:** Topic-specific supplementary content
 
-- **[Handbook](./11-SUPPLEMENTARY/handbook/)** *User handbook*
+- **[Mobius Handbook hub](./11-SUPPLEMENTARY/handbook/README.md)** *Public entry + live proof*
 - **[Companions](./11-SUPPLEMENTARY/companions/)** *Companion profiles*
 - **[Drift Control](./11-SUPPLEMENTARY/drift/)** *Drift documentation*
 - **[Prompts](./11-SUPPLEMENTARY/prompts/)** *Cycle journals, deliberation prompts*
@@ -222,7 +222,8 @@ The INDEX.md file provides comprehensive navigation for:
 
 ## 📣 Briefings & Narratives
 
-- **[Handbook](./11-SUPPLEMENTARY/handbook/index.md)** *End-to-end orientation*
+- **[Mobius Handbook hub](./11-SUPPLEMENTARY/handbook/README.md)** *Current orientation*
+- **[Archived Kaizen-OS handbook (2025)](./10-ARCHIVES/handbook/kaizen-os-2025/index.md)** *Historical narrative*
 - **[Manifesto](./11-SUPPLEMENTARY/manifesto/triad_of_healing.md)** *Foundational ethos*
 - **[Consensus Chamber](./11-SUPPLEMENTARY/consensus-chamber/)** *Templates & live sessions*
 - **[Genesis Manifest](./11-SUPPLEMENTARY/genesis/chapter-iv-one-window-console-manifest.md)** *Product arc*
@@ -255,7 +256,7 @@ The INDEX.md file provides comprehensive navigation for:
 - **Check the [Academic Index](./08-REFERENCE/ACADEMIC_INDEX.md)** for comprehensive taxonomy
 
 ### By Role
-- **New User:** Start with [00-START-HERE](./00-START-HERE/) → [Handbook](./11-SUPPLEMENTARY/handbook/)
+- **New User:** Start with [00-START-HERE](./00-START-HERE/) → [Handbook hub](./11-SUPPLEMENTARY/handbook/README.md)
 - **Developer:** [Development Guides](./05-IMPLEMENTATION/guides/development/) → [Architecture](./04-TECHNICAL-ARCHITECTURE/)
 - **Researcher:** [For Academics](./07-RESEARCH-AND-PUBLICATIONS/for-academics/) → [Whitepapers](./07-RESEARCH-AND-PUBLICATIONS/whitepapers/)
 - **Economist:** [For Economists](./07-RESEARCH-AND-PUBLICATIONS/for-economists/) → [Economic Models](./07-RESEARCH-AND-PUBLICATIONS/for-economists/ECONOMIC-MODELS/)

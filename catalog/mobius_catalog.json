@@ -1,6 +1,6 @@
 {
   "mobius_catalog_version": "1.0.0",
-  "generated_at": "2026-04-17T15:50:15.159Z",
+  "generated_at": "2026-04-17T19:38:57.369Z",
   "repo": {
     "name": "Mobius-Substrate",
     "url": "https://github.com/kaizencycle/Mobius-Substrate",
@@ -9,7 +9,7 @@
   },
   "stats": {
     "epiconCount": 0,
-    "docCount": 931
+    "docCount": 933
   },
   "epicons": [],
   "docs": [
@@ -122,7 +122,7 @@
       "title": "Introduction and Getting Started",
       "category": "01-INTRODUCTION",
       "tags": [],
-      "content_hash": "sha256:072a291ad362437edc7525fdf42b5d940bb1fa46118d6b3faa948d4881329f03",
+      "content_hash": "sha256:d2f79697beddd445928c123f98cbba90306d09dddd02836e33e9ddfdeda73e4a",
       "summary": ""
     },
     {
@@ -3546,7 +3546,7 @@
       "title": "🗄️ Archives",
       "category": "10-ARCHIVES",
       "tags": [],
-      "content_hash": "sha256:b14a0f46232cf4b4867ea77bb8a6a741256a82d9249da7af0247bcaea31a7c5d",
+      "content_hash": "sha256:a6be23422e73f7c21c98c5f808915154b81065841dd6a7fdaacda727dd0337f1",
       "summary": ""
     },
     {
@@ -4659,6 +4659,62 @@
       "category": "10-ARCHIVES",
       "tags": [],
       "content_hash": "sha256:90e3215cc35157e0ff66d3a7208485c284994acfff0d5fd9cde6480eefcd639b",
+      "summary": ""
+    },
+    {
+      "path": "docs/10-ARCHIVES/handbook/README.md",
+      "title": "Archived handbooks",
+      "category": "10-ARCHIVES",
+      "tags": [],
+      "content_hash": "sha256:2e110d5e39bb6ef003633bc8394a307bae448d7cc74dd07ab9fd517fb95b4aa9",
+      "summary": ""
+    },
+    {
+      "path": "docs/10-ARCHIVES/handbook/kaizen-os-2025/appendices.md",
+      "title": "Appendices",
+      "category": "10-ARCHIVES",
+      "tags": [],
+      "content_hash": "sha256:5e4cfc72505abf55755ea38b48c2a567f8eb28b16c5ea635d9bee92f6ba72bca",
+      "summary": ""
+    },
+    {
+      "path": "docs/10-ARCHIVES/handbook/kaizen-os-2025/index.md",
+      "title": "Kaizen-OS Handbook (archived)",
+      "category": "10-ARCHIVES",
+      "tags": [],
+      "content_hash": "sha256:963ba99a763423d0ebdea192064cd439af1cc28dd9efc7fc7df6bdcf39b23e34",
+      "summary": ""
+    },
+    {
+      "path": "docs/10-ARCHIVES/handbook/kaizen-os-2025/part-i-foundations.md",
+      "title": "Part I: Foundations",
+      "category": "10-ARCHIVES",
+      "tags": [],
+      "content_hash": "sha256:7bd00700f35b6c2c3cce12f5d806cf2c24cc3b61ad5079a5786676204c6041a7",
+      "summary": ""
+    },
+    {
+      "path": "docs/10-ARCHIVES/handbook/kaizen-os-2025/part-ii-technical-architecture.md",
+      "title": "Part II: Technical Architecture",
+      "category": "10-ARCHIVES",
+      "tags": [],
+      "content_hash": "sha256:7c29380c74c8acf83ec86173c7e15d36ceee1fb0fc91f2b46cae5155bf0f4647",
+      "summary": ""
+    },
+    {
+      "path": "docs/10-ARCHIVES/handbook/kaizen-os-2025/part-iii-implementation.md",
+      "title": "Part III: Implementation",
+      "category": "10-ARCHIVES",
+      "tags": [],
+      "content_hash": "sha256:f18aa1f73f477030ecc8a1cd3b182e38bd6bc9e971b4c9966f6d0bf18c510144",
+      "summary": ""
+    },
+    {
+      "path": "docs/10-ARCHIVES/handbook/kaizen-os-2025/part-iv-future-vision.md",
+      "title": "Part IV: Future Vision",
+      "category": "10-ARCHIVES",
+      "tags": [],
+      "content_hash": "sha256:222ae626c1d9f578a00c98bcaeaa4d48b11e6b740f141ccd59cb5474d7dc098f",
       "summary": ""
     },
     {
@@ -6414,19 +6470,11 @@
       "summary": ""
     },
     {
-      "path": "docs/11-SUPPLEMENTARY/handbook/appendices.md",
-      "title": "Appendices",
+      "path": "docs/11-SUPPLEMENTARY/handbook/README.md",
+      "title": "Mobius Handbook",
       "category": "11-SUPPLEMENTARY",
       "tags": [],
-      "content_hash": "sha256:beded8c2dea904558a67ec68e1594d15180daa1f67a6876947613165a5baeaf9",
-      "summary": ""
-    },
-    {
-      "path": "docs/11-SUPPLEMENTARY/handbook/index.md",
-      "title": "Kaizen-OS Handbook",
-      "category": "11-SUPPLEMENTARY",
-      "tags": [],
-      "content_hash": "sha256:248e0434209db23006794bfb2b28632993d60def1b0541d881fff8755f60cd51",
+      "content_hash": "sha256:9a16f6e1286b5fb7a58196cbd6c80e146f2d754b2175b6fad5279e8455282c8a",
       "summary": ""
     },
     {
@@ -6435,38 +6483,6 @@
       "category": "11-SUPPLEMENTARY",
       "tags": [],
       "content_hash": "sha256:0d74a573a3d033701e1fdcdd402a302b66cb18d4ece9c0c353413cd8967eddd7",
-      "summary": ""
-    },
-    {
-      "path": "docs/11-SUPPLEMENTARY/handbook/part-i-foundations.md",
-      "title": "Part I: Foundations",
-      "category": "11-SUPPLEMENTARY",
-      "tags": [],
-      "content_hash": "sha256:5057e3286086f8f4d38a81b7f5f4c94abe96561e8ab4abacdea5595c547c2423",
-      "summary": ""
-    },
-    {
-      "path": "docs/11-SUPPLEMENTARY/handbook/part-ii-technical-architecture.md",
-      "title": "Part II: Technical Architecture",
-      "category": "11-SUPPLEMENTARY",
-      "tags": [],
-      "content_hash": "sha256:7c29380c74c8acf83ec86173c7e15d36ceee1fb0fc91f2b46cae5155bf0f4647",
-      "summary": ""
-    },
-    {
-      "path": "docs/11-SUPPLEMENTARY/handbook/part-iii-implementation.md",
-      "title": "Part III: Implementation",
-      "category": "11-SUPPLEMENTARY",
-      "tags": [],
-      "content_hash": "sha256:f18aa1f73f477030ecc8a1cd3b182e38bd6bc9e971b4c9966f6d0bf18c510144",
-      "summary": ""
-    },
-    {
-      "path": "docs/11-SUPPLEMENTARY/handbook/part-iv-future-vision.md",
-      "title": "Part IV: Future Vision",
-      "category": "11-SUPPLEMENTARY",
-      "tags": [],
-      "content_hash": "sha256:222ae626c1d9f578a00c98bcaeaa4d48b11e6b740f141ccd59cb5474d7dc098f",
       "summary": ""
     },
     {
@@ -6906,7 +6922,7 @@
       "title": "Mobius Systems Documentation Index",
       "category": "INDEX.md",
       "tags": [],
-      "content_hash": "sha256:9105c640fd3c783500433cdc390f5ad664a25e8baa230fa06288a0770f7c453c",
+      "content_hash": "sha256:035d51c5c7ee403d7b410c94b83ab8b2b05ed31ad2070f7b887f6d0fa329c273",
       "summary": ""
     },
     {
@@ -6946,7 +6962,7 @@
       "title": "🌀 Mobius Systems Documentation Portal",
       "category": "README.md",
       "tags": [],
-      "content_hash": "sha256:907060f468b953bd91f436b73e08f38ec8ff88a2c934792b4d314665234f0e76",
+      "content_hash": "sha256:614e6cda49ed7f1224929ce4866d8fcc433915a8a06bd456f80266290c8be8b5",
       "summary": ""
     },
     {
@@ -7074,7 +7090,7 @@
       "title": "Divergence Dashboard",
       "category": "divergence",
       "tags": [],
-      "content_hash": "sha256:207ae836f9a1f4a0aa00439870c82700c43fa3c2099508ce56cbb65a82567d44",
+      "content_hash": "sha256:90410d6ab12758e1fd435856ece1cb9617abae7369a05eaeae7043f48019a186",
       "summary": ""
     },
     {

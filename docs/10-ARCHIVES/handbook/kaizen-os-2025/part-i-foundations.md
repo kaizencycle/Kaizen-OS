@@ -71,5 +71,5 @@ INTERFACE LAYER (Portals + User Services)
 
 ---
 
-**Next:** [Part II: Technical Architecture](../handbook/part-ii-technical-architecture.md)
+**Next:** [Part II: Technical Architecture](part-ii-technical-architecture.md)
 

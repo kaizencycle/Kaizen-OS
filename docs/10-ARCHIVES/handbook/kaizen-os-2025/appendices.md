@@ -209,7 +209,7 @@ kaizen agent-verify --all
 
 ---
 
-**Previous:** [Part IV: Future Vision](part-iv-future-vision.md) | **Back to:** [Handbook Index](index.md)
+**Previous:** [Part IV: Future Vision](part-iv-future-vision.md) | **Back to:** [Handbook Index](index.md) · [Current Mobius Handbook](../../../11-SUPPLEMENTARY/handbook/README.md)
 
 ---
 

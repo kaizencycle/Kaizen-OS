@@ -82,7 +82,7 @@ This directory contains all introductory and onboarding materials for Mobius Sub
 3. Governance structure
 4. Architecture basics
 
-**Start**: [Handbook - Part I Foundations](../11-SUPPLEMENTARY/handbook/part-i-foundations.md)
+**Start**: [Mobius Handbook hub](../11-SUPPLEMENTARY/handbook/README.md) · [Archived Part I (Kaizen-OS 2025)](../10-ARCHIVES/handbook/kaizen-os-2025/part-i-foundations.md)
 
 ### Path 2: Technical Deep Dive (2 hours)
 1. Architecture overview
@@ -90,7 +90,7 @@ This directory contains all introductory and onboarding materials for Mobius Sub
 3. Implementation guides
 4. API references
 
-**Start**: [Handbook - Part II Architecture](../11-SUPPLEMENTARY/handbook/part-ii-technical-architecture.md)
+**Start**: [Archived Part II (Kaizen-OS 2025)](../10-ARCHIVES/handbook/kaizen-os-2025/part-ii-technical-architecture.md)
 
 ### Path 3: Economic & Governance (1 hour)
 1. MIC tokenomics
