@@ -1,15 +1,15 @@
 {
   "mobius_catalog_version": "1.0.0",
-  "generated_at": "2026-04-17T04:53:05.226Z",
+  "generated_at": "2026-04-17T10:41:34.349Z",
   "repo": {
     "name": "Mobius-Substrate",
     "url": "https://github.com/kaizencycle/Mobius-Substrate",
     "default_branch": "main",
-    "commit": "14faf8a6fbbe77145148d9d954b9cc7869eba08e"
+    "commit": ""
   },
   "stats": {
     "epiconCount": 0,
-    "docCount": 919
+    "docCount": 924
   },
   "epicons": [],
   "docs": [
@@ -1206,6 +1206,14 @@
       "summary": ""
     },
     {
+      "path": "docs/04-TECHNICAL-ARCHITECTURE/protocols/AGENT_REPORTING_PROTOCOL.md",
+      "title": "Agent Reporting Protocol",
+      "category": "04-TECHNICAL-ARCHITECTURE",
+      "tags": [],
+      "content_hash": "sha256:99a4af97b7d3961690fdcf89c51b71d40072eb5cb0b1be7329946b860d029ddb",
+      "summary": ""
+    },
+    {
       "path": "docs/04-TECHNICAL-ARCHITECTURE/protocols/MCP_QUICKSTART.md",
       "title": "MCP Quick Start Guide",
       "category": "04-TECHNICAL-ARCHITECTURE",
@@ -1227,6 +1235,30 @@
       "category": "04-TECHNICAL-ARCHITECTURE",
       "tags": [],
       "content_hash": "sha256:448aa176b24f815f46f3fa551de0f5f247b9b47c0675e721d8e1132130e4bb00",
+      "summary": ""
+    },
+    {
+      "path": "docs/04-TECHNICAL-ARCHITECTURE/protocols/PERSONALIZED_TRIPWIRES_PROTOCOL.md",
+      "title": "Personalized Tripwires Protocol",
+      "category": "04-TECHNICAL-ARCHITECTURE",
+      "tags": [],
+      "content_hash": "sha256:cd31d61939861150f4edc47389e2550707d4d52699421c37d0507f7749c33a47",
+      "summary": ""
+    },
+    {
+      "path": "docs/04-TECHNICAL-ARCHITECTURE/protocols/VAULT_TO_FOUNTAIN_PROTOCOL.md",
+      "title": "Vault-to-Fountain Protocol (v1)",
+      "category": "04-TECHNICAL-ARCHITECTURE",
+      "tags": [],
+      "content_hash": "sha256:22a8517d4d21d72aeca3639d5f36b53bf440924d60c479b2c0c52ed05e206f34",
+      "summary": ""
+    },
+    {
+      "path": "docs/04-TECHNICAL-ARCHITECTURE/protocols/VAULT_V2_SEALED_RESERVE.md",
+      "title": "Vault v2 — Sealed Reserve Protocol",
+      "category": "04-TECHNICAL-ARCHITECTURE",
+      "tags": [],
+      "content_hash": "sha256:d8fd59e4db260dc82f1aee97fe07ba39d568a1c9df96dfdcdbd157fcb6177b98",
       "summary": ""
     },
     {
@@ -6926,6 +6958,14 @@
       "summary": ""
     },
     {
+      "path": "docs/STATE_OF_THE_SUBSTRATE_C-284.md",
+      "title": "State of the Substrate — C-284",
+      "category": "STATE_OF_THE_SUBSTRATE_C-284.md",
+      "tags": [],
+      "content_hash": "sha256:13bb157d884ec57c3a3297728f585443af24fa906b88e48e63c33dcab8cd8633",
+      "summary": ""
+    },
+    {
       "path": "docs/TECHNICAL_DETAILS.md",
       "title": "Mobius Systems — Technical Details",
       "category": "TECHNICAL_DETAILS.md",
@@ -7018,7 +7058,7 @@
       "title": "Divergence Dashboard",
       "category": "divergence",
       "tags": [],
-      "content_hash": "sha256:2519bd684072db86840c8d4231af1d1199a0179e4767e41a3a24368d6a93668c",
+      "content_hash": "sha256:97d6c2dcac2d3a51f0b3f867bbdeab48a665250025e6cbffbcf1a08cbe2a78d6",
       "summary": ""
     },
     {

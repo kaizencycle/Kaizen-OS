@@ -8,9 +8,91 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Planning
+- Vault v2.1 — Fountain emission mechanism (per-Seal economic emission)
+- Substrate archive writer for attested Seals (`journals/vault/seals/*.json`)
+- Vault v2 UI — "Completed Seals" panel in Terminal cockpit
+- Personalized Tripwires Stage 2 — Terminal-backed persistence API
 - Phase 2 Drift Control enhancements (Rekor verification, SPDX enforcement)
 - Real-time GI streaming via WebSocket
 - Lab integration for cross-lab attestation chains
+
+## [C-284] - 2026-04-17
+
+### 🎯 Theme: The Substrate Gains a Heartbeat
+
+C-284 ships Vault v2 — the Sealed Reserve protocol — and re-syncs the
+Substrate archive with the live Terminal after ~30 cycles of Terminal-focused
+work. The Vault stops being a single dramatic threshold and becomes a rhythm
+of discrete, Sentinel-attested Seals.
+
+### Added
+- **Vault v2 — Sealed Reserve Protocol** ([docs/04-TECHNICAL-ARCHITECTURE/protocols/VAULT_V2_SEALED_RESERVE.md](docs/04-TECHNICAL-ARCHITECTURE/protocols/VAULT_V2_SEALED_RESERVE.md))
+  - Five-Sentinel attestation per Seal (ATLAS, ZEUS, EVE, JADE, AUREA)
+  - Hash-chained seals with prev_seal_hash
+  - Quorum rule: ZEUS unilateral veto + 4/5 pass
+  - AUREA posture stamp (confident/cautionary/stressed/degraded)
+  - Per-Seal Fountain state machine
+- **Vault-to-Fountain Protocol v1** ported from Terminal repo to Substrate
+  canonical location ([docs/04-TECHNICAL-ARCHITECTURE/protocols/VAULT_TO_FOUNTAIN_PROTOCOL.md](docs/04-TECHNICAL-ARCHITECTURE/protocols/VAULT_TO_FOUNTAIN_PROTOCOL.md))
+- **Agent Reporting Protocol** — three-endpoint contract (heartbeat,
+  journal, attestation) ([docs/04-TECHNICAL-ARCHITECTURE/protocols/AGENT_REPORTING_PROTOCOL.md](docs/04-TECHNICAL-ARCHITECTURE/protocols/AGENT_REPORTING_PROTOCOL.md))
+- **Personalized Tripwires Protocol (Stage 1)** — per-citizen boundaries
+  shipped to PAW ([docs/04-TECHNICAL-ARCHITECTURE/protocols/PERSONALIZED_TRIPWIRES_PROTOCOL.md](docs/04-TECHNICAL-ARCHITECTURE/protocols/PERSONALIZED_TRIPWIRES_PROTOCOL.md))
+- **State of the Substrate C-284** — first substrate-level cycle report
+  since C-253 ([docs/STATE_OF_THE_SUBSTRATE_C-284.md](docs/STATE_OF_THE_SUBSTRATE_C-284.md))
+
+### Changed
+- `CLAUDE.md` — cycle pointer C-253 → C-284; expanded Sentinel Council
+  section to reflect v2 attestation roles; added one-paragraph substrate
+  map
+- `cycle.json` — cycle C-274 → C-284; added `vault_status`, `seal_status`,
+  `vault_version` fields
+
+### Context
+- The Terminal (`mobius-civic-ai-terminal`) has been the center of
+  development since C-274. Substrate archive lagged during that window.
+  This cycle re-syncs canonical protocol docs to their Substrate home.
+- No code migration required in this repo — Vault v2 implementation lives
+  in Terminal (`lib/vault-v2/*`). The Substrate port is documentation.
+
+---
+
+## [C-178 → C-283] - Summary Band
+
+Rather than fabricate per-cycle details for cycles where focus was
+primarily on the Terminal repo, this band summarizes the major substrate-
+relevant activity between C-178 and C-283. Full detail is recoverable
+from commit history.
+
+### C-178 → C-199
+- Root cleanup (C-199) — 15+ root folders consolidated into `docs/`
+  hierarchy (see CLAUDE.md §C-199 Root Cleanup Summary)
+- Dependency audits (C-187), workflow fixes carried over from C-180
+- EPICON-03 consensus workflow hardened
+
+### C-200 → C-249
+- EPICON-02 invariants stabilized
+- `docs/epicon/cycles/C-249/` — civic-ai-terminal scaffold EPICON authored
+- ATLAS agent launch EPICON authored
+- Portal and cathedral-app infrastructure matured
+
+### C-250 → C-273
+- Sentinel eval protocol refinement ([docs/SENTINEL_EVAL_PROTOCOL.md](docs/SENTINEL_EVAL_PROTOCOL.md))
+- Cycle journal publishing standardized
+  ([docs/CYCLE_JOURNAL_PUBLISHING.md](docs/CYCLE_JOURNAL_PUBLISHING.md))
+- Broken-link fixes ([docs/BROKEN_LINKS_FIX_SUMMARY.md](docs/BROKEN_LINKS_FIX_SUMMARY.md))
+
+### C-274 → C-283 — "Year of the Terminal"
+- **C-274:** Terminal goes live on Vercel
+- **C-278:** Agent heartbeat + journal endpoints wired in Terminal
+- **C-280:** Vault v1 activation criteria specified
+- **C-282:** ATLAS-PAW reframed as operator cockpit
+- **C-283:** Vault-to-Fountain Protocol v1 drafted in Terminal repo
+- **C-283:** Personalized tripwires Stage 1 shipped to PAW
+- Substrate journal writes continued throughout (atlas/, aurea/, eve/,
+  jade/, zeus/ directories actively receiving daily entries)
+
+---
 
 ## [C-177] - 2025-12-22
 

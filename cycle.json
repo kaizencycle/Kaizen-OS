@@ -1,9 +1,12 @@
 {
-  "current_cycle": "C-274",
-  "date": "2026-04-07",
-  "gi": 0.81,
-  "mode": "green",
+  "current_cycle": "C-284",
+  "date": "2026-04-17",
+  "gi": 0.74,
+  "mode": "yellow",
   "terminal": "https://mobius-civic-ai-terminal.vercel.app",
   "snapshot": "https://mobius-civic-ai-terminal.vercel.app/api/terminal/snapshot",
-  "last_updated": "2026-04-07T19:52:51Z"
+  "vault_status": "https://mobius-civic-ai-terminal.vercel.app/api/vault/status",
+  "seal_status": "https://mobius-civic-ai-terminal.vercel.app/api/vault/seal",
+  "vault_version": 2,
+  "last_updated": "2026-04-17T00:00:00Z"
 }
