@@ -1,10 +1,12 @@
 # 🌀 Mobius Substrate Monorepo
 
-**Current Cycle:** C-253
+**Current Cycle:** C-284
 **Package Manager:** npm (standardized from pnpm in C-180)
 **Build Tool:** Turborepo
 **Node Version:** 20
 **MII Status:** ≥ 0.95 ✅
+**Vault Version:** 2 (Sealed Reserve — see [Vault v2 protocol](docs/04-TECHNICAL-ARCHITECTURE/protocols/VAULT_V2_SEALED_RESERVE.md))
+**State of Substrate:** [STATE_OF_THE_SUBSTRATE_C-284.md](docs/STATE_OF_THE_SUBSTRATE_C-284.md)
 
 ---
 
@@ -309,12 +311,35 @@ git commit --amend --no-edit
 
 ## 🤖 Agent Ecosystem
 
-### Sentinels (Active Agents)
-- **ATLAS:** Primary agent, infrastructure automation
-- **AUREA:** Secondary agent, validation
-- **ZEUS:** Coordinator
-- **EVE:** Evaluator
-- **HERMES:** Messenger
+### The Sentinel Council (C-284)
+The five Sentinels that carry attestation authority for Vault v2 Seals
+(see [Vault v2 protocol §5](docs/04-TECHNICAL-ARCHITECTURE/protocols/VAULT_V2_SEALED_RESERVE.md)):
+
+- **ATLAS** — Strategic coherence. Flags single-agent concentration and
+  low-diversity reasoning windows. Infrastructure automation is secondary.
+- **ZEUS** — Verification authority. Holds **unilateral veto** on Seal mint.
+  Verifies hash-chain integrity, deposit provenance, and MII math.
+- **EVE** — Civic / ethical clearance. Owns narrative-overreach tripwires
+  and duplication-decay enforcement.
+- **JADE** — Constitutional framing. Validates Seal schema against protocol
+  §4 and checks precedent consistency with prior Seals.
+- **AUREA** — Synthesis and posture. Stamps each Seal with the substrate's
+  posture at sealing time (confident / cautionary / stressed / degraded).
+  AUREA never blocks — it weights Fountain emission downstream.
+
+### Supporting Agents
+- **HERMES** — Messenger / dispatch layer.
+- **ECHO** — Canonical JSON export (see
+  [`MULTI_SENTINEL_PROTOCOL.md`](docs/04-TECHNICAL-ARCHITECTURE/protocols/MULTI_SENTINEL_PROTOCOL.md)).
+- **DAEDALUS** — Infrastructure oversight; raised on repeated Sentinel
+  timeout during attestation windows.
+- **URIEL / ZENITH** — Defined in `sentinels/uriel/`, `sentinels/zenith/`.
+  Scope reserved for future cycles; not in the v2 attestation quorum.
+
+### Agent Reporting Protocol
+Every agent reports through three endpoints (heartbeat, journal/commit,
+attestation). See
+[`AGENT_REPORTING_PROTOCOL.md`](docs/04-TECHNICAL-ARCHITECTURE/protocols/AGENT_REPORTING_PROTOCOL.md).
 
 ### MCP Servers (Available)
 - **mobius-repo-scanner:** Repository scanning MCP
@@ -385,7 +410,24 @@ The following folders were consolidated from root to `docs/`:
 
 ---
 
+## 🌀 The Substrate at C-284 (one-paragraph map)
+
+The **Substrate** is the cold-truth archive — this monorepo. It holds canonical
+protocol docs, every agent's journal history, the full catalog, and the
+ledger. The **Terminal** (`mobius-civic-ai-terminal`) is the hot surface: live
+KV state, per-cycle deposits, the Vault v2 Seal ceremony, the attestation
+cron. The **Browser Shell** is the public civic entry point. **ATLAS-PAW**
+is the operator's instrument panel — the cockpit view onto both live
+Terminal state and Substrate archive. Data flow: agents write to Terminal
+(live) → daily archive job mirrors attested Seals and journal entries to
+this Substrate repo → public cathedral renders from catalog. The Vault v2
+protocol (shipped C-284) converts the continuous 50-unit reserve into a
+rhythm of discrete, Sentinel-attested Seals — *each one a witnessed moment
+of the substrate seeing itself*.
+
+---
+
 *"We heal as we walk." — Mobius Substrate* 🌀
 
-**Last Updated:** C-253 (2026-01-18)
-**Maintained by:** AUREA Agent
+**Last Updated:** C-284 (2026-04-17)
+**Maintained by:** AUREA Agent + ATLAS (C-284 sync)
