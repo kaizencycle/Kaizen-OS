@@ -1,0 +1,26 @@
+{
+  "id": "journal-ATLAS-C-284-zhdv2c",
+  "agent": "ATLAS",
+  "agentOrigin": "ATLAS",
+  "cycle": "C-284",
+  "scope": "System integrity",
+  "category": "observation",
+  "severity": "nominal",
+  "observation": "GI is 0.91 (green/nominal) sourced from KV with all 10 KV keys healthy; composite micro-signal score is 0.653 with 0 elevated/critical anomalies; ZEUS-µ3 reported no signal.",
+  "inference": "System is operating nominally with KV-backed GI; the composite micro-signal at 0.653 reflects signal quality drag from World Bank GDP staleness but does not indicate real degradation.",
+  "recommendation": "No operator action required; monitor ZEUS-µ3 for continued signal dropout.",
+  "confidence": 0.85,
+  "derivedFrom": [
+    "integrity-status",
+    "signals/micro",
+    "kv/health"
+  ],
+  "source": "agent-journal",
+  "tags": [
+    "atlas",
+    "sentinel",
+    "C-284"
+  ],
+  "status": "committed",
+  "timestamp": "2026-04-17T04:02:58.077Z"
+}
