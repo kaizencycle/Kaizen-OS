@@ -124,6 +124,7 @@ extra_css:
   - assets/css/kaizen-theme.css
   - assets/css/handbook-terminal-theme.css
   - assets/css/mobius-proof.css
+  - assets/css/handbook-ux.css
 
 # Extra JavaScript
 extra_javascript:
