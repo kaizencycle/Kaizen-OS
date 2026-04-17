@@ -49,6 +49,8 @@ Clarifications, examples, formatting.
 - ≥1 maintainer approval
 - EPICON optional (recommended for significant changes)
 
+**Daily close seals:** The [EVE Daily Closing Seal EPICON](../epicon/EPICON-C284-EVE-DAILY-SEAL.md) defines documentation-only canonical artifacts (`daily/eve/…`) that record end-of-day synthesis and hash-linked continuity. They are **substrate archive objects**, not grants of runtime authority, MIC issuance, or ledger write scope. Implementation PRs that add cron routes or tokens still require their own EPICON-02 intent and scope envelope.
+
 ---
 
 ## EPICON Authority Declarations

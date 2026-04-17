@@ -1,6 +1,6 @@
 {
   "mobius_catalog_version": "1.0.0",
-  "generated_at": "2026-04-17T10:56:26.645Z",
+  "generated_at": "2026-04-17T14:09:53.895Z",
   "repo": {
     "name": "Mobius-Substrate",
     "url": "https://github.com/kaizencycle/Mobius-Substrate",
@@ -9,7 +9,7 @@
   },
   "stats": {
     "epiconCount": 0,
-    "docCount": 928
+    "docCount": 929
   },
   "epicons": [],
   "docs": [
@@ -6890,7 +6890,7 @@
       "title": "Mobius Systems Documentation Index",
       "category": "INDEX.md",
       "tags": [],
-      "content_hash": "sha256:bde9cf996d41328c3899bda2db684c38065341dbb826bbda1049bd02294447a1",
+      "content_hash": "sha256:f261d1af392294bab061adff21e95ad26a95430705b4bffb7883e97055a75df9",
       "summary": ""
     },
     {
@@ -7034,7 +7034,7 @@
       "title": "Mobius Authority Documentation",
       "category": "authority",
       "tags": [],
-      "content_hash": "sha256:571c82cf2acfb97a3f17eeffcf4b8a00abbb79787d48be65347dd0607ab4b21c",
+      "content_hash": "sha256:74ed3af08122edbbd612b6556d8548d657cbbf3bbafcb762a8a738c3b17fcf07",
       "summary": ""
     },
     {
@@ -7058,7 +7058,7 @@
       "title": "Divergence Dashboard",
       "category": "divergence",
       "tags": [],
-      "content_hash": "sha256:97d6c2dcac2d3a51f0b3f867bbdeab48a665250025e6cbffbcf1a08cbe2a78d6",
+      "content_hash": "sha256:207ae836f9a1f4a0aa00439870c82700c43fa3c2099508ce56cbb65a82567d44",
       "summary": ""
     },
     {
@@ -7100,6 +7100,20 @@
       "tags": [],
       "content_hash": "sha256:6796476bdb5e5d7e5fd98c588b5a7f99787d9a363e09874a52fef2fceebc9ba7",
       "summary": ""
+    },
+    {
+      "path": "docs/epicon/EPICON-C284-EVE-DAILY-SEAL.md",
+      "title": "EVE Daily Closing Seal Protocol",
+      "category": "epicon",
+      "tags": [
+        "eve",
+        "daily-seal",
+        "archive",
+        "ledger",
+        "continuity"
+      ],
+      "content_hash": "sha256:ca76dc0f26decc956fd33fa89040c23aaa1c711a91cfe269b7b5ca8f1ba98002",
+      "summary": "Defines the canonical daily closing synthesis and seal artifact written by EVE for substrate-level continuity and audit."
     },
     {
       "path": "docs/epicon/EPICON-DVA-RUNTIME.md",

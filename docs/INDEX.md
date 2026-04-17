@@ -1,7 +1,7 @@
 # Mobius Systems Documentation Index
 
-**Version:** 1.0.0  
-**Cycle:** C-151
+**Version:** 1.0.1  
+**Cycle:** C-284
 
 This index provides navigation to all key Mobius documentation.
 
@@ -31,6 +31,7 @@ Epistemic constraint layer for AI systems.
 | [EPICON-02](./epicon/EPICON-02.md) | Intent Publication & Divergence Protocol | Canonical |
 | [EPICON-02 Invariants](./epicon/EPICON-02-INVARIANTS.md) | Formal invariants (13 rules) | Canonical |
 | [EJ Schema](./epicon/ej.schema.json) | JSON Schema for Epistemic Justification | Canonical |
+| [EVE Daily Closing Seal (C-284)](./epicon/EPICON-C284-EVE-DAILY-SEAL.md) | End-of-day synthesis, daily seal artifacts, hash chain | Draft |
 
 **EPICON Specification Family:**
 - **EPICON-01:** Coherence layer (epistemic justification)
