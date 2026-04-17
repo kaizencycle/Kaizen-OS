@@ -64,6 +64,28 @@
     return cur;
   }
 
+  /** Map handbook paths to live snapshot-lite / vault shapes (Terminal C-284). */
+  function resolveValue(data, path, endpoint) {
+    if (!path) return undefined;
+    var direct = getPath(data, path);
+    if (direct !== undefined) return direct;
+
+    if (endpoint === 'snapshot-lite' || endpoint === 'terminal' || endpoint === 'snapshot') {
+      if (path === 'integrity.gi' || path === 'lanes.integrity.gi') {
+        if (data.gi != null) return data.gi;
+        return getPath(data, 'lanes.integrity.gi');
+      }
+      if (path === 'integrity.mode' || path === 'lanes.integrity.mode') {
+        if (data.mode != null) return data.mode;
+        return getPath(data, 'lanes.integrity.mode');
+      }
+      if (path === 'lanes.signals.composite') return getPath(data, 'lanes.signals.composite');
+      if (path === 'lanes.pulse.composite') return getPath(data, 'lanes.pulse.composite');
+    }
+
+    return undefined;
+  }
+
   function formatValue(v) {
     if (v === null || v === undefined) return '—';
     if (typeof v === 'object') return JSON.stringify(v);
@@ -88,9 +110,14 @@
     } catch (e) { /* ignore */ }
   }
 
-  function fetchJson(url) {
-    var cached = cacheGet(url);
-    if (cached !== null) return Promise.resolve(cached);
+  function fetchJson(url, options) {
+    var opts = options || {};
+    var bypassCache = !!opts.bypassCache;
+
+    if (!bypassCache) {
+      var cached = cacheGet(url);
+      if (cached !== null) return Promise.resolve(cached);
+    }
 
     var ctrl = typeof AbortController !== 'undefined' ? new AbortController() : null;
     var timer = setTimeout(function () {
@@ -101,6 +128,7 @@
       method: 'GET',
       mode: 'cors',
       credentials: 'omit',
+      cache: bypassCache ? 'no-store' : 'default',
       signal: ctrl ? ctrl.signal : undefined
     })
       .then(function (res) {
@@ -109,7 +137,7 @@
         return res.json();
       })
       .then(function (data) {
-        cacheSet(url, data);
+        if (!bypassCache) cacheSet(url, data);
         return data;
       })
       .catch(function (err) {
@@ -193,7 +221,7 @@
     renderCard(el, { label: label, value: '…', url: url, error: null });
     fetchJson(url)
       .then(function (data) {
-        var v = path ? getPath(data, path) : data;
+        var v = path ? resolveValue(data, path, endpoint) : data;
         renderCard(el, {
           label: label,
           value: v,
@@ -214,7 +242,7 @@
 
   function loadManifest(docsRoot) {
     var url = (docsRoot || '') + '/assets/data/handbook-claim-index.json';
-    return fetchJson(url).catch(function () {
+    return fetchJson(url, { bypassCache: true }).catch(function () {
       return null;
     });
   }
