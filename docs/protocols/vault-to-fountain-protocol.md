@@ -101,6 +101,8 @@ vault_deposit = B × J × Wg × Wa
 
 Reserve is credited to the Vault, **not** released as spendable MIC.
 
+<mobius-proof endpoint="vault-status" label="Live vault status (JSON)"></mobius-proof>
+
 ---
 
 ## 6. Vault structure (conceptual)

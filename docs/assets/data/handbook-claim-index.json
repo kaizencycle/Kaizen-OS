@@ -1,0 +1,47 @@
+{
+  "version": 1,
+  "updated_at": "2026-04-17",
+  "description": "Maps handbook claims to canonical docs, live APIs, and cold-archive patterns for the proof-chain UI (Level 2).",
+  "nodes": [
+    { "id": "terminal", "label": "Terminal", "kind": "runtime" },
+    { "id": "substrate", "label": "Substrate", "kind": "archive" },
+    { "id": "vault-v2", "label": "Vault v2", "kind": "protocol" },
+    { "id": "agent-reporting", "label": "Agent reporting", "kind": "protocol" },
+    { "id": "tripwires", "label": "Tripwires", "kind": "protocol" },
+    { "id": "eve-daily-seal", "label": "EVE daily seal", "kind": "epicon" }
+  ],
+  "edges": [
+    { "from": "vault-v2", "to": "terminal", "label": "status + seal" },
+    { "from": "vault-v2", "to": "substrate", "label": "protocol doc" },
+    { "from": "agent-reporting", "to": "terminal", "label": "heartbeat + journal" },
+    { "from": "agent-reporting", "to": "substrate", "label": "journals/" },
+    { "from": "tripwires", "to": "terminal", "label": "snapshot-lite" },
+    { "from": "eve-daily-seal", "to": "substrate", "label": "daily/eve/" }
+  ],
+  "claims": [
+    {
+      "id": "vault-zeus-veto",
+      "title": "ZEUS unilateral veto on Seal attestation",
+      "protocol_doc_url": "https://github.com/kaizencycle/Mobius-Substrate/blob/main/docs/protocols/vault-v2-sealed-reserve.md",
+      "epicon_ids": ["EPICON-02", "EPICON-03"],
+      "live_endpoint": { "kind": "vault-seal", "path": "" },
+      "archive_artifact_pattern": "ledger/seals/*.json (planned) / journals/"
+    },
+    {
+      "id": "agent-gateway",
+      "title": "Terminal is the single agent gateway",
+      "protocol_doc_url": "https://github.com/kaizencycle/Mobius-Substrate/blob/main/docs/protocols/agent-reporting-protocol.md",
+      "epicon_ids": ["EPICON-02"],
+      "live_endpoint": { "kind": "snapshot-lite", "path": "" },
+      "archive_artifact_pattern": "docs/protocols/agent-reporting-protocol.md"
+    },
+    {
+      "id": "integrity-live",
+      "title": "GI and mode from live snapshot",
+      "protocol_doc_url": "https://github.com/kaizencycle/Mobius-Substrate/blob/main/docs/protocols/agent-reporting-protocol.md",
+      "epicon_ids": [],
+      "live_endpoint": { "kind": "snapshot-lite", "path": "integrity.gi" },
+      "archive_artifact_pattern": "cycle.json"
+    }
+  ]
+}

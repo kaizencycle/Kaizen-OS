@@ -6,6 +6,17 @@
 **Vault:** 44.24 / 50 reserve units (sealed, 5.76 units from first Seal candidate)
 **Status:** active build cycle, Vault v2 protocol drafted, tripwire backend shipped
 
+<div class="mobius-proof-strip">
+  <mobius-proof endpoint="snapshot-lite" path="integrity.gi" label="Live GI"></mobius-proof>
+  <mobius-proof endpoint="snapshot-lite" path="integrity.mode" label="Live mode"></mobius-proof>
+  <mobius-proof endpoint="vault-status" label="Vault status"></mobius-proof>
+</div>
+
+<div class="mobius-proof-chain" data-claim-id="integrity-live">
+  <button type="button" class="mobius-proof-chain__toggle" aria-expanded="false">Show proof chain (GI)</button>
+  <div class="mobius-proof-chain__panel"></div>
+</div>
+
 ---
 
 This document captures the substrate as it actually exists in C-284. It is

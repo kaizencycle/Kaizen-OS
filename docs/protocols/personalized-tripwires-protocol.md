@@ -204,6 +204,8 @@ Adding a new source kind later = one entry in the server-side resolver
 registry + one enum case in the client-side source kind list. No evaluator
 changes.
 
+<mobius-proof endpoint="snapshot-lite" path="integrity.gi" label="GI (tripwire sources use snapshot)"></mobius-proof>
+
 ### Planned sources (later stages)
 
 - `rss` — fetch RSS feed, fire on keyword match

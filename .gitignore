@@ -158,7 +158,10 @@ logs
 # Temporary files
 tmp/
 temp/
- 
+
+# Local GI / consensus attestation outputs
+.gi/
+
 # Local Bio DNA archives 
 mobius-sys.edit/
 site/

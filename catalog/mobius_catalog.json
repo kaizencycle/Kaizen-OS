@@ -1,6 +1,6 @@
 {
   "mobius_catalog_version": "1.0.0",
-  "generated_at": "2026-04-17T14:09:53.895Z",
+  "generated_at": "2026-04-17T15:26:10.822Z",
   "repo": {
     "name": "Mobius-Substrate",
     "url": "https://github.com/kaizencycle/Mobius-Substrate",
@@ -9,7 +9,7 @@
   },
   "stats": {
     "epiconCount": 0,
-    "docCount": 929
+    "docCount": 931
   },
   "epicons": [],
   "docs": [
@@ -6430,6 +6430,14 @@
       "summary": ""
     },
     {
+      "path": "docs/11-SUPPLEMENTARY/handbook/interactive-library.md",
+      "title": "Interactive handbook library (Levels 1–3)",
+      "category": "11-SUPPLEMENTARY",
+      "tags": [],
+      "content_hash": "sha256:b754cd73b664f877b9051caf8847745b01f8fa12edbd11816a7ec06578d33489",
+      "summary": ""
+    },
+    {
       "path": "docs/11-SUPPLEMENTARY/handbook/part-i-foundations.md",
       "title": "Part I: Foundations",
       "category": "11-SUPPLEMENTARY",
@@ -6459,6 +6467,14 @@
       "category": "11-SUPPLEMENTARY",
       "tags": [],
       "content_hash": "sha256:222ae626c1d9f578a00c98bcaeaa4d48b11e6b740f141ccd59cb5474d7dc098f",
+      "summary": ""
+    },
+    {
+      "path": "docs/11-SUPPLEMENTARY/handbook/proof-tags-authoring.md",
+      "title": "Proof tags authoring (MkDocs)",
+      "category": "11-SUPPLEMENTARY",
+      "tags": [],
+      "content_hash": "sha256:39a04aa33cb3578a0b1b6ebf90459a32b98130698012748324c1ceff83e8c29e",
       "summary": ""
     },
     {
@@ -6962,7 +6978,7 @@
       "title": "State of the Substrate · C-284",
       "category": "STATE_OF_THE_SUBSTRATE_C-284.md",
       "tags": [],
-      "content_hash": "sha256:8b79ddd27c2c1e7274a10a33e8b28a6480a9bf6d7167ba0aae204509de38969e",
+      "content_hash": "sha256:0043012577af2b47cbb87e6962ac01666730e01b9341de281e6b960e360d4cc6",
       "summary": ""
     },
     {
@@ -7441,7 +7457,7 @@
       "title": "Agent Reporting Protocol",
       "category": "protocols",
       "tags": [],
-      "content_hash": "sha256:73cc056e35e44a87733f413685b7eae7d828df7945f18efd1cb531a9662e484b",
+      "content_hash": "sha256:1a9d19c01342f388c7c78348134a2835296651700ccf25f2fcd4ab10f323b009",
       "summary": ""
     },
     {
@@ -7449,7 +7465,7 @@
       "title": "Personalized Tripwires Protocol",
       "category": "protocols",
       "tags": [],
-      "content_hash": "sha256:1ccf632bf5cd40b641fb42394b30d3663e5d339ce7f9013b0ec6f89d91278418",
+      "content_hash": "sha256:adc462ddd92e2ecbd0918ea2e039737d455c8b0fc10f276462ff574e0ee47db4",
       "summary": ""
     },
     {
@@ -7457,7 +7473,7 @@
       "title": "Vault-to-Fountain Protocol",
       "category": "protocols",
       "tags": [],
-      "content_hash": "sha256:c5ec69e6c53e0294b503ed043028e18c35b3e3bda9cc462dde47eb8310788d07",
+      "content_hash": "sha256:5fd3a040a24dccdbad90288d73e2a81035fd5465cf0c374f63e10efab0a349db",
       "summary": ""
     },
     {
@@ -7465,7 +7481,7 @@
       "title": "Vault v2 — Sealed Reserve Protocol",
       "category": "protocols",
       "tags": [],
-      "content_hash": "sha256:8388a3838a76b87b136abc4e3b4631d8007f464d9f37c5c3eda1134395df3edf",
+      "content_hash": "sha256:c980da5ad33515de240ea1d1d7fdcde571a0d24dd9bb1919f335906980ad6e55",
       "summary": ""
     },
     {

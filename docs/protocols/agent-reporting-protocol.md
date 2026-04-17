@@ -45,6 +45,11 @@ the Substrate receives copies via archive crons.
 **Doctrine:** *KV is authoritative for now. Substrate is authoritative for
 history. Terminal is authoritative for the composition of both.*
 
+<div class="mobius-proof-strip">
+  <mobius-proof endpoint="snapshot-lite" path="integrity.gi" label="Live GI"></mobius-proof>
+  <mobius-proof endpoint="snapshot-lite" path="integrity.mode" label="Live mode"></mobius-proof>
+</div>
+
 ---
 
 ## 2. Agent identity
