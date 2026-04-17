@@ -1,4 +1,9 @@
-# Kaizen-OS Handbook
+# Kaizen-OS Handbook (archived)
+
+!!! warning "Archived edition"
+    **Archived 2026-04-17 (C-284).** This is the November 2025 **Kaizen-OS** narrative handbook. It does not describe the current Terminal-first architecture or live proof tags. For the **current** public handbook, use the **[Mobius Handbook hub](../../../11-SUPPLEMENTARY/handbook/README.md)**.
+
+---
 
 **The Integrity-Based Operating System for AI & Civic Governance**
 
@@ -22,9 +27,9 @@
 
 ### [Part II: Technical Architecture](part-ii-technical-architecture.md)
 - [5.0 DVA Kernel](part-ii-technical-architecture.md#50-dva-kernel)
-- [6.0 Mobius Integrity Index Engine](part-ii-technical-architecture.md#60-global-integrity-engine)
-- [7.0 MIC Economic System](part-ii-technical-architecture.md#70-gic-economic-system)
-- [8.0 Virtue Accords Constitution](part-ii-technical-architecture.md#80-virtue-accords-constitution)
+- [6.0 Mobius Integrity Index Engine](part-ii-technical-architecture.md#60-mobius-integrity-index-engine)
+- [7.0 MIC Economic System](part-ii-technical-architecture.md#70-mic-economic-system)
+- [8.0 Virtue Accords Constitution](part-ii-technical-architecture.md#80-virtue-accords)
 - [9.0 Civic Ledger Core](part-ii-technical-architecture.md#90-civic-ledger-core)
 
 ### [Part III: Implementation](part-iii-implementation.md)
@@ -34,7 +39,7 @@
 
 ### [Part IV: Future Vision](part-iv-future-vision.md)
 - [13.0 Historian's Chapter (2125)](part-iv-future-vision.md#130-historians-chapter-2125)
-- [14.0 Roadmap & Evolution](part-iv-future-vision.md#140-roadmap--evolution)
+- [14.0 Roadmap & Evolution](part-iv-future-vision.md#140-roadmap-evolution)
 - [15.0 Onboarding Guide](part-iv-future-vision.md#150-onboarding-guide)
 
 ### [Appendices](appendices.md)

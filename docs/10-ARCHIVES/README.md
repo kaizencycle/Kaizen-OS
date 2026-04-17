@@ -46,6 +46,9 @@ Contains root-level files that were archived during reorganization:
 - Cycle indices (historical)
 - Other scattered documentation files
 
+### handbook/
+**Added: 2026-04-17** — Superseded handbook editions (e.g. Kaizen-OS Founder's Handbook, November 2025). The current public handbook lives under `docs/11-SUPPLEMENTARY/handbook/README.md`.
+
 ### Other Archives
 - `consensus-chamber/` — Completed consensus chamber implementations
 - `audits/` — Audit reports and resolutions

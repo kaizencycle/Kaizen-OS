@@ -80,7 +80,7 @@ Use the classification number to navigate directly:
 
 #### I'm a New User
 1. [START-HERE](../01-INTRODUCTION/00-START-HERE.md)
-2. [Handbook](../01-INTRODUCTION/handbook/index.md)
+2. [Mobius Handbook hub](../11-SUPPLEMENTARY/handbook/README.md)
 3. [Quick Reference](../08-REFERENCE/quick-reference/)
 
 #### I'm a Developer

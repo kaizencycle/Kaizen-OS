@@ -17,6 +17,7 @@ theme:
   custom_dir: docs/overrides
   logo: assets/logo/kaizen-logo.svg
   favicon: assets/logo/kaizen-favicon.svg
+  language: en
   palette:
     # Light mode (Terminal-inspired: slate text on cool background)
     - scheme: default
@@ -32,7 +33,7 @@ theme:
       toggle:
         icon: material/brightness-4
         name: Switch to light mode
-  
+
   features:
     - navigation.tabs
     - navigation.tabs.sticky
@@ -44,6 +45,9 @@ theme:
     - search.suggest
     - search.highlight
     - search.share
+    - search.preload
+    - content.action.edit
+    - content.action.view
     - content.code.annotate
     - content.code.copy
     - content.code.select
@@ -51,7 +55,7 @@ theme:
     - content.tooltips
     - toc.integrate
     - toc.follow
-  
+
   icon:
     repo: fontawesome/brands/github
     edit: material/pencil
@@ -100,7 +104,7 @@ markdown_extensions:
       permalink: true
       permalink_title: Anchor link to this section
       baselevel: 2
-      toc_depth: 3
+      toc_depth: 4
 
 # Plugins
 plugins:
@@ -128,25 +132,39 @@ extra_javascript:
   - assets/js/mobius-proof.js
 
 extra:
+  homepage: https://mobius-civic-ai-terminal.vercel.app/
   terminal_url: https://mobius-civic-ai-terminal.vercel.app
   terminal_repo: https://github.com/kaizencycle/mobius-civic-ai-terminal
   substrate_repo: https://github.com/kaizencycle/Mobius-Substrate
+  generator: false
+  social:
+    - icon: fontawesome/brands/github
+      name: Mobius-Substrate on GitHub
+      link: https://github.com/kaizencycle/Mobius-Substrate
+    - icon: fontawesome/brands/github
+      name: Terminal on GitHub
+      link: https://github.com/kaizencycle/mobius-civic-ai-terminal
+    - icon: material/heart-pulse
+      name: Live Terminal
+      link: https://mobius-civic-ai-terminal.vercel.app/
+  announce: >-
+    This handbook shows <strong>live proof</strong> from the Terminal when your browser can reach it (CORS).
+    Start at <strong>Handbook hub</strong> or <strong>Public hub</strong> in the tabs above.
 
-# Navigation structure
+# Navigation — public-first, then depth, then archive
 nav:
   - Home: INDEX.md
+  - Handbook hub: 11-SUPPLEMENTARY/handbook/README.md
   - Public hub:
       - Start Here: 00-START-HERE/README.md
       - Live state (C-284): STATE_OF_THE_SUBSTRATE_C-284.md
       - Interactive library: 11-SUPPLEMENTARY/handbook/interactive-library.md
       - Proof tags (authoring): 11-SUPPLEMENTARY/handbook/proof-tags-authoring.md
-  - Mobius-Substrate Handbook:
-      - Handbook Index: 11-SUPPLEMENTARY/handbook/index.md
-      - "Part I: Foundations": 11-SUPPLEMENTARY/handbook/part-i-foundations.md
-      - "Part II: Technical Architecture": 11-SUPPLEMENTARY/handbook/part-ii-technical-architecture.md
-      - "Part III: Implementation": 11-SUPPLEMENTARY/handbook/part-iii-implementation.md
-      - "Part IV: Future Vision": 11-SUPPLEMENTARY/handbook/part-iv-future-vision.md
-      - Appendices: 11-SUPPLEMENTARY/handbook/appendices.md
+  - Protocols (C-284):
+      - Vault v1 (to Fountain): protocols/vault-to-fountain-protocol.md
+      - Vault v2 (Sealed Reserve): protocols/vault-v2-sealed-reserve.md
+      - Agent Reporting: protocols/agent-reporting-protocol.md
+      - Personalized Tripwires: protocols/personalized-tripwires-protocol.md
   - Architecture:
       - Overview: 04-TECHNICAL-ARCHITECTURE/overview/README.md
       - DVA Flows: 04-TECHNICAL-ARCHITECTURE/overview/DVA_FLOWS_OVERVIEW.md
@@ -169,19 +187,17 @@ nav:
       - EPICON-01: epicon/EPICON-01.md
       - EPICON-02: epicon/EPICON-02.md
       - EPICON-03: epicon/EPICON-03.md
-  - Protocols (C-284):
-      - Vault v1 (to Fountain): protocols/vault-to-fountain-protocol.md
-      - Vault v2 (Sealed Reserve): protocols/vault-v2-sealed-reserve.md
-      - Agent Reporting: protocols/agent-reporting-protocol.md
-      - Personalized Tripwires: protocols/personalized-tripwires-protocol.md
   - Reference:
       - Master Index: 00-META/MASTER_INDEX.md
       - Glossary: 00-START-HERE/GLOSSARY.md
       - FAQ: 00-START-HERE/FAQ.md
-  - Archives: 10-ARCHIVES/README.md
+  - Archives:
+      - Archives overview: 10-ARCHIVES/README.md
+      - Archived handbooks: 10-ARCHIVES/handbook/README.md
+      - Kaizen-OS handbook (2025): 10-ARCHIVES/handbook/kaizen-os-2025/index.md
+      - Legacy index: 10-ARCHIVES/archive/README.md
 
 # Validation - set to info to avoid breaking strict mode builds
-# Many legacy documents have links to files outside the docs folder
 validation:
   nav:
     not_found: warn
@@ -189,4 +205,3 @@ validation:
   links:
     not_found: info
     absolute_links: info
-
