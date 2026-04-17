@@ -1,0 +1,163 @@
+/**
+ * Mobius Handbook — live proof tiles + proof-chain panel
+ * Works with Material for MkDocs (light/dark).
+ */
+
+mobius-proof,
+.mobius-proof-fallback {
+  display: block;
+  margin: 0.75rem 0;
+  font-size: 0.85rem;
+  line-height: 1.45;
+}
+
+.mobius-proof-card {
+  border: 1px solid var(--md-default-fg-color--lightest, rgba(127, 127, 127, 0.35));
+  border-radius: 8px;
+  padding: 0.65rem 0.75rem;
+  background: var(--md-code-bg-color, rgba(127, 127, 127, 0.08));
+}
+
+.mobius-proof-card__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 0.35rem;
+  font-weight: 600;
+}
+
+.mobius-proof-card__badge {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 0.15rem 0.4rem;
+  border-radius: 4px;
+  background: rgba(0, 150, 136, 0.2);
+  color: var(--md-typeset-color);
+}
+
+.mobius-proof-card__badge--muted {
+  background: rgba(127, 127, 127, 0.2);
+}
+
+.mobius-proof-card__badge--error {
+  background: rgba(211, 47, 47, 0.2);
+}
+
+.mobius-proof-card__value {
+  font-family: var(--md-code-font-family);
+  font-size: 0.95rem;
+  word-break: break-word;
+}
+
+.mobius-proof-card__meta {
+  margin-top: 0.45rem;
+  font-size: 0.72rem;
+  opacity: 0.85;
+}
+
+.mobius-proof-card__meta a {
+  text-decoration: underline;
+}
+
+.mobius-proof-expand {
+  margin-top: 0.35rem;
+  font-size: 0.72rem;
+  cursor: pointer;
+  color: var(--md-accent-fg-color, #00bfa5);
+}
+
+.mobius-proof-raw {
+  display: none;
+  margin-top: 0.35rem;
+  max-height: 10rem;
+  overflow: auto;
+  font-size: 0.68rem;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+.mobius-proof-raw.is-open {
+  display: block;
+}
+
+/* Proof strip (multi-tile hero) */
+.mobius-proof-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin: 1rem 0 1.25rem;
+  padding: 0.75rem;
+  border-radius: 10px;
+  border: 1px solid var(--md-default-fg-color--lightest, rgba(127, 127, 127, 0.35));
+  background: var(--md-code-bg-color, rgba(127, 127, 127, 0.06));
+}
+
+.mobius-proof-strip mobius-proof {
+  margin: 0;
+  flex: 1 1 140px;
+  min-width: 120px;
+}
+
+/* Chain trigger + panel */
+.mobius-proof-chain {
+  margin: 1rem 0;
+}
+
+.mobius-proof-chain__toggle {
+  appearance: none;
+  border: 1px solid var(--md-default-fg-color--lightest, rgba(127, 127, 127, 0.4));
+  background: transparent;
+  color: inherit;
+  border-radius: 6px;
+  padding: 0.35rem 0.65rem;
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+
+.mobius-proof-chain__toggle:hover {
+  border-color: var(--md-accent-fg-color, #00bfa5);
+}
+
+.mobius-proof-chain__panel {
+  display: none;
+  margin-top: 0.65rem;
+  padding: 0.75rem;
+  border-radius: 8px;
+  border: 1px solid var(--md-default-fg-color--lightest);
+  background: var(--md-code-bg-color, rgba(127, 127, 127, 0.08));
+  font-size: 0.82rem;
+}
+
+.mobius-proof-chain__panel.is-open {
+  display: block;
+}
+
+.mobius-proof-chain__panel dl {
+  margin: 0.35rem 0 0;
+}
+
+.mobius-proof-chain__panel dt {
+  font-weight: 600;
+  margin-top: 0.5rem;
+}
+
+.mobius-proof-chain__panel dd {
+  margin: 0.15rem 0 0 0.75rem;
+}
+
+.mobius-proof-graph {
+  margin-top: 1rem;
+  padding: 0.75rem;
+  border-radius: 8px;
+  border: 1px dashed var(--md-default-fg-color--lightest);
+  font-size: 0.78rem;
+  opacity: 0.95;
+}
+
+.mobius-proof-graph svg {
+  width: 100%;
+  height: auto;
+  max-height: 220px;
+}

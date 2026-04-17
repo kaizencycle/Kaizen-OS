@@ -116,6 +116,15 @@ docs/
 
 ---
 
+## Handbook (interactive library)
+
+| Document | Purpose |
+|----------|---------|
+| [Interactive library (Levels 1–3)](./11-SUPPLEMENTARY/handbook/interactive-library.md) | Live proof tiles, proof-chain UI, Next.js shell |
+| [Proof tags authoring](./11-SUPPLEMENTARY/handbook/proof-tags-authoring.md) | How to embed `<mobius-proof>` in MkDocs |
+
+---
+
 ## 🔗 Related Specifications
 
 | Spec | Location |

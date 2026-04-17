@@ -244,6 +244,13 @@ recorded with `verdict: "flag"` and `rationale: "timeout"`. Timeouts count as
 `flag`, not `reject` — a silent agent slows sealing but does not block it.
 Three consecutive timeouts from the same agent trigger a DAEDALUS alert.
 
+<div class="mobius-proof-chain" data-claim-id="vault-zeus-veto">
+  <button type="button" class="mobius-proof-chain__toggle" aria-expanded="false">Show proof chain</button>
+  <div class="mobius-proof-chain__panel"></div>
+</div>
+
+<mobius-proof endpoint="vault-seal" label="Seal API (raw)"></mobius-proof>
+
 ---
 
 ## 7. Hash chain

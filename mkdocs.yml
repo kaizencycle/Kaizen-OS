@@ -14,6 +14,7 @@ copyright: Copyright &copy; 2025 Kaizen Cycle — CC-BY-SA 4.0
 # Theme: Material for MkDocs
 theme:
   name: material
+  custom_dir: docs/overrides
   logo: assets/logo/kaizen-logo.svg
   favicon: assets/logo/kaizen-favicon.svg
   palette:
@@ -117,10 +118,12 @@ plugins:
 # Extra CSS
 extra_css:
   - assets/css/kaizen-theme.css
+  - assets/css/mobius-proof.css
 
 # Extra JavaScript
 extra_javascript:
   - assets/js/kaizen-enhancements.js
+  - assets/js/mobius-proof.js
 
 # Navigation structure
 nav:
@@ -128,6 +131,8 @@ nav:
   - Start Here: 00-START-HERE/README.md
   - Mobius-Substrate Handbook:
       - Handbook Index: 11-SUPPLEMENTARY/handbook/index.md
+      - Interactive library (Levels 1–3): 11-SUPPLEMENTARY/handbook/interactive-library.md
+      - Proof tags authoring: 11-SUPPLEMENTARY/handbook/proof-tags-authoring.md
       - "Part I: Foundations": 11-SUPPLEMENTARY/handbook/part-i-foundations.md
       - "Part II: Technical Architecture": 11-SUPPLEMENTARY/handbook/part-ii-technical-architecture.md
       - "Part III: Implementation": 11-SUPPLEMENTARY/handbook/part-iii-implementation.md
@@ -155,6 +160,11 @@ nav:
       - EPICON-01: epicon/EPICON-01.md
       - EPICON-02: epicon/EPICON-02.md
       - EPICON-03: epicon/EPICON-03.md
+  - Protocols (C-284):
+      - Vault v1 (to Fountain): protocols/vault-to-fountain-protocol.md
+      - Vault v2 (Sealed Reserve): protocols/vault-v2-sealed-reserve.md
+      - Agent Reporting: protocols/agent-reporting-protocol.md
+      - Personalized Tripwires: protocols/personalized-tripwires-protocol.md
   - Reference:
       - Master Index: 00-META/MASTER_INDEX.md
       - Glossary: 00-START-HERE/GLOSSARY.md
