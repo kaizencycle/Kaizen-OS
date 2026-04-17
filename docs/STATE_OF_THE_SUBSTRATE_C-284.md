@@ -1,233 +1,309 @@
-# State of the Substrate — C-284
+# State of the Substrate · C-284
 
-**Authored:** 2026-04-17
+**Date:** 2026-04-17
 **Cycle:** C-284
-**Last comparable snapshot:** CLAUDE.md @ C-253 (31 cycles ago)
-**Maintainers:** AUREA (primary) · ATLAS (C-284 sync)
-**CC0 Public Domain**
-
-> A cycle-end report that describes **what the substrate is right now** —
-> the live services, the active protocols, the agent roles, and the
-> architecture that connects them. Written so that an operator picking
-> this up cold at C-285 can orient in 10 minutes without reading 31
-> cycles of commit history.
+**GI:** 0.74 (yellow mode)
+**Vault:** 44.24 / 50 reserve units (sealed, 5.76 units from first Seal candidate)
+**Status:** active build cycle, Vault v2 protocol drafted, tripwire backend shipped
 
 ---
 
-## 0. The one-paragraph map
+This document captures the substrate as it actually exists in C-284. It is
+deliberately a snapshot in time, not a living reference — if you find this
+doc 20 cycles from now, it is history, not instruction. The authoritative
+live state is `cycle.json` plus `/api/terminal/snapshot`.
 
-The **Substrate** (this monorepo) is the cold-truth archive. It holds
-canonical protocol docs, every agent's journal history, the full catalog,
-and the ledger. The **Terminal** (`mobius-civic-ai-terminal`) is the hot
-surface: live KV state, per-cycle deposits, the Vault v2 Seal ceremony,
-and the attestation cron. The **Browser Shell** is the public civic entry
-point. **ATLAS-PAW** is the operator's instrument panel — the cockpit
-view onto both live Terminal state and Substrate archive. Data flow:
-agents write to Terminal (live) → daily archive job mirrors attested
-Seals and journal entries to this Substrate repo → public cathedral
-renders from catalog. The Vault v2 protocol (shipped C-284) converts the
-continuous 50-unit reserve into a rhythm of discrete, Sentinel-attested
-Seals — each one a witnessed moment of the substrate seeing itself.
+The doc exists because the last time someone wrote this kind of document was
+around C-253. The substrate grew 30 cycles without a fresh snapshot, and
+several architectural decisions are only legible if you were in the room when
+they were made. This writes those decisions down.
 
 ---
 
-## 1. Four-part architecture
+## 1. What exists now (the four-repo map)
 
-```
-┌──────────────────────────────────────────────────────────────────────┐
-│                        THE MOBIUS STACK · C-284                      │
-├──────────────────────────────────────────────────────────────────────┤
-│                                                                      │
-│   ┌───────────────────────┐         ┌───────────────────────┐        │
-│   │   BROWSER SHELL       │         │      ATLAS-PAW        │        │
-│   │   (citizen entry)     │         │  (operator cockpit)   │        │
-│   │                       │         │                       │        │
-│   │  public civic surface │         │  private instrument   │        │
-│   │  reads snapshot       │         │  panel · personal     │        │
-│   │  writes journal       │         │  tripwires · commit   │        │
-│   └──────────┬────────────┘         └──────────┬────────────┘        │
-│              │                                 │                     │
-│              │      ┌───────────────────┐      │                     │
-│              └────► │  TERMINAL (hot)   │ ◄────┘                     │
-│                     │                   │                            │
-│                     │  /api/terminal/*  │    live KV (Upstash)       │
-│                     │  /api/vault/*     │    Vault v2 seals          │
-│                     │  /api/agents/*    │    attestation cron        │
-│                     │  /api/cron/*      │    heartbeat collection    │
-│                     └─────────┬─────────┘                            │
-│                               │ daily archive                        │
-│                               ▼                                      │
-│                     ┌───────────────────┐                            │
-│                     │  SUBSTRATE (cold) │    this monorepo           │
-│                     │                   │                            │
-│                     │  journals/        │    agent journal history   │
-│                     │  docs/            │    protocol canon (1100+)  │
-│                     │  catalog/         │    generated index         │
-│                     │  ledger/          │    gi-formula, stats       │
-│                     │  attestations/    │    sealed attestations     │
-│                     └───────────────────┘                            │
-│                                                                      │
-└──────────────────────────────────────────────────────────────────────┘
-```
+Mobius today is four repositories in a working relationship:
 
-Each layer has a **distinct truth semantics**:
+### Mobius-Substrate (this repo)
+The constitutional and archival layer. Protocol specs, covenant documents,
+journal archives, ledger records, Sentinel agent implementations. 5,476
+files, ~1,100 docs, documentation organized 00-META through 12-COMMUNITY.
 
-| Layer           | Truth semantics                               | Latency       |
-|-----------------|-----------------------------------------------|---------------|
-| Browser Shell   | What the citizen sees right now               | Snapshot (≤ 1m) |
-| ATLAS-PAW       | What the operator needs to act on             | Near-live (30s) |
-| Terminal        | The authoritative live state                  | Live (KV)     |
-| Substrate       | The immutable archival record                 | Daily mirror  |
+**Role:** cold truth. The cathedral remembers here.
+
+### mobius-civic-ai-terminal
+The runtime gateway. Next.js 15 on Vercel, Upstash KV for hot state, 13-lane
+aggregator at `/api/terminal/snapshot`. This is where agents heartbeat, where
+journals commit, where the Vault accrues, where tripwires evaluate.
+
+**Role:** hot truth. The substrate's heartbeat lives here.
+
+**Key endpoints:** `/api/terminal/snapshot` (13-lane), `/api/agents/heartbeat`,
+`/api/agents/journal/commit`, `/api/vault/status`, `/api/vault/seal`.
+
+### atlas-paw
+The operator's homebase. Next.js 15 on Vercel with NextAuth gated to a single
+GitHub ID. Chat with ATLAS, live terminal state, personalized tripwires,
+Cloudflare tunnel bridge to local PC.
+
+**Role:** operator console. Where the custodian talks to the substrate.
+
+**As of C-283:** ten optimizations shipped (KV-cached tunnel health,
+streaming chat, dynamic gateway registration, heartbeat persistence, etc.).
+
+**As of C-284:** Stage 1 personalized tripwires backend shipped.
+
+### mobius-browser-shell
+The citizen entry point. Vite + React 19 on Vercel with passkey auth, 8
+labs, bridge to Terminal snapshot. Public-facing.
+
+**Role:** citizen console. Where anyone not named Michael meets the system.
+
+**Current state:** mature, live, not yet receiving tripwire port (Stage 4+).
 
 ---
 
-## 2. What shipped this cycle window (C-254 → C-284)
+## 2. Architectural thesis (C-284)
 
-| Cycle  | Theme                              | Notable artifacts                                     |
-|--------|------------------------------------|-------------------------------------------------------|
-| C-274  | Terminal go-live                   | `mobius-civic-ai-terminal` deploys to Vercel          |
-| C-278  | Journal lane                       | Agent heartbeat + journal endpoints wired             |
-| C-280  | Vault v1 activation                | 50-unit threshold, GI sustain window spec             |
-| C-282  | ATLAS-PAW homebase reframe         | PAW scope formalized as operator cockpit              |
-| C-283  | Vault-to-Fountain Protocol v1 doc  | Authored in Terminal repo                             |
-| C-283  | Personalized tripwires (Stage 1)   | Shipped to PAW; protocol spec drafted at C-284        |
-| C-284  | **Vault v2 — Sealed Reserve**      | Per-Seal Sentinel attestation; 5-voice ceremony       |
-| C-284  | Substrate sync (this PR)           | Cycle pointers + protocols + state-of-substrate doc   |
+The substrate now operates under four load-bearing claims. These were
+implicit across the last 20 cycles but are stated here explicitly:
 
-The broad arc: **C-274 onwards has been the year of the Terminal.** The
-Substrate drifted during this window because attention was on getting the
-hot layer correct. C-284 is the first deliberate re-sync.
+### Terminal is the heartbeat. Substrate is the memory.
 
----
+The Terminal holds live state — GI, Vault, tripwires, agent presence — with
+5-minute to 2-hour TTLs. The Substrate holds archive state — journal commits,
+Seals, constitutional docs, covenant text — forever in git.
 
-## 3. Active protocols (canonical docs)
+Reads fan out from Terminal. Writes go through Terminal. Nightly archive
+crons transcribe Terminal's KV into Substrate's git. Neither layer writes
+to the other directly.
 
-| Protocol                                  | Location                                                                 | Cycle authored |
-|-------------------------------------------|--------------------------------------------------------------------------|----------------|
-| Multi-Sentinel ECHO Protocol              | [`docs/04-TECHNICAL-ARCHITECTURE/protocols/MULTI_SENTINEL_PROTOCOL.md`](04-TECHNICAL-ARCHITECTURE/protocols/MULTI_SENTINEL_PROTOCOL.md) | C-156          |
-| **Vault-to-Fountain Protocol (v1)**       | [`docs/04-TECHNICAL-ARCHITECTURE/protocols/VAULT_TO_FOUNTAIN_PROTOCOL.md`](04-TECHNICAL-ARCHITECTURE/protocols/VAULT_TO_FOUNTAIN_PROTOCOL.md) | C-283 / ported C-284 |
-| **Vault v2 — Sealed Reserve**             | [`docs/04-TECHNICAL-ARCHITECTURE/protocols/VAULT_V2_SEALED_RESERVE.md`](04-TECHNICAL-ARCHITECTURE/protocols/VAULT_V2_SEALED_RESERVE.md) | **C-284**      |
-| **Agent Reporting Protocol**              | [`docs/04-TECHNICAL-ARCHITECTURE/protocols/AGENT_REPORTING_PROTOCOL.md`](04-TECHNICAL-ARCHITECTURE/protocols/AGENT_REPORTING_PROTOCOL.md) | **C-284**      |
-| **Personalized Tripwires Protocol**       | [`docs/04-TECHNICAL-ARCHITECTURE/protocols/PERSONALIZED_TRIPWIRES_PROTOCOL.md`](04-TECHNICAL-ARCHITECTURE/protocols/PERSONALIZED_TRIPWIRES_PROTOCOL.md) | **C-284 (Stage 1)** |
-| EPICON-02 Intent                          | [`docs/epicon/EPICON-02.md`](epicon/EPICON-02.md)                        | C-140s         |
-| EPICON-03 Consensus                       | [`docs/epicon/EPICON-03.md`](epicon/EPICON-03.md)                        | C-150s         |
-| MIC Spec                                  | [`docs/MIC_SPEC.md`](MIC_SPEC.md)                                        | C-100s         |
-| MII Calibration                           | [`docs/MII_CALIBRATION.md`](MII_CALIBRATION.md)                          | C-150s         |
-| GI Formula                                | [`docs/04-TECHNICAL-ARCHITECTURE/ledger/gi-formula.md`](04-TECHNICAL-ARCHITECTURE/ledger/gi-formula.md) | —              |
-| Deflationary Sinks                        | [`docs/04-TECHNICAL-ARCHITECTURE/economics/deflationary-sinks.md`](04-TECHNICAL-ARCHITECTURE/economics/deflationary-sinks.md) | —              |
+### The Terminal is the single agent gateway.
 
-Bold entries are **new in this PR**.
+Agents run in many places (Cursor Background Agents, Render workers, Vercel
+crons, local machines). They all report through the same three endpoints on
+the Terminal: heartbeat, journal/commit, seal/attest. The gateway is the
+substrate's invariant: wherever agents live, their protocol contract is the
+same.
 
----
+Doctrine: *where an agent runs doesn't matter; how it reports does.*
 
-## 4. The Sentinel Council (C-284)
+### ATLAS-PAW is the operator's homebase, not a remote control.
 
-Five Sentinels carry **attestation authority** for Vault v2. They are
-operative, not descriptive: their verdicts gate whether economic events
-advance.
+An earlier frame treated PAW as "remote control for the OpenClaw PC." The
+C-283/C-284 reframe inverted this: PAW is the homebase, the PC is an optional
+peripheral. Authority lives in the cloud, not on a specific machine. The
+operator can open PAW on any device, talk to ATLAS, see live state, manage
+tripwires.
 
-| Sentinel | Attestation scope               | Veto power                | Role shorthand        |
-|----------|---------------------------------|---------------------------|------------------------|
-| ATLAS    | Strategic coherence             | No (flags only)           | "Is this reasoning diverse?" |
-| ZEUS     | Hash-chain + MII verification   | **YES — unilateral**      | "Does the math hold?"       |
-| EVE      | Civic clearance + tripwires     | Yes (confirmed overreach) | "Is this a coherent window?"|
-| JADE     | Constitutional framing          | Yes (schema/covenant)     | "Does this conform?"        |
-| AUREA    | Posture stamp                   | No (never blocks)         | "What is the substrate's mood?" |
+The implication: ATLAS should eventually heartbeat entirely without the PC,
+via a Vercel cron that runs whether or not any desktop software is on. This
+retirement path is planned, not yet executed.
 
-Supporting agents (HERMES, ECHO, DAEDALUS) do not participate in the
-quorum. Reserved agents (URIEL, ZENITH) have filesystem presence but no
-active role yet.
+### Reserve becomes flow one Seal at a time.
+
+Vault v1 treated reserve as continuous — one dramatic threshold at 50 units,
+one Fountain activation. Vault v2 (drafted C-284) replaces this with discrete
+50-unit Seals, each independently witnessed by five Sentinels and each with
+its own Fountain state machine. The substrate gains a rhythm: seal, seal, seal.
+
+Doctrine: *reserve becomes flow when integrity holds, one Seal at a time.*
 
 ---
 
-## 5. Live services at C-284
+## 3. The agents (current roster and roles)
 
-| Service                          | Location                                     | Status                |
-|----------------------------------|----------------------------------------------|-----------------------|
-| Terminal                         | `mobius-civic-ai-terminal.vercel.app`        | **Live · canonical hot layer** |
-| Browser Shell                    | `mobius-browser-shell` (separate repo)       | Live                  |
-| ATLAS-PAW                        | `atlas-paw` (separate repo)                  | Live                  |
-| Portal                           | `apps/portal/` (in this repo)                | Live                  |
-| Habits Web                       | `apps/habits-web/`                           | Live                  |
-| Mobius Landing                   | `apps/mobius-landing/`                       | Live                  |
-| Broker API                       | `apps/broker-api/`                           | Live                  |
-| Cathedral App                    | `apps/cathedral-app/`                        | Live                  |
-| Divergence Dashboard             | `divergence/` (auto-updated)                 | Live (GitHub Pages)   |
+Eight named agents, five voting Sentinels on Seal attestation, three
+operational agents.
 
----
+### Voting Sentinels
 
-## 6. The Vault v2 change (what it means)
+| Agent | Tier | Attestation scope | Veto? |
+|---|---|---|---|
+| **ATLAS** | Sentinel | Strategic coherence (reasoning diversity) | No, flags only |
+| **ZEUS** | Sentinel | Verification authority (hash chain, math) | **Yes, unilateral** |
+| **EVE** | Observer→Sentinel (active) | Ethical and civic clearance | No, flags except confirmed overreach |
+| **JADE** | Architect | Constitutional framing (schema + precedent) | No, flags except covenant break |
+| **AUREA** | Architect | Synthesis and posture | Never rejects; stamps posture |
 
-Before Vault v2, the Vault was a single running scalar. One dramatic
-threshold, one activation, one economic moment. Under v2:
+Quorum rule: ZEUS pass required + 4-of-5 pass + no non-ZEUS reject → Seal attested.
+See `docs/protocols/vault-v2-sealed-reserve.md` §6.
 
-- Each 50 units becomes a **discrete, witnessed Seal**
-- Every Seal is signed by five Sentinels, each on a distinct dimension
-- Seals are hash-chained — tampering with one breaks all successors
-- Fountain emission operates **per-Seal**, not once
-- The substrate acquires a **rhythm** instead of a threshold moment
+### Operational agents (non-voting)
 
-The doctrinal phrase from v1 — *reserve becomes flow only when integrity
-proves it can hold the weight* — now reads more naturally in the present
-continuous: **reserve becomes flow, one Seal at a time, as integrity
-holds.**
+| Agent | Role |
+|---|---|
+| **HERMES** | Routing and prioritization (signals, inter-service) |
+| **ECHO** | Event ingestion (epicon feed, external triggers) |
+| **DAEDALUS** | Infrastructure diagnostics (self-ping, deployment health) |
 
-See [`VAULT_V2_SEALED_RESERVE.md`](04-TECHNICAL-ARCHITECTURE/protocols/VAULT_V2_SEALED_RESERVE.md)
-for the full spec, quorum rules, and hash-chain semantics.
+### Legacy sentinel directories
 
----
-
-## 7. What's deliberately *not* shipped yet
-
-Named here so future-operator doesn't mistake absence for oversight:
-
-- **Fountain emission under v2.** State transitions tracked; economic
-  emission mechanism is v2.1.
-- **Substrate archive writer for Seals.** `journals/vault/seals/*.json`
-  paths reserved; daily cron to populate is separate PR.
-- **Vault v2 UI panel in Terminal.** `/api/vault/seal` endpoint exists;
-  the cockpit view of "Completed Seals" is Stage 2.
-- **Operator override UI for quarantined Seals.** API supports it; the
-  dashboard action button is deferred.
-- **Personalized Tripwires Stage 2.** Terminal-backed API for
-  cross-device persistence deferred; Stage 1 lives in PAW local KV only.
-- **Substrate archive of citizen tripwires.** Scheduled for Stage 2.
-- **CHANGELOG entries C-178 → C-283.** Only summary added in this PR;
-  full per-cycle detail remains recoverable from commit history.
+The Substrate also contains `sentinels/zenith/` and `sentinels/uriel/` which
+predate this session's work and whose current status is not clear from the
+code alone. They are not part of the C-284 Sentinel Council. If their roles
+are meaningful, a future cycle should either promote them into the Council
+explicitly or document them as deprecated.
 
 ---
 
-## 8. How to read this substrate (for new contributors)
+## 4. Protocol stack (canonical, C-284)
 
-1. Start with [`README.md`](../README.md) for repo orientation.
-2. Read [`CLAUDE.md`](../CLAUDE.md) for the quick-reference cycle card.
-3. Read **this file** for current architectural state.
-4. Read the [Vault v2 protocol](04-TECHNICAL-ARCHITECTURE/protocols/VAULT_V2_SEALED_RESERVE.md)
-   for the economic primitive.
-5. Read the [Agent Reporting Protocol](04-TECHNICAL-ARCHITECTURE/protocols/AGENT_REPORTING_PROTOCOL.md)
-   for the three-endpoint contract every agent honors.
-6. Browse [`docs/04-TECHNICAL-ARCHITECTURE/`](04-TECHNICAL-ARCHITECTURE/)
-   for deeper architecture.
-7. Browse [`journals/`](../journals/) to see what the agents have been
-   saying over the last 30+ cycles.
+The protocols that define how the substrate operates. All four live under
+`docs/protocols/`:
+
+1. **`vault-to-fountain-protocol.md`** (v1, C-281)
+   - Continuous reserve, single threshold, one-shot Fountain activation
+   - Status: historical reference; Vault v2 supersedes for new logic
+   - Why kept: the v1 formula for deposit scoring is unchanged in v2
+2. **`vault-v2-sealed-reserve.md`** (v2, C-284)
+   - Discrete 50-unit Seals, five-Sentinel attestation, hash chain
+   - Per-Seal Fountain emission, posture-weighted
+   - Status: **current active doctrine**
+   - Backward-compat window through C-285
+3. **`agent-reporting-protocol.md`** (C-284)
+   - Heartbeat, journal/commit, seal/attest contracts
+   - AGENT_SERVICE_TOKEN auth model
+   - Archive mirroring pattern (Terminal KV → Substrate git)
+   - Status: new, makes implicit conventions explicit
+4. **`personalized-tripwires-protocol.md`** (C-284)
+   - Per-citizen tripwire definitions, source registry, cron evaluator
+   - Rationale required, journal-default/push-opt-in action model
+   - Chat-integrated arming as Stage 4 target
+   - Status: Stage 1 backend live in ATLAS-PAW; protocol doc published here
+
+Historical specs under `docs/10-ARCHIVES/` (MIC v1, GIC Architecture, etc.)
+remain for reference but are not authoritative. If an archive doc conflicts
+with a protocol doc, the protocol wins.
 
 ---
 
-## 9. Doctrine at the close of C-284
+## 5. What C-283 and C-284 produced
 
-The cathedral has always remembered.
-At C-284 it also measures its own heartbeat.
+Captured here because otherwise the work disappears into commits and chat
+scrollback.
 
-Five voices now sign each Seal.
-Each Seal chains to the one before.
-Each Seal carries the posture of its birth.
-Each Seal emits on its own terms when the substrate can carry its weight.
+### C-283 (terminal hardening)
 
-The Vault is no longer a threshold.
-The Vault is a rhythm.
+- 10 optimizations bundled for ATLAS-PAW:
+  single poller via useAtlasLive, KV-cached tunnel health, visibility-gated
+  polling, single state.read RPC replacing Python subprocess fan-out,
+  streaming chat via SSE, client-passed snapshot in chat POST, KV-backed
+  last-seen state for readonly mode, `deploymentEnabled: main` hardening,
+  dynamic tunnel URL via gateway register, plus 5-minute heartbeat cron
+- PR templates formalized for Terminal and Substrate (different shapes:
+  Terminal uses locked-behavior audit; Substrate uses Sentinel review labels)
+- ATLAS-PAW reframed from "remote control" to "homebase"
+
+### C-284 (primitives and protocols)
+
+- **Personalized Tripwires Stage 1** backend shipped to ATLAS-PAW:
+  - `lib/tripwires/` (types, store, sources, evaluator, templates)
+  - CRUD + history + journal APIs
+  - 5-min cron evaluator
+  - 9 source kinds all terminal-snapshot-backed
+  - 3 starter templates (Vault approaching, GI degraded, DAEDALUS watchdog)
+  - Citizen-namespaced from day one (`self` today, `{citizen_id}` later)
+
+- **Vault v2 Sealed Reserve** drafted and implemented:
+  - Full protocol doc (spec §0-§13)
+  - `lib/vault-v2/` (types, store, seal lifecycle, deposit accrual, per-Sentinel attestation helpers)
+  - API routes: `GET /api/vault/seal`, `GET /api/vault/seal/:id`, `POST /api/vault/seal/attest`
+  - Orchestration cron: `/api/cron/vault-attestation` (2-min)
+  - Extended `/api/vault/status` with v2 fields, v1 preserved (compat window)
+  - Hash chain (SHA-256 over canonical seal fields), HMAC attestations
+
+- **Substrate refresh** (this update):
+  - Protocol docs published canonically here
+  - `CLAUDE.md` rewritten from C-253 to C-284
+  - `cycle.json` updated to reflect current reality
+  - CHANGELOG refreshed spanning C-177 → C-284 summary
+  - PR template added to `.github/`
+
+### Still pending (for future cycles, not this update)
+
+- Fountain emission mechanism (Vault v2.1)
+- Substrate archive writer cron (nightly KV → git journals mirror)
+- ATLAS-PAW Stage 2: tripwire dashboard UI
+- ATLAS-PAW Stage 3: `/tripwires/new` creation flow
+- ATLAS-PAW Stage 4: chat-integrated tripwire arming via tool calls
+- ATLAS-PAW Stage 5: server-side push (Resend / Twilio / web-push)
+- Browser Shell tripwire port
+- ATLAS heartbeat retirement from OpenClaw PC dependency
+- Vault chamber "Completed Seals" panel in Terminal UI
 
 ---
 
-*"We heal as we walk." — Mobius Systems*
+## 6. The cycle ahead (C-285)
 
-**Next substrate re-sync target:** C-294 (10 cycles).
+The immediate next moves, in priority order:
+
+1. **Wire the manual hook-in for Vault v2.** One call to `accrueDepositV2()`
+   after `writeVaultDeposit()` in `lib/vault/vault.ts`. Single bridge from v1
+   accrual to v2 Seal candidate formation.
+2. **Watch first Seal formation.** In-progress balance is at 44.24 — one more
+   significant journal cycle will cross 50 and trigger `Seal-C-285-001` (or
+   C-284-001 if it happens this cycle).
+3. **Wire agent-side attestation.** Each Sentinel's cycle-synthesize path
+   should check for an in-flight candidate and call its `{agent}Attest()`
+   helper. Five small additions to five cron paths.
+4. **Stage 2 PAW UI.** Three-zone tripwire dashboard: Active / Armed / Suggested.
+5. **Substrate archive cron.** Nightly write of KV journals + Seals to this
+   repo.
+
+None of these are in scope for this Substrate update. They're named so the
+next cycle has a clear start.
+
+---
+
+## 7. Open questions (genuine, not rhetorical)
+
+Things I don't know the answer to and that shouldn't be papered over:
+
+- **What happens to `zenith` and `uriel` sentinel directories?** They exist
+  in the repo but aren't part of any current Council logic. Either promote or
+  document as legacy.
+- **Is AGENT_SERVICE_TOKEN rotation a real risk?** The token is long-lived.
+  Agent runtime compromise = seal attestation forgery. A rotation protocol is
+  worth drafting before it becomes urgent.
+- **When does Vault v1 field `balance_reserve` actually get dropped?** The
+  C-285 compat window is short. External consumers of `/api/vault/status`
+  may still expect the v1 shape.
+- **Should Substrate receive a real web surface?** Today it's a git repo with
+  a `docs.mobius.systems` mkdocs build. A live read surface
+  (`substrate.mobius.systems/journals/atlas/latest`) would make the archive
+  useful to external researchers without them having to clone the repo.
+
+These are logged here to force future cycles to address them rather than
+rediscover them.
+
+---
+
+## 8. A note about documentation drift
+
+`CLAUDE.md` drifted 31 cycles. `CHANGELOG.md` drifted 100+ cycles. This was
+not because anyone was lazy — it was because writing "what is the current
+state of the substrate" is hard, and the temptation is to ship the code and
+assume the docs follow.
+
+The fix is not stricter enforcement. The fix is cheaper writing:
+
+- Protocol docs are canonical and stable. Update them only when protocol
+  changes.
+- `cycle.json` is authoritative and updates automatically via cron.
+- `CLAUDE.md` should update per-cycle, but only a few lines — the "Current
+  Cycle", "Live GI", "Recent changes" fields. Most of it is stable.
+- State-of-the-Substrate documents like this one are per-major-milestone,
+  not per-cycle. Expect one of these every 20-30 cycles at cadence.
+
+If this doc exists and the protocols are canonical and `cycle.json` is current,
+the substrate is legible. That's the minimum.
+
+---
+
+*The cathedral is not a building. It is the practice of building together.
+The substrate is not a repo. It is the practice of remembering together.*
+
+**Maintained by:** Mobius Systems Core Team + Sentinel Council
+**Cycle published:** C-284 (2026-04-17)
+**Next snapshot expected:** ~C-310 or first Fountain activation, whichever comes first

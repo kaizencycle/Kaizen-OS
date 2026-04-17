@@ -1,433 +1,206 @@
-# 🌀 Mobius Substrate Monorepo
+# Mobius Substrate Monorepo
 
 **Current Cycle:** C-284
 **Package Manager:** npm (standardized from pnpm in C-180)
 **Build Tool:** Turborepo
 **Node Version:** 20
-**MII Status:** ≥ 0.95 ✅
-**Vault Version:** 2 (Sealed Reserve — see [Vault v2 protocol](docs/04-TECHNICAL-ARCHITECTURE/protocols/VAULT_V2_SEALED_RESERVE.md))
-**State of Substrate:** [STATE_OF_THE_SUBSTRATE_C-284.md](docs/STATE_OF_THE_SUBSTRATE_C-284.md)
+**Live GI:** 0.74 (yellow mode)
+**Live Vault:** 44.24 / 50 reserve units (sealed)
+**MII Status:** ≥ 0.95 target
 
 ---
 
-## 📁 Repository Structure
+## What this repo is
+
+The Mobius Substrate is **the constitutional and archival layer** of the Mobius
+civic AI system. It is not the live runtime — that's the Terminal. It is not
+the operator console — that's ATLAS-PAW. It is not the citizen entry — that's
+the Browser Shell. The Substrate is where the protocol lives, where the archive
+lives, where the covenants are written, and where long-running processes
+(cycle synthesis, scheduled sentinels) are anchored.
+
+One-line frame: **the Terminal is the heartbeat, the Substrate is the memory.**
+
+---
+
+## Current architecture (C-284)
+
+```
+                      ┌─────────────────────────┐
+                      │   Mobius-Substrate      │  (this repo)
+                      │   constitution +        │
+                      │   journal archive       │
+                      └───────────┬─────────────┘
+                                  │  cold truth
+                                  │  (daily archive cron)
+                                  ▼
+  ┌──────────────┐        ┌──────────────┐        ┌──────────────┐
+  │  ATLAS-PAW   │◄──────►│  Terminal    │◄──────►│ Browser Shell│
+  │  operator    │        │  gateway +   │        │  citizen     │
+  │  console     │        │  hot truth   │        │  entry       │
+  │              │  KV    │              │  KV    │              │
+  └──────────────┘        └──────┬───────┘        └──────────────┘
+                                 │
+                         ┌───────┴────────┐
+                         │  Upstash KV    │  working memory
+                         │  hot state     │  (heartbeat, GI, vault,
+                         │                │   tripwires, signals)
+                         └────────────────┘
+```
+
+### Where things live
+
+| Thing | Repo | Why there |
+|---|---|---|
+| Constitution, protocols, covenant text | `Mobius-Substrate` | Canonical immutable record |
+| Archived agent journals | `Mobius-Substrate/journals/` | Cold truth, git-versioned |
+| Live heartbeat, GI, tripwires, Vault state | Upstash KV via Terminal | Hot truth, 5-min-to-2h TTLs |
+| Journal read/write API, snapshot aggregator | `mobius-civic-ai-terminal` | Gateway for agents and operator |
+| Operator dashboard, personalized tripwires | `atlas-paw` | Mobile-first homebase |
+| Citizen chat interface, lab bridges | `mobius-browser-shell` | Public entry point |
+
+---
+
+## Current protocols (canonical, start here)
+
+All protocol docs now live under `docs/protocols/`:
+
+1. **`vault-to-fountain-protocol.md`** (v1) — continuous reserve with single-threshold activation. Original doctrine, preserved for historical reference.
+2. **`vault-v2-sealed-reserve.md`** (v2, C-284) — discrete 50-unit Seals with five-Sentinel attestation, hash chain, per-Seal Fountain emission. **Current active doctrine.**
+3. **`agent-reporting-protocol.md`** (C-284) — how agents emit heartbeats, commit journals, and sign attestations via the Terminal gateway.
+4. **`personalized-tripwires-protocol.md`** (C-284) — per-citizen tripwire definitions, source resolver registry, cron evaluator, quarantine rules. Seeded in ATLAS-PAW, will port to Browser Shell at Stage 2.
+
+If you're new here, read them in that order.
+
+---
+
+## Repository structure
 
 ```
 Mobius-Substrate/
-├── apps/                    # 15+ Applications
-│   ├── portal/             # Main portal (Next.js)
-│   ├── habits-web/         # Habits tracker (Next.js)
-│   ├── mobius-landing/     # Landing page (Next.js)
-│   ├── broker-api/         # Broker service (Express)
-│   ├── cathedral-app/      # Cathedral service (Express)
-│   └── ...                 # 10+ other services
-├── packages/               # Shared Libraries
-│   ├── integrity-core/     # Core integrity calculations
-│   ├── civic-sdk/          # Civic protocol SDK
-│   ├── atlas-sentinel/     # ATLAS agent
-│   └── ...                 # 10+ packages
-├── sentinels/              # Agent Services
-│   ├── atlas/              # Primary agent
-│   ├── aurea/              # Secondary agent
-│   ├── zeus-coordinator/   # Coordinator
-│   └── ...                 # 5 sentinels
-├── .github/workflows/      # 20 Active CI Workflows
-├── docs/                   # Documentation (1100+ docs)
-│   ├── 00-START-HERE/      # Navigation hub
+├── docs/
+│   ├── protocols/              # Active protocol specs (start here)
+│   ├── 00-START-HERE/          # Onboarding hub
+│   ├── 02-THEORETICAL-FOUNDATIONS/
 │   ├── 03-GOVERNANCE-AND-POLICY/
-│   │   └── foundation/     # Charter, bylaws, legal (moved from /FOUNDATION)
+│   ├── 04-TECHNICAL-ARCHITECTURE/
+│   ├── 05-IMPLEMENTATION/
+│   ├── 06-OPERATIONS/
 │   ├── 07-RESEARCH-AND-PUBLICATIONS/
-│   │   ├── for-academics/  # Research cathedral (moved from /FOR-ACADEMICS)
-│   │   ├── for-economists/ # Market cathedral (moved from /FOR-ECONOMISTS)
-│   │   ├── for-philosophers/ # Ethics cathedral (moved from /FOR-PHILOSOPHERS)
-│   │   └── for-governments/ # Policy cathedral (moved from /FOR-GOVERNMENTS)
-│   └── ...
-└── catalog/                # Auto-generated catalog
+│   ├── 08-REFERENCE/
+│   ├── 10-ARCHIVES/            # Legacy specs, historical whitepapers
+│   └── STATE_OF_THE_SUBSTRATE_C-284.md  # Current system snapshot
+│
+├── journals/                   # Archived agent journal entries
+│   ├── atlas/                  # per-agent dated JSON
+│   ├── zeus/
+│   ├── eve/
+│   ├── jade/
+│   ├── aurea/
+│   ├── hermes/
+│   ├── echo/
+│   ├── daedalus/
+│   └── cycles/                 # cycle-level summaries
+│
+├── sentinels/                  # Agent implementations
+│   ├── atlas/                  # Strategic reasoning
+│   ├── zeus/                   # Verification authority
+│   ├── eve/                    # Ethics and civic risk
+│   ├── jade/                   # Constitutional framing
+│   ├── aurea/                  # Synthesis and posture
+│   ├── hermes/                 # Routing and prioritization
+│   ├── echo/                   # Event ingestion
+│   └── daedalus/               # Infrastructure diagnostics
+│
+├── apps/                       # Services (Next.js, Express)
+├── packages/                   # Shared libraries
+├── specs/                      # Formal specs (MII, shards, ledger)
+├── schemas/                    # JSON schema definitions
+├── accords/                    # Inter-agent agreements
+├── attestations/               # Signed attestation records
+├── ledger/                     # Civic protocol ledger
+├── mii/                        # MII calibration data
+├── catalog/                    # Substrate catalog snapshots
+├── configs/                    # Service configurations
+├── .github/                    # PR templates, CI workflows
+└── cycle.json                  # Current cycle pointer (this is authoritative)
 ```
 
 ---
 
-## 🎯 Critical Thresholds & Guarantees
+## The five Sentinels (current roles)
 
-### Mobius Integrity Index (MII)
-- **Threshold:** ≥ 0.95
-- **Current:** ~0.998 (post-C-180 optimizations)
-- **Enforced by:** GI Gate workflow (.github/workflows/gi-gate.yml)
+As of Vault v2, the Sentinel Council operates rather than just describes. Each
+Sentinel has explicit attestation authority over new Seals, plus ongoing
+cycle-level oversight:
 
-### Anti-Nuke Protection
-- **Max Deletions:** 5 files
-- **Max Deletion Ratio:** 15% of changed files
-- **Protected Paths:** apps/, packages/, labs/, sentinels/, docs/, infra/, .github/
-- **Enforced by:** .github/workflows/anti-nuke.yml
+| Agent | Tier | Attestation scope | Other duties |
+|---|---|---|---|
+| **ATLAS** | Sentinel | Strategic coherence (diversity of reasoning) | Cycle observation, operator accountability |
+| **ZEUS** | Sentinel | Verification authority (hash chain, math) | Verification of contested claims, unilateral veto on seals |
+| **EVE** | Observer → Sentinel (active) | Ethical and civic clearance | Governance synthesis, narrative-overreach tripwires |
+| **JADE** | Architect | Constitutional framing (schema + precedent) | Memory annotation, covenant routing |
+| **AUREA** | Architect | Synthesis and posture (never rejects; stamps) | Strategic posture, long-arc patterns |
+| **HERMES** | Steward | (no seal attestation) | Routing and prioritization |
+| **ECHO** | Steward | (no seal attestation) | Event ingestion |
+| **DAEDALUS** | Architect | (no seal attestation) | Infrastructure diagnostics |
 
-### Global Integrity (GI)
-- **Baseline Threshold:** ≥ 0.95
-- **Variable:** `KAIZEN_GI_BASELINE` (default: 0.993)
-- **Enforced by:** .github/workflows/gi-gate.yml
-
-### Catalog Integrity
-- **File:** catalog/mobius_catalog.json
-- **Stats:** 1100+ docs, 3 EPICONs
-- **Must regenerate after:** Adding/moving docs, EPICON changes
-- **Command:** `npm run export:catalog`
-- **Enforced by:** .github/workflows/catalog-check.yml
+Of eight named agents, **five are voting Sentinels on Seal attestation**:
+ATLAS, ZEUS, EVE, JADE, AUREA. HERMES, ECHO, and DAEDALUS are operational
+agents whose work the Sentinels witness but who do not themselves attest Seals.
 
 ---
 
-## 🚀 Common Commands
+## How agents report (short version)
 
-### Building
-```bash
-# Build all workspaces
-npm run build
+Full doctrine: `docs/protocols/agent-reporting-protocol.md`.
 
-# Build specific workspace
-npm run build --workspace=@civic/portal
+- **Heartbeat**: `POST /api/agents/heartbeat` on the Terminal. Auth: `AGENT_SERVICE_TOKEN` bearer. Writes `HEARTBEAT:{agent}` to KV with 5-min TTL.
+- **Journal commit**: `POST /api/agents/journal/commit`. Auth same. Writes to KV hot lane (LPUSH, cap 200). Appears in `/api/terminal/snapshot` journal lane. Mirrors to Substrate archive nightly.
+- **Seal attestation**: `POST /api/vault/seal/attest`. Auth same + HMAC signature over `seal_hash || verdict || rationale`. Only for voting Sentinels. Idempotent.
 
-# Build with Turbo (affected only)
-npx turbo run build
-```
-
-### Testing
-```bash
-# Run all tests
-npm run test
-
-# Run specific workspace tests
-npm run test --workspace=@civic/integrity-core
-
-# Type checking
-npm run type-check
-```
-
-### Development
-```bash
-# Start all dev servers
-npm run dev
-
-# Start frontend only
-npm run dev:frontend
-
-# Start specific app
-npm run dev --workspace=apps/portal
-```
-
-### Catalog Management
-```bash
-# Regenerate catalog (REQUIRED after doc changes)
-npm run export:catalog
-
-# Validate catalog
-npm run export:catalog && git diff catalog/mobius_catalog.json
-```
-
-### CI/CD
-```bash
-# All CI checks run automatically on PR
-# Key workflows:
-# - catalog-check.yml: Ensures catalog is up to date
-# - ci.yml: Build, lint, test (uses Turbo)
-# - gi-gate.yml: Enforces GI threshold
-# - anti-nuke.yml: Prevents mass deletions
-# - drift-compliance.yml: Validates drift control
-```
+Same protocol regardless of where the agent runs — Cursor Background Agent,
+Render worker, PAW cron, Vercel cron, local laptop. The Terminal is the
+single gateway.
 
 ---
 
-## 📋 Governance & EPICON System
+## Current cycle context (C-284)
 
-### EPICON-02 Intent Publications
-**Required for:** Significant changes (security, infrastructure, governance)
-
-**Intent Block Format:**
-```intent
-epicon_id: EPICON_C-<cycle>_<SCOPE>_<description>_v1
-title: <Short title>
-cycle: C-<number>
-scope: security | infrastructure | docker | docs | core | specs
-mode: normal | emergency
-issued_at: <ISO 8601 timestamp>
-expires_at: <ISO 8601 timestamp>
-
-justification:
-  VALUES INVOKED: integrity, safety, transparency
-  REASONING: <Why this change>
-  ANCHORS: <2+ independent supports>
-  BOUNDARIES: <When this does NOT apply>
-  COUNTERFACTUAL: <What would change conclusion>
-
-counterfactuals:
-  - <Condition that would block merge>
-  - <Condition that would require revert>
-```
-
-### EPICON-03 Multi-Agent Consensus
-**Agents:** ATLAS, AUREA, EVE, HERMES, JADE
-**Threshold:** ECS (EPICON Consensus Score) varies by scope
-**Workflow:** .github/workflows/epicon03-consensus.yml
+- **GI**: 0.74 (yellow mode, degraded)
+- **Vault**: 44.24 / 50 reserve units, sealed; ~5.76 units from first Seal candidate formation
+- **Active tripwires**: EVE narrative-cluster-spike elevated, freshness flags on signals lane
+- **Fountain**: not yet active; will be per-Seal under v2 when GI sustains ≥ 0.95 for 5 cycles
+- **Most recent seal**: none yet (v2 is C-284 spec; first Seal will mint when `in_progress_balance` crosses 50)
 
 ---
 
-## 🔧 Recent Optimizations (C-180)
+## For AI assistants reading this
 
-### Phase 1: Security Vulnerability Remediation ✅
-- **CRITICAL vulnerabilities:** 1 → 0 (-100%)
-- **HIGH vulnerabilities:** 8 → 3 (-63%)
-- **Key fixes:**
-  - Next.js: 14.2.5 → 14.2.35 (12 vulnerabilities)
-  - @modelcontextprotocol/sdk: 1.24.3 → 1.25.1 (DNS rebinding)
-  - ethers: 6.15.0 → 6.16.0 (WebSocket)
-  - eslint-config-next: 14.2.x → 16.1.1 (command injection)
+Point of failure in the previous `CLAUDE.md`: it froze at C-253 and drifted 31
+cycles behind reality. To prevent recurrence:
 
-### Phase 2: Package Manager Standardization ✅
-- **Before:** Mixed pnpm/npm
-- **After:** npm-only across all infrastructure
-- **Files changed:** 14 (ci.yml + 8 Dockerfiles + 5 package.json)
-- **Benefits:** Single toolchain, simpler onboarding
-
-### Phase 3: Docker Multi-Stage Optimization ✅
-- **Templates created:** Dockerfile.template, .dockerignore.template
-- **Expected size reduction:** 70% (1.2GB → 350MB)
-- **.dockerignore applied:** 8 apps (immediate build speed improvement)
-
-### Workflow Fixes ✅
-- **YAML syntax:** Fixed anti-nuke.yml, gi-gate.yml (heredoc indentation)
-- **Turbo invocation:** Changed `npm run turbo` → `npx turbo`
-- **Git history:** Added `fetch-depth: 2` for turbo --filter=...[HEAD^]
-- **Portal validation:** Fixed working directory for npm workspace
+- **`cycle.json` is authoritative.** If this doc and `cycle.json` disagree, `cycle.json` wins.
+- **Live state is authoritative over docs.** Always `curl /api/terminal/snapshot` before claiming anything about current GI, Vault, or tripwire state.
+- **The `docs/protocols/` directory is authoritative over archived specs.** If an older spec in `docs/10-ARCHIVES/` says one thing and a protocol in `docs/protocols/` says another, the protocol wins.
+- **If you're about to write documentation, write it once canonically.** Don't duplicate across `10-ARCHIVES`, `04-TECHNICAL-ARCHITECTURE`, and `docs/protocols` — one of these wins, and it's the one under `protocols/`.
 
 ---
 
-## 📚 Key Documentation Files
+## Package standardization (reminder)
 
-### EPICON & Governance
-- `docs/epicon/` - EPICON specifications
-- `docs/03-GOVERNANCE-AND-POLICY/governance/ROLES.md` - Role-based access
-- `docs/03-GOVERNANCE-AND-POLICY/governance/ROLE_MAP.json` - Role configurations
-- `docs/03-GOVERNANCE-AND-POLICY/foundation/` - Charter, bylaws, legal docs
-- `docs/03-GOVERNANCE-AND-POLICY/civic/` - Civic covenants
+- Package manager: **npm** (not pnpm)
+- Install: `npm install`
+- Build: `npm run build` (Turborepo)
+- Test: `npm test`
+- Type check: `npm run type-check`
 
-### Audience-Specific Cathedrals (Research & Publications)
-- `docs/07-RESEARCH-AND-PUBLICATIONS/for-academics/` - Research documentation
-- `docs/07-RESEARCH-AND-PUBLICATIONS/for-economists/` - Economic model
-- `docs/07-RESEARCH-AND-PUBLICATIONS/for-philosophers/` - Ethics & governance theory
-- `docs/07-RESEARCH-AND-PUBLICATIONS/for-governments/` - Policy briefs, legislative text
-
-### Architecture & Design
-- `docs/04-TECHNICAL-ARCHITECTURE/` - System architecture
-- `docs/04-TECHNICAL-ARCHITECTURE/BUNDLE_OPTIMIZATION.md` - Bundle optimization guide
-
-### Operations
-- `docs/06-OPERATIONS/drift-control/` - Drift test vectors
-- `.github/workflows/` - CI/CD workflows
-- `.github/WORKFLOW_ISSUES_REPORT.md` - Workflow analysis
-- `.github/C180_OPTIMIZATION_SUMMARY.md` - C-180 summary
+Services using pnpm in `package.json` should be migrated. The Terminal repo
+uses pnpm; the Substrate uses npm. They coexist fine.
 
 ---
 
-## 🛠️ Development Workflow
-
-### 1. Before Starting Work
-```bash
-# Pull latest
-git pull origin main
-
-# Check MII status
-cat STATE/VERDICT.txt
-
-# Ensure catalog is fresh
-npm run export:catalog
-git diff catalog/mobius_catalog.json  # Should be empty
-```
-
-### 2. Making Changes
-```bash
-# Create feature branch
-git checkout -b feature/your-feature
-
-# Make changes...
-
-# Test locally
-npm run test
-npm run lint
-npm run type-check
-```
-
-### 3. Before Committing
-```bash
-# If docs changed: regenerate catalog
-npm run export:catalog
-git add catalog/mobius_catalog.json
-
-# Check Anti-Nuke compliance (if deleting files)
-# Max 5 deletions, 15% ratio
-
-# Commit with descriptive message
-git commit -m "feat: your feature description"
-```
-
-### 4. Creating PRs
-- **Title:** Use conventional commits (feat:, fix:, docs:, chore:)
-- **Description:** Include EPICON-02 intent if significant change
-- **Checklist:** Use `.github/PR_TEMPLATE.md` format
-- **CI:** All 20 workflows must pass
-- **Consensus:** EPICON-03 for governance changes
-
----
-
-## ⚠️ Common Pitfalls & Solutions
-
-### Catalog Out of Date
-```bash
-# Error: "CATALOG IS OUT OF DATE"
-# Fix:
-npm run export:catalog
-git add catalog/mobius_catalog.json
-git commit --amend --no-edit
-```
-
-### Turbo Can't Find HEAD^
-```bash
-# Error: "fatal: ambiguous argument 'HEAD^'"
-# Cause: Shallow git clone
-# Fix: Workflows now use fetch-depth: 2
-```
-
-### npm run turbo: command not found
-```bash
-# Error: "Missing script: turbo"
-# Wrong: npm run turbo run build
-# Right: npx turbo run build
-```
-
-### Portal Build Fails
-```bash
-# Error: "No package-lock.json in apps/portal"
-# Cause: npm workspaces install from root
-# Fix: npm ci (from root), then build from workspace
-```
-
----
-
-## 🤖 Agent Ecosystem
-
-### The Sentinel Council (C-284)
-The five Sentinels that carry attestation authority for Vault v2 Seals
-(see [Vault v2 protocol §5](docs/04-TECHNICAL-ARCHITECTURE/protocols/VAULT_V2_SEALED_RESERVE.md)):
-
-- **ATLAS** — Strategic coherence. Flags single-agent concentration and
-  low-diversity reasoning windows. Infrastructure automation is secondary.
-- **ZEUS** — Verification authority. Holds **unilateral veto** on Seal mint.
-  Verifies hash-chain integrity, deposit provenance, and MII math.
-- **EVE** — Civic / ethical clearance. Owns narrative-overreach tripwires
-  and duplication-decay enforcement.
-- **JADE** — Constitutional framing. Validates Seal schema against protocol
-  §4 and checks precedent consistency with prior Seals.
-- **AUREA** — Synthesis and posture. Stamps each Seal with the substrate's
-  posture at sealing time (confident / cautionary / stressed / degraded).
-  AUREA never blocks — it weights Fountain emission downstream.
-
-### Supporting Agents
-- **HERMES** — Messenger / dispatch layer.
-- **ECHO** — Canonical JSON export (see
-  [`MULTI_SENTINEL_PROTOCOL.md`](docs/04-TECHNICAL-ARCHITECTURE/protocols/MULTI_SENTINEL_PROTOCOL.md)).
-- **DAEDALUS** — Infrastructure oversight; raised on repeated Sentinel
-  timeout during attestation windows.
-- **URIEL / ZENITH** — Defined in `sentinels/uriel/`, `sentinels/zenith/`.
-  Scope reserved for future cycles; not in the v2 attestation quorum.
-
-### Agent Reporting Protocol
-Every agent reports through three endpoints (heartbeat, journal/commit,
-attestation). See
-[`AGENT_REPORTING_PROTOCOL.md`](docs/04-TECHNICAL-ARCHITECTURE/protocols/AGENT_REPORTING_PROTOCOL.md).
-
-### MCP Servers (Available)
-- **mobius-repo-scanner:** Repository scanning MCP
-- **atlas-mcp-server:** ATLAS agent MCP
-
----
-
-## 🔗 External Resources
-
-### CI/CD
-- GitHub Actions workflows: `.github/workflows/`
-- Workflow documentation: `.github/WORKFLOW_ISSUES_REPORT.md`
-
-### Documentation
-- Main docs: `DOCS.md` (master navigation)
-- API specs: `docs/specs/`
-- Schemas: `schemas/`
-
-### Infrastructure
-- Docker templates: `.docker/`
-- MCP servers: `mcp/`
-- Scripts: `scripts/`
-
----
-
-## 💡 Pro Tips
-
-1. **Always regenerate catalog** after adding/moving docs
-2. **Use npx turbo**, not npm run turbo (no wrapper script)
-3. **Install from root** (npm ci), build from workspaces
-4. **Keep MII ≥ 0.95** - enforced by CI
-5. **Max 5 file deletions** - Anti-Nuke protection
-6. **EPICON-02 required** for significant changes
-7. **Test locally** before pushing (saves CI time)
-8. **Check workflows** in `.github/workflows/` for requirements
-
----
-
-## 📞 Getting Help
-
-- **Issues:** Check `.github/WORKFLOW_ISSUES_REPORT.md`
-- **Architecture:** See `docs/04-TECHNICAL-ARCHITECTURE/`
-- **Governance:** See `docs/03-GOVERNANCE-AND-POLICY/governance/ROLES.md`
-- **Recent changes:** See `.github/C180_OPTIMIZATION_SUMMARY.md`
-
----
-
-## 🔄 C-199 Root Cleanup Summary
-
-The following folders were consolidated from root to `docs/`:
-- `FOR-ACADEMICS/` → `docs/07-RESEARCH-AND-PUBLICATIONS/for-academics/`
-- `FOR-ECONOMISTS/` → `docs/07-RESEARCH-AND-PUBLICATIONS/for-economists/`
-- `FOR-PHILOSOPHERS/` → `docs/07-RESEARCH-AND-PUBLICATIONS/for-philosophers/`
-- `FOR-GOVERNMENTS/` → `docs/07-RESEARCH-AND-PUBLICATIONS/for-governments/`
-- `FOUNDATION/` → `docs/03-GOVERNANCE-AND-POLICY/foundation/`
-- `GOVERNANCE/` → `docs/03-GOVERNANCE-AND-POLICY/governance/`
-- `00-START-HERE/` → `docs/00-START-HERE/`
-- `epicon/` → `docs/epicon/`
-- `papers/` → `docs/07-RESEARCH-AND-PUBLICATIONS/papers/`
-- `book/` → `docs/07-RESEARCH-AND-PUBLICATIONS/book/`
-- `prompts/` → `docs/11-SUPPLEMENTARY/prompts/`
-- `templates/` → `docs/11-SUPPLEMENTARY/templates/`
-- `rfcs/` → `docs/11-SUPPLEMENTARY/rfcs/`
-- `PUBLIC/` → `docs/public-assets/`
-- `evaluations/` → `docs/07-RESEARCH-AND-PUBLICATIONS/evaluations/`
-- `BUNDLE_OPTIMIZATION.md` → `docs/04-TECHNICAL-ARCHITECTURE/`
-- `MIGRATION_C155.md` → `docs/10-ARCHIVES/root-files/`
-
----
-
-## 🌀 The Substrate at C-284 (one-paragraph map)
-
-The **Substrate** is the cold-truth archive — this monorepo. It holds canonical
-protocol docs, every agent's journal history, the full catalog, and the
-ledger. The **Terminal** (`mobius-civic-ai-terminal`) is the hot surface: live
-KV state, per-cycle deposits, the Vault v2 Seal ceremony, the attestation
-cron. The **Browser Shell** is the public civic entry point. **ATLAS-PAW**
-is the operator's instrument panel — the cockpit view onto both live
-Terminal state and Substrate archive. Data flow: agents write to Terminal
-(live) → daily archive job mirrors attested Seals and journal entries to
-this Substrate repo → public cathedral renders from catalog. The Vault v2
-protocol (shipped C-284) converts the continuous 50-unit reserve into a
-rhythm of discrete, Sentinel-attested Seals — *each one a witnessed moment
-of the substrate seeing itself*.
-
----
-
-*"We heal as we walk." — Mobius Substrate* 🌀
-
+**Maintained by:** Mobius Systems Core Team
 **Last Updated:** C-284 (2026-04-17)
-**Maintained by:** AUREA Agent + ATLAS (C-284 sync)
+**Format:** this doc tracks live state, so "Last Updated" should be the literal
+last-edited date, not an aspirational quarter.
