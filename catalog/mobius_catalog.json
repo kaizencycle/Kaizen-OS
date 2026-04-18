@@ -1,15 +1,15 @@
 {
   "mobius_catalog_version": "1.0.0",
-  "generated_at": "2026-04-18T04:36:30.729Z",
+  "generated_at": "2026-04-18T16:28:04.659Z",
   "repo": {
     "name": "Mobius-Substrate",
     "url": "https://github.com/kaizencycle/Mobius-Substrate",
     "default_branch": "main",
-    "commit": "3672a3ccd49daa8c4722fdb0e4d8edafee03de78"
+    "commit": ""
   },
   "stats": {
     "epiconCount": 0,
-    "docCount": 933
+    "docCount": 934
   },
   "epicons": [],
   "docs": [
@@ -6922,7 +6922,7 @@
       "title": "Mobius Systems Documentation Index",
       "category": "INDEX.md",
       "tags": [],
-      "content_hash": "sha256:035d51c5c7ee403d7b410c94b83ab8b2b05ed31ad2070f7b887f6d0fa329c273",
+      "content_hash": "sha256:d5a159bcb9bba23300261afcdc678d09e32aa3a15377456b6cbdf729265b727a",
       "summary": ""
     },
     {
@@ -7090,7 +7090,7 @@
       "title": "Divergence Dashboard",
       "category": "divergence",
       "tags": [],
-      "content_hash": "sha256:f334b8a52a57483c6d1bfd5b1714020edf5829bb3e4b62cdc6a2c2d83d3722b2",
+      "content_hash": "sha256:4226ec5864ec4037602341433566bd56b245981e7fb5f440f1b753700fd41b10",
       "summary": ""
     },
     {
@@ -7586,6 +7586,14 @@
       "category": "simulations",
       "tags": [],
       "content_hash": "sha256:6f35c7db5092d8354e0cea65ecda051726de9d362cfad1e4b7fbb049e7d57b31",
+      "summary": ""
+    },
+    {
+      "path": "docs/specs/MOBIUS_SDK_API.md",
+      "title": "MobiusSDK API — BYOK, Model-Agnostic Architecture",
+      "category": "specs",
+      "tags": [],
+      "content_hash": "sha256:c3c7834746d85b7d4938bdce6dd1516c10782d3d228695653937c7c7760fb98c",
       "summary": ""
     },
     {

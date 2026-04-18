@@ -190,6 +190,7 @@ nav:
       - EPICON-03: epicon/EPICON-03.md
   - Reference:
       - Master Index: 00-META/MASTER_INDEX.md
+      - Mobius SDK API (C-285 draft): specs/MOBIUS_SDK_API.md
       - Glossary: 00-START-HERE/GLOSSARY.md
       - FAQ: 00-START-HERE/FAQ.md
   - Archives:

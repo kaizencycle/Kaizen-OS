@@ -1,7 +1,7 @@
 # Mobius Systems Documentation Index
 
-**Version:** 1.2.0  
-**Cycle:** C-284
+**Version:** 1.3.0  
+**Cycle:** C-285
 
 This index provides navigation to all key Mobius documentation.
 
@@ -146,6 +146,7 @@ docs/
 
 | Spec | Location |
 |------|----------|
+| **Mobius SDK API (BYOK, C-285 draft)** | [docs/specs/MOBIUS_SDK_API.md](./specs/MOBIUS_SDK_API.md) |
 | MFS (Mobius Fractal Shards) | `docs/07-RESEARCH-AND-PUBLICATIONS/specs/MFS_SPEC_v1.md` |
 | MII (Mobius Integrity Index) | `specs/mii_spec_v1.md` |
 | GI/MII Formal Spec | `specs/civic-ledger/RFC-0003-gi-and-mii-formal-spec.md` |
