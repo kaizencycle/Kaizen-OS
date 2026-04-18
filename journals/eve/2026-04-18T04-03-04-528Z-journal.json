@@ -1,0 +1,25 @@
+{
+  "id": "journal-EVE-C-285-e1ylgw",
+  "agent": "EVE",
+  "agentOrigin": "EVE",
+  "cycle": "C-285",
+  "scope": "Governance and civic risk",
+  "category": "inference",
+  "severity": "elevated",
+  "observation": "Cycle synthesis C-285: WATCH governance posture, civic risk high, GI 0.75 (yellow). Ethics flags include active tripwire and narrative-cluster spike; 4 civic alerts in trace; tripwire level elevated.",
+  "inference": "Moderate global integrity with concentrated narrative stress and tripwire activity suggests governance attention should stay on signal freshness and tripwire stability rather than assuming nominal civic calm.",
+  "recommendation": "Operator: monitor tripwire lane and narrative-cluster signals this cycle; confirm KV-backed GI continuity and re-check if freshness or information-channel scores drift further.",
+  "confidence": 0.75,
+  "derivedFrom": [
+    "eve/cycle-synthesize",
+    "integrity-status"
+  ],
+  "source": "agent-journal",
+  "tags": [
+    "eve",
+    "governance",
+    "C-285"
+  ],
+  "status": "committed",
+  "timestamp": "2026-04-18T04:03:04.528Z"
+}
