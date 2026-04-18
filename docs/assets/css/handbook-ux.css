@@ -156,21 +156,6 @@ body {
   border: 1px solid rgba(248, 113, 113, 0.4);
 }
 
-[data-md-color-scheme="default"] .mobius-live-bar__chip--green {
-  color: #047857;
-  background: rgba(16, 185, 129, 0.12);
-}
-
-[data-md-color-scheme="default"] .mobius-live-bar__chip--yellow {
-  color: #b45309;
-  background: rgba(245, 158, 11, 0.12);
-}
-
-[data-md-color-scheme="default"] .mobius-live-bar__chip--red {
-  color: #b91c1c;
-  background: rgba(239, 68, 68, 0.1);
-}
-
 .mobius-live-bar__refresh {
   appearance: none;
   margin-left: auto;
@@ -222,6 +207,304 @@ body {
   color: #6ee7b7;
 }
 
-[data-md-color-scheme="default"] .mobius-proof-copy.mobius-proof-copy--done {
-  color: #047857;
+/* --------------------------------------------------------------------------
+ * Reader preferences (10 customizations) — toggled via mobius-handbook.js
+ * Body classes: mobius-pref-compact | mobius-pref-wide | mobius-pref-toc-off |
+ * mobius-pref-tabs-sticky-off | mobius-pref-reduce-motion | mobius-pref-proof-compact |
+ * mobius-pref-underline-links | mobius-pref-live-bar-compact |
+ * mobius-pref-code-wrap | mobius-pref-focus-strong
+ * -------------------------------------------------------------------------- */
+
+.mobius-reader-panel {
+  position: fixed;
+  right: 0.75rem;
+  bottom: 0.75rem;
+  z-index: 400;
+  font-size: 0.8125rem;
+  line-height: 1.4;
+}
+
+.mobius-reader-panel__toggle {
+  appearance: none;
+  border: 1px solid var(--mobius-terminal-border, #2a3544);
+  background: var(--mobius-terminal-surface, #121820);
+  color: var(--mobius-terminal-accent, #22d3ee);
+  border-radius: 999px;
+  padding: 0.45rem 0.85rem;
+  font-weight: 700;
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  cursor: pointer;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.45);
+}
+
+.mobius-reader-panel__toggle:hover {
+  border-color: var(--mobius-terminal-accent, #22d3ee);
+}
+
+.mobius-reader-panel__toggle:focus-visible {
+  outline: 2px solid var(--mobius-terminal-accent, #22d3ee);
+  outline-offset: 2px;
+}
+
+.mobius-reader-panel__sheet {
+  display: none;
+  position: absolute;
+  right: 0;
+  bottom: calc(100% + 0.5rem);
+  width: min(18.5rem, calc(100vw - 1.5rem));
+  max-height: min(70vh, 26rem);
+  overflow-y: auto;
+  border-radius: 12px;
+  border: 1px solid var(--mobius-terminal-border, #2a3544);
+  background: var(--mobius-terminal-bg, #0a0e14);
+  color: var(--mobius-terminal-text, #e8edf4);
+  padding: 0.75rem 0.85rem;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.55);
+  -webkit-overflow-scrolling: touch;
+}
+
+.mobius-reader-panel--open .mobius-reader-panel__sheet {
+  display: block;
+}
+
+.mobius-reader-panel__title {
+  margin: 0 0 0.5rem;
+  font-size: 0.7rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--mobius-terminal-muted, #8b9cb3);
+}
+
+.mobius-reader-panel__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 0.4rem 0;
+  border-bottom: 1px solid rgba(42, 53, 68, 0.85);
+}
+
+.mobius-reader-panel__row:last-of-type {
+  border-bottom: none;
+}
+
+.mobius-reader-panel__label {
+  flex: 1;
+  font-weight: 600;
+}
+
+.mobius-reader-panel__hint {
+  display: block;
+  font-weight: 400;
+  font-size: 0.68rem;
+  opacity: 0.72;
+  margin-top: 0.15rem;
+}
+
+.mobius-reader-panel__switch {
+  appearance: none;
+  width: 2.5rem;
+  height: 1.35rem;
+  border-radius: 999px;
+  border: 1px solid var(--mobius-terminal-border, #2a3544);
+  background: var(--mobius-terminal-elevated, #1a222d);
+  cursor: pointer;
+  position: relative;
+  flex-shrink: 0;
+  transition: background 0.15s ease;
+}
+
+.mobius-reader-panel__switch::after {
+  content: '';
+  position: absolute;
+  top: 0.12rem;
+  left: 0.12rem;
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+  background: var(--mobius-terminal-muted, #8b9cb3);
+  transition: transform 0.15s ease, background 0.15s ease;
+}
+
+.mobius-reader-panel__switch[aria-checked='true'] {
+  background: rgba(34, 211, 238, 0.2);
+  border-color: rgba(34, 211, 238, 0.5);
+}
+
+.mobius-reader-panel__switch[aria-checked='true']::after {
+  transform: translateX(1.1rem);
+  background: var(--mobius-terminal-accent, #22d3ee);
+}
+
+.mobius-reader-panel__switch:focus-visible {
+  outline: 2px solid var(--mobius-terminal-accent, #22d3ee);
+  outline-offset: 2px;
+}
+
+.mobius-reader-panel__footer {
+  margin-top: 0.65rem;
+  padding-top: 0.5rem;
+  border-top: 1px solid rgba(42, 53, 68, 0.85);
+}
+
+.mobius-reader-panel__reset {
+  appearance: none;
+  width: 100%;
+  padding: 0.45rem;
+  border-radius: 8px;
+  border: 1px solid var(--mobius-terminal-border, #2a3544);
+  background: transparent;
+  color: inherit;
+  font-weight: 600;
+  font-size: 0.75rem;
+  cursor: pointer;
+}
+
+.mobius-reader-panel__reset:hover {
+  border-color: var(--mobius-terminal-accent, #22d3ee);
+  color: var(--mobius-terminal-accent, #22d3ee);
+}
+
+/* 1 — Compact type */
+body.mobius-pref-compact .md-typeset {
+  font-size: 0.86rem;
+  line-height: 1.55;
+}
+
+/* 2 — Wide measure */
+body.mobius-pref-wide .md-content__inner {
+  max-width: 58rem;
+}
+
+/* 3 — Hide integrated TOC column */
+body.mobius-pref-toc-off .md-sidebar--secondary {
+  display: none !important;
+}
+
+body.mobius-pref-toc-off .md-content {
+  max-width: 100%;
+}
+
+/* 4 — Tabs not sticky */
+body.mobius-pref-tabs-sticky-off .md-tabs {
+  position: relative !important;
+  top: auto !important;
+}
+
+/* 5 — Reduce motion */
+body.mobius-pref-reduce-motion *,
+body.mobius-pref-reduce-motion *::before,
+body.mobius-pref-reduce-motion *::after {
+  animation-duration: 0.001ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.001ms !important;
+  scroll-behavior: auto !important;
+}
+
+/* 6 — Compact proof cards */
+body.mobius-pref-proof-compact .mobius-proof-card {
+  padding: 0.45rem 0.55rem;
+  margin: 0.5rem 0;
+}
+
+body.mobius-pref-proof-compact mobius-proof,
+body.mobius-pref-proof-compact .mobius-proof-fallback {
+  margin: 0.45rem 0;
+}
+
+/* 7 — Underline links in prose */
+body.mobius-pref-underline-links .md-typeset a:not(.md-button):not(.md-nav__link):not(.md-tabs__link) {
+  text-decoration: underline;
+  text-underline-offset: 0.12em;
+}
+
+/* 8 — Compact live bar */
+body.mobius-pref-live-bar-compact .mobius-live-bar {
+  font-size: 0.66rem;
+  padding: 0.28rem 0.55rem;
+  gap: 0.35rem 0.65rem;
+}
+
+/* 9–10 — Code wrap + stronger focus */
+body.mobius-pref-code-wrap .md-typeset code,
+body.mobius-pref-code-wrap .md-typeset pre code {
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+body.mobius-pref-focus-strong .md-typeset a:focus-visible,
+body.mobius-pref-focus-strong button:focus-visible,
+body.mobius-pref-focus-strong .md-tabs__link:focus-visible,
+body.mobius-pref-focus-strong .md-nav__link:focus-visible {
+  outline: 3px solid var(--md-accent-fg-color, #22d3ee);
+  outline-offset: 3px;
+}
+
+/* Mobile: organized header + drawer + content rhythm */
+@media screen and (max-width: 59.9375em) {
+  /* Mobile nav: clearer section hierarchy in the drawer */
+  .md-nav--primary .md-nav__item--section > .md-nav__link {
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    opacity: 0.88;
+  }
+
+  .md-header__inner {
+    row-gap: 0.25rem;
+    align-items: flex-start;
+  }
+
+  .md-header__title {
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+
+  .md-search {
+    flex: 1 1 100%;
+    max-width: none;
+    order: 5;
+    padding: 0.15rem 0 0.25rem;
+  }
+
+  .md-tabs {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+  }
+
+  .md-tabs__list {
+    flex-wrap: nowrap;
+  }
+
+  .md-tabs__link {
+    white-space: nowrap;
+    padding: 0.55rem 0.65rem;
+  }
+
+  .md-content {
+    padding-top: 0.75rem;
+  }
+
+  .md-content__inner {
+    padding-bottom: 5rem;
+  }
+
+  .mobius-reader-panel {
+    right: 0.5rem;
+    bottom: 0.5rem;
+  }
+}
+
+@media screen and (max-width: 44.9375em) {
+  .md-typeset h1 {
+    font-size: 1.35rem;
+  }
+
+  .md-typeset h2 {
+    font-size: 1.08rem;
+  }
 }

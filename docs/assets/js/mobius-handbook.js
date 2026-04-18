@@ -1,5 +1,6 @@
 /**
- * Mobius Handbook — public UX: skip link, Terminal live bar, announce dismiss
+ * Mobius Handbook — public UX: dark-only lock, skip link, Terminal live bar,
+ * announce dismiss, reader preferences (10 display customizations).
  * Runs with mobius-proof.js (proof tiles load separately).
  */
 (function () {
@@ -8,10 +9,85 @@
   var TERMINAL_META = 'meta[name="mobius-terminal-base"]';
   var BAR_ID = 'mobius-handbook-live-bar';
   var ANNOUNCE_KEY = 'mobius-handbook-announce-dismissed';
+  var PREFS_KEY = 'mobius-handbook-prefs';
+  var FORCED_SCHEME_KEY = 'mobius-handbook-scheme';
+
+  /** @type {Record<string, string>} pref id -> body class */
+  var PREF_CLASSES = {
+    compact: 'mobius-pref-compact',
+    wide: 'mobius-pref-wide',
+    tocOff: 'mobius-pref-toc-off',
+    tabsStickyOff: 'mobius-pref-tabs-sticky-off',
+    reduceMotion: 'mobius-pref-reduce-motion',
+    proofCompact: 'mobius-pref-proof-compact',
+    underlineLinks: 'mobius-pref-underline-links',
+    liveBarCompact: 'mobius-pref-live-bar-compact',
+    codeWrap: 'mobius-pref-code-wrap',
+    focusStrong: 'mobius-pref-focus-strong'
+  };
 
   function terminalBase() {
     var m = document.querySelector(TERMINAL_META);
     return (m && m.getAttribute('content')) || 'https://mobius-civic-ai-terminal.vercel.app';
+  }
+
+  function forceDarkScheme() {
+    try {
+      sessionStorage.setItem(FORCED_SCHEME_KEY, 'slate');
+    } catch (e) {
+      /* ignore */
+    }
+    var inputs = document.querySelectorAll('input[name="__palette"]');
+    for (var i = 0; i < inputs.length; i++) {
+      var inp = inputs[i];
+      var val = inp.getAttribute('value') || inp.getAttribute('data-md-color-scheme');
+      if (val === 'slate') {
+        if (!inp.checked) {
+          inp.click();
+        }
+        break;
+      }
+    }
+    var palette = document.querySelector('[data-md-component="palette"]');
+    if (palette) {
+      palette.setAttribute('hidden', '');
+      palette.style.display = 'none';
+    }
+  }
+
+  function scheduleForceDark() {
+    forceDarkScheme();
+    requestAnimationFrame(forceDarkScheme);
+    setTimeout(forceDarkScheme, 0);
+    setTimeout(forceDarkScheme, 120);
+  }
+
+  function loadPrefs() {
+    try {
+      var raw = localStorage.getItem(PREFS_KEY);
+      if (!raw) return {};
+      var o = JSON.parse(raw);
+      return o && typeof o === 'object' ? o : {};
+    } catch (e) {
+      return {};
+    }
+  }
+
+  function savePrefs(prefs) {
+    try {
+      localStorage.setItem(PREFS_KEY, JSON.stringify(prefs));
+    } catch (e) {
+      /* ignore */
+    }
+  }
+
+  function applyPrefs(prefs) {
+    var body = document.body;
+    Object.keys(PREF_CLASSES).forEach(function (id) {
+      var cls = PREF_CLASSES[id];
+      if (prefs[id]) body.classList.add(cls);
+      else body.classList.remove(cls);
+    });
   }
 
   function skipLink() {
@@ -194,10 +270,168 @@
       .replace(/</g, '&lt;');
   }
 
+  function makeSwitch(id, label, hint, checked, onChange) {
+    var row = document.createElement('div');
+    row.className = 'mobius-reader-panel__row';
+
+    var labWrap = document.createElement('div');
+    labWrap.className = 'mobius-reader-panel__label';
+
+    var span = document.createElement('span');
+    span.textContent = label;
+    labWrap.appendChild(span);
+
+    if (hint) {
+      var h = document.createElement('span');
+      h.className = 'mobius-reader-panel__hint';
+      h.textContent = hint;
+      labWrap.appendChild(h);
+    }
+
+    var sw = document.createElement('button');
+    sw.type = 'button';
+    sw.role = 'switch';
+    sw.id = 'mobius-pref-' + id;
+    sw.className = 'mobius-reader-panel__switch';
+    sw.setAttribute('aria-checked', checked ? 'true' : 'false');
+    sw.setAttribute('aria-label', label);
+
+    sw.addEventListener('click', function () {
+      var next = sw.getAttribute('aria-checked') !== 'true';
+      sw.setAttribute('aria-checked', next ? 'true' : 'false');
+      onChange(next);
+    });
+
+    row.appendChild(labWrap);
+    row.appendChild(sw);
+    return { row: row, setChecked: function (v) {
+      sw.setAttribute('aria-checked', v ? 'true' : 'false');
+    } };
+  }
+
+  function initReaderPanel() {
+    if (document.getElementById('mobius-reader-panel')) return;
+
+    var prefs = loadPrefs();
+    applyPrefs(prefs);
+
+    var root = document.createElement('div');
+    root.id = 'mobius-reader-panel';
+    root.className = 'mobius-reader-panel';
+    root.setAttribute('data-mobius-reader-panel', '');
+
+    var toggle = document.createElement('button');
+    toggle.type = 'button';
+    toggle.className = 'mobius-reader-panel__toggle';
+    toggle.setAttribute('aria-expanded', 'false');
+    toggle.setAttribute('aria-controls', 'mobius-reader-sheet');
+    toggle.textContent = 'Reader';
+
+    var sheet = document.createElement('div');
+    sheet.id = 'mobius-reader-sheet';
+    sheet.className = 'mobius-reader-panel__sheet';
+    sheet.setAttribute('role', 'region');
+    sheet.setAttribute('aria-label', 'Reading preferences');
+    sheet.setAttribute('hidden', '');
+
+    var title = document.createElement('p');
+    title.className = 'mobius-reader-panel__title';
+    title.textContent = 'Handbook display';
+    sheet.appendChild(title);
+
+    var switches = {};
+
+    function commit() {
+      savePrefs(prefs);
+      applyPrefs(prefs);
+    }
+
+    var defs = [
+      { id: 'compact', label: 'Compact type', hint: 'Smaller body text, tighter lines' },
+      { id: 'wide', label: 'Wide column', hint: 'More horizontal room for tables' },
+      { id: 'tocOff', label: 'Hide page TOC', hint: 'Right sidebar table of contents' },
+      { id: 'tabsStickyOff', label: 'Tabs not sticky', hint: 'Tabs scroll away with the page' },
+      { id: 'reduceMotion', label: 'Reduce motion', hint: 'Minimal animation and transitions' },
+      { id: 'proofCompact', label: 'Compact proof tiles', hint: 'Tighter live proof cards' },
+      { id: 'underlineLinks', label: 'Underline links', hint: 'Clearer links in prose' },
+      { id: 'liveBarCompact', label: 'Compact live bar', hint: 'Smaller Terminal strip in header' },
+      { id: 'codeWrap', label: 'Wrap long code', hint: 'Avoid horizontal scroll in snippets' },
+      { id: 'focusStrong', label: 'Strong focus rings', hint: 'High-contrast keyboard focus' }
+    ];
+
+    for (var j = 0; j < defs.length; j++) {
+      (function (def) {
+        var id = def.id;
+        var ui = makeSwitch(id, def.label, def.hint, !!prefs[id], function (on) {
+          if (on) prefs[id] = true;
+          else delete prefs[id];
+          commit();
+        });
+        sheet.appendChild(ui.row);
+        switches[id] = ui;
+      })(defs[j]);
+    }
+
+    var foot = document.createElement('div');
+    foot.className = 'mobius-reader-panel__footer';
+    var reset = document.createElement('button');
+    reset.type = 'button';
+    reset.className = 'mobius-reader-panel__reset';
+    reset.textContent = 'Reset all';
+    reset.addEventListener('click', function () {
+      prefs = {};
+      savePrefs(prefs);
+      applyPrefs(prefs);
+      Object.keys(switches).forEach(function (k) {
+        switches[k].setChecked(false);
+      });
+    });
+    foot.appendChild(reset);
+    sheet.appendChild(foot);
+
+    function setOpen(open) {
+      root.classList.toggle('mobius-reader-panel--open', open);
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      if (open) sheet.removeAttribute('hidden');
+      else sheet.setAttribute('hidden', '');
+    }
+
+    toggle.addEventListener('click', function () {
+      setOpen(!root.classList.contains('mobius-reader-panel--open'));
+    });
+
+    document.addEventListener('click', function (ev) {
+      if (!root.contains(ev.target)) setOpen(false);
+    });
+
+    document.addEventListener('keydown', function (ev) {
+      if (ev.key === 'Escape') setOpen(false);
+    });
+
+    root.appendChild(sheet);
+    root.appendChild(toggle);
+    document.body.appendChild(root);
+  }
+
   function init() {
     skipLink();
     announceDismiss();
+    scheduleForceDark();
     initLiveBar();
+    initReaderPanel();
+    document.addEventListener('DOMContentLoaded', scheduleForceDark);
+    window.addEventListener('load', scheduleForceDark);
+    try {
+      var obs = new MutationObserver(function () {
+        scheduleForceDark();
+      });
+      obs.observe(document.documentElement, { childList: true, subtree: true });
+      setTimeout(function () {
+        obs.disconnect();
+      }, 8000);
+    } catch (e) {
+      /* MutationObserver optional */
+    }
   }
 
   if (document.readyState === 'loading') {
