@@ -8,6 +8,9 @@ Versioning: [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased] — C-285 and beyond
 
+### Added
+- **MobiusSDK Phase 2 (initial code):** `@mobius/inference-schema` (normalized request/response + provider record types), `@mobius/provider-adapters` (OpenAI-compatible chat completions + model fallback router), `@mobius/mobius-sdk` (HTTP client), and **`apps/gateway`** Express BFF: encrypted provider key storage (AES-256-GCM), `POST /v1/providers`, `POST /v1/providers/:id/test`, `POST /v1/inference`, `GET /v1/telemetry`, optional bearer auth and rate limiting. See `docs/specs/MOBIUS_SDK_API.md` section 15a.
+
 Planned:
 - Fountain emission mechanism (Vault v2.1)
 - Substrate archive writer cron (nightly Terminal KV → this repo)
