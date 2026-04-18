@@ -1,6 +1,6 @@
 {
   "mobius_catalog_version": "1.0.0",
-  "generated_at": "2026-04-18T16:28:04.659Z",
+  "generated_at": "2026-04-18T16:51:45.112Z",
   "repo": {
     "name": "Mobius-Substrate",
     "url": "https://github.com/kaizencycle/Mobius-Substrate",
@@ -7593,7 +7593,7 @@
       "title": "MobiusSDK API — BYOK, Model-Agnostic Architecture",
       "category": "specs",
       "tags": [],
-      "content_hash": "sha256:c3c7834746d85b7d4938bdce6dd1516c10782d3d228695653937c7c7760fb98c",
+      "content_hash": "sha256:fcdc47a593a62dfd1577d52015a674b4c3816359feff9d47b40317defd75e8cf",
       "summary": ""
     },
     {

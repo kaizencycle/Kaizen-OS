@@ -302,6 +302,17 @@ Connect provider, add API key, default model, test inference, caps, scopes, rota
 4. **Terminal ops** — health lane, telemetry, cost/error/fallback.  
 5. **Ledger integration** — provenance on inference flows; auditable usage metadata.
 
+### 15a. Implementation status (Substrate repo)
+
+| Component | Path | Notes |
+|-----------|------|--------|
+| Types | `packages/inference-schema/` | `MobiusInferenceRequest`, `MobiusInferenceResponse`, `ProviderConfigRecord`, scopes |
+| Adapters | `packages/provider-adapters/` | OpenAI-compatible POST + fallback router |
+| SDK client | `packages/mobius-sdk/` | `MobiusClient` for gateway HTTP |
+| Gateway (BFF) | `apps/gateway/` | Express: `POST /v1/providers`, `POST /v1/inference`, `GET /v1/telemetry`, AES-256-GCM key refs (in-memory store for dev) |
+
+See `apps/gateway/README.md` for env vars and local run.
+
 ---
 
 ## 16. One-line canon
