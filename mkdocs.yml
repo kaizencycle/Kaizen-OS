@@ -19,20 +19,13 @@ theme:
   favicon: assets/logo/kaizen-favicon.svg
   language: en
   palette:
-    # Light mode (Terminal-inspired: slate text on cool background)
-    - scheme: default
-      primary: cyan
-      accent: teal
-      toggle:
-        icon: material/brightness-7
-        name: Switch to dark mode
-    # Dark mode — matches Mobius Civic AI Terminal command surface
+    # Dark only — Terminal command surface (no light toggle)
     - scheme: slate
       primary: black
       accent: cyan
       toggle:
-        icon: material/brightness-4
-        name: Switch to light mode
+        icon: material/weather-night
+        name: Dark mode (Mobius Handbook)
 
   features:
     - navigation.tabs

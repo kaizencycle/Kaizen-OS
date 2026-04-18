@@ -20,6 +20,7 @@
 
 /* Dark mode — primary Terminal look */
 [data-md-color-scheme="slate"] {
+  color-scheme: dark;
   --md-primary-fg-color: #0f1419;
   --md-primary-fg-color--light: #1a222d;
   --md-primary-fg-color--dark: #05080c;
@@ -101,29 +102,6 @@
   border-top: 1px solid var(--mobius-terminal-border);
 }
 
-/* Light mode — same family, higher contrast for daylight reading */
-[data-md-color-scheme="default"] {
-  --md-primary-fg-color: #0c4a6e;
-  --md-primary-fg-color--light: #0e7490;
-  --md-primary-fg-color--dark: #082f49;
-  --md-accent-fg-color: #0891b2;
-  --md-accent-fg-color--transparent: rgba(8, 145, 178, 0.1);
-
-  --md-default-bg-color: #f8fafc;
-  --md-default-bg-color--light: #f1f5f9;
-  --md-typeset-a-color: #0e7490;
-}
-
-[data-md-color-scheme="default"] .md-header {
-  background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%);
-  border-bottom: 1px solid #e2e8f0;
-}
-
-[data-md-color-scheme="default"] .md-tabs {
-  background-color: #f1f5f9;
-  border-bottom: 1px solid #e2e8f0;
-}
-
 /* Skip link — public a11y */
 .mobius-skip-link {
   position: absolute;
@@ -165,21 +143,12 @@
   max-width: min(52rem, 100%);
 }
 
-[data-md-color-scheme="default"] .mobius-live-bar {
-  background: rgba(14, 116, 144, 0.08);
-  border-color: #cbd5e1;
-}
-
 .mobius-live-bar__label {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.06em;
   color: var(--mobius-terminal-accent);
   margin-right: 0.25rem;
-}
-
-[data-md-color-scheme="default"] .mobius-live-bar__label {
-  color: #0e7490;
 }
 
 .mobius-live-bar__sep {

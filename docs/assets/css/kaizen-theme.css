@@ -57,31 +57,6 @@
   --md-admonition-bg-color: var(--kaizen-deep-teal);
 }
 
-/* Light mode - Cream and Teal theme */
-[data-md-color-scheme="default"] {
-  --md-primary-fg-color: var(--kaizen-deep-teal);
-  --md-primary-fg-color--light: var(--kaizen-lighter-teal);
-  --md-primary-fg-color--dark: var(--kaizen-darker-teal);
-  --md-accent-fg-color: var(--kaizen-gold-dark);
-  --md-accent-fg-color--transparent: rgba(184, 134, 11, 0.1);
-  
-  /* Backgrounds */
-  --md-default-bg-color: #ffffff;
-  --md-default-bg-color--light: var(--kaizen-cream);
-  --md-default-bg-color--lighter: rgba(245, 230, 211, 0.5);
-  --md-default-bg-color--lightest: rgba(245, 230, 211, 0.25);
-  
-  /* Text */
-  --md-default-fg-color: var(--kaizen-darker-teal);
-  --md-default-fg-color--light: var(--kaizen-deep-teal);
-  --md-default-fg-color--lighter: rgba(26, 47, 58, 0.7);
-  --md-default-fg-color--lightest: rgba(26, 47, 58, 0.5);
-  
-  /* Code blocks */
-  --md-code-bg-color: var(--kaizen-cream);
-  --md-code-fg-color: var(--kaizen-darker-teal);
-}
-
 /* Logo styling */
 .md-header__button.md-logo {
   padding: 0.4rem;
