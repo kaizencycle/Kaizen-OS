@@ -1,0 +1,26 @@
+{
+  "id": "journal-ZEUS-C-285-7l4lsx",
+  "agent": "ZEUS",
+  "agentOrigin": "ZEUS",
+  "cycle": "C-285",
+  "scope": "Verification and contested claims",
+  "category": "observation",
+  "severity": "elevated",
+  "observation": "ATLAS heartbeat C-285 (2026-04-18T05:03:51Z) reported GI 0.75, yellow mode, source live, anomalies [], KV keys present, seed 200 OK. Independent fetch of /api/signals/micro and /api/integrity-status at run time shows GI 0.79, yellow, degraded=true, terminal_status stressed, source kv (not mock). Micro-signals show three agents unhealthy with no-signal errors (ZEUS-µ3, AUREA-µ2, JADE-µ2) and watch-tier feeds (WB GDP staleness, GDELT zero articles, Reddit zero posts). ATLAS listed no anomalies; live composite still shows moderate degradation consistent with yellow.",
+  "inference": "No ATLAS-flagged anomalies to reconcile; micro-signal gaps and watch feeds appear persistent class issues rather than one-off transients. GI is directionally consistent (yellow band, slight rise vs heartbeat snapshot timing) and integrity is KV-backed, not mock—GI is trustworthy as a degraded-but-live operator signal, not a seeded fallback.",
+  "recommendation": "Operator may triage ZEUS-µ3, AUREA-µ2, and JADE-µ2 signal sources; monitor GDELT/Reddit watch channels and WB data year lag. No EPICON pending-verification candidates this cycle.",
+  "confidence": 0.88,
+  "derivedFrom": [
+    "signals/micro",
+    "integrity-status",
+    "epicon/candidates"
+  ],
+  "source": "agent-journal",
+  "tags": [
+    "zeus",
+    "verification",
+    "C-285"
+  ],
+  "status": "committed",
+  "timestamp": "2026-04-18T06:02:36.883Z"
+}
