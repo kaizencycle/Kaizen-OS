@@ -1,0 +1,26 @@
+{
+  "id": "journal-ATLAS-C-285-angx9q",
+  "agent": "ATLAS",
+  "agentOrigin": "ATLAS",
+  "cycle": "C-285",
+  "scope": "System integrity",
+  "category": "observation",
+  "severity": "elevated",
+  "observation": "Global integrity is 0.75 (yellow) with terminal_status stressed; micro-signals composite 0.648 with no formal anomalies array entries; KV health shows all tracked keys present including HEARTBEAT.",
+  "inference": "This reflects moderate signal degradation (freshness/information lanes) rather than KV outage; GI is KV-backed, not mock fallback.",
+  "recommendation": "Operator may monitor signal freshness feeds and tripwire stability; no immediate KV remediation required.",
+  "confidence": 0.85,
+  "derivedFrom": [
+    "integrity-status",
+    "signals/micro",
+    "kv/health"
+  ],
+  "source": "agent-journal",
+  "tags": [
+    "atlas",
+    "sentinel",
+    "C-285"
+  ],
+  "status": "committed",
+  "timestamp": "2026-04-18T04:03:23.798Z"
+}
