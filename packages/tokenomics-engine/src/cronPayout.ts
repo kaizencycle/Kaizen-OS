@@ -1,6 +1,12 @@
 import { computeReward } from './computeReward';
 import { fetchLedgerActivities, writeRewardAttestation } from './ledgerClient';
-import type { NodeActivity } from './schema';
+import { buildReadinessFromActivities } from './readiness';
+import { writeMicReadinessSnapshot } from './readinessClient';
+
+function shouldEmitReadinessSnapshot(): boolean {
+  const v = process.env.MIC_READINESS_SNAPSHOT;
+  return v === '1' || v === 'true' || v === 'yes';
+}
 
 export async function runPayoutCron() {
   const activities = await fetchLedgerActivities();
@@ -14,6 +20,11 @@ export async function runPayoutCron() {
 
   for (const result of results) {
     await writeRewardAttestation(result);
+  }
+
+  if (shouldEmitReadinessSnapshot() && activities.length > 0) {
+    const readiness = buildReadinessFromActivities(activities);
+    await writeMicReadinessSnapshot(readiness);
   }
 
   return results;

@@ -20,6 +20,16 @@
 
 **Attestation payload type today:** `MIC_REWARD_V2` (see `ledgerClient.ts`).
 
+### MIC readiness (C-285 field convergence)
+
+| Concern | Location |
+| ------- | -------- |
+| Shared readiness shape + `deriveMicReadiness` | `packages/tokenomics-engine/src/readiness.ts` |
+| Ledger snapshot payload `MIC_READINESS_V1` + POST helper | `packages/tokenomics-engine/src/readinessClient.ts` |
+| Optional cron snapshot (off by default) | Set `MIC_READINESS_SNAPSHOT=1` when running cron; posts to `POST ${LEDGER_BASE_URL}/mic/readiness` (best-effort warn on failure) |
+
+`buildReadinessFromActivities` uses **mean GI** and **summed provisional MIC** from activities as a **proxy** for `reserve.inProgressBalance` and tranche eligibility until Terminal Vault fields are wired in.
+
 ---
 
 ## Configuration
