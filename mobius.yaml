@@ -1,12 +1,26 @@
-# Mobius Neural Substrate — self-declaration (MNS-v1)
-# The Substrate is the cortex; sentinel tier.
+# mobius.yaml v1 — Mobius-Substrate (protocol cortex)
+# Declaration only; no runtime writes. Aggregators and CI read this file.
+
+version: "1.0"
 
 mesh:
+  enabled: true
   node_id: "mobius-substrate"
+  node_name: "Mobius Substrate"
+  tier: "sentinel"
+  role: "protocol_cortex"
+
+  repository:
+    full_name: "kaizencycle/Mobius-Substrate"
+    default_branch: "main"
+
+  discovery:
+    enabled: true
+    registry_participation: true
+
+  # Legacy MNS fields (optional; retained for registry / tooling compatibility)
   node_type: "substrate"
   substrate_ref: "kaizencycle/Mobius-Substrate"
-  version: "1.0.0"
-  tier: "sentinel"
   covenant: "all"
   agent_affinity:
     - ATLAS
@@ -33,6 +47,41 @@ mesh:
     reward_type: "MIC_REWARD_V2"
     node_role: "constitutional-memory"
 
-  # Substrate publishes MCP discovery; runtime MCP servers live on mesh apps (e.g. Terminal).
-  mcp:
-    enabled: false
+pulse:
+  enabled: true
+  feed_url: "https://raw.githubusercontent.com/kaizencycle/Mobius-Substrate/main/ledger/feed.json"
+  freshness_sla_seconds: 1800
+  integrity_weight: 1.5
+
+  lanes:
+    - mesh
+    - ledger
+    - mcp
+    - pulse
+
+  authoritative_for:
+    - mesh
+    - pulse
+    - discovery
+
+  emits:
+    heartbeat: false
+    gi: false
+    mii: true
+    mic: false
+    vault: false
+    tripwire: false
+    anomalies: false
+
+ingest:
+  enabled: false
+  mode: "aggregator_only"
+
+mcp:
+  enabled: false
+
+policy:
+  write_truth_locally: true
+  mirror_feed_to_repo: true
+  canonical_ledger_node: "civic-protocol-core"
+  hash_algorithm: "sha256"

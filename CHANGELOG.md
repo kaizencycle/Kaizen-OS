@@ -8,6 +8,8 @@ Versioning: [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased] — C-287 and beyond
 
+- **mobius.yaml v1 (pulse + ingest):** `docs/09-MESH/MOBIUS_YAML_V1.md`; root `mobius.yaml` aligned to v1 (`pulse`, `ingest`, `policy`) while retaining legacy MNS keys; `ledger/feed.json` seed; `mesh/registry.json` Substrate `feed_url` points at pulse feed; `mesh/mobius-yaml-spec.md` links to v1 canon. Terminal and Civic-Protocol-Core adoption PRs are **out of repo**.
+
 - **Decentralization Phase 1–2 (Substrate scaffolding):** `packages/civic-sdk` `IpfsResolver` (Kubo HTTP `cat` + optional gateway); `packages/integrity-core` `CRDTLedger` LWW stub; `services/mesh-node` Express shell (`/health`, `/v1/discovery`); `docs/09-MESH/DECENTRALIZATION_PHASE1_2.md` (CID vs `entry_id` note; cross-repo ownership). Civic-Protocol-Core Python bridge and Terminal `MeshClient` are **out of repo**.
 
 Planned: MNS ingest endpoint hardening, per-node live MII in aggregate, Gateway Redis store (deployable path), Terminal `app/api/mcp/route.ts` implementation (`mcp-handler`).
