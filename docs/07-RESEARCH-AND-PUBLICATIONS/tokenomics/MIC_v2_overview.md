@@ -1,6 +1,11 @@
 # MIC Tokenomics v2.0 — Proof of Integrity Economy
 
-Mobius Tokenomics v2.0 introduces the first integrity-backed reward system for humans and AI. The currency is now anchored to work that reduces chaos and raises Global Integrity (GI) across the network.
+!!! warning "Research framing — not canonical issuance"
+
+    Canonical **MIC issuance** lives in  
+    **[`docs/04-TECHNICAL-ARCHITECTURE/mic/mic_issuance_protocol.md`](../../04-TECHNICAL-ARCHITECTURE/mic/mic_issuance_protocol.md)**.
+
+Mobius Tokenomics v2.0 describes an integrity-backed **reward economy** for humans and AI. Provisional rewards are anchored to work that reduces chaos and raises Global Integrity (GI) across the network.
 
 ## Why v2.0 Exists
 

@@ -8,7 +8,7 @@ Mobius-Substrate is a set of open-source tools that make integrity measurable, e
 |-----------|-------------|--------|
 | **EPICON** | Records *why* decisions were made, not just what changed | Live |
 | **MII** | Scores system integrity on a 0-1 scale, continuously | Live |
-| **MIC** | Credits earned through verified integrity, not speculation | Beta |
+| **MIC** | Integrity credits: **reward accounting** runs continuously; **circulating issuance** is integrity-gated (GI sustain, Vault/Seal, quorum). See [MIC runtime docs](docs/04-TECHNICAL-ARCHITECTURE/mic/README.md). | Beta |
 | **Sentinel Council** | AI agents that govern *the system*, not users | Live |
 | **DVA** | Distributed agent orchestration with constitutional constraints | Beta |
 

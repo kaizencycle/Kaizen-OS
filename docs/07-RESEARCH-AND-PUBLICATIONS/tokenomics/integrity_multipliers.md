@@ -1,6 +1,10 @@
 # Integrity-Based Multipliers
 
-Mobius Tokenomics v2.0 scales MIC rewards by measuring how each contribution strengthens the integrity substrate.
+!!! note "Reward scoring layer"
+
+    Multiplier reference for **`computeReward`**. Mint authorization is specified in **[MIC issuance protocol](../../04-TECHNICAL-ARCHITECTURE/mic/mic_issuance_protocol.md)**.
+
+Mobius Tokenomics v2.0 scales **provisional** MIC rewards by measuring how each contribution strengthens the integrity substrate.
 
 ## GI Multiplier
 
