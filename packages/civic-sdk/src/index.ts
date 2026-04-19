@@ -1,4 +1,5 @@
 // Kaizen OS SDK - Shared API clients and types
+export * from './ipfs-resolver';
 export * from './clients';
 export * from './types';
 export * from './utils';

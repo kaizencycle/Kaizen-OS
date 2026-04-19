@@ -1,4 +1,5 @@
 // Kaizen OS Integrity Core - GI scoring and integrity checks
+export * from './crdt/CRDTLedger';
 export * from './gi-calculator';
 export * from './integrity-checker';
 export * from './middleware';
