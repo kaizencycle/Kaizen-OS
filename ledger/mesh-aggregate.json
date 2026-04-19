@@ -1,24 +1,24 @@
 {
   "schema": "MNS_AGGREGATE_V1",
-  "updated_at": "2026-04-19T21:26:56.244Z",
+  "updated_at": "2026-04-19T22:25:39.010Z",
   "node_count": 4,
   "live_nodes": 2,
-  "total_entries": 22,
+  "total_entries": 21,
   "nodes": [
     {
       "node_id": "mobius-substrate",
       "tier": "sentinel",
       "node_type": "substrate",
       "entry_count": 0,
-      "fetched_at": "2026-04-19T21:26:48.327Z",
+      "fetched_at": "2026-04-19T22:25:31.101Z",
       "error": null
     },
     {
       "node_id": "mobius-civic-ai-terminal",
       "tier": "contributor",
       "node_type": "app",
-      "entry_count": 22,
-      "fetched_at": "2026-04-19T21:26:48.378Z",
+      "entry_count": 21,
+      "fetched_at": "2026-04-19T22:25:31.261Z",
       "error": null
     },
     {
@@ -26,7 +26,7 @@
       "tier": "contributor",
       "node_type": "service",
       "entry_count": 0,
-      "fetched_at": "2026-04-19T21:26:56.244Z",
+      "fetched_at": "2026-04-19T22:25:39.010Z",
       "error": "timeout"
     },
     {
@@ -399,23 +399,6 @@
       "source": "github-commit",
       "verified": false,
       "sha": "64acc00d2dff3ae667fbe3a6fbf03578d645636f",
-      "_mesh_node": "mobius-civic-ai-terminal",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "78082aa2-merge",
-      "timestamp": "2026-04-18T15:36:58Z",
-      "author": "kaizencycle",
-      "title": "C-285: profession lens matrix doc + Pulse Phase 1 legibility",
-      "type": "merge",
-      "severity": "info",
-      "tags": [
-        "merge",
-        "pr"
-      ],
-      "source": "github-commit",
-      "verified": false,
-      "sha": "78082aa22b86596b1787a5e2bd5bc36bf0f837c4",
       "_mesh_node": "mobius-civic-ai-terminal",
       "_mesh_tier": "contributor"
     }

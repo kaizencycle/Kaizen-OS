@@ -1,6 +1,6 @@
 {
   "schema": "MNS_NETWORK_MII_V1",
-  "computed_at": "2026-04-19T21:26:56.309Z",
+  "computed_at": "2026-04-19T22:25:39.079Z",
   "network_mii": 0.85,
   "node_count": 1,
   "nodes": [
@@ -9,7 +9,7 @@
       "tier": "contributor",
       "mii_baseline": 0.85,
       "weight": 0.7,
-      "entry_count": 22
+      "entry_count": 21
     }
   ],
   "note": "Network MII is a weighted average of registered node baselines for nodes with at least one aggregated entry. Live per-node MII is a follow-up."
