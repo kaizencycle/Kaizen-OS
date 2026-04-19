@@ -1,6 +1,6 @@
 {
   "mobius_catalog_version": "1.0.0",
-  "generated_at": "2026-04-19T15:31:55.506Z",
+  "generated_at": "2026-04-19T15:42:41.524Z",
   "repo": {
     "name": "Mobius-Substrate",
     "url": "https://github.com/kaizencycle/Mobius-Substrate",
@@ -9,7 +9,7 @@
   },
   "stats": {
     "epiconCount": 0,
-    "docCount": 942
+    "docCount": 943
   },
   "epicons": [],
   "docs": [
@@ -3574,11 +3574,19 @@
       "summary": ""
     },
     {
+      "path": "docs/09-MESH/MNS_MCP_BRIDGE.md",
+      "title": "Mobius MCP Bridge — Doctrine (C-286)",
+      "category": "09-MESH",
+      "tags": [],
+      "content_hash": "sha256:338142eb06793fd23081b6be949187babe55b62c6ad16eff8e2adb9a466361aa",
+      "summary": ""
+    },
+    {
       "path": "docs/09-MESH/MNS_PROTOCOL.md",
       "title": "Mobius Neural Substrate Protocol v1 (C-286)",
       "category": "09-MESH",
       "tags": [],
-      "content_hash": "sha256:3cd1312a8c450503634da2ee4ad433e38370fcecd5077813d238c3103eb03a95",
+      "content_hash": "sha256:9fd9d15a86af336fcceebc29e3accb16c3f6787d9d0e4a94bcb078bec19dee7e",
       "summary": ""
     },
     {
@@ -6986,7 +6994,7 @@
       "title": "Mobius Systems Documentation Index",
       "category": "INDEX.md",
       "tags": [],
-      "content_hash": "sha256:21d4c96981d25114426d8b8da5d47d559dc4aa362812ff77d0f5a1438f4f4968",
+      "content_hash": "sha256:487c96393610c625940b42c6db2ca39b4f03890cc4d90aeff0dbc83c4842f0c6",
       "summary": ""
     },
     {

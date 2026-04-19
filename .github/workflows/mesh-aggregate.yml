@@ -34,11 +34,14 @@ jobs:
       - name: Compute network MII
         run: node scripts/compute-network-mii.mjs
 
+      - name: Refresh MCP discovery index
+        run: node scripts/mesh-mcp-discovery.mjs
+
       - name: Commit aggregate
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add ledger/mesh-aggregate.json ledger/network-mii.json
+          git add ledger/mesh-aggregate.json ledger/network-mii.json mesh/mcp-discovery.json .well-known/mcp.json
           if git diff --staged --quiet; then
             echo "No aggregate changes"
             exit 0

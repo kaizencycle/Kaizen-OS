@@ -32,3 +32,7 @@ mesh:
     participate: true
     reward_type: "MIC_REWARD_V2"
     node_role: "constitutional-memory"
+
+  # Substrate publishes MCP discovery; runtime MCP servers live on mesh apps (e.g. Terminal).
+  mcp:
+    enabled: false

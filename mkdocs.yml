@@ -161,6 +161,7 @@ nav:
       - Personalized Tripwires: protocols/personalized-tripwires-protocol.md
   - Mesh (MNS · C-286):
       - MNS Protocol v1: 09-MESH/MNS_PROTOCOL.md
+      - MCP Bridge (mobius.yaml): 09-MESH/MNS_MCP_BRIDGE.md
   - Architecture:
       - Overview: 04-TECHNICAL-ARCHITECTURE/overview/README.md
       - MIC (runtime issuance): 04-TECHNICAL-ARCHITECTURE/mic/README.md

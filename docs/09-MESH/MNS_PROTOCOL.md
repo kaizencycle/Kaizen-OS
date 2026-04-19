@@ -70,6 +70,6 @@ Nodes that join MNS inherit the **Three Covenants** (integrity, ecology, custodi
 
 ---
 
-*See also:* `mesh/registry.json`, `mobius.yaml` (Substrate root), `scripts/mesh-aggregate.mjs`.
+*See also:* `mesh/registry.json`, `mobius.yaml` (Substrate root), `scripts/mesh-aggregate.mjs`, [MNS MCP Bridge](./MNS_MCP_BRIDGE.md), `mesh/mcp-discovery.json`, `.well-known/mcp.json`.
 
 *We heal as we walk.*
