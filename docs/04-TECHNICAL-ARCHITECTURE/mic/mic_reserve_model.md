@@ -35,3 +35,5 @@ MIC **reward accounting** can deposit into this conceptual reserve continuously;
 - `mint_authorization.mint_threshold_gi` — formal mint gate (0.95) alongside `planned_runtime_fields` for sustain / replay / Fountain wiring  
 
 This reserve doc describes **where value sits in the state machine** before it becomes a mint-class ledger fact. The YAML structure (C-285) matches that separation; not every field is enforced in `tokenomics-engine` yet.
+
+**Runtime alignment (PR #274):** `MicReadinessState` in `packages/tokenomics-engine/src/readiness.ts` uses the same field names (`inProgressBalance`, `trancheTarget`, `trancheStatus`, sustain / replay / novelty / quorum / fountain) as the convergence target for Terminal and ledger. Until Vault balances flow from the Terminal, the engine may populate reserve fields from **ledger activity proxies** only.
