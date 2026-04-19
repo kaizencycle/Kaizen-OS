@@ -65,36 +65,65 @@ until released.
 
 ---
 
-## Ledger payload (sketch)
+## Ledger payload
 
-`genesis_hash` is the SHA-256 (hex) over the **canonical JSON** serialization of the payload **omitting** the `attestations` array and the `genesis_hash` field itself, so attestors sign a stable preimage. Implementations should document the exact canonicalization (aligned with `packages/tokenomics-engine`).
+### A. Wire shape from `mintGenesis.ts` (today)
+
+`writeGenesisMintIfEnabled` posts JSON built from `buildMicMintGenesisV1Body` plus `chainRecord` and hashing (`hash`, `hash_algorithm`). Field names **`cycle`**, **`timestamp`**, **`amountMic`**, and **`splits.burn_locked`** match `packages/tokenomics-engine/src/mintGenesis.ts` — validators should accept this shape as emitted today.
 
 ```json
 {
   "type": "MIC_MINT_GENESIS_V1",
-  "cycle_id": "C-XXX",
-  "sealed_at": "<ISO timestamp>",
-  "seal_id": "<Seal identifier — e.g. seal-C-286-001>",
-  "vault_seal_hash": "<sha256 of the Seal record — cryptographic link>",
-  "prev_seal_hash": null,
+  "cycle": "C-XXX",
   "gi": 0.95,
-  "gi_sustained_cycles": 5,
-  "gi_sustain_window": ["C-XXX", "C-XXX-1", "C-XXX-2", "C-XXX-3", "C-XXX-4"],
-  "amount_mic": 95.0,
+  "mintThresholdGi": 0.95,
+  "amountMic": 95.0,
   "splits": {
     "reserve": 38.0,
     "operator": 19.0,
     "sentinel_pool": 19.0,
     "civic_test": 9.5,
-    "burn": 4.75,
-    "locked": 4.75
+    "burn_locked": 9.5
   },
-  "locked_release_condition": "GI >= 0.95 for 5 cycles post-genesis or burn after 90 cycles",
-  "attestations": ["<sentinel_hash>", "..."],
-  "quorum_agents": ["ZEUS", "ATLAS", "EVE", "JADE", "AUREA"],
-  "genesis_hash": "<sha256 over canonical serialization of entire payload pre-attestations>"
+  "readiness": {},
+  "timestamp": "<ISO timestamp>",
+  "previous_hash": null,
+  "hash": "<sha256 hex over canonical JSON including previous_hash>",
+  "hash_algorithm": "sha256"
 }
 ```
+
+The wire **`hash`** is over the full posted object (including `previous_hash`), per `chainRecord` + `hashPayload` in the engine — not a separate `genesis_hash` field on the wire object today.
+
+### B. Terminal / ledger enrichment (planned — proof chain)
+
+The following fields are **not** emitted by `mintGenesis.ts` yet; Terminal (or ledger normalization) should add them when persisting `MIC_MINT_GENESIS_V1` so genesis is cycle-stamped, Seal-linked, and quorum-explicit:
+
+- **`seal_id`** — ties the mint to the authorizing Seal identifier (e.g. `seal-C-286-001`).
+- **`vault_seal_hash`** — SHA-256 of the Seal record (`seal_hash` in Vault v2 §4); cryptographic link to the Seal that authorized genesis.
+- **`prev_seal_hash`** — same as Seal record (`null` for first Seal).
+- **`gi_sustained_cycles`** / **`gi_sustain_window`** — document which five cycles satisfied the sustain gate (integrity claim is independently checkable per cycle).
+- **`burn_locked_breakdown`** — documents the economic split while keeping **`splits.burn_locked`** as the single numeric field matching the engine:
+
+```json
+"burn_locked_breakdown": {
+  "burn": 4.75,
+  "locked": 4.75,
+  "locked_release_condition": "GI >= 0.95 for 5 cycles post-genesis or converts to burn after 90 cycles"
+}
+```
+
+- **`quorum_agents`** — **genesis-class** signer roster: includes **HERMES** as steward witness per `configs/tokenomics.yaml` `genesis_quorum.required`, plus stabilizer coverage (at least one of EVE / AUREA per `stabilizer_one_of`). Example order:
+
+```json
+"quorum_agents": ["ZEUS", "ATLAS", "JADE", "HERMES", "EVE"]
+```
+
+Ongoing **Seal** attestation per Vault v2 §5 remains **ZEUS, ATLAS, EVE, JADE, AUREA** (no HERMES). Genesis uses a **superset** for routing-health witness — do not conflate the two rosters.
+
+**Cycle stamping:** the engine uses **`cycle`** (same family as other `MIC_*` payloads), not `cycle_id`. Any consumer needing `cycle_id` as an alias may map `cycle` → `cycle_id` at persistence time.
+
+**Optional `genesis_hash`:** if a ledger wants a dedicated digest **excluding** witness bundles, define canonical serialization and preimage rules explicitly; it must not collide with the engine’s top-level `hash` without a version bump.
 
 ---
 
