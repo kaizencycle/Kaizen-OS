@@ -3,6 +3,7 @@ import { runMicActivationPipeline } from '../src/micActivation';
 import type { NodeActivity } from '../src/schema';
 import { evaluateFountainEligibility, applyFountainEvaluation } from '../src/fountain';
 import { defaultMicReadinessState } from '../src/readiness';
+import { hashPayload } from '../src/hash';
 
 describe('evaluateFountainEligibility', () => {
   it('is true only when all gates pass', () => {
@@ -83,6 +84,7 @@ describe('runMicActivationPipeline', () => {
     delete process.env.MIC_SUSTAIN_CYCLES;
     delete process.env.MIC_QUORUM_ATTESTED;
     delete process.env.MIC_GENESIS_MINT;
+    delete process.env.MIC_GENESIS_PREVIOUS_HASH;
   });
 
   it('POSTs seal, readiness, and genesis when env gates allow', async () => {
@@ -96,6 +98,16 @@ describe('runMicActivationPipeline', () => {
     expect(calls.some((u) => u.includes('/mic/seal'))).toBe(true);
     expect(calls.some((u) => u.includes('/mic/readiness'))).toBe(true);
     expect(calls.some((u) => u.includes('/mic/mint/genesis'))).toBe(true);
+
+    const genesisCall = (fetch as ReturnType<typeof vi.fn>).mock.calls.find((c) =>
+      String(c[0]).includes('/mic/mint/genesis')
+    );
+    expect(genesisCall).toBeDefined();
+    const body = JSON.parse(genesisCall![1].body as string) as Record<string, unknown>;
+    expect(body.hash_algorithm).toBe('sha256');
+    expect(typeof body.hash).toBe('string');
+    const { hash: _h, hash_algorithm: _a, ...signed } = body;
+    expect(hashPayload(signed)).toBe(body.hash);
   });
 
   it('does not POST genesis when MIC_GENESIS_MINT is unset', async () => {

@@ -1,5 +1,6 @@
 import type { MicReadinessState } from './readiness';
 import { postMicLedgerJsonBestEffort } from './ledgerMic';
+import { withHash } from './hash';
 
 export type MicSealV1Payload = {
   type: 'MIC_SEAL_V1';
@@ -46,6 +47,11 @@ export function buildMicSealV1Payload(state: MicReadinessState): MicSealV1Payloa
  */
 export async function writeSealSnapshotIfEligible(state: MicReadinessState): Promise<void> {
   if (state.reserve.trancheStatus !== 'eligible_for_seal') return;
-  const payload = buildMicSealV1Payload(state);
-  await postMicLedgerJsonBestEffort('/mic/seal', payload, 'MIC_SEAL_V1');
+  const base = buildMicSealV1Payload(state);
+  const { payload, hash } = withHash(base);
+  await postMicLedgerJsonBestEffort(
+    '/mic/seal',
+    { ...payload, hash, hash_algorithm: 'sha256' },
+    'MIC_SEAL_V1'
+  );
 }

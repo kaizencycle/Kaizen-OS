@@ -18,7 +18,19 @@
 | Cron batch | `packages/tokenomics-engine/src/cronPayout.ts` |
 | Shell entry | `infra/cron/compute_rewards.sh` |
 
-**Attestation payload type today:** `MIC_REWARD_V2` (see `ledgerClient.ts`).
+**Attestation payload type today:** `MIC_REWARD_V2` (see `ledgerClient.ts`). Each write includes **`hash`** (SHA-256 of canonical JSON over the signed fields) and **`hash_algorithm`: `sha256`**. The hash is computed **before** attaching `hash` / `hash_algorithm` to the wire object.
+
+### MIC integrity hashing (monorepo)
+
+| Concern | Location |
+| ------- | -------- |
+| Canonical JSON (sorted keys, stable stringify) | `packages/tokenomics-engine/src/canonicalJson.ts` |
+| `hashPayload` / `withHash` / `verifyPayloadHash` | `packages/tokenomics-engine/src/hash.ts` |
+| `chainRecord` / `previous_hash` for genesis | `packages/tokenomics-engine/src/chainHash.ts` |
+
+**Genesis chain tip:** set `MIC_GENESIS_PREVIOUS_HASH` to the prior block or seal hash hex when minting after the first block (defaults to `null`).
+
+**Terminal repo:** should **display** and **verify** these hashes; canonical hashing stays in the monorepo.
 
 ### MIC readiness + activation (C-285 / PR #274–277)
 

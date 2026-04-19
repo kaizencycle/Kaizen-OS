@@ -1,9 +1,11 @@
 import type { MicReadinessState } from './readiness';
 import { postMicLedgerJsonBestEffort } from './ledgerMic';
+import { chainRecord } from './chainHash';
 
 const DEFAULT_GENESIS_MIC = 95;
 
-export type MicMintGenesisV1Payload = {
+/** Body before `previous_hash` is injected by `chainRecord`. */
+export type MicMintGenesisV1Body = {
   type: 'MIC_MINT_GENESIS_V1';
   cycle: string;
   gi: number;
@@ -23,7 +25,11 @@ export type MicMintGenesisV1Payload = {
   timestamp: string;
 };
 
-export function defaultGenesisSplits(total: number = DEFAULT_GENESIS_MIC): MicMintGenesisV1Payload['splits'] {
+export type MicMintGenesisV1Payload = MicMintGenesisV1Body & {
+  previous_hash: string | null;
+};
+
+export function defaultGenesisSplits(total: number = DEFAULT_GENESIS_MIC): MicMintGenesisV1Body['splits'] {
   return {
     reserve: 38,
     operator: 19,
@@ -33,10 +39,10 @@ export function defaultGenesisSplits(total: number = DEFAULT_GENESIS_MIC): MicMi
   };
 }
 
-export function buildMicMintGenesisV1Payload(
+export function buildMicMintGenesisV1Body(
   state: MicReadinessState,
-  options: { amountMic?: number; splits?: MicMintGenesisV1Payload['splits'] } = {}
-): MicMintGenesisV1Payload {
+  options: { amountMic?: number; splits?: MicMintGenesisV1Body['splits'] } = {}
+): MicMintGenesisV1Body {
   const amountMic = options.amountMic ?? DEFAULT_GENESIS_MIC;
   return {
     type: 'MIC_MINT_GENESIS_V1',
@@ -68,6 +74,14 @@ export async function writeGenesisMintIfEnabled(state: MicReadinessState): Promi
   if (!enabled) return;
   if (state.mintReadiness !== 'fountain_ready') return;
 
-  const payload = buildMicMintGenesisV1Payload(state);
-  await postMicLedgerJsonBestEffort('/mic/mint/genesis', payload, 'MIC_MINT_GENESIS_V1');
+  const body = buildMicMintGenesisV1Body(state);
+  const prevRaw = process.env.MIC_GENESIS_PREVIOUS_HASH;
+  const previousHash =
+    prevRaw && prevRaw.trim() !== '' ? prevRaw.trim() : null;
+  const { payload, hash } = chainRecord(body, previousHash);
+  await postMicLedgerJsonBestEffort(
+    '/mic/mint/genesis',
+    { ...payload, hash, hash_algorithm: 'sha256' },
+    'MIC_MINT_GENESIS_V1'
+  );
 }

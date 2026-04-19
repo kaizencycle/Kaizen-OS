@@ -1,4 +1,5 @@
 import type { NodeActivity, RewardResult } from './schema';
+import { withHash } from './hash';
 
 const LEDGER_BASE_URL = process.env.LEDGER_BASE_URL || 'https://ledger.mobius';
 
@@ -24,17 +25,22 @@ export async function fetchLedgerActivities(): Promise<NodeActivity[]> {
 
 export async function writeRewardAttestation(result: RewardResult): Promise<void> {
   const url = `${LEDGER_BASE_URL}/mic/attestations`;
-  const payload = {
+  const attestationPayload = {
     nodeId: result.nodeId,
     mic: result.mic,
     breakdown: result.breakdown,
     timestamp: result.timestamp,
-    type: 'MIC_REWARD_V2'
+    type: 'MIC_REWARD_V2' as const
   };
+  const { payload, hash } = withHash(attestationPayload);
 
   await fetchJson(url, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(payload)
+    body: JSON.stringify({
+      ...payload,
+      hash,
+      hash_algorithm: 'sha256'
+    })
   });
 }
