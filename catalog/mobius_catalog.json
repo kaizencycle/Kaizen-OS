@@ -1,15 +1,15 @@
 {
   "mobius_catalog_version": "1.0.0",
-  "generated_at": "2026-04-18T16:51:45.112Z",
+  "generated_at": "2026-04-19T04:54:42.236Z",
   "repo": {
     "name": "Mobius-Substrate",
     "url": "https://github.com/kaizencycle/Mobius-Substrate",
     "default_branch": "main",
-    "commit": ""
+    "commit": "34194919d8338e6c80ae50f0dfbfba30e09dccb7"
   },
   "stats": {
     "epiconCount": 0,
-    "docCount": 934
+    "docCount": 941
   },
   "epicons": [],
   "docs": [
@@ -950,6 +950,54 @@
       "summary": ""
     },
     {
+      "path": "docs/04-TECHNICAL-ARCHITECTURE/mic/MIC_REPO_RESTRUCTURE_PR_PLAN.md",
+      "title": "PR plan — Canonicalize MIC around runtime integrity",
+      "category": "04-TECHNICAL-ARCHITECTURE",
+      "tags": [],
+      "content_hash": "sha256:7b4e2340a5ae946b5b013bf71200932b820614dd57d2bf7f359b63e18dc97eaa",
+      "summary": ""
+    },
+    {
+      "path": "docs/04-TECHNICAL-ARCHITECTURE/mic/README.md",
+      "title": "MIC — Runtime issuance layer",
+      "category": "04-TECHNICAL-ARCHITECTURE",
+      "tags": [],
+      "content_hash": "sha256:18f2a2be5bbb116adfeadaaaf38e626b80118d74b75c281dc8e8856059ebf9c3",
+      "summary": ""
+    },
+    {
+      "path": "docs/04-TECHNICAL-ARCHITECTURE/mic/mic_genesis_block.md",
+      "title": "MIC genesis block (draft)",
+      "category": "04-TECHNICAL-ARCHITECTURE",
+      "tags": [],
+      "content_hash": "sha256:4d28e48af5e7b4432a8e68d170e4c109209a55a32cceec510827a297f4b7c8f6",
+      "summary": ""
+    },
+    {
+      "path": "docs/04-TECHNICAL-ARCHITECTURE/mic/mic_issuance_protocol.md",
+      "title": "MIC Issuance Protocol v1",
+      "category": "04-TECHNICAL-ARCHITECTURE",
+      "tags": [],
+      "content_hash": "sha256:0b0036ab3ff6bfed0fcdb3ea9802b0d4b76a301199f6c9f1268cbab850162e22",
+      "summary": ""
+    },
+    {
+      "path": "docs/04-TECHNICAL-ARCHITECTURE/mic/mic_quorum_attestation.md",
+      "title": "MIC quorum and attestation",
+      "category": "04-TECHNICAL-ARCHITECTURE",
+      "tags": [],
+      "content_hash": "sha256:1b3925852d21e93383bd3183bad5d6420d0346d624b11fd0efa159fff053fde5",
+      "summary": ""
+    },
+    {
+      "path": "docs/04-TECHNICAL-ARCHITECTURE/mic/mic_reserve_model.md",
+      "title": "MIC reserve model",
+      "category": "04-TECHNICAL-ARCHITECTURE",
+      "tags": [],
+      "content_hash": "sha256:3406009498ae4614ab4b8118346b38728c8d7f7341fcbf82c382b5eb904341bd",
+      "summary": ""
+    },
+    {
       "path": "docs/04-TECHNICAL-ARCHITECTURE/overview/ARCHITECTURE.md",
       "title": "Mobius Systems Architecture (Central City Overview)",
       "category": "04-TECHNICAL-ARCHITECTURE",
@@ -1058,7 +1106,7 @@
       "title": "🏗️ Architecture — System Design",
       "category": "04-TECHNICAL-ARCHITECTURE",
       "tags": [],
-      "content_hash": "sha256:0da685020ed5b4f6ae52b738d3324a12d98c4b3b66452e5c231d4d534ee57e98",
+      "content_hash": "sha256:10d89e077b8a18047866dfd3b74d92d1c66b57b759a85cebf26d4d47c5f65c09",
       "summary": ""
     },
     {
@@ -2879,10 +2927,10 @@
     },
     {
       "path": "docs/07-RESEARCH-AND-PUBLICATIONS/mic-economics/README.md",
-      "title": "MIC Economics Research",
+      "title": "MIC economics (research layer)",
       "category": "07-RESEARCH-AND-PUBLICATIONS",
       "tags": [],
-      "content_hash": "sha256:6947067d27d1528392094a705669f48bc035b4fe8f3d12e0f6b2247cb4b8ea6e",
+      "content_hash": "sha256:c7b4443c1138309a8774df2877ab79b68a2cec682c8dd00eebd0b66942f91747",
       "summary": ""
     },
     {
@@ -3130,15 +3178,15 @@
       "title": "MIC Tokenomics v2.0 — Proof of Integrity Economy",
       "category": "07-RESEARCH-AND-PUBLICATIONS",
       "tags": [],
-      "content_hash": "sha256:0e75616e4e538f0bdb10acdf4c0ed8501ba5337d856b50f345b69ae9fabbafbb",
+      "content_hash": "sha256:2607fedf11e883225926a751c7aa329b1c7d84af3ef6117f60302410d7bab110",
       "summary": ""
     },
     {
       "path": "docs/07-RESEARCH-AND-PUBLICATIONS/tokenomics/README.md",
-      "title": "Tokenomics Research",
+      "title": "Tokenomics research",
       "category": "07-RESEARCH-AND-PUBLICATIONS",
       "tags": [],
-      "content_hash": "sha256:77d4aa22377542008806ee977bc6682828030afe70f210fe00f1995d491cc1ad",
+      "content_hash": "sha256:af0c529d03fe806f68d4fbddf5df972c12b99ea8efdfa9b640d6817bcee272c6",
       "summary": ""
     },
     {
@@ -3146,7 +3194,7 @@
       "title": "Integrity-Based Multipliers",
       "category": "07-RESEARCH-AND-PUBLICATIONS",
       "tags": [],
-      "content_hash": "sha256:9da21537a9010b6fcc56fe5c49312b23f112a99aa1804fca396516201fd54fb8",
+      "content_hash": "sha256:2c80a12730fff3d4594d8b3999d46fe6ea1ba286d7dbcc2583cfc108760f996c",
       "summary": ""
     },
     {
@@ -3347,6 +3395,14 @@
       "category": "08-REFERENCE",
       "tags": [],
       "content_hash": "sha256:fe750e8b355ab6e28478367b04745bb7142e89c8c85579ae24ae037c3eab5293",
+      "summary": ""
+    },
+    {
+      "path": "docs/08-REFERENCE/mic_runtime_reference.md",
+      "title": "MIC runtime reference",
+      "category": "08-REFERENCE",
+      "tags": [],
+      "content_hash": "sha256:2d9b828d5ecbd8566d2c4a37b8ad70d36c20c7eaca4dbe2bd6a1f8f978e2c9cf",
       "summary": ""
     },
     {
@@ -6850,15 +6906,15 @@
       "title": "MIC Tokenomics v2.0 — Proof of Integrity Economy",
       "category": "11-SUPPLEMENTARY",
       "tags": [],
-      "content_hash": "sha256:0e75616e4e538f0bdb10acdf4c0ed8501ba5337d856b50f345b69ae9fabbafbb",
+      "content_hash": "sha256:0f4936d15d69cc4c9116b84ba8bce2354897f5c98fb633c7e3f5968630079d5e",
       "summary": ""
     },
     {
       "path": "docs/11-SUPPLEMENTARY/tokenomics/README.md",
-      "title": "Tokenomics Implementation Details",
+      "title": "Tokenomics supplementary index",
       "category": "11-SUPPLEMENTARY",
       "tags": [],
-      "content_hash": "sha256:060d48e4ce7c15e68ee80f5e848c193d3545454e87e38ad728b7e0124c882722",
+      "content_hash": "sha256:f0c5a6ea8bea815e500952d18f365b62ca0287863a5adba5386520fe6e7f93ee",
       "summary": ""
     },
     {
@@ -6866,7 +6922,7 @@
       "title": "Integrity-Based Multipliers",
       "category": "11-SUPPLEMENTARY",
       "tags": [],
-      "content_hash": "sha256:9da21537a9010b6fcc56fe5c49312b23f112a99aa1804fca396516201fd54fb8",
+      "content_hash": "sha256:77998746b999b05efe5a61ced6f43a4f676f574e4558e283e9df8ec0855ce2e5",
       "summary": ""
     },
     {
@@ -7090,7 +7146,7 @@
       "title": "Divergence Dashboard",
       "category": "divergence",
       "tags": [],
-      "content_hash": "sha256:4226ec5864ec4037602341433566bd56b245981e7fb5f440f1b753700fd41b10",
+      "content_hash": "sha256:f00e39365aa12f5b43211d8a2fbecac1fcbef252f42fa4feb289dde6dc3d6295",
       "summary": ""
     },
     {
@@ -7497,7 +7553,7 @@
       "title": "Vault v2 — Sealed Reserve Protocol",
       "category": "protocols",
       "tags": [],
-      "content_hash": "sha256:c980da5ad33515de240ea1d1d7fdcde571a0d24dd9bb1919f335906980ad6e55",
+      "content_hash": "sha256:a9d04c1ba23f0bb22d0ea076209dab0ae26b8d2d12b43d488ebab628cd87aedf",
       "summary": ""
     },
     {
