@@ -11,6 +11,10 @@ Shared API clients and types for Mobius Systems services.
 
 **Important:** A Postgres `entry_id` that is a SHA-256 hex string is **not** interchangeable with an IPFS CID. Store the CID returned by IPFS when pinning; use this resolver to fetch by CID.
 
+## OAA KV client (C-286)
+
+`OaaKvClient` and `signOaaKvPayload` in `src/oaa-client.ts` / `src/oaa-signing.ts` match the HMAC contract for `POST /api/oaa/kv` on **OAA-API-Library** (implemented in that repo).
+
 ## Build
 
 ```bash

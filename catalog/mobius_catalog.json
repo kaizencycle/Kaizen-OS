@@ -1,6 +1,6 @@
 {
   "mobius_catalog_version": "1.0.0",
-  "generated_at": "2026-04-19T17:52:00.237Z",
+  "generated_at": "2026-04-19T18:32:09.000Z",
   "repo": {
     "name": "Mobius-Substrate",
     "url": "https://github.com/kaizencycle/Mobius-Substrate",
@@ -9,7 +9,7 @@
   },
   "stats": {
     "epiconCount": 0,
-    "docCount": 945
+    "docCount": 946
   },
   "epicons": [],
   "docs": [
@@ -3590,6 +3590,14 @@
       "summary": ""
     },
     {
+      "path": "docs/09-MESH/MNS_OAA_MEMORY.md",
+      "title": "MNS — OAA sovereign memory layer (C-286)",
+      "category": "09-MESH",
+      "tags": [],
+      "content_hash": "sha256:079e3c43452b3245b17b92811d376616f3bcc25fbfbb6971dfc5529de49c6657",
+      "summary": ""
+    },
+    {
       "path": "docs/09-MESH/MNS_PROTOCOL.md",
       "title": "Mobius Neural Substrate Protocol v1 (C-286)",
       "category": "09-MESH",
@@ -3602,7 +3610,7 @@
       "title": "mobius.yaml v1 — Pulse, ingest, and trust (C-286)",
       "category": "09-MESH",
       "tags": [],
-      "content_hash": "sha256:94b0eafa0823e9ba648d5866fae409a50ea74fab52b5c7e55447437d0b46d094",
+      "content_hash": "sha256:a8fc8afb7c0dd19775643f9444fb7a42fd8772a0428573106f4794555bb97be4",
       "summary": ""
     },
     {
@@ -7010,7 +7018,7 @@
       "title": "Mobius Systems Documentation Index",
       "category": "INDEX.md",
       "tags": [],
-      "content_hash": "sha256:fc7d5e3b957c3d5a764be17271ec987abf87d99b457be7b24969070cc3bdd211",
+      "content_hash": "sha256:681c6e258e1edfdac37629a1a37672821d1a86bbbee6d7da2b3bb4fa8eed5b06",
       "summary": ""
     },
     {

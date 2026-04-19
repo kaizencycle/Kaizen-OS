@@ -13,13 +13,15 @@
 `mobius.yaml` **does not perform writes**. The write path remains:
 
 ```text
-KV / runtime state
+KV / runtime state (hot)
   → writer / orchestrator (e.g. Terminal)
-  → declared ingest target (e.g. Civic Protocol Core)
-  → durable ledger
+  → OAA sovereign append journal (signed; optional but recommended in C-286)
+  → Civic Protocol Core durable ledger (/mesh/ingest or equivalent)
   → optional feed mirror (e.g. GitHub `ledger/feed.json`)
   → Substrate aggregation (e.g. `ledger/mesh-aggregate.json`)
 ```
+
+**C-286 OAA layer:** see [MNS OAA sovereign memory](./MNS_OAA_MEMORY.md).
 
 ---
 
@@ -31,7 +33,7 @@ Top-level **`version`** is `"1.0"`.
 |-------|---------|
 | `mesh` | Identity, repository, discovery flags, tier, role |
 | `pulse` | Emitted signals, public URLs, SLA, lanes, authority |
-| `ingest` | Ingest mode, accepted payload types, targets, or ledger URL |
+| `ingest` | Ingest mode, accepted payload types, targets, optional **layered routing** (hot / sovereign / durable) |
 | `mcp` | Optional MCP edge (`server_url`, `discovery_url`, tools) |
 | `policy` | Trust: canonical ledger node, local write mirror, hash algorithm |
 
@@ -70,13 +72,28 @@ Legacy **MNS** fields (`node_type`, `substrate_ref`, `covenant`, nested `ledger`
 | Field | Description |
 |-------|-------------|
 | `enabled` | This node participates in ingest routing |
-| `mode` | `ledger_target` \| `client_of_other_node` \| `aggregator_only` |
+| `mode` | `ledger_target` \| `client_of_other_node` \| `aggregator_only` \| `write_through` |
 | `write_url` | Ledger POST base (ledger nodes); optional for clients |
 | `auth` | `bearer` \| `none` |
 | `accepts` | Payload type strings this ledger accepts |
 | `targets` | For `client_of_other_node`: list of `{ node_id, write_url, purpose, auth?, accepts? }` |
 
-**Rule:** Only **`ledger_target`** nodes should be the canonical durable write. Operator nodes use **`client_of_other_node`** and must set `policy.canonical_ledger_node` to another id.
+### Layered routing (optional; `ingest.mode: write_through`)
+
+Operator consoles may declare **where hot state lives** and **which URLs** receive sovereign vs durable writes. Substrate documents these keys; **Terminal** should populate real URLs.
+
+| Field | Description |
+|-------|-------------|
+| `ingest.hot_state.type` | e.g. `upstash_kv` — documentation only unless a runtime reads it |
+| `ingest.sovereign_memory.node_id` | e.g. `oaa-api-library` |
+| `ingest.sovereign_memory.write_url` | Base + `POST /api/oaa/kv` |
+| `ingest.sovereign_memory.auth` | `hmac` |
+| `ingest.sovereign_memory.accepts` | e.g. `OAA_MEMORY_ENTRY_V1` |
+| `ingest.durable_ledger.node_id` | e.g. `civic-protocol-core` |
+| `ingest.durable_ledger.write_url` | Civic Core mesh ingest |
+| `ingest.durable_ledger.auth` | `bearer` |
+
+**Rule:** Only **`ledger_target`** nodes should be the canonical durable write. Operator nodes use **`client_of_other_node`** or **`write_through`** and must set `policy.canonical_ledger_node` to the ledger node id (not themselves).
 
 ### Payload vocabulary (v1)
 
@@ -88,6 +105,7 @@ Tight list for cross-repo contracts:
 - `MIC_RESERVE_RECONCILIATION_V1`
 - `MIC_GENESIS_BLOCK`
 - `MOBIUS_PULSE_V1`
+- `OAA_MEMORY_ENTRY_V1` (OAA append journal → proof to Civic Core)
 
 Later: `MOBIUS_PULSE_V2` (explicit bump).
 
@@ -125,6 +143,26 @@ Later: `MOBIUS_PULSE_V2` (explicit bump).
 | **Substrate** | `false` | `aggregator_only` |
 | **Terminal** | `true` | `client_of_other_node` → Civic Core |
 | **Civic Protocol Core** | `true` | `ledger_target` |
+
+### Terminal example (`write_through` + OAA)
+
+Illustrative only — replace URLs with deployment values:
+
+```yaml
+ingest:
+  enabled: true
+  mode: "write_through"
+  hot_state:
+    type: "upstash_kv"
+  sovereign_memory:
+    node_id: "oaa-api-library"
+    write_url: "https://<oaa-host>/api/oaa/kv"
+    auth: "hmac"
+  durable_ledger:
+    node_id: "civic-protocol-core"
+    write_url: "https://<civic-core>/mesh/ingest"
+    auth: "bearer"
+```
 
 ---
 
