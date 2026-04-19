@@ -51,9 +51,19 @@
 | Variable | Effect |
 | -------- | ------ |
 | `MIC_SUSTAIN_CYCLES` | Integer; `>= 5` with `gi >= mintThreshold` sets sustain `satisfied` |
-| `MIC_QUORUM_ATTESTED` | Comma/semicolon list of sentinel names (e.g. `ZEUS,ATLAS,EVE,JADE,AUREA`) — Seal v2 roster; genesis-only witnesses like HERMES are specified in `configs/tokenomics.yaml` `genesis_quorum`, not as Seal quorum |
+| `MIC_QUORUM_ATTESTED` | Comma/semicolon list of sentinel names — **must match** `readiness.ts` stub quorum today: e.g. `ZEUS,ATLAS,JADE,HERMES` (see warning below) |
 
 `buildReadinessFromActivities` uses **mean GI** and **summed provisional MIC** as a **proxy** for `reserve.inProgressBalance` / tranche eligibility until Vault fields are wired from Terminal. After a seal POST, the pipeline advances readiness to **`sealed`** in-memory for fountain evaluation.
+
+### Runtime quorum field warning (`MIC_QUORUM_ATTESTED`)
+
+`packages/tokenomics-engine/src/readiness.ts` still defines stub **required** sentinels as `ZEUS`, `ATLAS`, `JADE`, `HERMES`. Fountain eligibility requires `quorum.status === 'satisfied'` against that list (`fountain.ts`). **Do not** set `MIC_QUORUM_ATTESTED` to the Vault v2 Seal roster (`ZEUS,ATLAS,EVE,JADE,AUREA`) until `DEFAULT_REQUIRED` in `readiness.ts` is migrated — doing so leaves quorum **partial** and blocks `fountain_ready` / genesis posting.
+
+| Concern | Live (C-285 engine stub) | Target (Vault v2 Seal attestation) |
+| ------- | ------------------------ | ------------------------------------ |
+| Required attestors for `MIC_QUORUM_ATTESTED` | `ZEUS,ATLAS,JADE,HERMES` | `ZEUS,ATLAS,EVE,JADE,AUREA` |
+
+**Genesis-only HERMES** is specified under `configs/tokenomics.yaml` `quorum_requirements.genesis_quorum`; that is a **documentation / ceremony** contract until Terminal attestation paths encode it.
 
 ---
 
