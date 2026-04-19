@@ -26,9 +26,9 @@
 
 | Concern | Location |
 | ------- | -------- |
-| MII / minting thresholds, distribution, MIA track | `configs/tokenomics.yaml` |
+| MII weights, reward vs mint vs reserve policy, MIA (soft track), distribution | `configs/tokenomics.yaml` |
 
-**Note:** YAML still describes dual-track / warning-band mint language. The [MIC issuance protocol](../04-TECHNICAL-ARCHITECTURE/mic/mic_issuance_protocol.md) documents the **directional split** between reward scoring and mint authorization; a follow-up PR should align YAML keys.
+**Config note (C-285):** `configs/tokenomics.yaml` separates **live** `reward_accounting` (engine + `MIC_REWARD_V2`) from `reserve_policy`, `mint_authorization`, `quorum_requirements`, and `planned_runtime_fields`. Do not read reward attestations as formal circulation-class minting; see `mint_authorization.semantics`.
 
 ---
 

@@ -50,7 +50,7 @@ Ground truth for **today’s reward accounting** implementation:
 | `packages/tokenomics-engine/src/ledgerClient.ts` | `GET /mic/activities`, `POST /mic/attestations` |
 | `packages/tokenomics-engine/src/giClient.ts` | `GET /gi/snapshot` (when wired) |
 | `packages/tokenomics-engine/src/cronPayout.ts` | Batch: fetch activities → compute → write attestations |
-| `configs/tokenomics.yaml` | MII thresholds, distribution weights, dual-track notes |
+| `configs/tokenomics.yaml` | MII weights; `reward_accounting`, `reserve_policy`, `mint_authorization`, `mia_allocation_policy` |
 | `infra/cron/compute_rewards.sh` | Scheduled invocation of the payout path |
 
 The **Terminal** and **Vault v2** protocols (`docs/protocols/vault-v2-sealed-reserve.md`, `docs/protocols/agent-reporting-protocol.md`) are the live doctrine for reserve, Seal, and Fountain semantics. This MIC doc **aligns** with them; it does not redefine them.
@@ -116,7 +116,7 @@ Introduce explicit stages:
 
 ### Hard gate
 
-**MIC may only *authorize circulation-class mint*** when **GI ≥ 0.95** (align with Vault v2 Fountain sustain doctrine and `configs/tokenomics.yaml` `minting.threshold_mii: 0.95`).
+**MIC may only *authorize circulation-class mint*** when **GI ≥ 0.95** (align with Vault v2 Fountain sustain doctrine and `configs/tokenomics.yaml` → `mint_authorization.mint_threshold_gi: 0.95`).
 
 ### Sustain
 
@@ -131,7 +131,7 @@ Introduce explicit stages:
 | `0.80 ≤ GI < 0.90` | Repair mode; mint frozen |
 | `GI < 0.80` | Constitutional lockdown |
 
-Existing `tokenomics.yaml` “warning = reduced minting” is **legacy dual-track language**; a follow-up change should split **`reward_thresholds`** from **`mint_thresholds`** per [MIC repo restructure plan](./MIC_REPO_RESTRUCTURE_PR_PLAN.md) (companion doc in this folder).
+`mii.thresholds.warning` still uses legacy wording (“reduced minting” in older docs); interpret it as **elevated risk band**, not as a description of the live `reward_accounting` engine. Structural split of reward vs mint vs reserve is in `configs/tokenomics.yaml` (C-285); see [MIC repo restructure plan](./MIC_REPO_RESTRUCTURE_PR_PLAN.md).
 
 ---
 

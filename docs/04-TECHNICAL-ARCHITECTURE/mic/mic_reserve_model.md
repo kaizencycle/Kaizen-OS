@@ -30,17 +30,8 @@ MIC **reward accounting** can deposit into this conceptual reserve continuously;
 
 ## Relationship to `configs/tokenomics.yaml`
 
-`minting.threshold_mii` and crisis bands describe **MII/GI policy** at the config layer. This reserve doc describes **where value sits in the state machine** before it becomes a mint-class ledger fact.
+- `mii.thresholds` — healthy / warning / crisis bands (MII policy signals)  
+- `reserve_policy` — Vault v2–aligned semantics (non-circulating reserve, tranche target)  
+- `mint_authorization.mint_threshold_gi` — formal mint gate (0.95) alongside `planned_runtime_fields` for sustain / replay / Fountain wiring  
 
-A future config revision should add explicit fields, for example:
-
-```yaml
-# Illustrative — not yet in repo
-minting:
-  threshold_mii: 0.95
-  sustain_cycles_required: 5
-  reserve_mode_below_threshold: true
-  direct_mint_below_threshold: false
-```
-
-Until then, treat `tokenomics.yaml` as **partially legacy** for mint wording but still useful for weights and research alignment.
+This reserve doc describes **where value sits in the state machine** before it becomes a mint-class ledger fact. The YAML structure (C-285) matches that separation; not every field is enforced in `tokenomics-engine` yet.
