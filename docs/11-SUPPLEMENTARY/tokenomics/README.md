@@ -1,12 +1,20 @@
-# Tokenomics Implementation Details
+# Tokenomics supplementary index
 
-This directory contains detailed implementation documentation for tokenomics features.
+!!! warning "Not canonical for MIC issuance"
+
+    **Canonical MIC issuance** (integrity gates, Vault/Seal, mint vs reward) lives in  
+    **[`docs/04-TECHNICAL-ARCHITECTURE/mic/`](../../04-TECHNICAL-ARCHITECTURE/mic/README.md)**  
+    and **[`docs/08-REFERENCE/mic_runtime_reference.md`](../../08-REFERENCE/mic_runtime_reference.md)**.
+
+    This directory holds **supplementary** notes, narrative tokenomics, and historical framing. Treat it as **supporting material**, not protocol truth.
 
 ## Overview
 
-Technical documentation, specifications, and implementation guides for tokenomics features in Mobius Systems.
+Technical notes and narrative docs for tokenomics. For runtime mapping from code → docs, start with the MIC runtime reference above.
 
-## Related Documentation
+## Related documentation
 
-- [Tokenomics Research](../../07-RESEARCH-AND-PUBLICATIONS/tokenomics/) - Academic research and studies
-- [MIC Economics Research](../../07-RESEARCH-AND-PUBLICATIONS/mic-economics/) - MIC economic models
+- [MIC issuance (canonical)](../../04-TECHNICAL-ARCHITECTURE/mic/README.md)
+- [MIC runtime reference](../../08-REFERENCE/mic_runtime_reference.md)
+- [Tokenomics research](../../07-RESEARCH-AND-PUBLICATIONS/tokenomics/) — academic / interpretive copies
+- [MIC economics (research)](../../07-RESEARCH-AND-PUBLICATIONS/mic-economics/) — macro and policy implications

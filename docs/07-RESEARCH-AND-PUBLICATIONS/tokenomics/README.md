@@ -1,12 +1,17 @@
-# Tokenomics Research
+# Tokenomics research
 
-This directory contains research and documentation on tokenomics models and studies.
+!!! warning "Research layer — not canonical MIC issuance"
+
+    **Canonical MIC issuance** is documented under  
+    **[`docs/04-TECHNICAL-ARCHITECTURE/mic/`](../../04-TECHNICAL-ARCHITECTURE/mic/README.md)**.
 
 ## Overview
 
-Academic research, analyses, and studies related to tokenomics, token distribution, and economic incentives in Mobius Systems.
+Academic research, analyses, and interpretive studies on token distribution and incentives.
 
-## Related Documentation
+## Related documentation
 
-- [MIC Economics Research](../mic-economics/) - MIC-specific economic research
-- [Tokenomics Details](../../11-SUPPLEMENTARY/tokenomics/) - Implementation details
+- [MIC issuance (canonical)](../../04-TECHNICAL-ARCHITECTURE/mic/README.md)
+- [MIC runtime reference](../../08-REFERENCE/mic_runtime_reference.md)
+- [MIC economics (research)](../mic-economics/)
+- [Supplementary tokenomics notes](../../11-SUPPLEMENTARY/tokenomics/)

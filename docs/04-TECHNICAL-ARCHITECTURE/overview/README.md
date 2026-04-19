@@ -9,6 +9,10 @@ Technical architecture, design patterns, and system blueprints for Mobius System
 
 ## 🔧 Technical Documentation
 
+### MIC (runtime issuance)
+
+- **[MIC — integrity-gated issuance](../mic/README.md)** — canonical protocol docs and links to code
+
 ### Core Architecture
 - **[Labs Master Architecture](./technical/LABS_MASTER_ARCHITECTURE.md)**
   Complete lab-based system architecture (Lab 1-7)

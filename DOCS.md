@@ -32,16 +32,16 @@ I need peer-reviewed papers, empirical data, and academic frameworks.
 
 ### 💰 I'm an Economist
 
-I need economic models, policy tools, and ROI projections.
+I need economic models, policy tools, and **integrity output** metrics (not premature financial “ROI” as runtime truth).
 
-**[→ Enter Economics Cathedral](./FOR-ECONOMISTS/)**
+**[→ MIC runtime canon](./docs/04-TECHNICAL-ARCHITECTURE/mic/README.md)** · [Economics research hub](./docs/07-RESEARCH-AND-PUBLICATIONS/mic-economics/) (legacy cathedral paths may still exist in older trees)
 
 **What's Inside:**
-- MIC currency model & tokenomics
-- Central bank integration guides
-- ROI calculators
-- Global applications (Fed, ECB, IMF)
-- Market data & validation
+- **[MIC issuance (runtime canon)](./docs/04-TECHNICAL-ARCHITECTURE/mic/README.md)** — GI-gated issuance, Vault/Seal alignment
+- MIC economics & tokenomics (research — links to canonical MIC + [mic-economics](./docs/07-RESEARCH-AND-PUBLICATIONS/mic-economics/))
+- Pilot-scale policy scenarios and institutional **research** materials (not live runtime truth)
+- Integrity output metrics and simulation tooling (prefer over premature “ROI” framing)
+- Market data & validation (where published)
 
 </td>
 </tr>
@@ -189,7 +189,8 @@ The comprehensive technical documentation hub with 12 major categories:
 | **Deployment** | [docs/05-IMPLEMENTATION/guides/deployment/](./docs/05-IMPLEMENTATION/guides/deployment/) |
 | **Governance** | [docs/03-GOVERNANCE-AND-POLICY/](./docs/03-GOVERNANCE-AND-POLICY/) |
 | **Security** | [docs/06-OPERATIONS/security/](./docs/06-OPERATIONS/security/) |
-| **MIC Economics** | [FOR-ECONOMISTS/](./FOR-ECONOMISTS/) |
+| **MIC (runtime canon)** | [docs/04-TECHNICAL-ARCHITECTURE/mic/](./docs/04-TECHNICAL-ARCHITECTURE/mic/) |
+| **MIC economics (research)** | [docs/07-RESEARCH-AND-PUBLICATIONS/mic-economics/](./docs/07-RESEARCH-AND-PUBLICATIONS/mic-economics/) |
 | **Research Papers** | [FOR-ACADEMICS/PAPERS/](./FOR-ACADEMICS/PAPERS/) |
 | **Policy Briefs** | [FOR-GOVERNMENTS/POLICY-BRIEFS/](./FOR-GOVERNMENTS/POLICY-BRIEFS/) |
 | **Ethical Frameworks** | [FOR-PHILOSOPHERS/ETHICAL-FOUNDATIONS/](./FOR-PHILOSOPHERS/ETHICAL-FOUNDATIONS/) |

@@ -2,6 +2,11 @@
 # Cycle: C-155
 # Updated: December 5, 2025
 # Reference: MIC_Whitepaper_v2.1.md (Dual-Track Integrity Model)
+#
+# Canonical doc split (C-284+): reward scoring vs mint authorization
+# - Issuance doctrine: docs/04-TECHNICAL-ARCHITECTURE/mic/mic_issuance_protocol.md
+# - Code map: docs/08-REFERENCE/mic_runtime_reference.md
+# Follow-up: separate reward_thresholds from mint_thresholds in YAML to match Terminal/Vault v2.
 
 # Core Currency Definition
 currency:

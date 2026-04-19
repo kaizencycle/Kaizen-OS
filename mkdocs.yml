@@ -161,6 +161,8 @@ nav:
       - Personalized Tripwires: protocols/personalized-tripwires-protocol.md
   - Architecture:
       - Overview: 04-TECHNICAL-ARCHITECTURE/overview/README.md
+      - MIC (runtime issuance): 04-TECHNICAL-ARCHITECTURE/mic/README.md
+      - MIC Issuance Protocol v1: 04-TECHNICAL-ARCHITECTURE/mic/mic_issuance_protocol.md
       - DVA Flows: 04-TECHNICAL-ARCHITECTURE/overview/DVA_FLOWS_OVERVIEW.md
       - MEMT Whitepaper: 04-TECHNICAL-ARCHITECTURE/memt/MEMT/MEMT_WHITEPAPER.md
       - Ledger GI Formula: 04-TECHNICAL-ARCHITECTURE/ledger/gi-formula.md
@@ -183,6 +185,7 @@ nav:
       - EPICON-03: epicon/EPICON-03.md
   - Reference:
       - Master Index: 00-META/MASTER_INDEX.md
+      - MIC runtime reference: 08-REFERENCE/mic_runtime_reference.md
       - Mobius SDK API (C-285 draft): specs/MOBIUS_SDK_API.md
       - Glossary: 00-START-HERE/GLOSSARY.md
       - FAQ: 00-START-HERE/FAQ.md
