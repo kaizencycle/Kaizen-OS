@@ -8,7 +8,7 @@ Versioning: [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased] — C-287 and beyond
 
-Planned: MNS ingest endpoint hardening, per-node live MII in aggregate, Gateway Redis store (deployable path).
+Planned: MNS ingest endpoint hardening, per-node live MII in aggregate, Gateway Redis store (deployable path), Terminal `app/api/mcp/route.ts` implementation (`mcp-handler`).
 
 ---
 
@@ -16,6 +16,7 @@ Planned: MNS ingest endpoint hardening, per-node live MII in aggregate, Gateway 
 
 ### Added
 - **Mobius Neural Substrate (MNS) v1 — mesh scaffolding:** `mesh/registry.json` (four seed nodes), `mesh/mobius-yaml-spec.md`, `mesh/mesh-sync-template.yml` (GitHub Actions template for joining repos), repo-root `mobius.yaml` (sentinel self-declaration), `ledger/mesh-aggregate.json` and `ledger/network-mii.json` (initial seeds), `scripts/mesh-aggregate.mjs` and `scripts/compute-network-mii.mjs`, `.github/workflows/mesh-aggregate.yml` (hourly cron + dispatch), canonical doctrine `docs/09-MESH/MNS_PROTOCOL.md`, MkDocs nav **Mesh (MNS · C-286)**.
+- **MNS MCP bridge (spec + discovery):** extended `mesh/mobius-yaml-spec.md` with `mesh.mcp` block and field table; `docs/09-MESH/MNS_MCP_BRIDGE.md`; `scripts/mesh-mcp-discovery.mjs`; `mesh/mcp-discovery.json` and `.well-known/mcp.json`; mesh-aggregate workflow now refreshes MCP discovery each run. **Terminal runtime** (`app/api/mcp/route.ts`, `mcp-handler`, KV logging) ships in **mobius-civic-ai-terminal** (separate repository).
 
 ---
 

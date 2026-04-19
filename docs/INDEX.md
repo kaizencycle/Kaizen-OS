@@ -1,6 +1,6 @@
 # Mobius Systems Documentation Index
 
-**Version:** 1.4.0  
+**Version:** 1.5.0  
 **Cycle:** C-286
 
 This index provides navigation to all key Mobius documentation.
@@ -31,6 +31,9 @@ Cross-repo integrity mesh: registry, `mobius.yaml` node declarations, aggregate 
 | Resource | Purpose |
 |----------|---------|
 | [MNS Protocol v1](./09-MESH/MNS_PROTOCOL.md) | Doctrine, analogy, join steps |
+| [MNS MCP Bridge](./09-MESH/MNS_MCP_BRIDGE.md) | `mobius.yaml` as MCP manifest + discovery |
+| [`mesh/mcp-discovery.json`](https://github.com/kaizencycle/Mobius-Substrate/blob/main/mesh/mcp-discovery.json) | Mesh-wide MCP server index |
+| [`.well-known/mcp.json`](https://github.com/kaizencycle/Mobius-Substrate/blob/main/.well-known/mcp.json) | Stable MCP discovery for agents |
 | [`mesh/registry.json`](https://github.com/kaizencycle/Mobius-Substrate/blob/main/mesh/registry.json) | Registered nodes (raw JSON) |
 | [`mesh/mobius-yaml-spec.md`](https://github.com/kaizencycle/Mobius-Substrate/blob/main/mesh/mobius-yaml-spec.md) | `mobius.yaml` field reference |
 | [`mobius.yaml`](https://github.com/kaizencycle/Mobius-Substrate/blob/main/mobius.yaml) | Substrate self-declaration (sentinel) |

@@ -1,0 +1,39 @@
+{
+  "schema": "MNS_MCP_DISCOVERY_V1",
+  "description": "Mobius Neural Substrate — MCP server index. Nodes declare mesh.mcp in mobius.yaml; Terminal is listed by default until its repo YAML is extended.",
+  "updated_at": "2026-04-19T15:42:32.437Z",
+  "servers": [
+    {
+      "node_id": "mobius-civic-ai-terminal",
+      "server_url": "https://mobius-civic-ai-terminal.vercel.app/api/mcp",
+      "transport": "streamable-http",
+      "tier": "contributor",
+      "covenant": "integrity",
+      "integrity_gate": 0.5,
+      "tools": [
+        "get_integrity_snapshot",
+        "get_epicon_feed",
+        "get_vault_status",
+        "get_agent_journal",
+        "post_epicon_entry",
+        "get_mic_readiness"
+      ],
+      "description": "Bloomberg-style civic intelligence dashboard — live GI, EPICON, MIC",
+      "cursor_config": {
+        "mcpServers": {
+          "mobius-terminal": {
+            "url": "https://mobius-civic-ai-terminal.vercel.app/api/mcp"
+          }
+        }
+      }
+    }
+  ],
+  "cursor_config_all": {
+    "mcpServers": {
+      "mobius-terminal": {
+        "url": "https://mobius-civic-ai-terminal.vercel.app/api/mcp"
+      }
+    }
+  },
+  "usage": "Merge cursor_config_all into your MCP client. Runtime: implement app/api/mcp/route.ts in mobius-civic-ai-terminal (see docs/09-MESH/MNS_MCP_BRIDGE.md)."
+}
