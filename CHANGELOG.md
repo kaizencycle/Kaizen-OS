@@ -6,12 +6,25 @@ Versioning: [Semantic Versioning](https://semver.org/).
 
 ---
 
-## [Unreleased] — C-285 and beyond
+## [Unreleased] — C-287 and beyond
+
+Planned: MNS ingest endpoint hardening, per-node live MII in aggregate, Gateway Redis store (deployable path).
+
+---
+
+## [C-286] — 2026-04-19
+
+### Added
+- **Mobius Neural Substrate (MNS) v1 — mesh scaffolding:** `mesh/registry.json` (four seed nodes), `mesh/mobius-yaml-spec.md`, `mesh/mesh-sync-template.yml` (GitHub Actions template for joining repos), repo-root `mobius.yaml` (sentinel self-declaration), `ledger/mesh-aggregate.json` and `ledger/network-mii.json` (initial seeds), `scripts/mesh-aggregate.mjs` and `scripts/compute-network-mii.mjs`, `.github/workflows/mesh-aggregate.yml` (hourly cron + dispatch), canonical doctrine `docs/09-MESH/MNS_PROTOCOL.md`, MkDocs nav **Mesh (MNS · C-286)**.
+
+---
+
+## [C-285] — 2026-04-18
 
 ### Added
 - **MobiusSDK Phase 2 (initial code):** `@mobius/inference-schema` (normalized request/response + provider record types), `@mobius/provider-adapters` (OpenAI-compatible chat completions + model fallback router), `@mobius/mobius-sdk` (HTTP client), and **`apps/gateway`** Express BFF: encrypted provider key storage (AES-256-GCM), `POST /v1/providers`, `POST /v1/providers/:id/test`, `POST /v1/inference`, `GET /v1/telemetry`, optional bearer auth and rate limiting. See `docs/specs/MOBIUS_SDK_API.md` section 15a.
 
-Planned:
+Planned (carry-forward):
 - Fountain emission mechanism (Vault v2.1)
 - Substrate archive writer cron (nightly Terminal KV → this repo)
 - AGENT_SERVICE_TOKEN rotation protocol

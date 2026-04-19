@@ -1,7 +1,7 @@
 # Mobius Systems Documentation Index
 
-**Version:** 1.3.0  
-**Cycle:** C-285
+**Version:** 1.4.0  
+**Cycle:** C-286
 
 This index provides navigation to all key Mobius documentation.
 
@@ -21,6 +21,19 @@ The site you are reading is the **Mobius Handbook** (MkDocs). It stays close to 
 | [Archived Kaizen-OS handbook (2025)](./10-ARCHIVES/handbook/kaizen-os-2025/index.md) | Historical “Kaizen-OS” narrative (superseded framing) |
 
 On many protocol pages, **Live** cards fetch public JSON from the Terminal. If a card shows “unavailable,” the prose is still canonical; enable CORS on the Terminal for this handbook origin when ready.
+
+---
+
+## Mesh — Mobius Neural Substrate (C-286)
+
+Cross-repo integrity mesh: registry, `mobius.yaml` node declarations, aggregate ledger, hourly aggregation workflow.
+
+| Resource | Purpose |
+|----------|---------|
+| [MNS Protocol v1](./09-MESH/MNS_PROTOCOL.md) | Doctrine, analogy, join steps |
+| [`mesh/registry.json`](https://github.com/kaizencycle/Mobius-Substrate/blob/main/mesh/registry.json) | Registered nodes (raw JSON) |
+| [`mesh/mobius-yaml-spec.md`](https://github.com/kaizencycle/Mobius-Substrate/blob/main/mesh/mobius-yaml-spec.md) | `mobius.yaml` field reference |
+| [`mobius.yaml`](https://github.com/kaizencycle/Mobius-Substrate/blob/main/mobius.yaml) | Substrate self-declaration (sentinel) |
 
 ---
 

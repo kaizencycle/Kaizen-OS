@@ -1,0 +1,10 @@
+{
+  "schema": "MNS_AGGREGATE_V1",
+  "updated_at": "2026-04-19T00:00:00Z",
+  "node_count": 0,
+  "live_nodes": 0,
+  "total_entries": 0,
+  "nodes": [],
+  "entries": [],
+  "_note": "Populated by .github/workflows/mesh-aggregate.yml (hourly) via scripts/mesh-aggregate.mjs"
+}
