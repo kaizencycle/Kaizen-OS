@@ -159,6 +159,8 @@ nav:
       - Vault v2 (Sealed Reserve): protocols/vault-v2-sealed-reserve.md
       - Agent Reporting: protocols/agent-reporting-protocol.md
       - Personalized Tripwires: protocols/personalized-tripwires-protocol.md
+  - Mesh (MNS · C-286):
+      - MNS Protocol v1: 09-MESH/MNS_PROTOCOL.md
   - Architecture:
       - Overview: 04-TECHNICAL-ARCHITECTURE/overview/README.md
       - MIC (runtime issuance): 04-TECHNICAL-ARCHITECTURE/mic/README.md

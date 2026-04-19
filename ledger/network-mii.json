@@ -1,0 +1,8 @@
+{
+  "schema": "MNS_NETWORK_MII_V1",
+  "computed_at": "2026-04-19T00:00:00Z",
+  "network_mii": 0,
+  "node_count": 0,
+  "nodes": [],
+  "note": "Run scripts/compute-network-mii.mjs after mesh-aggregate.mjs to refresh."
+}

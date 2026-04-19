@@ -1,0 +1,66 @@
+{
+  "mesh_version": "1.0",
+  "protocol": "MNS-v1",
+  "substrate": "kaizencycle/Mobius-Substrate",
+  "updated_at": "2026-04-19T00:00:00Z",
+  "description": "Mobius Neural Substrate — registered integrity nodes. Each node declares its ledger feed, agent affinity, and mesh participation tier.",
+  "nodes": [
+    {
+      "node_id": "mobius-substrate",
+      "repo": "kaizencycle/Mobius-Substrate",
+      "node_type": "substrate",
+      "tier": "sentinel",
+      "covenant": ["integrity", "ecology", "custodianship"],
+      "agent_affinity": ["ATLAS", "ZEUS", "EVE", "JADE", "AUREA", "HERMES", "DAEDALUS", "ECHO"],
+      "feed_url": "https://raw.githubusercontent.com/kaizencycle/Mobius-Substrate/main/ledger/mesh-aggregate.json",
+      "live": true,
+      "mii_baseline": 0.9,
+      "joined_cycle": "C-1",
+      "description": "Constitutional memory and aggregation cortex"
+    },
+    {
+      "node_id": "mobius-civic-ai-terminal",
+      "repo": "kaizencycle/mobius-civic-ai-terminal",
+      "node_type": "app",
+      "tier": "contributor",
+      "covenant": ["integrity"],
+      "agent_affinity": ["ATLAS", "ZEUS"],
+      "feed_url": "https://mobius-civic-ai-terminal.vercel.app/api/epicon/feed",
+      "live": true,
+      "mii_baseline": 0.85,
+      "joined_cycle": "C-286",
+      "description": "Bloomberg-style civic intelligence dashboard — live GI, EPICON, MIC"
+    },
+    {
+      "node_id": "civic-protocol-core",
+      "repo": "kaizencycle/Civic-Protocol-Core",
+      "node_type": "service",
+      "tier": "contributor",
+      "covenant": ["integrity"],
+      "agent_affinity": ["ZEUS", "HERMES"],
+      "feed_url": "https://civic-protocol-core-ledger.onrender.com/epicon/feed",
+      "live": true,
+      "mii_baseline": 0.85,
+      "joined_cycle": "C-286",
+      "description": "Civic ledger API — Render backend, Postgres, attestation storage"
+    },
+    {
+      "node_id": "mobius-browser-shell",
+      "repo": "kaizencycle/mobius-browser-shell",
+      "node_type": "app",
+      "tier": "observer",
+      "covenant": ["integrity"],
+      "agent_affinity": ["HERMES"],
+      "feed_url": "https://raw.githubusercontent.com/kaizencycle/mobius-browser-shell/main/ledger/feed.json",
+      "live": false,
+      "mii_baseline": null,
+      "joined_cycle": "C-286",
+      "description": "Mobius browser shell — human interface layer"
+    }
+  ],
+  "tiers": {
+    "observer": "Has mobius.yaml and local ledger/feed.json. Substrate pulls passively. Zero friction.",
+    "contributor": "Pushes to POST /mesh/ingest on every merge. Appears in Terminal EPICON feed. ZEUS can verify remotely.",
+    "sentinel": "Full agent affinity declared. Participates in MIC reward accounting. Can receive and emit seal attestations."
+  }
+}

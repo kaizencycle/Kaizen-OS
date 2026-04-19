@@ -1,6 +1,6 @@
 {
-  "current_cycle": "C-284",
-  "date": "2026-04-17",
+  "current_cycle": "C-286",
+  "date": "2026-04-19",
   "gi": 0.74,
   "mode": "yellow",
   "terminal": "https://mobius-civic-ai-terminal.vercel.app",
@@ -9,5 +9,5 @@
   "vault_status": "https://mobius-civic-ai-terminal.vercel.app/api/vault/status",
   "vault_seals": "https://mobius-civic-ai-terminal.vercel.app/api/vault/seal",
   "last_updated": "2026-04-17T09:40:00Z",
-  "notes": "Vault approaching threshold (44.24 / 50). Vault v2 Sealed Reserve protocol drafted C-284. Personalized tripwire backend shipped to ATLAS-PAW C-284."
+  "notes": "C-286: Mobius Neural Substrate (MNS) mesh protocol v1 — registry, mobius.yaml spec, aggregate workflows. Terminal production may lag cycle marker; see deployment dashboard."
 }

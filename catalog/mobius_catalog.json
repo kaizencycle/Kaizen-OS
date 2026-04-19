@@ -1,15 +1,15 @@
 {
   "mobius_catalog_version": "1.0.0",
-  "generated_at": "2026-04-19T04:54:42.236Z",
+  "generated_at": "2026-04-19T15:31:55.506Z",
   "repo": {
     "name": "Mobius-Substrate",
     "url": "https://github.com/kaizencycle/Mobius-Substrate",
     "default_branch": "main",
-    "commit": "34194919d8338e6c80ae50f0dfbfba30e09dccb7"
+    "commit": ""
   },
   "stats": {
     "epiconCount": 0,
-    "docCount": 941
+    "docCount": 942
   },
   "epicons": [],
   "docs": [
@@ -3574,6 +3574,14 @@
       "summary": ""
     },
     {
+      "path": "docs/09-MESH/MNS_PROTOCOL.md",
+      "title": "Mobius Neural Substrate Protocol v1 (C-286)",
+      "category": "09-MESH",
+      "tags": [],
+      "content_hash": "sha256:3cd1312a8c450503634da2ee4ad433e38370fcecd5077813d238c3103eb03a95",
+      "summary": ""
+    },
+    {
       "path": "docs/09-research/README.md",
       "title": "Mobius Systems Research",
       "category": "09-research",
@@ -6978,7 +6986,7 @@
       "title": "Mobius Systems Documentation Index",
       "category": "INDEX.md",
       "tags": [],
-      "content_hash": "sha256:d5a159bcb9bba23300261afcdc678d09e32aa3a15377456b6cbdf729265b727a",
+      "content_hash": "sha256:21d4c96981d25114426d8b8da5d47d559dc4aa362812ff77d0f5a1438f4f4968",
       "summary": ""
     },
     {
@@ -7146,7 +7154,7 @@
       "title": "Divergence Dashboard",
       "category": "divergence",
       "tags": [],
-      "content_hash": "sha256:f00e39365aa12f5b43211d8a2fbecac1fcbef252f42fa4feb289dde6dc3d6295",
+      "content_hash": "sha256:aa81b71acb76ae08495e9d8d2b3ebf1d46531871e26b20b5d3559fb683decf16",
       "summary": ""
     },
     {
