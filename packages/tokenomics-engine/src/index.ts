@@ -9,3 +9,6 @@ export * from './fountain';
 export * from './sealWriter';
 export * from './mintGenesis';
 export * from './micActivation';
+export * from './canonicalJson';
+export * from './hash';
+export * from './chainHash';

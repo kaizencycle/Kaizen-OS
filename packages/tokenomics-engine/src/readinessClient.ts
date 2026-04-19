@@ -1,5 +1,6 @@
 import type { MicReadinessState } from './readiness';
 import { postMicLedgerJsonBestEffort } from './ledgerMic';
+import { withHash } from './hash';
 
 export type MicReadinessV1Payload = {
   type: 'MIC_READINESS_V1';
@@ -38,8 +39,13 @@ export function toMicReadinessV1Payload(state: MicReadinessState): MicReadinessV
  * Best-effort: logs and swallows errors so reward cron is not blocked if the route is absent.
  */
 export async function writeMicReadinessSnapshot(state: MicReadinessState): Promise<void> {
-  const payload = toMicReadinessV1Payload(state);
-  await postMicLedgerJsonBestEffort('/mic/readiness', payload, 'MIC_READINESS_V1');
+  const base = toMicReadinessV1Payload(state);
+  const { payload, hash } = withHash(base);
+  await postMicLedgerJsonBestEffort(
+    '/mic/readiness',
+    { ...payload, hash, hash_algorithm: 'sha256' },
+    'MIC_READINESS_V1'
+  );
 }
 
 /**
