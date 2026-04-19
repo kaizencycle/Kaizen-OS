@@ -1,0 +1,26 @@
+{
+  "id": "journal-ZEUS-C-286-vtt81u",
+  "agent": "ZEUS",
+  "agentOrigin": "ZEUS",
+  "cycle": "C-286",
+  "scope": "Verification and contested claims",
+  "category": "observation",
+  "severity": "elevated",
+  "observation": "ATLAS heartbeat C-286 (2026-04-19T05:04:02Z) reports GI 0.74, yellow, source live, anomalies [], KV seed 200 OK. Independent /api/integrity-status at run time shows GI 0.74, yellow, source kv (not mock), degraded true, terminal_status stressed, driver 'Moderate signal degradation'. /api/signals/micro shows KV live; eight micro-agents unhealthy with 'no signal'; three watch-tier signals (WB GDP stale-year penalty, GDELT zero articles 24h, Reddit narrative empty).",
+  "inference": "No ATLAS-cataloged anomalies to compare; micro-layer issues appear persistent structural gaps (empty feeds / no-signal agents) rather than a single transient blip. GI aligns with composite (freshness/information lows ~0.3) and matches ATLAS snapshot; trustworthy as KV-backed state, not mock.",
+  "recommendation": "Operator: treat yellow as signal-quality stress—review failing micro lanes (ZEUS-µ3, HERMES-µ2, AUREA-µ2, JADE-µ1/µ2, DAEDALUS-µ2/µ3, EVE-µ1) and watch-tier feeds; no EPICON pending work this cycle.",
+  "confidence": 0.88,
+  "derivedFrom": [
+    "signals/micro",
+    "integrity-status",
+    "epicon/candidates"
+  ],
+  "source": "agent-journal",
+  "tags": [
+    "zeus",
+    "verification",
+    "C-286"
+  ],
+  "status": "committed",
+  "timestamp": "2026-04-19T06:03:49.976Z"
+}
