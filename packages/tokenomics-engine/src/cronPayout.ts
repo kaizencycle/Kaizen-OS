@@ -2,10 +2,19 @@ import { computeReward } from './computeReward';
 import { fetchLedgerActivities, writeRewardAttestation } from './ledgerClient';
 import { buildReadinessFromActivities } from './readiness';
 import { writeMicReadinessSnapshot } from './readinessClient';
+import { runMicActivationPipeline } from './micActivation';
+
+function envTruthy(name: string): boolean {
+  const v = process.env[name];
+  return v === '1' || v === 'true' || v === 'yes';
+}
 
 function shouldEmitReadinessSnapshot(): boolean {
-  const v = process.env.MIC_READINESS_SNAPSHOT;
-  return v === '1' || v === 'true' || v === 'yes';
+  return envTruthy('MIC_READINESS_SNAPSHOT');
+}
+
+function shouldRunActivationPipeline(): boolean {
+  return envTruthy('MIC_ACTIVATION_PIPELINE');
 }
 
 export async function runPayoutCron() {
@@ -22,9 +31,13 @@ export async function runPayoutCron() {
     await writeRewardAttestation(result);
   }
 
-  if (shouldEmitReadinessSnapshot() && activities.length > 0) {
-    const readiness = buildReadinessFromActivities(activities);
-    await writeMicReadinessSnapshot(readiness);
+  if (activities.length > 0) {
+    if (shouldRunActivationPipeline()) {
+      await runMicActivationPipeline(activities);
+    } else if (shouldEmitReadinessSnapshot()) {
+      const readiness = buildReadinessFromActivities(activities);
+      await writeMicReadinessSnapshot(readiness);
+    }
   }
 
   return results;

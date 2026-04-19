@@ -168,6 +168,24 @@ export function defaultMicReadinessState(
   return withDerivedFields(base);
 }
 
+/**
+ * After a Seal snapshot is emitted, treat the tranche as sealed for downstream fountain/mint gates.
+ * (Ledger remains source of truth when wired; this advances the in-memory readiness object.)
+ */
+export function applySealTransition(state: MicReadinessState): MicReadinessState {
+  if (state.reserve.trancheStatus !== 'eligible_for_seal') return state;
+  const next: MicReadinessState = {
+    ...state,
+    reserve: {
+      ...state.reserve,
+      trancheStatus: 'sealed',
+      inProgressBalance: 0,
+      sealedReserveTotal: state.reserve.sealedReserveTotal + state.reserve.trancheTarget
+    }
+  };
+  return withDerivedFields(next);
+}
+
 const TRANCHE_TARGET_UNITS = 50;
 
 /**
@@ -181,6 +199,16 @@ export function buildReadinessFromActivities(
 ): MicReadinessState {
   const cycle = options.cycle ?? process.env.MOBIUS_CYCLE ?? 'C-285';
   const mintThresholdGi = options.mintThresholdGi ?? 0.95;
+  const sustainCyclesEnv = process.env.MIC_SUSTAIN_CYCLES;
+  const sustainCyclesParsed =
+    sustainCyclesEnv != null && sustainCyclesEnv !== '' ? parseInt(sustainCyclesEnv, 10) : NaN;
+  const stubSustainCycles = Number.isFinite(sustainCyclesParsed) ? sustainCyclesParsed : 0;
+
+  const attestRaw = process.env.MIC_QUORUM_ATTESTED;
+  const stubAttested =
+    attestRaw && attestRaw.trim() !== ''
+      ? attestRaw.split(/[,;]/).map((s) => s.trim()).filter(Boolean)
+      : [];
 
   let giSum = 0;
   let micProxy = 0;
@@ -199,8 +227,11 @@ export function buildReadinessFromActivities(
   let trancheStatus: TrancheStatus = 'in_progress';
   if (micProxy >= TRANCHE_TARGET_UNITS) trancheStatus = 'eligible_for_seal';
 
-  const sustainStatus: SustainAggregateStatus =
-    gi >= mintThresholdGi ? 'in_progress' : 'not_started';
+  let sustainStatus: SustainAggregateStatus = 'not_started';
+  if (gi >= mintThresholdGi) {
+    if (stubSustainCycles >= 5) sustainStatus = 'satisfied';
+    else sustainStatus = 'in_progress';
+  }
 
   const base: MicReadinessState = {
     cycle,
@@ -213,7 +244,7 @@ export function buildReadinessFromActivities(
       trancheStatus
     },
     sustain: {
-      consecutiveEligibleCycles: 0,
+      consecutiveEligibleCycles: stubSustainCycles,
       requiredCycles: 5,
       status: sustainStatus
     },
@@ -229,7 +260,7 @@ export function buildReadinessFromActivities(
     quorum: {
       required: [...DEFAULT_REQUIRED],
       optional: [...DEFAULT_OPTIONAL],
-      attested: [],
+      attested: stubAttested,
       status: 'pending'
     },
     fountain: {
