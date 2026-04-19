@@ -51,7 +51,7 @@
 | Variable | Effect |
 | -------- | ------ |
 | `MIC_SUSTAIN_CYCLES` | Integer; `>= 5` with `gi >= mintThreshold` sets sustain `satisfied` |
-| `MIC_QUORUM_ATTESTED` | Comma/semicolon list of sentinel names (e.g. `ZEUS,ATLAS,JADE,HERMES`) |
+| `MIC_QUORUM_ATTESTED` | Comma/semicolon list of sentinel names (e.g. `ZEUS,ATLAS,EVE,JADE,AUREA`) — Seal v2 roster; genesis-only witnesses like HERMES are specified in `configs/tokenomics.yaml` `genesis_quorum`, not as Seal quorum |
 
 `buildReadinessFromActivities` uses **mean GI** and **summed provisional MIC** as a **proxy** for `reserve.inProgressBalance` / tranche eligibility until Vault fields are wired from Terminal. After a seal POST, the pipeline advances readiness to **`sealed`** in-memory for fountain evaluation.
 
@@ -81,3 +81,28 @@ Canonical doctrine:
 - `docs/protocols/vault-v2-sealed-reserve.md`  
 
 The **tokenomics-engine** now emits **optional** ledger payloads (`MIC_READINESS_V1`, `MIC_SEAL_V1`, `MIC_MINT_GENESIS_V1`) when env flags are set. **Ledger and Terminal must implement the routes** for these POSTs to persist; until then, calls are best-effort and logged on failure.
+
+---
+
+## Cross-repo proof contract (C-285)
+
+The proof chain from deposit to reserve to seal to mint spans two repositories.
+For the chain to be auditable end-to-end:
+
+| Proof step | Substrate spec | Terminal implementation |
+|------------|----------------|------------------------|
+| Deposit hash | `vault-v2-sealed-reserve.md` §4 `deposit_hashes[]` | `lib/vault/vault.ts` `writeVaultDeposit()` → `deposit_hash` |
+| Reward accounting | `mic_issuance_protocol.md` §reward computation | `packages/tokenomics-engine/src/computeReward.ts` → `MIC_REWARD_V2` |
+| Readiness snapshot | `readiness.ts` `MicReadinessState` | `POST /api/mic/readiness` → `MIC_READINESS_V1` |
+| Seal formation | `vault-v2-sealed-reserve.md` §3 | `lib/vault-v2/seal.ts` `attemptSealFormation()` |
+| Sentinel attestation | `vault-v2-sealed-reserve.md` §4–5 | `POST /api/vault/seal/attest` |
+| Seal record | `vault-v2-sealed-reserve.md` §4 | `vault:seal:{seal_id}` KV + `GET /api/vault/seal/:id` |
+| Mint authorization | `mint_authorization` in `tokenomics.yaml` | `POST /api/vault/fountain/unseal` (planned) |
+| Genesis mint | `mic_genesis_block.md` | `POST /api/mic/mint/commit` (planned) |
+
+**As of C-285:** Steps 1–4 are implemented or scaffolded. Steps 5–8 remain planned.
+The proof chain is **traceable but not yet executable end-to-end.**
+
+For current live values, use `GET /api/vault/status` and `GET /api/vault/seal`
+on the Terminal. The Terminal is the hot truth; this Substrate is the constitutional
+record.

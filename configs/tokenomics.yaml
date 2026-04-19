@@ -150,17 +150,37 @@ mint_authorization:
 # -------------------------------------------------------------------
 quorum_requirements:
   seal_sentinels:
+    # Five voices per Vault v2 protocol §5 — each on a distinct scope
+    required:
+      - ZEUS # hash chain verification — holds unilateral veto
+      - ATLAS # strategic coherence
+      - EVE # ethical and civic clearance
+      - JADE # constitutional framing
+      - AUREA # posture stamp (always counts as pass; never blocks)
+    # HERMES is steward/routing tier — not a Seal verifier in v2 protocol
+    # HERMES may serve as witness in future multi-party audit lanes (TBD)
+    hermes_role: "steward-witness (not quorum member in Seal v2)"
+  mint_quorum:
+    # Seal: ZEUS veto is absolute + 4/5 pass (AUREA always counts as pass)
+    required_count: 4
+    zeus_veto: true # ZEUS reject = immediate rejection, non-overridable
+    aurea_always_counts: true # AUREA posture stamp = pass for quorum purposes
+    requires_distinct_lanes: true
+    doc_level_contract: true
+    code_enforced: false
+  genesis_quorum:
+    # For genesis-class mint events — same roster, explicit
     required:
       - ZEUS
       - ATLAS
       - JADE
-      - HERMES
-    optional:
+      - HERMES # HERMES included at genesis as steward witness (routing health)
+    stabilizer_one_of:
       - EVE
       - AUREA
-  mint_quorum:
-    required_count: 4
-    requires_distinct_lanes: true
+    note: >
+      Genesis quorum adds HERMES as steward witness for routing-health certification.
+      Ongoing Seal quorum follows the five-Sentinel v2 protocol exclusively.
     doc_level_contract: true
     code_enforced: false
 

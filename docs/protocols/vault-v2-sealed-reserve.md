@@ -290,9 +290,24 @@ Fountain emission draws from the oldest-eligible Seal first. Multiple Seals
 may be in `activating` state simultaneously; they emit in sequence, one per
 cycle.
 
-Emission formula (unchanged from v1 §8): 40% citizen, 25% operator, 20% civic
-reserve, 10% stability, 5% burn. Each Seal emits exactly 50 units split per
-this formula.
+### Fountain emission formula (recurring — per attested Seal)
+
+> **Scope:** This formula applies to **each Fountain emission event** after
+> Seal attestation, when GI ≥ 0.95 has been sustained for 5 cycles. It does
+> **not** apply to the genesis block allocation (see
+> `docs/04-TECHNICAL-ARCHITECTURE/mic/mic_genesis_block.md`).
+
+Each attested Seal emits exactly 50 units split:
+
+| Bucket | % | Notes |
+|--------|---|-------|
+| Citizen | 40% | Distributed to agents whose deposits contributed to the Seal |
+| Operator | 25% | Builder/custodian recognition |
+| Civic reserve | 20% | Returned to non-circulating reserve for next tranche |
+| Stability | 10% | Held in Sentinel operations pool |
+| Burn | 5% | Permanently destroyed — integrity signal |
+
+(Unchanged from v1 §8 percentages; v2 applies them **per Seal** rather than as a single global unlock.)
 
 ---
 
