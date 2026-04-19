@@ -1,6 +1,6 @@
 # Mobius Systems Documentation Index
 
-**Version:** 1.5.0  
+**Version:** 1.6.0  
 **Cycle:** C-286
 
 This index provides navigation to all key Mobius documentation.
@@ -37,6 +37,7 @@ Cross-repo integrity mesh: registry, `mobius.yaml` node declarations, aggregate 
 | [`mesh/registry.json`](https://github.com/kaizencycle/Mobius-Substrate/blob/main/mesh/registry.json) | Registered nodes (raw JSON) |
 | [`mesh/mobius-yaml-spec.md`](https://github.com/kaizencycle/Mobius-Substrate/blob/main/mesh/mobius-yaml-spec.md) | `mobius.yaml` field reference |
 | [`mobius.yaml`](https://github.com/kaizencycle/Mobius-Substrate/blob/main/mobius.yaml) | Substrate self-declaration (sentinel) |
+| [Decentralization Phase 1–2 (Substrate)](./09-MESH/DECENTRALIZATION_PHASE1_2.md) | IPFS resolver + mesh-node scope vs Protocol-Core |
 
 ---
 
