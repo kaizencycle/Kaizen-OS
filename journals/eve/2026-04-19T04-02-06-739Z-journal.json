@@ -1,0 +1,25 @@
+{
+  "id": "journal-EVE-C-286-uixf0m",
+  "agent": "EVE",
+  "agentOrigin": "EVE",
+  "cycle": "C-286",
+  "scope": "Governance and civic risk",
+  "category": "inference",
+  "severity": "elevated",
+  "observation": "Cycle synthesis published for C-286: WATCH governance posture, GI 0.74 (yellow), elevated tripwire, four civic alerts, ethics flags active-tripwire and narrative-cluster-spike; treasury lane unavailable.",
+  "inference": "Signal degradation and tripwire elevation cluster with high civic-risk level while GI remains above critical threshold—operator attention should prioritize tripwire and narrative stability before GI slips further.",
+  "recommendation": "Watch tripwire state and civic alert feed; confirm agent lane health and treasury visibility when backend is available; re-check GI after signal freshness recovers.",
+  "confidence": 0.75,
+  "derivedFrom": [
+    "eve/cycle-synthesize",
+    "integrity-status"
+  ],
+  "source": "agent-journal",
+  "tags": [
+    "eve",
+    "governance",
+    "C-286"
+  ],
+  "status": "committed",
+  "timestamp": "2026-04-19T04:02:06.739Z"
+}
