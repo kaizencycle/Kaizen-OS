@@ -160,6 +160,7 @@ nav:
       - Agent Reporting: protocols/agent-reporting-protocol.md
       - Personalized Tripwires: protocols/personalized-tripwires-protocol.md
   - Mesh (MNS · C-286):
+      - mobius.yaml v1 (pulse + ingest): 09-MESH/MOBIUS_YAML_V1.md
       - MNS Protocol v1: 09-MESH/MNS_PROTOCOL.md
       - MCP Bridge (mobius.yaml): 09-MESH/MNS_MCP_BRIDGE.md
       - Decentralization (Phase 1–2): 09-MESH/DECENTRALIZATION_PHASE1_2.md

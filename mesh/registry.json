@@ -12,7 +12,7 @@
       "tier": "sentinel",
       "covenant": ["integrity", "ecology", "custodianship"],
       "agent_affinity": ["ATLAS", "ZEUS", "EVE", "JADE", "AUREA", "HERMES", "DAEDALUS", "ECHO"],
-      "feed_url": "https://raw.githubusercontent.com/kaizencycle/Mobius-Substrate/main/ledger/mesh-aggregate.json",
+      "feed_url": "https://raw.githubusercontent.com/kaizencycle/Mobius-Substrate/main/ledger/feed.json",
       "live": true,
       "mii_baseline": 0.9,
       "joined_cycle": "C-1",

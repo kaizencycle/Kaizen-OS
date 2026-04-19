@@ -1,6 +1,6 @@
 {
   "mobius_catalog_version": "1.0.0",
-  "generated_at": "2026-04-19T17:24:42.523Z",
+  "generated_at": "2026-04-19T17:52:00.237Z",
   "repo": {
     "name": "Mobius-Substrate",
     "url": "https://github.com/kaizencycle/Mobius-Substrate",
@@ -9,7 +9,7 @@
   },
   "stats": {
     "epiconCount": 0,
-    "docCount": 944
+    "docCount": 945
   },
   "epicons": [],
   "docs": [
@@ -3598,6 +3598,14 @@
       "summary": ""
     },
     {
+      "path": "docs/09-MESH/MOBIUS_YAML_V1.md",
+      "title": "mobius.yaml v1 — Pulse, ingest, and trust (C-286)",
+      "category": "09-MESH",
+      "tags": [],
+      "content_hash": "sha256:94b0eafa0823e9ba648d5866fae409a50ea74fab52b5c7e55447437d0b46d094",
+      "summary": ""
+    },
+    {
       "path": "docs/09-research/README.md",
       "title": "Mobius Systems Research",
       "category": "09-research",
@@ -7002,7 +7010,7 @@
       "title": "Mobius Systems Documentation Index",
       "category": "INDEX.md",
       "tags": [],
-      "content_hash": "sha256:e2c9bbf96539ba178d8ca5612f921712fd0293f23997c07796394d09a00860ad",
+      "content_hash": "sha256:fc7d5e3b957c3d5a764be17271ec987abf87d99b457be7b24969070cc3bdd211",
       "summary": ""
     },
     {
