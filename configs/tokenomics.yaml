@@ -1,107 +1,240 @@
-# MIC/KS Tokenomics Configuration
-# Cycle: C-155
-# Updated: December 5, 2025
-# Reference: MIC_Whitepaper_v2.1.md (Dual-Track Integrity Model)
+# MIC Tokenomics Configuration
+# Cycle: C-285
+# Canonical MIC docs:
+# - docs/04-TECHNICAL-ARCHITECTURE/mic/README.md
+# - docs/04-TECHNICAL-ARCHITECTURE/mic/mic_issuance_protocol.md
+# - docs/04-TECHNICAL-ARCHITECTURE/mic/mic_reserve_model.md
+# - docs/04-TECHNICAL-ARCHITECTURE/mic/mic_quorum_attestation.md
+# - docs/08-REFERENCE/mic_runtime_reference.md
 #
-# Canonical doc split (C-284+): reward scoring vs mint authorization
-# - Issuance doctrine: docs/04-TECHNICAL-ARCHITECTURE/mic/mic_issuance_protocol.md
-# - Code map: docs/08-REFERENCE/mic_runtime_reference.md
-# Follow-up: separate reward_thresholds from mint_thresholds in YAML to match Terminal/Vault v2.
+# IMPORTANT — truth ordering (semantic; not all sections are code-enforced):
+# 1) reward_accounting — live tokenomics-engine path (provisional MIC + attestations)
+# 2) reserve_policy — Vault v2–aligned policy language (partially wired in Terminal)
+# 3) mint_authorization — formal mint gates (policy + targets; full enforcement TBD)
+# 4) quorum_requirements / planned_runtime_fields — doc contract + future wiring
+#
+# Reward attestations (MIC_REWARD_V2) are not equivalent to circulation-class mint.
 
 # Core Currency Definition
 currency:
   name: "Mobius Integrity Credit"
   symbol: "MIC"
   decimals: 6
-  
+
   denominations:
     base:
       name: "MIC"
       symbol: "MIC"
       ratio: 1
-      
+
     shard:
       name: "Kaizen Shard"
       symbol: "KS"
-      ratio: 1000000    # 1 MIC = 1,000,000 KS
-      precision: 0      # Integer only
+      ratio: 1000000 # 1 MIC = 1,000,000 KS
+      precision: 0 # Integer only
 
 # Global Integrity Index (MII) Components
 # MII = α·FI + β·MI + γ·EI where α+β+γ=1
 mii:
   weights:
-    functional: 0.40    # FI - Service liveness, protocol adherence, security
-    moral: 0.35         # MI - Constitutional concordance, no exploitation
-    ecological: 0.25    # EI - Long-run sustainability, regenerative loops
-  
+    functional: 0.40 # FI - Service liveness, protocol adherence, security
+    moral: 0.35 # MI - Constitutional concordance, no exploitation
+    ecological: 0.25 # EI - Long-run sustainability, regenerative loops
+
   thresholds:
-    healthy: 0.95       # Normal operations
-    warning: 0.90       # Reduced minting (50%)
-    crisis: 0.80        # Minting halted
-    emergency: 0.80     # Cathedral override (< this value)
+    healthy: 0.95 # Normal operations
+    warning: 0.90 # Elevated risk band (legacy docs: "reduced minting" — treat as policy/research, not reward_engine)
+    crisis: 0.80 # Strong degradation
+    emergency: 0.80 # Cathedral override (< this value)
 
-# MIC Distribution Model (per minting event)
-distribution:
-  direct_contributors: 0.60   # Agents who improved MII
-  treasury: 0.25              # Future ecosystem development
-  sentinel_operations: 0.10   # Infrastructure costs
-  emergency_reserve: 0.05     # Crisis intervention fund
+# -------------------------------------------------------------------
+# 1. LIVE RUNTIME: reward accounting
+# -------------------------------------------------------------------
+# What packages/tokenomics-engine computes today → MIC_REWARD_V2 attestations.
+# Does NOT imply formal MIC mint / circulation issuance.
+reward_accounting:
+  enabled: true
+  engine:
+    package: "packages/tokenomics-engine"
+    compute_source: "packages/tokenomics-engine/src/computeReward.ts"
+    multipliers_source: "packages/tokenomics-engine/src/multipliers.ts"
+    cron_source: "packages/tokenomics-engine/src/cronPayout.ts"
+    cron_entrypoint: "infra/cron/compute_rewards.sh"
+    ledger_client_source: "packages/tokenomics-engine/src/ledgerClient.ts"
+    gi_client_source: "packages/tokenomics-engine/src/giClient.ts"
+    attestation_type: "MIC_REWARD_V2"
+  base_components:
+    integrity_work: true
+    human_intent: true
+    coordination_value: true
+    resilience_work: true
+  gi_multiplier:
+    enabled: true
+    floor: 0.90
+    formula: "(GI - 0.90) / 0.10"
+    below_floor_behavior: "zero_reward"
+  consensus_multiplier:
+    enabled: true
+    one_sentinel: 1.0
+    two_sentinels: 1.5
+    three_or_more_sentinels: 2.0
+  novelty_multiplier:
+    enabled: true
+    value: 1.4
+  anti_drift_multiplier:
+    enabled: true
+    value: 3.0
+  outputs:
+    reward_attestation: true
+    reserve_candidate: true
+    ledger_breakdown_record: true
 
-# Dual-Track Integrity Model (C-155 v2.1)
+# -------------------------------------------------------------------
+# 2. POLICY: reserve / Vault model
+# -------------------------------------------------------------------
+reserve_policy:
+  enabled: true
+  reserve_asset: "MIC"
+  model: "vault_v2_aligned"
+  semantics:
+    accounting_is_not_minting: true
+    reserve_is_not_circulating_supply: true
+    seal_is_not_fountain_unlock: true
+  vault_states:
+    in_progress_balance: true
+    sealed_reserve: true
+    fountain_locked: true
+    fountain_eligible: true
+  tranche:
+    enabled: true
+    target_units: 50.0
+    reach_behavior: "eligible_for_seal"
+  reserve_outputs:
+    write_seal_candidate: true
+    write_fountain_readiness: false
+    write_mint_authorization: false
 
-# Track A: MIC Minting (Hard Currency - Absolute Threshold)
-minting:
-  threshold_mii: 0.95       # τ - minimum MII for MIC minting
-  sensitivity: 1000         # S - MIC per 0.01 MII above threshold
-  base_coefficient: 1.0     # α - base mint multiplier
+# -------------------------------------------------------------------
+# 3. POLICY: mint authorization
+# -------------------------------------------------------------------
+# Stricter than reward_accounting. Not fully enforced in tokenomics-engine today.
+mint_authorization:
+  enabled: true
+  asset: "MIC"
+  semantics:
+    mint_requires_integrity_gate: true
+    reward_accounting_does_not_equal_mint: true
+    reserve_accumulation_below_threshold_allowed: true
+  mint_threshold_gi: 0.95
+  behavior_below_threshold:
+    mint: false
+    reward_accounting: true
+    reserve_accumulation: true
+  standard_rules:
+    requires_gi_at_or_above_threshold: true
+    requires_reserve_eligibility: true
+    requires_quorum_attestation: true
+  genesis:
+    enabled: true
+    documentation_only: true
+    code_enforced: false
+  # Preserved from C-155 dual-track whitepaper curve (not implemented in engine)
+  legacy_whitepaper_mint_curve:
+    note: "C-155 τ/S/α parameters; for simulation / future mint oracle — not live in cron"
+    threshold_mii: 0.95
+    sensitivity: 1000
+    base_coefficient: 1.0
 
-# Track B: MIA Allocation (Soft Currency - Annual Growth Rewards)
-# MIA = BasePool × ΔMII × PopulationFactor × TierMultiplier
-mia:
+# -------------------------------------------------------------------
+# 4. QUORUM CONTRACT (doc-level; code_enforced false)
+# -------------------------------------------------------------------
+quorum_requirements:
+  seal_sentinels:
+    required:
+      - ZEUS
+      - ATLAS
+      - JADE
+      - HERMES
+    optional:
+      - EVE
+      - AUREA
+  mint_quorum:
+    required_count: 4
+    requires_distinct_lanes: true
+    doc_level_contract: true
+    code_enforced: false
+
+# -------------------------------------------------------------------
+# 5. PLANNED RUNTIME FIELDS (Terminal / ledger convergence targets)
+# -------------------------------------------------------------------
+planned_runtime_fields:
+  sustain_cycles:
+    planned: true
+    required_for_standard_mint: true
+    code_enforced: false
+  replay_lane:
+    planned: true
+    required_for_standard_mint: true
+    code_enforced: false
+  novelty_lane:
+    planned: true
+    influences_reward_accounting: true
+    influences_mint_readiness: true
+    code_enforced: partial
+  fountain_unlock:
+    planned: true
+    code_enforced: false
+
+# -------------------------------------------------------------------
+# 6. POLICY: MIA allocation (soft track — research / future economics)
+# -------------------------------------------------------------------
+# Renamed from top-level `mia` for clarity. Same parameters as C-155 block.
+mia_allocation_policy:
   enabled: true
   growth_thresholds:
-    tier_1: 0.010           # ΔMII ≥ 0.01 → Base Allocation
-    tier_2: 0.015           # ΔMII ≥ 0.015 → 1.5× Allocation
-    tier_3: 0.020           # ΔMII ≥ 0.02 → 2× Allocation
+    tier_1: 0.010 # ΔMII ≥ 0.01 → Base Allocation
+    tier_2: 0.015 # ΔMII ≥ 0.015 → 1.5× Allocation
+    tier_3: 0.020 # ΔMII ≥ 0.02 → 2× Allocation
   tier_multipliers:
     tier_1: 1.0
     tier_2: 1.5
     tier_3: 2.0
   population_factors:
-    small_city: 0.8         # < 100K population
-    medium_city: 1.0        # 100K - 1M population
-    large_city: 1.1         # 1M - 5M population
-    mega_city: 1.2          # > 5M population
+    small_city: 0.8 # < 100K population
+    medium_city: 1.0 # 100K - 1M population
+    large_city: 1.1 # 1M - 5M population
+    mega_city: 1.2 # > 5M population
   evaluation_period: "annual"
-  min_improvement: 0.001    # Minimum ΔMII to be considered improvement
-  
-  # Quality multipliers based on EOMM evaluation
+  min_improvement: 0.001 # Minimum ΔMII to be considered improvement
   quality_multipliers:
     poor: 0.2
     fair: 0.5
     good: 0.8
     excellent: 1.0
     exceptional: 1.5
-    
-  # Per-cycle caps (in MIC)
   caps:
     per_citizen_per_cycle: 10.0
     per_action_max: 2.0
     global_per_cycle: 100000.0
 
+# Distribution model (treasury / splits for policy and simulations)
+distribution:
+  direct_contributors: 0.60
+  treasury: 0.25
+  sentinel_operations: 0.10
+  emergency_reserve: 0.05
+
 # Burn Configuration
 burning:
-  coefficient: 0.05         # β - burn rate multiplier
-  
-  # Severity levels
+  coefficient: 0.05
+
   severity_levels:
     minor: 1
     moderate: 3
     major: 5
     critical: 7
     catastrophic: 10
-    
-  # Actions that trigger burns
+
   burn_triggers:
     - fraudulent_attestation
     - sentinel_override
@@ -110,7 +243,6 @@ burning:
     - policy_violation
 
 # Shard Weights (imported from kaizen_shards.yaml)
-# Normalized weights for MII composition (sum to 1.0)
 shard_weights_normalized:
   reflection: 0.20
   learning: 0.15
@@ -139,9 +271,9 @@ governance:
 
 # Network Parameters
 network:
-  settlement_layer: "ks"    # KS for integer settlement
-  display_layer: "mic"      # MIC for human display
-  ledger_encoding: "dual"   # Store both MIC and KS
+  settlement_layer: "ks"
+  display_layer: "mic"
+  ledger_encoding: "dual"
 
 # API Configuration
 api:
@@ -152,7 +284,7 @@ api:
     transfer: "/v1/mic/transfer"
     metrics: "/v1/mic/metrics"
     shards: "/v1/mic/shards"
-    
+
   rate_limits:
     balance_per_minute: 60
     mint_per_hour: 10
