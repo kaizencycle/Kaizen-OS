@@ -1,24 +1,24 @@
 {
   "schema": "MNS_AGGREGATE_V1",
-  "updated_at": "2026-04-19T18:35:03.289Z",
+  "updated_at": "2026-04-19T19:35:26.035Z",
   "node_count": 4,
   "live_nodes": 2,
-  "total_entries": 22,
+  "total_entries": 23,
   "nodes": [
     {
       "node_id": "mobius-substrate",
       "tier": "sentinel",
       "node_type": "substrate",
       "entry_count": 0,
-      "fetched_at": "2026-04-19T18:35:03.073Z",
+      "fetched_at": "2026-04-19T19:35:25.550Z",
       "error": null
     },
     {
       "node_id": "mobius-civic-ai-terminal",
       "tier": "contributor",
       "node_type": "app",
-      "entry_count": 22,
-      "fetched_at": "2026-04-19T18:35:03.289Z",
+      "entry_count": 23,
+      "fetched_at": "2026-04-19T19:35:26.034Z",
       "error": null
     },
     {
@@ -26,7 +26,7 @@
       "tier": "contributor",
       "node_type": "service",
       "entry_count": 0,
-      "fetched_at": "2026-04-19T18:35:03.209Z",
+      "fetched_at": "2026-04-19T19:35:25.545Z",
       "error": "http_404"
     },
     {
@@ -39,6 +39,23 @@
     }
   ],
   "entries": [
+    {
+      "id": "fef77f26-merge",
+      "timestamp": "2026-04-19T18:40:59Z",
+      "author": "kaizencycle",
+      "title": "Merge pull request #340 from kaizencycle/cursor/c286-terminal-oaa-writer-31e3",
+      "type": "merge",
+      "severity": "info",
+      "tags": [
+        "merge",
+        "pr"
+      ],
+      "source": "github-commit",
+      "verified": false,
+      "sha": "fef77f262b5293a22a4b0105a703e7c9ec039e8b",
+      "_mesh_node": "mobius-civic-ai-terminal",
+      "_mesh_tier": "contributor"
+    },
     {
       "id": "1168389f-zeus-verify",
       "timestamp": "2026-04-19T18:02:53Z",
