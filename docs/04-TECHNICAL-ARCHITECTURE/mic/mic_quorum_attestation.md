@@ -5,9 +5,23 @@
 
 ---
 
-## Seal attestation (Vault v2)
+## Seal attestation (Vault v2) — canonical roster
 
-Vault v2 defines **five voting Sentinels** on Seal attestation: **ATLAS, ZEUS, EVE, JADE, AUREA**. That council is already the operative witness surface for **Seal** candidates.
+Vault v2 defines **five voting Sentinels** on Seal attestation:
+**ATLAS, ZEUS, EVE, JADE, AUREA**. This is the operative witness surface.
+
+Each Sentinel attests on a distinct scope (see `vault-v2-sealed-reserve.md` §5):
+
+- **ZEUS** — hash chain verification. Holds unilateral veto. Math must hold.
+- **ATLAS** — strategic coherence and deposit diversity.
+- **EVE** — ethical clearance and narrative tripwire check.
+- **JADE** — constitutional framing and schema conformance.
+- **AUREA** — posture stamp. Always counts as pass for quorum. Never blocks.
+
+**HERMES** is not a Seal quorum member in v2 protocol. HERMES is a
+steward/routing agent; its attestation scope (routing health) is not defined
+in the Seal structure. HERMES participates at genesis as a steward witness
+(see `quorum_requirements.genesis_quorum` in `configs/tokenomics.yaml`).
 
 MIC **issuance authorization** should reuse the same **attestation discipline**:
 
@@ -17,22 +31,21 @@ MIC **issuance authorization** should reuse the same **attestation discipline**:
 
 ---
 
-## MIC mint quorum (documentation contract)
+## MIC mint quorum — ongoing (post-genesis)
 
-For **genesis-class** or **first-Fountain** mint events, require:
+Same five-Sentinel roster as Seal attestation. No change for recurring
+Fountain emission events.
 
-**Required attestors (v1 doc contract):**
+---
 
-- ZEUS — verification / hash / math lane  
-- ATLAS — strategic coherence  
-- JADE — constitutional framing  
-- HERMES — routing / operational health (steward witness)  
+## MIC mint quorum — genesis class
 
-**Stabilizer (at least one healthy):**
+Genesis-class events additionally include **HERMES** as a steward witness
+for routing-health certification. This is a superset of the Seal quorum, not
+a replacement for it.
 
-- EVE *or* AUREA  
-
-Exact agent lists may be tightened by governance; the **invariant** is: **no mint authorization without multi-party attestation aligned to live Sentinel roles.**
+Exact thresholds may be tightened by governance; the **invariant** is:
+**no mint authorization without multi-party attestation aligned to live Sentinel roles.**
 
 ---
 
