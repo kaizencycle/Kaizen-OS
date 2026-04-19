@@ -146,6 +146,30 @@ mesh:
 
 ---
 
+### Layered ingest (`ingest.mode: write_through`)
+
+For **operator** nodes (e.g. Terminal), declare **hot state**, **sovereign OAA memory**, and **durable ledger** targets so writers read config instead of hardcoding URLs. Fields are documented in [`docs/09-MESH/MOBIUS_YAML_V1.md`](../docs/09-MESH/MOBIUS_YAML_V1.md) and narrative in [`docs/09-MESH/MNS_OAA_MEMORY.md`](../docs/09-MESH/MNS_OAA_MEMORY.md).
+
+Typical shape:
+
+```yaml
+ingest:
+  enabled: true
+  mode: "write_through"
+  hot_state:
+    type: "upstash_kv"
+  sovereign_memory:
+    node_id: "oaa-api-library"
+    write_url: "https://<oaa>/api/oaa/kv"
+    auth: "hmac"
+  durable_ledger:
+    node_id: "civic-protocol-core"
+    write_url: "https://<civic-core>/mesh/ingest"
+    auth: "bearer"
+```
+
+---
+
 ## Joining the mesh
 
 1. Add `mobius.yaml` to your repo root.
