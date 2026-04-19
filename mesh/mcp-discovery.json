@@ -1,7 +1,7 @@
 {
   "schema": "MNS_MCP_DISCOVERY_V1",
   "description": "Mobius Neural Substrate — MCP server index. Nodes declare mesh.mcp in mobius.yaml; Terminal is listed by default until its repo YAML is extended.",
-  "updated_at": "2026-04-19T15:42:32.437Z",
+  "updated_at": "2026-04-19T16:29:02.037Z",
   "servers": [
     {
       "node_id": "mobius-civic-ai-terminal",
@@ -26,12 +26,32 @@
           }
         }
       }
+    },
+    {
+      "node_id": "civic-protocol-core",
+      "server_url": "https://civic-protocol-core-ledger.onrender.com/api/mcp",
+      "transport": "streamable-http",
+      "tier": "contributor",
+      "covenant": "integrity",
+      "integrity_gate": 0.5,
+      "tools": [],
+      "description": "Civic ledger API — Render backend, Postgres, attestation storage",
+      "cursor_config": {
+        "mcpServers": {
+          "civic-protocol-core": {
+            "url": "https://civic-protocol-core-ledger.onrender.com/api/mcp"
+          }
+        }
+      }
     }
   ],
   "cursor_config_all": {
     "mcpServers": {
       "mobius-terminal": {
         "url": "https://mobius-civic-ai-terminal.vercel.app/api/mcp"
+      },
+      "civic-protocol-core": {
+        "url": "https://civic-protocol-core-ledger.onrender.com/api/mcp"
       }
     }
   },

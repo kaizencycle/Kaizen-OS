@@ -1,8 +1,16 @@
 {
   "schema": "MNS_NETWORK_MII_V1",
-  "computed_at": "2026-04-19T00:00:00Z",
-  "network_mii": 0,
-  "node_count": 0,
-  "nodes": [],
-  "note": "Run scripts/compute-network-mii.mjs after mesh-aggregate.mjs to refresh."
+  "computed_at": "2026-04-19T16:29:01.728Z",
+  "network_mii": 0.85,
+  "node_count": 1,
+  "nodes": [
+    {
+      "node_id": "mobius-civic-ai-terminal",
+      "tier": "contributor",
+      "mii_baseline": 0.85,
+      "weight": 0.7,
+      "entry_count": 20
+    }
+  ],
+  "note": "Network MII is a weighted average of registered node baselines for nodes with at least one aggregated entry. Live per-node MII is a follow-up."
 }

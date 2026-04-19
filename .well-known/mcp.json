@@ -10,6 +10,11 @@
       "node_id": "mobius-civic-ai-terminal",
       "url": "https://mobius-civic-ai-terminal.vercel.app/api/mcp",
       "transport": "streamable-http"
+    },
+    {
+      "node_id": "civic-protocol-core",
+      "url": "https://civic-protocol-core-ledger.onrender.com/api/mcp",
+      "transport": "streamable-http"
     }
   ],
   "note": "Mesh MCP discovery. Enforcement is per-node; this file is the canonical discovery surface for the Substrate."
