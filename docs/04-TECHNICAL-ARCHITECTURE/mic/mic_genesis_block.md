@@ -1,7 +1,7 @@
 # MIC genesis block (draft)
 
-**Status:** Draft ceremony spec — **not** yet enforced by `tokenomics-engine`  
-**See also:** [MIC Issuance Protocol v1](./mic_issuance_protocol.md), [Vault v2](../../protocols/vault-v2-sealed-reserve.md)
+**Status:** Draft ceremony spec — optional **`MIC_MINT_GENESIS_V1`** POST from `packages/tokenomics-engine/src/mintGenesis.ts` when `MIC_GENESIS_MINT=1` and readiness is `fountain_ready` (ledger route must exist).  
+**See also:** [MIC Issuance Protocol v1](./mic_issuance_protocol.md), [Vault v2](../../protocols/vault-v2-sealed-reserve.md), [MIC runtime reference](../../08-REFERENCE/mic_runtime_reference.md)
 
 ---
 
@@ -36,7 +36,7 @@
 | Civic test | 9.50 |
 | Burn / locked | 9.50 |
 
-This split is **not** implemented in `computeReward.ts`; it is a **target** for when mint-class ledger rows exist.
+This split is **not** part of `computeReward.ts`; genesis payload construction lives in **`mintGenesis.ts`** for ledger attestation (`MIC_MINT_GENESIS_V1`).
 
 ---
 

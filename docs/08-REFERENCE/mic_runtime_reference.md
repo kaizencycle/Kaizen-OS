@@ -20,15 +20,28 @@
 
 **Attestation payload type today:** `MIC_REWARD_V2` (see `ledgerClient.ts`).
 
-### MIC readiness (C-285 field convergence)
+### MIC readiness + activation (C-285 / PR #274–277)
 
 | Concern | Location |
 | ------- | -------- |
 | Shared readiness shape + `deriveMicReadiness` | `packages/tokenomics-engine/src/readiness.ts` |
-| Ledger snapshot payload `MIC_READINESS_V1` + POST helper | `packages/tokenomics-engine/src/readinessClient.ts` |
-| Optional cron snapshot (off by default) | Set `MIC_READINESS_SNAPSHOT=1` when running cron; posts to `POST ${LEDGER_BASE_URL}/mic/readiness` (best-effort warn on failure) |
+| Ledger snapshot `MIC_READINESS_V1` | `packages/tokenomics-engine/src/readinessClient.ts` → `POST /mic/readiness` (best-effort) |
+| Fountain eligibility on readiness | `packages/tokenomics-engine/src/fountain.ts` |
+| Seal snapshot `MIC_SEAL_V1` | `packages/tokenomics-engine/src/sealWriter.ts` → `POST /mic/seal` when `trancheStatus === eligible_for_seal` (best-effort) |
+| Genesis mint attestation `MIC_MINT_GENESIS_V1` | `packages/tokenomics-engine/src/mintGenesis.ts` → `POST /mic/mint/genesis` when `mintReadiness === fountain_ready` **and** `MIC_GENESIS_MINT=1` (best-effort) |
+| Orchestrator (seal → sealed transition → fountain → readiness → genesis) | `packages/tokenomics-engine/src/micActivation.ts` |
+| Shared ledger POST helper | `packages/tokenomics-engine/src/ledgerMic.ts` |
 
-`buildReadinessFromActivities` uses **mean GI** and **summed provisional MIC** from activities as a **proxy** for `reserve.inProgressBalance` and tranche eligibility until Terminal Vault fields are wired in.
+**Cron:** `runPayoutCron` runs **`runMicActivationPipeline`** when `MIC_ACTIVATION_PIPELINE=1` (runs after reward attestations). Otherwise, legacy **`MIC_READINESS_SNAPSHOT=1`** still posts only readiness.
+
+**Stub env (until Terminal feeds sustain + quorum):**
+
+| Variable | Effect |
+| -------- | ------ |
+| `MIC_SUSTAIN_CYCLES` | Integer; `>= 5` with `gi >= mintThreshold` sets sustain `satisfied` |
+| `MIC_QUORUM_ATTESTED` | Comma/semicolon list of sentinel names (e.g. `ZEUS,ATLAS,JADE,HERMES`) |
+
+`buildReadinessFromActivities` uses **mean GI** and **summed provisional MIC** as a **proxy** for `reserve.inProgressBalance` / tranche eligibility until Vault fields are wired from Terminal. After a seal POST, the pipeline advances readiness to **`sealed`** in-memory for fountain evaluation.
 
 ---
 
@@ -48,11 +61,11 @@ Operational GI, Vault balance, Seals, and tripwires are **not** fully represente
 
 ---
 
-## Issuance layer (not yet a single binary path)
+## Issuance layer (client path in repo)
 
-Mint authorization, Seal-attested genesis blocks, and Fountain unlock are specified under:
+Canonical doctrine:
 
 - `docs/04-TECHNICAL-ARCHITECTURE/mic/`  
 - `docs/protocols/vault-v2-sealed-reserve.md`  
 
-They are **not** yet implemented end-to-end inside `tokenomics-engine` (which currently stops at reward attestations).
+The **tokenomics-engine** now emits **optional** ledger payloads (`MIC_READINESS_V1`, `MIC_SEAL_V1`, `MIC_MINT_GENESIS_V1`) when env flags are set. **Ledger and Terminal must implement the routes** for these POSTs to persist; until then, calls are best-effort and logged on failure.

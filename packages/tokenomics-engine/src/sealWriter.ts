@@ -1,8 +1,8 @@
 import type { MicReadinessState } from './readiness';
 import { postMicLedgerJsonBestEffort } from './ledgerMic';
 
-export type MicReadinessV1Payload = {
-  type: 'MIC_READINESS_V1';
+export type MicSealV1Payload = {
+  type: 'MIC_SEAL_V1';
   cycle: string;
   gi: number;
   mintThresholdGi: number;
@@ -13,12 +13,18 @@ export type MicReadinessV1Payload = {
   quorum: MicReadinessState['quorum'];
   fountain: MicReadinessState['fountain'];
   mintReadiness: MicReadinessState['mintReadiness'];
+  sealId: string;
   timestamp: string;
 };
 
-export function toMicReadinessV1Payload(state: MicReadinessState): MicReadinessV1Payload {
+function sealIdForCycle(cycle: string): string {
+  const slug = cycle.replace(/[^a-zA-Z0-9_-]+/g, '-');
+  return `seal-${slug}-${Date.now()}`;
+}
+
+export function buildMicSealV1Payload(state: MicReadinessState): MicSealV1Payload {
   return {
-    type: 'MIC_READINESS_V1',
+    type: 'MIC_SEAL_V1',
     cycle: state.cycle,
     gi: state.gi,
     mintThresholdGi: state.mintThresholdGi,
@@ -29,23 +35,17 @@ export function toMicReadinessV1Payload(state: MicReadinessState): MicReadinessV
     quorum: state.quorum,
     fountain: state.fountain,
     mintReadiness: state.mintReadiness,
+    sealId: sealIdForCycle(state.cycle),
     timestamp: new Date().toISOString()
   };
 }
 
 /**
- * POST readiness snapshot to ledger (`/mic/readiness`).
- * Best-effort: logs and swallows errors so reward cron is not blocked if the route is absent.
+ * PR #275 — emit Seal snapshot when tranche is eligible (proxy: eligible_for_seal).
+ * Best-effort POST to `/mic/seal`.
  */
-export async function writeMicReadinessSnapshot(state: MicReadinessState): Promise<void> {
-  const payload = toMicReadinessV1Payload(state);
-  await postMicLedgerJsonBestEffort('/mic/readiness', payload, 'MIC_READINESS_V1');
-}
-
-/**
- * Reserved for future GET support; returns null until ledger exposes the route.
- */
-export async function fetchMicReadinessSnapshot(_cycle: string): Promise<MicReadinessV1Payload | null> {
-  void _cycle;
-  return null;
+export async function writeSealSnapshotIfEligible(state: MicReadinessState): Promise<void> {
+  if (state.reserve.trancheStatus !== 'eligible_for_seal') return;
+  const payload = buildMicSealV1Payload(state);
+  await postMicLedgerJsonBestEffort('/mic/seal', payload, 'MIC_SEAL_V1');
 }
