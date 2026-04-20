@@ -1,24 +1,24 @@
 {
   "schema": "MNS_AGGREGATE_V1",
-  "updated_at": "2026-04-20T17:51:41.123Z",
+  "updated_at": "2026-04-20T18:52:45.896Z",
   "node_count": 5,
   "live_nodes": 3,
-  "total_entries": 27,
+  "total_entries": 29,
   "nodes": [
     {
       "node_id": "mobius-substrate",
       "tier": "sentinel",
       "node_type": "substrate",
       "entry_count": 0,
-      "fetched_at": "2026-04-20T17:51:40.849Z",
+      "fetched_at": "2026-04-20T18:52:45.430Z",
       "error": null
     },
     {
       "node_id": "mobius-civic-ai-terminal",
       "tier": "contributor",
       "node_type": "app",
-      "entry_count": 17,
-      "fetched_at": "2026-04-20T17:51:41.123Z",
+      "entry_count": 19,
+      "fetched_at": "2026-04-20T18:52:45.896Z",
       "error": null
     },
     {
@@ -26,7 +26,7 @@
       "tier": "contributor",
       "node_type": "service",
       "entry_count": 10,
-      "fetched_at": "2026-04-20T17:51:40.956Z",
+      "fetched_at": "2026-04-20T18:52:45.514Z",
       "error": null
     },
     {
@@ -47,6 +47,55 @@
     }
   ],
   "entries": [
+    {
+      "id": "ea2432ef-merge",
+      "timestamp": "2026-04-20T18:35:58Z",
+      "author": "kaizencycle",
+      "title": "feat: Mobius Slack Agent v1 — manifest, router, Events API bridge",
+      "type": "merge",
+      "severity": "info",
+      "tags": [
+        "merge",
+        "pr"
+      ],
+      "source": "github-commit",
+      "verified": false,
+      "sha": "ea2432eff21aefbc1d810ee70dcb4233ddc38c9a",
+      "_mesh_node": "mobius-civic-ai-terminal",
+      "_mesh_tier": "contributor"
+    },
+    {
+      "id": "70a3b4bb-zeus-verify",
+      "timestamp": "2026-04-20T18:05:04Z",
+      "author": "cursor-agent",
+      "title": "zeus: align gi_source with live|mock schema in C-287 report [skip ci]",
+      "type": "zeus-verify",
+      "severity": "info",
+      "tags": [
+        "zeus"
+      ],
+      "source": "github-commit",
+      "verified": false,
+      "sha": "70a3b4bbd372b784bcd474e854f8e1f8bd3f751e",
+      "_mesh_node": "mobius-civic-ai-terminal",
+      "_mesh_tier": "contributor"
+    },
+    {
+      "id": "ffbe7b88-zeus-verify",
+      "timestamp": "2026-04-20T18:04:31Z",
+      "author": "cursor-agent",
+      "title": "zeus: verification inconclusive · C-287 [skip ci]",
+      "type": "zeus-verify",
+      "severity": "info",
+      "tags": [
+        "zeus"
+      ],
+      "source": "github-commit",
+      "verified": false,
+      "sha": "ffbe7b88d955a22f48b80c97b8c1364bc8250cfd",
+      "_mesh_node": "mobius-civic-ai-terminal",
+      "_mesh_tier": "contributor"
+    },
     {
       "id": "fd612751-merge",
       "timestamp": "2026-04-20T16:48:35Z",
@@ -443,25 +492,6 @@
       "source": "github-commit",
       "verified": true,
       "sha": "5d816337667355c0b97502f99473dfb8725bf9c1",
-      "verifiedBy": "ZEUS",
-      "_mesh_node": "mobius-civic-ai-terminal",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "25cc4c81-zeus-verify",
-      "timestamp": "2026-04-19T06:04:23Z",
-      "author": "cursor-agent",
-      "title": "ZEUS: Verification confirmed",
-      "type": "zeus-verify",
-      "severity": "nominal",
-      "tags": [
-        "zeus",
-        "verification",
-        "confirmed"
-      ],
-      "source": "github-commit",
-      "verified": true,
-      "sha": "25cc4c810a182697e7e3c7806fe4b0cae8b6caa0",
       "verifiedBy": "ZEUS",
       "_mesh_node": "mobius-civic-ai-terminal",
       "_mesh_tier": "contributor"
