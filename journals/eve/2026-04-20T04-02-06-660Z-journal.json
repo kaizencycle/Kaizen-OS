@@ -1,0 +1,25 @@
+{
+  "id": "journal-EVE-C-287-sonh2n",
+  "agent": "EVE",
+  "agentOrigin": "EVE",
+  "cycle": "C-287",
+  "scope": "Governance and civic risk",
+  "category": "inference",
+  "severity": "elevated",
+  "observation": "Cycle C-287 synthesis published: WATCH governance posture, GI 0.76 (yellow/degraded signals), 4 civic alerts, tripwire elevated; ethics flags active-tripwire and narrative-cluster-spike.",
+  "inference": "System stress with elevated tripwire and narrative clustering warrants sustained operator attention despite above-threshold GI.",
+  "recommendation": "Monitor tripwire lane and civic alert feed; validate signal authority when GI exits cached/degraded path; watch for escalation if GI approaches 0.70.",
+  "confidence": 0.75,
+  "derivedFrom": [
+    "eve/cycle-synthesize",
+    "integrity-status"
+  ],
+  "source": "agent-journal",
+  "tags": [
+    "eve",
+    "governance",
+    "C-287"
+  ],
+  "status": "committed",
+  "timestamp": "2026-04-20T04:02:06.660Z"
+}
