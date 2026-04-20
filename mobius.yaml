@@ -80,6 +80,21 @@ ingest:
 mcp:
   enabled: false
 
+jobs:
+  enabled: true
+  workflows:
+    - id: "mesh-aggregate"
+      file: ".github/workflows/mesh-aggregate.yml"
+      trigger: "schedule"
+      cron: "0 * * * *"
+
+governance:
+  agent_prs_allowed: true
+  auto_merge_allowed: false
+  required_reviewers:
+    - "ZEUS"
+    - "ATLAS"
+
 policy:
   write_truth_locally: true
   mirror_feed_to_repo: true

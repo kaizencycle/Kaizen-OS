@@ -1,0 +1,14 @@
+{
+  "schema": "MOBIUS_PULSE_V1",
+  "updated_at": "2026-04-19T00:00:00Z",
+  "cycle": null,
+  "cycle_date": null,
+  "aggregate": {
+    "node_count": null,
+    "live_nodes": null,
+    "total_entries": null
+  },
+  "network_mii": null,
+  "terminal_snapshot": null,
+  "notes": "Populated by scripts/build-mobius-pulse.mjs in mesh-aggregate workflow."
+}
