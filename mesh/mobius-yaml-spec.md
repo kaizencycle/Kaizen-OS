@@ -1,6 +1,6 @@
 # mobius.yaml — Node Declaration Specification
 
-**mobius.yaml v1 (pulse + ingest + policy):** see [`docs/09-MESH/MOBIUS_YAML_V1.md`](../docs/09-MESH/MOBIUS_YAML_V1.md) (canonical lanes, payload vocabulary, ingest modes, rules). This page retains **MNS mesh** fields (`node_type`, `covenant`, nested `mesh.mcp` tools) for backward compatibility and richer MCP manifests.
+**mobius.yaml v1 (pulse + ingest + policy):** see [`docs/09-MESH/MOBIUS_YAML_V1.md`](../docs/09-MESH/MOBIUS_YAML_V1.md) (canonical lanes, payload vocabulary, ingest modes, rules). **Mesh workflow + HIVE:** [`docs/09-MESH/MESH_WORKFLOW_V1.md`](../docs/09-MESH/MESH_WORKFLOW_V1.md). This page retains **MNS mesh** fields (`node_type`, `covenant`, nested `mesh.mcp` tools) for backward compatibility and richer MCP manifests.
 
 Every repository joining the **Mobius Neural Substrate (MNS)** drops a `mobius.yaml` at its root. It declares identity, mesh participation, optional legacy ledger hooks, and optionally an **MCP bridge** so the node becomes a discoverable, integrity-governed MCP server for AI clients.
 

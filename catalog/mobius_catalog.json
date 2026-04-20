@@ -1,15 +1,15 @@
 {
   "mobius_catalog_version": "1.0.0",
-  "generated_at": "2026-04-20T05:17:35.519Z",
+  "generated_at": "2026-04-20T16:45:47.787Z",
   "repo": {
     "name": "Mobius-Substrate",
     "url": "https://github.com/kaizencycle/Mobius-Substrate",
     "default_branch": "main",
-    "commit": "710fad8532af87adf020c5ffc74e643052da60a8"
+    "commit": ""
   },
   "stats": {
     "epiconCount": 0,
-    "docCount": 946
+    "docCount": 947
   },
   "epicons": [],
   "docs": [
@@ -3582,6 +3582,14 @@
       "summary": ""
     },
     {
+      "path": "docs/09-MESH/MESH_WORKFLOW_V1.md",
+      "title": "Mobius Mesh Workflow v1 — C-287 HIVE bridge (C-288 loop)",
+      "category": "09-MESH",
+      "tags": [],
+      "content_hash": "sha256:ed7bd2391e7f3dc7116ca0c0eb4703b82df1996df9fdf0899c046c14f1d497a1",
+      "summary": ""
+    },
+    {
       "path": "docs/09-MESH/MNS_MCP_BRIDGE.md",
       "title": "Mobius MCP Bridge — Doctrine (C-286)",
       "category": "09-MESH",
@@ -3610,7 +3618,7 @@
       "title": "mobius.yaml v1 — Pulse, ingest, and trust (C-286)",
       "category": "09-MESH",
       "tags": [],
-      "content_hash": "sha256:a8fc8afb7c0dd19775643f9444fb7a42fd8772a0428573106f4794555bb97be4",
+      "content_hash": "sha256:539824862ade2faf0d218c503ba4b7603e4bba1c345ca000670e6d8056edac99",
       "summary": ""
     },
     {
@@ -7018,7 +7026,7 @@
       "title": "Mobius Systems Documentation Index",
       "category": "INDEX.md",
       "tags": [],
-      "content_hash": "sha256:681c6e258e1edfdac37629a1a37672821d1a86bbbee6d7da2b3bb4fa8eed5b06",
+      "content_hash": "sha256:4b2f2c5dd809bea230d523609e49168da3dbc6c26f9652ec46a1041e9f95ceeb",
       "summary": ""
     },
     {
@@ -7186,7 +7194,7 @@
       "title": "Divergence Dashboard",
       "category": "divergence",
       "tags": [],
-      "content_hash": "sha256:41cc0516ca76e49e39ae5d585ab52bcae6a837011d69bb4bbb98c549b690ae05",
+      "content_hash": "sha256:f000ccf54296aa544ddbcdb7b03f5a8bb24967e6f315f4762106d418a3f13741",
       "summary": ""
     },
     {

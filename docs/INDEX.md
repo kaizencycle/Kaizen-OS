@@ -1,7 +1,7 @@
 # Mobius Systems Documentation Index
 
-**Version:** 1.8.0  
-**Cycle:** C-286
+**Version:** 1.9.0  
+**Cycle:** C-287
 
 This index provides navigation to all key Mobius documentation.
 
@@ -32,6 +32,7 @@ Cross-repo integrity mesh: registry, `mobius.yaml` node declarations, aggregate 
 |----------|---------|
 | [mobius.yaml v1 (pulse + ingest)](./09-MESH/MOBIUS_YAML_V1.md) | Declaration contract, lanes, payload vocabulary |
 | [OAA sovereign memory (MNS)](./09-MESH/MNS_OAA_MEMORY.md) | KV → OAA → Civic Core write path |
+| [Mesh workflow v1 (HIVE)](./09-MESH/MESH_WORKFLOW_V1.md) | Pulse file, jobs fabric, agent PR governance |
 | [MNS Protocol v1](./09-MESH/MNS_PROTOCOL.md) | Doctrine, analogy, join steps |
 | [MNS MCP Bridge](./09-MESH/MNS_MCP_BRIDGE.md) | `mobius.yaml` as MCP manifest + discovery |
 | [`mesh/mcp-discovery.json`](https://github.com/kaizencycle/Mobius-Substrate/blob/main/mesh/mcp-discovery.json) | Mesh-wide MCP server index |

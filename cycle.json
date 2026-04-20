@@ -1,5 +1,5 @@
 {
-  "current_cycle": "C-286",
+  "current_cycle": "C-287",
   "date": "2026-04-19",
   "gi": 0.74,
   "mode": "yellow",
@@ -9,5 +9,5 @@
   "vault_status": "https://mobius-civic-ai-terminal.vercel.app/api/vault/status",
   "vault_seals": "https://mobius-civic-ai-terminal.vercel.app/api/vault/seal",
   "last_updated": "2026-04-17T09:40:00Z",
-  "notes": "C-286: Mobius Neural Substrate (MNS) mesh protocol v1 — registry, mobius.yaml spec, aggregate workflows. Terminal production may lag cycle marker; see deployment dashboard."
+  "notes": "C-287: Mesh workflow v1 — mobius-pulse.json for HIVE/browser-shell; mobius.yaml jobs + governance canon. C-288 HIVE world-update workflows land in mobius-hive repo."
 }

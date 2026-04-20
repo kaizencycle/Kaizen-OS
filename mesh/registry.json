@@ -56,6 +56,19 @@
       "mii_baseline": null,
       "joined_cycle": "C-286",
       "description": "Mobius browser shell — human interface layer"
+    },
+    {
+      "node_id": "mobius-hive",
+      "repo": "kaizencycle/mobius-hive",
+      "node_type": "lab",
+      "tier": "observer",
+      "covenant": ["integrity"],
+      "agent_affinity": ["EVE", "HERMES"],
+      "feed_url": "https://raw.githubusercontent.com/kaizencycle/mobius-hive/main/ledger/feed.json",
+      "live": false,
+      "mii_baseline": null,
+      "joined_cycle": "C-287",
+      "description": "HIVE world layer — quests, lore, events (workflows in-repo)"
     }
   ],
   "tiers": {

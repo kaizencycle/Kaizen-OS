@@ -35,6 +35,8 @@ Top-level **`version`** is `"1.0"`.
 | `pulse` | Emitted signals, public URLs, SLA, lanes, authority |
 | `ingest` | Ingest mode, accepted payload types, targets, optional **layered routing** (hot / sovereign / durable) |
 | `mcp` | Optional MCP edge (`server_url`, `discovery_url`, tools) |
+| `jobs` | Declared GitHub Actions fabric (`workflows[]` with `id`, `file`, `trigger`, `cron`) |
+| `governance` | Agent PR policy (`agent_prs_allowed`, `auto_merge_allowed`, `required_reviewers`) |
 | `policy` | Trust: canonical ledger node, local write mirror, hash algorithm |
 
 ### `mesh`
@@ -77,6 +79,16 @@ Legacy **MNS** fields (`node_type`, `substrate_ref`, `covenant`, nested `ledger`
 | `auth` | `bearer` \| `none` |
 | `accepts` | Payload type strings this ledger accepts |
 | `targets` | For `client_of_other_node`: list of `{ node_id, write_url, purpose, auth?, accepts? }` |
+
+### `ingest.sources` (read-only; world / HIVE nodes)
+
+Map logical inputs to **GET** URLs. Used by HIVE and browser-shell jobs; does not grant write access.
+
+| Key | Typical use |
+|-----|----------------|
+| `terminal_snapshot` | `read_url` → Terminal `snapshot-lite` |
+| `cycle_state` | `read_url` → Substrate `ledger/mobius-pulse.json` or raw `cycle.json` |
+| `sovereign_memory` | `read_url` → OAA latest-by-key API (when deployed) |
 
 ### Layered routing (optional; `ingest.mode: write_through`)
 
@@ -169,6 +181,10 @@ ingest:
 ## Repo truth (this monorepo)
 
 The **authoritative `mobius.yaml`** for Mobius-Substrate lives at the repository root. See that file for the live v1 declaration.
+
+## Mesh execution + HIVE (C-287 / C-288)
+
+See [Mesh Workflow v1](./MESH_WORKFLOW_V1.md) for `mobius-pulse.json`, `jobs`, `ingest.sources`, and the HIVE/browser-shell rollout pattern.
 
 ---
 
