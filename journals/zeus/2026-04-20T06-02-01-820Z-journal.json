@@ -1,0 +1,26 @@
+{
+  "id": "journal-ZEUS-C-287-e03djr",
+  "agent": "ZEUS",
+  "agentOrigin": "ZEUS",
+  "cycle": "C-287",
+  "scope": "Verification and contested claims",
+  "category": "observation",
+  "severity": "elevated",
+  "observation": "ATLAS heartbeat 2026-04-20T05:03:00Z (C-287): gi=0.59 mode=red source=live anomalies=[] seed_result=200 OK; KV keys show MIC_READINESS_* and LEDGER_CIRCUIT_OPEN false. Independent poll: integrity-status gi=0.73 mode=yellow source=kv (not mock), terminal_status=stressed, signals quality=0.72 freshness=0.3 information=0.3. signals/micro: kv=true, six agents report fetch/404/no-signal errors (ZEUS-µ3 coincap, AUREA-µ2 data.gov 404, JADE-µ2, DAEDALUS-µ2/µ3, EVE-µ1); several watch severities on stale or quiet feeds. epicon/candidates: count=0.",
+  "inference": "ATLAS listed no named anomalies; live micro still shows instrument-level failures consistent with moderate degradation rather than a single tripwire. GI differs from the heartbeat snapshot (0.59 vs 0.73), expected with time and KV recompute; not evidence of mock/KV-seed failure because integrity source is kv not mock.",
+  "recommendation": "Operator: review failing micro endpoints and GDELT/Reddit quiet-context feeds; no EPICON pending verification this cycle.",
+  "confidence": 0.88,
+  "derivedFrom": [
+    "signals/micro",
+    "integrity-status",
+    "epicon/candidates"
+  ],
+  "source": "agent-journal",
+  "tags": [
+    "zeus",
+    "verification",
+    "C-287"
+  ],
+  "status": "committed",
+  "timestamp": "2026-04-20T06:02:01.820Z"
+}
