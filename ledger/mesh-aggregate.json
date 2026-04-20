@@ -1,6 +1,6 @@
 {
   "schema": "MNS_AGGREGATE_V1",
-  "updated_at": "2026-04-20T13:07:10.758Z",
+  "updated_at": "2026-04-20T15:10:17.565Z",
   "node_count": 4,
   "live_nodes": 3,
   "total_entries": 28,
@@ -10,7 +10,7 @@
       "tier": "sentinel",
       "node_type": "substrate",
       "entry_count": 0,
-      "fetched_at": "2026-04-20T13:07:10.664Z",
+      "fetched_at": "2026-04-20T15:10:16.787Z",
       "error": null
     },
     {
@@ -18,7 +18,7 @@
       "tier": "contributor",
       "node_type": "app",
       "entry_count": 18,
-      "fetched_at": "2026-04-20T13:07:10.758Z",
+      "fetched_at": "2026-04-20T15:10:17.565Z",
       "error": null
     },
     {
@@ -26,7 +26,7 @@
       "tier": "contributor",
       "node_type": "service",
       "entry_count": 10,
-      "fetched_at": "2026-04-20T13:07:10.673Z",
+      "fetched_at": "2026-04-20T15:10:16.817Z",
       "error": null
     },
     {
@@ -39,6 +39,40 @@
     }
   ],
   "entries": [
+    {
+      "id": "06b53566-merge",
+      "timestamp": "2026-04-20T14:46:31Z",
+      "author": "kaizencycle",
+      "title": "fix(C-287): memory_mode fallback, GI null honesty, banner dismiss — U…",
+      "type": "merge",
+      "severity": "info",
+      "tags": [
+        "merge",
+        "pr"
+      ],
+      "source": "github-commit",
+      "verified": false,
+      "sha": "06b53566b272a1b43f93abe3f4ccb1ea159ebe3d",
+      "_mesh_node": "mobius-civic-ai-terminal",
+      "_mesh_tier": "contributor"
+    },
+    {
+      "id": "61343f7d-merge",
+      "timestamp": "2026-04-20T14:03:07Z",
+      "author": "kaizencycle",
+      "title": "feat(C-287): read resilience — Verified Memory Mode, heartbeat dual-write, GI fallback chain",
+      "type": "merge",
+      "severity": "info",
+      "tags": [
+        "merge",
+        "pr"
+      ],
+      "source": "github-commit",
+      "verified": false,
+      "sha": "61343f7d60d9a37a11209d01b45bdccc37d34eb7",
+      "_mesh_node": "mobius-civic-ai-terminal",
+      "_mesh_tier": "contributor"
+    },
     {
       "id": "4a5bcbfb-zeus-verify",
       "timestamp": "2026-04-20T12:05:15Z",
@@ -438,40 +472,6 @@
       "source": "github-commit",
       "verified": false,
       "sha": "fc41031f6ac95833d64b2d3b791a60ac70a0f019",
-      "_mesh_node": "mobius-civic-ai-terminal",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "8c664129-merge",
-      "timestamp": "2026-04-19T01:57:29Z",
-      "author": "kaizencycle",
-      "title": "feat(terminal/mic): MIC runtime + proof surface (readiness, hashes, panels)",
-      "type": "merge",
-      "severity": "info",
-      "tags": [
-        "merge",
-        "pr"
-      ],
-      "source": "github-commit",
-      "verified": false,
-      "sha": "8c6641290ab00ae28bd3f7d3c0f18b73b676e31a",
-      "_mesh_node": "mobius-civic-ai-terminal",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "d08041ea-merge",
-      "timestamp": "2026-04-19T01:34:03Z",
-      "author": "kaizencycle",
-      "title": "feat(terminal/mic): MIC runtime surface — readiness, Vault, Seal, Fountain, quorum UI",
-      "type": "merge",
-      "severity": "info",
-      "tags": [
-        "merge",
-        "pr"
-      ],
-      "source": "github-commit",
-      "verified": false,
-      "sha": "d08041ea66f268f3d59358b1ce3dc7ddd74fea8e",
       "_mesh_node": "mobius-civic-ai-terminal",
       "_mesh_tier": "contributor"
     }
