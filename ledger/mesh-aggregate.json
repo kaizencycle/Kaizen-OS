@@ -1,24 +1,24 @@
 {
   "schema": "MNS_AGGREGATE_V1",
-  "updated_at": "2026-04-20T18:52:45.896Z",
+  "updated_at": "2026-04-20T19:55:15.959Z",
   "node_count": 5,
   "live_nodes": 3,
-  "total_entries": 29,
+  "total_entries": 30,
   "nodes": [
     {
       "node_id": "mobius-substrate",
       "tier": "sentinel",
       "node_type": "substrate",
       "entry_count": 0,
-      "fetched_at": "2026-04-20T18:52:45.430Z",
+      "fetched_at": "2026-04-20T19:55:15.626Z",
       "error": null
     },
     {
       "node_id": "mobius-civic-ai-terminal",
       "tier": "contributor",
       "node_type": "app",
-      "entry_count": 19,
-      "fetched_at": "2026-04-20T18:52:45.896Z",
+      "entry_count": 20,
+      "fetched_at": "2026-04-20T19:55:15.959Z",
       "error": null
     },
     {
@@ -26,7 +26,7 @@
       "tier": "contributor",
       "node_type": "service",
       "entry_count": 10,
-      "fetched_at": "2026-04-20T18:52:45.514Z",
+      "fetched_at": "2026-04-20T19:55:15.648Z",
       "error": null
     },
     {
@@ -47,6 +47,23 @@
     }
   ],
   "entries": [
+    {
+      "id": "c4a3d5eb-merge",
+      "timestamp": "2026-04-20T18:59:44Z",
+      "author": "kaizencycle",
+      "title": "Merge pull request #347 from kaizencycle/cursor/mobius-slack-agent-phase2-347-123f",
+      "type": "merge",
+      "severity": "info",
+      "tags": [
+        "merge",
+        "pr"
+      ],
+      "source": "github-commit",
+      "verified": false,
+      "sha": "c4a3d5ebc440472996361df95b284ffb428937f2",
+      "_mesh_node": "mobius-civic-ai-terminal",
+      "_mesh_tier": "contributor"
+    },
     {
       "id": "ea2432ef-merge",
       "timestamp": "2026-04-20T18:35:58Z",
