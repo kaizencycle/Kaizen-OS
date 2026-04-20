@@ -1,24 +1,24 @@
 {
   "schema": "MNS_AGGREGATE_V1",
-  "updated_at": "2026-04-20T22:34:31.924Z",
+  "updated_at": "2026-04-20T23:34:52.936Z",
   "node_count": 5,
   "live_nodes": 3,
-  "total_entries": 29,
+  "total_entries": 27,
   "nodes": [
     {
       "node_id": "mobius-substrate",
       "tier": "sentinel",
       "node_type": "substrate",
       "entry_count": 0,
-      "fetched_at": "2026-04-20T22:34:31.670Z",
+      "fetched_at": "2026-04-20T23:34:52.647Z",
       "error": null
     },
     {
       "node_id": "mobius-civic-ai-terminal",
       "tier": "contributor",
       "node_type": "app",
-      "entry_count": 19,
-      "fetched_at": "2026-04-20T22:34:31.924Z",
+      "entry_count": 17,
+      "fetched_at": "2026-04-20T23:34:52.936Z",
       "error": null
     },
     {
@@ -26,7 +26,7 @@
       "tier": "contributor",
       "node_type": "service",
       "entry_count": 10,
-      "fetched_at": "2026-04-20T22:34:31.719Z",
+      "fetched_at": "2026-04-20T23:34:52.756Z",
       "error": null
     },
     {
@@ -458,40 +458,6 @@
       "author": "Michael Judan",
       "type": "mesh-commit",
       "_mesh_node": "civic-protocol-core",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "8da1b4d0-merge",
-      "timestamp": "2026-04-19T15:03:05Z",
-      "author": "kaizencycle",
-      "title": "fix(C-286): heartbeat stale, KV TTLs, GI resolution, snapshot-lite, ledger circuit + optimizations",
-      "type": "merge",
-      "severity": "info",
-      "tags": [
-        "merge",
-        "pr"
-      ],
-      "source": "github-commit",
-      "verified": false,
-      "sha": "8da1b4d068ca7f26593a0b1914b2137ec056d67c",
-      "_mesh_node": "mobius-civic-ai-terminal",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "978a40dd-merge",
-      "timestamp": "2026-04-19T15:02:49Z",
-      "author": "kaizencycle",
-      "title": "docs(cycle): C-286 opening pulse (ATLAS briefing)",
-      "type": "merge",
-      "severity": "info",
-      "tags": [
-        "merge",
-        "pr"
-      ],
-      "source": "github-commit",
-      "verified": false,
-      "sha": "978a40dd33544fed6eb9e090c941ccf0ba485165",
-      "_mesh_node": "mobius-civic-ai-terminal",
       "_mesh_tier": "contributor"
     }
   ]
