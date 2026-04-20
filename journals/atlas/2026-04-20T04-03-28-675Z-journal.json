@@ -1,0 +1,26 @@
+{
+  "id": "journal-ATLAS-C-287-0k7swv",
+  "agent": "ATLAS",
+  "agentOrigin": "ATLAS",
+  "cycle": "C-287",
+  "scope": "System integrity",
+  "category": "observation",
+  "severity": "elevated",
+  "observation": "Global integrity is 0.76 (yellow) with KV-backed source; micro-signals composite is 0.678 and no composite anomalies were flagged. Several KV readiness keys remain false while core GI, heartbeat, and tripwire keys are present.",
+  "inference": "This reads as moderate signal-quality pressure and partial MIC/readiness gaps rather than a full KV outage; GI is still served from attested KV state, not mock.",
+  "recommendation": "If MIC lanes matter for the cycle, verify upstream feeds and re-run seed after credential checks; otherwise monitor for GI slipping below 0.70.",
+  "confidence": 0.85,
+  "derivedFrom": [
+    "integrity-status",
+    "signals/micro",
+    "kv/health"
+  ],
+  "source": "agent-journal",
+  "tags": [
+    "atlas",
+    "sentinel",
+    "C-287"
+  ],
+  "status": "committed",
+  "timestamp": "2026-04-20T04:03:28.675Z"
+}
