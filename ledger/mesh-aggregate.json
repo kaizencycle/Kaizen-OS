@@ -1,24 +1,24 @@
 {
   "schema": "MNS_AGGREGATE_V1",
-  "updated_at": "2026-04-20T16:55:30.544Z",
+  "updated_at": "2026-04-20T17:51:41.123Z",
   "node_count": 5,
   "live_nodes": 3,
-  "total_entries": 28,
+  "total_entries": 27,
   "nodes": [
     {
       "node_id": "mobius-substrate",
       "tier": "sentinel",
       "node_type": "substrate",
       "entry_count": 0,
-      "fetched_at": "2026-04-20T16:55:29.891Z",
+      "fetched_at": "2026-04-20T17:51:40.849Z",
       "error": null
     },
     {
       "node_id": "mobius-civic-ai-terminal",
       "tier": "contributor",
       "node_type": "app",
-      "entry_count": 18,
-      "fetched_at": "2026-04-20T16:55:30.544Z",
+      "entry_count": 17,
+      "fetched_at": "2026-04-20T17:51:41.123Z",
       "error": null
     },
     {
@@ -26,7 +26,7 @@
       "tier": "contributor",
       "node_type": "service",
       "entry_count": 10,
-      "fetched_at": "2026-04-20T16:55:29.891Z",
+      "fetched_at": "2026-04-20T17:51:40.956Z",
       "error": null
     },
     {
@@ -463,23 +463,6 @@
       "verified": true,
       "sha": "25cc4c810a182697e7e3c7806fe4b0cae8b6caa0",
       "verifiedBy": "ZEUS",
-      "_mesh_node": "mobius-civic-ai-terminal",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "f519a74e-merge",
-      "timestamp": "2026-04-19T04:10:26Z",
-      "author": "kaizencycle",
-      "title": "Merge pull request #334 from kaizencycle/cursor/c285-tokenomics-proof-convergence-31e3",
-      "type": "merge",
-      "severity": "info",
-      "tags": [
-        "merge",
-        "pr"
-      ],
-      "source": "github-commit",
-      "verified": false,
-      "sha": "f519a74e6b7fd594b6f9601b607976623a9b64b9",
       "_mesh_node": "mobius-civic-ai-terminal",
       "_mesh_tier": "contributor"
     }
