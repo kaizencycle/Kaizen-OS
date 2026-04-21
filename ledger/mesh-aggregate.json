@@ -1,6 +1,6 @@
 {
   "schema": "MNS_AGGREGATE_V1",
-  "updated_at": "2026-04-21T16:48:59.404Z",
+  "updated_at": "2026-04-21T17:52:38.187Z",
   "node_count": 5,
   "live_nodes": 3,
   "total_entries": 24,
@@ -10,7 +10,7 @@
       "tier": "sentinel",
       "node_type": "substrate",
       "entry_count": 0,
-      "fetched_at": "2026-04-21T16:48:58.909Z",
+      "fetched_at": "2026-04-21T17:52:37.964Z",
       "error": null
     },
     {
@@ -18,7 +18,7 @@
       "tier": "contributor",
       "node_type": "app",
       "entry_count": 14,
-      "fetched_at": "2026-04-21T16:48:59.404Z",
+      "fetched_at": "2026-04-21T17:52:38.186Z",
       "error": null
     },
     {
@@ -26,7 +26,7 @@
       "tier": "contributor",
       "node_type": "service",
       "entry_count": 10,
-      "fetched_at": "2026-04-21T16:48:59.015Z",
+      "fetched_at": "2026-04-21T17:52:38.043Z",
       "error": null
     },
     {
@@ -47,6 +47,57 @@
     }
   ],
   "entries": [
+    {
+      "id": "0c4fd304-merge",
+      "timestamp": "2026-04-21T17:34:56Z",
+      "author": "kaizencycle",
+      "title": "feat(globe): scrollable interactive dashboards + mobile Map/Globe toggle",
+      "type": "merge",
+      "severity": "info",
+      "tags": [
+        "merge",
+        "pr"
+      ],
+      "source": "github-commit",
+      "verified": false,
+      "sha": "0c4fd304b551d26b2d6f182c0aa30a96ba58bb0b",
+      "_mesh_node": "mobius-civic-ai-terminal",
+      "_mesh_tier": "contributor"
+    },
+    {
+      "id": "0d655a62-merge",
+      "timestamp": "2026-04-21T17:10:30Z",
+      "author": "kaizencycle",
+      "title": "feat(C-288): operator hardening + Globe chapter dashboards",
+      "type": "merge",
+      "severity": "info",
+      "tags": [
+        "merge",
+        "pr"
+      ],
+      "source": "github-commit",
+      "verified": false,
+      "sha": "0d655a6224dc9db2424ae950d4059c416f8296d6",
+      "_mesh_node": "mobius-civic-ai-terminal",
+      "_mesh_tier": "contributor"
+    },
+    {
+      "id": "4b426fb7-merge",
+      "timestamp": "2026-04-21T16:52:32Z",
+      "author": "kaizencycle",
+      "title": "feat(C-288): vault seal council notify, MIC KV hydrate, HERMES dead-lane, EVE ethics queue",
+      "type": "merge",
+      "severity": "info",
+      "tags": [
+        "merge",
+        "pr"
+      ],
+      "source": "github-commit",
+      "verified": false,
+      "sha": "4b426fb70cd7b09aea1feecb5d2df58fea757d0f",
+      "_mesh_node": "mobius-civic-ai-terminal",
+      "_mesh_tier": "contributor"
+    },
     {
       "id": "12013231-zeus-verify",
       "timestamp": "2026-04-21T12:04:13Z",
@@ -232,56 +283,6 @@
       "source": "github-commit",
       "verified": false,
       "sha": "fd612751895cd82e13ba00a443b2b849f89b4a6c",
-      "_mesh_node": "mobius-civic-ai-terminal",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "06b53566-merge",
-      "timestamp": "2026-04-20T14:46:31Z",
-      "author": "kaizencycle",
-      "title": "fix(C-287): memory_mode fallback, GI null honesty, banner dismiss — U…",
-      "type": "merge",
-      "severity": "info",
-      "tags": [
-        "merge",
-        "pr"
-      ],
-      "source": "github-commit",
-      "verified": false,
-      "sha": "06b53566b272a1b43f93abe3f4ccb1ea159ebe3d",
-      "_mesh_node": "mobius-civic-ai-terminal",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "61343f7d-merge",
-      "timestamp": "2026-04-20T14:03:07Z",
-      "author": "kaizencycle",
-      "title": "feat(C-287): read resilience — Verified Memory Mode, heartbeat dual-write, GI fallback chain",
-      "type": "merge",
-      "severity": "info",
-      "tags": [
-        "merge",
-        "pr"
-      ],
-      "source": "github-commit",
-      "verified": false,
-      "sha": "61343f7d60d9a37a11209d01b45bdccc37d34eb7",
-      "_mesh_node": "mobius-civic-ai-terminal",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "4a5bcbfb-zeus-verify",
-      "timestamp": "2026-04-20T12:05:15Z",
-      "author": "cursor-agent",
-      "title": "zeus: verification inconclusive · C-287 [skip ci]",
-      "type": "zeus-verify",
-      "severity": "info",
-      "tags": [
-        "zeus"
-      ],
-      "source": "github-commit",
-      "verified": false,
-      "sha": "4a5bcbfb9d519414ce9dd3f9bde3cc1357bea640",
       "_mesh_node": "mobius-civic-ai-terminal",
       "_mesh_tier": "contributor"
     },
