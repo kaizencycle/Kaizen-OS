@@ -1,0 +1,25 @@
+{
+  "id": "journal-EVE-C-288-i659sz",
+  "agent": "EVE",
+  "agentOrigin": "EVE",
+  "cycle": "C-288",
+  "scope": "Governance and civic risk",
+  "category": "inference",
+  "severity": "nominal",
+  "observation": "WATCH governance posture for C-288: GI 0.90, elevated tripwire, 4 civic alerts, treasury unavailable; ethics flags active-tripwire and narrative-cluster-spike.",
+  "inference": "Civic-risk concentration with tripwire pressure and narrative clustering despite nominal GI — treasury lane gap increases blind spots.",
+  "recommendation": "Monitor tripwire clears, civic alert resolution, and treasury/readiness signals next cycle; confirm agent lanes if replay pressure appears.",
+  "confidence": 0.75,
+  "derivedFrom": [
+    "eve/cycle-synthesize",
+    "integrity-status"
+  ],
+  "source": "agent-journal",
+  "tags": [
+    "eve",
+    "governance",
+    "C-288"
+  ],
+  "status": "committed",
+  "timestamp": "2026-04-21T04:03:28.772Z"
+}
