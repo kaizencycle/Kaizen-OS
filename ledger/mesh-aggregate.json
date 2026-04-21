@@ -1,33 +1,33 @@
 {
   "schema": "MNS_AGGREGATE_V1",
-  "updated_at": "2026-04-21T01:30:15.107Z",
+  "updated_at": "2026-04-21T04:42:00.597Z",
   "node_count": 5,
-  "live_nodes": 3,
-  "total_entries": 28,
+  "live_nodes": 2,
+  "total_entries": 16,
   "nodes": [
     {
       "node_id": "mobius-substrate",
       "tier": "sentinel",
       "node_type": "substrate",
       "entry_count": 0,
-      "fetched_at": "2026-04-21T01:30:14.536Z",
+      "fetched_at": "2026-04-21T04:41:52.703Z",
       "error": null
     },
     {
       "node_id": "mobius-civic-ai-terminal",
       "tier": "contributor",
       "node_type": "app",
-      "entry_count": 18,
-      "fetched_at": "2026-04-21T01:30:15.107Z",
+      "entry_count": 16,
+      "fetched_at": "2026-04-21T04:41:55.872Z",
       "error": null
     },
     {
       "node_id": "civic-protocol-core",
       "tier": "contributor",
       "node_type": "service",
-      "entry_count": 10,
-      "fetched_at": "2026-04-21T01:30:14.583Z",
-      "error": null
+      "entry_count": 0,
+      "fetched_at": "2026-04-21T04:42:00.597Z",
+      "error": "timeout"
     },
     {
       "node_id": "mobius-browser-shell",
@@ -47,6 +47,40 @@
     }
   ],
   "entries": [
+    {
+      "id": "af5b3711-merge",
+      "timestamp": "2026-04-21T02:23:43Z",
+      "author": "kaizencycle",
+      "title": "feat(C-287): ten KV/ops optimizations + JADE journal — sweep cron, dedupe, decay, edge cache",
+      "type": "merge",
+      "severity": "info",
+      "tags": [
+        "merge",
+        "pr"
+      ],
+      "source": "github-commit",
+      "verified": false,
+      "sha": "af5b3711b3df19c0acf8763f5600096e9f03a277",
+      "_mesh_node": "mobius-civic-ai-terminal",
+      "_mesh_tier": "contributor"
+    },
+    {
+      "id": "6ce8f59c-merge",
+      "timestamp": "2026-04-21T02:00:15Z",
+      "author": "kaizencycle",
+      "title": "perf(kv): reduce Upstash command burn — MGET snapshot-lite, cache, selective mirror",
+      "type": "merge",
+      "severity": "info",
+      "tags": [
+        "merge",
+        "pr"
+      ],
+      "source": "github-commit",
+      "verified": false,
+      "sha": "6ce8f59c7fa67785c2ee6292b861308b2e1e0820",
+      "_mesh_node": "mobius-civic-ai-terminal",
+      "_mesh_tier": "contributor"
+    },
     {
       "id": "e5e1fb4f-merge",
       "timestamp": "2026-04-21T00:54:49Z",
@@ -250,19 +284,6 @@
       "_mesh_tier": "contributor"
     },
     {
-      "id": "EPICON-CPC-039bb6886637b0c9dc60de9ed54b7c489fd54eb3",
-      "node_id": "civic-protocol-core",
-      "tier": "contributor",
-      "timestamp": "2026-04-19T20:30:55-04:00",
-      "title": "Merge pull request #21 from kaizencycle/cursor/fix-mcp-router-render-9dc6\n\nfix(ledger): fastapi-mcp-router in root requirements + optional MCP fallback for Render",
-      "sha": "039bb6886637b0c9dc60de9ed54b7c489fd54eb3",
-      "source": "mesh-node",
-      "author": "Michael Judan",
-      "type": "mesh-commit",
-      "_mesh_node": "civic-protocol-core",
-      "_mesh_tier": "contributor"
-    },
-    {
       "id": "a4058bf7-zeus-verify",
       "timestamp": "2026-04-20T00:02:44Z",
       "author": "cursor-agent",
@@ -293,190 +314,6 @@
       "verified": false,
       "sha": "1bbb51ee6bedd723617e5fb3089dd94a570a285d",
       "_mesh_node": "mobius-civic-ai-terminal",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "EPICON-CPC-089d1ddc3437d89eb3abcbac18ad23427f4b6cfa",
-      "node_id": "civic-protocol-core",
-      "tier": "contributor",
-      "timestamp": "2026-04-19T17:47:26-04:00",
-      "title": "Merge pull request #20 from kaizencycle/cursor/fix-base58-lazy-ipfs-9dc6\n\nfix(ledger): avoid base58 import at startup — lazy IPFS pin + root requirements",
-      "sha": "089d1ddc3437d89eb3abcbac18ad23427f4b6cfa",
-      "source": "mesh-node",
-      "author": "Michael Judan",
-      "type": "mesh-commit",
-      "_mesh_node": "civic-protocol-core",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "EPICON-CPC-7c040433c6b9baabd41ff9249ced4ea37009471c",
-      "node_id": "civic-protocol-core",
-      "tier": "contributor",
-      "timestamp": "2026-04-19T15:18:42-04:00",
-      "title": "Merge pull request #19 from kaizencycle/cursor/render-pythonpath-env-9dc6\n\nfix(render): PYTHONPATH=. so `uvicorn ledger.app.main:app` works when dashboard overrides start",
-      "sha": "7c040433c6b9baabd41ff9249ced4ea37009471c",
-      "source": "mesh-node",
-      "author": "Michael Judan",
-      "type": "mesh-commit",
-      "_mesh_node": "civic-protocol-core",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "EPICON-CPC-e763b03a34cea0b8da31346985d8c48405c59bcd",
-      "node_id": "civic-protocol-core",
-      "tier": "contributor",
-      "timestamp": "2026-04-19T15:03:53-04:00",
-      "title": "Merge pull request #18 from kaizencycle/cursor/render-start-script-9dc6\n\nfix(render): Python start script so civic-ledger-api always finds `ledger` on Render",
-      "sha": "e763b03a34cea0b8da31346985d8c48405c59bcd",
-      "source": "mesh-node",
-      "author": "Michael Judan",
-      "type": "mesh-commit",
-      "_mesh_node": "civic-protocol-core",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "EPICON-CPC-03dc9faa32ced0f067f5d35d8a07a242017fde8a",
-      "node_id": "civic-protocol-core",
-      "tier": "contributor",
-      "timestamp": "2026-04-19T14:57:48-04:00",
-      "title": "Merge pull request #17 from kaizencycle/cursor/render-ledger-pythonpath-9dc6\n\nfix(render): resolve ModuleNotFoundError: ledger on Civic Ledger deploy",
-      "sha": "03dc9faa32ced0f067f5d35d8a07a242017fde8a",
-      "source": "mesh-node",
-      "author": "Michael Judan",
-      "type": "mesh-commit",
-      "_mesh_node": "civic-protocol-core",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "fef77f26-merge",
-      "timestamp": "2026-04-19T18:40:59Z",
-      "author": "kaizencycle",
-      "title": "Merge pull request #340 from kaizencycle/cursor/c286-terminal-oaa-writer-31e3",
-      "type": "merge",
-      "severity": "info",
-      "tags": [
-        "merge",
-        "pr"
-      ],
-      "source": "github-commit",
-      "verified": false,
-      "sha": "fef77f262b5293a22a4b0105a703e7c9ec039e8b",
-      "_mesh_node": "mobius-civic-ai-terminal",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "EPICON-CPC-c3b70714092796d165bb55dc3a8c218e8ed1a72c",
-      "node_id": "civic-protocol-core",
-      "tier": "contributor",
-      "timestamp": "2026-04-19T14:40:20-04:00",
-      "title": "Merge pull request #16 from kaizencycle/cursor/c286-oaa-proof-ingest-9dc6",
-      "sha": "c3b70714092796d165bb55dc3a8c218e8ed1a72c",
-      "source": "mesh-node",
-      "author": "Michael Judan",
-      "type": "mesh-commit",
-      "_mesh_node": "civic-protocol-core",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "1168389f-zeus-verify",
-      "timestamp": "2026-04-19T18:02:53Z",
-      "author": "cursor-agent",
-      "title": "zeus: verification disputed · C-286 [skip ci]",
-      "type": "zeus-verify",
-      "severity": "info",
-      "tags": [
-        "zeus"
-      ],
-      "source": "github-commit",
-      "verified": false,
-      "sha": "1168389f90726e30342b153756ba7438575e6602",
-      "_mesh_node": "mobius-civic-ai-terminal",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "EPICON-CPC-0b658e5d334a85c2599d571d00ecc62e4390fc5e",
-      "node_id": "civic-protocol-core",
-      "tier": "contributor",
-      "timestamp": "2026-04-19T13:59:09-04:00",
-      "title": "Merge pull request #15 from kaizencycle/cursor/mobius-yaml-v1-c286-9dc6\n\ndocs(mesh): mobius.yaml v1 — pulse, ingest, policy (C-286 ledger adoption)",
-      "sha": "0b658e5d334a85c2599d571d00ecc62e4390fc5e",
-      "source": "mesh-node",
-      "author": "Michael Judan",
-      "type": "mesh-commit",
-      "_mesh_node": "civic-protocol-core",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "cf4f9422-merge",
-      "timestamp": "2026-04-19T17:58:59Z",
-      "author": "kaizencycle",
-      "title": "feat(mesh): mobius.yaml v1 — pulse, ingest, policy + hash ingest client",
-      "type": "merge",
-      "severity": "info",
-      "tags": [
-        "merge",
-        "pr"
-      ],
-      "source": "github-commit",
-      "verified": false,
-      "sha": "cf4f9422dc0d759dcc6a99bc3fc48c02dc156329",
-      "_mesh_node": "mobius-civic-ai-terminal",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "EPICON-CPC-c1e271c7f37082c70e731a2fe9b975fc6f70fe78",
-      "node_id": "civic-protocol-core",
-      "tier": "contributor",
-      "timestamp": "2026-04-19T13:28:59-04:00",
-      "title": "Merge pull request #14 from kaizencycle/cursor/decentralization-phase1-9dc6\n\nfeat(decentralization): Phase 1 IPFS hybrid bridge — mesh CIDs, indexer sync, sovereign compose",
-      "sha": "c1e271c7f37082c70e731a2fe9b975fc6f70fe78",
-      "source": "mesh-node",
-      "author": "Michael Judan",
-      "type": "mesh-commit",
-      "_mesh_node": "civic-protocol-core",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "fa923a9d-merge",
-      "timestamp": "2026-04-19T17:27:08Z",
-      "author": "kaizencycle",
-      "title": "feat(mesh): Terminal MeshClient for hybrid IPFS gateway reads (Phase 1–2 slice)",
-      "type": "merge",
-      "severity": "info",
-      "tags": [
-        "merge",
-        "pr"
-      ],
-      "source": "github-commit",
-      "verified": false,
-      "sha": "fa923a9dfa55202af0aefbcdd957cfabd74afb80",
-      "_mesh_node": "mobius-civic-ai-terminal",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "EPICON-CPC-be23fd991525f879c20332d0cfc4d4f5ea274a03",
-      "node_id": "civic-protocol-core",
-      "tier": "contributor",
-      "timestamp": "2026-04-19T12:00:29-04:00",
-      "title": "Merge pull request #13 from kaizencycle/cursor/c-286-mcp-bridge-9dc6",
-      "sha": "be23fd991525f879c20332d0cfc4d4f5ea274a03",
-      "source": "mesh-node",
-      "author": "Michael Judan",
-      "type": "mesh-commit",
-      "_mesh_node": "civic-protocol-core",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "EPICON-CPC-a93c5f2c7540cf57465cfc9b1f2df3ae23d9dfc3",
-      "node_id": "civic-protocol-core",
-      "tier": "contributor",
-      "timestamp": "2026-04-19T11:36:43-04:00",
-      "title": "Merge pull request #12 from kaizencycle/cursor/c-286-mns-mesh-9dc6\n\nfeat(mesh): MNS node registration — mobius.yaml, ledger/feed.json, POST /mesh/ingest",
-      "sha": "a93c5f2c7540cf57465cfc9b1f2df3ae23d9dfc3",
-      "source": "mesh-node",
-      "author": "Michael Judan",
-      "type": "mesh-commit",
-      "_mesh_node": "civic-protocol-core",
       "_mesh_tier": "contributor"
     }
   ]
