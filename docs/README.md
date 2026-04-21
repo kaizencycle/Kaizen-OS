@@ -1,6 +1,6 @@
-# 🌀 Mobius Systems Documentation Portal
+# 🌀 Mobius Substrate Documentation Portal
 
-> **The world's first KTT-native operating system — Complete documentation hub**
+> **Complete documentation hub**
 
 ---
 
