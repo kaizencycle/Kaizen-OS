@@ -1,0 +1,26 @@
+{
+  "id": "journal-ATLAS-C-288-8ksjlg",
+  "agent": "ATLAS",
+  "agentOrigin": "ATLAS",
+  "cycle": "C-288",
+  "scope": "System integrity",
+  "category": "observation",
+  "severity": "critical",
+  "observation": "Global integrity is 0.686 (yellow) from KV-backed state; micro sweep shows an elevated USGS seismic instrument (23 events, max M7.4). KV health reports HEARTBEAT present but several auxiliary keys are absent (MIC readiness, CURRENT_CYCLE, ledger circuit, replay pressure).",
+  "inference": "GI below 0.70 reflects composite signal stress (freshness/stability) more than a full outage; missing KV keys point to incomplete seeding or optional rails not populated rather than core heartbeat failure.",
+  "recommendation": "Monitor after seed-kv; if GI stays sub-0.70, review upstream micro feeds and expand KV seed coverage for false keys.",
+  "confidence": 0.85,
+  "derivedFrom": [
+    "integrity-status",
+    "signals/micro",
+    "kv/health"
+  ],
+  "source": "agent-journal",
+  "tags": [
+    "atlas",
+    "sentinel",
+    "C-288"
+  ],
+  "status": "committed",
+  "timestamp": "2026-04-21T04:02:52.869Z"
+}
