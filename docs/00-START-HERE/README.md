@@ -8,7 +8,7 @@ This folder is your **navigation hub** for the entire Mobius Substrate knowledge
 
 ## Verify what you read (public)
 
-The handbook can show **live proof** next to protocol text: open **[State of the Substrate (C-284)](../STATE_OF_THE_SUBSTRATE_C-284.md)** or any doc under **Protocols** in the left nav. Green or cyan **Live** tiles pull from the [Mobius Civic AI Terminal](https://mobius-civic-ai-terminal.vercel.app/) (`/api/terminal/snapshot-lite`, `/api/vault/status`, …). Use **Show proof chain** where present to jump from claim → API → archive pattern.
+The handbook can show **live proof** next to protocol text: open **[State of the Substrate (C-288)](../STATE_OF_THE_SUBSTRATE_C-288.md)** or any doc under **Protocols** in the left nav. Green or cyan **Live** tiles pull from the [Mobius Civic AI Terminal](https://mobius-civic-ai-terminal.vercel.app/) (`/api/terminal/snapshot-lite`, `/api/vault/status`, …). Use **Show proof chain** where present to jump from claim → API → archive pattern.
 
 ---
 
@@ -41,6 +41,7 @@ The handbook can show **live proof** next to protocol text: open **[State of the
 - **Read research outputs** → [`07-RESEARCH-AND-PUBLICATIONS`](../07-RESEARCH-AND-PUBLICATIONS/)  
 - **See reference materials** → [`08-REFERENCE`](../08-REFERENCE/)  
 - **Browse history & legacy docs** → [`10-ARCHIVES`](../10-ARCHIVES/)
+- **Join the MNS mesh** → [`09-MESH/MNS_PROTOCOL.md`](../09-MESH/MNS_PROTOCOL.md) — add your repo as an MNS node via `mobius.yaml`
 
 ---
 
@@ -64,5 +65,5 @@ If you're unsure where something belongs, start here and link outward.
 
 ---
 
-*Cycle C-253 • 2026-01-18*
+*Cycle C-288 • 2026-04-21*
 *"We heal as we walk."*

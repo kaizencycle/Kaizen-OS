@@ -151,10 +151,11 @@ nav:
   - Handbook hub: 11-SUPPLEMENTARY/handbook/README.md
   - Public hub:
       - Start Here: 00-START-HERE/README.md
-      - Live state (C-284): STATE_OF_THE_SUBSTRATE_C-284.md
+      - Live state (C-288): STATE_OF_THE_SUBSTRATE_C-288.md
+      - Live state (C-284, archived): STATE_OF_THE_SUBSTRATE_C-284.md
       - Interactive library: 11-SUPPLEMENTARY/handbook/interactive-library.md
       - Proof tags (authoring): 11-SUPPLEMENTARY/handbook/proof-tags-authoring.md
-  - Protocols (C-284):
+  - Protocols:
       - Vault v1 (to Fountain): protocols/vault-to-fountain-protocol.md
       - Vault v2 (Sealed Reserve): protocols/vault-v2-sealed-reserve.md
       - Agent Reporting: protocols/agent-reporting-protocol.md
@@ -166,6 +167,7 @@ nav:
       - MNS Protocol v1: 09-MESH/MNS_PROTOCOL.md
       - MCP Bridge (mobius.yaml): 09-MESH/MNS_MCP_BRIDGE.md
       - Decentralization (Phase 1–2): 09-MESH/DECENTRALIZATION_PHASE1_2.md
+      - KV storage tiers: 09-MESH/KV_STORAGE_TIERS.md
   - Architecture:
       - Overview: 04-TECHNICAL-ARCHITECTURE/overview/README.md
       - MIC (runtime issuance): 04-TECHNICAL-ARCHITECTURE/mic/README.md
