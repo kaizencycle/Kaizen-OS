@@ -1,7 +1,7 @@
 # Mobius Systems Documentation Index
 
-**Version:** 1.9.0  
-**Cycle:** C-287
+**Version:** 2.0.0  
+**Cycle:** C-288
 
 This index provides navigation to all key Mobius documentation.
 
@@ -15,7 +15,8 @@ The site you are reading is the **Mobius Handbook** (MkDocs). It stays close to 
 |------|---------|
 | [Mobius Civic AI Terminal](https://mobius-civic-ai-terminal.vercel.app/) | Live dashboard (hot truth) |
 | [Terminal repository](https://github.com/kaizencycle/mobius-civic-ai-terminal) | Source for API routes, snapshot, Vault |
-| [State of the Substrate (C-284)](./STATE_OF_THE_SUBSTRATE_C-284.md) | Snapshot narrative + live proof tiles |
+| [State of the Substrate (C-288)](./STATE_OF_THE_SUBSTRATE_C-288.md) | Current snapshot (C-288) |
+| [State of the Substrate (C-284)](./STATE_OF_THE_SUBSTRATE_C-284.md) | Historical snapshot (C-284, archived) |
 | [Handbook hub](./11-SUPPLEMENTARY/handbook/README.md) | Current Mobius handbook entry + map |
 | [Interactive library](./11-SUPPLEMENTARY/handbook/interactive-library.md) | How proof tags and proof chains work |
 | [Archived Kaizen-OS handbook (2025)](./10-ARCHIVES/handbook/kaizen-os-2025/index.md) | Historical “Kaizen-OS” narrative (superseded framing) |
@@ -41,6 +42,7 @@ Cross-repo integrity mesh: registry, `mobius.yaml` node declarations, aggregate 
 | [`mesh/mobius-yaml-spec.md`](https://github.com/kaizencycle/Mobius-Substrate/blob/main/mesh/mobius-yaml-spec.md) | `mobius.yaml` field reference |
 | [`mobius.yaml`](https://github.com/kaizencycle/Mobius-Substrate/blob/main/mobius.yaml) | Substrate self-declaration (sentinel) |
 | [Decentralization Phase 1–2 (Substrate)](./09-MESH/DECENTRALIZATION_PHASE1_2.md) | IPFS resolver + mesh-node scope vs Protocol-Core |
+| [KV storage tier architecture](./09-MESH/KV_STORAGE_TIERS.md) | Five-tier fallback · Upstash → Redis → OAA → Postgres → GitHub |
 
 ---
 

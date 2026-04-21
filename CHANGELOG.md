@@ -6,9 +6,25 @@ Versioning: [Semantic Versioning](https://semver.org/).
 
 ---
 
-## [Unreleased] — C-288 and beyond
+## [Unreleased] — C-289 and beyond
 
-Planned: HIVE `world-update.yml` / `quest-proposal.yml` in **mobius-hive**; browser-shell renderers for `mobius-pulse.json` + world artifacts; optional 15-minute mesh cron (cost tradeoff).
+Planned: HIVE `world-update.yml` / `quest-proposal.yml` in **mobius-hive**; browser-shell renderers for `mobius-pulse.json` + world artifacts; optional 15-minute mesh cron (cost tradeoff); Seal 001 attestation flow; EVE governance review.
+
+---
+
+## [C-288] — 2026-04-21
+
+### Added
+- **State of the Substrate C-288:** `docs/STATE_OF_THE_SUBSTRATE_C-288.md` — full system snapshot covering C-285→C-288 architectural arc (tokenomics proof chain, MNS mesh, MCP bridge, KV optimization, read resilience, vault threshold, five-repo map, storage tier architecture, agent roster with MII scores, known issues).
+- **KV storage tier reference:** `docs/09-MESH/KV_STORAGE_TIERS.md` — five-tier storage architecture doc (Upstash KV → backup Redis → OAA bridge → Civic-Protocol-Core → GitHub ledger), GI resolution chain, request budget table.
+
+### Changed
+- `docs/INDEX.md` updated to v2.0.0 / C-288; State of the Substrate table now shows C-288 as current and C-284 as archived; KV storage tier link added to Mesh section.
+- `docs/00-START-HERE/README.md` cycle footer updated from C-253 to C-288; State of the Substrate reference updated to C-288; MNS mesh join path added to "I Want To…" section.
+- `cycle.json` updated to C-288 with vault, kv, mesh, and agents sub-objects; open_flags array reflecting known C-288 issues.
+
+### Context
+Vault tranche 1 at 99.5% (49.75/50). Hash coverage 100%. MNS mesh live across four nodes. KV ops at ~277k/month (under 500k free tier after C-287 bundling + edge cache). GI at 0.67 (yellow, stressed). Fountain gate locked pending GI sustain (0/5 cycles at ≥0.95).
 
 ---
 
@@ -174,4 +190,4 @@ what it has built.*
 
 **Format:** [Keep a Changelog](https://keepachangelog.com/)
 **Versioning:** [Semantic Versioning](https://semver.org/)
-**Last Updated:** 2026-04-17 (C-284)
+**Last Updated:** 2026-04-21 (C-288)

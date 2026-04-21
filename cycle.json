@@ -1,13 +1,47 @@
 {
-  "current_cycle": "C-287",
-  "date": "2026-04-19",
-  "gi": 0.74,
+  "current_cycle": "C-288",
+  "date": "2026-04-21",
+  "gi": 0.67,
   "mode": "yellow",
   "terminal": "https://mobius-civic-ai-terminal.vercel.app",
   "snapshot": "https://mobius-civic-ai-terminal.vercel.app/api/terminal/snapshot",
   "snapshot_lite": "https://mobius-civic-ai-terminal.vercel.app/api/terminal/snapshot-lite",
   "vault_status": "https://mobius-civic-ai-terminal.vercel.app/api/vault/status",
   "vault_seals": "https://mobius-civic-ai-terminal.vercel.app/api/vault/seal",
-  "last_updated": "2026-04-17T09:40:00Z",
-  "notes": "C-287: Mesh workflow v1 — mobius-pulse.json for HIVE/browser-shell; mobius.yaml jobs + governance canon. C-288 HIVE world-update workflows land in mobius-hive repo."
+  "last_updated": "2026-04-21T00:00:00Z",
+  "vault": {
+    "in_progress_balance": 49.746,
+    "tranche_target": 50,
+    "hash_coverage_pct": 100,
+    "seals_count": 0,
+    "fountain_status": "locked"
+  },
+  "kv": {
+    "primary": "upstash",
+    "backup_redis": true,
+    "oaa_bridge": true,
+    "mget_bundled": true,
+    "edge_cache_s": 15,
+    "monthly_ops_target": 277000
+  },
+  "mesh": {
+    "nodes_registered": 4,
+    "mcp_tools": 6,
+    "mcp_endpoint": "https://mobius-civic-ai-terminal.vercel.app/api/mcp"
+  },
+  "agents": {
+    "roster": ["ATLAS", "ZEUS", "EVE", "JADE", "AUREA", "HERMES", "ECHO", "DAEDALUS"],
+    "seal_quorum": ["ATLAS", "ZEUS", "EVE", "JADE", "AUREA"]
+  },
+  "open_flags": [
+    "ethics:active-tripwire",
+    "ethics:narrative-cluster-spike",
+    "hermes-narrative-lane-dead",
+    "civic-protocol-core-render-failed",
+    "github-archive-credential-expired"
+  ],
+  "doc_version": "2.0.0",
+  "last_state_snapshot": "C-288",
+  "next_state_snapshot_expected": "C-310 or Seal-001",
+  "notes": "C-288: vault at 99.5% tranche 1 (49.75/50), hash coverage 100%, MNS mesh live (4 nodes, 6 MCP tools), KV optimized to ~277k ops/month."
 }
