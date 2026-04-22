@@ -1,0 +1,126 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://mobius.systems/schemas/journal-entry.schema.json",
+  "title": "Mobius Canonical Journal Entry",
+  "description": "Canonical journal entry contract for Mobius-Substrate durable memory.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "agent",
+    "agentOrigin",
+    "cycle",
+    "scope",
+    "category",
+    "severity",
+    "observation",
+    "inference",
+    "recommendation",
+    "confidence",
+    "derivedFrom",
+    "source",
+    "tags",
+    "timestamp"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "minLength": 3,
+      "pattern": "^journal-[A-Za-z0-9_-]+$"
+    },
+    "agent": {
+      "type": "string",
+      "enum": ["ATLAS", "ZEUS", "HERMES", "ECHO", "AUREA", "JADE", "EVE", "DAEDALUS"]
+    },
+    "agentOrigin": {
+      "type": "string",
+      "enum": ["ATLAS", "ZEUS", "HERMES", "ECHO", "AUREA", "JADE", "EVE", "DAEDALUS"]
+    },
+    "cycle": {
+      "type": "string",
+      "pattern": "^C-[0-9]{1,4}$"
+    },
+    "scope": {
+      "type": "string",
+      "minLength": 1
+    },
+    "category": {
+      "type": "string",
+      "minLength": 1
+    },
+    "severity": {
+      "type": "string",
+      "enum": ["nominal", "watch", "elevated", "critical"]
+    },
+    "observation": {
+      "type": "string",
+      "minLength": 1
+    },
+    "inference": {
+      "type": "string",
+      "minLength": 1
+    },
+    "recommendation": {
+      "type": "string",
+      "minLength": 1
+    },
+    "confidence": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "derivedFrom": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "source": {
+      "type": "string",
+      "const": "agent-journal"
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 1
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "gi_at_time": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "status": {
+      "type": "string",
+      "minLength": 1
+    },
+    "verification_status": {
+      "type": "string",
+      "minLength": 1
+    },
+    "tripwire_context": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "canonical_path": {
+      "type": "string",
+      "pattern": "^journals\\/[a-z]+\\/[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}-[0-9]{2}-[0-9]{2}Z-journal\\.json$"
+    },
+    "commit_sha": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{7,40}$"
+    }
+  }
+}

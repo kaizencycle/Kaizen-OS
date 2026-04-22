@@ -43,6 +43,20 @@ npm run cycle:render
 npm run cycle:check
 ```
 
+## Canonical Agent Journal Files
+
+Agent journals under `journals/{agent}/` are canonical Substrate memory and must use:
+
+```text
+YYYY-MM-DDTHH-MM-SSZ-journal.json
+```
+
+Validation and replay tooling:
+
+- `npx tsx scripts/validate-journals.ts`
+- `npx tsx scripts/generate-cycle-journal-index.ts C-289`
+- `docs/architecture/JOURNAL_LAYER.md`
+
 ### Agent Prompts
 
 - [ATLAS Prompt](../prompts/cycle_journal/ATLAS.md) — Topology mapping

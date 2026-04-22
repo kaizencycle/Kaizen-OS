@@ -50,7 +50,9 @@
     "benchmark": "vitest bench --run",
     "benchmark:ci": "vitest bench --run",
     "benchmark:baseline": "vitest bench --reporter=json --outputFile=tests/benchmarks/.baselines/current.json",
-    "test:coverage": "turbo run test -- --coverage"
+    "test:coverage": "turbo run test -- --coverage",
+    "journals:validate": "npx tsx scripts/validate-journals.ts",
+    "journals:index": "npx tsx scripts/generate-cycle-journal-index.ts"
   },
   "dependencies": {
     "gray-matter": "4.0.3"
