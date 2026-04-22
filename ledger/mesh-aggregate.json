@@ -1,24 +1,24 @@
 {
   "schema": "MNS_AGGREGATE_V1",
-  "updated_at": "2026-04-22T15:05:01.168Z",
+  "updated_at": "2026-04-22T16:49:52.263Z",
   "node_count": 5,
   "live_nodes": 2,
-  "total_entries": 12,
+  "total_entries": 11,
   "nodes": [
     {
       "node_id": "mobius-substrate",
       "tier": "sentinel",
       "node_type": "substrate",
       "entry_count": 0,
-      "fetched_at": "2026-04-22T15:04:53.273Z",
+      "fetched_at": "2026-04-22T16:49:44.384Z",
       "error": null
     },
     {
       "node_id": "mobius-civic-ai-terminal",
       "tier": "contributor",
       "node_type": "app",
-      "entry_count": 12,
-      "fetched_at": "2026-04-22T15:04:56.369Z",
+      "entry_count": 11,
+      "fetched_at": "2026-04-22T16:49:47.476Z",
       "error": null
     },
     {
@@ -26,7 +26,7 @@
       "tier": "contributor",
       "node_type": "service",
       "entry_count": 0,
-      "fetched_at": "2026-04-22T15:05:01.168Z",
+      "fetched_at": "2026-04-22T16:49:52.263Z",
       "error": "timeout"
     },
     {
@@ -232,23 +232,6 @@
       "source": "github-commit",
       "verified": false,
       "sha": "af5b3711b3df19c0acf8763f5600096e9f03a277",
-      "_mesh_node": "mobius-civic-ai-terminal",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "6ce8f59c-merge",
-      "timestamp": "2026-04-21T02:00:15Z",
-      "author": "kaizencycle",
-      "title": "perf(kv): reduce Upstash command burn — MGET snapshot-lite, cache, selective mirror",
-      "type": "merge",
-      "severity": "info",
-      "tags": [
-        "merge",
-        "pr"
-      ],
-      "source": "github-commit",
-      "verified": false,
-      "sha": "6ce8f59c7fa67785c2ee6292b861308b2e1e0820",
       "_mesh_node": "mobius-civic-ai-terminal",
       "_mesh_tier": "contributor"
     }
