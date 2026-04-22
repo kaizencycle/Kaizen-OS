@@ -1,24 +1,24 @@
 {
   "schema": "MNS_AGGREGATE_V1",
-  "updated_at": "2026-04-22T20:06:36.606Z",
+  "updated_at": "2026-04-22T21:42:29.146Z",
   "node_count": 5,
   "live_nodes": 3,
-  "total_entries": 21,
+  "total_entries": 22,
   "nodes": [
     {
       "node_id": "mobius-substrate",
       "tier": "sentinel",
       "node_type": "substrate",
       "entry_count": 0,
-      "fetched_at": "2026-04-22T20:06:36.437Z",
+      "fetched_at": "2026-04-22T21:42:28.865Z",
       "error": null
     },
     {
       "node_id": "mobius-civic-ai-terminal",
       "tier": "contributor",
       "node_type": "app",
-      "entry_count": 11,
-      "fetched_at": "2026-04-22T20:06:36.606Z",
+      "entry_count": 12,
+      "fetched_at": "2026-04-22T21:42:29.146Z",
       "error": null
     },
     {
@@ -26,7 +26,7 @@
       "tier": "contributor",
       "node_type": "service",
       "entry_count": 10,
-      "fetched_at": "2026-04-22T20:06:36.463Z",
+      "fetched_at": "2026-04-22T21:42:28.891Z",
       "error": null
     },
     {
@@ -47,6 +47,40 @@
     }
   ],
   "entries": [
+    {
+      "id": "f083c541-merge",
+      "timestamp": "2026-04-22T21:04:54Z",
+      "author": "kaizencycle",
+      "title": "docs: add Mobius Trust Tripwires v1 specification",
+      "type": "merge",
+      "severity": "info",
+      "tags": [
+        "merge",
+        "pr"
+      ],
+      "source": "github-commit",
+      "verified": false,
+      "sha": "f083c5413f60dce6e39cbbc874d09289153878e5",
+      "_mesh_node": "mobius-civic-ai-terminal",
+      "_mesh_tier": "contributor"
+    },
+    {
+      "id": "26f58ee1-merge",
+      "timestamp": "2026-04-22T20:41:07Z",
+      "author": "kaizencycle",
+      "title": "feat(terminal): agent liveness contract + substrate-backed journal read/write modes",
+      "type": "merge",
+      "severity": "info",
+      "tags": [
+        "merge",
+        "pr"
+      ],
+      "source": "github-commit",
+      "verified": false,
+      "sha": "26f58ee1c4b1d14e08e5a0a5f95a5d1c5b6f2e3d",
+      "_mesh_node": "mobius-civic-ai-terminal",
+      "_mesh_tier": "contributor"
+    },
     {
       "id": "30a494c1-merge",
       "timestamp": "2026-04-22T16:35:30Z",
@@ -216,22 +250,6 @@
       "verified": true,
       "sha": "12013231f31a3cc6e7fda568fba184a6347e5fb7",
       "verifiedBy": "ZEUS",
-      "_mesh_node": "mobius-civic-ai-terminal",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "054c1e43-zeus-verify",
-      "timestamp": "2026-04-21T06:04:10Z",
-      "author": "cursor-agent",
-      "title": "zeus: verification disputed · C-288 [skip ci]",
-      "type": "zeus-verify",
-      "severity": "info",
-      "tags": [
-        "zeus"
-      ],
-      "source": "github-commit",
-      "verified": false,
-      "sha": "054c1e43d6cffddf7cb50ffcd7cb7f0bf2d8413f",
       "_mesh_node": "mobius-civic-ai-terminal",
       "_mesh_tier": "contributor"
     },
