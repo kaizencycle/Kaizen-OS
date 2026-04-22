@@ -1,15 +1,15 @@
 {
   "mobius_catalog_version": "1.0.0",
-  "generated_at": "2026-04-21T04:52:22.144Z",
+  "generated_at": "2026-04-22T04:50:26.149Z",
   "repo": {
     "name": "Mobius-Substrate",
     "url": "https://github.com/kaizencycle/Mobius-Substrate",
     "default_branch": "main",
-    "commit": "fa2b0b1ef4c2763a4e1b225d619b7fb163354d63"
+    "commit": "26ea7c17ca27197c63e69d9b9a72c74015ebfcad"
   },
   "stats": {
     "epiconCount": 0,
-    "docCount": 947
+    "docCount": 949
   },
   "epicons": [],
   "docs": [
@@ -90,7 +90,7 @@
       "title": "Welcome to Mobius Substrate Documentation",
       "category": "00-START-HERE",
       "tags": [],
-      "content_hash": "sha256:7e4ccd86555d062ef6db09a8e3d5db6015212ec605e2eebed18570ac4e670b70",
+      "content_hash": "sha256:f708e6b207cb0f9a44b9c4f02aea12e153facb30fd3679b10ba0e524f89d99ee",
       "summary": ""
     },
     {
@@ -3582,6 +3582,14 @@
       "summary": ""
     },
     {
+      "path": "docs/09-MESH/KV_STORAGE_TIERS.md",
+      "title": "KV Storage Tier Architecture",
+      "category": "09-MESH",
+      "tags": [],
+      "content_hash": "sha256:cdeab63ec664e0203d00032cc55a319d5382bb6a0ed3e01b0befaa7ddff2d975",
+      "summary": ""
+    },
+    {
       "path": "docs/09-MESH/MESH_WORKFLOW_V1.md",
       "title": "Mobius Mesh Workflow v1 — C-287 HIVE bridge (C-288 loop)",
       "category": "09-MESH",
@@ -7026,7 +7034,7 @@
       "title": "Mobius Systems Documentation Index",
       "category": "INDEX.md",
       "tags": [],
-      "content_hash": "sha256:4b2f2c5dd809bea230d523609e49168da3dbc6c26f9652ec46a1041e9f95ceeb",
+      "content_hash": "sha256:d03163e75292e38f03d9277fb74a33a42ecb95db2a55d960381cadbae80cef6d",
       "summary": ""
     },
     {
@@ -7063,10 +7071,10 @@
     },
     {
       "path": "docs/README.md",
-      "title": "🌀 Mobius Systems Documentation Portal",
+      "title": "🌀 Mobius Substrate Documentation Portal",
       "category": "README.md",
       "tags": [],
-      "content_hash": "sha256:614e6cda49ed7f1224929ce4866d8fcc433915a8a06bd456f80266290c8be8b5",
+      "content_hash": "sha256:7b0ae8396dd3217c37cd59f06b21d72321c4be87ea1bdf70c3fe90d7fe8a9883",
       "summary": ""
     },
     {
@@ -7099,6 +7107,14 @@
       "category": "STATE_OF_THE_SUBSTRATE_C-284.md",
       "tags": [],
       "content_hash": "sha256:db4247efd418dafdd06285a7d435391af1a166727e6e6c407373dd3ad54ad9df",
+      "summary": ""
+    },
+    {
+      "path": "docs/STATE_OF_THE_SUBSTRATE_C-288.md",
+      "title": "State of the Substrate · C-288",
+      "category": "STATE_OF_THE_SUBSTRATE_C-288.md",
+      "tags": [],
+      "content_hash": "sha256:023174a54a988a5ff381d42523ce0edd1d89c4df0bd2b9600bb6e1295478d34b",
       "summary": ""
     },
     {
@@ -7194,7 +7210,7 @@
       "title": "Divergence Dashboard",
       "category": "divergence",
       "tags": [],
-      "content_hash": "sha256:766127562776f91b579ce7a4a0c106800825daf48579d32c579d7a3e1b5a9e7a",
+      "content_hash": "sha256:1966cde9ea9067e35f70a8b246bc1fbb7a61797793b66e1a8f1021454356a193",
       "summary": ""
     },
     {
