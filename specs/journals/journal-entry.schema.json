@@ -1,0 +1,62 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://kaizencycle.github.io/Mobius-Substrate/specs/journals/journal-entry.schema.json",
+  "title": "Mobius Substrate Journal Entry",
+  "type": "object",
+  "required": [
+    "id",
+    "agent",
+    "agentOrigin",
+    "cycle",
+    "scope",
+    "category",
+    "severity",
+    "observation",
+    "inference",
+    "recommendation",
+    "confidence",
+    "derivedFrom",
+    "source",
+    "tags",
+    "timestamp"
+  ],
+  "additionalProperties": true,
+  "properties": {
+    "id": { "type": "string", "minLength": 1 },
+    "agent": { "type": "string", "minLength": 1 },
+    "agentOrigin": { "type": "string", "minLength": 1 },
+    "cycle": { "type": "string", "pattern": "^C-[0-9]+$" },
+    "scope": { "type": "string", "minLength": 1 },
+    "category": { "type": "string", "minLength": 1 },
+    "severity": {
+      "type": "string",
+      "enum": ["nominal", "elevated", "critical", "info", "warning"]
+    },
+    "observation": { "type": "string", "minLength": 1 },
+    "inference": { "type": "string", "minLength": 1 },
+    "recommendation": { "type": "string", "minLength": 1 },
+    "confidence": { "type": "number", "minimum": 0, "maximum": 1 },
+    "derivedFrom": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "source": { "type": "string", "minLength": 1 },
+    "tags": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "timestamp": { "type": "string", "format": "date-time" },
+    "gi_at_time": { "type": "number", "minimum": 0, "maximum": 1 },
+    "status": { "type": "string" },
+    "verification_status": {
+      "type": "string",
+      "enum": ["unverified", "confirmed", "contested"]
+    },
+    "tripwire_context": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "canonical_path": { "type": "string", "pattern": "^journals/[a-z0-9-]+/.+\\.json$" },
+    "commit_sha": { "type": "string", "minLength": 7 }
+  }
+}

@@ -50,7 +50,10 @@
     "benchmark": "vitest bench --run",
     "benchmark:ci": "vitest bench --run",
     "benchmark:baseline": "vitest bench --reporter=json --outputFile=tests/benchmarks/.baselines/current.json",
-    "test:coverage": "turbo run test -- --coverage"
+    "test:coverage": "turbo run test -- --coverage",
+    "journals:validate": "node scripts/validate-journals.mjs",
+    "journals:index:cycle": "node scripts/generate-cycle-journal-index.mjs",
+    "journals:normalize-filenames": "node scripts/normalize-journal-filenames.mjs"
   },
   "dependencies": {
     "gray-matter": "4.0.3"
