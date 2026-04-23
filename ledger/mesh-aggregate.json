@@ -1,24 +1,24 @@
 {
   "schema": "MNS_AGGREGATE_V1",
-  "updated_at": "2026-04-23T10:15:38.531Z",
+  "updated_at": "2026-04-23T11:54:19.775Z",
   "node_count": 5,
   "live_nodes": 2,
-  "total_entries": 15,
+  "total_entries": 14,
   "nodes": [
     {
       "node_id": "mobius-substrate",
       "tier": "sentinel",
       "node_type": "substrate",
       "entry_count": 0,
-      "fetched_at": "2026-04-23T10:15:30.658Z",
+      "fetched_at": "2026-04-23T11:54:11.919Z",
       "error": null
     },
     {
       "node_id": "mobius-civic-ai-terminal",
       "tier": "contributor",
       "node_type": "app",
-      "entry_count": 15,
-      "fetched_at": "2026-04-23T10:15:33.831Z",
+      "entry_count": 14,
+      "fetched_at": "2026-04-23T11:54:15.000Z",
       "error": null
     },
     {
@@ -26,7 +26,7 @@
       "tier": "contributor",
       "node_type": "service",
       "entry_count": 0,
-      "fetched_at": "2026-04-23T10:15:38.531Z",
+      "fetched_at": "2026-04-23T11:54:19.775Z",
       "error": "timeout"
     },
     {
@@ -282,23 +282,6 @@
       "source": "github-commit",
       "verified": false,
       "sha": "0d655a6224dc9db2424ae950d4059c416f8296d6",
-      "_mesh_node": "mobius-civic-ai-terminal",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "4b426fb7-merge",
-      "timestamp": "2026-04-21T16:52:32Z",
-      "author": "kaizencycle",
-      "title": "feat(C-288): vault seal council notify, MIC KV hydrate, HERMES dead-lane, EVE ethics queue",
-      "type": "merge",
-      "severity": "info",
-      "tags": [
-        "merge",
-        "pr"
-      ],
-      "source": "github-commit",
-      "verified": false,
-      "sha": "4b426fb70cd7b09aea1feecb5d2df58fea757d0f",
       "_mesh_node": "mobius-civic-ai-terminal",
       "_mesh_tier": "contributor"
     }
