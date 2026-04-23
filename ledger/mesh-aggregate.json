@@ -1,24 +1,24 @@
 {
   "schema": "MNS_AGGREGATE_V1",
-  "updated_at": "2026-04-23T17:10:07.643Z",
+  "updated_at": "2026-04-23T18:56:15.642Z",
   "node_count": 5,
   "live_nodes": 3,
-  "total_entries": 26,
+  "total_entries": 27,
   "nodes": [
     {
       "node_id": "mobius-substrate",
       "tier": "sentinel",
       "node_type": "substrate",
       "entry_count": 0,
-      "fetched_at": "2026-04-23T17:10:07.032Z",
+      "fetched_at": "2026-04-23T18:56:15.238Z",
       "error": null
     },
     {
       "node_id": "mobius-civic-ai-terminal",
       "tier": "contributor",
       "node_type": "app",
-      "entry_count": 16,
-      "fetched_at": "2026-04-23T17:10:07.643Z",
+      "entry_count": 17,
+      "fetched_at": "2026-04-23T18:56:15.642Z",
       "error": null
     },
     {
@@ -26,7 +26,7 @@
       "tier": "contributor",
       "node_type": "service",
       "entry_count": 10,
-      "fetched_at": "2026-04-23T17:10:07.185Z",
+      "fetched_at": "2026-04-23T18:56:15.274Z",
       "error": null
     },
     {
@@ -47,6 +47,23 @@
     }
   ],
   "entries": [
+    {
+      "id": "0f46f0a1-merge",
+      "timestamp": "2026-04-23T17:51:26Z",
+      "author": "kaizencycle",
+      "title": "refactor(terminal): render chamber previews from snapshot before enrichment",
+      "type": "merge",
+      "severity": "info",
+      "tags": [
+        "merge",
+        "pr"
+      ],
+      "source": "github-commit",
+      "verified": false,
+      "sha": "0f46f0a12f45bf09981666231706a7836294752f",
+      "_mesh_node": "mobius-civic-ai-terminal",
+      "_mesh_tier": "contributor"
+    },
     {
       "id": "0c0ba703-merge",
       "timestamp": "2026-04-23T16:38:10Z",
