@@ -1,8 +1,8 @@
 # Divergence Dashboard
 
 **Repo:** `kaizencycle/Mobius-Substrate`  
-**Generated:** `2026-04-22T19:05:56Z`  
-**Open PRs:** `0`
+**Generated:** `2026-04-23T02:06:39Z`  
+**Open PRs:** `1`
 
 ## Summary
 
@@ -11,12 +11,14 @@
 | 🔴 High | 0 |
 | 🟡 Medium | 0 |
 | 🟢 Low | 0 |
-| ⚪ Unknown | 0 |
+| ⚪ Unknown | 1 |
 | 🚨 Emergency | 0 |
 
 ## Open PRs
 
-*No open PRs*
+| Sev | PR | Title | Author | EPICON | Gate | Mode | Updated |
+|-----|---:|-------|--------|--------|------|------|---------|
+| ⚪ unknown | [#288](https://github.com/kaizencycle/Mobius-Substrate/pull/288) | feat(journals): add canonical journal schema, inde... | @kaizencycle | ? | ? | — | 2026-04-22 |
 
 ---
 
