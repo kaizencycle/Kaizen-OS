@@ -1,24 +1,24 @@
 {
   "schema": "MNS_AGGREGATE_V1",
-  "updated_at": "2026-04-23T22:35:01.786Z",
+  "updated_at": "2026-04-23T23:36:46.209Z",
   "node_count": 5,
   "live_nodes": 3,
-  "total_entries": 26,
+  "total_entries": 30,
   "nodes": [
     {
       "node_id": "mobius-substrate",
       "tier": "sentinel",
       "node_type": "substrate",
       "entry_count": 0,
-      "fetched_at": "2026-04-23T22:35:01.350Z",
+      "fetched_at": "2026-04-23T23:36:45.689Z",
       "error": null
     },
     {
       "node_id": "mobius-civic-ai-terminal",
       "tier": "contributor",
       "node_type": "app",
-      "entry_count": 16,
-      "fetched_at": "2026-04-23T22:35:01.786Z",
+      "entry_count": 20,
+      "fetched_at": "2026-04-23T23:36:46.209Z",
       "error": null
     },
     {
@@ -26,7 +26,7 @@
       "tier": "contributor",
       "node_type": "service",
       "entry_count": 10,
-      "fetched_at": "2026-04-23T22:35:01.388Z",
+      "fetched_at": "2026-04-23T23:36:45.843Z",
       "error": null
     },
     {
@@ -47,6 +47,91 @@
     }
   ],
   "entries": [
+    {
+      "id": "3b393442-merge",
+      "timestamp": "2026-04-23T23:31:06Z",
+      "author": "kaizencycle",
+      "title": "fix(ui): repair verify route syntax + wire sentiment/gi/families into…",
+      "type": "merge",
+      "severity": "info",
+      "tags": [
+        "merge",
+        "pr"
+      ],
+      "source": "github-commit",
+      "verified": false,
+      "sha": "3b3934428ca6b0f12ba0259407097801e36f8a52",
+      "_mesh_node": "mobius-civic-ai-terminal",
+      "_mesh_tier": "contributor"
+    },
+    {
+      "id": "b72cc353-merge",
+      "timestamp": "2026-04-23T23:23:11Z",
+      "author": "kaizencycle",
+      "title": "Promote verified candidates into EPICON ledger paths",
+      "type": "merge",
+      "severity": "info",
+      "tags": [
+        "merge",
+        "pr"
+      ],
+      "source": "github-commit",
+      "verified": false,
+      "sha": "b72cc353f67c7521e58abfb1d92ce6424ba71df7",
+      "_mesh_node": "mobius-civic-ai-terminal",
+      "_mesh_tier": "contributor"
+    },
+    {
+      "id": "a829278e-merge",
+      "timestamp": "2026-04-23T23:07:43Z",
+      "author": "kaizencycle",
+      "title": "fix(ui): replace !loading with fetchedOnce in useChamberHydration — C…",
+      "type": "merge",
+      "severity": "info",
+      "tags": [
+        "merge",
+        "pr"
+      ],
+      "source": "github-commit",
+      "verified": false,
+      "sha": "a829278e9de8b5bd127c05c394c50b18fc88ddcb",
+      "_mesh_node": "mobius-civic-ai-terminal",
+      "_mesh_tier": "contributor"
+    },
+    {
+      "id": "7bd6b71a-merge",
+      "timestamp": "2026-04-23T22:46:32Z",
+      "author": "kaizencycle",
+      "title": "fix(ui): fix TypeScript build error in micro-agent synthesis — C-290",
+      "type": "merge",
+      "severity": "info",
+      "tags": [
+        "merge",
+        "pr"
+      ],
+      "source": "github-commit",
+      "verified": false,
+      "sha": "7bd6b71a4d5c136732c08f804d13da8633269879",
+      "_mesh_node": "mobius-civic-ai-terminal",
+      "_mesh_tier": "contributor"
+    },
+    {
+      "id": "92d140aa-merge",
+      "timestamp": "2026-04-23T22:36:38Z",
+      "author": "kaizencycle",
+      "title": "fix(ui): resolve chamber hydration stuck state and micro-agent render…",
+      "type": "merge",
+      "severity": "info",
+      "tags": [
+        "merge",
+        "pr"
+      ],
+      "source": "github-commit",
+      "verified": false,
+      "sha": "92d140aa8472aeb987ecb6ac40380fdb13c772cc",
+      "_mesh_node": "mobius-civic-ai-terminal",
+      "_mesh_tier": "contributor"
+    },
     {
       "id": "28b47ff1-merge",
       "timestamp": "2026-04-23T20:29:05Z",
@@ -299,23 +384,6 @@
       "source": "github-commit",
       "verified": false,
       "sha": "30a494c1481a8cd21f8498aee6c949570d1134c6",
-      "_mesh_node": "mobius-civic-ai-terminal",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "7bf22de5-merge",
-      "timestamp": "2026-04-22T01:38:17Z",
-      "author": "kaizencycle",
-      "title": "feat(ui): Pulse — Command Center / Integrity OS layout",
-      "type": "merge",
-      "severity": "info",
-      "tags": [
-        "merge",
-        "pr"
-      ],
-      "source": "github-commit",
-      "verified": false,
-      "sha": "7bf22de5a10724478703942221ac4f24acdb31ad",
       "_mesh_node": "mobius-civic-ai-terminal",
       "_mesh_tier": "contributor"
     },
