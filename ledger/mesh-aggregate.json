@@ -1,24 +1,24 @@
 {
   "schema": "MNS_AGGREGATE_V1",
-  "updated_at": "2026-04-24T21:39:29.871Z",
+  "updated_at": "2026-04-24T22:32:30.275Z",
   "node_count": 5,
   "live_nodes": 2,
-  "total_entries": 18,
+  "total_entries": 19,
   "nodes": [
     {
       "node_id": "mobius-substrate",
       "tier": "sentinel",
       "node_type": "substrate",
       "entry_count": 0,
-      "fetched_at": "2026-04-24T21:39:22.003Z",
+      "fetched_at": "2026-04-24T22:32:22.358Z",
       "error": null
     },
     {
       "node_id": "mobius-civic-ai-terminal",
       "tier": "contributor",
       "node_type": "app",
-      "entry_count": 18,
-      "fetched_at": "2026-04-24T21:39:25.375Z",
+      "entry_count": 19,
+      "fetched_at": "2026-04-24T22:32:25.486Z",
       "error": null
     },
     {
@@ -26,7 +26,7 @@
       "tier": "contributor",
       "node_type": "service",
       "entry_count": 0,
-      "fetched_at": "2026-04-24T21:39:29.871Z",
+      "fetched_at": "2026-04-24T22:32:30.275Z",
       "error": "timeout"
     },
     {
@@ -47,6 +47,23 @@
     }
   ],
   "entries": [
+    {
+      "id": "f5024da9-merge",
+      "timestamp": "2026-04-24T21:12:33Z",
+      "author": "kaizencycle",
+      "title": "Merge pull request #404 from kaizencycle/c291-hermes-journal-router-plan",
+      "type": "merge",
+      "severity": "info",
+      "tags": [
+        "merge",
+        "pr"
+      ],
+      "source": "github-commit",
+      "verified": false,
+      "sha": "f5024da915bb5aaa74fb4a66db0e7d30892db6e9",
+      "_mesh_node": "mobius-civic-ai-terminal",
+      "_mesh_tier": "contributor"
+    },
     {
       "id": "fbeefea2-merge",
       "timestamp": "2026-04-24T21:02:50Z",
