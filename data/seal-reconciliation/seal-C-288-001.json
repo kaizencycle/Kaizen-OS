@@ -1,0 +1,10 @@
+{
+  "seal_id": "seal-C-288-001",
+  "status": "quarantined",
+  "quarantine_reason": "attestation_timeout",
+  "attempt_count": 0,
+  "last_attempt_at": null,
+  "last_attempt_result": null,
+  "finalized_at": null,
+  "failed_at": null
+}
