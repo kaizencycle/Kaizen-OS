@@ -1,15 +1,15 @@
 {
   "mobius_catalog_version": "1.0.0",
-  "generated_at": "2026-04-22T04:50:26.149Z",
+  "generated_at": "2026-04-23T04:54:23.434Z",
   "repo": {
     "name": "Mobius-Substrate",
     "url": "https://github.com/kaizencycle/Mobius-Substrate",
     "default_branch": "main",
-    "commit": "26ea7c17ca27197c63e69d9b9a72c74015ebfcad"
+    "commit": "81d74e951d392b24a3137f8ef804e8745bb00561"
   },
   "stats": {
     "epiconCount": 0,
-    "docCount": 949
+    "docCount": 952
   },
   "epicons": [],
   "docs": [
@@ -7062,6 +7062,14 @@
       "summary": ""
     },
     {
+      "path": "docs/MOBIUS_ARCHIVE_V1.md",
+      "title": "MOBIUS_ARCHIVE_V1",
+      "category": "MOBIUS_ARCHIVE_V1.md",
+      "tags": [],
+      "content_hash": "sha256:e4335eb2d5cbbc6f97e4a90ecbe2e190f122f5dcc3b540eeb63a8f1617afe2bd",
+      "summary": ""
+    },
+    {
       "path": "docs/MONOREPO_HEALTH_SCORECARD.md",
       "title": "Mobius Monorepo Health Scorecard",
       "category": "MONOREPO_HEALTH_SCORECARD.md",
@@ -7142,6 +7150,14 @@
       "summary": ""
     },
     {
+      "path": "docs/architecture/JOURNAL_LAYER.md",
+      "title": "Journal Layer (Canonical Substrate Memory)",
+      "category": "architecture",
+      "tags": [],
+      "content_hash": "sha256:fa3631196d62b0298e49825027044ce8417fda15b5bc7380849d46e437a39e63",
+      "summary": ""
+    },
+    {
       "path": "docs/assets/README.md",
       "title": "Kaizen-OS Branding Assets",
       "category": "assets",
@@ -7210,7 +7226,7 @@
       "title": "Divergence Dashboard",
       "category": "divergence",
       "tags": [],
-      "content_hash": "sha256:1966cde9ea9067e35f70a8b246bc1fbb7a61797793b66e1a8f1021454356a193",
+      "content_hash": "sha256:a4da59e3377532c7c233d74c371a1e20b48d8b11f9ce8600b4306c5ca8f03479",
       "summary": ""
     },
     {
@@ -7618,6 +7634,14 @@
       "category": "protocols",
       "tags": [],
       "content_hash": "sha256:a9d04c1ba23f0bb22d0ea076209dab0ae26b8d2d12b43d488ebab628cd87aedf",
+      "summary": ""
+    },
+    {
+      "path": "docs/prs/journal-substrate-canon-sync.md",
+      "title": "PR: Journal → Substrate Canon Sync",
+      "category": "prs",
+      "tags": [],
+      "content_hash": "sha256:af272e929039869bfcf0a7e64452652149beb9c1f56f8c3c4886433a26c16c8b",
       "summary": ""
     },
     {
