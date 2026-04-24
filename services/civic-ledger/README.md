@@ -86,3 +86,21 @@ Uses `@civic/integrity-units` for canonical conversion math. Names are placehold
 - [ ] Add rate limiting
 - [ ] Add logging infrastructure
 - [ ] Add metrics collection
+
+## Seal Reconciliation (C-290)
+
+- `GET /seal/quarantine` → list quarantined seals and reconciliation state.
+- `POST /seal/reattest` → retry attestations for an existing quarantined seal.
+- `POST /seal/finalize` → finalize a re-attested seal (idempotent).
+
+### Example re-attestation
+
+```bash
+curl -X POST http://localhost:3000/seal/reattest \
+  -H "Content-Type: application/json" \
+  -d '{"seal_id":"seal-C-288-001","force_pass":true}'
+```
+
+### Storage model
+
+This service reads canonical seal artifacts from `seals/` (Substrate history) and stores mutable reconciliation metadata in `data/seal-reconciliation/` for local development. In production, map reconciliation metadata to a durable KV and anchor finalized events to Civic-Core ledger.

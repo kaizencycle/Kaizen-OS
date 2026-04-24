@@ -11,6 +11,7 @@ import { startUbiRun, listUbiRuns, getUbiRun, settleUbiRun } from "./routes/ubi_
 import { listOutbox, enqueueRun, dispatchNow } from "./routes/settlement.js";
 import { getSystemHealth } from "./utils/health.js";
 import { ingestSentiment, getSentimentSummary } from "./routes/sentiment.js";
+import { listQuarantineRoute, reattestRoute, finalizeRoute } from "./routes/seal.js";
 
 const app = express();
 
@@ -83,6 +84,11 @@ app.post("/settlement/dispatch", dispatchNow);
 app.post("/ingest/sentiment", ingestSentiment);
 app.get("/sentiment/summary", getSentimentSummary);
 
+// Seal reconciliation endpoints
+app.get("/seal/quarantine", listQuarantineRoute);
+app.post("/seal/reattest", reattestRoute);
+app.post("/seal/finalize", finalizeRoute);
+
 // 404 handler
 app.use("*", (req: Request, res: Response) => {
   res.status(404).json({
@@ -112,7 +118,10 @@ app.use("*", (req: Request, res: Response) => {
       "POST /settlement/enqueue",
       "POST /settlement/dispatch",
       "POST /ingest/sentiment",
-      "GET /sentiment/summary"
+      "GET /sentiment/summary",
+      "GET /seal/quarantine",
+      "POST /seal/reattest",
+      "POST /seal/finalize"
     ]
   });
 });
