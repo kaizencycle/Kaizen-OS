@@ -1,24 +1,24 @@
 {
   "schema": "MNS_AGGREGATE_V1",
-  "updated_at": "2026-04-24T11:56:40.418Z",
+  "updated_at": "2026-04-24T13:10:52.521Z",
   "node_count": 5,
   "live_nodes": 2,
-  "total_entries": 23,
+  "total_entries": 22,
   "nodes": [
     {
       "node_id": "mobius-substrate",
       "tier": "sentinel",
       "node_type": "substrate",
       "entry_count": 0,
-      "fetched_at": "2026-04-24T11:56:32.494Z",
+      "fetched_at": "2026-04-24T13:10:44.614Z",
       "error": null
     },
     {
       "node_id": "mobius-civic-ai-terminal",
       "tier": "contributor",
       "node_type": "app",
-      "entry_count": 23,
-      "fetched_at": "2026-04-24T11:56:35.555Z",
+      "entry_count": 22,
+      "fetched_at": "2026-04-24T13:10:47.750Z",
       "error": null
     },
     {
@@ -26,7 +26,7 @@
       "tier": "contributor",
       "node_type": "service",
       "entry_count": 0,
-      "fetched_at": "2026-04-24T11:56:40.418Z",
+      "fetched_at": "2026-04-24T13:10:52.521Z",
       "error": "timeout"
     },
     {
@@ -418,23 +418,6 @@
       "source": "github-commit",
       "verified": false,
       "sha": "07674f4bff9eb15545fffe92bc02e11059857eac",
-      "_mesh_node": "mobius-civic-ai-terminal",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "14751eda-merge",
-      "timestamp": "2026-04-22T22:57:05Z",
-      "author": "kaizencycle",
-      "title": "feat(tripwire): add trust tripwire engine and snapshot integration",
-      "type": "merge",
-      "severity": "info",
-      "tags": [
-        "merge",
-        "pr"
-      ],
-      "source": "github-commit",
-      "verified": false,
-      "sha": "14751eda0c5eed984e2f1bb95505ffbfeb03ae12",
       "_mesh_node": "mobius-civic-ai-terminal",
       "_mesh_tier": "contributor"
     }
