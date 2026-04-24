@@ -1,24 +1,24 @@
 {
   "schema": "MNS_AGGREGATE_V1",
-  "updated_at": "2026-04-24T17:43:04.098Z",
+  "updated_at": "2026-04-24T18:37:33.723Z",
   "node_count": 5,
   "live_nodes": 3,
-  "total_entries": 29,
+  "total_entries": 28,
   "nodes": [
     {
       "node_id": "mobius-substrate",
       "tier": "sentinel",
       "node_type": "substrate",
       "entry_count": 0,
-      "fetched_at": "2026-04-24T17:43:03.587Z",
+      "fetched_at": "2026-04-24T18:37:33.232Z",
       "error": null
     },
     {
       "node_id": "mobius-civic-ai-terminal",
       "tier": "contributor",
       "node_type": "app",
-      "entry_count": 19,
-      "fetched_at": "2026-04-24T17:43:04.098Z",
+      "entry_count": 18,
+      "fetched_at": "2026-04-24T18:37:33.722Z",
       "error": null
     },
     {
@@ -26,7 +26,7 @@
       "tier": "contributor",
       "node_type": "service",
       "entry_count": 10,
-      "fetched_at": "2026-04-24T17:43:03.654Z",
+      "fetched_at": "2026-04-24T18:37:33.336Z",
       "error": null
     },
     {
@@ -47,6 +47,23 @@
     }
   ],
   "entries": [
+    {
+      "id": "d51b0e92-merge",
+      "timestamp": "2026-04-24T17:57:43Z",
+      "author": "kaizencycle",
+      "title": "C-292 KV Permission Healthcheck",
+      "type": "merge",
+      "severity": "info",
+      "tags": [
+        "merge",
+        "pr"
+      ],
+      "source": "github-commit",
+      "verified": false,
+      "sha": "d51b0e92821d7ea87f7df3474cb8db8c15b3c3d6",
+      "_mesh_node": "mobius-civic-ai-terminal",
+      "_mesh_tier": "contributor"
+    },
     {
       "id": "d9f6668b-merge",
       "timestamp": "2026-04-24T17:08:56Z",
@@ -333,40 +350,6 @@
       "source": "github-commit",
       "verified": false,
       "sha": "a829278e9de8b5bd127c05c394c50b18fc88ddcb",
-      "_mesh_node": "mobius-civic-ai-terminal",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "7bd6b71a-merge",
-      "timestamp": "2026-04-23T22:46:32Z",
-      "author": "kaizencycle",
-      "title": "fix(ui): fix TypeScript build error in micro-agent synthesis — C-290",
-      "type": "merge",
-      "severity": "info",
-      "tags": [
-        "merge",
-        "pr"
-      ],
-      "source": "github-commit",
-      "verified": false,
-      "sha": "7bd6b71a4d5c136732c08f804d13da8633269879",
-      "_mesh_node": "mobius-civic-ai-terminal",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "92d140aa-merge",
-      "timestamp": "2026-04-23T22:36:38Z",
-      "author": "kaizencycle",
-      "title": "fix(ui): resolve chamber hydration stuck state and micro-agent render…",
-      "type": "merge",
-      "severity": "info",
-      "tags": [
-        "merge",
-        "pr"
-      ],
-      "source": "github-commit",
-      "verified": false,
-      "sha": "92d140aa8472aeb987ecb6ac40380fdb13c772cc",
       "_mesh_node": "mobius-civic-ai-terminal",
       "_mesh_tier": "contributor"
     },
