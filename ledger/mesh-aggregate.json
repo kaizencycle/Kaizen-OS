@@ -1,6 +1,6 @@
 {
   "schema": "MNS_AGGREGATE_V1",
-  "updated_at": "2026-04-24T18:37:33.723Z",
+  "updated_at": "2026-04-24T19:44:12.174Z",
   "node_count": 5,
   "live_nodes": 3,
   "total_entries": 28,
@@ -10,7 +10,7 @@
       "tier": "sentinel",
       "node_type": "substrate",
       "entry_count": 0,
-      "fetched_at": "2026-04-24T18:37:33.232Z",
+      "fetched_at": "2026-04-24T19:44:11.737Z",
       "error": null
     },
     {
@@ -18,7 +18,7 @@
       "tier": "contributor",
       "node_type": "app",
       "entry_count": 18,
-      "fetched_at": "2026-04-24T18:37:33.722Z",
+      "fetched_at": "2026-04-24T19:44:12.173Z",
       "error": null
     },
     {
@@ -26,7 +26,7 @@
       "tier": "contributor",
       "node_type": "service",
       "entry_count": 10,
-      "fetched_at": "2026-04-24T18:37:33.336Z",
+      "fetched_at": "2026-04-24T19:44:11.774Z",
       "error": null
     },
     {
@@ -47,6 +47,74 @@
     }
   ],
   "entries": [
+    {
+      "id": "8556e0d8-merge",
+      "timestamp": "2026-04-24T19:36:22Z",
+      "author": "kaizencycle",
+      "title": "Merge pull request #397 from kaizencycle/c291-deprecation-trace-notes",
+      "type": "merge",
+      "severity": "info",
+      "tags": [
+        "merge",
+        "pr"
+      ],
+      "source": "github-commit",
+      "verified": false,
+      "sha": "8556e0d8761527c104fad54a426afa78c89300da",
+      "_mesh_node": "mobius-civic-ai-terminal",
+      "_mesh_tier": "contributor"
+    },
+    {
+      "id": "13754da4-merge",
+      "timestamp": "2026-04-24T19:22:15Z",
+      "author": "kaizencycle",
+      "title": "Merge pull request #396 from kaizencycle/c291-journal-preview-normalize",
+      "type": "merge",
+      "severity": "info",
+      "tags": [
+        "merge",
+        "pr"
+      ],
+      "source": "github-commit",
+      "verified": false,
+      "sha": "13754da44087ef5d529969ef62642c3cd934a5fc",
+      "_mesh_node": "mobius-civic-ai-terminal",
+      "_mesh_tier": "contributor"
+    },
+    {
+      "id": "9668c17c-merge",
+      "timestamp": "2026-04-24T19:04:41Z",
+      "author": "kaizencycle",
+      "title": "Merge pull request #395 from kaizencycle/c291-ledger-route-build-fix",
+      "type": "merge",
+      "severity": "info",
+      "tags": [
+        "merge",
+        "pr"
+      ],
+      "source": "github-commit",
+      "verified": false,
+      "sha": "9668c17ccc623465e91e9912cd87ca7e7c2b2213",
+      "_mesh_node": "mobius-civic-ai-terminal",
+      "_mesh_tier": "contributor"
+    },
+    {
+      "id": "c257c610-merge",
+      "timestamp": "2026-04-24T19:00:43Z",
+      "author": "kaizencycle",
+      "title": "Merge pull request #394 from kaizencycle/c291-journal-ledger-epicon-sort",
+      "type": "merge",
+      "severity": "info",
+      "tags": [
+        "merge",
+        "pr"
+      ],
+      "source": "github-commit",
+      "verified": false,
+      "sha": "c257c6105130abb61de76fe13e99932b261ad40c",
+      "_mesh_node": "mobius-civic-ai-terminal",
+      "_mesh_tier": "contributor"
+    },
     {
       "id": "d51b0e92-merge",
       "timestamp": "2026-04-24T17:57:43Z",
@@ -282,74 +350,6 @@
       "source": "github-commit",
       "verified": false,
       "sha": "a37f53f08360332181fd11f260c8bd944ea70ac0",
-      "_mesh_node": "mobius-civic-ai-terminal",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "731c253b-merge",
-      "timestamp": "2026-04-23T23:33:03Z",
-      "author": "kaizencycle",
-      "title": "fix(globe-route): call getSentiment() with no args — C-290",
-      "type": "merge",
-      "severity": "info",
-      "tags": [
-        "merge",
-        "pr"
-      ],
-      "source": "github-commit",
-      "verified": false,
-      "sha": "731c253bca8b425a5655ec0024024548d7442542",
-      "_mesh_node": "mobius-civic-ai-terminal",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "3b393442-merge",
-      "timestamp": "2026-04-23T23:31:06Z",
-      "author": "kaizencycle",
-      "title": "fix(ui): repair verify route syntax + wire sentiment/gi/families into…",
-      "type": "merge",
-      "severity": "info",
-      "tags": [
-        "merge",
-        "pr"
-      ],
-      "source": "github-commit",
-      "verified": false,
-      "sha": "3b3934428ca6b0f12ba0259407097801e36f8a52",
-      "_mesh_node": "mobius-civic-ai-terminal",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "b72cc353-merge",
-      "timestamp": "2026-04-23T23:23:11Z",
-      "author": "kaizencycle",
-      "title": "Promote verified candidates into EPICON ledger paths",
-      "type": "merge",
-      "severity": "info",
-      "tags": [
-        "merge",
-        "pr"
-      ],
-      "source": "github-commit",
-      "verified": false,
-      "sha": "b72cc353f67c7521e58abfb1d92ce6424ba71df7",
-      "_mesh_node": "mobius-civic-ai-terminal",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "a829278e-merge",
-      "timestamp": "2026-04-23T23:07:43Z",
-      "author": "kaizencycle",
-      "title": "fix(ui): replace !loading with fetchedOnce in useChamberHydration — C…",
-      "type": "merge",
-      "severity": "info",
-      "tags": [
-        "merge",
-        "pr"
-      ],
-      "source": "github-commit",
-      "verified": false,
-      "sha": "a829278e9de8b5bd127c05c394c50b18fc88ddcb",
       "_mesh_node": "mobius-civic-ai-terminal",
       "_mesh_tier": "contributor"
     },
