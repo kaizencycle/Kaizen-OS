@@ -1,24 +1,24 @@
 {
   "schema": "MNS_AGGREGATE_V1",
-  "updated_at": "2026-04-25T06:15:55.676Z",
+  "updated_at": "2026-04-25T08:00:26.888Z",
   "node_count": 5,
   "live_nodes": 3,
-  "total_entries": 27,
+  "total_entries": 26,
   "nodes": [
     {
       "node_id": "mobius-substrate",
       "tier": "sentinel",
       "node_type": "substrate",
       "entry_count": 0,
-      "fetched_at": "2026-04-25T06:15:55.458Z",
+      "fetched_at": "2026-04-25T08:00:26.578Z",
       "error": null
     },
     {
       "node_id": "mobius-civic-ai-terminal",
       "tier": "contributor",
       "node_type": "app",
-      "entry_count": 17,
-      "fetched_at": "2026-04-25T06:15:55.676Z",
+      "entry_count": 16,
+      "fetched_at": "2026-04-25T08:00:26.888Z",
       "error": null
     },
     {
@@ -26,7 +26,7 @@
       "tier": "contributor",
       "node_type": "service",
       "entry_count": 10,
-      "fetched_at": "2026-04-25T06:15:55.513Z",
+      "fetched_at": "2026-04-25T08:00:26.652Z",
       "error": null
     },
     {
@@ -316,23 +316,6 @@
       "source": "github-commit",
       "verified": false,
       "sha": "c1885b8ef2bf76b7e9c8a38891054d65c8f10884",
-      "_mesh_node": "mobius-civic-ai-terminal",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "38a3d43e-merge",
-      "timestamp": "2026-04-24T15:31:03Z",
-      "author": "kaizencycle",
-      "title": "C291 terminal integrity 20 pack",
-      "type": "merge",
-      "severity": "info",
-      "tags": [
-        "merge",
-        "pr"
-      ],
-      "source": "github-commit",
-      "verified": false,
-      "sha": "38a3d43e3b287688f19203870d79cdb725308edb",
       "_mesh_node": "mobius-civic-ai-terminal",
       "_mesh_tier": "contributor"
     },
