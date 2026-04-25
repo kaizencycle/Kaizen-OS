@@ -1,24 +1,24 @@
 {
   "schema": "MNS_AGGREGATE_V1",
-  "updated_at": "2026-04-25T20:29:02.597Z",
+  "updated_at": "2026-04-25T21:28:15.589Z",
   "node_count": 5,
   "live_nodes": 3,
-  "total_entries": 21,
+  "total_entries": 23,
   "nodes": [
     {
       "node_id": "mobius-substrate",
       "tier": "sentinel",
       "node_type": "substrate",
       "entry_count": 0,
-      "fetched_at": "2026-04-25T20:29:02.335Z",
+      "fetched_at": "2026-04-25T21:28:14.825Z",
       "error": null
     },
     {
       "node_id": "mobius-civic-ai-terminal",
       "tier": "contributor",
       "node_type": "app",
-      "entry_count": 11,
-      "fetched_at": "2026-04-25T20:29:02.597Z",
+      "entry_count": 13,
+      "fetched_at": "2026-04-25T21:28:15.589Z",
       "error": null
     },
     {
@@ -26,7 +26,7 @@
       "tier": "contributor",
       "node_type": "service",
       "entry_count": 10,
-      "fetched_at": "2026-04-25T20:29:02.435Z",
+      "fetched_at": "2026-04-25T21:28:14.825Z",
       "error": null
     },
     {
@@ -47,6 +47,40 @@
     }
   ],
   "entries": [
+    {
+      "id": "bd91e219-merge",
+      "timestamp": "2026-04-25T21:23:51Z",
+      "author": "kaizencycle",
+      "title": "fix(ledger): keep unknown row cycles explicit",
+      "type": "merge",
+      "severity": "info",
+      "tags": [
+        "merge",
+        "pr"
+      ],
+      "source": "github-commit",
+      "verified": false,
+      "sha": "bd91e219a77b0ab27106330c3ea9668d21710559",
+      "_mesh_node": "mobius-civic-ai-terminal",
+      "_mesh_tier": "contributor"
+    },
+    {
+      "id": "d1aab8b1-merge",
+      "timestamp": "2026-04-25T21:15:50Z",
+      "author": "kaizencycle",
+      "title": "C-292 Ledger Cycle + EPICON Bridge Fix",
+      "type": "merge",
+      "severity": "info",
+      "tags": [
+        "merge",
+        "pr"
+      ],
+      "source": "github-commit",
+      "verified": false,
+      "sha": "d1aab8b108bc3c06dd951def987d0472c43a160b",
+      "_mesh_node": "mobius-civic-ai-terminal",
+      "_mesh_tier": "contributor"
+    },
     {
       "id": "a59dae21-merge",
       "timestamp": "2026-04-25T19:32:15Z",
