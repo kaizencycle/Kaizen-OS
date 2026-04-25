@@ -1,24 +1,24 @@
 {
   "schema": "MNS_AGGREGATE_V1",
-  "updated_at": "2026-04-25T18:36:41.365Z",
+  "updated_at": "2026-04-25T19:38:20.198Z",
   "node_count": 5,
   "live_nodes": 3,
-  "total_entries": 23,
+  "total_entries": 21,
   "nodes": [
     {
       "node_id": "mobius-substrate",
       "tier": "sentinel",
       "node_type": "substrate",
       "entry_count": 0,
-      "fetched_at": "2026-04-25T18:36:41.078Z",
+      "fetched_at": "2026-04-25T19:38:19.828Z",
       "error": null
     },
     {
       "node_id": "mobius-civic-ai-terminal",
       "tier": "contributor",
       "node_type": "app",
-      "entry_count": 13,
-      "fetched_at": "2026-04-25T18:36:41.365Z",
+      "entry_count": 11,
+      "fetched_at": "2026-04-25T19:38:20.198Z",
       "error": null
     },
     {
@@ -26,7 +26,7 @@
       "tier": "contributor",
       "node_type": "service",
       "entry_count": 10,
-      "fetched_at": "2026-04-25T18:36:41.149Z",
+      "fetched_at": "2026-04-25T19:38:19.831Z",
       "error": null
     },
     {
@@ -47,6 +47,23 @@
     }
   ],
   "entries": [
+    {
+      "id": "a59dae21-merge",
+      "timestamp": "2026-04-25T19:32:15Z",
+      "author": "kaizencycle",
+      "title": "Merge pull request #416 from kaizencycle/c292-phase2-terminal-write-auth",
+      "type": "merge",
+      "severity": "info",
+      "tags": [
+        "merge",
+        "pr"
+      ],
+      "source": "github-commit",
+      "verified": false,
+      "sha": "a59dae2176ac9a744a8a3f2e827d9f9189136528",
+      "_mesh_node": "mobius-civic-ai-terminal",
+      "_mesh_tier": "contributor"
+    },
     {
       "id": "d1594541-merge",
       "timestamp": "2026-04-25T17:10:26Z",
@@ -214,57 +231,6 @@
       "source": "github-commit",
       "verified": false,
       "sha": "5ab4e15ddfb25cca1b4da5ced08f2c20c8ae5f26",
-      "_mesh_node": "mobius-civic-ai-terminal",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "f5024da9-merge",
-      "timestamp": "2026-04-24T21:12:33Z",
-      "author": "kaizencycle",
-      "title": "Merge pull request #404 from kaizencycle/c291-hermes-journal-router-plan",
-      "type": "merge",
-      "severity": "info",
-      "tags": [
-        "merge",
-        "pr"
-      ],
-      "source": "github-commit",
-      "verified": false,
-      "sha": "f5024da915bb5aaa74fb4a66db0e7d30892db6e9",
-      "_mesh_node": "mobius-civic-ai-terminal",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "fbeefea2-merge",
-      "timestamp": "2026-04-24T21:02:50Z",
-      "author": "kaizencycle",
-      "title": "Merge pull request #403 from kaizencycle/c291-dataflow-command-ui",
-      "type": "merge",
-      "severity": "info",
-      "tags": [
-        "merge",
-        "pr"
-      ],
-      "source": "github-commit",
-      "verified": false,
-      "sha": "fbeefea2e31801103dd5ad018faf4bea951b48e0",
-      "_mesh_node": "mobius-civic-ai-terminal",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "5b0b7da3-merge",
-      "timestamp": "2026-04-24T20:50:52Z",
-      "author": "kaizencycle",
-      "title": "Merge pull request #402 from kaizencycle/c291-dataflow-command-ui",
-      "type": "merge",
-      "severity": "info",
-      "tags": [
-        "merge",
-        "pr"
-      ],
-      "source": "github-commit",
-      "verified": false,
-      "sha": "5b0b7da3bd3df9f6ce31e320504587d51e2b31e7",
       "_mesh_node": "mobius-civic-ai-terminal",
       "_mesh_tier": "contributor"
     },
