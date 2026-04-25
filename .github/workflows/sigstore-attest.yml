@@ -1,96 +1,23 @@
-name: Sigstore Attestation
+# C-292: SUSPENDED — was signing a demo artifact ("Demo build artifact for Kaizen OS") with
+# no push target. Cosign signs to Rekor but the artifact has no registry destination, making
+# the attestation unverifiable and the step cosmetic. Remove or wire to a real artifact registry.
+
+name: Sigstore Attestation (SUSPENDED C-292)
 
 on:
-  push:
-    branches: [main]
-  pull_request:
-    branches: [main]
+  workflow_dispatch:    # manual only — push/PR triggers removed
 
 permissions:
   contents: read
-  id-token: write  # Required for OIDC signing
+  id-token: write
 
 jobs:
   attest:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Install Cosign
-        uses: sigstore/cosign-installer@v3
-
-      - name: Create Demo Artifact
+      - name: Sigstore attestation status
         run: |
-          mkdir -p dist
-          echo "Demo build artifact for Kaizen OS" > dist/demo.txt
-          tar -czf dist/demo-build.tar.gz dist/demo.txt
-
-      - name: Generate Provenance
-        run: |
-          cat > dist/provenance.json <<EOF
-          {
-            "buildType": "https://kaizen-os.org/build/v1",
-            "builder": {
-              "id": "https://github.com/${{ github.repository }}/actions/workflows/sigstore-attest.yml@${{ github.ref }}"
-            },
-            "invocation": {
-              "configSource": {
-                "uri": "git+https://github.com/${{ github.repository }}@${{ github.ref }}",
-                "digest": {
-                  "sha1": "${{ github.sha }}"
-                }
-              }
-            },
-            "metadata": {
-              "buildStartedOn": "$(date -u +%Y-%m-%dT%H:%M:%SZ)",
-              "completeness": {
-                "environment": true
-              }
-            },
-            "materials": [
-              {
-                "uri": "git+https://github.com/${{ github.repository }}",
-                "digest": {
-                  "sha1": "${{ github.sha }}"
-                }
-              }
-            ]
-          }
-          EOF
-
-      - name: Sign Artifact with Cosign (Keyless)
-        run: |
-          cosign sign-blob --yes \
-            --output-signature=dist/demo-build.tar.gz.sig \
-            --output-certificate=dist/demo-build.tar.gz.pem \
-            dist/demo-build.tar.gz
-
-      - name: Attest Provenance
-        run: |
-          cosign attest-blob --yes \
-            --predicate dist/provenance.json \
-            --type https://slsa.dev/provenance/v0.2 \
-            --output-attestation=dist/attestation.jsonl \
-            dist/demo-build.tar.gz
-
-      - name: Upload Attestations
-        uses: actions/upload-artifact@v4
-        with:
-          name: sigstore-attestations
-          path: |
-            dist/*.sig
-            dist/*.pem
-            dist/*.jsonl
-            dist/provenance.json
-
-      - name: Summary
-        run: |
-          echo "✅ Sigstore attestation complete"
-          echo "📦 Artifact: dist/demo-build.tar.gz"
-          echo "🔐 Signature: dist/demo-build.tar.gz.sig"
-          echo "📜 Certificate: dist/demo-build.tar.gz.pem"
-          echo "📋 Attestation: dist/attestation.jsonl"
-          echo ""
-          echo "All signatures published to Rekor transparency log"
-
+          echo "::notice::sigstore-attest is suspended (C-292)."
+          echo "This workflow was signing a demo artifact with no registry destination."
+          echo "To re-enable: replace dist/demo.txt with a real build artifact and configure a registry push target."
+          echo "See: https://docs.sigstore.dev/cosign/signing/signing_with_containers/"
