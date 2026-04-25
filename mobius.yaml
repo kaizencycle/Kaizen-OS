@@ -1,7 +1,8 @@
-# mobius.yaml v1 — Mobius-Substrate (protocol cortex)
+# mobius.yaml v1.1 — Mobius-Substrate (protocol cortex)
 # Declaration only; no runtime writes. Aggregators and CI read this file.
+# Phase 2 Civic Mesh: Substrate is durable memory. Terminal is the pulse. Civic Core is proof.
 
-version: "1.0"
+version: "1.1"
 
 mesh:
   enabled: true
@@ -9,6 +10,9 @@ mesh:
   node_name: "Mobius Substrate"
   tier: "sentinel"
   role: "protocol_cortex"
+  node_type: "substrate"
+  substrate_ref: "kaizencycle/Mobius-Substrate"
+  covenant: "all"
 
   repository:
     full_name: "kaizencycle/Mobius-Substrate"
@@ -18,10 +22,13 @@ mesh:
     enabled: true
     registry_participation: true
 
-  # Legacy MNS fields (optional; retained for registry / tooling compatibility)
-  node_type: "substrate"
-  substrate_ref: "kaizencycle/Mobius-Substrate"
-  covenant: "all"
+  civic_mesh:
+    phase: 2
+    role: "durable_memory_cortex"
+    upstream_pulse: "kaizencycle/mobius-civic-ai-terminal"
+    downstream_proof: "kaizencycle/Civic-Protocol-Core"
+    canon: "Substrate remembers broadly. Civic Ledger proves selectively. Terminal remains the operator view."
+
   agent_affinity:
     - ATLAS
     - ZEUS
@@ -31,6 +38,7 @@ mesh:
     - HERMES
     - DAEDALUS
     - ECHO
+
   ledger:
     enabled: true
     backend: "github-actions"
@@ -50,20 +58,24 @@ mesh:
 pulse:
   enabled: true
   feed_url: "https://raw.githubusercontent.com/kaizencycle/Mobius-Substrate/main/ledger/feed.json"
+  aggregate_url: "https://raw.githubusercontent.com/kaizencycle/Mobius-Substrate/main/ledger/mesh-aggregate.json"
+  network_mii_url: "https://raw.githubusercontent.com/kaizencycle/Mobius-Substrate/main/ledger/network-mii.json"
+  mobius_pulse_url: "https://raw.githubusercontent.com/kaizencycle/Mobius-Substrate/main/ledger/mobius-pulse.json"
   freshness_sla_seconds: 1800
   integrity_weight: 1.5
-
   lanes:
     - mesh
     - ledger
     - mcp
     - pulse
-
+    - journal_archive
+    - todo_archive
   authoritative_for:
     - mesh
     - pulse
     - discovery
-
+    - substrate_journal_archive
+    - mesh_todo_archive
   emits:
     heartbeat: false
     gi: false
@@ -72,21 +84,84 @@ pulse:
     vault: false
     tripwire: false
     anomalies: false
+    memory_archive: true
+
+flow:
+  model: "memory_cortex"
+  receives:
+    - "MESH_STATE_V1"
+    - "MESH_HEALTH_V1"
+    - "MESH_TODOS_V1"
+    - "HIVE_WORLD_PULSE_V1"
+    - "WORLD_UPDATE_V1"
+    - "AGENT_JOURNAL_V1"
+  stores:
+    journal_archive: "journals/{cycle}/{agent}.jsonl"
+    mesh_archive: "ledger/mesh-aggregate.json"
+    todo_archive: "ledger/mesh-todos.json"
+    pulse_archive: "ledger/mobius-pulse.json"
+  forwards_to_ledger:
+    - "EPICON_ENTRY_V1"
+    - "MIC_READINESS_V1"
+    - "MIC_SEAL_V1"
+    - "MESH_STATE_V1"
+    - "WORLD_UPDATE_V1"
+  rule: "Substrate may remember noisy but valid agent journals. Civic Ledger receives only proof-worthy attestations."
+
+retention:
+  hot_window: "external_terminal_kv"
+  journal_archive: "durable_append_only"
+  feed_window: 500
+  mesh_aggregate_window: 100
+  todo_window: 100
+  archive_policy: "append_valid_memory_then_summarize_to_ledger"
 
 ingest:
   enabled: false
   mode: "aggregator_only"
+  accepts:
+    - "AGENT_JOURNAL_V1"
+    - "MESH_STATE_V1"
+    - "MESH_HEALTH_V1"
+    - "MESH_TODOS_V1"
+    - "HIVE_WORLD_PULSE_V1"
+    - "WORLD_UPDATE_V1"
+  idempotency:
+    required: true
+    key_fields:
+      - node_id
+      - event_type
+      - cycle
+      - source_hash
+      - workflow_id
+  overflow_route:
+    from: "mobius-terminal"
+    to: "civic-protocol-core"
+    path: "HOT_KV -> SUBSTRATE_JOURNAL -> CIVIC_LEDGER_PROOF"
 
 mcp:
   enabled: false
 
 jobs:
   enabled: true
+  status_values:
+    - active
+    - manual
+    - planned
+    - archived
   workflows:
     - id: "mesh-aggregate"
       file: ".github/workflows/mesh-aggregate.yml"
+      status: "active"
       trigger: "schedule"
       cron: "0 * * * *"
+      role: "network_memory_aggregate"
+      output:
+        - "ledger/mesh-aggregate.json"
+        - "ledger/network-mii.json"
+        - "ledger/mobius-pulse.json"
+        - "mesh/mcp-discovery.json"
+        - ".well-known/mcp.json"
 
 governance:
   agent_prs_allowed: true
@@ -100,3 +175,7 @@ policy:
   mirror_feed_to_repo: true
   canonical_ledger_node: "civic-protocol-core"
   hash_algorithm: "sha256"
+  terminal_is_storage: false
+  substrate_is_memory: true
+  ledger_is_proof: true
+  human_merge_required_for_canon: true
