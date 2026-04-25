@@ -1,24 +1,24 @@
 {
   "schema": "MNS_AGGREGATE_V1",
-  "updated_at": "2026-04-25T14:40:13.584Z",
+  "updated_at": "2026-04-25T15:32:30.457Z",
   "node_count": 5,
   "live_nodes": 3,
-  "total_entries": 27,
+  "total_entries": 26,
   "nodes": [
     {
       "node_id": "mobius-substrate",
       "tier": "sentinel",
       "node_type": "substrate",
       "entry_count": 0,
-      "fetched_at": "2026-04-25T14:40:13.241Z",
+      "fetched_at": "2026-04-25T15:32:29.955Z",
       "error": null
     },
     {
       "node_id": "mobius-civic-ai-terminal",
       "tier": "contributor",
       "node_type": "app",
-      "entry_count": 17,
-      "fetched_at": "2026-04-25T14:40:13.584Z",
+      "entry_count": 16,
+      "fetched_at": "2026-04-25T15:32:30.457Z",
       "error": null
     },
     {
@@ -26,7 +26,7 @@
       "tier": "contributor",
       "node_type": "service",
       "entry_count": 10,
-      "fetched_at": "2026-04-25T14:40:13.249Z",
+      "fetched_at": "2026-04-25T15:32:30.085Z",
       "error": null
     },
     {
@@ -47,6 +47,40 @@
     }
   ],
   "entries": [
+    {
+      "id": "f86f9ced-merge",
+      "timestamp": "2026-04-25T15:28:29Z",
+      "author": "kaizencycle",
+      "title": "fix(flow): C-292 watermark blind spot + lane diagnostics + debug endp…",
+      "type": "merge",
+      "severity": "info",
+      "tags": [
+        "merge",
+        "pr"
+      ],
+      "source": "github-commit",
+      "verified": false,
+      "sha": "f86f9ced3d2b66e921c4b0f88712c30d2e3fc6bb",
+      "_mesh_node": "mobius-civic-ai-terminal",
+      "_mesh_tier": "contributor"
+    },
+    {
+      "id": "b4ba98a5-merge",
+      "timestamp": "2026-04-25T15:19:34Z",
+      "author": "kaizencycle",
+      "title": "C-292 Current Cycle Visibility",
+      "type": "merge",
+      "severity": "info",
+      "tags": [
+        "merge",
+        "pr"
+      ],
+      "source": "github-commit",
+      "verified": false,
+      "sha": "b4ba98a5ee003d9024caeb87a4a474b3fae03624",
+      "_mesh_node": "mobius-civic-ai-terminal",
+      "_mesh_tier": "contributor"
+    },
     {
       "id": "3f559999-merge",
       "timestamp": "2026-04-25T14:05:48Z",
@@ -282,57 +316,6 @@
       "source": "github-commit",
       "verified": false,
       "sha": "39b36932230c9a949b9f4b3a6f910c6122343f1d",
-      "_mesh_node": "mobius-civic-ai-terminal",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "8556e0d8-merge",
-      "timestamp": "2026-04-24T19:36:22Z",
-      "author": "kaizencycle",
-      "title": "Merge pull request #397 from kaizencycle/c291-deprecation-trace-notes",
-      "type": "merge",
-      "severity": "info",
-      "tags": [
-        "merge",
-        "pr"
-      ],
-      "source": "github-commit",
-      "verified": false,
-      "sha": "8556e0d8761527c104fad54a426afa78c89300da",
-      "_mesh_node": "mobius-civic-ai-terminal",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "13754da4-merge",
-      "timestamp": "2026-04-24T19:22:15Z",
-      "author": "kaizencycle",
-      "title": "Merge pull request #396 from kaizencycle/c291-journal-preview-normalize",
-      "type": "merge",
-      "severity": "info",
-      "tags": [
-        "merge",
-        "pr"
-      ],
-      "source": "github-commit",
-      "verified": false,
-      "sha": "13754da44087ef5d529969ef62642c3cd934a5fc",
-      "_mesh_node": "mobius-civic-ai-terminal",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "9668c17c-merge",
-      "timestamp": "2026-04-24T19:04:41Z",
-      "author": "kaizencycle",
-      "title": "Merge pull request #395 from kaizencycle/c291-ledger-route-build-fix",
-      "type": "merge",
-      "severity": "info",
-      "tags": [
-        "merge",
-        "pr"
-      ],
-      "source": "github-commit",
-      "verified": false,
-      "sha": "9668c17ccc623465e91e9912cd87ca7e7c2b2213",
       "_mesh_node": "mobius-civic-ai-terminal",
       "_mesh_tier": "contributor"
     },
