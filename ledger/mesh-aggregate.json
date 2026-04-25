@@ -1,24 +1,24 @@
 {
   "schema": "MNS_AGGREGATE_V1",
-  "updated_at": "2026-04-25T12:40:56.742Z",
+  "updated_at": "2026-04-25T13:57:52.091Z",
   "node_count": 5,
   "live_nodes": 3,
-  "total_entries": 28,
+  "total_entries": 27,
   "nodes": [
     {
       "node_id": "mobius-substrate",
       "tier": "sentinel",
       "node_type": "substrate",
       "entry_count": 0,
-      "fetched_at": "2026-04-25T12:40:56.500Z",
+      "fetched_at": "2026-04-25T13:57:51.973Z",
       "error": null
     },
     {
       "node_id": "mobius-civic-ai-terminal",
       "tier": "contributor",
       "node_type": "app",
-      "entry_count": 18,
-      "fetched_at": "2026-04-25T12:40:56.742Z",
+      "entry_count": 17,
+      "fetched_at": "2026-04-25T13:57:52.090Z",
       "error": null
     },
     {
@@ -26,7 +26,7 @@
       "tier": "contributor",
       "node_type": "service",
       "entry_count": 10,
-      "fetched_at": "2026-04-25T12:40:56.520Z",
+      "fetched_at": "2026-04-25T13:57:52.062Z",
       "error": null
     },
     {
@@ -47,6 +47,57 @@
     }
   ],
   "entries": [
+    {
+      "id": "26f1e98b-merge",
+      "timestamp": "2026-04-25T13:43:07Z",
+      "author": "kaizencycle",
+      "title": "fix(dataflow): count boolean-failing lanes as overflow problems",
+      "type": "merge",
+      "severity": "info",
+      "tags": [
+        "merge",
+        "pr"
+      ],
+      "source": "github-commit",
+      "verified": false,
+      "sha": "26f1e98b4e036ac8ffafd3100b0ba519abdad10d",
+      "_mesh_node": "mobius-civic-ai-terminal",
+      "_mesh_tier": "contributor"
+    },
+    {
+      "id": "519714cb-merge",
+      "timestamp": "2026-04-25T13:38:32Z",
+      "author": "kaizencycle",
+      "title": "C292 stabilization sub50 threshold",
+      "type": "merge",
+      "severity": "info",
+      "tags": [
+        "merge",
+        "pr"
+      ],
+      "source": "github-commit",
+      "verified": false,
+      "sha": "519714cb16bce67072265b59e3e79a65954b8ae1",
+      "_mesh_node": "mobius-civic-ai-terminal",
+      "_mesh_tier": "contributor"
+    },
+    {
+      "id": "935c9e3b-merge",
+      "timestamp": "2026-04-25T13:27:50Z",
+      "author": "kaizencycle",
+      "title": "C-292 Predictive Stabilization Sub-50 Threshold",
+      "type": "merge",
+      "severity": "info",
+      "tags": [
+        "merge",
+        "pr"
+      ],
+      "source": "github-commit",
+      "verified": false,
+      "sha": "935c9e3bdab15db3cab3d44b51b1a64c076a64ba",
+      "_mesh_node": "mobius-civic-ai-terminal",
+      "_mesh_tier": "contributor"
+    },
     {
       "id": "8561afcd-merge",
       "timestamp": "2026-04-25T12:33:28Z",
@@ -282,74 +333,6 @@
       "source": "github-commit",
       "verified": false,
       "sha": "c257c6105130abb61de76fe13e99932b261ad40c",
-      "_mesh_node": "mobius-civic-ai-terminal",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "d51b0e92-merge",
-      "timestamp": "2026-04-24T17:57:43Z",
-      "author": "kaizencycle",
-      "title": "C-292 KV Permission Healthcheck",
-      "type": "merge",
-      "severity": "info",
-      "tags": [
-        "merge",
-        "pr"
-      ],
-      "source": "github-commit",
-      "verified": false,
-      "sha": "d51b0e92821d7ea87f7df3474cb8db8c15b3c3d6",
-      "_mesh_node": "mobius-civic-ai-terminal",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "d9f6668b-merge",
-      "timestamp": "2026-04-24T17:08:56Z",
-      "author": "kaizencycle",
-      "title": "Merge pull request #392 from kaizencycle/c292-weekly-digest-quorum-plan",
-      "type": "merge",
-      "severity": "info",
-      "tags": [
-        "merge",
-        "pr"
-      ],
-      "source": "github-commit",
-      "verified": false,
-      "sha": "d9f6668b8834c9fd63ae6faaeb98cb9c98c11186",
-      "_mesh_node": "mobius-civic-ai-terminal",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "68993bc0-merge",
-      "timestamp": "2026-04-24T16:50:00Z",
-      "author": "kaizencycle",
-      "title": "C-291 Dataflow Canon Sync",
-      "type": "merge",
-      "severity": "info",
-      "tags": [
-        "merge",
-        "pr"
-      ],
-      "source": "github-commit",
-      "verified": false,
-      "sha": "68993bc05b3adeb879953ea975c9ffc088e071a4",
-      "_mesh_node": "mobius-civic-ai-terminal",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "c1885b8e-merge",
-      "timestamp": "2026-04-24T16:48:46Z",
-      "author": "kaizencycle",
-      "title": "C291 dataflow canon sync",
-      "type": "merge",
-      "severity": "info",
-      "tags": [
-        "merge",
-        "pr"
-      ],
-      "source": "github-commit",
-      "verified": false,
-      "sha": "c1885b8ef2bf76b7e9c8a38891054d65c8f10884",
       "_mesh_node": "mobius-civic-ai-terminal",
       "_mesh_tier": "contributor"
     },
