@@ -1,6 +1,6 @@
 {
   "schema": "MNS_AGGREGATE_V1",
-  "updated_at": "2026-04-25T13:57:52.091Z",
+  "updated_at": "2026-04-25T14:40:13.584Z",
   "node_count": 5,
   "live_nodes": 3,
   "total_entries": 27,
@@ -10,7 +10,7 @@
       "tier": "sentinel",
       "node_type": "substrate",
       "entry_count": 0,
-      "fetched_at": "2026-04-25T13:57:51.973Z",
+      "fetched_at": "2026-04-25T14:40:13.241Z",
       "error": null
     },
     {
@@ -18,7 +18,7 @@
       "tier": "contributor",
       "node_type": "app",
       "entry_count": 17,
-      "fetched_at": "2026-04-25T13:57:52.090Z",
+      "fetched_at": "2026-04-25T14:40:13.584Z",
       "error": null
     },
     {
@@ -26,7 +26,7 @@
       "tier": "contributor",
       "node_type": "service",
       "entry_count": 10,
-      "fetched_at": "2026-04-25T13:57:52.062Z",
+      "fetched_at": "2026-04-25T14:40:13.249Z",
       "error": null
     },
     {
@@ -47,6 +47,23 @@
     }
   ],
   "entries": [
+    {
+      "id": "3f559999-merge",
+      "timestamp": "2026-04-25T14:05:48Z",
+      "author": "kaizencycle",
+      "title": "fix(journal): C-292 build blocker + journal KV empty state + 10 optimizations",
+      "type": "merge",
+      "severity": "info",
+      "tags": [
+        "merge",
+        "pr"
+      ],
+      "source": "github-commit",
+      "verified": false,
+      "sha": "3f559999c8314ebadef4964c46496f84d3c25e71",
+      "_mesh_node": "mobius-civic-ai-terminal",
+      "_mesh_tier": "contributor"
+    },
     {
       "id": "26f1e98b-merge",
       "timestamp": "2026-04-25T13:43:07Z",
@@ -316,23 +333,6 @@
       "source": "github-commit",
       "verified": false,
       "sha": "9668c17ccc623465e91e9912cd87ca7e7c2b2213",
-      "_mesh_node": "mobius-civic-ai-terminal",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "c257c610-merge",
-      "timestamp": "2026-04-24T19:00:43Z",
-      "author": "kaizencycle",
-      "title": "Merge pull request #394 from kaizencycle/c291-journal-ledger-epicon-sort",
-      "type": "merge",
-      "severity": "info",
-      "tags": [
-        "merge",
-        "pr"
-      ],
-      "source": "github-commit",
-      "verified": false,
-      "sha": "c257c6105130abb61de76fe13e99932b261ad40c",
       "_mesh_node": "mobius-civic-ai-terminal",
       "_mesh_tier": "contributor"
     },
