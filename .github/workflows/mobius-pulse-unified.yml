@@ -14,8 +14,8 @@ on:
   schedule:
     # Daily pulse at 04:00 UTC
     - cron: "0 4 * * *"
-    # Badge refresh every 15 minutes
-    - cron: "*/15 * * * *"
+    # C-292: badge refresh every 1h (was */15 = 96x/day; badges rarely change)
+    - cron: "0 * * * *"
     # Weekly digest on Sunday at 23:00 UTC
     - cron: "0 23 * * 0"
   workflow_dispatch:
@@ -86,7 +86,7 @@ jobs:
                 RUN_PULSE="true"
                 RUN_BADGES="true"
                 ;;
-              "*/15 * * * *")  # Badge refresh
+              "0 * * * *")  # Badge refresh
                 RUN_BADGES="true"
                 ;;
               "0 23 * * 0")  # Weekly digest

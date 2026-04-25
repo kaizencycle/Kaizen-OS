@@ -1,18 +1,26 @@
-name: Publish SR
+# C-292: SUSPENDED — fires on every push to main with unconfigured SR_URL / SR_SECRET secrets.
+# Produces a silent curl error on every merge. No SR endpoint is currently deployed.
+# Re-enable by configuring SR_URL + SR_SECRET secrets and removing the workflow_dispatch-only trigger.
+
+name: Publish SR (SUSPENDED C-292)
+
 on:
-  workflow_dispatch:
-  push:
-    branches: [ main ]
+  workflow_dispatch:    # manual only — push trigger removed; was silent-failing on every main merge
 
 jobs:
   publish:
     runs-on: ubuntu-latest
     steps:
-      - name: Emit SR
+      - name: Check SR endpoint configuration
         env:
-          SR_URL: ${{ secrets.SR_URL }}         # e.g. https://your-portal.vercel.app/api/sr/emit
-          SR_SECRET: ${{ secrets.SR_SECRET }}   # same as env SR_SECRET on Vercel
+          SR_URL: ${{ secrets.SR_URL }}
+          SR_SECRET: ${{ secrets.SR_SECRET }}
         run: |
+          if [ -z "${SR_URL:-}" ]; then
+            echo "::notice::SR_URL secret not configured — publish-sr is suspended."
+            echo "Configure SR_URL + SR_SECRET secrets to re-enable SR publishing."
+            exit 0
+          fi
           NOW=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
           curl -sSf -X POST "$SR_URL" \
             -H "x-sr-secret: $SR_SECRET" \
@@ -22,4 +30,4 @@ jobs:
               --arg gi "${{ vars.KAIZEN_GI_BASELINE }}" \
               --arg verdict "${{ vars.SR_VERDICT }}" \
               --arg updated "$NOW" \
-              '{cycle:$cycle, mii:$gi, verdict:$verdict, updated_at:$updated }')"
+              '{cycle:$cycle, mii:$gi, verdict:$verdict, updated_at:$updated}')"
