@@ -1,24 +1,24 @@
 {
   "schema": "MNS_AGGREGATE_V1",
-  "updated_at": "2026-04-26T22:28:29.067Z",
+  "updated_at": "2026-04-26T23:30:30.366Z",
   "node_count": 5,
   "live_nodes": 3,
-  "total_entries": 22,
+  "total_entries": 21,
   "nodes": [
     {
       "node_id": "mobius-substrate",
       "tier": "sentinel",
       "node_type": "substrate",
       "entry_count": 0,
-      "fetched_at": "2026-04-26T22:28:28.716Z",
+      "fetched_at": "2026-04-26T23:30:29.992Z",
       "error": null
     },
     {
       "node_id": "mobius-civic-ai-terminal",
       "tier": "contributor",
       "node_type": "app",
-      "entry_count": 12,
-      "fetched_at": "2026-04-26T22:28:29.067Z",
+      "entry_count": 11,
+      "fetched_at": "2026-04-26T23:30:30.366Z",
       "error": null
     },
     {
@@ -26,7 +26,7 @@
       "tier": "contributor",
       "node_type": "service",
       "entry_count": 10,
-      "fetched_at": "2026-04-26T22:28:28.794Z",
+      "fetched_at": "2026-04-26T23:30:29.995Z",
       "error": null
     },
     {
@@ -47,6 +47,40 @@
     }
   ],
   "entries": [
+    {
+      "id": "796259e7-merge",
+      "timestamp": "2026-04-26T23:24:06Z",
+      "author": "kaizencycle",
+      "title": "C-293 Phase 7 — Historical Reserve Block Back-Attestation",
+      "type": "merge",
+      "severity": "info",
+      "tags": [
+        "merge",
+        "pr"
+      ],
+      "source": "github-commit",
+      "verified": false,
+      "sha": "796259e759301e70ee286c71e0bc61e008dc0b37",
+      "_mesh_node": "mobius-civic-ai-terminal",
+      "_mesh_tier": "contributor"
+    },
+    {
+      "id": "f111c549-merge",
+      "timestamp": "2026-04-26T22:56:00Z",
+      "author": "kaizencycle",
+      "title": "C-293 Phase 6 — Incident + Rollback Protocol",
+      "type": "merge",
+      "severity": "info",
+      "tags": [
+        "merge",
+        "pr"
+      ],
+      "source": "github-commit",
+      "verified": false,
+      "sha": "f111c549a179396ef00545fd953ce738e8243c98",
+      "_mesh_node": "mobius-civic-ai-terminal",
+      "_mesh_tier": "contributor"
+    },
     {
       "id": "b17234ef-merge",
       "timestamp": "2026-04-26T21:52:52Z",
@@ -197,57 +231,6 @@
       "source": "github-commit",
       "verified": false,
       "sha": "7ea6044f6593219a9655424c1fd89cad6bf10334",
-      "_mesh_node": "mobius-civic-ai-terminal",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "040adfe3-merge",
-      "timestamp": "2026-04-26T15:17:42Z",
-      "author": "kaizencycle",
-      "title": "perf(snapshot): C-293 OPT-1/2/4/6/8 — fix persistent 408 lanes + jour…",
-      "type": "merge",
-      "severity": "info",
-      "tags": [
-        "merge",
-        "pr"
-      ],
-      "source": "github-commit",
-      "verified": false,
-      "sha": "040adfe30e37bcbd55c52a040863bd522b6fc62a",
-      "_mesh_node": "mobius-civic-ai-terminal",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "6a16c188-merge",
-      "timestamp": "2026-04-26T15:15:42Z",
-      "author": "kaizencycle",
-      "title": "C293 vault first seal quorum",
-      "type": "merge",
-      "severity": "info",
-      "tags": [
-        "merge",
-        "pr"
-      ],
-      "source": "github-commit",
-      "verified": false,
-      "sha": "6a16c188b34c9224ea2fd762040c310076383e5d",
-      "_mesh_node": "mobius-civic-ai-terminal",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "658c5e9f-merge",
-      "timestamp": "2026-04-26T13:26:06Z",
-      "author": "kaizencycle",
-      "title": "Merge pull request #422 from kaizencycle/c293-vault-first-seal-quorum-current",
-      "type": "merge",
-      "severity": "info",
-      "tags": [
-        "merge",
-        "pr"
-      ],
-      "source": "github-commit",
-      "verified": false,
-      "sha": "658c5e9fe887aeb1f252276df8a8b45cda1ad534",
       "_mesh_node": "mobius-civic-ai-terminal",
       "_mesh_tier": "contributor"
     },
