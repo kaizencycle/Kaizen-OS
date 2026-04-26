@@ -1,6 +1,6 @@
 {
   "schema": "MNS_AGGREGATE_V1",
-  "updated_at": "2026-04-26T18:37:35.050Z",
+  "updated_at": "2026-04-26T19:39:22.085Z",
   "node_count": 5,
   "live_nodes": 3,
   "total_entries": 19,
@@ -10,7 +10,7 @@
       "tier": "sentinel",
       "node_type": "substrate",
       "entry_count": 0,
-      "fetched_at": "2026-04-26T18:37:34.717Z",
+      "fetched_at": "2026-04-26T19:39:21.445Z",
       "error": null
     },
     {
@@ -18,7 +18,7 @@
       "tier": "contributor",
       "node_type": "app",
       "entry_count": 9,
-      "fetched_at": "2026-04-26T18:37:35.050Z",
+      "fetched_at": "2026-04-26T19:39:22.085Z",
       "error": null
     },
     {
@@ -26,7 +26,7 @@
       "tier": "contributor",
       "node_type": "service",
       "entry_count": 10,
-      "fetched_at": "2026-04-26T18:37:34.758Z",
+      "fetched_at": "2026-04-26T19:39:21.493Z",
       "error": null
     },
     {
@@ -47,6 +47,40 @@
     }
   ],
   "entries": [
+    {
+      "id": "8be2bdcf-merge",
+      "timestamp": "2026-04-26T18:16:41Z",
+      "author": "kaizencycle",
+      "title": "C-293 Phase 3 — Agent Registry + Scope Cards",
+      "type": "merge",
+      "severity": "info",
+      "tags": [
+        "merge",
+        "pr"
+      ],
+      "source": "github-commit",
+      "verified": false,
+      "sha": "8be2bdcf3f10a83ebdde02a21bffe68b30051131",
+      "_mesh_node": "mobius-civic-ai-terminal",
+      "_mesh_tier": "contributor"
+    },
+    {
+      "id": "d1df8ffd-merge",
+      "timestamp": "2026-04-26T17:56:04Z",
+      "author": "kaizencycle",
+      "title": "C-293 Phase 2 — Canonical State Machine",
+      "type": "merge",
+      "severity": "info",
+      "tags": [
+        "merge",
+        "pr"
+      ],
+      "source": "github-commit",
+      "verified": false,
+      "sha": "d1df8ffd7743ebf000cb63cc01b2467990e427e9",
+      "_mesh_node": "mobius-civic-ai-terminal",
+      "_mesh_tier": "contributor"
+    },
     {
       "id": "c66ca00d-merge",
       "timestamp": "2026-04-26T17:33:45Z",
@@ -163,40 +197,6 @@
       "source": "github-commit",
       "verified": false,
       "sha": "c43f2462cb3c830bd22ef2aaefb0be8fbbf3ed4a",
-      "_mesh_node": "mobius-civic-ai-terminal",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "4b380428-merge",
-      "timestamp": "2026-04-25T23:58:54Z",
-      "author": "kaizencycle",
-      "title": "C292 ledger cycle epicon bridge",
-      "type": "merge",
-      "severity": "info",
-      "tags": [
-        "merge",
-        "pr"
-      ],
-      "source": "github-commit",
-      "verified": false,
-      "sha": "4b3804287074c52d8b190e70742d1920abd4bf3d",
-      "_mesh_node": "mobius-civic-ai-terminal",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "94511031-merge",
-      "timestamp": "2026-04-25T23:41:58Z",
-      "author": "kaizencycle",
-      "title": "C292 ledger cycle epicon bridge",
-      "type": "merge",
-      "severity": "info",
-      "tags": [
-        "merge",
-        "pr"
-      ],
-      "source": "github-commit",
-      "verified": false,
-      "sha": "94511031baebf49dbff0727ab61b60697db93a49",
       "_mesh_node": "mobius-civic-ai-terminal",
       "_mesh_tier": "contributor"
     },
