@@ -1,24 +1,24 @@
 {
   "schema": "MNS_AGGREGATE_V1",
-  "updated_at": "2026-04-26T14:49:07.284Z",
+  "updated_at": "2026-04-26T15:34:53.350Z",
   "node_count": 5,
   "live_nodes": 3,
-  "total_entries": 18,
+  "total_entries": 20,
   "nodes": [
     {
       "node_id": "mobius-substrate",
       "tier": "sentinel",
       "node_type": "substrate",
       "entry_count": 0,
-      "fetched_at": "2026-04-26T14:49:06.580Z",
+      "fetched_at": "2026-04-26T15:34:52.835Z",
       "error": null
     },
     {
       "node_id": "mobius-civic-ai-terminal",
       "tier": "contributor",
       "node_type": "app",
-      "entry_count": 8,
-      "fetched_at": "2026-04-26T14:49:07.283Z",
+      "entry_count": 10,
+      "fetched_at": "2026-04-26T15:34:53.350Z",
       "error": null
     },
     {
@@ -26,7 +26,7 @@
       "tier": "contributor",
       "node_type": "service",
       "entry_count": 10,
-      "fetched_at": "2026-04-26T14:49:06.652Z",
+      "fetched_at": "2026-04-26T15:34:52.836Z",
       "error": null
     },
     {
@@ -47,6 +47,40 @@
     }
   ],
   "entries": [
+    {
+      "id": "040adfe3-merge",
+      "timestamp": "2026-04-26T15:17:42Z",
+      "author": "kaizencycle",
+      "title": "perf(snapshot): C-293 OPT-1/2/4/6/8 — fix persistent 408 lanes + jour…",
+      "type": "merge",
+      "severity": "info",
+      "tags": [
+        "merge",
+        "pr"
+      ],
+      "source": "github-commit",
+      "verified": false,
+      "sha": "040adfe30e37bcbd55c52a040863bd522b6fc62a",
+      "_mesh_node": "mobius-civic-ai-terminal",
+      "_mesh_tier": "contributor"
+    },
+    {
+      "id": "6a16c188-merge",
+      "timestamp": "2026-04-26T15:15:42Z",
+      "author": "kaizencycle",
+      "title": "C293 vault first seal quorum",
+      "type": "merge",
+      "severity": "info",
+      "tags": [
+        "merge",
+        "pr"
+      ],
+      "source": "github-commit",
+      "verified": false,
+      "sha": "6a16c188b34c9224ea2fd762040c310076383e5d",
+      "_mesh_node": "mobius-civic-ai-terminal",
+      "_mesh_tier": "contributor"
+    },
     {
       "id": "658c5e9f-merge",
       "timestamp": "2026-04-26T13:26:06Z",
