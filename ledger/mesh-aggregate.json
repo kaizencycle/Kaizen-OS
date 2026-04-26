@@ -1,24 +1,24 @@
 {
   "schema": "MNS_AGGREGATE_V1",
-  "updated_at": "2026-04-26T06:55:13.402Z",
+  "updated_at": "2026-04-26T08:12:37.802Z",
   "node_count": 5,
   "live_nodes": 3,
-  "total_entries": 23,
+  "total_entries": 22,
   "nodes": [
     {
       "node_id": "mobius-substrate",
       "tier": "sentinel",
       "node_type": "substrate",
       "entry_count": 0,
-      "fetched_at": "2026-04-26T06:55:13.035Z",
+      "fetched_at": "2026-04-26T08:12:37.471Z",
       "error": null
     },
     {
       "node_id": "mobius-civic-ai-terminal",
       "tier": "contributor",
       "node_type": "app",
-      "entry_count": 13,
-      "fetched_at": "2026-04-26T06:55:13.402Z",
+      "entry_count": 12,
+      "fetched_at": "2026-04-26T08:12:37.802Z",
       "error": null
     },
     {
@@ -26,7 +26,7 @@
       "tier": "contributor",
       "node_type": "service",
       "entry_count": 10,
-      "fetched_at": "2026-04-26T06:55:13.126Z",
+      "fetched_at": "2026-04-26T08:12:37.581Z",
       "error": null
     },
     {
@@ -248,23 +248,6 @@
       "source": "github-commit",
       "verified": false,
       "sha": "519714cb16bce67072265b59e3e79a65954b8ae1",
-      "_mesh_node": "mobius-civic-ai-terminal",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "935c9e3b-merge",
-      "timestamp": "2026-04-25T13:27:50Z",
-      "author": "kaizencycle",
-      "title": "C-292 Predictive Stabilization Sub-50 Threshold",
-      "type": "merge",
-      "severity": "info",
-      "tags": [
-        "merge",
-        "pr"
-      ],
-      "source": "github-commit",
-      "verified": false,
-      "sha": "935c9e3bdab15db3cab3d44b51b1a64c076a64ba",
       "_mesh_node": "mobius-civic-ai-terminal",
       "_mesh_tier": "contributor"
     },
