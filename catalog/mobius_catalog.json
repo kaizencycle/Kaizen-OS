@@ -1,15 +1,15 @@
 {
   "mobius_catalog_version": "1.0.0",
-  "generated_at": "2026-04-25T04:40:07.003Z",
+  "generated_at": "2026-04-26T05:16:09.051Z",
   "repo": {
     "name": "Mobius-Substrate",
     "url": "https://github.com/kaizencycle/Mobius-Substrate",
     "default_branch": "main",
-    "commit": "dfb598d43d83d5f1f1794c6164fcdcc90aa17941"
+    "commit": "b13af0b5aae82c7090eb666bfa5b52beb9405f88"
   },
   "stats": {
     "epiconCount": 0,
-    "docCount": 952
+    "docCount": 954
   },
   "epicons": [],
   "docs": [
@@ -7226,7 +7226,7 @@
       "title": "Divergence Dashboard",
       "category": "divergence",
       "tags": [],
-      "content_hash": "sha256:b280d3ce43b2150112adb64272b144455b4d39840d156acf0d9b250581a3c52b",
+      "content_hash": "sha256:3be3c9205f65d8dc16fe53bfbddbb45e204246a62eb387a4bcfaeec3b95e6aea",
       "summary": ""
     },
     {
@@ -7549,6 +7549,14 @@
       "summary": "Add first operational Mobius sentinel agent (MobiusATLAS) with covenant enforcement, tripwires, and EPICON-Lite specification"
     },
     {
+      "path": "docs/mesh/PHASE2_SUBSTRATE_MEMORY_CONTRACT.md",
+      "title": "Phase 2 — Substrate Memory Contract",
+      "category": "mesh",
+      "tags": [],
+      "content_hash": "sha256:7f9f64c1bc3156ea893bd9091e444a5a410afb214e8ee3e97fc4b5a6871d6122",
+      "summary": ""
+    },
+    {
       "path": "docs/mobius/README.md",
       "title": "Mobius Substrate",
       "category": "mobius",
@@ -7690,6 +7698,14 @@
       "category": "public-assets",
       "tags": [],
       "content_hash": "sha256:9a678b0957926f1e3e8f733ccaf6b42886e3338e646a5b84d897b3e5f807285b",
+      "summary": ""
+    },
+    {
+      "path": "docs/security/C292_FINAL_ENV_SAMPLE_HARDENING.md",
+      "title": "C-292 Final Phase — Mirrored Env Sample Hardening",
+      "category": "security",
+      "tags": [],
+      "content_hash": "sha256:b9f915064ef985a4194f1e2c33acc1f57ee9ae1f150ea477b9f7643d7a6588c9",
       "summary": ""
     },
     {
