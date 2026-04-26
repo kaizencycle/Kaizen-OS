@@ -1,24 +1,24 @@
 {
   "schema": "MNS_AGGREGATE_V1",
-  "updated_at": "2026-04-26T15:34:53.350Z",
+  "updated_at": "2026-04-26T16:32:06.378Z",
   "node_count": 5,
   "live_nodes": 3,
-  "total_entries": 20,
+  "total_entries": 19,
   "nodes": [
     {
       "node_id": "mobius-substrate",
       "tier": "sentinel",
       "node_type": "substrate",
       "entry_count": 0,
-      "fetched_at": "2026-04-26T15:34:52.835Z",
+      "fetched_at": "2026-04-26T16:32:06.029Z",
       "error": null
     },
     {
       "node_id": "mobius-civic-ai-terminal",
       "tier": "contributor",
       "node_type": "app",
-      "entry_count": 10,
-      "fetched_at": "2026-04-26T15:34:53.350Z",
+      "entry_count": 9,
+      "fetched_at": "2026-04-26T16:32:06.378Z",
       "error": null
     },
     {
@@ -26,7 +26,7 @@
       "tier": "contributor",
       "node_type": "service",
       "entry_count": 10,
-      "fetched_at": "2026-04-26T15:34:52.836Z",
+      "fetched_at": "2026-04-26T16:32:06.123Z",
       "error": null
     },
     {
@@ -47,6 +47,23 @@
     }
   ],
   "entries": [
+    {
+      "id": "7ea6044f-merge",
+      "timestamp": "2026-04-26T15:53:39Z",
+      "author": "kaizencycle",
+      "title": "C-293 Chamber Savepoint Cache",
+      "type": "merge",
+      "severity": "info",
+      "tags": [
+        "merge",
+        "pr"
+      ],
+      "source": "github-commit",
+      "verified": false,
+      "sha": "7ea6044f6593219a9655424c1fd89cad6bf10334",
+      "_mesh_node": "mobius-civic-ai-terminal",
+      "_mesh_tier": "contributor"
+    },
     {
       "id": "040adfe3-merge",
       "timestamp": "2026-04-26T15:17:42Z",
@@ -180,40 +197,6 @@
       "source": "github-commit",
       "verified": false,
       "sha": "d1aab8b108bc3c06dd951def987d0472c43a160b",
-      "_mesh_node": "mobius-civic-ai-terminal",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "a59dae21-merge",
-      "timestamp": "2026-04-25T19:32:15Z",
-      "author": "kaizencycle",
-      "title": "Merge pull request #416 from kaizencycle/c292-phase2-terminal-write-auth",
-      "type": "merge",
-      "severity": "info",
-      "tags": [
-        "merge",
-        "pr"
-      ],
-      "source": "github-commit",
-      "verified": false,
-      "sha": "a59dae2176ac9a744a8a3f2e827d9f9189136528",
-      "_mesh_node": "mobius-civic-ai-terminal",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "d1594541-merge",
-      "timestamp": "2026-04-25T17:10:26Z",
-      "author": "kaizencycle",
-      "title": "Merge pull request #414 from kaizencycle/c292-phase1-civic-mesh-contract",
-      "type": "merge",
-      "severity": "info",
-      "tags": [
-        "merge",
-        "pr"
-      ],
-      "source": "github-commit",
-      "verified": false,
-      "sha": "d1594541a1f1ba06a80f7c43c5eccd90a13d440c",
       "_mesh_node": "mobius-civic-ai-terminal",
       "_mesh_tier": "contributor"
     },
