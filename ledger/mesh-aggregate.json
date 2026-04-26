@@ -1,24 +1,24 @@
 {
   "schema": "MNS_AGGREGATE_V1",
-  "updated_at": "2026-04-26T21:29:32.847Z",
+  "updated_at": "2026-04-26T22:28:29.067Z",
   "node_count": 5,
   "live_nodes": 3,
-  "total_entries": 20,
+  "total_entries": 22,
   "nodes": [
     {
       "node_id": "mobius-substrate",
       "tier": "sentinel",
       "node_type": "substrate",
       "entry_count": 0,
-      "fetched_at": "2026-04-26T21:29:32.714Z",
+      "fetched_at": "2026-04-26T22:28:28.716Z",
       "error": null
     },
     {
       "node_id": "mobius-civic-ai-terminal",
       "tier": "contributor",
       "node_type": "app",
-      "entry_count": 10,
-      "fetched_at": "2026-04-26T21:29:32.847Z",
+      "entry_count": 12,
+      "fetched_at": "2026-04-26T22:28:29.067Z",
       "error": null
     },
     {
@@ -26,7 +26,7 @@
       "tier": "contributor",
       "node_type": "service",
       "entry_count": 10,
-      "fetched_at": "2026-04-26T21:29:32.718Z",
+      "fetched_at": "2026-04-26T22:28:28.794Z",
       "error": null
     },
     {
@@ -47,6 +47,40 @@
     }
   ],
   "entries": [
+    {
+      "id": "b17234ef-merge",
+      "timestamp": "2026-04-26T21:52:52Z",
+      "author": "kaizencycle",
+      "title": "fix(vault-v2): treat null finalizeSeal as benign race, not error",
+      "type": "merge",
+      "severity": "info",
+      "tags": [
+        "merge",
+        "pr"
+      ],
+      "source": "github-commit",
+      "verified": false,
+      "sha": "b17234efae274b12d22ec94c64bed1f031991880",
+      "_mesh_node": "mobius-civic-ai-terminal",
+      "_mesh_tier": "contributor"
+    },
+    {
+      "id": "d425a160-merge",
+      "timestamp": "2026-04-26T21:49:08Z",
+      "author": "kaizencycle",
+      "title": "C-293: Sentinel council notifications, auth hardening, and observability",
+      "type": "merge",
+      "severity": "info",
+      "tags": [
+        "merge",
+        "pr"
+      ],
+      "source": "github-commit",
+      "verified": false,
+      "sha": "d425a160b07b3afe3221b4e1678f4a3279e709d1",
+      "_mesh_node": "mobius-civic-ai-terminal",
+      "_mesh_tier": "contributor"
+    },
     {
       "id": "054dfdcb-merge",
       "timestamp": "2026-04-26T21:25:09Z",
