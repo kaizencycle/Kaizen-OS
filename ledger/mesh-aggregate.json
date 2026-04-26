@@ -1,24 +1,24 @@
 {
   "schema": "MNS_AGGREGATE_V1",
-  "updated_at": "2026-04-25T23:28:55.864Z",
+  "updated_at": "2026-04-26T01:49:14.754Z",
   "node_count": 5,
   "live_nodes": 3,
-  "total_entries": 22,
+  "total_entries": 23,
   "nodes": [
     {
       "node_id": "mobius-substrate",
       "tier": "sentinel",
       "node_type": "substrate",
       "entry_count": 0,
-      "fetched_at": "2026-04-25T23:28:55.206Z",
+      "fetched_at": "2026-04-26T01:49:14.416Z",
       "error": null
     },
     {
       "node_id": "mobius-civic-ai-terminal",
       "tier": "contributor",
       "node_type": "app",
-      "entry_count": 12,
-      "fetched_at": "2026-04-25T23:28:55.863Z",
+      "entry_count": 13,
+      "fetched_at": "2026-04-26T01:49:14.754Z",
       "error": null
     },
     {
@@ -26,7 +26,7 @@
       "tier": "contributor",
       "node_type": "service",
       "entry_count": 10,
-      "fetched_at": "2026-04-25T23:28:55.235Z",
+      "fetched_at": "2026-04-26T01:49:14.422Z",
       "error": null
     },
     {
@@ -47,6 +47,57 @@
     }
   ],
   "entries": [
+    {
+      "id": "c43f2462-merge",
+      "timestamp": "2026-04-26T00:51:16Z",
+      "author": "kaizencycle",
+      "title": "Add desktop Globe 3D view, Sentinel constellation, and Signals radar visualization",
+      "type": "merge",
+      "severity": "info",
+      "tags": [
+        "merge",
+        "pr"
+      ],
+      "source": "github-commit",
+      "verified": false,
+      "sha": "c43f2462cb3c830bd22ef2aaefb0be8fbbf3ed4a",
+      "_mesh_node": "mobius-civic-ai-terminal",
+      "_mesh_tier": "contributor"
+    },
+    {
+      "id": "4b380428-merge",
+      "timestamp": "2026-04-25T23:58:54Z",
+      "author": "kaizencycle",
+      "title": "C292 ledger cycle epicon bridge",
+      "type": "merge",
+      "severity": "info",
+      "tags": [
+        "merge",
+        "pr"
+      ],
+      "source": "github-commit",
+      "verified": false,
+      "sha": "4b3804287074c52d8b190e70742d1920abd4bf3d",
+      "_mesh_node": "mobius-civic-ai-terminal",
+      "_mesh_tier": "contributor"
+    },
+    {
+      "id": "94511031-merge",
+      "timestamp": "2026-04-25T23:41:58Z",
+      "author": "kaizencycle",
+      "title": "C292 ledger cycle epicon bridge",
+      "type": "merge",
+      "severity": "info",
+      "tags": [
+        "merge",
+        "pr"
+      ],
+      "source": "github-commit",
+      "verified": false,
+      "sha": "94511031baebf49dbff0727ab61b60697db93a49",
+      "_mesh_node": "mobius-civic-ai-terminal",
+      "_mesh_tier": "contributor"
+    },
     {
       "id": "bd91e219-merge",
       "timestamp": "2026-04-25T21:23:51Z",
@@ -214,40 +265,6 @@
       "source": "github-commit",
       "verified": false,
       "sha": "935c9e3bdab15db3cab3d44b51b1a64c076a64ba",
-      "_mesh_node": "mobius-civic-ai-terminal",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "8561afcd-merge",
-      "timestamp": "2026-04-25T12:33:28Z",
-      "author": "kaizencycle",
-      "title": "Merge pull request #407 from kaizencycle/c292-open-lane-flow-control",
-      "type": "merge",
-      "severity": "info",
-      "tags": [
-        "merge",
-        "pr"
-      ],
-      "source": "github-commit",
-      "verified": false,
-      "sha": "8561afcd0da45903d33a3cca6f7532cb737611db",
-      "_mesh_node": "mobius-civic-ai-terminal",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "d12f61bb-merge",
-      "timestamp": "2026-04-25T11:37:07Z",
-      "author": "kaizencycle",
-      "title": "Merge pull request #406 from kaizencycle/c292-journal-hot-lane-read-fix",
-      "type": "merge",
-      "severity": "info",
-      "tags": [
-        "merge",
-        "pr"
-      ],
-      "source": "github-commit",
-      "verified": false,
-      "sha": "d12f61bbe6f06fcfbd02650fbc0771d14e2b974d",
       "_mesh_node": "mobius-civic-ai-terminal",
       "_mesh_tier": "contributor"
     },
