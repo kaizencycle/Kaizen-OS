@@ -1,24 +1,24 @@
 {
   "schema": "MNS_AGGREGATE_V1",
-  "updated_at": "2026-04-27T18:00:16.905Z",
+  "updated_at": "2026-04-27T20:03:14.152Z",
   "node_count": 5,
   "live_nodes": 3,
-  "total_entries": 21,
+  "total_entries": 22,
   "nodes": [
     {
       "node_id": "mobius-substrate",
       "tier": "sentinel",
       "node_type": "substrate",
       "entry_count": 0,
-      "fetched_at": "2026-04-27T18:00:16.701Z",
+      "fetched_at": "2026-04-27T20:03:13.778Z",
       "error": null
     },
     {
       "node_id": "mobius-civic-ai-terminal",
       "tier": "contributor",
       "node_type": "app",
-      "entry_count": 11,
-      "fetched_at": "2026-04-27T18:00:16.905Z",
+      "entry_count": 12,
+      "fetched_at": "2026-04-27T20:03:14.152Z",
       "error": null
     },
     {
@@ -26,7 +26,7 @@
       "tier": "contributor",
       "node_type": "service",
       "entry_count": 10,
-      "fetched_at": "2026-04-27T18:00:16.693Z",
+      "fetched_at": "2026-04-27T20:03:13.809Z",
       "error": null
     },
     {
@@ -47,6 +47,23 @@
     }
   ],
   "entries": [
+    {
+      "id": "20eb0290-merge",
+      "timestamp": "2026-04-27T18:15:00Z",
+      "author": "kaizencycle",
+      "title": "C-294: add canon reconciliation counts and timeout semantics",
+      "type": "merge",
+      "severity": "info",
+      "tags": [
+        "merge",
+        "pr"
+      ],
+      "source": "github-commit",
+      "verified": false,
+      "sha": "20eb02906644aac7270c014275469aa88de63bab",
+      "_mesh_node": "mobius-civic-ai-terminal",
+      "_mesh_tier": "contributor"
+    },
     {
       "id": "ae99bdd9-merge",
       "timestamp": "2026-04-27T16:01:58Z",
