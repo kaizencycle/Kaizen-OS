@@ -1,15 +1,15 @@
 {
   "mobius_catalog_version": "1.0.0",
-  "generated_at": "2026-04-26T05:16:09.051Z",
+  "generated_at": "2026-04-27T05:28:57.111Z",
   "repo": {
     "name": "Mobius-Substrate",
     "url": "https://github.com/kaizencycle/Mobius-Substrate",
     "default_branch": "main",
-    "commit": "b13af0b5aae82c7090eb666bfa5b52beb9405f88"
+    "commit": "3e784a1342eb83b5aab8a8e405b973f09d5e24a2"
   },
   "stats": {
     "epiconCount": 0,
-    "docCount": 954
+    "docCount": 956
   },
   "epicons": [],
   "docs": [
@@ -7126,6 +7126,14 @@
       "summary": ""
     },
     {
+      "path": "docs/STATE_OF_THE_SUBSTRATE_C-293_PHASE8_CANON_BROWSER.md",
+      "title": "State of the Substrate · C-293 Phase 8 Canon Browser",
+      "category": "STATE_OF_THE_SUBSTRATE_C-293_PHASE8_CANON_BROWSER.md",
+      "tags": [],
+      "content_hash": "sha256:dd1907c7ef41da271617adcb54d377e42e758386b27c91ac3a8b0ca316271d73",
+      "summary": ""
+    },
+    {
       "path": "docs/TECHNICAL_DETAILS.md",
       "title": "Mobius Systems — Technical Details",
       "category": "TECHNICAL_DETAILS.md",
@@ -7226,7 +7234,7 @@
       "title": "Divergence Dashboard",
       "category": "divergence",
       "tags": [],
-      "content_hash": "sha256:3be3c9205f65d8dc16fe53bfbddbb45e204246a62eb387a4bcfaeec3b95e6aea",
+      "content_hash": "sha256:43a9c66331c430dc68721335f16a83e344b9bce94d0a97f36eb42bcb3b7ec613",
       "summary": ""
     },
     {
@@ -7547,6 +7555,14 @@
       ],
       "content_hash": "sha256:445b4f1e3d90e342fb78d7cdbee72c70cd6b6536c4db1ebbb97b7a841a6ac24f",
       "summary": "Add first operational Mobius sentinel agent (MobiusATLAS) with covenant enforcement, tripwires, and EPICON-Lite specification"
+    },
+    {
+      "path": "docs/handbook/REPLAY_SYSTEM.md",
+      "title": "Replay System — Mobius Substrate Handbook",
+      "category": "handbook",
+      "tags": [],
+      "content_hash": "sha256:22015e30929e1402a86770ac81c82bb2acecaaf9fb91bbc94931e49a07880386",
+      "summary": ""
     },
     {
       "path": "docs/mesh/PHASE2_SUBSTRATE_MEMORY_CONTRACT.md",
