@@ -1,24 +1,24 @@
 {
   "schema": "MNS_AGGREGATE_V1",
-  "updated_at": "2026-04-27T12:16:26.285Z",
+  "updated_at": "2026-04-27T14:57:56.240Z",
   "node_count": 5,
   "live_nodes": 3,
-  "total_entries": 22,
+  "total_entries": 21,
   "nodes": [
     {
       "node_id": "mobius-substrate",
       "tier": "sentinel",
       "node_type": "substrate",
       "entry_count": 0,
-      "fetched_at": "2026-04-27T12:16:25.229Z",
+      "fetched_at": "2026-04-27T14:57:55.680Z",
       "error": null
     },
     {
       "node_id": "mobius-civic-ai-terminal",
       "tier": "contributor",
       "node_type": "app",
-      "entry_count": 12,
-      "fetched_at": "2026-04-27T12:16:26.285Z",
+      "entry_count": 11,
+      "fetched_at": "2026-04-27T14:57:56.240Z",
       "error": null
     },
     {
@@ -26,7 +26,7 @@
       "tier": "contributor",
       "node_type": "service",
       "entry_count": 10,
-      "fetched_at": "2026-04-27T12:16:25.230Z",
+      "fetched_at": "2026-04-27T14:57:55.779Z",
       "error": null
     },
     {
@@ -47,6 +47,23 @@
     }
   ],
   "entries": [
+    {
+      "id": "f8798065-merge",
+      "timestamp": "2026-04-27T13:06:09Z",
+      "author": "kaizencycle",
+      "title": "C-294 — Terminal Integrity Sweep (10 optimizations)",
+      "type": "merge",
+      "severity": "info",
+      "tags": [
+        "merge",
+        "pr"
+      ],
+      "source": "github-commit",
+      "verified": false,
+      "sha": "f8798065749c4c4eeffad6efa022db842d0ffcc8",
+      "_mesh_node": "mobius-civic-ai-terminal",
+      "_mesh_tier": "contributor"
+    },
     {
       "id": "9468fd6e-merge",
       "timestamp": "2026-04-27T00:48:05Z",
@@ -214,40 +231,6 @@
       "source": "github-commit",
       "verified": false,
       "sha": "d1df8ffd7743ebf000cb63cc01b2467990e427e9",
-      "_mesh_node": "mobius-civic-ai-terminal",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "c66ca00d-merge",
-      "timestamp": "2026-04-26T17:33:45Z",
-      "author": "kaizencycle",
-      "title": "C-293 Phase 1 — Quorum State Reader",
-      "type": "merge",
-      "severity": "info",
-      "tags": [
-        "merge",
-        "pr"
-      ],
-      "source": "github-commit",
-      "verified": false,
-      "sha": "c66ca00d3c7d926e530409de244b3527ad70b6d0",
-      "_mesh_node": "mobius-civic-ai-terminal",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "3a910c86-merge",
-      "timestamp": "2026-04-26T16:48:10Z",
-      "author": "kaizencycle",
-      "title": "C-293 Reserve Blocks",
-      "type": "merge",
-      "severity": "info",
-      "tags": [
-        "merge",
-        "pr"
-      ],
-      "source": "github-commit",
-      "verified": false,
-      "sha": "3a910c86ec893b77553ee5a18c00e9f1de957829",
       "_mesh_node": "mobius-civic-ai-terminal",
       "_mesh_tier": "contributor"
     },
