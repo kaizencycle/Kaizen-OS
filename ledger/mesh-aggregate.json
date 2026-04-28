@@ -1,24 +1,24 @@
 {
   "schema": "MNS_AGGREGATE_V1",
-  "updated_at": "2026-04-27T23:43:06.069Z",
+  "updated_at": "2026-04-28T02:00:31.072Z",
   "node_count": 5,
   "live_nodes": 3,
-  "total_entries": 21,
+  "total_entries": 19,
   "nodes": [
     {
       "node_id": "mobius-substrate",
       "tier": "sentinel",
       "node_type": "substrate",
       "entry_count": 0,
-      "fetched_at": "2026-04-27T23:43:05.113Z",
+      "fetched_at": "2026-04-28T02:00:30.599Z",
       "error": null
     },
     {
       "node_id": "mobius-civic-ai-terminal",
       "tier": "contributor",
       "node_type": "app",
-      "entry_count": 11,
-      "fetched_at": "2026-04-27T23:43:06.069Z",
+      "entry_count": 9,
+      "fetched_at": "2026-04-28T02:00:31.072Z",
       "error": null
     },
     {
@@ -26,7 +26,7 @@
       "tier": "contributor",
       "node_type": "service",
       "entry_count": 10,
-      "fetched_at": "2026-04-27T23:43:05.114Z",
+      "fetched_at": "2026-04-28T02:00:30.715Z",
       "error": null
     },
     {
@@ -47,6 +47,57 @@
     }
   ],
   "entries": [
+    {
+      "id": "df80482f-merge",
+      "timestamp": "2026-04-28T01:39:26Z",
+      "author": "kaizencycle",
+      "title": "C-294 — Replay Quorum Contracts + EPICON Promotion Unblock",
+      "type": "merge",
+      "severity": "info",
+      "tags": [
+        "merge",
+        "pr"
+      ],
+      "source": "github-commit",
+      "verified": false,
+      "sha": "df80482fe16807991d060ec0653e7f9fec07c0b0",
+      "_mesh_node": "mobius-civic-ai-terminal",
+      "_mesh_tier": "contributor"
+    },
+    {
+      "id": "0c32b143-merge",
+      "timestamp": "2026-04-28T00:01:51Z",
+      "author": "kaizencycle",
+      "title": "fix(C-295): EPICON promotion lane dedup TTL + journal rolling window",
+      "type": "merge",
+      "severity": "info",
+      "tags": [
+        "merge",
+        "pr"
+      ],
+      "source": "github-commit",
+      "verified": false,
+      "sha": "0c32b1436fd60ffdcb3344c48fb4a8dc034548e8",
+      "_mesh_node": "mobius-civic-ai-terminal",
+      "_mesh_tier": "contributor"
+    },
+    {
+      "id": "f51259ef-merge",
+      "timestamp": "2026-04-27T23:49:34Z",
+      "author": "kaizencycle",
+      "title": "C-294 Phase 5 — Replay Council Viewer (read-only)",
+      "type": "merge",
+      "severity": "info",
+      "tags": [
+        "merge",
+        "pr"
+      ],
+      "source": "github-commit",
+      "verified": false,
+      "sha": "f51259ef64988f4eda2e2ac584ddb30ac62e527c",
+      "_mesh_node": "mobius-civic-ai-terminal",
+      "_mesh_tier": "contributor"
+    },
     {
       "id": "20eb0290-merge",
       "timestamp": "2026-04-27T18:15:00Z",
@@ -146,91 +197,6 @@
       "source": "github-commit",
       "verified": false,
       "sha": "1cdfb934f80c896f060439d58c6fe1bb27a11a08",
-      "_mesh_node": "mobius-civic-ai-terminal",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "796259e7-merge",
-      "timestamp": "2026-04-26T23:24:06Z",
-      "author": "kaizencycle",
-      "title": "C-293 Phase 7 — Historical Reserve Block Back-Attestation",
-      "type": "merge",
-      "severity": "info",
-      "tags": [
-        "merge",
-        "pr"
-      ],
-      "source": "github-commit",
-      "verified": false,
-      "sha": "796259e759301e70ee286c71e0bc61e008dc0b37",
-      "_mesh_node": "mobius-civic-ai-terminal",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "f111c549-merge",
-      "timestamp": "2026-04-26T22:56:00Z",
-      "author": "kaizencycle",
-      "title": "C-293 Phase 6 — Incident + Rollback Protocol",
-      "type": "merge",
-      "severity": "info",
-      "tags": [
-        "merge",
-        "pr"
-      ],
-      "source": "github-commit",
-      "verified": false,
-      "sha": "f111c549a179396ef00545fd953ce738e8243c98",
-      "_mesh_node": "mobius-civic-ai-terminal",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "b17234ef-merge",
-      "timestamp": "2026-04-26T21:52:52Z",
-      "author": "kaizencycle",
-      "title": "fix(vault-v2): treat null finalizeSeal as benign race, not error",
-      "type": "merge",
-      "severity": "info",
-      "tags": [
-        "merge",
-        "pr"
-      ],
-      "source": "github-commit",
-      "verified": false,
-      "sha": "b17234efae274b12d22ec94c64bed1f031991880",
-      "_mesh_node": "mobius-civic-ai-terminal",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "d425a160-merge",
-      "timestamp": "2026-04-26T21:49:08Z",
-      "author": "kaizencycle",
-      "title": "C-293: Sentinel council notifications, auth hardening, and observability",
-      "type": "merge",
-      "severity": "info",
-      "tags": [
-        "merge",
-        "pr"
-      ],
-      "source": "github-commit",
-      "verified": false,
-      "sha": "d425a160b07b3afe3221b4e1678f4a3279e709d1",
-      "_mesh_node": "mobius-civic-ai-terminal",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "054dfdcb-merge",
-      "timestamp": "2026-04-26T21:25:09Z",
-      "author": "kaizencycle",
-      "title": "C-293 Phase 5 — Replay / Rebuild Dry Run",
-      "type": "merge",
-      "severity": "info",
-      "tags": [
-        "merge",
-        "pr"
-      ],
-      "source": "github-commit",
-      "verified": false,
-      "sha": "054dfdcbfb03a2a9ce2c9586c8f8ace50ed1f11b",
       "_mesh_node": "mobius-civic-ai-terminal",
       "_mesh_tier": "contributor"
     },
