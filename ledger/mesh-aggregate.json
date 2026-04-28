@@ -1,24 +1,24 @@
 {
   "schema": "MNS_AGGREGATE_V1",
-  "updated_at": "2026-04-28T02:00:31.072Z",
+  "updated_at": "2026-04-28T05:50:16.050Z",
   "node_count": 5,
   "live_nodes": 3,
-  "total_entries": 19,
+  "total_entries": 18,
   "nodes": [
     {
       "node_id": "mobius-substrate",
       "tier": "sentinel",
       "node_type": "substrate",
       "entry_count": 0,
-      "fetched_at": "2026-04-28T02:00:30.599Z",
+      "fetched_at": "2026-04-28T05:50:15.468Z",
       "error": null
     },
     {
       "node_id": "mobius-civic-ai-terminal",
       "tier": "contributor",
       "node_type": "app",
-      "entry_count": 9,
-      "fetched_at": "2026-04-28T02:00:31.072Z",
+      "entry_count": 8,
+      "fetched_at": "2026-04-28T05:50:16.050Z",
       "error": null
     },
     {
@@ -26,7 +26,7 @@
       "tier": "contributor",
       "node_type": "service",
       "entry_count": 10,
-      "fetched_at": "2026-04-28T02:00:30.715Z",
+      "fetched_at": "2026-04-28T05:50:15.514Z",
       "error": null
     },
     {
@@ -47,6 +47,23 @@
     }
   ],
   "entries": [
+    {
+      "id": "6b647693-merge",
+      "timestamp": "2026-04-28T02:47:10Z",
+      "author": "kaizencycle",
+      "title": "C-294 Phase 11 — Effective Canon State + UI Overlay",
+      "type": "merge",
+      "severity": "info",
+      "tags": [
+        "merge",
+        "pr"
+      ],
+      "source": "github-commit",
+      "verified": false,
+      "sha": "6b647693723e58723d8a7b0a27204f6067f04394",
+      "_mesh_node": "mobius-civic-ai-terminal",
+      "_mesh_tier": "contributor"
+    },
     {
       "id": "df80482f-merge",
       "timestamp": "2026-04-28T01:39:26Z",
@@ -163,40 +180,6 @@
       "source": "github-commit",
       "verified": false,
       "sha": "f8798065749c4c4eeffad6efa022db842d0ffcc8",
-      "_mesh_node": "mobius-civic-ai-terminal",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "9468fd6e-merge",
-      "timestamp": "2026-04-27T00:48:05Z",
-      "author": "kaizencycle",
-      "title": "C-293 Phase 9 — Replay Inspector UI",
-      "type": "merge",
-      "severity": "info",
-      "tags": [
-        "merge",
-        "pr"
-      ],
-      "source": "github-commit",
-      "verified": false,
-      "sha": "9468fd6e3917c15312b8d3454cdbaec05aef3462",
-      "_mesh_node": "mobius-civic-ai-terminal",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "1cdfb934-merge",
-      "timestamp": "2026-04-27T00:24:00Z",
-      "author": "kaizencycle",
-      "title": "C-293 Phase 8 — Substrate Canon Browser + Reserve Block Viewer",
-      "type": "merge",
-      "severity": "info",
-      "tags": [
-        "merge",
-        "pr"
-      ],
-      "source": "github-commit",
-      "verified": false,
-      "sha": "1cdfb934f80c896f060439d58c6fe1bb27a11a08",
       "_mesh_node": "mobius-civic-ai-terminal",
       "_mesh_tier": "contributor"
     },
