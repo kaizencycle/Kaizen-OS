@@ -1,24 +1,24 @@
 {
   "schema": "MNS_AGGREGATE_V1",
-  "updated_at": "2026-04-28T17:30:21.381Z",
+  "updated_at": "2026-04-28T19:20:23.983Z",
   "node_count": 5,
   "live_nodes": 3,
-  "total_entries": 18,
+  "total_entries": 17,
   "nodes": [
     {
       "node_id": "mobius-substrate",
       "tier": "sentinel",
       "node_type": "substrate",
       "entry_count": 0,
-      "fetched_at": "2026-04-28T17:30:20.987Z",
+      "fetched_at": "2026-04-28T19:20:23.541Z",
       "error": null
     },
     {
       "node_id": "mobius-civic-ai-terminal",
       "tier": "contributor",
       "node_type": "app",
-      "entry_count": 8,
-      "fetched_at": "2026-04-28T17:30:21.381Z",
+      "entry_count": 7,
+      "fetched_at": "2026-04-28T19:20:23.983Z",
       "error": null
     },
     {
@@ -26,7 +26,7 @@
       "tier": "contributor",
       "node_type": "service",
       "entry_count": 10,
-      "fetched_at": "2026-04-28T17:30:21.031Z",
+      "fetched_at": "2026-04-28T19:20:23.510Z",
       "error": null
     },
     {
@@ -163,23 +163,6 @@
       "source": "github-commit",
       "verified": false,
       "sha": "20eb02906644aac7270c014275469aa88de63bab",
-      "_mesh_node": "mobius-civic-ai-terminal",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "ae99bdd9-merge",
-      "timestamp": "2026-04-27T16:01:58Z",
-      "author": "kaizencycle",
-      "title": "feat: back-attestation sweep for quarantined reserve seals",
-      "type": "merge",
-      "severity": "info",
-      "tags": [
-        "merge",
-        "pr"
-      ],
-      "source": "github-commit",
-      "verified": false,
-      "sha": "ae99bdd9c85f731b78e6fc5b1cb4c4e45a99f12e",
       "_mesh_node": "mobius-civic-ai-terminal",
       "_mesh_tier": "contributor"
     },
