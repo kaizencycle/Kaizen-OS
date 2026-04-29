@@ -1,24 +1,24 @@
 {
   "schema": "MNS_AGGREGATE_V1",
-  "updated_at": "2026-04-29T17:18:01.260Z",
+  "updated_at": "2026-04-29T19:09:28.936Z",
   "node_count": 5,
   "live_nodes": 3,
-  "total_entries": 19,
+  "total_entries": 18,
   "nodes": [
     {
       "node_id": "mobius-substrate",
       "tier": "sentinel",
       "node_type": "substrate",
       "entry_count": 0,
-      "fetched_at": "2026-04-29T17:18:00.819Z",
+      "fetched_at": "2026-04-29T19:09:28.522Z",
       "error": null
     },
     {
       "node_id": "mobius-civic-ai-terminal",
       "tier": "contributor",
       "node_type": "app",
-      "entry_count": 9,
-      "fetched_at": "2026-04-29T17:18:01.260Z",
+      "entry_count": 8,
+      "fetched_at": "2026-04-29T19:09:28.936Z",
       "error": null
     },
     {
@@ -26,7 +26,7 @@
       "tier": "contributor",
       "node_type": "service",
       "entry_count": 10,
-      "fetched_at": "2026-04-29T17:18:00.879Z",
+      "fetched_at": "2026-04-29T19:09:28.604Z",
       "error": null
     },
     {
@@ -180,23 +180,6 @@
       "source": "github-commit",
       "verified": false,
       "sha": "2aa3395f890f06117b799cb5a6017fee0993c244",
-      "_mesh_node": "mobius-civic-ai-terminal",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "6b647693-merge",
-      "timestamp": "2026-04-28T02:47:10Z",
-      "author": "kaizencycle",
-      "title": "C-294 Phase 11 — Effective Canon State + UI Overlay",
-      "type": "merge",
-      "severity": "info",
-      "tags": [
-        "merge",
-        "pr"
-      ],
-      "source": "github-commit",
-      "verified": false,
-      "sha": "6b647693723e58723d8a7b0a27204f6067f04394",
       "_mesh_node": "mobius-civic-ai-terminal",
       "_mesh_tier": "contributor"
     },
