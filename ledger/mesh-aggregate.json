@@ -1,24 +1,24 @@
 {
   "schema": "MNS_AGGREGATE_V1",
-  "updated_at": "2026-04-28T23:55:32.805Z",
+  "updated_at": "2026-04-29T02:07:20.534Z",
   "node_count": 5,
   "live_nodes": 3,
-  "total_entries": 17,
+  "total_entries": 18,
   "nodes": [
     {
       "node_id": "mobius-substrate",
       "tier": "sentinel",
       "node_type": "substrate",
       "entry_count": 0,
-      "fetched_at": "2026-04-28T23:55:32.641Z",
+      "fetched_at": "2026-04-29T02:07:20.150Z",
       "error": null
     },
     {
       "node_id": "mobius-civic-ai-terminal",
       "tier": "contributor",
       "node_type": "app",
-      "entry_count": 7,
-      "fetched_at": "2026-04-28T23:55:32.805Z",
+      "entry_count": 8,
+      "fetched_at": "2026-04-29T02:07:20.534Z",
       "error": null
     },
     {
@@ -26,7 +26,7 @@
       "tier": "contributor",
       "node_type": "service",
       "entry_count": 10,
-      "fetched_at": "2026-04-28T23:55:32.643Z",
+      "fetched_at": "2026-04-29T02:07:20.162Z",
       "error": null
     },
     {
@@ -47,6 +47,40 @@
     }
   ],
   "entries": [
+    {
+      "id": "d97a59f7-merge",
+      "timestamp": "2026-04-29T02:03:40Z",
+      "author": "kaizencycle",
+      "title": "Optimize journal pruning & add window_hours filtering",
+      "type": "merge",
+      "severity": "info",
+      "tags": [
+        "merge",
+        "pr"
+      ],
+      "source": "github-commit",
+      "verified": false,
+      "sha": "d97a59f748b1ed2ba2443238ab8f562340b47f91",
+      "_mesh_node": "mobius-civic-ai-terminal",
+      "_mesh_tier": "contributor"
+    },
+    {
+      "id": "65a96157-merge",
+      "timestamp": "2026-04-29T01:53:53Z",
+      "author": "kaizencycle",
+      "title": "C-295 — Ledger Freshness + Live EPICON Feed + UI Restore",
+      "type": "merge",
+      "severity": "info",
+      "tags": [
+        "merge",
+        "pr"
+      ],
+      "source": "github-commit",
+      "verified": false,
+      "sha": "65a961578d4be14682c448280323f1a64b2b2044",
+      "_mesh_node": "mobius-civic-ai-terminal",
+      "_mesh_tier": "contributor"
+    },
     {
       "id": "27c0ff02-merge",
       "timestamp": "2026-04-28T15:44:31Z",
@@ -146,23 +180,6 @@
       "source": "github-commit",
       "verified": false,
       "sha": "f51259ef64988f4eda2e2ac584ddb30ac62e527c",
-      "_mesh_node": "mobius-civic-ai-terminal",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "20eb0290-merge",
-      "timestamp": "2026-04-27T18:15:00Z",
-      "author": "kaizencycle",
-      "title": "C-294: add canon reconciliation counts and timeout semantics",
-      "type": "merge",
-      "severity": "info",
-      "tags": [
-        "merge",
-        "pr"
-      ],
-      "source": "github-commit",
-      "verified": false,
-      "sha": "20eb02906644aac7270c014275469aa88de63bab",
       "_mesh_node": "mobius-civic-ai-terminal",
       "_mesh_tier": "contributor"
     },
