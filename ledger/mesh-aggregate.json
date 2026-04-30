@@ -1,6 +1,6 @@
 {
   "schema": "MNS_AGGREGATE_V1",
-  "updated_at": "2026-04-30T02:01:51.986Z",
+  "updated_at": "2026-04-30T05:49:43.963Z",
   "node_count": 5,
   "live_nodes": 3,
   "total_entries": 18,
@@ -10,7 +10,7 @@
       "tier": "sentinel",
       "node_type": "substrate",
       "entry_count": 0,
-      "fetched_at": "2026-04-30T02:01:51.694Z",
+      "fetched_at": "2026-04-30T05:49:43.525Z",
       "error": null
     },
     {
@@ -18,7 +18,7 @@
       "tier": "contributor",
       "node_type": "app",
       "entry_count": 8,
-      "fetched_at": "2026-04-30T02:01:51.986Z",
+      "fetched_at": "2026-04-30T05:49:43.963Z",
       "error": null
     },
     {
@@ -26,7 +26,7 @@
       "tier": "contributor",
       "node_type": "service",
       "entry_count": 10,
-      "fetched_at": "2026-04-30T02:01:51.902Z",
+      "fetched_at": "2026-04-30T05:49:43.526Z",
       "error": null
     },
     {
@@ -47,6 +47,23 @@
     }
   ],
   "entries": [
+    {
+      "id": "adf0d3c2-merge",
+      "timestamp": "2026-04-30T02:08:44Z",
+      "author": "kaizencycle",
+      "title": "C-296: 10 signal + vault + perf optimizations",
+      "type": "merge",
+      "severity": "info",
+      "tags": [
+        "merge",
+        "pr"
+      ],
+      "source": "github-commit",
+      "verified": false,
+      "sha": "adf0d3c24aa8a0132cb9ac280cb5f953a757a782",
+      "_mesh_node": "mobius-civic-ai-terminal",
+      "_mesh_tier": "contributor"
+    },
     {
       "id": "913a676d-merge",
       "timestamp": "2026-04-29T14:04:01Z",
@@ -163,23 +180,6 @@
       "source": "github-commit",
       "verified": false,
       "sha": "27c0ff029be2983ba2657a0fd61715637c44fecf",
-      "_mesh_node": "mobius-civic-ai-terminal",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "2aa3395f-merge",
-      "timestamp": "2026-04-28T15:03:31Z",
-      "author": "kaizencycle",
-      "title": "Use calendar-based cycle ID as authoritative source across UI",
-      "type": "merge",
-      "severity": "info",
-      "tags": [
-        "merge",
-        "pr"
-      ],
-      "source": "github-commit",
-      "verified": false,
-      "sha": "2aa3395f890f06117b799cb5a6017fee0993c244",
       "_mesh_node": "mobius-civic-ai-terminal",
       "_mesh_tier": "contributor"
     },
