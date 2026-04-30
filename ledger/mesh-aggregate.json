@@ -1,6 +1,6 @@
 {
   "schema": "MNS_AGGREGATE_V1",
-  "updated_at": "2026-04-30T18:04:26.429Z",
+  "updated_at": "2026-04-30T20:05:27.895Z",
   "node_count": 5,
   "live_nodes": 3,
   "total_entries": 18,
@@ -10,7 +10,7 @@
       "tier": "sentinel",
       "node_type": "substrate",
       "entry_count": 0,
-      "fetched_at": "2026-04-30T18:04:26.088Z",
+      "fetched_at": "2026-04-30T20:05:27.655Z",
       "error": null
     },
     {
@@ -18,7 +18,7 @@
       "tier": "contributor",
       "node_type": "app",
       "entry_count": 8,
-      "fetched_at": "2026-04-30T18:04:26.429Z",
+      "fetched_at": "2026-04-30T20:05:27.895Z",
       "error": null
     },
     {
@@ -26,7 +26,7 @@
       "tier": "contributor",
       "node_type": "service",
       "entry_count": 10,
-      "fetched_at": "2026-04-30T18:04:26.160Z",
+      "fetched_at": "2026-04-30T20:05:27.663Z",
       "error": null
     },
     {
@@ -47,6 +47,23 @@
     }
   ],
   "entries": [
+    {
+      "id": "c50e4944-merge",
+      "timestamp": "2026-04-30T18:22:23Z",
+      "author": "kaizencycle",
+      "title": "Improve chamber navigation feedback and vault degraded-state messaging",
+      "type": "merge",
+      "severity": "info",
+      "tags": [
+        "merge",
+        "pr"
+      ],
+      "source": "github-commit",
+      "verified": false,
+      "sha": "c50e494461bb1fb106e2d77a8cbec8dcf51553d2",
+      "_mesh_node": "mobius-civic-ai-terminal",
+      "_mesh_tier": "contributor"
+    },
     {
       "id": "2d412245-merge",
       "timestamp": "2026-04-30T14:36:52Z",
@@ -163,23 +180,6 @@
       "source": "github-commit",
       "verified": false,
       "sha": "d97a59f748b1ed2ba2443238ab8f562340b47f91",
-      "_mesh_node": "mobius-civic-ai-terminal",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "65a96157-merge",
-      "timestamp": "2026-04-29T01:53:53Z",
-      "author": "kaizencycle",
-      "title": "C-295 — Ledger Freshness + Live EPICON Feed + UI Restore",
-      "type": "merge",
-      "severity": "info",
-      "tags": [
-        "merge",
-        "pr"
-      ],
-      "source": "github-commit",
-      "verified": false,
-      "sha": "65a961578d4be14682c448280323f1a64b2b2044",
       "_mesh_node": "mobius-civic-ai-terminal",
       "_mesh_tier": "contributor"
     },
