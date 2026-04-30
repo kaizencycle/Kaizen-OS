@@ -1,6 +1,6 @@
 {
   "schema": "MNS_AGGREGATE_V1",
-  "updated_at": "2026-04-30T20:05:27.895Z",
+  "updated_at": "2026-04-30T21:48:21.969Z",
   "node_count": 5,
   "live_nodes": 3,
   "total_entries": 18,
@@ -10,7 +10,7 @@
       "tier": "sentinel",
       "node_type": "substrate",
       "entry_count": 0,
-      "fetched_at": "2026-04-30T20:05:27.655Z",
+      "fetched_at": "2026-04-30T21:48:21.470Z",
       "error": null
     },
     {
@@ -18,7 +18,7 @@
       "tier": "contributor",
       "node_type": "app",
       "entry_count": 8,
-      "fetched_at": "2026-04-30T20:05:27.895Z",
+      "fetched_at": "2026-04-30T21:48:21.969Z",
       "error": null
     },
     {
@@ -26,7 +26,7 @@
       "tier": "contributor",
       "node_type": "service",
       "entry_count": 10,
-      "fetched_at": "2026-04-30T20:05:27.663Z",
+      "fetched_at": "2026-04-30T21:48:21.482Z",
       "error": null
     },
     {
@@ -47,6 +47,23 @@
     }
   ],
   "entries": [
+    {
+      "id": "eda8b02c-merge",
+      "timestamp": "2026-04-30T20:08:14Z",
+      "author": "kaizencycle",
+      "title": "C-296 Phase 10: add conflict zones endpoint",
+      "type": "merge",
+      "severity": "info",
+      "tags": [
+        "merge",
+        "pr"
+      ],
+      "source": "github-commit",
+      "verified": false,
+      "sha": "eda8b02c9d34277d3d690a3a8056bdda8d1671c0",
+      "_mesh_node": "mobius-civic-ai-terminal",
+      "_mesh_tier": "contributor"
+    },
     {
       "id": "c50e4944-merge",
       "timestamp": "2026-04-30T18:22:23Z",
@@ -163,23 +180,6 @@
       "source": "github-commit",
       "verified": false,
       "sha": "8db564979ed6834b49a97afbed79c98040c314f4",
-      "_mesh_node": "mobius-civic-ai-terminal",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "d97a59f7-merge",
-      "timestamp": "2026-04-29T02:03:40Z",
-      "author": "kaizencycle",
-      "title": "Optimize journal pruning & add window_hours filtering",
-      "type": "merge",
-      "severity": "info",
-      "tags": [
-        "merge",
-        "pr"
-      ],
-      "source": "github-commit",
-      "verified": false,
-      "sha": "d97a59f748b1ed2ba2443238ab8f562340b47f91",
       "_mesh_node": "mobius-civic-ai-terminal",
       "_mesh_tier": "contributor"
     },
