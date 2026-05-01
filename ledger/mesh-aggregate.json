@@ -1,24 +1,24 @@
 {
   "schema": "MNS_AGGREGATE_V1",
-  "updated_at": "2026-05-01T02:05:40.852Z",
+  "updated_at": "2026-05-01T05:59:44.734Z",
   "node_count": 5,
   "live_nodes": 3,
-  "total_entries": 17,
+  "total_entries": 16,
   "nodes": [
     {
       "node_id": "mobius-substrate",
       "tier": "sentinel",
       "node_type": "substrate",
       "entry_count": 0,
-      "fetched_at": "2026-05-01T02:05:40.081Z",
+      "fetched_at": "2026-05-01T05:59:44.203Z",
       "error": null
     },
     {
       "node_id": "mobius-civic-ai-terminal",
       "tier": "contributor",
       "node_type": "app",
-      "entry_count": 7,
-      "fetched_at": "2026-05-01T02:05:40.851Z",
+      "entry_count": 6,
+      "fetched_at": "2026-05-01T05:59:44.733Z",
       "error": null
     },
     {
@@ -26,7 +26,7 @@
       "tier": "contributor",
       "node_type": "service",
       "entry_count": 10,
-      "fetched_at": "2026-05-01T02:05:40.212Z",
+      "fetched_at": "2026-05-01T05:59:44.197Z",
       "error": null
     },
     {
@@ -146,23 +146,6 @@
       "source": "github-commit",
       "verified": false,
       "sha": "913a676d5bd1067e5ac23b5a691fb4b263039599",
-      "_mesh_node": "mobius-civic-ai-terminal",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "44d8a41f-merge",
-      "timestamp": "2026-04-29T13:56:30Z",
-      "author": "kaizencycle",
-      "title": "C-296: Performance optimizations & integrity threshold tuning",
-      "type": "merge",
-      "severity": "info",
-      "tags": [
-        "merge",
-        "pr"
-      ],
-      "source": "github-commit",
-      "verified": false,
-      "sha": "44d8a41f85b3fac5ef0660ce824b27c0afa7d776",
       "_mesh_node": "mobius-civic-ai-terminal",
       "_mesh_tier": "contributor"
     },
