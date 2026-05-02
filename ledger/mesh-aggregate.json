@@ -1,24 +1,24 @@
 {
   "schema": "MNS_AGGREGATE_V1",
-  "updated_at": "2026-05-01T23:42:33.718Z",
+  "updated_at": "2026-05-02T01:52:39.910Z",
   "node_count": 5,
   "live_nodes": 3,
-  "total_entries": 15,
+  "total_entries": 13,
   "nodes": [
     {
       "node_id": "mobius-substrate",
       "tier": "sentinel",
       "node_type": "substrate",
       "entry_count": 0,
-      "fetched_at": "2026-05-01T23:42:33.185Z",
+      "fetched_at": "2026-05-02T01:52:39.579Z",
       "error": null
     },
     {
       "node_id": "mobius-civic-ai-terminal",
       "tier": "contributor",
       "node_type": "app",
-      "entry_count": 5,
-      "fetched_at": "2026-05-01T23:42:33.718Z",
+      "entry_count": 3,
+      "fetched_at": "2026-05-02T01:52:39.910Z",
       "error": null
     },
     {
@@ -26,7 +26,7 @@
       "tier": "contributor",
       "node_type": "service",
       "entry_count": 10,
-      "fetched_at": "2026-05-01T23:42:33.260Z",
+      "fetched_at": "2026-05-02T01:52:39.575Z",
       "error": null
     },
     {
@@ -47,6 +47,23 @@
     }
   ],
   "entries": [
+    {
+      "id": "603d6319-merge",
+      "timestamp": "2026-05-01T23:44:07Z",
+      "author": "kaizencycle",
+      "title": "C-298 Phase 1-2 — Mobius Router Read-Only + Metrics",
+      "type": "merge",
+      "severity": "info",
+      "tags": [
+        "merge",
+        "pr"
+      ],
+      "source": "github-commit",
+      "verified": false,
+      "sha": "603d6319c5a94da38f304586899bea7738fb80b0",
+      "_mesh_node": "mobius-civic-ai-terminal",
+      "_mesh_tier": "contributor"
+    },
     {
       "id": "201f2aa5-merge",
       "timestamp": "2026-05-01T21:43:50Z",
@@ -78,57 +95,6 @@
       "source": "github-commit",
       "verified": false,
       "sha": "c78f19fa6128e0a871126206b18a87ec47b3d431",
-      "_mesh_node": "mobius-civic-ai-terminal",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "eda8b02c-merge",
-      "timestamp": "2026-04-30T20:08:14Z",
-      "author": "kaizencycle",
-      "title": "C-296 Phase 10: add conflict zones endpoint",
-      "type": "merge",
-      "severity": "info",
-      "tags": [
-        "merge",
-        "pr"
-      ],
-      "source": "github-commit",
-      "verified": false,
-      "sha": "eda8b02c9d34277d3d690a3a8056bdda8d1671c0",
-      "_mesh_node": "mobius-civic-ai-terminal",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "c50e4944-merge",
-      "timestamp": "2026-04-30T18:22:23Z",
-      "author": "kaizencycle",
-      "title": "Improve chamber navigation feedback and vault degraded-state messaging",
-      "type": "merge",
-      "severity": "info",
-      "tags": [
-        "merge",
-        "pr"
-      ],
-      "source": "github-commit",
-      "verified": false,
-      "sha": "c50e494461bb1fb106e2d77a8cbec8dcf51553d2",
-      "_mesh_node": "mobius-civic-ai-terminal",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "2d412245-merge",
-      "timestamp": "2026-04-30T14:36:52Z",
-      "author": "kaizencycle",
-      "title": "C-296 Phase 3 — Cycle Normalization + Alignment Metadata",
-      "type": "merge",
-      "severity": "info",
-      "tags": [
-        "merge",
-        "pr"
-      ],
-      "source": "github-commit",
-      "verified": false,
-      "sha": "2d412245a6a6fc6124c1118d04fdecc9a3290e48",
       "_mesh_node": "mobius-civic-ai-terminal",
       "_mesh_tier": "contributor"
     },
