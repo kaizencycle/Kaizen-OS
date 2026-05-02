@@ -1,24 +1,24 @@
 {
   "schema": "MNS_AGGREGATE_V1",
-  "updated_at": "2026-05-02T14:05:32.443Z",
+  "updated_at": "2026-05-02T15:38:16.020Z",
   "node_count": 5,
   "live_nodes": 3,
-  "total_entries": 13,
+  "total_entries": 12,
   "nodes": [
     {
       "node_id": "mobius-substrate",
       "tier": "sentinel",
       "node_type": "substrate",
       "entry_count": 0,
-      "fetched_at": "2026-05-02T14:05:32.085Z",
+      "fetched_at": "2026-05-02T15:38:15.668Z",
       "error": null
     },
     {
       "node_id": "mobius-civic-ai-terminal",
       "tier": "contributor",
       "node_type": "app",
-      "entry_count": 3,
-      "fetched_at": "2026-05-02T14:05:32.442Z",
+      "entry_count": 2,
+      "fetched_at": "2026-05-02T15:38:16.019Z",
       "error": null
     },
     {
@@ -26,7 +26,7 @@
       "tier": "contributor",
       "node_type": "service",
       "entry_count": 10,
-      "fetched_at": "2026-05-02T14:05:32.169Z",
+      "fetched_at": "2026-05-02T15:38:15.718Z",
       "error": null
     },
     {
@@ -78,23 +78,6 @@
       "source": "github-commit",
       "verified": false,
       "sha": "201f2aa587d6fb3f93ad5336b805e524b2750713",
-      "_mesh_node": "mobius-civic-ai-terminal",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "c78f19fa-merge",
-      "timestamp": "2026-05-01T01:47:22Z",
-      "author": "kaizencycle",
-      "title": "C-297 Phase 0 — Terminal Audit + Ledger Restoration",
-      "type": "merge",
-      "severity": "info",
-      "tags": [
-        "merge",
-        "pr"
-      ],
-      "source": "github-commit",
-      "verified": false,
-      "sha": "c78f19fa6128e0a871126206b18a87ec47b3d431",
       "_mesh_node": "mobius-civic-ai-terminal",
       "_mesh_tier": "contributor"
     },
