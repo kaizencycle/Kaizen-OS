@@ -1,24 +1,24 @@
 {
   "schema": "MNS_AGGREGATE_V1",
-  "updated_at": "2026-05-02T22:30:35.765Z",
+  "updated_at": "2026-05-02T23:34:00.466Z",
   "node_count": 5,
   "live_nodes": 3,
-  "total_entries": 14,
+  "total_entries": 16,
   "nodes": [
     {
       "node_id": "mobius-substrate",
       "tier": "sentinel",
       "node_type": "substrate",
       "entry_count": 0,
-      "fetched_at": "2026-05-02T22:30:35.568Z",
+      "fetched_at": "2026-05-02T23:34:00.128Z",
       "error": null
     },
     {
       "node_id": "mobius-civic-ai-terminal",
       "tier": "contributor",
       "node_type": "app",
-      "entry_count": 4,
-      "fetched_at": "2026-05-02T22:30:35.765Z",
+      "entry_count": 6,
+      "fetched_at": "2026-05-02T23:34:00.466Z",
       "error": null
     },
     {
@@ -26,7 +26,7 @@
       "tier": "contributor",
       "node_type": "service",
       "entry_count": 10,
-      "fetched_at": "2026-05-02T22:30:35.587Z",
+      "fetched_at": "2026-05-02T23:34:00.172Z",
       "error": null
     },
     {
@@ -47,6 +47,40 @@
     }
   ],
   "entries": [
+    {
+      "id": "5369c0f4-merge",
+      "timestamp": "2026-05-02T23:00:18Z",
+      "author": "kaizencycle",
+      "title": "C-299 P0 — Quorum Ignition (Vault → Sentinel bridge)",
+      "type": "merge",
+      "severity": "info",
+      "tags": [
+        "merge",
+        "pr"
+      ],
+      "source": "github-commit",
+      "verified": false,
+      "sha": "5369c0f4d1aec83cfd1430c471908494827c554d",
+      "_mesh_node": "mobius-civic-ai-terminal",
+      "_mesh_tier": "contributor"
+    },
+    {
+      "id": "3521ddd4-merge",
+      "timestamp": "2026-05-02T22:59:42Z",
+      "author": "kaizencycle",
+      "title": "feat(c299-phase5): real agent journals + liveness hardening (10 optimizations)",
+      "type": "merge",
+      "severity": "info",
+      "tags": [
+        "merge",
+        "pr"
+      ],
+      "source": "github-commit",
+      "verified": false,
+      "sha": "3521ddd421ac4b08a1218b6b1c2b02603147ea9c",
+      "_mesh_node": "mobius-civic-ai-terminal",
+      "_mesh_tier": "contributor"
+    },
     {
       "id": "210802ab-merge",
       "timestamp": "2026-05-02T18:24:00Z",
