@@ -1,6 +1,6 @@
 {
   "schema": "MNS_NETWORK_MII_V1",
-  "computed_at": "2026-05-03T16:37:44.960Z",
+  "computed_at": "2026-05-03T17:39:03.284Z",
   "network_mii": 0.85,
   "node_count": 2,
   "nodes": [
@@ -9,7 +9,7 @@
       "tier": "contributor",
       "mii_baseline": 0.85,
       "weight": 0.7,
-      "entry_count": 14
+      "entry_count": 15
     },
     {
       "node_id": "civic-protocol-core",
