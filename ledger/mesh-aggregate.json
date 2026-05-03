@@ -1,6 +1,6 @@
 {
   "schema": "MNS_AGGREGATE_V1",
-  "updated_at": "2026-05-03T21:33:16.863Z",
+  "updated_at": "2026-05-03T22:31:11.948Z",
   "node_count": 5,
   "live_nodes": 3,
   "total_entries": 26,
@@ -10,7 +10,7 @@
       "tier": "sentinel",
       "node_type": "substrate",
       "entry_count": 0,
-      "fetched_at": "2026-05-03T21:33:16.418Z",
+      "fetched_at": "2026-05-03T22:31:11.580Z",
       "error": null
     },
     {
@@ -18,7 +18,7 @@
       "tier": "contributor",
       "node_type": "app",
       "entry_count": 16,
-      "fetched_at": "2026-05-03T21:33:16.863Z",
+      "fetched_at": "2026-05-03T22:31:11.948Z",
       "error": null
     },
     {
@@ -26,7 +26,7 @@
       "tier": "contributor",
       "node_type": "service",
       "entry_count": 10,
-      "fetched_at": "2026-05-03T21:33:16.529Z",
+      "fetched_at": "2026-05-03T22:31:11.469Z",
       "error": null
     },
     {
@@ -47,6 +47,23 @@
     }
   ],
   "entries": [
+    {
+      "id": "bea1005b-merge",
+      "timestamp": "2026-05-03T22:24:29Z",
+      "author": "kaizencycle",
+      "title": "C-300 Phase 11 — Ten Optimizations (substrate fix + journal KV bridge + HERMES signals + EPICON state + vault hardening)",
+      "type": "merge",
+      "severity": "info",
+      "tags": [
+        "merge",
+        "pr"
+      ],
+      "source": "github-commit",
+      "verified": false,
+      "sha": "bea1005b033f2978eea0116f42f159e0ee495308",
+      "_mesh_node": "mobius-civic-ai-terminal",
+      "_mesh_tier": "contributor"
+    },
     {
       "id": "f145b447-merge",
       "timestamp": "2026-05-03T17:50:52Z",
@@ -299,23 +316,6 @@
       "source": "github-commit",
       "verified": false,
       "sha": "210802abf564c066aa04dcccf71eb982609ff0e2",
-      "_mesh_node": "mobius-civic-ai-terminal",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "ea746139-merge",
-      "timestamp": "2026-05-02T18:22:42Z",
-      "author": "kaizencycle",
-      "title": "C298 phase1 router readonly",
-      "type": "merge",
-      "severity": "info",
-      "tags": [
-        "merge",
-        "pr"
-      ],
-      "source": "github-commit",
-      "verified": false,
-      "sha": "ea74613909953dc9e1c2365c746224f7c888765c",
       "_mesh_node": "mobius-civic-ai-terminal",
       "_mesh_tier": "contributor"
     },
