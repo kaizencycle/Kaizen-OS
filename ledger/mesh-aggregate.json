@@ -1,24 +1,24 @@
 {
   "schema": "MNS_AGGREGATE_V1",
-  "updated_at": "2026-05-03T15:38:16.650Z",
+  "updated_at": "2026-05-03T16:37:44.921Z",
   "node_count": 5,
   "live_nodes": 3,
-  "total_entries": 22,
+  "total_entries": 24,
   "nodes": [
     {
       "node_id": "mobius-substrate",
       "tier": "sentinel",
       "node_type": "substrate",
       "entry_count": 0,
-      "fetched_at": "2026-05-03T15:38:16.351Z",
+      "fetched_at": "2026-05-03T16:37:44.414Z",
       "error": null
     },
     {
       "node_id": "mobius-civic-ai-terminal",
       "tier": "contributor",
       "node_type": "app",
-      "entry_count": 12,
-      "fetched_at": "2026-05-03T15:38:16.650Z",
+      "entry_count": 14,
+      "fetched_at": "2026-05-03T16:37:44.920Z",
       "error": null
     },
     {
@@ -26,7 +26,7 @@
       "tier": "contributor",
       "node_type": "service",
       "entry_count": 10,
-      "fetched_at": "2026-05-03T15:38:16.353Z",
+      "fetched_at": "2026-05-03T16:37:44.539Z",
       "error": null
     },
     {
@@ -47,6 +47,57 @@
     }
   ],
   "entries": [
+    {
+      "id": "b7723aba-merge",
+      "timestamp": "2026-05-03T16:08:48Z",
+      "author": "kaizencycle",
+      "title": "C-300 Phase 9 — Canon Visibility + Seal Verification Endpoint",
+      "type": "merge",
+      "severity": "info",
+      "tags": [
+        "merge",
+        "pr"
+      ],
+      "source": "github-commit",
+      "verified": false,
+      "sha": "b7723aba2dd4e708ed3dbb00ed95b732b5f0b97f",
+      "_mesh_node": "mobius-civic-ai-terminal",
+      "_mesh_tier": "contributor"
+    },
+    {
+      "id": "3c6eb1c1-merge",
+      "timestamp": "2026-05-03T15:55:34Z",
+      "author": "kaizencycle",
+      "title": "C-300 Phase 6.6 — Ledger Lab Source Fix (agent-journal → oaa mapping + rejection persistence)",
+      "type": "merge",
+      "severity": "info",
+      "tags": [
+        "merge",
+        "pr"
+      ],
+      "source": "github-commit",
+      "verified": false,
+      "sha": "3c6eb1c1c727213a9b2f3889a96174b816477520",
+      "_mesh_node": "mobius-civic-ai-terminal",
+      "_mesh_tier": "contributor"
+    },
+    {
+      "id": "ca787acd-merge",
+      "timestamp": "2026-05-03T15:55:18Z",
+      "author": "kaizencycle",
+      "title": "C-300 Phase 8A — P0 Executable Fixes (Journal KV Bridge + Substrate Debug)",
+      "type": "merge",
+      "severity": "info",
+      "tags": [
+        "merge",
+        "pr"
+      ],
+      "source": "github-commit",
+      "verified": false,
+      "sha": "ca787acd0933adf87188c6f4a89ac43f6b4fdd2b",
+      "_mesh_node": "mobius-civic-ai-terminal",
+      "_mesh_tier": "contributor"
+    },
     {
       "id": "650a615d-merge",
       "timestamp": "2026-05-03T15:02:15Z",
@@ -231,23 +282,6 @@
       "source": "github-commit",
       "verified": false,
       "sha": "ea74613909953dc9e1c2365c746224f7c888765c",
-      "_mesh_node": "mobius-civic-ai-terminal",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "603d6319-merge",
-      "timestamp": "2026-05-01T23:44:07Z",
-      "author": "kaizencycle",
-      "title": "C-298 Phase 1-2 — Mobius Router Read-Only + Metrics",
-      "type": "merge",
-      "severity": "info",
-      "tags": [
-        "merge",
-        "pr"
-      ],
-      "source": "github-commit",
-      "verified": false,
-      "sha": "603d6319c5a94da38f304586899bea7738fb80b0",
       "_mesh_node": "mobius-civic-ai-terminal",
       "_mesh_tier": "contributor"
     },
