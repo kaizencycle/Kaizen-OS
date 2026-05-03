@@ -1,24 +1,24 @@
 {
   "schema": "MNS_AGGREGATE_V1",
-  "updated_at": "2026-05-03T22:31:11.948Z",
+  "updated_at": "2026-05-03T23:35:15.633Z",
   "node_count": 5,
   "live_nodes": 3,
-  "total_entries": 26,
+  "total_entries": 25,
   "nodes": [
     {
       "node_id": "mobius-substrate",
       "tier": "sentinel",
       "node_type": "substrate",
       "entry_count": 0,
-      "fetched_at": "2026-05-03T22:31:11.580Z",
+      "fetched_at": "2026-05-03T23:35:15.192Z",
       "error": null
     },
     {
       "node_id": "mobius-civic-ai-terminal",
       "tier": "contributor",
       "node_type": "app",
-      "entry_count": 16,
-      "fetched_at": "2026-05-03T22:31:11.948Z",
+      "entry_count": 15,
+      "fetched_at": "2026-05-03T23:35:15.633Z",
       "error": null
     },
     {
@@ -26,7 +26,7 @@
       "tier": "contributor",
       "node_type": "service",
       "entry_count": 10,
-      "fetched_at": "2026-05-03T22:31:11.469Z",
+      "fetched_at": "2026-05-03T23:35:15.193Z",
       "error": null
     },
     {
@@ -299,23 +299,6 @@
       "source": "github-commit",
       "verified": false,
       "sha": "3521ddd421ac4b08a1218b6b1c2b02603147ea9c",
-      "_mesh_node": "mobius-civic-ai-terminal",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "210802ab-merge",
-      "timestamp": "2026-05-02T18:24:00Z",
-      "author": "kaizencycle",
-      "title": "fix(C-299): WRONGTYPE silence, Phase 3 quorum wiring, agent liveness",
-      "type": "merge",
-      "severity": "info",
-      "tags": [
-        "merge",
-        "pr"
-      ],
-      "source": "github-commit",
-      "verified": false,
-      "sha": "210802abf564c066aa04dcccf71eb982609ff0e2",
       "_mesh_node": "mobius-civic-ai-terminal",
       "_mesh_tier": "contributor"
     },
