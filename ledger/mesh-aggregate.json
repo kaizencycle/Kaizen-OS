@@ -1,24 +1,24 @@
 {
   "schema": "MNS_AGGREGATE_V1",
-  "updated_at": "2026-05-02T23:34:00.466Z",
+  "updated_at": "2026-05-03T01:55:27.969Z",
   "node_count": 5,
   "live_nodes": 3,
-  "total_entries": 16,
+  "total_entries": 19,
   "nodes": [
     {
       "node_id": "mobius-substrate",
       "tier": "sentinel",
       "node_type": "substrate",
       "entry_count": 0,
-      "fetched_at": "2026-05-02T23:34:00.128Z",
+      "fetched_at": "2026-05-03T01:55:27.513Z",
       "error": null
     },
     {
       "node_id": "mobius-civic-ai-terminal",
       "tier": "contributor",
       "node_type": "app",
-      "entry_count": 6,
-      "fetched_at": "2026-05-02T23:34:00.466Z",
+      "entry_count": 9,
+      "fetched_at": "2026-05-03T01:55:27.968Z",
       "error": null
     },
     {
@@ -26,7 +26,7 @@
       "tier": "contributor",
       "node_type": "service",
       "entry_count": 10,
-      "fetched_at": "2026-05-02T23:34:00.172Z",
+      "fetched_at": "2026-05-03T01:55:27.514Z",
       "error": null
     },
     {
@@ -47,6 +47,57 @@
     }
   ],
   "entries": [
+    {
+      "id": "52eb4f09-merge",
+      "timestamp": "2026-05-03T00:39:45Z",
+      "author": "kaizencycle",
+      "title": "fix(terminal): sustain floor → 0.75, add /api/vault/replay routes, and increase promote cron cadence",
+      "type": "merge",
+      "severity": "info",
+      "tags": [
+        "merge",
+        "pr"
+      ],
+      "source": "github-commit",
+      "verified": false,
+      "sha": "52eb4f0965164008a2afd4738ee85b6b28fa69ec",
+      "_mesh_node": "mobius-civic-ai-terminal",
+      "_mesh_tier": "contributor"
+    },
+    {
+      "id": "fb9aec83-merge",
+      "timestamp": "2026-05-02T23:39:25Z",
+      "author": "kaizencycle",
+      "title": "C-299 Phase 6 — Substrate Immortalization Fix (ledger 400 resolved)",
+      "type": "merge",
+      "severity": "info",
+      "tags": [
+        "merge",
+        "pr"
+      ],
+      "source": "github-commit",
+      "verified": false,
+      "sha": "fb9aec839274cdcd6a3b0fb6a14e9817aab2c5d1",
+      "_mesh_node": "mobius-civic-ai-terminal",
+      "_mesh_tier": "contributor"
+    },
+    {
+      "id": "405982a5-merge",
+      "timestamp": "2026-05-02T23:39:12Z",
+      "author": "kaizencycle",
+      "title": "C-299 Phase 2 — HERMES Narrative Revival (Non-zero fallback enforcement)",
+      "type": "merge",
+      "severity": "info",
+      "tags": [
+        "merge",
+        "pr"
+      ],
+      "source": "github-commit",
+      "verified": false,
+      "sha": "405982a5db1e7229b78dad8db5fa00ed091bfc83",
+      "_mesh_node": "mobius-civic-ai-terminal",
+      "_mesh_tier": "contributor"
+    },
     {
       "id": "5369c0f4-merge",
       "timestamp": "2026-05-02T23:00:18Z",
