@@ -1,24 +1,24 @@
 {
   "schema": "MNS_AGGREGATE_V1",
-  "updated_at": "2026-05-04T05:31:36.222Z",
+  "updated_at": "2026-05-04T08:17:33.846Z",
   "node_count": 5,
   "live_nodes": 3,
-  "total_entries": 26,
+  "total_entries": 25,
   "nodes": [
     {
       "node_id": "mobius-substrate",
       "tier": "sentinel",
       "node_type": "substrate",
       "entry_count": 0,
-      "fetched_at": "2026-05-04T05:31:35.750Z",
+      "fetched_at": "2026-05-04T08:17:33.195Z",
       "error": null
     },
     {
       "node_id": "mobius-civic-ai-terminal",
       "tier": "contributor",
       "node_type": "app",
-      "entry_count": 16,
-      "fetched_at": "2026-05-04T05:31:36.222Z",
+      "entry_count": 15,
+      "fetched_at": "2026-05-04T08:17:33.845Z",
       "error": null
     },
     {
@@ -26,7 +26,7 @@
       "tier": "contributor",
       "node_type": "service",
       "entry_count": 10,
-      "fetched_at": "2026-05-04T05:31:35.752Z",
+      "fetched_at": "2026-05-04T08:17:33.464Z",
       "error": null
     },
     {
@@ -299,23 +299,6 @@
       "source": "github-commit",
       "verified": false,
       "sha": "fb9aec839274cdcd6a3b0fb6a14e9817aab2c5d1",
-      "_mesh_node": "mobius-civic-ai-terminal",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "405982a5-merge",
-      "timestamp": "2026-05-02T23:39:12Z",
-      "author": "kaizencycle",
-      "title": "C-299 Phase 2 — HERMES Narrative Revival (Non-zero fallback enforcement)",
-      "type": "merge",
-      "severity": "info",
-      "tags": [
-        "merge",
-        "pr"
-      ],
-      "source": "github-commit",
-      "verified": false,
-      "sha": "405982a5db1e7229b78dad8db5fa00ed091bfc83",
       "_mesh_node": "mobius-civic-ai-terminal",
       "_mesh_tier": "contributor"
     },
