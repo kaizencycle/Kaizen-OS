@@ -1,24 +1,24 @@
 {
   "schema": "MNS_AGGREGATE_V1",
-  "updated_at": "2026-05-04T01:57:01.456Z",
+  "updated_at": "2026-05-04T05:31:36.222Z",
   "node_count": 5,
   "live_nodes": 3,
-  "total_entries": 27,
+  "total_entries": 26,
   "nodes": [
     {
       "node_id": "mobius-substrate",
       "tier": "sentinel",
       "node_type": "substrate",
       "entry_count": 0,
-      "fetched_at": "2026-05-04T01:57:01.029Z",
+      "fetched_at": "2026-05-04T05:31:35.750Z",
       "error": null
     },
     {
       "node_id": "mobius-civic-ai-terminal",
       "tier": "contributor",
       "node_type": "app",
-      "entry_count": 17,
-      "fetched_at": "2026-05-04T01:57:01.456Z",
+      "entry_count": 16,
+      "fetched_at": "2026-05-04T05:31:36.222Z",
       "error": null
     },
     {
@@ -26,7 +26,7 @@
       "tier": "contributor",
       "node_type": "service",
       "entry_count": 10,
-      "fetched_at": "2026-05-04T01:57:01.171Z",
+      "fetched_at": "2026-05-04T05:31:35.752Z",
       "error": null
     },
     {
@@ -316,23 +316,6 @@
       "source": "github-commit",
       "verified": false,
       "sha": "405982a5db1e7229b78dad8db5fa00ed091bfc83",
-      "_mesh_node": "mobius-civic-ai-terminal",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "5369c0f4-merge",
-      "timestamp": "2026-05-02T23:00:18Z",
-      "author": "kaizencycle",
-      "title": "C-299 P0 — Quorum Ignition (Vault → Sentinel bridge)",
-      "type": "merge",
-      "severity": "info",
-      "tags": [
-        "merge",
-        "pr"
-      ],
-      "source": "github-commit",
-      "verified": false,
-      "sha": "5369c0f4d1aec83cfd1430c471908494827c554d",
       "_mesh_node": "mobius-civic-ai-terminal",
       "_mesh_tier": "contributor"
     },
