@@ -1,24 +1,24 @@
 {
   "schema": "MNS_AGGREGATE_V1",
-  "updated_at": "2026-05-03T23:35:15.633Z",
+  "updated_at": "2026-05-04T01:57:01.456Z",
   "node_count": 5,
   "live_nodes": 3,
-  "total_entries": 25,
+  "total_entries": 27,
   "nodes": [
     {
       "node_id": "mobius-substrate",
       "tier": "sentinel",
       "node_type": "substrate",
       "entry_count": 0,
-      "fetched_at": "2026-05-03T23:35:15.192Z",
+      "fetched_at": "2026-05-04T01:57:01.029Z",
       "error": null
     },
     {
       "node_id": "mobius-civic-ai-terminal",
       "tier": "contributor",
       "node_type": "app",
-      "entry_count": 15,
-      "fetched_at": "2026-05-03T23:35:15.633Z",
+      "entry_count": 17,
+      "fetched_at": "2026-05-04T01:57:01.456Z",
       "error": null
     },
     {
@@ -26,7 +26,7 @@
       "tier": "contributor",
       "node_type": "service",
       "entry_count": 10,
-      "fetched_at": "2026-05-03T23:35:15.193Z",
+      "fetched_at": "2026-05-04T01:57:01.171Z",
       "error": null
     },
     {
@@ -48,6 +48,40 @@
   ],
   "entries": [
     {
+      "id": "8b9fb9c8-merge",
+      "timestamp": "2026-05-04T01:28:56Z",
+      "author": "kaizencycle",
+      "title": "Update from task 2a0aa2e9-a930-4343-85b5-b6f9866bde21",
+      "type": "merge",
+      "severity": "info",
+      "tags": [
+        "merge",
+        "pr"
+      ],
+      "source": "github-commit",
+      "verified": false,
+      "sha": "8b9fb9c8701d87bc6127fb1c7e2dfe9093f1f68f",
+      "_mesh_node": "mobius-civic-ai-terminal",
+      "_mesh_tier": "contributor"
+    },
+    {
+      "id": "f9314d64-merge",
+      "timestamp": "2026-05-04T00:32:17Z",
+      "author": "kaizencycle",
+      "title": "C300 epicon runtime foundation",
+      "type": "merge",
+      "severity": "info",
+      "tags": [
+        "merge",
+        "pr"
+      ],
+      "source": "github-commit",
+      "verified": false,
+      "sha": "f9314d649bda368091a503ecbfcba25497d82634",
+      "_mesh_node": "mobius-civic-ai-terminal",
+      "_mesh_tier": "contributor"
+    },
+    {
       "id": "bea1005b-merge",
       "timestamp": "2026-05-03T22:24:29Z",
       "author": "kaizencycle",
@@ -61,6 +95,23 @@
       "source": "github-commit",
       "verified": false,
       "sha": "bea1005b033f2978eea0116f42f159e0ee495308",
+      "_mesh_node": "mobius-civic-ai-terminal",
+      "_mesh_tier": "contributor"
+    },
+    {
+      "id": "be616c0c-merge",
+      "timestamp": "2026-05-03T22:17:49Z",
+      "author": "kaizencycle",
+      "title": "C-300 EPICON Visibility Panel — Runtime Consensus UI",
+      "type": "merge",
+      "severity": "info",
+      "tags": [
+        "merge",
+        "pr"
+      ],
+      "source": "github-commit",
+      "verified": false,
+      "sha": "be616c0c33342bb4dbbf9dc849f75004239e732d",
       "_mesh_node": "mobius-civic-ai-terminal",
       "_mesh_tier": "contributor"
     },
@@ -282,23 +333,6 @@
       "source": "github-commit",
       "verified": false,
       "sha": "5369c0f4d1aec83cfd1430c471908494827c554d",
-      "_mesh_node": "mobius-civic-ai-terminal",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "3521ddd4-merge",
-      "timestamp": "2026-05-02T22:59:42Z",
-      "author": "kaizencycle",
-      "title": "feat(c299-phase5): real agent journals + liveness hardening (10 optimizations)",
-      "type": "merge",
-      "severity": "info",
-      "tags": [
-        "merge",
-        "pr"
-      ],
-      "source": "github-commit",
-      "verified": false,
-      "sha": "3521ddd421ac4b08a1218b6b1c2b02603147ea9c",
       "_mesh_node": "mobius-civic-ai-terminal",
       "_mesh_tier": "contributor"
     },
