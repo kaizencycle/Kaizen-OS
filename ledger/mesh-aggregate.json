@@ -1,6 +1,6 @@
 {
   "schema": "MNS_AGGREGATE_V1",
-  "updated_at": "2026-05-05T01:57:31.532Z",
+  "updated_at": "2026-05-05T04:58:34.807Z",
   "node_count": 5,
   "live_nodes": 3,
   "total_entries": 24,
@@ -10,7 +10,7 @@
       "tier": "sentinel",
       "node_type": "substrate",
       "entry_count": 0,
-      "fetched_at": "2026-05-05T01:57:31.127Z",
+      "fetched_at": "2026-05-05T04:58:34.497Z",
       "error": null
     },
     {
@@ -18,7 +18,7 @@
       "tier": "contributor",
       "node_type": "app",
       "entry_count": 14,
-      "fetched_at": "2026-05-05T01:57:31.532Z",
+      "fetched_at": "2026-05-05T04:58:34.807Z",
       "error": null
     },
     {
@@ -26,7 +26,7 @@
       "tier": "contributor",
       "node_type": "service",
       "entry_count": 10,
-      "fetched_at": "2026-05-05T01:57:31.132Z",
+      "fetched_at": "2026-05-05T04:58:34.659Z",
       "error": null
     },
     {
@@ -47,6 +47,23 @@
     }
   ],
   "entries": [
+    {
+      "id": "8d53dca4-merge",
+      "timestamp": "2026-05-05T03:36:56Z",
+      "author": "kaizencycle",
+      "title": "fix(c301): 10 vault + GI hardening fixes",
+      "type": "merge",
+      "severity": "info",
+      "tags": [
+        "merge",
+        "pr"
+      ],
+      "source": "github-commit",
+      "verified": false,
+      "sha": "8d53dca49d3c8b3e3b79309a2ba174f3633d3a7d",
+      "_mesh_node": "mobius-civic-ai-terminal",
+      "_mesh_tier": "contributor"
+    },
     {
       "id": "23bb5acb-merge",
       "timestamp": "2026-05-04T18:29:59Z",
@@ -265,23 +282,6 @@
       "source": "github-commit",
       "verified": false,
       "sha": "650a615d43c9eff7fa52165e79e4e9d06aa2ad91",
-      "_mesh_node": "mobius-civic-ai-terminal",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "e95cdcb3-merge",
-      "timestamp": "2026-05-03T14:57:31Z",
-      "author": "kaizencycle",
-      "title": "C-300 Fix — Journal Canon Index Drain + Sorting Integrity",
-      "type": "merge",
-      "severity": "info",
-      "tags": [
-        "merge",
-        "pr"
-      ],
-      "source": "github-commit",
-      "verified": false,
-      "sha": "e95cdcb32705f59671f12cea361bda3ff6c06719",
       "_mesh_node": "mobius-civic-ai-terminal",
       "_mesh_tier": "contributor"
     },
