@@ -1,24 +1,24 @@
 {
   "schema": "MNS_AGGREGATE_V1",
-  "updated_at": "2026-05-05T15:30:04.363Z",
+  "updated_at": "2026-05-05T17:14:28.999Z",
   "node_count": 5,
   "live_nodes": 3,
-  "total_entries": 22,
+  "total_entries": 21,
   "nodes": [
     {
       "node_id": "mobius-substrate",
       "tier": "sentinel",
       "node_type": "substrate",
       "entry_count": 0,
-      "fetched_at": "2026-05-05T15:30:03.818Z",
+      "fetched_at": "2026-05-05T17:14:28.280Z",
       "error": null
     },
     {
       "node_id": "mobius-civic-ai-terminal",
       "tier": "contributor",
       "node_type": "app",
-      "entry_count": 12,
-      "fetched_at": "2026-05-05T15:30:04.363Z",
+      "entry_count": 11,
+      "fetched_at": "2026-05-05T17:14:28.998Z",
       "error": null
     },
     {
@@ -26,7 +26,7 @@
       "tier": "contributor",
       "node_type": "service",
       "entry_count": 10,
-      "fetched_at": "2026-05-05T15:30:03.697Z",
+      "fetched_at": "2026-05-05T17:14:28.340Z",
       "error": null
     },
     {
@@ -47,6 +47,23 @@
     }
   ],
   "entries": [
+    {
+      "id": "f1c0c232-merge",
+      "timestamp": "2026-05-05T15:44:05Z",
+      "author": "kaizencycle",
+      "title": "C-302 Phase 14 — Ten Optimizations (substrate Render fix + CURRENT_CYCLE + ATLAS + MIC accounting + journal + replay + signals + T2 gates + bot deploys)",
+      "type": "merge",
+      "severity": "info",
+      "tags": [
+        "merge",
+        "pr"
+      ],
+      "source": "github-commit",
+      "verified": false,
+      "sha": "f1c0c232162a479d752135ed8808a8dcb700552f",
+      "_mesh_node": "mobius-civic-ai-terminal",
+      "_mesh_tier": "contributor"
+    },
     {
       "id": "8d53dca4-merge",
       "timestamp": "2026-05-05T03:36:56Z",
@@ -214,40 +231,6 @@
       "source": "github-commit",
       "verified": false,
       "sha": "9138875aec53723d693c4e263cdf8bf11b0fc260",
-      "_mesh_node": "mobius-civic-ai-terminal",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "b7723aba-merge",
-      "timestamp": "2026-05-03T16:08:48Z",
-      "author": "kaizencycle",
-      "title": "C-300 Phase 9 — Canon Visibility + Seal Verification Endpoint",
-      "type": "merge",
-      "severity": "info",
-      "tags": [
-        "merge",
-        "pr"
-      ],
-      "source": "github-commit",
-      "verified": false,
-      "sha": "b7723aba2dd4e708ed3dbb00ed95b732b5f0b97f",
-      "_mesh_node": "mobius-civic-ai-terminal",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "3c6eb1c1-merge",
-      "timestamp": "2026-05-03T15:55:34Z",
-      "author": "kaizencycle",
-      "title": "C-300 Phase 6.6 — Ledger Lab Source Fix (agent-journal → oaa mapping + rejection persistence)",
-      "type": "merge",
-      "severity": "info",
-      "tags": [
-        "merge",
-        "pr"
-      ],
-      "source": "github-commit",
-      "verified": false,
-      "sha": "3c6eb1c1c727213a9b2f3889a96174b816477520",
       "_mesh_node": "mobius-civic-ai-terminal",
       "_mesh_tier": "contributor"
     },
