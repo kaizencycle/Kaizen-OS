@@ -1,24 +1,24 @@
 {
   "schema": "MNS_AGGREGATE_V1",
-  "updated_at": "2026-05-05T22:46:52.159Z",
+  "updated_at": "2026-05-05T23:39:59.405Z",
   "node_count": 5,
   "live_nodes": 3,
-  "total_entries": 21,
+  "total_entries": 20,
   "nodes": [
     {
       "node_id": "mobius-substrate",
       "tier": "sentinel",
       "node_type": "substrate",
       "entry_count": 0,
-      "fetched_at": "2026-05-05T22:46:51.607Z",
+      "fetched_at": "2026-05-05T23:39:58.743Z",
       "error": null
     },
     {
       "node_id": "mobius-civic-ai-terminal",
       "tier": "contributor",
       "node_type": "app",
-      "entry_count": 11,
-      "fetched_at": "2026-05-05T22:46:52.159Z",
+      "entry_count": 10,
+      "fetched_at": "2026-05-05T23:39:59.404Z",
       "error": null
     },
     {
@@ -26,7 +26,7 @@
       "tier": "contributor",
       "node_type": "service",
       "entry_count": 10,
-      "fetched_at": "2026-05-05T22:46:51.662Z",
+      "fetched_at": "2026-05-05T23:39:58.804Z",
       "error": null
     },
     {
@@ -214,23 +214,6 @@
       "source": "github-commit",
       "verified": false,
       "sha": "be616c0c33342bb4dbbf9dc849f75004239e732d",
-      "_mesh_node": "mobius-civic-ai-terminal",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "f145b447-merge",
-      "timestamp": "2026-05-03T17:50:52Z",
-      "author": "kaizencycle",
-      "title": "Merge pull request #480 from kaizencycle/c300-epicon-runtime-foundation",
-      "type": "merge",
-      "severity": "info",
-      "tags": [
-        "merge",
-        "pr"
-      ],
-      "source": "github-commit",
-      "verified": false,
-      "sha": "f145b447a96c615ed6cb28430482d60b17110fe1",
       "_mesh_node": "mobius-civic-ai-terminal",
       "_mesh_tier": "contributor"
     },
