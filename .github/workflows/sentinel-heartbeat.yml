@@ -1,15 +1,18 @@
 # ═══════════════════════════════════════════════════════════════════════════════
 # C-151 Sentinel Heartbeat Workflow
 # ═══════════════════════════════════════════════════════════════════════════════
-# Automatic coordination-based MIC attestation for all sentinels
-# Runs every 6 hours to submit heartbeat proofs to the ledger
+# C-303 fixes:
+#   - Added preflight job: checks for calculate_coordination_score.js and
+#     generate_pulse.js before launching the matrix. Was erroring every 6h.
+#   - submit_attestation.ts guarded inline — skips with warning if absent.
+#   - Sentinel matrix narrowed to ATLAS, AUREA, ECHO, EVE, HERMES (active).
 # ═══════════════════════════════════════════════════════════════════════════════
 
 name: Sentinel Heartbeat (C-151)
 
 on:
   schedule:
-    - cron: '0 */6 * * *'  # Every 6 hours (00:00, 06:00, 12:00, 18:00 UTC)
+    - cron: '0 */6 * * *'  # Every 6 hours — 00:00, 06:00, 12:00, 18:00 UTC
   workflow_dispatch:
     inputs:
       sentinel:
@@ -33,82 +36,111 @@ permissions:
 
 jobs:
   # ═══════════════════════════════════════════════════════════════════════════
-  # FETCH PULSE DATA
+  # PREFLIGHT — verify required scripts exist before launching matrix
   # ═══════════════════════════════════════════════════════════════════════════
-  
-  fetch-pulse:
-    name: 📡 Fetch System Pulse
+
+  preflight:
+    name: 🔍 Preflight Script Check
     runs-on: ubuntu-latest
     outputs:
-      pulse_data: ${{ steps.fetch.outputs.pulse }}
-      cycle: ${{ steps.fetch.outputs.cycle }}
-      
+      scripts_ready: ${{ steps.check.outputs.ready }}
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-        
+
+      - name: Check required scripts
+        id: check
+        run: |
+          MISSING=()
+
+          [ -f "scripts/calculate_coordination_score.js" ] || MISSING+=("scripts/calculate_coordination_score.js")
+          [ -f "scripts/generate_pulse.js" ] || MISSING+=("scripts/generate_pulse.js")
+
+          if [ ${#MISSING[@]} -gt 0 ]; then
+            echo "::warning::Sentinel Heartbeat skipped — missing scripts: ${MISSING[*]}"
+            echo "::warning::Deploy these scripts to enable automated MIC attestation."
+            echo "ready=false" >> $GITHUB_OUTPUT
+          else
+            echo "ready=true" >> $GITHUB_OUTPUT
+          fi
+
+  # ═══════════════════════════════════════════════════════════════════════════
+  # FETCH PULSE DATA
+  # ═══════════════════════════════════════════════════════════════════════════
+
+  fetch-pulse:
+    name: 📡 Fetch System Pulse
+    runs-on: ubuntu-latest
+    needs: preflight
+    if: needs.preflight.outputs.scripts_ready == 'true' && !inputs.dry_run
+    outputs:
+      pulse_data: ${{ steps.fetch.outputs.pulse }}
+      cycle: ${{ steps.fetch.outputs.cycle }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
       - name: Fetch Pulse Data
         id: fetch
         run: |
-          # Fetch pulse from API or use local fallback
           if curl -sf "$PULSE_URL" -o pulse.json; then
             echo "✅ Fetched pulse from $PULSE_URL"
           else
             echo "⚠️ Pulse API unavailable, generating from repo state..."
             node scripts/generate_pulse.js > pulse.json
           fi
-          
-          # Extract cycle
+
           CYCLE=$(jq -r '.cycle // "C-151"' pulse.json)
           echo "cycle=$CYCLE" >> $GITHUB_OUTPUT
-          
-          # Store pulse as base64 for transfer
+
           PULSE_B64=$(base64 -w 0 pulse.json)
           echo "pulse=$PULSE_B64" >> $GITHUB_OUTPUT
-          
+
           echo "📊 Cycle: $CYCLE"
           echo "📊 MII: $(jq -r '.mii // .integrity.mii // "N/A"' pulse.json)"
 
   # ═══════════════════════════════════════════════════════════════════════════
   # SENTINEL ATTESTATION MATRIX
   # ═══════════════════════════════════════════════════════════════════════════
-  
+
   attest:
     name: 🤖 Attest ${{ matrix.sentinel }}
     runs-on: ubuntu-latest
     needs: fetch-pulse
     if: ${{ !inputs.dry_run }}
-    
+
     strategy:
       fail-fast: false
       matrix:
         sentinel: [ATLAS, AUREA, ECHO, EVE, HERMES]
-        
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-        
+
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: '20'
           cache: 'npm'
-          
+
       - name: Install Dependencies
         run: npm ci --ignore-scripts
-        
+
       - name: Decode Pulse Data
         run: |
           echo "${{ needs.fetch-pulse.outputs.pulse_data }}" | base64 -d > pulse.json
           cat pulse.json | jq .
-          
+
       - name: Calculate Coordination Score
         id: score
         run: |
           SCORE=$(node scripts/calculate_coordination_score.js ${{ matrix.sentinel }} pulse.json)
           echo "score=$SCORE" >> $GITHUB_OUTPUT
           echo "📊 ${{ matrix.sentinel }} Coordination Score: $SCORE"
-          
+
       - name: Preview Reward
         id: preview
         run: |
@@ -119,19 +151,23 @@ jobs:
             console.log(estimateReward(score, cathedral).toFixed(2));
           " 2>/dev/null || echo "N/A")
           echo "📈 Expected Reward: ~$REWARD MIC"
-          
+
       - name: Submit Attestation
         if: ${{ !inputs.dry_run && env.LEDGER_RPC && env.MIC_CONTRACT }}
         env:
           SENTINEL_KEY: ${{ secrets[format('SENTINEL_KEY_{0}', matrix.sentinel)] }}
         run: |
+          if [ ! -f "scripts/submit_attestation.ts" ]; then
+            echo "::warning::scripts/submit_attestation.ts not found — skipping on-chain submission."
+            exit 0
+          fi
           npx tsx scripts/submit_attestation.ts \
             --sentinel ${{ matrix.sentinel }} \
             --score ${{ steps.score.outputs.score }} \
             --contract $MIC_CONTRACT \
             --rpc $LEDGER_RPC \
             --key "$SENTINEL_KEY"
-            
+
       - name: Record Attestation
         if: always()
         run: |
@@ -146,50 +182,67 @@ jobs:
   # ═══════════════════════════════════════════════════════════════════════════
   # DRY RUN MODE
   # ═══════════════════════════════════════════════════════════════════════════
-  
+
   dry-run:
     name: 🧪 Dry Run
     runs-on: ubuntu-latest
-    needs: fetch-pulse
-    if: ${{ inputs.dry_run }}
-    
+    needs: preflight
+    if: ${{ inputs.dry_run && needs.preflight.outputs.scripts_ready == 'true' }}
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-        
+
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-          
+
       - name: Decode Pulse
-        run: echo "${{ needs.fetch-pulse.outputs.pulse_data }}" | base64 -d > pulse.json
-        
+        run: echo "${{ needs.fetch-pulse.outputs.pulse_data }}" | base64 -d > pulse.json || echo '{"cycle":"dry-run"}' > pulse.json
+
       - name: Calculate All Scores
         run: |
           echo "## C-151 Sentinel Heartbeat Dry Run" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "| Sentinel | Score | Cathedral | Est. Reward |" >> $GITHUB_STEP_SUMMARY
           echo "|----------|-------|-----------|-------------|" >> $GITHUB_STEP_SUMMARY
-          
+
           for SENTINEL in ATLAS AUREA ECHO EVE HERMES; do
             SCORE=$(node scripts/calculate_coordination_score.js $SENTINEL pulse.json 2>/dev/null || echo "0")
             echo "| $SENTINEL | $SCORE | - | ~${SCORE}00 MIC |" >> $GITHUB_STEP_SUMMARY
           done
-          
+
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "✅ Dry run complete - no attestations submitted" >> $GITHUB_STEP_SUMMARY
 
   # ═══════════════════════════════════════════════════════════════════════════
+  # SKIPPED SUMMARY (scripts not ready)
+  # ═══════════════════════════════════════════════════════════════════════════
+
+  skipped:
+    name: ⏸️ Heartbeat Skipped
+    runs-on: ubuntu-latest
+    needs: preflight
+    if: needs.preflight.outputs.scripts_ready == 'false'
+    steps:
+      - name: Log skip reason
+        run: |
+          echo "# ⏸️ Sentinel Heartbeat Skipped" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "Required attestation scripts are not yet deployed." >> $GITHUB_STEP_SUMMARY
+          echo "Deploy \`scripts/calculate_coordination_score.js\` and \`scripts/generate_pulse.js\` to enable." >> $GITHUB_STEP_SUMMARY
+
+  # ═══════════════════════════════════════════════════════════════════════════
   # SUMMARY
   # ═══════════════════════════════════════════════════════════════════════════
-  
+
   summary:
     name: 📋 Heartbeat Summary
     runs-on: ubuntu-latest
-    needs: [fetch-pulse, attest]
-    if: always() && !inputs.dry_run
-    
+    needs: [preflight, fetch-pulse, attest]
+    if: always() && !inputs.dry_run && needs.preflight.outputs.scripts_ready == 'true'
+
     steps:
       - name: Generate Summary
         run: |

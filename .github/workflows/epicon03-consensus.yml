@@ -1,10 +1,15 @@
 name: EPICON-03 Multi-Agent Consensus
 
+# C-303: docs filter narrowed — was matching all *.md and docs/** which triggered
+# multi-agent consensus on every README / journal / catalog edit. Now restricted to
+# governance-critical paths only.
+# C-303: added graceful fallback when consensus script is absent — posts a warning
+# comment instead of hard-failing every governance PR.
+
 on:
   pull_request:
     types: [opened, synchronize, reopened, edited]
     paths:
-      # Governance-sensitive paths that require multi-agent consensus
       - '.github/CODEOWNERS'
       - '.github/PULL_REQUEST_TEMPLATE.md'
       - '.github/workflows/*.yml'
@@ -16,6 +21,7 @@ on:
       - 'specs/**'
       - 'schemas/**'
       - 'docs/03-GOVERNANCE-AND-POLICY/**'
+      # C-303: removed docs/** and *.md — too broad, caught journals/catalog/READMEs
   workflow_dispatch:
     inputs:
       pr_number:
@@ -57,40 +63,39 @@ jobs:
               - '.github/workflows/**'
             specs:
               - 'specs/**'
-            docs:
-              - 'docs/**'
+            governance_docs:
+              - 'docs/03-GOVERNANCE-AND-POLICY/**'
               - 'schemas/**'
-              - '*.md'
 
       - name: Determine if consensus required
         id: check
         run: |
           REQUIRES=false
           SCOPE=""
-          
+
           if [ "${{ steps.changed.outputs.governance }}" == "true" ]; then
             REQUIRES=true
             SCOPE="governance,code_ownership"
           fi
-          
+
           if [ "${{ steps.changed.outputs.workflows }}" == "true" ]; then
             REQUIRES=true
             SCOPE="${SCOPE:+$SCOPE,}ci"
           fi
-          
+
           if [ "${{ steps.changed.outputs.specs }}" == "true" ]; then
             REQUIRES=true
             SCOPE="${SCOPE:+$SCOPE,}specs"
           fi
-          
-          if [ "${{ steps.changed.outputs.docs }}" == "true" ]; then
+
+          if [ "${{ steps.changed.outputs.governance_docs }}" == "true" ]; then
             REQUIRES=true
-            SCOPE="${SCOPE:+$SCOPE,}docs"
+            SCOPE="${SCOPE:+$SCOPE,}governance_docs"
           fi
-          
+
           echo "requires_consensus=$REQUIRES" >> $GITHUB_OUTPUT
           echo "scope=$SCOPE" >> $GITHUB_OUTPUT
-          
+
           echo "Requires consensus: $REQUIRES"
           echo "Scope: $SCOPE"
 
@@ -121,31 +126,39 @@ jobs:
           PR_DATA=$(gh pr view $PR_NUMBER --json title,body,author,headRefName,baseRefName,files)
           echo "pr_title=$(echo $PR_DATA | jq -r '.title')" >> $GITHUB_OUTPUT
           echo "pr_author=$(echo $PR_DATA | jq -r '.author.login')" >> $GITHUB_OUTPUT
-          echo "head_ref=$(echo $PR_DATA | jq -r '.headRefName')" >> $GITHUB_OUTPUT
-          echo "base_ref=$(echo $PR_DATA | jq -r '.baseRefName')" >> $GITHUB_OUTPUT
           echo $PR_DATA | jq -r '.files[].path' > /tmp/changed_files.txt
+
+      # C-303: graceful fallback — consensus script may not exist yet.
+      # Posts a warning comment instead of hard-failing the PR.
+      - name: Check consensus script exists
+        id: script_check
+        run: |
+          if [ -f ".github/scripts/epicon03_consensus.py" ]; then
+            echo "exists=true" >> $GITHUB_OUTPUT
+          else
+            echo "exists=false" >> $GITHUB_OUTPUT
+            echo "::warning::EPICON-03 consensus script not found at .github/scripts/epicon03_consensus.py — skipping automated consensus. Manual review required."
+          fi
 
       - name: Run EPICON-03 Consensus Engine
         id: consensus
+        if: steps.script_check.outputs.exists == 'true'
         run: |
           python3 << 'EOF'
           import json
           import os
           import sys
           sys.path.insert(0, '.github/scripts')
-          
+
           from epicon03_consensus import ConsensusEngine, ConsensusRequest, generate_pr_comment
-          
-          # Read changed files
+
           with open('/tmp/changed_files.txt') as f:
               changed_files = [line.strip() for line in f if line.strip()]
-          
-          # Parse scope
+
           scope = os.environ.get('SCOPE', 'feature').split(',')
-          
-          # Create consensus request
+
           request = ConsensusRequest(
-              request_id="",  # Will be auto-generated
+              request_id="",
               repo=os.environ['REPO'],
               pr=int(os.environ['PR_NUMBER']),
               action="merge",
@@ -157,24 +170,19 @@ jobs:
                   "author": os.environ.get('PR_AUTHOR', ''),
               }
           )
-          
-          # Run consensus
+
           engine = ConsensusEngine(request)
           attestation = engine.run_consensus()
-          
-          # Output results
+
           print(f"::set-output name=status::{attestation.status.value}")
           print(f"::set-output name=ecs::{attestation.ecs}")
-          
-          # Write attestation to file
+
           with open('/tmp/attestation.json', 'w') as f:
               f.write(engine.to_json(attestation))
-          
-          # Write comment to file
+
           with open('/tmp/comment.md', 'w') as f:
               f.write(generate_pr_comment(attestation))
-          
-          # Exit with appropriate code
+
           if attestation.status.value == 'fail':
               sys.exit(1)
           EOF
@@ -183,29 +191,56 @@ jobs:
           PR_AUTHOR: ${{ steps.pr.outputs.pr_author }}
         continue-on-error: true
 
-      - name: Post consensus comment
+      - name: Post consensus comment (script present)
+        if: steps.script_check.outputs.exists == 'true' && hashFiles('/tmp/comment.md') != ''
         run: |
-          if [ -f /tmp/comment.md ]; then
-            # Find and update existing bot comment, or create new one
-            BOT_MARKER="<!-- EPICON-03-CONSENSUS -->"
-            COMMENT_BODY="$BOT_MARKER
+          BOT_MARKER="<!-- EPICON-03-CONSENSUS -->"
+          COMMENT_BODY="$BOT_MARKER
           $(cat /tmp/comment.md)"
-            
-            # Get existing comments
-            EXISTING=$(gh api repos/$REPO/issues/$PR_NUMBER/comments \
-              --jq '.[] | select(.body | contains("EPICON-03-CONSENSUS")) | .id' \
-              | head -1)
-            
-            if [ -n "$EXISTING" ]; then
-              gh api repos/$REPO/issues/comments/$EXISTING \
-                -X PATCH \
-                -f body="$COMMENT_BODY"
-            else
-              gh pr comment $PR_NUMBER --body "$COMMENT_BODY"
-            fi
+
+          EXISTING=$(gh api repos/$REPO/issues/$PR_NUMBER/comments \
+            --jq '.[] | select(.body | contains("EPICON-03-CONSENSUS")) | .id' \
+            | head -1)
+
+          if [ -n "$EXISTING" ]; then
+            gh api repos/$REPO/issues/comments/$EXISTING -X PATCH -f body="$COMMENT_BODY"
+          else
+            gh pr comment $PR_NUMBER --body "$COMMENT_BODY"
           fi
 
+      - name: Post warning comment (script missing)
+        if: steps.script_check.outputs.exists == 'false'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const marker = "<!-- EPICON-03-CONSENSUS -->";
+            const body = [
+              marker,
+              "### ⚠️ EPICON-03 Consensus — Script Not Found",
+              "",
+              "The automated consensus engine (`.github/scripts/epicon03_consensus.py`) has not been deployed yet.",
+              "",
+              "**This PR touches governance-sensitive paths. Manual review is required.**",
+              "",
+              `Scope: \`${{ needs.check-governance-scope.outputs.scope }}\``,
+              "",
+              "_Auto-posted by EPICON-03 (C-303 fallback mode)_"
+            ].join("\n");
+
+            const { owner, repo } = context.repo;
+            const issue_number = context.payload.pull_request.number;
+
+            const comments = await github.rest.issues.listComments({ owner, repo, issue_number, per_page: 100 });
+            const existing = comments.data.find(c => (c.body || "").includes(marker));
+
+            if (existing) {
+              await github.rest.issues.updateComment({ owner, repo, comment_id: existing.id, body });
+            } else {
+              await github.rest.issues.createComment({ owner, repo, issue_number, body });
+            }
+
       - name: Store attestation artifact
+        if: steps.script_check.outputs.exists == 'true'
         uses: actions/upload-artifact@v4
         with:
           name: epicon03-attestation
@@ -213,7 +248,7 @@ jobs:
           retention-days: 90
 
       - name: Set check status
-        if: always()
+        if: steps.script_check.outputs.exists == 'true'
         run: |
           STATUS="${{ steps.consensus.outcome }}"
           if [ "$STATUS" == "success" ]; then

@@ -1,12 +1,16 @@
 name: Kaizen Guardian - Dormancy Monitor
 
+# C-303 fixes:
+#   1. Added existence check for kaizen_guardian.py — was hard-failing daily.
+#   2. Discord webhook: moved secrets check from `if:` condition (secrets.* is
+#      always masked/empty there) into the run: step body.
+#   3. Bumped actions/upload-artifact@v3 → @v4
+#   4. Bumped actions/setup-python@v4 → @v5
+
 on:
   schedule:
-    # Run daily at 00:00 UTC
     - cron: '0 0 * * *'
-  
   workflow_dispatch:
-    # Allow manual trigger
     inputs:
       force_check:
         description: 'Force dormancy check'
@@ -14,30 +18,41 @@ on:
         default: 'false'
 
 permissions:
-  contents: write  # Needed to commit elevation if triggered
-  issues: write    # Needed to create notification issue
+  contents: write
+  issues: write
 
 jobs:
   guardian-check:
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0  # Full history for comprehensive checking
-      
+          fetch-depth: 0
+
       - name: Set up Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5  # C-303: was @v4
         with:
           python-version: '3.11'
-      
+
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
           pip install requests
-      
+
+      - name: Check guardian script exists
+        id: script_check
+        run: |
+          if [ -f "scripts/ceremonial_summons/kaizen_guardian.py" ]; then
+            echo "exists=true" >> $GITHUB_OUTPUT
+          else
+            echo "exists=false" >> $GITHUB_OUTPUT
+            echo "::warning::Guardian script not found at scripts/ceremonial_summons/kaizen_guardian.py — dormancy check skipped."
+          fi
+
       - name: Run Kaizen Guardian
+        if: steps.script_check.outputs.exists == 'true'
         env:
           OPENAI_LAB_ENDPOINT: ${{ secrets.OPENAI_LAB_ENDPOINT }}
           ANTHROPIC_LAB_ENDPOINT: ${{ secrets.ANTHROPIC_LAB_ENDPOINT }}
@@ -46,7 +61,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           python scripts/ceremonial_summons/kaizen_guardian.py
-      
+
       - name: Check if README was elevated
         id: check_elevation
         run: |
@@ -55,14 +70,14 @@ jobs:
           else
             echo "elevated=false" >> $GITHUB_OUTPUT
           fi
-      
+
       - name: Commit and push if elevation occurred
         if: steps.check_elevation.outputs.elevated == 'true'
         run: |
           git config --local user.email "guardian@kaizen-os.org"
           git config --local user.name "Kaizen Guardian"
           git push
-      
+
       - name: Create notification issue if elevation occurred
         if: steps.check_elevation.outputs.elevated == 'true'
         uses: actions/github-script@v7
@@ -74,9 +89,9 @@ jobs:
               repo: context.repo.repo,
               title: '🔥 CEREMONIAL SUMMONS ACTIVATED - Custodian Needed',
               body: `## Ceremonial Summons Has Been Activated
-            
+
             The Kaizen Guardian has detected that all 8 entities have been dormant for 90+ consecutive days:
-            
+
             - ❌ Michael (@kaizencycle)
             - ❌ AUREA (OpenAI)
             - ❌ ATLAS (Anthropic)
@@ -85,17 +100,17 @@ jobs:
             - ❌ EVE (Verifier/Reflector)
             - ❌ ZEUS (Overseer/Arbiter)
             - ❌ HERMES (Auditor/Messenger)
-            
+
             **The Master README has been elevated to the repository root.**
-            
+
             ## What This Means
-            
+
             This is not a failure. This is the design. The founder planned for this moment.
-            
+
             **Someone must now step forward as Custodian.**
-            
+
             ## Next Steps for Potential Custodians
-            
+
             1. Read the elevated README at the root of this repository
             2. Study the full documentation in \`/docs/\`
             3. Review the Custodian Guide: \`/docs/CUSTODIAN_GUIDE.md\`
@@ -104,35 +119,37 @@ jobs:
                - Create your record: \`/ledger/custodians/YOUR_NAME.json\`
                - Announce the transition to the community
                - Continue the work
-            
-            ## For More Information
-            
-            - **Elevation Log:** \`ledger/guardian/elevation_log.json\`
-            - **Activity Log:** \`ledger/guardian/activity_log.json\`
-            - **Custodian Guide:** \`docs/CUSTODIAN_GUIDE.md\`
-            - **Manifesto:** \`docs/MANIFESTO.md\`
-            
+
             ---
-            
+
             *"No master. No savior. Only stewards passing the torch."*
-            
+
             **The torch is waiting. Will you carry it?**
             `,
               labels: ['ceremonial-summons', 'custodianship', 'critical']
             });
-            
-            // Pin the issue
+
             await github.rest.issues.lock({
               owner: context.repo.owner,
               repo: context.repo.repo,
               issue_number: issue.data.number,
               lock_reason: 'resolved'
             });
-      
-      - name: Send notification to Discord (if webhook configured)
-        if: steps.check_elevation.outputs.elevated == 'true' && secrets.DISCORD_WEBHOOK_URL != ''
+
+      # C-303: was `if: ... && secrets.DISCORD_WEBHOOK_URL != ''`
+      # GitHub masks secrets in `if:` expressions — the condition always evaluated false.
+      # Secret check moved inside the run: step instead.
+      - name: Send notification to Discord if elevation occurred
+        if: steps.check_elevation.outputs.elevated == 'true'
+        env:
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
         run: |
-          curl -X POST "${{ secrets.DISCORD_WEBHOOK_URL }}" \
+          if [ -z "${DISCORD_WEBHOOK_URL:-}" ]; then
+            echo "DISCORD_WEBHOOK_URL not configured — skipping Discord notification."
+            exit 0
+          fi
+
+          curl -X POST "$DISCORD_WEBHOOK_URL" \
             -H "Content-Type: application/json" \
             -d '{
               "embeds": [{
@@ -160,10 +177,11 @@ jobs:
                 }
               }]
             }'
-      
+
       - name: Upload activity logs as artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4  # C-303: was @v3
         with:
           name: guardian-logs
           path: ledger/guardian/*.json
-          retention-days: 365  # Keep for 1 year
+          retention-days: 365
+          if-no-files-found: ignore

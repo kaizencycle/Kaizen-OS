@@ -1,9 +1,13 @@
 name: Mobius Divergence Dashboard
 
+# C-303: staggered cron from "0 */6" to "10 */6" to avoid runner collision with
+#        sentinel-heartbeat (0 */6) and mobius-sync-unified (5 */6).
+#        Also added existence check for generate_divergence_dashboard.py.
+
 on:
   workflow_dispatch:
   schedule:
-    - cron: "0 */6 * * *"   # Every 6 hours
+    - cron: "10 */6 * * *"   # C-303: was "0 */6" — staggered +10m
   push:
     branches: [main]
     paths:
@@ -27,7 +31,18 @@ jobs:
         with:
           python-version: "3.11"
 
+      - name: Check dashboard script exists
+        id: script_check
+        run: |
+          if [ -f ".github/scripts/generate_divergence_dashboard.py" ]; then
+            echo "exists=true" >> $GITHUB_OUTPUT
+          else
+            echo "exists=false" >> $GITHUB_OUTPUT
+            echo "::warning::Dashboard script not found at .github/scripts/generate_divergence_dashboard.py — skipping."
+          fi
+
       - name: Generate dashboard
+        if: steps.script_check.outputs.exists == 'true'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           REPO: ${{ github.repository }}
@@ -36,6 +51,7 @@ jobs:
           python .github/scripts/generate_divergence_dashboard.py
 
       - name: Commit dashboard
+        if: steps.script_check.outputs.exists == 'true'
         run: |
           git config user.name "mobius-bot"
           git config user.email "mobius-bot@users.noreply.github.com"
