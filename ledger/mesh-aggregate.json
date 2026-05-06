@@ -1,24 +1,24 @@
 {
   "schema": "MNS_AGGREGATE_V1",
-  "updated_at": "2026-05-06T12:25:07.818Z",
+  "updated_at": "2026-05-06T15:22:50.363Z",
   "node_count": 5,
   "live_nodes": 3,
-  "total_entries": 19,
+  "total_entries": 21,
   "nodes": [
     {
       "node_id": "mobius-substrate",
       "tier": "sentinel",
       "node_type": "substrate",
       "entry_count": 0,
-      "fetched_at": "2026-05-06T12:25:07.442Z",
+      "fetched_at": "2026-05-06T15:22:50.061Z",
       "error": null
     },
     {
       "node_id": "mobius-civic-ai-terminal",
       "tier": "contributor",
       "node_type": "app",
-      "entry_count": 9,
-      "fetched_at": "2026-05-06T12:25:07.818Z",
+      "entry_count": 11,
+      "fetched_at": "2026-05-06T15:22:50.363Z",
       "error": null
     },
     {
@@ -26,7 +26,7 @@
       "tier": "contributor",
       "node_type": "service",
       "entry_count": 10,
-      "fetched_at": "2026-05-06T12:25:07.466Z",
+      "fetched_at": "2026-05-06T15:22:50.102Z",
       "error": null
     },
     {
@@ -47,6 +47,40 @@
     }
   ],
   "entries": [
+    {
+      "id": "51200f6d-merge",
+      "timestamp": "2026-05-06T15:08:06Z",
+      "author": "kaizencycle",
+      "title": "feat(c303): add snapshot parallel-read route",
+      "type": "merge",
+      "severity": "info",
+      "tags": [
+        "merge",
+        "pr"
+      ],
+      "source": "github-commit",
+      "verified": false,
+      "sha": "51200f6db9f41b6f1c6b0f01a0549fe5fbffdeff",
+      "_mesh_node": "mobius-civic-ai-terminal",
+      "_mesh_tier": "contributor"
+    },
+    {
+      "id": "5a5ed3d0-merge",
+      "timestamp": "2026-05-06T14:23:42Z",
+      "author": "kaizencycle",
+      "title": "Merge pull request #497 from kaizencycle/c303-phase2b-integrity-parallel-read",
+      "type": "merge",
+      "severity": "info",
+      "tags": [
+        "merge",
+        "pr"
+      ],
+      "source": "github-commit",
+      "verified": false,
+      "sha": "5a5ed3d0ba673d85323c3d20aae7b31c8f148d04",
+      "_mesh_node": "mobius-civic-ai-terminal",
+      "_mesh_tier": "contributor"
+    },
     {
       "id": "d4c9e538-merge",
       "timestamp": "2026-05-06T02:35:57Z",
