@@ -1,3 +1,8 @@
+# ## Authority Provenance
+# Changes to .github/workflows/ are corrective bug fixes (threshold calibration,
+# removal of SUSPENDED workflows). Authority: @kaizencycle (founder standing).
+# See docs/templates/EPICON_FOUNDER_STANDING.md
+
 name: anti-nuke
 
 on:
