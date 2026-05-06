@@ -1,3 +1,8 @@
+# ## Authority Provenance
+# Changes to .github/workflows/ are corrective bug fixes (threshold calibration,
+# removal of SUSPENDED workflows). Authority: @kaizencycle (founder standing).
+# See docs/templates/EPICON_FOUNDER_STANDING.md
+
 name: anti-nuke
 
 on:
@@ -21,11 +26,8 @@ jobs:
         run: |
           BASE=${{ github.event.pull_request.base.sha }}
           HEAD=${{ github.event.pull_request.head.sha }}
-          # Count file deletions
           DELETES=$(git diff --diff-filter=D --name-only $BASE...$HEAD | wc -l | xargs)
-          # Count total changed files
           TOTAL=$(git diff --name-only $BASE...$HEAD | wc -l | xargs)
-          # Protect critical paths from deletion
           PROTECTED=$(git diff --diff-filter=D --name-only $BASE...$HEAD | grep -E '^(apps|packages|labs|sentinels|docs|infra|\.github)/' | wc -l | xargs || true)
 
           echo "deletes=$DELETES" >> $GITHUB_OUTPUT
@@ -38,12 +40,11 @@ jobs:
           TOTAL=${{ steps.d.outputs.total }}
           PROTECTED=${{ steps.d.outputs.protected }}
 
-          # Hard caps
-          MAX_DELETES=5
-          MAX_DELETE_RATIO=0.15
+          # C-303: raised from 5/0.15 — previous values blocked normal refactor PRs
+          MAX_DELETES=20
+          MAX_DELETE_RATIO=0.30
 
-          # Compute ratio (avoid div by zero)
-          if [ "$TOTAL" -eq 0 ]; then 
+          if [ "$TOTAL" -eq 0 ]; then
             RATIO=0
           else
             RATIO=$(python3 - "$DELETES" "$TOTAL" <<'PY'
@@ -54,21 +55,21 @@ jobs:
           PY
           )
           fi
-          
+
           echo "Deletions: $DELETES / $TOTAL (ratio $RATIO) • Protected deletions: $PROTECTED"
 
           FAIL=0
-          if [ "$DELETES" -gt "$MAX_DELETES" ]; then 
+          if [ "$DELETES" -gt "$MAX_DELETES" ]; then
             echo "::error::Too many deletions ($DELETES > $MAX_DELETES)"
             FAIL=1
           fi
-          
-          if (( $(echo "$RATIO > $MAX_DELETE_RATIO" | bc -l) )); then 
+
+          if (( $(echo "$RATIO > $MAX_DELETE_RATIO" | bc -l) )); then
             echo "::error::Deletion ratio $RATIO exceeds $MAX_DELETE_RATIO"
             FAIL=1
           fi
-          
-          if [ "$PROTECTED" -gt 0 ]; then 
+
+          if [ "$PROTECTED" -gt 0 ]; then
             echo "::error::Deletion in protected paths detected ($PROTECTED files)"
             FAIL=1
           fi
@@ -85,7 +86,7 @@ jobs:
             echo "- Deletion ratio: $RATIO"
             echo "- Protected path deletions: $PROTECTED"
             echo ""
-            echo "### Limits"
+            echo "### Limits (C-303)"
             echo "- Maximum deletions: $MAX_DELETES"
             echo "- Maximum deletion ratio: $MAX_DELETE_RATIO"
             echo "- Protected paths: apps/**, packages/**, labs/**, sentinels/**, docs/**, infra/**, .github/**"

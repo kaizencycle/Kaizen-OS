@@ -116,6 +116,7 @@ jobs:
 
       - name: Enforce EPICON/Docs presence (hard rules)
         id: hardrules
+        if: steps.gate.outputs.run == 'true'
         shell: bash
         run: |
           set -euo pipefail

@@ -4,6 +4,8 @@
 # Consolidates: mobius-pulse-nightly.yml, update-badges.yml, weekly-digest.yml
 # EPICON Layer: EPICON-2 (Memory Matrix)
 # Cycle: C-177
+# C-303: staggered badge refresh cron from "0 * * * *" to "30 * * * *"
+#        to avoid hourly runner collision with mesh-aggregate.yml (0 * * * *).
 # ═══════════════════════════════════════════════════════════════════════════════
 
 name: Mobius Pulse (Unified)
@@ -14,8 +16,8 @@ on:
   schedule:
     # Daily pulse at 04:00 UTC
     - cron: "0 4 * * *"
-    # C-292: badge refresh every 1h (was */15 = 96x/day; badges rarely change)
-    - cron: "0 * * * *"
+    # C-303: badge refresh staggered to :30 (was :00, colliding with mesh-aggregate)
+    - cron: "30 * * * *"
     # Weekly digest on Sunday at 23:00 UTC
     - cron: "0 23 * * 0"
   workflow_dispatch:
@@ -46,7 +48,7 @@ jobs:
   # ═══════════════════════════════════════════════════════════════════════════
   # DETERMINE MODE
   # ═══════════════════════════════════════════════════════════════════════════
-  
+
   determine-mode:
     name: 🎯 Determine Mode
     runs-on: ubuntu-latest
@@ -54,68 +56,66 @@ jobs:
       run_pulse: ${{ steps.mode.outputs.run_pulse }}
       run_badges: ${{ steps.mode.outputs.run_badges }}
       run_digest: ${{ steps.mode.outputs.run_digest }}
-    
+
     steps:
       - name: Determine execution mode
         id: mode
         run: |
           MODE="${{ github.event.inputs.mode || 'auto' }}"
           CRON="${{ github.event.schedule }}"
-          
-          # Default to false
+
           RUN_PULSE="false"
           RUN_BADGES="false"
           RUN_DIGEST="false"
-          
+
           if [ "$MODE" = "full" ] || [ "$MODE" = "pulse-only" ]; then
             RUN_PULSE="true"
           fi
-          
+
           if [ "$MODE" = "full" ] || [ "$MODE" = "badges-only" ]; then
             RUN_BADGES="true"
           fi
-          
+
           if [ "$MODE" = "full" ] || [ "$MODE" = "digest-only" ]; then
             RUN_DIGEST="true"
           fi
-          
-          # Auto-detect from cron schedule
+
           if [ "$MODE" = "auto" ]; then
             case "$CRON" in
-              "0 4 * * *")  # Daily pulse
+              "0 4 * * *")    # Daily pulse
                 RUN_PULSE="true"
                 RUN_BADGES="true"
                 ;;
-              "0 * * * *")  # Badge refresh
+              "30 * * * *")   # C-303: badge refresh (was "0 * * * *")
                 RUN_BADGES="true"
                 ;;
-              "0 23 * * 0")  # Weekly digest
+              "0 23 * * 0")   # Weekly digest
                 RUN_DIGEST="true"
                 ;;
-              *)  # Push event or manual
+              *)              # Push event or manual
                 RUN_PULSE="true"
                 RUN_BADGES="true"
                 ;;
             esac
           fi
-          
+
           echo "run_pulse=$RUN_PULSE" >> $GITHUB_OUTPUT
           echo "run_badges=$RUN_BADGES" >> $GITHUB_OUTPUT
           echo "run_digest=$RUN_DIGEST" >> $GITHUB_OUTPUT
-          
+
           echo "Mode: pulse=$RUN_PULSE, badges=$RUN_BADGES, digest=$RUN_DIGEST"
 
   # ═══════════════════════════════════════════════════════════════════════════
   # MOBIUS PULSE
   # ═══════════════════════════════════════════════════════════════════════════
-  
+
   pulse:
     name: 📡 Generate Pulse
     runs-on: ubuntu-latest
     needs: determine-mode
     if: needs.determine-mode.outputs.run_pulse == 'true'
     continue-on-error: true
-    
+
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
@@ -159,7 +159,7 @@ jobs:
           fi
 
           URL="$INDEXER_BASE_URL/api/v1/pulse/ingest"
-          
+
           if [ -n "$PULSE_API_TOKEN" ]; then
             AUTH_ARGS=(-H "Authorization: Bearer $PULSE_API_TOKEN")
           else
@@ -180,14 +180,14 @@ jobs:
   # ═══════════════════════════════════════════════════════════════════════════
   # BADGE REFRESH
   # ═══════════════════════════════════════════════════════════════════════════
-  
+
   badges:
     name: 🏷️ Update Badges
     runs-on: ubuntu-latest
     needs: determine-mode
     if: needs.determine-mode.outputs.run_badges == 'true'
     continue-on-error: true
-    
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -220,14 +220,14 @@ jobs:
           mkdir -p .badges
           CYCLE="${{ secrets.MOBIUS_CYCLE || env.MOBIUS_CYCLE }}"
           VERDICT=$(cat STATE/VERDICT.txt 2>/dev/null || echo "ADOPT")
-          
+
           case "$VERDICT" in
             ADOPT) COLOR="brightgreen" ;;
             SHADOW) COLOR="orange" ;;
             DEFER) COLOR="red" ;;
             *) COLOR="lightgray" ;;
           esac
-          
+
           echo "{\"schemaVersion\":1,\"label\":\"SR • Cycle\",\"message\":\"${CYCLE}\",\"color\":\"blue\",\"labelColor\":\"black\"}" > .badges/cycle.json
           echo "{\"schemaVersion\":1,\"label\":\"verdict\",\"message\":\"${VERDICT}\",\"color\":\"${COLOR}\"}" > .badges/verdict.json
 
@@ -240,13 +240,13 @@ jobs:
   # ═══════════════════════════════════════════════════════════════════════════
   # WEEKLY DIGEST
   # ═══════════════════════════════════════════════════════════════════════════
-  
+
   digest:
     name: 📊 Weekly Digest
     runs-on: ubuntu-latest
     needs: determine-mode
     if: needs.determine-mode.outputs.run_digest == 'true'
-    
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -261,7 +261,7 @@ jobs:
         run: |
           if [ -f ".github/scripts/weekly_digest.py" ]; then
             python .github/scripts/weekly_digest.py --days 7
-            
+
             if [ -f "docs/divergence/weekly_digest.json" ]; then
               HEALTH=$(python3 -c "
               import json
@@ -280,9 +280,9 @@ jobs:
         run: |
           git config user.name "mobius-bot"
           git config user.email "mobius-bot@users.noreply.github.com"
-          
+
           git add docs/divergence/weekly_digest.json docs/divergence/WEEKLY_DIGEST.md 2>/dev/null || true
-          
+
           if git diff --staged --quiet; then
             echo "No digest changes to commit"
           else
@@ -300,13 +300,13 @@ jobs:
   # ═══════════════════════════════════════════════════════════════════════════
   # SUMMARY
   # ═══════════════════════════════════════════════════════════════════════════
-  
+
   summary:
     name: 📋 Pulse Summary
     runs-on: ubuntu-latest
     needs: [determine-mode, pulse, badges, digest]
     if: always()
-    
+
     steps:
       - name: Generate Summary
         run: |

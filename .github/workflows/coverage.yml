@@ -2,6 +2,8 @@
 # OWNER: @kaizencycle
 # INTRODUCED: C-198
 # STATUS: active
+# C-303: staggered nightly cron from "0 2 * * *" to "30 2 * * *"
+#        to avoid runner collision with benchmark.yml (0 2 * * *).
 
 name: Test Coverage
 
@@ -22,6 +24,8 @@ on:
       - '**.py'
       - 'package*.json'
       - 'turbo.json'
+  schedule:
+    - cron: '30 2 * * *'   # C-303: staggered +30m from benchmark.yml (0 2 * * *)
 
 permissions:
   contents: read
