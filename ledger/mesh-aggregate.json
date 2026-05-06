@@ -1,24 +1,24 @@
 {
   "schema": "MNS_AGGREGATE_V1",
-  "updated_at": "2026-05-06T15:22:50.363Z",
+  "updated_at": "2026-05-06T17:22:36.612Z",
   "node_count": 5,
   "live_nodes": 3,
-  "total_entries": 21,
+  "total_entries": 20,
   "nodes": [
     {
       "node_id": "mobius-substrate",
       "tier": "sentinel",
       "node_type": "substrate",
       "entry_count": 0,
-      "fetched_at": "2026-05-06T15:22:50.061Z",
+      "fetched_at": "2026-05-06T17:22:36.242Z",
       "error": null
     },
     {
       "node_id": "mobius-civic-ai-terminal",
       "tier": "contributor",
       "node_type": "app",
-      "entry_count": 11,
-      "fetched_at": "2026-05-06T15:22:50.363Z",
+      "entry_count": 10,
+      "fetched_at": "2026-05-06T17:22:36.612Z",
       "error": null
     },
     {
@@ -26,7 +26,7 @@
       "tier": "contributor",
       "node_type": "service",
       "entry_count": 10,
-      "fetched_at": "2026-05-06T15:22:50.102Z",
+      "fetched_at": "2026-05-06T17:22:36.295Z",
       "error": null
     },
     {
@@ -47,6 +47,23 @@
     }
   ],
   "entries": [
+    {
+      "id": "f8c6465a-merge",
+      "timestamp": "2026-05-06T15:48:58Z",
+      "author": "kaizencycle",
+      "title": "Merge pull request #499 from kaizencycle/claude/chamber-optimizations-C6DV4",
+      "type": "merge",
+      "severity": "info",
+      "tags": [
+        "merge",
+        "pr"
+      ],
+      "source": "github-commit",
+      "verified": false,
+      "sha": "f8c6465ab9f365aacb65efda5e78bff920cd5e06",
+      "_mesh_node": "mobius-civic-ai-terminal",
+      "_mesh_tier": "contributor"
+    },
     {
       "id": "51200f6d-merge",
       "timestamp": "2026-05-06T15:08:06Z",
@@ -197,40 +214,6 @@
       "source": "github-commit",
       "verified": false,
       "sha": "23bb5acb8b83fbffd43b6eb2c3ebf4e598a62ba1",
-      "_mesh_node": "mobius-civic-ai-terminal",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "b923e883-merge",
-      "timestamp": "2026-05-04T14:32:51Z",
-      "author": "kaizencycle",
-      "title": "C-301 Phase 12 — 5 bug fixes + 5 optimizations",
-      "type": "merge",
-      "severity": "info",
-      "tags": [
-        "merge",
-        "pr"
-      ],
-      "source": "github-commit",
-      "verified": false,
-      "sha": "b923e8833f57820571e76ee0531ea909479cce98",
-      "_mesh_node": "mobius-civic-ai-terminal",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "9ba8cb46-merge",
-      "timestamp": "2026-05-04T14:15:33Z",
-      "author": "kaizencycle",
-      "title": "C-300 Phase 11 — EPICON Dry-Run Gate (Pre-Enforcement Layer)",
-      "type": "merge",
-      "severity": "info",
-      "tags": [
-        "merge",
-        "pr"
-      ],
-      "source": "github-commit",
-      "verified": false,
-      "sha": "9ba8cb46bc5d169934295814fafd96c997d18020",
       "_mesh_node": "mobius-civic-ai-terminal",
       "_mesh_tier": "contributor"
     },
