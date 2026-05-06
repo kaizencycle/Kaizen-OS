@@ -1,24 +1,24 @@
 {
   "schema": "MNS_AGGREGATE_V1",
-  "updated_at": "2026-05-06T22:40:02.575Z",
+  "updated_at": "2026-05-06T23:41:14.494Z",
   "node_count": 5,
   "live_nodes": 3,
-  "total_entries": 20,
+  "total_entries": 19,
   "nodes": [
     {
       "node_id": "mobius-substrate",
       "tier": "sentinel",
       "node_type": "substrate",
       "entry_count": 0,
-      "fetched_at": "2026-05-06T22:40:02.149Z",
+      "fetched_at": "2026-05-06T23:41:14.212Z",
       "error": null
     },
     {
       "node_id": "mobius-civic-ai-terminal",
       "tier": "contributor",
       "node_type": "app",
-      "entry_count": 10,
-      "fetched_at": "2026-05-06T22:40:02.575Z",
+      "entry_count": 9,
+      "fetched_at": "2026-05-06T23:41:14.493Z",
       "error": null
     },
     {
@@ -26,7 +26,7 @@
       "tier": "contributor",
       "node_type": "service",
       "entry_count": 10,
-      "fetched_at": "2026-05-06T22:40:02.150Z",
+      "fetched_at": "2026-05-06T23:41:14.320Z",
       "error": null
     },
     {
@@ -197,23 +197,6 @@
       "source": "github-commit",
       "verified": false,
       "sha": "1a226184abda72d0b79c67aa2cd82e0af15b8c9c",
-      "_mesh_node": "mobius-civic-ai-terminal",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "f1c0c232-merge",
-      "timestamp": "2026-05-05T15:44:05Z",
-      "author": "kaizencycle",
-      "title": "C-302 Phase 14 — Ten Optimizations (substrate Render fix + CURRENT_CYCLE + ATLAS + MIC accounting + journal + replay + signals + T2 gates + bot deploys)",
-      "type": "merge",
-      "severity": "info",
-      "tags": [
-        "merge",
-        "pr"
-      ],
-      "source": "github-commit",
-      "verified": false,
-      "sha": "f1c0c232162a479d752135ed8808a8dcb700552f",
       "_mesh_node": "mobius-civic-ai-terminal",
       "_mesh_tier": "contributor"
     },
