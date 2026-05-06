@@ -1,6 +1,6 @@
 {
   "schema": "MNS_AGGREGATE_V1",
-  "updated_at": "2026-05-06T19:23:06.271Z",
+  "updated_at": "2026-05-06T21:02:40.640Z",
   "node_count": 5,
   "live_nodes": 3,
   "total_entries": 20,
@@ -10,7 +10,7 @@
       "tier": "sentinel",
       "node_type": "substrate",
       "entry_count": 0,
-      "fetched_at": "2026-05-06T19:23:05.964Z",
+      "fetched_at": "2026-05-06T21:02:40.326Z",
       "error": null
     },
     {
@@ -18,7 +18,7 @@
       "tier": "contributor",
       "node_type": "app",
       "entry_count": 10,
-      "fetched_at": "2026-05-06T19:23:06.270Z",
+      "fetched_at": "2026-05-06T21:02:40.639Z",
       "error": null
     },
     {
@@ -26,7 +26,7 @@
       "tier": "contributor",
       "node_type": "service",
       "entry_count": 10,
-      "fetched_at": "2026-05-06T19:23:06.078Z",
+      "fetched_at": "2026-05-06T21:02:40.357Z",
       "error": null
     },
     {
@@ -47,6 +47,23 @@
     }
   ],
   "entries": [
+    {
+      "id": "0f977b2d-merge",
+      "timestamp": "2026-05-06T20:35:58Z",
+      "author": "kaizencycle",
+      "title": "feat(c303): add EPICON quorum escalation runtime",
+      "type": "merge",
+      "severity": "info",
+      "tags": [
+        "merge",
+        "pr"
+      ],
+      "source": "github-commit",
+      "verified": false,
+      "sha": "0f977b2d484d0f69ff2e3dc5015d9105db790dc4",
+      "_mesh_node": "mobius-civic-ai-terminal",
+      "_mesh_tier": "contributor"
+    },
     {
       "id": "e3564fc2-merge",
       "timestamp": "2026-05-06T18:16:31Z",
@@ -197,23 +214,6 @@
       "source": "github-commit",
       "verified": false,
       "sha": "f1c0c232162a479d752135ed8808a8dcb700552f",
-      "_mesh_node": "mobius-civic-ai-terminal",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "8d53dca4-merge",
-      "timestamp": "2026-05-05T03:36:56Z",
-      "author": "kaizencycle",
-      "title": "fix(c301): 10 vault + GI hardening fixes",
-      "type": "merge",
-      "severity": "info",
-      "tags": [
-        "merge",
-        "pr"
-      ],
-      "source": "github-commit",
-      "verified": false,
-      "sha": "8d53dca49d3c8b3e3b79309a2ba174f3633d3a7d",
       "_mesh_node": "mobius-civic-ai-terminal",
       "_mesh_tier": "contributor"
     },
