@@ -1,24 +1,24 @@
 {
   "schema": "MNS_AGGREGATE_V1",
-  "updated_at": "2026-05-06T01:56:11.613Z",
+  "updated_at": "2026-05-06T05:24:19.581Z",
   "node_count": 5,
   "live_nodes": 3,
-  "total_entries": 21,
+  "total_entries": 20,
   "nodes": [
     {
       "node_id": "mobius-substrate",
       "tier": "sentinel",
       "node_type": "substrate",
       "entry_count": 0,
-      "fetched_at": "2026-05-06T01:56:11.281Z",
+      "fetched_at": "2026-05-06T05:24:19.096Z",
       "error": null
     },
     {
       "node_id": "mobius-civic-ai-terminal",
       "tier": "contributor",
       "node_type": "app",
-      "entry_count": 11,
-      "fetched_at": "2026-05-06T01:56:11.613Z",
+      "entry_count": 10,
+      "fetched_at": "2026-05-06T05:24:19.581Z",
       "error": null
     },
     {
@@ -26,7 +26,7 @@
       "tier": "contributor",
       "node_type": "service",
       "entry_count": 10,
-      "fetched_at": "2026-05-06T01:56:11.357Z",
+      "fetched_at": "2026-05-06T05:24:19.098Z",
       "error": null
     },
     {
@@ -47,6 +47,40 @@
     }
   ],
   "entries": [
+    {
+      "id": "d4c9e538-merge",
+      "timestamp": "2026-05-06T02:35:57Z",
+      "author": "kaizencycle",
+      "title": "feat(c303): add tripwire parallel-read route",
+      "type": "merge",
+      "severity": "info",
+      "tags": [
+        "merge",
+        "pr"
+      ],
+      "source": "github-commit",
+      "verified": false,
+      "sha": "d4c9e538fb3f311a8f28daf7d12f720eb4f29798",
+      "_mesh_node": "mobius-civic-ai-terminal",
+      "_mesh_tier": "contributor"
+    },
+    {
+      "id": "1837f6a2-merge",
+      "timestamp": "2026-05-06T02:24:32Z",
+      "author": "kaizencycle",
+      "title": "docs(c303): Phase 1 DAL foundation specification",
+      "type": "merge",
+      "severity": "info",
+      "tags": [
+        "merge",
+        "pr"
+      ],
+      "source": "github-commit",
+      "verified": false,
+      "sha": "1837f6a28d50bb1ab9dd8d6ec15ee72487bbaa4f",
+      "_mesh_node": "mobius-civic-ai-terminal",
+      "_mesh_tier": "contributor"
+    },
     {
       "id": "a55e098d-merge",
       "timestamp": "2026-05-06T01:24:59Z",
@@ -180,57 +214,6 @@
       "source": "github-commit",
       "verified": false,
       "sha": "8b9fb9c8701d87bc6127fb1c7e2dfe9093f1f68f",
-      "_mesh_node": "mobius-civic-ai-terminal",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "f9314d64-merge",
-      "timestamp": "2026-05-04T00:32:17Z",
-      "author": "kaizencycle",
-      "title": "C300 epicon runtime foundation",
-      "type": "merge",
-      "severity": "info",
-      "tags": [
-        "merge",
-        "pr"
-      ],
-      "source": "github-commit",
-      "verified": false,
-      "sha": "f9314d649bda368091a503ecbfcba25497d82634",
-      "_mesh_node": "mobius-civic-ai-terminal",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "bea1005b-merge",
-      "timestamp": "2026-05-03T22:24:29Z",
-      "author": "kaizencycle",
-      "title": "C-300 Phase 11 — Ten Optimizations (substrate fix + journal KV bridge + HERMES signals + EPICON state + vault hardening)",
-      "type": "merge",
-      "severity": "info",
-      "tags": [
-        "merge",
-        "pr"
-      ],
-      "source": "github-commit",
-      "verified": false,
-      "sha": "bea1005b033f2978eea0116f42f159e0ee495308",
-      "_mesh_node": "mobius-civic-ai-terminal",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "be616c0c-merge",
-      "timestamp": "2026-05-03T22:17:49Z",
-      "author": "kaizencycle",
-      "title": "C-300 EPICON Visibility Panel — Runtime Consensus UI",
-      "type": "merge",
-      "severity": "info",
-      "tags": [
-        "merge",
-        "pr"
-      ],
-      "source": "github-commit",
-      "verified": false,
-      "sha": "be616c0c33342bb4dbbf9dc849f75004239e732d",
       "_mesh_node": "mobius-civic-ai-terminal",
       "_mesh_tier": "contributor"
     },
