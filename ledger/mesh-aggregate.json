@@ -1,24 +1,24 @@
 {
   "schema": "MNS_AGGREGATE_V1",
-  "updated_at": "2026-05-07T13:28:37.857Z",
+  "updated_at": "2026-05-07T15:59:29.895Z",
   "node_count": 5,
   "live_nodes": 3,
-  "total_entries": 19,
+  "total_entries": 20,
   "nodes": [
     {
       "node_id": "mobius-substrate",
       "tier": "sentinel",
       "node_type": "substrate",
       "entry_count": 0,
-      "fetched_at": "2026-05-07T13:28:37.519Z",
+      "fetched_at": "2026-05-07T15:59:29.407Z",
       "error": null
     },
     {
       "node_id": "mobius-civic-ai-terminal",
       "tier": "contributor",
       "node_type": "app",
-      "entry_count": 9,
-      "fetched_at": "2026-05-07T13:28:37.856Z",
+      "entry_count": 10,
+      "fetched_at": "2026-05-07T15:59:29.895Z",
       "error": null
     },
     {
@@ -26,7 +26,7 @@
       "tier": "contributor",
       "node_type": "service",
       "entry_count": 10,
-      "fetched_at": "2026-05-07T13:28:37.566Z",
+      "fetched_at": "2026-05-07T15:59:29.382Z",
       "error": null
     },
     {
@@ -47,6 +47,40 @@
     }
   ],
   "entries": [
+    {
+      "id": "1f59540a-merge",
+      "timestamp": "2026-05-07T15:35:19Z",
+      "author": "kaizencycle",
+      "title": "fix(c304): align Terminal ledger attest payload with Civic Ledger contract",
+      "type": "merge",
+      "severity": "info",
+      "tags": [
+        "merge",
+        "pr"
+      ],
+      "source": "github-commit",
+      "verified": false,
+      "sha": "1f59540a4337a38ecea2d22188766297ce342dbc",
+      "_mesh_node": "mobius-civic-ai-terminal",
+      "_mesh_tier": "contributor"
+    },
+    {
+      "id": "aaf1ac5a-merge",
+      "timestamp": "2026-05-07T13:54:52Z",
+      "author": "kaizencycle",
+      "title": "feat(c303): add EPICON GitHub App webhook scaffold",
+      "type": "merge",
+      "severity": "info",
+      "tags": [
+        "merge",
+        "pr"
+      ],
+      "source": "github-commit",
+      "verified": false,
+      "sha": "aaf1ac5afe7254ec6c675c996b0d60165314d253",
+      "_mesh_node": "mobius-civic-ai-terminal",
+      "_mesh_tier": "contributor"
+    },
     {
       "id": "0f977b2d-merge",
       "timestamp": "2026-05-06T20:35:58Z",
@@ -180,23 +214,6 @@
       "source": "github-commit",
       "verified": false,
       "sha": "a55e098debd543db4984907ef062a0138f2b1238",
-      "_mesh_node": "mobius-civic-ai-terminal",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "1a226184-merge",
-      "timestamp": "2026-05-05T21:44:38Z",
-      "author": "kaizencycle",
-      "title": "fix(c303): Phase 15 — 4 critical fixes + 6 optimizations",
-      "type": "merge",
-      "severity": "info",
-      "tags": [
-        "merge",
-        "pr"
-      ],
-      "source": "github-commit",
-      "verified": false,
-      "sha": "1a226184abda72d0b79c67aa2cd82e0af15b8c9c",
       "_mesh_node": "mobius-civic-ai-terminal",
       "_mesh_tier": "contributor"
     },
