@@ -1,24 +1,24 @@
 {
   "schema": "MNS_AGGREGATE_V1",
-  "updated_at": "2026-05-08T17:02:56.224Z",
+  "updated_at": "2026-05-08T19:04:34.806Z",
   "node_count": 5,
   "live_nodes": 3,
-  "total_entries": 18,
+  "total_entries": 17,
   "nodes": [
     {
       "node_id": "mobius-substrate",
       "tier": "sentinel",
       "node_type": "substrate",
       "entry_count": 0,
-      "fetched_at": "2026-05-08T17:02:55.808Z",
+      "fetched_at": "2026-05-08T19:04:34.046Z",
       "error": null
     },
     {
       "node_id": "mobius-civic-ai-terminal",
       "tier": "contributor",
       "node_type": "app",
-      "entry_count": 8,
-      "fetched_at": "2026-05-08T17:02:56.224Z",
+      "entry_count": 7,
+      "fetched_at": "2026-05-08T19:04:34.806Z",
       "error": null
     },
     {
@@ -26,7 +26,7 @@
       "tier": "contributor",
       "node_type": "service",
       "entry_count": 10,
-      "fetched_at": "2026-05-08T17:02:55.781Z",
+      "fetched_at": "2026-05-08T19:04:34.125Z",
       "error": null
     },
     {
@@ -163,23 +163,6 @@
       "source": "github-commit",
       "verified": false,
       "sha": "e3564fc261ec0d7933a37c4f1357525bbcc50c13",
-      "_mesh_node": "mobius-civic-ai-terminal",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "f8c6465a-merge",
-      "timestamp": "2026-05-06T15:48:58Z",
-      "author": "kaizencycle",
-      "title": "Merge pull request #499 from kaizencycle/claude/chamber-optimizations-C6DV4",
-      "type": "merge",
-      "severity": "info",
-      "tags": [
-        "merge",
-        "pr"
-      ],
-      "source": "github-commit",
-      "verified": false,
-      "sha": "f8c6465ab9f365aacb65efda5e78bff920cd5e06",
       "_mesh_node": "mobius-civic-ai-terminal",
       "_mesh_tier": "contributor"
     },
