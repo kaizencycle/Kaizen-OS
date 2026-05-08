@@ -1,6 +1,6 @@
 {
   "schema": "MNS_AGGREGATE_V1",
-  "updated_at": "2026-05-08T22:45:22.872Z",
+  "updated_at": "2026-05-08T23:46:27.590Z",
   "node_count": 5,
   "live_nodes": 3,
   "total_entries": 17,
@@ -10,7 +10,7 @@
       "tier": "sentinel",
       "node_type": "substrate",
       "entry_count": 0,
-      "fetched_at": "2026-05-08T22:45:22.552Z",
+      "fetched_at": "2026-05-08T23:46:27.138Z",
       "error": null
     },
     {
@@ -18,7 +18,7 @@
       "tier": "contributor",
       "node_type": "app",
       "entry_count": 7,
-      "fetched_at": "2026-05-08T22:45:22.872Z",
+      "fetched_at": "2026-05-08T23:46:27.590Z",
       "error": null
     },
     {
@@ -26,7 +26,7 @@
       "tier": "contributor",
       "node_type": "service",
       "entry_count": 10,
-      "fetched_at": "2026-05-08T22:45:22.566Z",
+      "fetched_at": "2026-05-08T23:46:27.126Z",
       "error": null
     },
     {
@@ -47,6 +47,23 @@
     }
   ],
   "entries": [
+    {
+      "id": "7e133e07-merge",
+      "timestamp": "2026-05-08T23:26:17Z",
+      "author": "kaizencycle",
+      "title": "C-305: Pulse data + persistent log fixes (PR-507)",
+      "type": "merge",
+      "severity": "info",
+      "tags": [
+        "merge",
+        "pr"
+      ],
+      "source": "github-commit",
+      "verified": false,
+      "sha": "7e133e07c61f7e38b7e9db91019723af55511ba4",
+      "_mesh_node": "mobius-civic-ai-terminal",
+      "_mesh_tier": "contributor"
+    },
     {
       "id": "5da65c0b-merge",
       "timestamp": "2026-05-08T16:11:06Z",
@@ -146,23 +163,6 @@
       "source": "github-commit",
       "verified": false,
       "sha": "0f977b2d484d0f69ff2e3dc5015d9105db790dc4",
-      "_mesh_node": "mobius-civic-ai-terminal",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "e3564fc2-merge",
-      "timestamp": "2026-05-06T18:16:31Z",
-      "author": "kaizencycle",
-      "title": "feat(c303): add EPICON deterministic runtime evaluator",
-      "type": "merge",
-      "severity": "info",
-      "tags": [
-        "merge",
-        "pr"
-      ],
-      "source": "github-commit",
-      "verified": false,
-      "sha": "e3564fc261ec0d7933a37c4f1357525bbcc50c13",
       "_mesh_node": "mobius-civic-ai-terminal",
       "_mesh_tier": "contributor"
     },
