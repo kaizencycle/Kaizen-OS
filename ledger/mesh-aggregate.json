@@ -1,6 +1,6 @@
 {
   "schema": "MNS_AGGREGATE_V1",
-  "updated_at": "2026-05-08T15:13:44.095Z",
+  "updated_at": "2026-05-08T17:02:56.224Z",
   "node_count": 5,
   "live_nodes": 3,
   "total_entries": 18,
@@ -10,7 +10,7 @@
       "tier": "sentinel",
       "node_type": "substrate",
       "entry_count": 0,
-      "fetched_at": "2026-05-08T15:13:43.759Z",
+      "fetched_at": "2026-05-08T17:02:55.808Z",
       "error": null
     },
     {
@@ -18,7 +18,7 @@
       "tier": "contributor",
       "node_type": "app",
       "entry_count": 8,
-      "fetched_at": "2026-05-08T15:13:44.095Z",
+      "fetched_at": "2026-05-08T17:02:56.224Z",
       "error": null
     },
     {
@@ -26,7 +26,7 @@
       "tier": "contributor",
       "node_type": "service",
       "entry_count": 10,
-      "fetched_at": "2026-05-08T15:13:43.760Z",
+      "fetched_at": "2026-05-08T17:02:55.781Z",
       "error": null
     },
     {
@@ -47,6 +47,40 @@
     }
   ],
   "entries": [
+    {
+      "id": "5da65c0b-merge",
+      "timestamp": "2026-05-08T16:11:06Z",
+      "author": "kaizencycle",
+      "title": "fix(c305/pr506): substrate repair pack — 5 log-driven fixes",
+      "type": "merge",
+      "severity": "info",
+      "tags": [
+        "merge",
+        "pr"
+      ],
+      "source": "github-commit",
+      "verified": false,
+      "sha": "5da65c0b91e6c6c5cbb097cc422eb99a6c2ba728",
+      "_mesh_node": "mobius-civic-ai-terminal",
+      "_mesh_tier": "contributor"
+    },
+    {
+      "id": "b1a3199b-merge",
+      "timestamp": "2026-05-08T15:25:27Z",
+      "author": "kaizencycle",
+      "title": "feat(c305): align runtime truth and watchdog trust state",
+      "type": "merge",
+      "severity": "info",
+      "tags": [
+        "merge",
+        "pr"
+      ],
+      "source": "github-commit",
+      "verified": false,
+      "sha": "b1a3199b3e94c637b9d138a58684e4ad4d8e564a",
+      "_mesh_node": "mobius-civic-ai-terminal",
+      "_mesh_tier": "contributor"
+    },
     {
       "id": "895052dc-merge",
       "timestamp": "2026-05-08T15:00:07Z",
@@ -146,40 +180,6 @@
       "source": "github-commit",
       "verified": false,
       "sha": "f8c6465ab9f365aacb65efda5e78bff920cd5e06",
-      "_mesh_node": "mobius-civic-ai-terminal",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "51200f6d-merge",
-      "timestamp": "2026-05-06T15:08:06Z",
-      "author": "kaizencycle",
-      "title": "feat(c303): add snapshot parallel-read route",
-      "type": "merge",
-      "severity": "info",
-      "tags": [
-        "merge",
-        "pr"
-      ],
-      "source": "github-commit",
-      "verified": false,
-      "sha": "51200f6db9f41b6f1c6b0f01a0549fe5fbffdeff",
-      "_mesh_node": "mobius-civic-ai-terminal",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "5a5ed3d0-merge",
-      "timestamp": "2026-05-06T14:23:42Z",
-      "author": "kaizencycle",
-      "title": "Merge pull request #497 from kaizencycle/c303-phase2b-integrity-parallel-read",
-      "type": "merge",
-      "severity": "info",
-      "tags": [
-        "merge",
-        "pr"
-      ],
-      "source": "github-commit",
-      "verified": false,
-      "sha": "5a5ed3d0ba673d85323c3d20aae7b31c8f148d04",
       "_mesh_node": "mobius-civic-ai-terminal",
       "_mesh_tier": "contributor"
     },
