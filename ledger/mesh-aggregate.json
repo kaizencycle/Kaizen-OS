@@ -1,24 +1,24 @@
 {
   "schema": "MNS_AGGREGATE_V1",
-  "updated_at": "2026-05-08T13:08:35.027Z",
+  "updated_at": "2026-05-08T15:13:44.095Z",
   "node_count": 5,
   "live_nodes": 3,
-  "total_entries": 17,
+  "total_entries": 18,
   "nodes": [
     {
       "node_id": "mobius-substrate",
       "tier": "sentinel",
       "node_type": "substrate",
       "entry_count": 0,
-      "fetched_at": "2026-05-08T13:08:34.539Z",
+      "fetched_at": "2026-05-08T15:13:43.759Z",
       "error": null
     },
     {
       "node_id": "mobius-civic-ai-terminal",
       "tier": "contributor",
       "node_type": "app",
-      "entry_count": 7,
-      "fetched_at": "2026-05-08T13:08:35.027Z",
+      "entry_count": 8,
+      "fetched_at": "2026-05-08T15:13:44.095Z",
       "error": null
     },
     {
@@ -26,7 +26,7 @@
       "tier": "contributor",
       "node_type": "service",
       "entry_count": 10,
-      "fetched_at": "2026-05-08T13:08:34.616Z",
+      "fetched_at": "2026-05-08T15:13:43.760Z",
       "error": null
     },
     {
@@ -47,6 +47,23 @@
     }
   ],
   "entries": [
+    {
+      "id": "895052dc-merge",
+      "timestamp": "2026-05-08T15:00:07Z",
+      "author": "kaizencycle",
+      "title": "feat(c305): ATLAS infra sweep — 10 runtime-truth optimizations",
+      "type": "merge",
+      "severity": "info",
+      "tags": [
+        "merge",
+        "pr"
+      ],
+      "source": "github-commit",
+      "verified": false,
+      "sha": "895052dcc492a58c0f99fb86fb9271657e5fd142",
+      "_mesh_node": "mobius-civic-ai-terminal",
+      "_mesh_tier": "contributor"
+    },
     {
       "id": "1f59540a-merge",
       "timestamp": "2026-05-07T15:35:19Z",
