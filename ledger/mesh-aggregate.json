@@ -1,24 +1,24 @@
 {
   "schema": "MNS_AGGREGATE_V1",
-  "updated_at": "2026-05-08T23:46:27.590Z",
+  "updated_at": "2026-05-09T02:00:01.133Z",
   "node_count": 5,
   "live_nodes": 3,
-  "total_entries": 17,
+  "total_entries": 18,
   "nodes": [
     {
       "node_id": "mobius-substrate",
       "tier": "sentinel",
       "node_type": "substrate",
       "entry_count": 0,
-      "fetched_at": "2026-05-08T23:46:27.138Z",
+      "fetched_at": "2026-05-09T02:00:00.763Z",
       "error": null
     },
     {
       "node_id": "mobius-civic-ai-terminal",
       "tier": "contributor",
       "node_type": "app",
-      "entry_count": 7,
-      "fetched_at": "2026-05-08T23:46:27.590Z",
+      "entry_count": 8,
+      "fetched_at": "2026-05-09T02:00:01.133Z",
       "error": null
     },
     {
@@ -26,7 +26,7 @@
       "tier": "contributor",
       "node_type": "service",
       "entry_count": 10,
-      "fetched_at": "2026-05-08T23:46:27.126Z",
+      "fetched_at": "2026-05-09T02:00:00.771Z",
       "error": null
     },
     {
@@ -47,6 +47,40 @@
     }
   ],
   "entries": [
+    {
+      "id": "82dd181e-merge",
+      "timestamp": "2026-05-09T01:00:34Z",
+      "author": "kaizencycle",
+      "title": "C-305 PR-509: Pulse data browser — cycle/agent/seal search",
+      "type": "merge",
+      "severity": "info",
+      "tags": [
+        "merge",
+        "pr"
+      ],
+      "source": "github-commit",
+      "verified": false,
+      "sha": "82dd181ecf52876a8efb4dcfc474514194db567b",
+      "_mesh_node": "mobius-civic-ai-terminal",
+      "_mesh_tier": "contributor"
+    },
+    {
+      "id": "81fc2649-merge",
+      "timestamp": "2026-05-08T23:49:01Z",
+      "author": "kaizencycle",
+      "title": "C-305 PR-508: Pulse — heartbeat rail + full-height EPICON feed",
+      "type": "merge",
+      "severity": "info",
+      "tags": [
+        "merge",
+        "pr"
+      ],
+      "source": "github-commit",
+      "verified": false,
+      "sha": "81fc2649f49e89c948ebc59f55cf4499317c8cf5",
+      "_mesh_node": "mobius-civic-ai-terminal",
+      "_mesh_tier": "contributor"
+    },
     {
       "id": "7e133e07-merge",
       "timestamp": "2026-05-08T23:26:17Z",
@@ -146,23 +180,6 @@
       "source": "github-commit",
       "verified": false,
       "sha": "aaf1ac5afe7254ec6c675c996b0d60165314d253",
-      "_mesh_node": "mobius-civic-ai-terminal",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "0f977b2d-merge",
-      "timestamp": "2026-05-06T20:35:58Z",
-      "author": "kaizencycle",
-      "title": "feat(c303): add EPICON quorum escalation runtime",
-      "type": "merge",
-      "severity": "info",
-      "tags": [
-        "merge",
-        "pr"
-      ],
-      "source": "github-commit",
-      "verified": false,
-      "sha": "0f977b2d484d0f69ff2e3dc5015d9105db790dc4",
       "_mesh_node": "mobius-civic-ai-terminal",
       "_mesh_tier": "contributor"
     },
