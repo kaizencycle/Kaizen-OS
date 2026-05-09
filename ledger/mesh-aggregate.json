@@ -1,24 +1,24 @@
 {
   "schema": "MNS_AGGREGATE_V1",
-  "updated_at": "2026-05-09T21:34:51.816Z",
+  "updated_at": "2026-05-09T22:33:39.115Z",
   "node_count": 5,
   "live_nodes": 3,
-  "total_entries": 18,
+  "total_entries": 20,
   "nodes": [
     {
       "node_id": "mobius-substrate",
       "tier": "sentinel",
       "node_type": "substrate",
       "entry_count": 0,
-      "fetched_at": "2026-05-09T21:34:51.211Z",
+      "fetched_at": "2026-05-09T22:33:38.541Z",
       "error": null
     },
     {
       "node_id": "mobius-civic-ai-terminal",
       "tier": "contributor",
       "node_type": "app",
-      "entry_count": 8,
-      "fetched_at": "2026-05-09T21:34:51.816Z",
+      "entry_count": 10,
+      "fetched_at": "2026-05-09T22:33:39.115Z",
       "error": null
     },
     {
@@ -26,7 +26,7 @@
       "tier": "contributor",
       "node_type": "service",
       "entry_count": 10,
-      "fetched_at": "2026-05-09T21:34:51.210Z",
+      "fetched_at": "2026-05-09T22:33:38.580Z",
       "error": null
     },
     {
@@ -47,6 +47,40 @@
     }
   ],
   "entries": [
+    {
+      "id": "a0cff3cf-merge",
+      "timestamp": "2026-05-09T21:52:33Z",
+      "author": "kaizencycle",
+      "title": "Replace redis.keys() with SCAN to avoid Upstash key limit",
+      "type": "merge",
+      "severity": "info",
+      "tags": [
+        "merge",
+        "pr"
+      ],
+      "source": "github-commit",
+      "verified": false,
+      "sha": "a0cff3cfeafe1fed3b8f1e18dc51a30348a32359",
+      "_mesh_node": "mobius-civic-ai-terminal",
+      "_mesh_tier": "contributor"
+    },
+    {
+      "id": "57933f35-merge",
+      "timestamp": "2026-05-09T21:37:23Z",
+      "author": "kaizencycle",
+      "title": "feat(C306): PR-513 — Pulse OS view + data browser merge",
+      "type": "merge",
+      "severity": "info",
+      "tags": [
+        "merge",
+        "pr"
+      ],
+      "source": "github-commit",
+      "verified": false,
+      "sha": "57933f352fc81421d1356ea50bc72f510e857c6a",
+      "_mesh_node": "mobius-civic-ai-terminal",
+      "_mesh_tier": "contributor"
+    },
     {
       "id": "80f6e86a-merge",
       "timestamp": "2026-05-09T21:20:26Z",
