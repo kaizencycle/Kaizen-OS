@@ -1,24 +1,24 @@
 {
   "schema": "MNS_AGGREGATE_V1",
-  "updated_at": "2026-05-11T02:09:23.600Z",
+  "updated_at": "2026-05-11T06:28:54.527Z",
   "node_count": 5,
   "live_nodes": 3,
-  "total_entries": 17,
+  "total_entries": 16,
   "nodes": [
     {
       "node_id": "mobius-substrate",
       "tier": "sentinel",
       "node_type": "substrate",
       "entry_count": 0,
-      "fetched_at": "2026-05-11T02:09:23.196Z",
+      "fetched_at": "2026-05-11T06:28:54.169Z",
       "error": null
     },
     {
       "node_id": "mobius-civic-ai-terminal",
       "tier": "contributor",
       "node_type": "app",
-      "entry_count": 7,
-      "fetched_at": "2026-05-11T02:09:23.600Z",
+      "entry_count": 6,
+      "fetched_at": "2026-05-11T06:28:54.527Z",
       "error": null
     },
     {
@@ -26,7 +26,7 @@
       "tier": "contributor",
       "node_type": "service",
       "entry_count": 10,
-      "fetched_at": "2026-05-11T02:09:23.304Z",
+      "fetched_at": "2026-05-11T06:28:54.151Z",
       "error": null
     },
     {
@@ -146,23 +146,6 @@
       "source": "github-commit",
       "verified": false,
       "sha": "81fc2649f49e89c948ebc59f55cf4499317c8cf5",
-      "_mesh_node": "mobius-civic-ai-terminal",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "7e133e07-merge",
-      "timestamp": "2026-05-08T23:26:17Z",
-      "author": "kaizencycle",
-      "title": "C-305: Pulse data + persistent log fixes (PR-507)",
-      "type": "merge",
-      "severity": "info",
-      "tags": [
-        "merge",
-        "pr"
-      ],
-      "source": "github-commit",
-      "verified": false,
-      "sha": "7e133e07c61f7e38b7e9db91019723af55511ba4",
       "_mesh_node": "mobius-civic-ai-terminal",
       "_mesh_tier": "contributor"
     },
