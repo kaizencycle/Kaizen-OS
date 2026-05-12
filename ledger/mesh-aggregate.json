@@ -1,24 +1,24 @@
 {
   "schema": "MNS_AGGREGATE_V1",
-  "updated_at": "2026-05-12T13:54:42.809Z",
+  "updated_at": "2026-05-12T16:14:30.695Z",
   "node_count": 5,
   "live_nodes": 3,
-  "total_entries": 14,
+  "total_entries": 13,
   "nodes": [
     {
       "node_id": "mobius-substrate",
       "tier": "sentinel",
       "node_type": "substrate",
       "entry_count": 0,
-      "fetched_at": "2026-05-12T13:54:42.185Z",
+      "fetched_at": "2026-05-12T16:14:30.292Z",
       "error": null
     },
     {
       "node_id": "mobius-civic-ai-terminal",
       "tier": "contributor",
       "node_type": "app",
-      "entry_count": 4,
-      "fetched_at": "2026-05-12T13:54:42.809Z",
+      "entry_count": 3,
+      "fetched_at": "2026-05-12T16:14:30.694Z",
       "error": null
     },
     {
@@ -26,7 +26,7 @@
       "tier": "contributor",
       "node_type": "service",
       "entry_count": 10,
-      "fetched_at": "2026-05-12T13:54:42.169Z",
+      "fetched_at": "2026-05-12T16:14:30.301Z",
       "error": null
     },
     {
@@ -95,23 +95,6 @@
       "source": "github-commit",
       "verified": false,
       "sha": "80f6e86ac2a927669f2e99696d36bfb9ccc95068",
-      "_mesh_node": "mobius-civic-ai-terminal",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "50dab2a2-merge",
-      "timestamp": "2026-05-09T14:49:58Z",
-      "author": "kaizencycle",
-      "title": "Merge pull request #510 from kaizencycle/claude/fix-civic-ledger-url-SX2ik",
-      "type": "merge",
-      "severity": "info",
-      "tags": [
-        "merge",
-        "pr"
-      ],
-      "source": "github-commit",
-      "verified": false,
-      "sha": "50dab2a20835bea8b4e4e3a492e86b80fd8d17a9",
       "_mesh_node": "mobius-civic-ai-terminal",
       "_mesh_tier": "contributor"
     },
