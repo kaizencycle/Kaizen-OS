@@ -1,24 +1,24 @@
 {
   "schema": "MNS_AGGREGATE_V1",
-  "updated_at": "2026-05-13T14:08:23.195Z",
+  "updated_at": "2026-05-13T17:08:44.161Z",
   "node_count": 5,
   "live_nodes": 3,
-  "total_entries": 11,
+  "total_entries": 12,
   "nodes": [
     {
       "node_id": "mobius-substrate",
       "tier": "sentinel",
       "node_type": "substrate",
       "entry_count": 0,
-      "fetched_at": "2026-05-13T14:08:22.498Z",
+      "fetched_at": "2026-05-13T17:08:43.851Z",
       "error": null
     },
     {
       "node_id": "mobius-civic-ai-terminal",
       "tier": "contributor",
       "node_type": "app",
-      "entry_count": 1,
-      "fetched_at": "2026-05-13T14:08:23.195Z",
+      "entry_count": 2,
+      "fetched_at": "2026-05-13T17:08:44.161Z",
       "error": null
     },
     {
@@ -26,7 +26,7 @@
       "tier": "contributor",
       "node_type": "service",
       "entry_count": 10,
-      "fetched_at": "2026-05-13T14:08:22.548Z",
+      "fetched_at": "2026-05-13T17:08:43.889Z",
       "error": null
     },
     {
@@ -47,6 +47,23 @@
     }
   ],
   "entries": [
+    {
+      "id": "8564605e-merge",
+      "timestamp": "2026-05-13T14:50:30Z",
+      "author": "kaizencycle",
+      "title": "fix(C-310): hard-block GitHub ledger env aliases in canonize cron",
+      "type": "merge",
+      "severity": "info",
+      "tags": [
+        "merge",
+        "pr"
+      ],
+      "source": "github-commit",
+      "verified": false,
+      "sha": "8564605e0cd9e1f39854190311b2f915049293e9",
+      "_mesh_node": "mobius-civic-ai-terminal",
+      "_mesh_tier": "contributor"
+    },
     {
       "id": "cfad2091-merge",
       "timestamp": "2026-05-13T13:42:31Z",
