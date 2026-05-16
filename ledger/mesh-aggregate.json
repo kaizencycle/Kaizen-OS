@@ -1,24 +1,24 @@
 {
   "schema": "MNS_AGGREGATE_V1",
-  "updated_at": "2026-05-16T02:02:36.918Z",
+  "updated_at": "2026-05-16T05:45:58.188Z",
   "node_count": 5,
   "live_nodes": 3,
-  "total_entries": 17,
+  "total_entries": 15,
   "nodes": [
     {
       "node_id": "mobius-substrate",
       "tier": "sentinel",
       "node_type": "substrate",
       "entry_count": 0,
-      "fetched_at": "2026-05-16T02:02:36.717Z",
+      "fetched_at": "2026-05-16T05:45:57.854Z",
       "error": null
     },
     {
       "node_id": "mobius-civic-ai-terminal",
       "tier": "contributor",
       "node_type": "app",
-      "entry_count": 7,
-      "fetched_at": "2026-05-16T02:02:36.918Z",
+      "entry_count": 5,
+      "fetched_at": "2026-05-16T05:45:58.187Z",
       "error": null
     },
     {
@@ -26,7 +26,7 @@
       "tier": "contributor",
       "node_type": "service",
       "entry_count": 10,
-      "fetched_at": "2026-05-16T02:02:36.714Z",
+      "fetched_at": "2026-05-16T05:45:57.903Z",
       "error": null
     },
     {
@@ -130,40 +130,6 @@
       "source": "github-commit",
       "verified": false,
       "sha": "4456a376bcc4b85df1c12029b07732d9c207b5ce",
-      "_mesh_node": "mobius-civic-ai-terminal",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "8564605e-merge",
-      "timestamp": "2026-05-13T14:50:30Z",
-      "author": "kaizencycle",
-      "title": "fix(C-310): hard-block GitHub ledger env aliases in canonize cron",
-      "type": "merge",
-      "severity": "info",
-      "tags": [
-        "merge",
-        "pr"
-      ],
-      "source": "github-commit",
-      "verified": false,
-      "sha": "8564605e0cd9e1f39854190311b2f915049293e9",
-      "_mesh_node": "mobius-civic-ai-terminal",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "cfad2091-merge",
-      "timestamp": "2026-05-13T13:42:31Z",
-      "author": "kaizencycle",
-      "title": "C-310: substrate pointer repair sweep + terminal stabilization optimizations",
-      "type": "merge",
-      "severity": "info",
-      "tags": [
-        "merge",
-        "pr"
-      ],
-      "source": "github-commit",
-      "verified": false,
-      "sha": "cfad2091b4d184a2bba4c1f1b3554d5a2a8d18b0",
       "_mesh_node": "mobius-civic-ai-terminal",
       "_mesh_tier": "contributor"
     },
