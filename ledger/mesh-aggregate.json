@@ -1,24 +1,24 @@
 {
   "schema": "MNS_AGGREGATE_V1",
-  "updated_at": "2026-05-16T22:36:40.924Z",
+  "updated_at": "2026-05-16T23:41:34.423Z",
   "node_count": 5,
   "live_nodes": 3,
-  "total_entries": 17,
+  "total_entries": 16,
   "nodes": [
     {
       "node_id": "mobius-substrate",
       "tier": "sentinel",
       "node_type": "substrate",
       "entry_count": 0,
-      "fetched_at": "2026-05-16T22:36:40.634Z",
+      "fetched_at": "2026-05-16T23:41:34.074Z",
       "error": null
     },
     {
       "node_id": "mobius-civic-ai-terminal",
       "tier": "contributor",
       "node_type": "app",
-      "entry_count": 7,
-      "fetched_at": "2026-05-16T22:36:40.923Z",
+      "entry_count": 6,
+      "fetched_at": "2026-05-16T23:41:34.423Z",
       "error": null
     },
     {
@@ -26,7 +26,7 @@
       "tier": "contributor",
       "node_type": "service",
       "entry_count": 10,
-      "fetched_at": "2026-05-16T22:36:40.649Z",
+      "fetched_at": "2026-05-16T23:41:34.083Z",
       "error": null
     },
     {
@@ -144,23 +144,6 @@
       "verified": true,
       "sha": "90e124969e53a66a07df9796a85b953bac04782d",
       "verifiedBy": "ZEUS",
-      "_mesh_node": "mobius-civic-ai-terminal",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "8fd09736-merge",
-      "timestamp": "2026-05-15T14:23:38Z",
-      "author": "kaizencycle",
-      "title": "perf(C-312): cache-and-perf pass — STALE shell, integrity-status KV cache, vault SWR",
-      "type": "merge",
-      "severity": "info",
-      "tags": [
-        "merge",
-        "pr"
-      ],
-      "source": "github-commit",
-      "verified": false,
-      "sha": "8fd097363d578f85ae8250c803d0740becf59e99",
       "_mesh_node": "mobius-civic-ai-terminal",
       "_mesh_tier": "contributor"
     },
