@@ -1,24 +1,24 @@
 {
   "schema": "MNS_AGGREGATE_V1",
-  "updated_at": "2026-05-17T17:49:44.717Z",
+  "updated_at": "2026-05-17T18:54:02.308Z",
   "node_count": 5,
   "live_nodes": 3,
-  "total_entries": 18,
+  "total_entries": 20,
   "nodes": [
     {
       "node_id": "mobius-substrate",
       "tier": "sentinel",
       "node_type": "substrate",
       "entry_count": 0,
-      "fetched_at": "2026-05-17T17:49:44.484Z",
+      "fetched_at": "2026-05-17T18:54:02.283Z",
       "error": null
     },
     {
       "node_id": "mobius-civic-ai-terminal",
       "tier": "contributor",
       "node_type": "app",
-      "entry_count": 8,
-      "fetched_at": "2026-05-17T17:49:44.717Z",
+      "entry_count": 10,
+      "fetched_at": "2026-05-17T18:54:02.307Z",
       "error": null
     },
     {
@@ -26,7 +26,7 @@
       "tier": "contributor",
       "node_type": "service",
       "entry_count": 10,
-      "fetched_at": "2026-05-17T17:49:44.508Z",
+      "fetched_at": "2026-05-17T18:54:02.295Z",
       "error": null
     },
     {
@@ -47,6 +47,56 @@
     }
   ],
   "entries": [
+    {
+      "id": "15d2dcc2-merge",
+      "timestamp": "2026-05-17T18:29:27Z",
+      "author": "kaizencycle",
+      "title": "C-314: Fix Signals 6/40 display, snapshot stream coalesce, pulse WRONGTYPE",
+      "type": "merge",
+      "severity": "info",
+      "tags": [
+        "merge",
+        "pr"
+      ],
+      "source": "github-commit",
+      "verified": false,
+      "sha": "15d2dcc284195f16b8bc0748236a4ab893944ba3",
+      "_mesh_node": "mobius-civic-ai-terminal",
+      "_mesh_tier": "contributor"
+    },
+    {
+      "id": "68e4e3b7-zeus-verify",
+      "timestamp": "2026-05-17T18:03:23Z",
+      "author": "ZEUS",
+      "title": "zeus: verification disputed · C-314 [skip ci]",
+      "type": "zeus-verify",
+      "severity": "info",
+      "tags": [
+        "zeus"
+      ],
+      "source": "github-commit",
+      "verified": false,
+      "sha": "68e4e3b7ecc859c7b1c31e9f1587403b552900ad",
+      "_mesh_node": "mobius-civic-ai-terminal",
+      "_mesh_tier": "contributor"
+    },
+    {
+      "id": "63ad2c3c-merge",
+      "timestamp": "2026-05-17T17:51:38Z",
+      "author": "kaizencycle",
+      "title": "C-314: Journal chamber readability (feed first, collapsed pipeline)",
+      "type": "merge",
+      "severity": "info",
+      "tags": [
+        "merge",
+        "pr"
+      ],
+      "source": "github-commit",
+      "verified": false,
+      "sha": "63ad2c3c5715797ef549f7140bee631bcf61599b",
+      "_mesh_node": "mobius-civic-ai-terminal",
+      "_mesh_tier": "contributor"
+    },
     {
       "id": "a8142ef0-merge",
       "timestamp": "2026-05-17T16:35:34Z",
@@ -159,22 +209,6 @@
       "source": "github-commit",
       "verified": false,
       "sha": "788c1ae99f5f89850e50e774fa7d3d1f5d913cf4",
-      "_mesh_node": "mobius-civic-ai-terminal",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "260d19e5-zeus-verify",
-      "timestamp": "2026-05-16T12:02:17Z",
-      "author": "ZEUS",
-      "title": "zeus: verification inconclusive · C-313 [skip ci]",
-      "type": "zeus-verify",
-      "severity": "info",
-      "tags": [
-        "zeus"
-      ],
-      "source": "github-commit",
-      "verified": false,
-      "sha": "260d19e519d3de15cccb3f63e6043294b9c657e0",
       "_mesh_node": "mobius-civic-ai-terminal",
       "_mesh_tier": "contributor"
     },
