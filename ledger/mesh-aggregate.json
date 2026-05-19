@@ -1,6 +1,6 @@
 {
   "schema": "MNS_AGGREGATE_V1",
-  "updated_at": "2026-05-19T18:53:17.018Z",
+  "updated_at": "2026-05-19T20:24:39.097Z",
   "node_count": 5,
   "live_nodes": 3,
   "total_entries": 19,
@@ -10,7 +10,7 @@
       "tier": "sentinel",
       "node_type": "substrate",
       "entry_count": 0,
-      "fetched_at": "2026-05-19T18:53:16.643Z",
+      "fetched_at": "2026-05-19T20:24:38.801Z",
       "error": null
     },
     {
@@ -18,7 +18,7 @@
       "tier": "contributor",
       "node_type": "app",
       "entry_count": 9,
-      "fetched_at": "2026-05-19T18:53:17.018Z",
+      "fetched_at": "2026-05-19T20:24:39.097Z",
       "error": null
     },
     {
@@ -26,7 +26,7 @@
       "tier": "contributor",
       "node_type": "service",
       "entry_count": 10,
-      "fetched_at": "2026-05-19T18:53:16.689Z",
+      "fetched_at": "2026-05-19T20:24:38.796Z",
       "error": null
     },
     {
