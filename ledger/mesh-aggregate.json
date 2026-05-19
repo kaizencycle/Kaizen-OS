@@ -1,24 +1,24 @@
 {
   "schema": "MNS_AGGREGATE_V1",
-  "updated_at": "2026-05-19T10:32:12.722Z",
+  "updated_at": "2026-05-19T13:50:05.216Z",
   "node_count": 5,
   "live_nodes": 3,
-  "total_entries": 20,
+  "total_entries": 18,
   "nodes": [
     {
       "node_id": "mobius-substrate",
       "tier": "sentinel",
       "node_type": "substrate",
       "entry_count": 0,
-      "fetched_at": "2026-05-19T10:32:12.344Z",
+      "fetched_at": "2026-05-19T13:50:04.522Z",
       "error": null
     },
     {
       "node_id": "mobius-civic-ai-terminal",
       "tier": "contributor",
       "node_type": "app",
-      "entry_count": 10,
-      "fetched_at": "2026-05-19T10:32:12.722Z",
+      "entry_count": 8,
+      "fetched_at": "2026-05-19T13:50:05.216Z",
       "error": null
     },
     {
@@ -26,7 +26,7 @@
       "tier": "contributor",
       "node_type": "service",
       "entry_count": 10,
-      "fetched_at": "2026-05-19T10:32:12.407Z",
+      "fetched_at": "2026-05-19T13:50:04.523Z",
       "error": null
     },
     {
@@ -47,6 +47,22 @@
     }
   ],
   "entries": [
+    {
+      "id": "c2dce81e-zeus-verify",
+      "timestamp": "2026-05-19T12:06:41Z",
+      "author": "ZEUS",
+      "title": "zeus: verification inconclusive · C-316 [skip ci]",
+      "type": "zeus-verify",
+      "severity": "info",
+      "tags": [
+        "zeus"
+      ],
+      "source": "github-commit",
+      "verified": false,
+      "sha": "c2dce81e76d7f9971f54e323072a7e9d766f8413",
+      "_mesh_node": "mobius-civic-ai-terminal",
+      "_mesh_tier": "contributor"
+    },
     {
       "id": "ec91f6c7-zeus-verify",
       "timestamp": "2026-05-19T06:31:38Z",
@@ -157,56 +173,6 @@
       "source": "github-commit",
       "verified": false,
       "sha": "6a3b3a77690fa7955a5b3a6ddd795914e4d072c9",
-      "_mesh_node": "mobius-civic-ai-terminal",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "15d2dcc2-merge",
-      "timestamp": "2026-05-17T18:29:27Z",
-      "author": "kaizencycle",
-      "title": "C-314: Fix Signals 6/40 display, snapshot stream coalesce, pulse WRONGTYPE",
-      "type": "merge",
-      "severity": "info",
-      "tags": [
-        "merge",
-        "pr"
-      ],
-      "source": "github-commit",
-      "verified": false,
-      "sha": "15d2dcc284195f16b8bc0748236a4ab893944ba3",
-      "_mesh_node": "mobius-civic-ai-terminal",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "68e4e3b7-zeus-verify",
-      "timestamp": "2026-05-17T18:03:23Z",
-      "author": "ZEUS",
-      "title": "zeus: verification disputed · C-314 [skip ci]",
-      "type": "zeus-verify",
-      "severity": "info",
-      "tags": [
-        "zeus"
-      ],
-      "source": "github-commit",
-      "verified": false,
-      "sha": "68e4e3b7ecc859c7b1c31e9f1587403b552900ad",
-      "_mesh_node": "mobius-civic-ai-terminal",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "63ad2c3c-merge",
-      "timestamp": "2026-05-17T17:51:38Z",
-      "author": "kaizencycle",
-      "title": "C-314: Journal chamber readability (feed first, collapsed pipeline)",
-      "type": "merge",
-      "severity": "info",
-      "tags": [
-        "merge",
-        "pr"
-      ],
-      "source": "github-commit",
-      "verified": false,
-      "sha": "63ad2c3c5715797ef549f7140bee631bcf61599b",
       "_mesh_node": "mobius-civic-ai-terminal",
       "_mesh_tier": "contributor"
     },
