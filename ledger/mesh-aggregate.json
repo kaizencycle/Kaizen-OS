@@ -1,24 +1,24 @@
 {
   "schema": "MNS_AGGREGATE_V1",
-  "updated_at": "2026-05-22T06:40:10.894Z",
+  "updated_at": "2026-05-22T10:16:40.023Z",
   "node_count": 5,
   "live_nodes": 3,
-  "total_entries": 19,
+  "total_entries": 18,
   "nodes": [
     {
       "node_id": "mobius-substrate",
       "tier": "sentinel",
       "node_type": "substrate",
       "entry_count": 0,
-      "fetched_at": "2026-05-22T06:40:10.506Z",
+      "fetched_at": "2026-05-22T10:16:39.389Z",
       "error": null
     },
     {
       "node_id": "mobius-civic-ai-terminal",
       "tier": "contributor",
       "node_type": "app",
-      "entry_count": 9,
-      "fetched_at": "2026-05-22T06:40:10.894Z",
+      "entry_count": 8,
+      "fetched_at": "2026-05-22T10:16:40.023Z",
       "error": null
     },
     {
@@ -26,7 +26,7 @@
       "tier": "contributor",
       "node_type": "service",
       "entry_count": 10,
-      "fetched_at": "2026-05-22T06:40:10.518Z",
+      "fetched_at": "2026-05-22T10:16:39.503Z",
       "error": null
     },
     {
@@ -176,23 +176,6 @@
       "source": "github-commit",
       "verified": false,
       "sha": "2bd10319806c23dddc0701d0363149a60236dba4",
-      "_mesh_node": "mobius-civic-ai-terminal",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "a74902b8-merge",
-      "timestamp": "2026-05-20T14:47:58Z",
-      "author": "kaizencycle",
-      "title": "fix(journal): excise GitHub PAT write path — ledger-only substrate (C-317)",
-      "type": "merge",
-      "severity": "info",
-      "tags": [
-        "merge",
-        "pr"
-      ],
-      "source": "github-commit",
-      "verified": false,
-      "sha": "a74902b804332c894c140b6ae9dde065f9603c24",
       "_mesh_node": "mobius-civic-ai-terminal",
       "_mesh_tier": "contributor"
     },
