@@ -1,24 +1,24 @@
 {
   "schema": "MNS_AGGREGATE_V1",
-  "updated_at": "2026-05-24T02:14:05.847Z",
+  "updated_at": "2026-05-24T06:28:17.724Z",
   "node_count": 5,
   "live_nodes": 3,
-  "total_entries": 18,
+  "total_entries": 17,
   "nodes": [
     {
       "node_id": "mobius-substrate",
       "tier": "sentinel",
       "node_type": "substrate",
       "entry_count": 0,
-      "fetched_at": "2026-05-24T02:14:05.402Z",
+      "fetched_at": "2026-05-24T06:28:17.476Z",
       "error": null
     },
     {
       "node_id": "mobius-civic-ai-terminal",
       "tier": "contributor",
       "node_type": "app",
-      "entry_count": 8,
-      "fetched_at": "2026-05-24T02:14:05.847Z",
+      "entry_count": 7,
+      "fetched_at": "2026-05-24T06:28:17.724Z",
       "error": null
     },
     {
@@ -26,7 +26,7 @@
       "tier": "contributor",
       "node_type": "service",
       "entry_count": 10,
-      "fetched_at": "2026-05-24T02:14:05.404Z",
+      "fetched_at": "2026-05-24T06:28:17.592Z",
       "error": null
     },
     {
@@ -47,6 +47,22 @@
     }
   ],
   "entries": [
+    {
+      "id": "bab5cca9-zeus-verify",
+      "timestamp": "2026-05-24T06:05:47Z",
+      "author": "ZEUS",
+      "title": "zeus: verification disputed · C-321 [skip ci]",
+      "type": "zeus-verify",
+      "severity": "info",
+      "tags": [
+        "zeus"
+      ],
+      "source": "github-commit",
+      "verified": false,
+      "sha": "bab5cca9714be23ae4f08617cb6c56e8208f179f",
+      "_mesh_node": "mobius-civic-ai-terminal",
+      "_mesh_tier": "contributor"
+    },
     {
       "id": "90505d05-zeus-verify",
       "timestamp": "2026-05-24T00:02:53Z",
@@ -141,39 +157,6 @@
       "source": "github-commit",
       "verified": false,
       "sha": "84125d6003170051fbd2bfea2956f67d9acae6d2",
-      "_mesh_node": "mobius-civic-ai-terminal",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "cace1ad2-zeus-verify",
-      "timestamp": "2026-05-22T18:04:55Z",
-      "author": "ZEUS",
-      "title": "zeus: verification disputed · C-319 [skip ci]",
-      "type": "zeus-verify",
-      "severity": "info",
-      "tags": [
-        "zeus"
-      ],
-      "source": "github-commit",
-      "verified": false,
-      "sha": "cace1ad2c3c8af12756dad4e2f76cbc0b4872c1f",
-      "_mesh_node": "mobius-civic-ai-terminal",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "86ee3f0f-merge",
-      "timestamp": "2026-05-22T17:32:25Z",
-      "author": "kaizencycle",
-      "title": "fix(c319): journal lane empty + EPICON unblock + substrate terminal auth (FIX-20)",
-      "type": "merge",
-      "severity": "info",
-      "tags": [
-        "merge",
-        "pr"
-      ],
-      "source": "github-commit",
-      "verified": false,
-      "sha": "86ee3f0f28adf1b4071fa0cfa5a2ad55877b13a2",
       "_mesh_node": "mobius-civic-ai-terminal",
       "_mesh_tier": "contributor"
     },
