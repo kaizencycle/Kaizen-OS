@@ -1,24 +1,24 @@
 {
   "schema": "MNS_AGGREGATE_V1",
-  "updated_at": "2026-05-24T13:00:49.975Z",
+  "updated_at": "2026-05-24T14:55:04.627Z",
   "node_count": 5,
   "live_nodes": 3,
-  "total_entries": 17,
+  "total_entries": 18,
   "nodes": [
     {
       "node_id": "mobius-substrate",
       "tier": "sentinel",
       "node_type": "substrate",
       "entry_count": 0,
-      "fetched_at": "2026-05-24T13:00:49.490Z",
+      "fetched_at": "2026-05-24T14:55:04.207Z",
       "error": null
     },
     {
       "node_id": "mobius-civic-ai-terminal",
       "tier": "contributor",
       "node_type": "app",
-      "entry_count": 7,
-      "fetched_at": "2026-05-24T13:00:49.975Z",
+      "entry_count": 8,
+      "fetched_at": "2026-05-24T14:55:04.626Z",
       "error": null
     },
     {
@@ -26,7 +26,7 @@
       "tier": "contributor",
       "node_type": "service",
       "entry_count": 10,
-      "fetched_at": "2026-05-24T13:00:49.514Z",
+      "fetched_at": "2026-05-24T14:55:04.238Z",
       "error": null
     },
     {
@@ -47,6 +47,23 @@
     }
   ],
   "entries": [
+    {
+      "id": "f02747fb-merge",
+      "timestamp": "2026-05-24T14:39:54Z",
+      "author": "kaizencycle",
+      "title": "feat(c321): 10 terminal optimizations — deploy cascade, cold-boot, empty states, ZEUS dispute",
+      "type": "merge",
+      "severity": "info",
+      "tags": [
+        "merge",
+        "pr"
+      ],
+      "source": "github-commit",
+      "verified": false,
+      "sha": "f02747fb16b84abbe3f4aea40d545aaf5bcf8036",
+      "_mesh_node": "mobius-civic-ai-terminal",
+      "_mesh_tier": "contributor"
+    },
     {
       "id": "1be27203-zeus-verify",
       "timestamp": "2026-05-24T12:02:32Z",
