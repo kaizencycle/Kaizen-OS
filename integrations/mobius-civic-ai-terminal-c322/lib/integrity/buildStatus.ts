@@ -74,15 +74,15 @@ export type IntegrityPayload = {
  * Same GI/MII posture as the integrity ribbon (including Redis cold-start cache when applicable).
  *
  * Source priority:
- *   1. KV (gi:latest) — primary when KV is reachable and GI_STATE key exists and is fresh
- *   2. local computation — fallback when KV is unreachable or GI_STATE key is missing/stale
+ *   1. Persisted GI (KV hot, then GitHub STATE CDN via loadGIState) when fresh
+ *   2. KV carry-forward row when primary is stale (Redis only)
+ *   3. local computation — when no durable row is usable
  */
 export async function computeIntegrityPayload(): Promise<IntegrityPayload> {
-  // 1. Primary: read from KV when available
-  if (isRedisAvailable()) {
-    const cached = await loadGIState();
-    const carry = await loadGIStateCarry();
-    const pick = (() => {
+  // 1. Primary: loadGIState handles KV → GitHub fallback (C-322); do not gate on isRedisAvailable()
+  const cached = await loadGIState();
+  const carry = isRedisAvailable() ? await loadGIStateCarry() : null;
+  const pick = (() => {
       if (cached) {
         const age = Date.now() - new Date(cached.timestamp).getTime();
         const mode = parseGIMode(cached.mode);
@@ -103,36 +103,35 @@ export async function computeIntegrityPayload(): Promise<IntegrityPayload> {
       }
       return null;
     })();
-    if (pick) {
-      const { row, source } = pick;
-      return {
-        cycle: currentCycleId(),
-        timestamp: row.timestamp,
-        global_integrity: row.global_integrity,
-        mode: parseGIMode(row.mode)!,
-        mii_baseline: integrityStatus.mii_baseline,
-        mic_supply: integrityStatus.mic_supply,
-        terminal_status: parseTerminalStatus(row.terminal_status)!,
-        primary_driver:
-          source === 'kv_carry_forward'
-            ? `${row.primary_driver} (carried forward; primary gi:latest stale or missing)`
-            : row.primary_driver,
-        summary: 'GI reflects signal quality, freshness, tripwire stability, and active system health.',
-        source: source === 'kv_carry_forward' ? 'cached' : 'kv',
-        kv: true,
-        signals: {
-          ...row.signals,
-          geopolitics: row.signals.quality,
-          economy: row.signals.system,
-          sentiment: row.signals.stability,
-          // Weekend floor: low-activity periods (Federal Register dark, reduced news volume)
-          // should not drag information below 0.6 — signal absence is nominal on weekends.
-          information: [0, 6].includes(new Date().getDay())
-            ? Math.max(0.6, row.signals.freshness)
-            : row.signals.freshness,
-        },
-      };
-    }
+  if (pick) {
+    const { row, source } = pick;
+    return {
+      cycle: currentCycleId(),
+      timestamp: row.timestamp,
+      global_integrity: row.global_integrity,
+      mode: parseGIMode(row.mode)!,
+      mii_baseline: integrityStatus.mii_baseline,
+      mic_supply: integrityStatus.mic_supply,
+      terminal_status: parseTerminalStatus(row.terminal_status)!,
+      primary_driver:
+        source === 'kv_carry_forward'
+          ? `${row.primary_driver} (carried forward; primary gi:latest stale or missing)`
+          : row.primary_driver,
+      summary: 'GI reflects signal quality, freshness, tripwire stability, and active system health.',
+      source: source === 'kv_carry_forward' ? 'cached' : 'kv',
+      kv: true,
+      signals: {
+        ...row.signals,
+        geopolitics: row.signals.quality,
+        economy: row.signals.system,
+        sentiment: row.signals.stability,
+        // Weekend floor: low-activity periods (Federal Register dark, reduced news volume)
+        // should not drag information below 0.6 — signal absence is nominal on weekends.
+        information: [0, 6].includes(new Date().getDay())
+          ? Math.max(0.6, row.signals.freshness)
+          : row.signals.freshness,
+      },
+    };
   }
 
   // 2. Fallback: compute locally from in-process signals

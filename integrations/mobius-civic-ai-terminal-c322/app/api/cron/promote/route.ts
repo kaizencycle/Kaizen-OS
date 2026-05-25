@@ -30,12 +30,15 @@ export async function GET(request: NextRequest) {
   const cronMat = normalizeServiceSecretMaterial(process.env.CRON_SECRET);
   if (substrateMat === null && cronMat === null) {
     console.error('[cron/promote] Neither SUBSTRATE_TOKEN nor CRON_SECRET configured — skipping promote run. Set at least one in Vercel env vars.');
-    return NextResponse.json({
-      ok: false,
-      error: 'NO_PROMOTE_AUTH_TOKEN',
-      hint: 'Set SUBSTRATE_TOKEN or CRON_SECRET in Vercel environment variables and redeploy',
-      timestamp: new Date().toISOString(),
-    });
+    return NextResponse.json(
+      {
+        ok: false,
+        error: 'NO_PROMOTE_AUTH_TOKEN',
+        hint: 'Set SUBSTRATE_TOKEN or CRON_SECRET in Vercel environment variables and redeploy',
+        timestamp: new Date().toISOString(),
+      },
+      { status: 503 },
+    );
   }
   const authHeader =
     substrateMat !== null
@@ -48,12 +51,15 @@ export async function GET(request: NextRequest) {
     console.warn(
       '[promote] skipped: no SUBSTRATE_TOKEN, CRON_SECRET, or outbound service bearer — configure env to run scheduled promotion',
     );
-    return NextResponse.json({
-      ok: false,
-      skipped: true,
-      reason: 'no_promote_auth_material',
-      timestamp: new Date().toISOString(),
-    });
+    return NextResponse.json(
+      {
+        ok: false,
+        skipped: true,
+        reason: 'no_promote_auth_material',
+        timestamp: new Date().toISOString(),
+      },
+      { status: 503 },
+    );
   }
 
   try {
