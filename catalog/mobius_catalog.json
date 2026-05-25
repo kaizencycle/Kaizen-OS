@@ -1,15 +1,15 @@
 {
   "mobius_catalog_version": "1.0.0",
-  "generated_at": "2026-05-25T06:40:22.747Z",
+  "generated_at": "2026-05-25T17:35:43.930Z",
   "repo": {
     "name": "Mobius-Substrate",
     "url": "https://github.com/kaizencycle/Mobius-Substrate",
     "default_branch": "main",
-    "commit": "1984c4e45ada4bd615c54d4b4a37801882b523a2"
+    "commit": ""
   },
   "stats": {
     "epiconCount": 0,
-    "docCount": 956
+    "docCount": 958
   },
   "epicons": [],
   "docs": [
@@ -7234,7 +7234,7 @@
       "title": "Divergence Dashboard",
       "category": "divergence",
       "tags": [],
-      "content_hash": "sha256:28d52868c8eae4ef416dfec52da479884b1229658aab8d65d35ce48ec263f0e3",
+      "content_hash": "sha256:05bcde20c3ab304b122f8acad52056a5eeeec68c5d026c715987da0a51effaa2",
       "summary": ""
     },
     {
@@ -7629,11 +7629,27 @@
       "summary": ""
     },
     {
+      "path": "docs/pr-bundles/C-322-github-kv-cache.md",
+      "title": "C-322 · GitHub-Federated KV Cache",
+      "category": "pr-bundles",
+      "tags": [],
+      "content_hash": "sha256:2920442c9b605fcfd251fa28fd7416170eb229f2167613a5e64b29e070db5cb2",
+      "summary": ""
+    },
+    {
       "path": "docs/protocols/agent-reporting-protocol.md",
       "title": "Agent Reporting Protocol",
       "category": "protocols",
       "tags": [],
       "content_hash": "sha256:1a9d19c01342f388c7c78348134a2835296651700ccf25f2fcd4ab10f323b009",
+      "summary": ""
+    },
+    {
+      "path": "docs/protocols/github-federated-kv-cache.md",
+      "title": "GitHub-Federated KV Cache (C-322)",
+      "category": "protocols",
+      "tags": [],
+      "content_hash": "sha256:3ef68b34342184a53f7e5dd82d27ebec77d86c1246bfe58659801b0f3b5e7a3b",
       "summary": ""
     },
     {

@@ -34,11 +34,7 @@ export async function ghRead<T>(
 ): Promise<T | null> {
   const { rawBase } = resolveConfig(opts?.config);
   try {
-    const init: RequestInit =
-      typeof globalThis !== 'undefined' && 'Request' in globalThis
-        ? { next: { revalidate: opts?.ttlSeconds ?? 60 } as { revalidate: number } }
-        : { cache: 'no-store' };
-    const res = await fetch(`${rawBase}/${path}`, init);
+    const res = await fetch(`${rawBase}/${path}`, { cache: 'no-store' });
     if (!res.ok) return null;
     return (await res.json()) as T;
   } catch {
