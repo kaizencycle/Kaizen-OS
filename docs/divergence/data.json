@@ -1,13 +1,31 @@
 {
   "repo": "kaizencycle/Mobius-Substrate",
-  "generated_at": "2026-05-25T15:27:12Z",
-  "open_pr_count": 0,
+  "generated_at": "2026-05-25T19:55:55Z",
+  "open_pr_count": 1,
   "by_severity": {
     "high": 0,
     "medium": 0,
     "low": 0,
-    "unknown": 0
+    "unknown": 1
   },
   "emergency_count": 0,
-  "items": []
+  "items": [
+    {
+      "pr": 296,
+      "title": "C-322: GitHub-federated KV cache \u2014 STATE cold store + Terminal bundle",
+      "url": "https://github.com/kaizencycle/Mobius-Substrate/pull/296",
+      "author": "kaizencycle",
+      "updated_at": "2026-05-25T17:38:40Z",
+      "created_at": "2026-05-25T15:45:21Z",
+      "labels": [],
+      "mode": "normal",
+      "has_debt": false,
+      "severity": "unknown",
+      "justification_hash": "",
+      "checks": {
+        "epicon": "unknown",
+        "merge_gate": "unknown"
+      }
+    }
+  ]
 }
