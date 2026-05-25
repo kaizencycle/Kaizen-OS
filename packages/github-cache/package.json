@@ -1,0 +1,16 @@
+{
+  "name": "@mobius/github-cache",
+  "version": "0.1.0",
+  "private": true,
+  "description": "GitHub CDN read + Contents API write for Mobius federated STATE cache (C-322)",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "type-check": "tsc --noEmit"
+  },
+  "files": [
+    "dist",
+    "src"
+  ]
+}
