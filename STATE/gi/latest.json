@@ -1,0 +1,15 @@
+{
+  "global_integrity": 0.74,
+  "mode": "yellow",
+  "terminal_status": "stressed",
+  "primary_driver": "State directory initialized — awaiting first heartbeat write",
+  "source": "cached",
+  "signals": {
+    "quality": 0.75,
+    "freshness": 0.3,
+    "stability": 1,
+    "system": 1
+  },
+  "gi_verified": false,
+  "timestamp": "2026-05-25T00:00:00.000Z"
+}
