@@ -1,24 +1,24 @@
 {
   "schema": "MNS_AGGREGATE_V1",
-  "updated_at": "2026-05-27T06:55:05.825Z",
+  "updated_at": "2026-05-27T10:49:08.041Z",
   "node_count": 5,
   "live_nodes": 3,
-  "total_entries": 28,
+  "total_entries": 27,
   "nodes": [
     {
       "node_id": "mobius-substrate",
       "tier": "sentinel",
       "node_type": "substrate",
       "entry_count": 0,
-      "fetched_at": "2026-05-27T06:55:05.534Z",
+      "fetched_at": "2026-05-27T10:49:07.603Z",
       "error": null
     },
     {
       "node_id": "mobius-civic-ai-terminal",
       "tier": "contributor",
       "node_type": "app",
-      "entry_count": 18,
-      "fetched_at": "2026-05-27T06:55:05.825Z",
+      "entry_count": 17,
+      "fetched_at": "2026-05-27T10:49:08.041Z",
       "error": null
     },
     {
@@ -26,7 +26,7 @@
       "tier": "contributor",
       "node_type": "service",
       "entry_count": 10,
-      "fetched_at": "2026-05-27T06:55:05.509Z",
+      "fetched_at": "2026-05-27T10:49:07.657Z",
       "error": null
     },
     {
@@ -328,22 +328,6 @@
       "source": "github-commit",
       "verified": false,
       "sha": "4eb09a44a9058cb81e2ac1a7ebc1d116b91cf76b",
-      "_mesh_node": "mobius-civic-ai-terminal",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "9da745f2-zeus-verify",
-      "timestamp": "2026-05-26T00:05:22Z",
-      "author": "ZEUS",
-      "title": "zeus: verification inconclusive · C-322 [skip ci]",
-      "type": "zeus-verify",
-      "severity": "info",
-      "tags": [
-        "zeus"
-      ],
-      "source": "github-commit",
-      "verified": false,
-      "sha": "9da745f2dbc8e64f3b953dff06014c89e52fffdb",
       "_mesh_node": "mobius-civic-ai-terminal",
       "_mesh_tier": "contributor"
     },
