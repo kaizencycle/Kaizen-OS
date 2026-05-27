@@ -1,22 +1,15 @@
 {
   "schema": "MNS_NETWORK_MII_V1",
-  "computed_at": "2026-05-27T10:49:08.095Z",
+  "computed_at": "2026-05-27T14:19:31.912Z",
   "network_mii": 0.85,
-  "node_count": 2,
+  "node_count": 1,
   "nodes": [
     {
       "node_id": "mobius-civic-ai-terminal",
       "tier": "contributor",
       "mii_baseline": 0.85,
       "weight": 0.7,
-      "entry_count": 17
-    },
-    {
-      "node_id": "civic-protocol-core",
-      "tier": "contributor",
-      "mii_baseline": 0.85,
-      "weight": 0.7,
-      "entry_count": 10
+      "entry_count": 18
     }
   ],
   "note": "Network MII is a weighted average of registered node baselines for nodes with at least one aggregated entry. Live per-node MII is a follow-up."
