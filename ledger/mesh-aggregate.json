@@ -1,24 +1,24 @@
 {
   "schema": "MNS_AGGREGATE_V1",
-  "updated_at": "2026-05-27T23:54:05.409Z",
+  "updated_at": "2026-05-28T02:07:43.351Z",
   "node_count": 5,
   "live_nodes": 2,
-  "total_entries": 15,
+  "total_entries": 11,
   "nodes": [
     {
       "node_id": "mobius-substrate",
       "tier": "sentinel",
       "node_type": "substrate",
       "entry_count": 0,
-      "fetched_at": "2026-05-27T23:54:04.895Z",
+      "fetched_at": "2026-05-28T02:07:43.013Z",
       "error": null
     },
     {
       "node_id": "mobius-civic-ai-terminal",
       "tier": "contributor",
       "node_type": "app",
-      "entry_count": 15,
-      "fetched_at": "2026-05-27T23:54:05.409Z",
+      "entry_count": 11,
+      "fetched_at": "2026-05-28T02:07:43.351Z",
       "error": null
     },
     {
@@ -26,7 +26,7 @@
       "tier": "contributor",
       "node_type": "service",
       "entry_count": 0,
-      "fetched_at": "2026-05-27T23:54:04.894Z",
+      "fetched_at": "2026-05-28T02:07:43.060Z",
       "error": "http_503"
     },
     {
@@ -47,6 +47,22 @@
     }
   ],
   "entries": [
+    {
+      "id": "4e743f56-zeus-verify",
+      "timestamp": "2026-05-28T00:03:04Z",
+      "author": "ZEUS",
+      "title": "zeus: verification disputed · C-324 [skip ci]",
+      "type": "zeus-verify",
+      "severity": "info",
+      "tags": [
+        "zeus"
+      ],
+      "source": "github-commit",
+      "verified": false,
+      "sha": "4e743f562ead202ddd24254b7313eb8d713b8a9f",
+      "_mesh_node": "mobius-civic-ai-terminal",
+      "_mesh_tier": "contributor"
+    },
     {
       "id": "b396958b-zeus-verify",
       "timestamp": "2026-05-27T18:04:17Z",
@@ -209,91 +225,6 @@
       "source": "github-commit",
       "verified": false,
       "sha": "fbb62f5164332b9aaf397d6a6f18cfbda8521f91",
-      "_mesh_node": "mobius-civic-ai-terminal",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "5266d9a7-merge",
-      "timestamp": "2026-05-26T13:38:38Z",
-      "author": "kaizencycle",
-      "title": "perf(terminal): pause echo digest client polling in background tabs",
-      "type": "merge",
-      "severity": "info",
-      "tags": [
-        "merge",
-        "pr"
-      ],
-      "source": "github-commit",
-      "verified": false,
-      "sha": "5266d9a768cd67d4f3326d08ba07be041b63c912",
-      "_mesh_node": "mobius-civic-ai-terminal",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "cc42fc53-merge",
-      "timestamp": "2026-05-26T13:38:10Z",
-      "author": "kaizencycle",
-      "title": "perf(seo): dynamic canonical base URL for terminal chamber metadata",
-      "type": "merge",
-      "severity": "info",
-      "tags": [
-        "merge",
-        "pr"
-      ],
-      "source": "github-commit",
-      "verified": false,
-      "sha": "cc42fc5392d030e8da51506690b1b549c00fd7ac",
-      "_mesh_node": "mobius-civic-ai-terminal",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "e47e222c-merge",
-      "timestamp": "2026-05-26T13:37:45Z",
-      "author": "kaizencycle",
-      "title": "perf(ux): disable scroll-to-top on terminal chamber tab switches",
-      "type": "merge",
-      "severity": "info",
-      "tags": [
-        "merge",
-        "pr"
-      ],
-      "source": "github-commit",
-      "verified": false,
-      "sha": "e47e222c83be8f054a87fbcfa1010bd3248f7379",
-      "_mesh_node": "mobius-civic-ai-terminal",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "d9c19e5c-merge",
-      "timestamp": "2026-05-26T13:37:25Z",
-      "author": "kaizencycle",
-      "title": "perf(terminal): pause GI monitor integrity-status polling in background",
-      "type": "merge",
-      "severity": "info",
-      "tags": [
-        "merge",
-        "pr"
-      ],
-      "source": "github-commit",
-      "verified": false,
-      "sha": "d9c19e5c346db0b94ffbb6bf2fb98b64015938d1",
-      "_mesh_node": "mobius-civic-ai-terminal",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "c3485cab-merge",
-      "timestamp": "2026-05-26T13:37:05Z",
-      "author": "kaizencycle",
-      "title": "perf(bundle): add motion to Next optimizePackageImports",
-      "type": "merge",
-      "severity": "info",
-      "tags": [
-        "merge",
-        "pr"
-      ],
-      "source": "github-commit",
-      "verified": false,
-      "sha": "c3485cabed066cde00dd432c20a35edc0d2c25bb",
       "_mesh_node": "mobius-civic-ai-terminal",
       "_mesh_tier": "contributor"
     }
