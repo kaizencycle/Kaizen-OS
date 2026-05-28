@@ -1,24 +1,24 @@
 {
   "schema": "MNS_AGGREGATE_V1",
-  "updated_at": "2026-05-28T02:07:43.351Z",
+  "updated_at": "2026-05-28T06:43:35.599Z",
   "node_count": 5,
   "live_nodes": 2,
-  "total_entries": 11,
+  "total_entries": 12,
   "nodes": [
     {
       "node_id": "mobius-substrate",
       "tier": "sentinel",
       "node_type": "substrate",
       "entry_count": 0,
-      "fetched_at": "2026-05-28T02:07:43.013Z",
+      "fetched_at": "2026-05-28T06:43:35.185Z",
       "error": null
     },
     {
       "node_id": "mobius-civic-ai-terminal",
       "tier": "contributor",
       "node_type": "app",
-      "entry_count": 11,
-      "fetched_at": "2026-05-28T02:07:43.351Z",
+      "entry_count": 12,
+      "fetched_at": "2026-05-28T06:43:35.599Z",
       "error": null
     },
     {
@@ -26,7 +26,7 @@
       "tier": "contributor",
       "node_type": "service",
       "entry_count": 0,
-      "fetched_at": "2026-05-28T02:07:43.060Z",
+      "fetched_at": "2026-05-28T06:43:35.245Z",
       "error": "http_503"
     },
     {
@@ -47,6 +47,38 @@
     }
   ],
   "entries": [
+    {
+      "id": "484fcd87-zeus-verify",
+      "timestamp": "2026-05-28T06:04:28Z",
+      "author": "ZEUS",
+      "title": "zeus: verification disputed · C-325 [skip ci]",
+      "type": "zeus-verify",
+      "severity": "info",
+      "tags": [
+        "zeus"
+      ],
+      "source": "github-commit",
+      "verified": false,
+      "sha": "484fcd87a5fd575c1d1351c63cd6df78d5a73619",
+      "_mesh_node": "mobius-civic-ai-terminal",
+      "_mesh_tier": "contributor"
+    },
+    {
+      "id": "a9c73f26-zeus-verify",
+      "timestamp": "2026-05-28T06:04:28Z",
+      "author": "ZEUS",
+      "title": "zeus: verification disputed · C-325 [skip ci]",
+      "type": "zeus-verify",
+      "severity": "info",
+      "tags": [
+        "zeus"
+      ],
+      "source": "github-commit",
+      "verified": false,
+      "sha": "a9c73f26b71bae0b7588c8e7c27b6b3d49b4d82b",
+      "_mesh_node": "mobius-civic-ai-terminal",
+      "_mesh_tier": "contributor"
+    },
     {
       "id": "4e743f56-zeus-verify",
       "timestamp": "2026-05-28T00:03:04Z",
@@ -208,23 +240,6 @@
       "source": "github-commit",
       "verified": false,
       "sha": "c94ac63d7eacbeb78ede270beef9e2c226045851",
-      "_mesh_node": "mobius-civic-ai-terminal",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "fbb62f51-merge",
-      "timestamp": "2026-05-26T13:39:05Z",
-      "author": "kaizencycle",
-      "title": "perf(terminal): pause router chamber polling in background tabs",
-      "type": "merge",
-      "severity": "info",
-      "tags": [
-        "merge",
-        "pr"
-      ],
-      "source": "github-commit",
-      "verified": false,
-      "sha": "fbb62f5164332b9aaf397d6a6f18cfbda8521f91",
       "_mesh_node": "mobius-civic-ai-terminal",
       "_mesh_tier": "contributor"
     }
