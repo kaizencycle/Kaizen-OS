@@ -1,24 +1,24 @@
 {
   "schema": "MNS_AGGREGATE_V1",
-  "updated_at": "2026-05-28T14:29:02.983Z",
+  "updated_at": "2026-05-28T17:56:42.765Z",
   "node_count": 5,
   "live_nodes": 2,
-  "total_entries": 11,
+  "total_entries": 10,
   "nodes": [
     {
       "node_id": "mobius-substrate",
       "tier": "sentinel",
       "node_type": "substrate",
       "entry_count": 0,
-      "fetched_at": "2026-05-28T14:29:02.500Z",
+      "fetched_at": "2026-05-28T17:56:42.338Z",
       "error": null
     },
     {
       "node_id": "mobius-civic-ai-terminal",
       "tier": "contributor",
       "node_type": "app",
-      "entry_count": 11,
-      "fetched_at": "2026-05-28T14:29:02.983Z",
+      "entry_count": 10,
+      "fetched_at": "2026-05-28T17:56:42.765Z",
       "error": null
     },
     {
@@ -26,7 +26,7 @@
       "tier": "contributor",
       "node_type": "service",
       "entry_count": 0,
-      "fetched_at": "2026-05-28T14:29:02.466Z",
+      "fetched_at": "2026-05-28T17:56:42.300Z",
       "error": "http_503"
     },
     {
@@ -47,6 +47,23 @@
     }
   ],
   "entries": [
+    {
+      "id": "8686bed6-merge",
+      "timestamp": "2026-05-28T16:00:35Z",
+      "author": "kaizencycle",
+      "title": "c325-phase01-ux: chamber loading fix, Dataflow default, Pulse sparkline, footer",
+      "type": "merge",
+      "severity": "info",
+      "tags": [
+        "merge",
+        "pr"
+      ],
+      "source": "github-commit",
+      "verified": false,
+      "sha": "8686bed67cd59913e9829795027ad7393317d542",
+      "_mesh_node": "mobius-civic-ai-terminal",
+      "_mesh_tier": "contributor"
+    },
     {
       "id": "7ab7e413-zeus-verify",
       "timestamp": "2026-05-28T12:05:04Z",
@@ -190,39 +207,6 @@
       "source": "github-commit",
       "verified": false,
       "sha": "197ca85fe4889338c8912d6956d622516c51fcdf",
-      "_mesh_node": "mobius-civic-ai-terminal",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "b301d9a2-zeus-verify",
-      "timestamp": "2026-05-27T00:02:16Z",
-      "author": "ZEUS",
-      "title": "zeus: verification inconclusive · C-323 [skip ci]",
-      "type": "zeus-verify",
-      "severity": "info",
-      "tags": [
-        "zeus"
-      ],
-      "source": "github-commit",
-      "verified": false,
-      "sha": "b301d9a210ef502c222b371e3f8bdca70cbd62f7",
-      "_mesh_node": "mobius-civic-ai-terminal",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "9ad1f7a2-merge",
-      "timestamp": "2026-05-26T23:15:53Z",
-      "author": "kaizencycle",
-      "title": "feat(c323): phase 02 — 12 chamber upgrades (Tripwire, EPICON, Markets)",
-      "type": "merge",
-      "severity": "info",
-      "tags": [
-        "merge",
-        "pr"
-      ],
-      "source": "github-commit",
-      "verified": false,
-      "sha": "9ad1f7a24278062615cdc0d0df1ef6d7def71326",
       "_mesh_node": "mobius-civic-ai-terminal",
       "_mesh_tier": "contributor"
     }
