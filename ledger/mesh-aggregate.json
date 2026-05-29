@@ -1,24 +1,24 @@
 {
   "schema": "MNS_AGGREGATE_V1",
-  "updated_at": "2026-05-29T19:27:23.622Z",
+  "updated_at": "2026-05-29T21:44:46.280Z",
   "node_count": 5,
   "live_nodes": 2,
-  "total_entries": 9,
+  "total_entries": 8,
   "nodes": [
     {
       "node_id": "mobius-substrate",
       "tier": "sentinel",
       "node_type": "substrate",
       "entry_count": 0,
-      "fetched_at": "2026-05-29T19:27:23.204Z",
+      "fetched_at": "2026-05-29T21:44:45.820Z",
       "error": null
     },
     {
       "node_id": "mobius-civic-ai-terminal",
       "tier": "contributor",
       "node_type": "app",
-      "entry_count": 9,
-      "fetched_at": "2026-05-29T19:27:23.622Z",
+      "entry_count": 8,
+      "fetched_at": "2026-05-29T21:44:46.280Z",
       "error": null
     },
     {
@@ -26,7 +26,7 @@
       "tier": "contributor",
       "node_type": "service",
       "entry_count": 0,
-      "fetched_at": "2026-05-29T19:27:23.239Z",
+      "fetched_at": "2026-05-29T21:44:45.775Z",
       "error": "http_503"
     },
     {
@@ -47,6 +47,23 @@
     }
   ],
   "entries": [
+    {
+      "id": "300b3de8-merge",
+      "timestamp": "2026-05-29T20:59:24Z",
+      "author": "kaizencycle",
+      "title": "C-326: canonical shard config, frozen lockfile, contract test suite",
+      "type": "merge",
+      "severity": "info",
+      "tags": [
+        "merge",
+        "pr"
+      ],
+      "source": "github-commit",
+      "verified": false,
+      "sha": "300b3de846f4c4dbbcf4efa9694d24adf23da7fb",
+      "_mesh_node": "mobius-civic-ai-terminal",
+      "_mesh_tier": "contributor"
+    },
     {
       "id": "8e17db60-zeus-verify",
       "timestamp": "2026-05-29T18:03:32Z",
@@ -157,38 +174,6 @@
       "source": "github-commit",
       "verified": false,
       "sha": "7ab7e413d7a2fe0127489fa3f1fb28f37683f3a6",
-      "_mesh_node": "mobius-civic-ai-terminal",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "484fcd87-zeus-verify",
-      "timestamp": "2026-05-28T06:04:28Z",
-      "author": "ZEUS",
-      "title": "zeus: verification disputed · C-325 [skip ci]",
-      "type": "zeus-verify",
-      "severity": "info",
-      "tags": [
-        "zeus"
-      ],
-      "source": "github-commit",
-      "verified": false,
-      "sha": "484fcd87a5fd575c1d1351c63cd6df78d5a73619",
-      "_mesh_node": "mobius-civic-ai-terminal",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "a9c73f26-zeus-verify",
-      "timestamp": "2026-05-28T06:04:28Z",
-      "author": "ZEUS",
-      "title": "zeus: verification disputed · C-325 [skip ci]",
-      "type": "zeus-verify",
-      "severity": "info",
-      "tags": [
-        "zeus"
-      ],
-      "source": "github-commit",
-      "verified": false,
-      "sha": "a9c73f26b71bae0b7588c8e7c27b6b3d49b4d82b",
       "_mesh_node": "mobius-civic-ai-terminal",
       "_mesh_tier": "contributor"
     }
