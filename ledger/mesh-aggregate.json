@@ -1,24 +1,24 @@
 {
   "schema": "MNS_AGGREGATE_V1",
-  "updated_at": "2026-05-31T21:50:36.439Z",
+  "updated_at": "2026-05-31T22:50:07.480Z",
   "node_count": 5,
   "live_nodes": 2,
-  "total_entries": 6,
+  "total_entries": 8,
   "nodes": [
     {
       "node_id": "mobius-substrate",
       "tier": "sentinel",
       "node_type": "substrate",
       "entry_count": 0,
-      "fetched_at": "2026-05-31T21:50:36.057Z",
+      "fetched_at": "2026-05-31T22:50:07.226Z",
       "error": null
     },
     {
       "node_id": "mobius-civic-ai-terminal",
       "tier": "contributor",
       "node_type": "app",
-      "entry_count": 6,
-      "fetched_at": "2026-05-31T21:50:36.439Z",
+      "entry_count": 8,
+      "fetched_at": "2026-05-31T22:50:07.480Z",
       "error": null
     },
     {
@@ -26,7 +26,7 @@
       "tier": "contributor",
       "node_type": "service",
       "entry_count": 0,
-      "fetched_at": "2026-05-31T21:50:36.022Z",
+      "fetched_at": "2026-05-31T22:50:07.180Z",
       "error": "http_503"
     },
     {
@@ -47,6 +47,40 @@
     }
   ],
   "entries": [
+    {
+      "id": "56a66f42-merge",
+      "timestamp": "2026-05-31T22:47:14Z",
+      "author": "kaizencycle",
+      "title": "fix: drop .js extension on bands import for Next.js/webpack",
+      "type": "merge",
+      "severity": "info",
+      "tags": [
+        "merge",
+        "pr"
+      ],
+      "source": "github-commit",
+      "verified": false,
+      "sha": "56a66f4248b521563a8f1d6341a850c7a18901a6",
+      "_mesh_node": "mobius-civic-ai-terminal",
+      "_mesh_tier": "contributor"
+    },
+    {
+      "id": "14ad730b-merge",
+      "timestamp": "2026-05-31T22:28:36Z",
+      "author": "kaizencycle",
+      "title": "C-328: EPICON Durable Dispute Ledger + GI-Truth Unification",
+      "type": "merge",
+      "severity": "info",
+      "tags": [
+        "merge",
+        "pr"
+      ],
+      "source": "github-commit",
+      "verified": false,
+      "sha": "14ad730be184bc6e3ed4de308b253d148d0bdacd",
+      "_mesh_node": "mobius-civic-ai-terminal",
+      "_mesh_tier": "contributor"
+    },
     {
       "id": "e52c8ef5-zeus-verify",
       "timestamp": "2026-05-31T18:03:39Z",
