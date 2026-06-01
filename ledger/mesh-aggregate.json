@@ -1,6 +1,6 @@
 {
   "schema": "MNS_AGGREGATE_V1",
-  "updated_at": "2026-06-01T15:48:35.564Z",
+  "updated_at": "2026-06-01T20:10:30.010Z",
   "node_count": 5,
   "live_nodes": 3,
   "total_entries": 19,
@@ -10,7 +10,7 @@
       "tier": "sentinel",
       "node_type": "substrate",
       "entry_count": 0,
-      "fetched_at": "2026-06-01T15:48:35.075Z",
+      "fetched_at": "2026-06-01T20:10:28.202Z",
       "error": null
     },
     {
@@ -18,7 +18,7 @@
       "tier": "contributor",
       "node_type": "app",
       "entry_count": 9,
-      "fetched_at": "2026-06-01T15:48:35.564Z",
+      "fetched_at": "2026-06-01T20:10:30.010Z",
       "error": null
     },
     {
@@ -26,7 +26,7 @@
       "tier": "contributor",
       "node_type": "service",
       "entry_count": 10,
-      "fetched_at": "2026-06-01T15:48:35.065Z",
+      "fetched_at": "2026-06-01T20:10:28.203Z",
       "error": null
     },
     {
@@ -47,6 +47,39 @@
     }
   ],
   "entries": [
+    {
+      "id": "29b0cac8-zeus-verify",
+      "timestamp": "2026-06-01T18:02:22Z",
+      "author": "ZEUS",
+      "title": "zeus: verification disputed · C-329 [skip ci]",
+      "type": "zeus-verify",
+      "severity": "info",
+      "tags": [
+        "zeus"
+      ],
+      "source": "github-commit",
+      "verified": false,
+      "sha": "29b0cac8e990a02af5124e2f1b7dd4a2eedd5758",
+      "_mesh_node": "mobius-civic-ai-terminal",
+      "_mesh_tier": "contributor"
+    },
+    {
+      "id": "eb965e60-merge",
+      "timestamp": "2026-06-01T17:59:51Z",
+      "author": "kaizencycle",
+      "title": "C-329: surface silent attestation failure — honest vault_headline + substrate_ok",
+      "type": "merge",
+      "severity": "info",
+      "tags": [
+        "merge",
+        "pr"
+      ],
+      "source": "github-commit",
+      "verified": false,
+      "sha": "eb965e60dff56bb65fd76ca39da35b67c62755f0",
+      "_mesh_node": "mobius-civic-ai-terminal",
+      "_mesh_tier": "contributor"
+    },
     {
       "id": "e1c50a64-zeus-verify",
       "timestamp": "2026-06-01T12:03:58Z",
@@ -158,39 +191,6 @@
       "source": "github-commit",
       "verified": false,
       "sha": "89ed364b1525445bdd121edc31620f37e69591e9",
-      "_mesh_node": "mobius-civic-ai-terminal",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "a242ede0-zeus-verify",
-      "timestamp": "2026-05-31T06:03:42Z",
-      "author": "ZEUS",
-      "title": "zeus: verification disputed · C-328 [skip ci]",
-      "type": "zeus-verify",
-      "severity": "info",
-      "tags": [
-        "zeus"
-      ],
-      "source": "github-commit",
-      "verified": false,
-      "sha": "a242ede06fe9d99c784e680bbd3a5082a9648ab0",
-      "_mesh_node": "mobius-civic-ai-terminal",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "2877f849-merge",
-      "timestamp": "2026-05-31T01:29:17Z",
-      "author": "kaizencycle",
-      "title": "C-326 addendum: vendored canon + real two-layer drift guard",
-      "type": "merge",
-      "severity": "info",
-      "tags": [
-        "merge",
-        "pr"
-      ],
-      "source": "github-commit",
-      "verified": false,
-      "sha": "2877f849039b6b98b1cccad0a0a9d4d1d504da94",
       "_mesh_node": "mobius-civic-ai-terminal",
       "_mesh_tier": "contributor"
     },
