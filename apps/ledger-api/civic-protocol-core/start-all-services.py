@@ -10,6 +10,7 @@ This script starts all the Civic Protocol services:
 Run this to start the complete development environment.
 """
 
+import shlex
 import subprocess
 import time
 import signal
@@ -27,19 +28,22 @@ class ServiceManager:
         print(f"Starting {name} on port {port}...")
         
         try:
+            # C-332 OPT-4: shell=True with an interpolated command string is a
+            # shell-injection vector. Pass an explicit argv list with shell=False.
+            argv = shlex.split(command) if isinstance(command, str) else command
             if cwd:
                 process = subprocess.Popen(
-                    command,
+                    argv,
                     cwd=cwd,
-                    shell=True,
+                    shell=False,
                     stdout=subprocess.PIPE,
                     stderr=subprocess.PIPE,
                     text=True
                 )
             else:
                 process = subprocess.Popen(
-                    command,
-                    shell=True,
+                    argv,
+                    shell=False,
                     stdout=subprocess.PIPE,
                     stderr=subprocess.PIPE,
                     text=True
