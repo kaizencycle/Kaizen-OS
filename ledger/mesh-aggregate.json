@@ -1,24 +1,24 @@
 {
   "schema": "MNS_AGGREGATE_V1",
-  "updated_at": "2026-06-04T02:44:31.791Z",
+  "updated_at": "2026-06-04T07:15:57.443Z",
   "node_count": 5,
   "live_nodes": 3,
-  "total_entries": 20,
+  "total_entries": 19,
   "nodes": [
     {
       "node_id": "mobius-substrate",
       "tier": "sentinel",
       "node_type": "substrate",
       "entry_count": 0,
-      "fetched_at": "2026-06-04T02:44:31.075Z",
+      "fetched_at": "2026-06-04T07:15:56.939Z",
       "error": null
     },
     {
       "node_id": "mobius-civic-ai-terminal",
       "tier": "contributor",
       "node_type": "app",
-      "entry_count": 10,
-      "fetched_at": "2026-06-04T02:44:31.791Z",
+      "entry_count": 9,
+      "fetched_at": "2026-06-04T07:15:57.443Z",
       "error": null
     },
     {
@@ -26,7 +26,7 @@
       "tier": "contributor",
       "node_type": "service",
       "entry_count": 10,
-      "fetched_at": "2026-06-04T02:44:31.311Z",
+      "fetched_at": "2026-06-04T07:15:56.996Z",
       "error": null
     },
     {
@@ -47,6 +47,22 @@
     }
   ],
   "entries": [
+    {
+      "id": "2e6a268a-zeus-verify",
+      "timestamp": "2026-06-04T06:04:31Z",
+      "author": "ZEUS",
+      "title": "zeus: verification disputed · C-332 [skip ci]",
+      "type": "zeus-verify",
+      "severity": "info",
+      "tags": [
+        "zeus"
+      ],
+      "source": "github-commit",
+      "verified": false,
+      "sha": "2e6a268a0a9fefbcb51b059457bb104e367b33a3",
+      "_mesh_node": "mobius-civic-ai-terminal",
+      "_mesh_tier": "contributor"
+    },
     {
       "id": "6f7562e2-zeus-verify",
       "timestamp": "2026-06-04T00:02:51Z",
@@ -174,39 +190,6 @@
       "source": "github-commit",
       "verified": false,
       "sha": "3d80204f25e510fe57fec636932df15343484b99",
-      "_mesh_node": "mobius-civic-ai-terminal",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "e2e68986-merge",
-      "timestamp": "2026-06-02T14:09:45Z",
-      "author": "kaizencycle",
-      "title": "C-330: config-class attestation errors no longer falsely fail healthy seals",
-      "type": "merge",
-      "severity": "info",
-      "tags": [
-        "merge",
-        "pr"
-      ],
-      "source": "github-commit",
-      "verified": false,
-      "sha": "e2e689865a71405d76ab46aedc837738d6b53328",
-      "_mesh_node": "mobius-civic-ai-terminal",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "af7f99f2-zeus-verify",
-      "timestamp": "2026-06-02T12:05:14Z",
-      "author": "ZEUS",
-      "title": "zeus: verification disputed · C-330 [skip ci]",
-      "type": "zeus-verify",
-      "severity": "info",
-      "tags": [
-        "zeus"
-      ],
-      "source": "github-commit",
-      "verified": false,
-      "sha": "af7f99f2dc006ff52a65a738b545e08149faa19b",
       "_mesh_node": "mobius-civic-ai-terminal",
       "_mesh_tier": "contributor"
     },
