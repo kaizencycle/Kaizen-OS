@@ -24,10 +24,24 @@ app = FastAPI(
 )
 
 # CORS middleware
+# C-332 OPT-1: gatekeeper guards agent tool calls — wildcard origin + credentials
+# is both spec-invalid and a privilege-exposure risk here especially. Origins
+# come from CORS_ALLOW_ORIGINS (comma-separated); credentials enabled only when
+# no origin in the list is the wildcard "*" (including the case where the env
+# var is itself set to "*", which must not re-enable credentials).
+_raw_origins = os.getenv("CORS_ALLOW_ORIGINS", "").strip()
+_allow_origins = (
+    [o.strip() for o in _raw_origins.split(",") if o.strip()]
+    if _raw_origins
+    else ["*"]
+)
+_is_wildcard = "*" in _allow_origins
+_allow_credentials = not _is_wildcard
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # Configure appropriately for production
-    allow_credentials=True,
+    allow_origins=_allow_origins,
+    allow_credentials=_allow_credentials,
     allow_methods=["*"],
     allow_headers=["*"],
 )
