@@ -1,24 +1,24 @@
 {
   "schema": "MNS_AGGREGATE_V1",
-  "updated_at": "2026-06-04T07:15:57.443Z",
+  "updated_at": "2026-06-04T10:54:59.474Z",
   "node_count": 5,
   "live_nodes": 3,
-  "total_entries": 19,
+  "total_entries": 18,
   "nodes": [
     {
       "node_id": "mobius-substrate",
       "tier": "sentinel",
       "node_type": "substrate",
       "entry_count": 0,
-      "fetched_at": "2026-06-04T07:15:56.939Z",
+      "fetched_at": "2026-06-04T10:54:58.970Z",
       "error": null
     },
     {
       "node_id": "mobius-civic-ai-terminal",
       "tier": "contributor",
       "node_type": "app",
-      "entry_count": 9,
-      "fetched_at": "2026-06-04T07:15:57.443Z",
+      "entry_count": 8,
+      "fetched_at": "2026-06-04T10:54:59.474Z",
       "error": null
     },
     {
@@ -26,7 +26,7 @@
       "tier": "contributor",
       "node_type": "service",
       "entry_count": 10,
-      "fetched_at": "2026-06-04T07:15:56.996Z",
+      "fetched_at": "2026-06-04T10:54:59.058Z",
       "error": null
     },
     {
@@ -173,23 +173,6 @@
       "source": "github-commit",
       "verified": false,
       "sha": "66a3a09e19647ff78f87c4e00a22591f1bcae6b5",
-      "_mesh_node": "mobius-civic-ai-terminal",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "3d80204f-merge",
-      "timestamp": "2026-06-02T14:54:39Z",
-      "author": "kaizencycle",
-      "title": "C-331: Infra Stabilization Phases 1+2 — DAL completion + canonical snapshot",
-      "type": "merge",
-      "severity": "info",
-      "tags": [
-        "merge",
-        "pr"
-      ],
-      "source": "github-commit",
-      "verified": false,
-      "sha": "3d80204f25e510fe57fec636932df15343484b99",
       "_mesh_node": "mobius-civic-ai-terminal",
       "_mesh_tier": "contributor"
     },
