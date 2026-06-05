@@ -1,24 +1,24 @@
 {
   "schema": "MNS_AGGREGATE_V1",
-  "updated_at": "2026-06-05T06:58:13.964Z",
+  "updated_at": "2026-06-05T10:45:21.909Z",
   "node_count": 5,
   "live_nodes": 3,
-  "total_entries": 39,
+  "total_entries": 38,
   "nodes": [
     {
       "node_id": "mobius-substrate",
       "tier": "sentinel",
       "node_type": "substrate",
       "entry_count": 0,
-      "fetched_at": "2026-06-05T06:58:13.243Z",
+      "fetched_at": "2026-06-05T10:45:21.479Z",
       "error": null
     },
     {
       "node_id": "mobius-civic-ai-terminal",
       "tier": "contributor",
       "node_type": "app",
-      "entry_count": 12,
-      "fetched_at": "2026-06-05T06:58:13.964Z",
+      "entry_count": 11,
+      "fetched_at": "2026-06-05T10:45:21.909Z",
       "error": null
     },
     {
@@ -26,7 +26,7 @@
       "tier": "contributor",
       "node_type": "service",
       "entry_count": 27,
-      "fetched_at": "2026-06-05T06:58:13.309Z",
+      "fetched_at": "2026-06-05T10:45:21.481Z",
       "error": null
     },
     {
@@ -306,23 +306,6 @@
       "source_hash": "f3987338e0fa0baea8f18735f0b4c3fd2c624b7a36e966e7c0f698fae2a4fa5e",
       "type": "mesh-commit",
       "_mesh_node": "civic-protocol-core",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "08f794f3-merge",
-      "timestamp": "2026-06-03T21:29:35Z",
-      "author": "kaizencycle",
-      "title": "C-331: integrity interpretation layer — deriveIntegrityCause deriver",
-      "type": "merge",
-      "severity": "info",
-      "tags": [
-        "merge",
-        "pr"
-      ],
-      "source": "github-commit",
-      "verified": false,
-      "sha": "08f794f33fede39d1d783d81e897e317d852f850",
-      "_mesh_node": "mobius-civic-ai-terminal",
       "_mesh_tier": "contributor"
     },
     {
