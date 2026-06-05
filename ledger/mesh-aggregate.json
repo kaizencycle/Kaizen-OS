@@ -1,24 +1,24 @@
 {
   "schema": "MNS_AGGREGATE_V1",
-  "updated_at": "2026-06-05T13:48:22.445Z",
+  "updated_at": "2026-06-05T16:25:18.001Z",
   "node_count": 5,
   "live_nodes": 3,
-  "total_entries": 38,
+  "total_entries": 39,
   "nodes": [
     {
       "node_id": "mobius-substrate",
       "tier": "sentinel",
       "node_type": "substrate",
       "entry_count": 0,
-      "fetched_at": "2026-06-05T13:48:22.382Z",
+      "fetched_at": "2026-06-05T16:25:17.638Z",
       "error": null
     },
     {
       "node_id": "mobius-civic-ai-terminal",
       "tier": "contributor",
       "node_type": "app",
-      "entry_count": 11,
-      "fetched_at": "2026-06-05T13:48:22.383Z",
+      "entry_count": 12,
+      "fetched_at": "2026-06-05T16:25:18.001Z",
       "error": null
     },
     {
@@ -26,7 +26,7 @@
       "tier": "contributor",
       "node_type": "service",
       "entry_count": 27,
-      "fetched_at": "2026-06-05T13:48:22.445Z",
+      "fetched_at": "2026-06-05T16:25:17.696Z",
       "error": null
     },
     {
@@ -47,6 +47,23 @@
     }
   ],
   "entries": [
+    {
+      "id": "d4d86d5a-merge",
+      "timestamp": "2026-06-05T14:29:06Z",
+      "author": "kaizencycle",
+      "title": "C-333: Journaling Resilience + Token Truth (20 Optimizations, EPICON-safe)",
+      "type": "merge",
+      "severity": "info",
+      "tags": [
+        "merge",
+        "pr"
+      ],
+      "source": "github-commit",
+      "verified": false,
+      "sha": "d4d86d5a1c40f778309884833a810d9f8ec512d5",
+      "_mesh_node": "mobius-civic-ai-terminal",
+      "_mesh_tier": "contributor"
+    },
     {
       "id": "444b9406-zeus-verify",
       "timestamp": "2026-06-05T12:04:11Z",
