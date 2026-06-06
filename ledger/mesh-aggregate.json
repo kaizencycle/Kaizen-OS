@@ -1,24 +1,24 @@
 {
   "schema": "MNS_AGGREGATE_V1",
-  "updated_at": "2026-06-06T13:08:13.346Z",
+  "updated_at": "2026-06-06T15:06:06.321Z",
   "node_count": 5,
   "live_nodes": 3,
-  "total_entries": 37,
+  "total_entries": 36,
   "nodes": [
     {
       "node_id": "mobius-substrate",
       "tier": "sentinel",
       "node_type": "substrate",
       "entry_count": 0,
-      "fetched_at": "2026-06-06T13:08:12.960Z",
+      "fetched_at": "2026-06-06T15:06:05.870Z",
       "error": null
     },
     {
       "node_id": "mobius-civic-ai-terminal",
       "tier": "contributor",
       "node_type": "app",
-      "entry_count": 10,
-      "fetched_at": "2026-06-06T13:08:13.345Z",
+      "entry_count": 9,
+      "fetched_at": "2026-06-06T15:06:06.321Z",
       "error": null
     },
     {
@@ -26,7 +26,7 @@
       "tier": "contributor",
       "node_type": "service",
       "entry_count": 27,
-      "fetched_at": "2026-06-06T13:08:12.955Z",
+      "fetched_at": "2026-06-06T15:06:05.947Z",
       "error": null
     },
     {
@@ -238,23 +238,6 @@
       "source": "github-commit",
       "verified": false,
       "sha": "501104dab369a4fac3ba1dd25f119aadedff4902",
-      "_mesh_node": "mobius-civic-ai-terminal",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "23a3991d-merge",
-      "timestamp": "2026-06-05T00:04:37Z",
-      "author": "kaizencycle",
-      "title": "c332: canon attestation truth — counts + timeline severity",
-      "type": "merge",
-      "severity": "info",
-      "tags": [
-        "merge",
-        "pr"
-      ],
-      "source": "github-commit",
-      "verified": false,
-      "sha": "23a3991d8436b5f32ad72c19d1ea61f9079698ad",
       "_mesh_node": "mobius-civic-ai-terminal",
       "_mesh_tier": "contributor"
     },
