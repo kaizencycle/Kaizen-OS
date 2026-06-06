@@ -1,24 +1,24 @@
 {
   "schema": "MNS_AGGREGATE_V1",
-  "updated_at": "2026-06-06T09:18:25.949Z",
+  "updated_at": "2026-06-06T11:16:49.230Z",
   "node_count": 5,
   "live_nodes": 3,
-  "total_entries": 39,
+  "total_entries": 38,
   "nodes": [
     {
       "node_id": "mobius-substrate",
       "tier": "sentinel",
       "node_type": "substrate",
       "entry_count": 0,
-      "fetched_at": "2026-06-06T09:18:25.495Z",
+      "fetched_at": "2026-06-06T11:16:48.987Z",
       "error": null
     },
     {
       "node_id": "mobius-civic-ai-terminal",
       "tier": "contributor",
       "node_type": "app",
-      "entry_count": 12,
-      "fetched_at": "2026-06-06T09:18:25.949Z",
+      "entry_count": 11,
+      "fetched_at": "2026-06-06T11:16:49.230Z",
       "error": null
     },
     {
@@ -26,7 +26,7 @@
       "tier": "contributor",
       "node_type": "service",
       "entry_count": 27,
-      "fetched_at": "2026-06-06T09:18:25.583Z",
+      "fetched_at": "2026-06-06T11:16:48.990Z",
       "error": null
     },
     {
@@ -289,23 +289,6 @@
       "source": "github-commit",
       "verified": false,
       "sha": "fd754aed99c36f311b94ce4183dfee4ef62e57cf",
-      "_mesh_node": "mobius-civic-ai-terminal",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "e331c410-merge",
-      "timestamp": "2026-06-04T23:26:36Z",
-      "author": "kaizencycle",
-      "title": "c332: ecosystem security & reliability hardening (OPT-1/2/3/5)",
-      "type": "merge",
-      "severity": "info",
-      "tags": [
-        "merge",
-        "pr"
-      ],
-      "source": "github-commit",
-      "verified": false,
-      "sha": "e331c410ca691430d7b9ea0ca3e3bab9da62aeb7",
       "_mesh_node": "mobius-civic-ai-terminal",
       "_mesh_tier": "contributor"
     },
