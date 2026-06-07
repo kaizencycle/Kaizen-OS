@@ -1,6 +1,6 @@
 {
   "schema": "MNS_AGGREGATE_V1",
-  "updated_at": "2026-06-07T21:00:37.513Z",
+  "updated_at": "2026-06-07T22:54:20.150Z",
   "node_count": 5,
   "live_nodes": 3,
   "total_entries": 33,
@@ -10,7 +10,7 @@
       "tier": "sentinel",
       "node_type": "substrate",
       "entry_count": 0,
-      "fetched_at": "2026-06-07T21:00:37.086Z",
+      "fetched_at": "2026-06-07T22:54:19.618Z",
       "error": null
     },
     {
@@ -18,7 +18,7 @@
       "tier": "contributor",
       "node_type": "app",
       "entry_count": 6,
-      "fetched_at": "2026-06-07T21:00:37.513Z",
+      "fetched_at": "2026-06-07T22:54:20.150Z",
       "error": null
     },
     {
@@ -26,7 +26,7 @@
       "tier": "contributor",
       "node_type": "service",
       "entry_count": 27,
-      "fetched_at": "2026-06-07T21:00:37.202Z",
+      "fetched_at": "2026-06-07T22:54:19.633Z",
       "error": null
     },
     {
@@ -47,6 +47,23 @@
     }
   ],
   "entries": [
+    {
+      "id": "1c6626c5-merge",
+      "timestamp": "2026-06-07T22:16:18Z",
+      "author": "kaizencycle",
+      "title": "C-335: Unfreeze deploy gate — operator override + close GitHub-noreply trap",
+      "type": "merge",
+      "severity": "info",
+      "tags": [
+        "merge",
+        "pr"
+      ],
+      "source": "github-commit",
+      "verified": false,
+      "sha": "1c6626c5b8f68a581f446a75b0ebebe9fee78582",
+      "_mesh_node": "mobius-civic-ai-terminal",
+      "_mesh_tier": "contributor"
+    },
     {
       "id": "ace76b15-zeus-verify",
       "timestamp": "2026-06-07T18:01:35Z",
@@ -127,22 +144,6 @@
       "source": "github-commit",
       "verified": false,
       "sha": "50a2b86f85616f081deb409ddfb22bd91fa6fc19",
-      "_mesh_node": "mobius-civic-ai-terminal",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "823351ae-zeus-verify",
-      "timestamp": "2026-06-06T12:02:21Z",
-      "author": "ZEUS",
-      "title": "zeus: verification disputed · C-334 [skip ci]",
-      "type": "zeus-verify",
-      "severity": "info",
-      "tags": [
-        "zeus"
-      ],
-      "source": "github-commit",
-      "verified": false,
-      "sha": "823351ae43cf997f097e346bfcd7a53c766e7e1a",
       "_mesh_node": "mobius-civic-ai-terminal",
       "_mesh_tier": "contributor"
     },
