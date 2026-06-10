@@ -54,8 +54,9 @@ jobs:
           python3 - << 'PY'
           import json, os, urllib.request, datetime
 
+          # C-288 = 2026-04-21: the attested freeze point this sync corrects (see PR #298).
           ANCHOR_CYCLE = 288
-          ANCHOR_DATE = datetime.date(2026, 4, 21)   # C-338 state-sync PR anchor
+          ANCHOR_DATE = datetime.date(2026, 4, 21)
           today = datetime.datetime.now(datetime.timezone.utc).date()
           cycle_n = ANCHOR_CYCLE + (today - ANCHOR_DATE).days
           cycle = f"C-{cycle_n}"

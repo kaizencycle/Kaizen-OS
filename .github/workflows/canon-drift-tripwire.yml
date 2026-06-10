@@ -35,6 +35,7 @@ jobs:
         run: |
           python3 - << 'PY'
           import json, os, datetime
+          # C-288 = 2026-04-21: the attested freeze point this sync corrects (see PR #298).
           ANCHOR_CYCLE, ANCHOR_DATE = 288, datetime.date(2026, 4, 21)
           today = datetime.datetime.now(datetime.timezone.utc).date()
           expected = ANCHOR_CYCLE + (today - ANCHOR_DATE).days
