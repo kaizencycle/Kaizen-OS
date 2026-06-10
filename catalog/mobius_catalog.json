@@ -1,15 +1,15 @@
 {
   "mobius_catalog_version": "1.0.0",
-  "generated_at": "2026-06-10T06:28:43.989Z",
+  "generated_at": "2026-06-10T18:56:06.453Z",
   "repo": {
     "name": "Mobius-Substrate",
     "url": "https://github.com/kaizencycle/Mobius-Substrate",
     "default_branch": "main",
-    "commit": "786e6ce9e8d2e13021fd8ce6fb31a0ca207c44dc"
+    "commit": "e55a50ae4b8650cd38dd88ff78abf5fe36fd2014"
   },
   "stats": {
     "epiconCount": 0,
-    "docCount": 958
+    "docCount": 959
   },
   "epicons": [],
   "docs": [
@@ -7134,6 +7134,14 @@
       "summary": ""
     },
     {
+      "path": "docs/STATE_OF_THE_SUBSTRATE_C-338.md",
+      "title": "State of the Substrate — C-338 Canon Sync",
+      "category": "STATE_OF_THE_SUBSTRATE_C-338.md",
+      "tags": [],
+      "content_hash": "sha256:af8d843ae021e066b87b003caebe94695dd1a5c7f07bbb9ca805fe86bc561c2b",
+      "summary": ""
+    },
+    {
       "path": "docs/TECHNICAL_DETAILS.md",
       "title": "Mobius Systems — Technical Details",
       "category": "TECHNICAL_DETAILS.md",
@@ -7234,7 +7242,7 @@
       "title": "Divergence Dashboard",
       "category": "divergence",
       "tags": [],
-      "content_hash": "sha256:efa56ad3ce68f5e06337a8526f8a015f3443b5c13e72dc16380fe9191840b2a2",
+      "content_hash": "sha256:e594cf483fde1222289d949f0e48076e3d96bd6fd69ef9549fee03a31ef2a91f",
       "summary": ""
     },
     {
