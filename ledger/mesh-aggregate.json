@@ -1,24 +1,24 @@
 {
   "schema": "MNS_AGGREGATE_V1",
-  "updated_at": "2026-06-09T23:11:05.102Z",
+  "updated_at": "2026-06-10T02:31:36.080Z",
   "node_count": 5,
   "live_nodes": 3,
-  "total_entries": 36,
+  "total_entries": 37,
   "nodes": [
     {
       "node_id": "mobius-substrate",
       "tier": "sentinel",
       "node_type": "substrate",
       "entry_count": 0,
-      "fetched_at": "2026-06-09T23:11:04.705Z",
+      "fetched_at": "2026-06-10T02:31:35.666Z",
       "error": null
     },
     {
       "node_id": "mobius-civic-ai-terminal",
       "tier": "contributor",
       "node_type": "app",
-      "entry_count": 9,
-      "fetched_at": "2026-06-09T23:11:05.101Z",
+      "entry_count": 10,
+      "fetched_at": "2026-06-10T02:31:36.080Z",
       "error": null
     },
     {
@@ -26,7 +26,7 @@
       "tier": "contributor",
       "node_type": "service",
       "entry_count": 27,
-      "fetched_at": "2026-06-09T23:11:04.722Z",
+      "fetched_at": "2026-06-10T02:31:35.690Z",
       "error": null
     },
     {
@@ -47,6 +47,22 @@
     }
   ],
   "entries": [
+    {
+      "id": "df910bee-zeus-verify",
+      "timestamp": "2026-06-10T00:04:08Z",
+      "author": "ZEUS",
+      "title": "zeus: verification disputed · C-337 [skip ci]",
+      "type": "zeus-verify",
+      "severity": "info",
+      "tags": [
+        "zeus"
+      ],
+      "source": "github-commit",
+      "verified": false,
+      "sha": "df910beef61654a603f3e174c6894e3887f230ff",
+      "_mesh_node": "mobius-civic-ai-terminal",
+      "_mesh_tier": "contributor"
+    },
     {
       "id": "c8627299-zeus-verify",
       "timestamp": "2026-06-09T18:02:37Z",
