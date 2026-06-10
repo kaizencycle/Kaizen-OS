@@ -1,0 +1,74 @@
+# MOBIUS-CLASS: canon-state-watchdog
+# OWNER: @kaizencycle
+# INTRODUCED: C-338
+# LAST-REVIEWED: 2026-06-10
+# STATUS: active
+# PURPOSE: Layer 2 — the watchdog that watches the writer.
+#
+# If cycle.json lags reality by more than MAX_LAG cycles, raise exactly ONE
+# issue — updating it on subsequent days rather than filing duplicates.
+# Dedup-by-fingerprint is mandatory: this job must never reproduce the
+# C-337 sentinel-routine noise flood (26 duplicate issues).
+
+name: canon-drift-tripwire
+
+on:
+  schedule:
+    - cron: "0 12 * * *"   # midday UTC — 8h after the writer should have run
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    env:
+      MAX_LAG: "2"
+      FINGERPRINT: "canon-drift-tripwire"
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Measure drift
+        id: drift
+        run: |
+          python3 - << 'PY'
+          import json, os, datetime
+          # C-288 = 2026-04-21: the attested freeze point this sync corrects (see PR #298).
+          ANCHOR_CYCLE, ANCHOR_DATE = 288, datetime.date(2026, 4, 21)
+          today = datetime.datetime.now(datetime.timezone.utc).date()
+          expected = ANCHOR_CYCLE + (today - ANCHOR_DATE).days
+          with open("cycle.json") as f:
+              actual = int(json.load(f)["current_cycle"].split("-")[1])
+          lag = expected - actual
+          print(f"expected C-{expected}, canon C-{actual}, lag {lag}")
+          with open(os.environ["GITHUB_OUTPUT"], "a") as f:
+              f.write(f"lag={lag}\nexpected=C-{expected}\nactual=C-{actual}\n")
+          PY
+
+      - name: Raise or update single deduplicated issue
+        if: ${{ fromJSON(steps.drift.outputs.lag) > fromJSON(env.MAX_LAG) }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          TITLE="[canon-drift] cycle.json lagging: ${{ steps.drift.outputs.actual }} vs expected ${{ steps.drift.outputs.expected }}"
+          BODY="Canon cycle state is ${{ steps.drift.outputs.lag }} cycles behind (max allowed: ${MAX_LAG}).
+          The mobius-bot-state-sync writer has likely stopped. Check its recent runs before anything else.
+          Fingerprint: ${FINGERPRINT} (this issue is updated in place, never duplicated)."
+          EXISTING=$(gh issue list --state open --label "${FINGERPRINT}" --json number --jq '.[0].number')
+          if [ -n "$EXISTING" ]; then
+            gh issue edit "$EXISTING" --title "$TITLE" --body "$BODY"
+            gh issue comment "$EXISTING" --body "Still drifting as of $(date -u +%F): lag ${{ steps.drift.outputs.lag }}."
+          else
+            gh label create "${FINGERPRINT}" --force --color B60205 --description "Canon state drift watchdog" || true
+            gh issue create --title "$TITLE" --body "$BODY" --label "${FINGERPRINT}"
+          fi
+
+      - name: Auto-close when healed
+        if: ${{ fromJSON(steps.drift.outputs.lag) <= fromJSON(env.MAX_LAG) }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          EXISTING=$(gh issue list --state open --label "${FINGERPRINT}" --json number --jq '.[0].number')
+          [ -n "$EXISTING" ] && gh issue close "$EXISTING" --comment "Drift healed: canon at ${{ steps.drift.outputs.actual }}, lag ${{ steps.drift.outputs.lag }} ≤ ${MAX_LAG}."
