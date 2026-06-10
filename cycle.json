@@ -1,6 +1,6 @@
 {
-  "current_cycle": "C-288",
-  "date": "2026-04-21",
+  "current_cycle": "C-338",
+  "date": "2026-06-10",
   "gi": 0.67,
   "mode": "yellow",
   "terminal": "https://mobius-civic-ai-terminal.vercel.app",
@@ -8,7 +8,7 @@
   "snapshot_lite": "https://mobius-civic-ai-terminal.vercel.app/api/terminal/snapshot-lite",
   "vault_status": "https://mobius-civic-ai-terminal.vercel.app/api/vault/status",
   "vault_seals": "https://mobius-civic-ai-terminal.vercel.app/api/vault/seal",
-  "last_updated": "2026-04-21T00:00:00Z",
+  "last_updated": "2026-06-10T00:00:00Z",
   "vault": {
     "in_progress_balance": 49.746,
     "tranche_target": 50,
@@ -30,8 +30,23 @@
     "mcp_endpoint": "https://mobius-civic-ai-terminal.vercel.app/api/mcp"
   },
   "agents": {
-    "roster": ["ATLAS", "ZEUS", "EVE", "JADE", "AUREA", "HERMES", "ECHO", "DAEDALUS"],
-    "seal_quorum": ["ATLAS", "ZEUS", "EVE", "JADE", "AUREA"]
+    "roster": [
+      "ATLAS",
+      "ZEUS",
+      "EVE",
+      "JADE",
+      "AUREA",
+      "HERMES",
+      "ECHO",
+      "DAEDALUS"
+    ],
+    "seal_quorum": [
+      "ATLAS",
+      "ZEUS",
+      "EVE",
+      "JADE",
+      "AUREA"
+    ]
   },
   "open_flags": [
     "ethics:active-tripwire",
@@ -41,7 +56,7 @@
     "github-archive-credential-expired"
   ],
   "doc_version": "2.0.0",
-  "last_state_snapshot": "C-288",
-  "next_state_snapshot_expected": "C-310 or Seal-001",
-  "notes": "C-288: vault at 99.5% tranche 1 (49.75/50), hash coverage 100%, MNS mesh live (4 nodes, 6 MCP tools), KV optimized to ~277k ops/month."
+  "last_state_snapshot": "C-338",
+  "next_state_snapshot_expected": "C-345",
+  "notes": "C-338 canon state sync: cycle counter advanced from C-288 (frozen 2026-04-21) to C-338. GI value (0.67) carried forward from last C-288 attestation - live GI oscillating ~0.64-0.82 yellow (EVE dark on credits, attestation suppression); re-attestation required. Vault figures carried forward unverified. Flag civic-protocol-core-render-failed is believed stale (ledger healthy as of C-337, exit 0) but retained pending verification. Journal/state write pipeline stopped ~C-288/289 and must be revived - 50 cycles exist only in working memory."
 }
