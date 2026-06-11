@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@builder.io/react": "^3.0.0",
-    "@builder.io/sdk": "^3.0.0",
+    "@builder.io/sdk": "^6.3.0",
     "@modelcontextprotocol/sdk": "1.29.0",
     "ethers": "6.16.0",
     "next": "14.2.35",
