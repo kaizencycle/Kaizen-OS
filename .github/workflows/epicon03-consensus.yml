@@ -5,6 +5,12 @@ name: EPICON-03 Multi-Agent Consensus
 # governance-critical paths only.
 # C-303: added graceful fallback when consensus script is absent — posts a warning
 # comment instead of hard-failing every governance PR.
+#
+# C-339: AUTHORITY BOUNDARY — mobius-merge-gate.yml is the single merge-blocking
+# consensus authority (label + sentinel review run on head SHA). This workflow is
+# scope-triggered multi-agent consensus for governance paths: it blocks only when
+# its engine script (.github/scripts/epicon03_consensus.py) is deployed and
+# returns a fail; otherwise it is advisory. Do not duplicate merge-gate logic here.
 
 on:
   pull_request:
@@ -174,8 +180,10 @@ jobs:
           engine = ConsensusEngine(request)
           attestation = engine.run_consensus()
 
-          print(f"::set-output name=status::{attestation.status.value}")
-          print(f"::set-output name=ecs::{attestation.ecs}")
+          # C-339: ::set-output is deprecated and ignored by current runners
+          with open(os.environ["GITHUB_OUTPUT"], "a") as out:
+              out.write(f"status={attestation.status.value}\n")
+              out.write(f"ecs={attestation.ecs}\n")
 
           with open('/tmp/attestation.json', 'w') as f:
               f.write(engine.to_json(attestation))

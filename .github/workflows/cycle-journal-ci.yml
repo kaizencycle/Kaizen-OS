@@ -13,6 +13,11 @@ on:
       - 'journals/cycles/**'
       - 'schemas/cycle_journal.schema.json'
 
+# C-339: least privilege — validation only needs read plus PR comments.
+permissions:
+  contents: read
+  pull-requests: write
+
 jobs:
   cycle-journal-validate:
     runs-on: ubuntu-latest

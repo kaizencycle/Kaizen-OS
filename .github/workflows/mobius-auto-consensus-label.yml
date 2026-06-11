@@ -1,12 +1,20 @@
-name: Mobius Auto Consensus Label
+# C-339 GOVERNANCE HARDENING — this workflow is REMOVAL-ONLY.
+#
+# It previously auto-applied `consensus:approved`, the exact label
+# mobius-merge-gate.yml treats as a pass. A workflow must never apply the
+# label another workflow accepts as approval — that was a self-approval loop
+# (and the source of the label flapping). Approval labels are now applied
+# only by sentinel-review.yml after a real, non-skipped review passes.
+#
+# What remains here is label hygiene: if the head SHA has no successful
+# Sentinel Review run (e.g. new commits were pushed after approval), any
+# stale `consensus:approved` label is removed so re-review is required.
+
+name: Mobius Consensus Label Hygiene
 
 on:
-  pull_request_review:
-    types: [submitted, dismissed]
   pull_request:
     types: [opened, synchronize, reopened, ready_for_review]
-  check_run:
-    types: [completed]
 
 permissions:
   pull-requests: write
@@ -15,39 +23,34 @@ permissions:
   contents: read
 
 jobs:
-  auto_label:
-    name: Auto Consensus Label
+  label_hygiene:
+    name: Revoke Stale Consensus Label
     runs-on: ubuntu-latest
-    # Only run for PRs (check_run events need filtering)
-    if: github.event.pull_request || github.event.pull_request_review || (github.event.check_run && github.event.check_run.pull_requests[0])
+    if: github.event.pull_request
     steps:
-      - name: Auto-apply consensus label when gate conditions met
+      - name: Remove consensus label when head SHA lacks a passing sentinel review
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           REPO: ${{ github.repository }}
-          PR_NUMBER: ${{ github.event.pull_request.number || github.event.pull_request_review.pull_request.number || github.event.check_run.pull_requests[0].number }}
-          REQUIRED_LABEL: consensus:approved
-          REQUIRED_CHECK_EPICON: "epicon_pr_bot"
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          GATED_LABEL: consensus:approved
+          SENTINEL_CHECK_NAME: "sentinel"
         run: |
           python3 - << 'PY'
-          import os, json, urllib.request, sys
+          import os, json, urllib.request, urllib.parse, sys
 
           token = os.environ["GITHUB_TOKEN"]
           repo = os.environ["REPO"]
-          pr_number = os.environ.get("PR_NUMBER")
-          required_label = os.environ["REQUIRED_LABEL"]
-          required_check_epicon = os.environ["REQUIRED_CHECK_EPICON"]
-
-          if not pr_number:
-              print("No PR number found, skipping")
-              sys.exit(0)
+          pr_number = os.environ["PR_NUMBER"]
+          gated_label = os.environ["GATED_LABEL"]
+          sentinel_check = os.environ["SENTINEL_CHECK_NAME"]
 
           def gh(method, path, data=None):
               url = f"https://api.github.com{path}"
               headers = {
                   "Authorization": f"token {token}",
                   "Accept": "application/vnd.github+json",
-                  "User-Agent": "mobius-auto-consensus",
+                  "User-Agent": "mobius-consensus-hygiene",
               }
               body = None
               if data is not None:
@@ -61,7 +64,6 @@ jobs:
                   print(f"API error: {e.code} for {method} {path}")
                   return None
 
-          # Fetch PR + labels
           pr = gh("GET", f"/repos/{repo}/pulls/{pr_number}")
           if not pr:
               print("Could not fetch PR")
@@ -69,73 +71,28 @@ jobs:
 
           labels = {l["name"] for l in pr.get("labels", [])}
           head_sha = pr["head"]["sha"]
-
           print(f"PR #{pr_number}, HEAD: {head_sha[:8]}")
           print(f"Current labels: {', '.join(sorted(labels)) or '(none)'}")
 
-          # Latest review state per user (need at least 1 approval)
-          reviews = gh("GET", f"/repos/{repo}/pulls/{pr_number}/reviews?per_page=100")
-          if reviews is None:
-              reviews = []
-
-          latest = {}
-          for r in reviews:
-              user = r.get("user", {}).get("login")
-              if user:
-                  latest[user] = r["state"]
-
-          approvals = [u for u, st in latest.items() if st == "APPROVED"]
-          has_approval = len(approvals) >= 1
-          print(f"Approvals: {len(approvals)} ({', '.join(approvals) or 'none'})")
-
-          # Check required checks on head SHA
-          checks = gh("GET", f"/repos/{repo}/commits/{head_sha}/check-runs?per_page=100")
-          check_runs = checks.get("check_runs", []) if checks else []
-
-          check_map = {}
-          for c in check_runs:
-              name = c.get("name", "")
-              conclusion = c.get("conclusion")
-              check_map[name] = conclusion
-
-          print(f"Checks found: {len(check_map)}")
-          for name, concl in check_map.items():
-              print(f"  - {name}: {concl}")
-
-          # EPICON check (job name in workflow)
-          epicon_ok = check_map.get(required_check_epicon) == "success"
-          print(f"EPICON check ({required_check_epicon}): {'✓' if epicon_ok else '✗'}")
-
-          # Decision
-          conditions_met = has_approval and epicon_ok
-          print()
-          print(f"Conditions met: {conditions_met}")
-          print(f"  - has_approval: {has_approval}")
-          print(f"  - epicon_ok: {epicon_ok}")
-
-          # Apply or remove label
-          if conditions_met:
-              if required_label not in labels:
-                  result = gh("POST", f"/repos/{repo}/issues/{pr_number}/labels", {"labels": [required_label]})
-                  if result:
-                      print(f"✓ Applied label: {required_label}")
-                  else:
-                      print(f"Failed to apply label")
-              else:
-                  print(f"Label already present: {required_label}")
+          if gated_label not in labels:
+              print(f"No '{gated_label}' label present — nothing to revoke.")
               sys.exit(0)
 
-          # If conditions not met, remove label if present
-          if required_label in labels:
-              try:
-                  # URL-encode the label name
-                  import urllib.parse
-                  encoded_label = urllib.parse.quote(required_label, safe='')
-                  gh("DELETE", f"/repos/{repo}/issues/{pr_number}/labels/{encoded_label}")
-                  print(f"✗ Removed label: {required_label} (conditions not met)")
-              except Exception as e:
-                  print(f"Could not remove label: {e}")
+          checks = gh("GET", f"/repos/{repo}/commits/{head_sha}/check-runs?per_page=100")
+          check_runs = checks.get("check_runs", []) if checks else []
+          sentinel_ok = any(
+              c.get("name") == sentinel_check and c.get("conclusion") == "success"
+              for c in check_runs
+          )
+          print(f"Sentinel review on head SHA ({sentinel_check}): {'✓ success' if sentinel_ok else '✗ absent/not passed'}")
 
-          print("Conditions not met, label not applied.")
+          if sentinel_ok:
+              print("Head SHA has a passing sentinel review — label stands.")
+              sys.exit(0)
+
+          # New commits (or a never-reviewed head) invalidate the approval.
+          encoded = urllib.parse.quote(gated_label, safe="")
+          gh("DELETE", f"/repos/{repo}/issues/{pr_number}/labels/{encoded}")
+          print(f"✗ Revoked stale label '{gated_label}': head SHA has no passing sentinel review.")
           sys.exit(0)
           PY

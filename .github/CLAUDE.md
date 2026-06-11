@@ -23,10 +23,12 @@
 9. **sigstore-attest.yml** - Build attestation with Sigstore
 
 ### Governance & Ops
-10. **mobius-merge-gate.yml** - Merge gate with consensus requirement
-11. **mobius-auto-consensus-label.yml** - Auto-labels consensus status
+10. **mobius-merge-gate.yml** - Merge gate: requires `consensus:approved` label AND a passing sentinel review run on head SHA (C-339, fail-closed)
+11. **mobius-auto-consensus-label.yml** - Consensus label hygiene: removal-only since C-339 (never applies the approval label; that's sentinel-review's job)
 12. **mobius-pr-assistant.yml** - PR assistance and validation
 13. **mobius-operator-merge.yml** - Operator-triggered merges
+14. **sentinel-review.yml** - AUREA + ATLAS AI review; fails closed when not requested or when API secrets are missing (C-339)
+15. **canon-state-validate.yml** - Schema-validates cycle.json, ledger/mobius-pulse.json, and lints mobius.yaml (C-339)
 
 ### Monitoring & Reporting
 14. **mobius-pulse-unified.yml** - Telemetry and pulse generation

@@ -1,0 +1,35 @@
+# C-339: automated dependency update flow.
+# security-audit.yml only *reports* (npm audit, daily); nothing previously
+# opened update PRs. Dependabot closes that loop for both ecosystems.
+# Update PRs pass through the same merge gate as everything else —
+# consensus:approved + sentinel review on head SHA.
+
+version: 2
+updates:
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+    labels:
+      - "dependencies"
+      - "ci"
+    groups:
+      actions:
+        patterns:
+          - "*"
+
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+    open-pull-requests-limit: 5
+    labels:
+      - "dependencies"
+    # Security updates always; version bumps grouped to limit PR noise
+    groups:
+      npm-minor-patch:
+        update-types:
+          - "minor"
+          - "patch"

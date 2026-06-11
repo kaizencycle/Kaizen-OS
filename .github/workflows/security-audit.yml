@@ -5,6 +5,10 @@ on:
     - cron: '0 0 * * *'  # Daily
   workflow_dispatch:
 
+# C-339: least privilege — audit is read-only.
+permissions:
+  contents: read
+
 jobs:
   security:
     runs-on: ubuntu-latest

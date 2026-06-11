@@ -1,0 +1,127 @@
+# MOBIUS-CLASS: canon-integrity
+# OWNER: @kaizencycle
+# INTRODUCED: C-339
+# LAST-REVIEWED: 2026-06-11
+# STATUS: active
+# PURPOSE: Schema-validate canon state files so malformed state cannot merge.
+#   - cycle.json            -> schemas/cycle_state.schema.json
+#   - ledger/mobius-pulse.json -> schemas/mobius_pulse.schema.json
+#   - mobius.yaml           -> YAML parse + required top-level keys
+# mobius.yaml is load-bearing declaration-only config read by aggregators and
+# CI; until C-339 it had no validation at all.
+
+name: Canon State Validate
+
+on:
+  pull_request:
+    paths:
+      - 'cycle.json'
+      - 'ledger/mobius-pulse.json'
+      - 'mobius.yaml'
+      - 'schemas/cycle_state.schema.json'
+      - 'schemas/mobius_pulse.schema.json'
+      - '.github/workflows/canon-state-validate.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'cycle.json'
+      - 'ledger/mobius-pulse.json'
+      - 'mobius.yaml'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: canon-state-validate-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    name: Validate canon state files
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install jsonschema
+        run: python3 -m pip install --quiet jsonschema pyyaml
+
+      - name: Validate cycle.json and mobius-pulse.json against schemas
+        run: |
+          python3 - << 'PY'
+          import json, sys
+          from jsonschema import Draft7Validator
+
+          # C-339 follow-up (Codex P2 on PR #299): Draft7Validator does not assert
+          # "format" unless given a format checker, so date-time fields would pass
+          # with arbitrary strings. Wire in FORMAT_CHECKER; schemas also carry an
+          # enforced "pattern" as belt-and-suspenders in case optional format
+          # validators (e.g. rfc3339) are not installed.
+          FORMAT_CHECKER = Draft7Validator.FORMAT_CHECKER
+
+          FAIL = False
+
+          def validate(instance_path, schema_path):
+              global FAIL
+              with open(schema_path) as f:
+                  schema = json.load(f)
+              try:
+                  with open(instance_path) as f:
+                      instance = json.load(f)
+              except FileNotFoundError:
+                  print(f"::notice::{instance_path} not present — skipping")
+                  return
+              except json.JSONDecodeError as e:
+                  print(f"::error file={instance_path}::not valid JSON: {e}")
+                  FAIL = True
+                  return
+              validator = Draft7Validator(schema, format_checker=FORMAT_CHECKER)
+              errors = sorted(validator.iter_errors(instance), key=str)
+              if errors:
+                  for e in errors:
+                      loc = "/".join(str(p) for p in e.absolute_path) or "(root)"
+                      print(f"::error file={instance_path}::{loc}: {e.message}")
+                  FAIL = True
+              else:
+                  print(f"✅ {instance_path} valid against {schema_path}")
+
+          validate("cycle.json", "schemas/cycle_state.schema.json")
+          validate("ledger/mobius-pulse.json", "schemas/mobius_pulse.schema.json")
+          sys.exit(1 if FAIL else 0)
+          PY
+
+      - name: Lint mobius.yaml (parse + required keys)
+        run: |
+          python3 - << 'PY'
+          import sys, yaml
+
+          try:
+              with open("mobius.yaml") as f:
+                  doc = yaml.safe_load(f)
+          except yaml.YAMLError as e:
+              print(f"::error file=mobius.yaml::YAML parse failed: {e}")
+              sys.exit(1)
+
+          if not isinstance(doc, dict):
+              print("::error file=mobius.yaml::top level must be a mapping")
+              sys.exit(1)
+
+          required = ["version", "mesh", "pulse", "flow", "policy"]
+          missing = [k for k in required if k not in doc]
+          if missing:
+              print(f"::error file=mobius.yaml::missing required top-level keys: {', '.join(missing)}")
+              sys.exit(1)
+
+          # Declaration-only invariants the aggregators depend on
+          mesh = doc.get("mesh") or {}
+          if not mesh.get("node_id"):
+              print("::error file=mobius.yaml::mesh.node_id is required")
+              sys.exit(1)
+
+          print("✅ mobius.yaml parses and declares all required keys")
+          PY

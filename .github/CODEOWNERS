@@ -116,6 +116,19 @@
 # =============================================================================
 # Security-Sensitive Paths
 # =============================================================================
-/.github/workflows/              @kaizencycle/atlas @kaizencycle/hermes
+# Workflows editing workflows requires operator-level review (C-339).
+/.github/workflows/              @kaizencycle/atlas @kaizencycle/hermes @kaizencycle
 /.github/CODEOWNERS              @kaizencycle/stewards
 /SECURITY.md                     @kaizencycle/eve @kaizencycle/stewards
+
+# =============================================================================
+# Canon State & Protocol Doctrine (C-339)
+# =============================================================================
+# cycle.json is the authoritative cycle pointer; STATE/ mirrors hot state.
+/cycle.json                      @kaizencycle @kaizencycle/stewards
+/STATE/                          @kaizencycle @kaizencycle/stewards
+/mobius.yaml                     @kaizencycle/atlas @kaizencycle/hermes
+/ledger/                         @kaizencycle/stewards
+/attestations/                   @kaizencycle/stewards
+/schemas/                        @kaizencycle/aurea @kaizencycle/atlas
+/docs/protocols/                 @kaizencycle/aurea @kaizencycle/stewards

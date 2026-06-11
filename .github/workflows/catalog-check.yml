@@ -7,6 +7,11 @@
 #
 # This is the "archivist at the door" — you can rearrange the library all you want,
 # but you must update the catalog before you leave.
+#
+# C-339: on drift, the check regenerates the catalog, attaches it as an
+# artifact, and fails with instructions. (An earlier revision auto-pushed the
+# fix, but that advanced the PR head to a SHA that GITHUB_TOKEN pushes don't
+# re-validate — see Codex P1 on PR #299 — so the conservative backstop stands.)
 
 name: Mobius Catalog Integrity Check
 
@@ -21,6 +26,10 @@ on:
       - main
       - master
       - develop
+
+# C-339: least privilege — the check reads, regenerates locally, and reports.
+permissions:
+  contents: read
 
 jobs:
   catalog-check:
@@ -46,6 +55,7 @@ jobs:
           GIT_COMMIT: ${{ github.sha }}
 
       - name: Check for catalog drift
+        id: drift
         run: |
           # Compare catalogs ignoring volatile fields (generated_at, commit)
           # These fields change on every regeneration and should not cause drift failures
@@ -126,8 +136,31 @@ jobs:
             echo ""
             echo "Meaningful changes detected:"
             echo "$DIFFS" | node -e "const d=require('fs').readFileSync(0,'utf8');try{JSON.parse(d).forEach(x=>console.log('  - '+x))}catch{console.log(d)}"
-            exit 1
+            echo "drifted=true" >> $GITHUB_OUTPUT
           fi
+
+      - name: Upload regenerated catalog (drift artifact)
+        id: autofix
+        if: steps.drift.outputs.drifted == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: regenerated-catalog
+          path: catalog/mobius_catalog.json
+          if-no-files-found: warn
+
+      - name: Fail if catalog drifted
+        if: steps.drift.outputs.drifted == 'true'
+        run: |
+          # C-339 follow-up (Codex P1 on PR #299): the earlier auto-push approach
+          # advanced the PR head SHA, but commits pushed with GITHUB_TOKEN do not
+          # trigger workflows (GitHub recursion guard) and [skip ci] compounds it —
+          # the new head would carry NO sentinel review and NO merge-gate run,
+          # defeating mobius-merge-gate.yml's head-SHA requirement. So this check
+          # fails with instructions instead of stranding the PR on an unchecked
+          # head. The regenerated catalog is attached as an artifact for convenience.
+          # (A privileged App token could re-enable safe auto-fix; deferred.)
+          echo "::error::Catalog has drifted. Run 'npm run export:catalog', then 'git add catalog/mobius_catalog.json' and commit. The regenerated file is attached as the 'regenerated-catalog' artifact."
+          exit 1
 
       - name: Catalog Summary
         if: success()

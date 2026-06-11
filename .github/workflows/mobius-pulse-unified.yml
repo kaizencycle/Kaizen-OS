@@ -39,6 +39,12 @@ permissions:
   actions: read
   statuses: read
 
+# C-339: scheduled job that commits to ledger/badge files — overlapping runs
+# race on those writes. Queue instead of overlapping.
+concurrency:
+  group: mobius-pulse-unified
+  cancel-in-progress: false
+
 env:
   MOBIUS_CYCLE: "C-177"
   GI_SCORE: "0.95"
