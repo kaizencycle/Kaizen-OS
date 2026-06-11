@@ -45,3 +45,29 @@ updates:
       - dependency-name: "eslint"
         update-types:
           - "version-update:semver-major"
+      # C-339 dependabot consolidation (supersedes #311-#314): hold majors
+      # that are migration projects, not dependency bumps.
+      #
+      # Tailwind 4 rewrote the config system (CSS-first, new PostCSS plugin);
+      # 8 apps pin ^3.4.x with tailwind.config.js. Migrate deliberately.
+      - dependency-name: "tailwindcss"
+        update-types:
+          - "version-update:semver-major"
+      # http-proxy-middleware v3+ changed the createProxyMiddleware API
+      # (context/pathRewrite semantics); apps/api-gateway uses the v2 API.
+      - dependency-name: "http-proxy-middleware"
+        update-types:
+          - "version-update:semver-major"
+      # hardhat-chai-matchers v3 requires hardhat v3; gic-registry-contracts
+      # pins hardhat 2.22.5. Bump together with a hardhat 3 migration.
+      - dependency-name: "@nomicfoundation/hardhat-chai-matchers"
+        update-types:
+          - "version-update:semver-major"
+      # @types/node must track each workspace's runtime, not latest. Block
+      # cross-major jumps (the #312 failure mode: 18->25) while letting
+      # in-range maintenance flow — some workspaces legitimately declare ^22
+      # (tokenomics-engine, sentinels/aurea) and still need 22.x patches.
+      # Runtime upgrades are deliberate migrations, not dependabot bumps.
+      - dependency-name: "@types/node"
+        update-types:
+          - "version-update:semver-major"
