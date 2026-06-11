@@ -33,3 +33,15 @@ updates:
         update-types:
           - "minor"
           - "patch"
+    ignore:
+      # Hold ESLint at 8.x. ESLint 9+ requires flat config AND downstream
+      # support that does not exist for this toolchain: `eslint-config-next`
+      # (used by 55+ apps via `next lint`) has NO release that supports
+      # ESLint 10 (peer caps at ^9, and only from eslint-config-next@15),
+      # and the repo's @typescript-eslint@6 caps at ESLint 8. Bumping ESLint
+      # to 9/10 breaks `next lint` fleet-wide with no upstream fix. Revisit
+      # after Next.js is upgraded and eslint-config-next ships ESLint 10
+      # support. Tracked by the closure of #304.
+      - dependency-name: "eslint"
+        update-types:
+          - "version-update:semver-major"
