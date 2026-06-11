@@ -57,6 +57,13 @@ jobs:
           import json, sys
           from jsonschema import Draft7Validator
 
+          # C-339 follow-up (Codex P2 on PR #299): Draft7Validator does not assert
+          # "format" unless given a format checker, so date-time fields would pass
+          # with arbitrary strings. Wire in FORMAT_CHECKER; schemas also carry an
+          # enforced "pattern" as belt-and-suspenders in case optional format
+          # validators (e.g. rfc3339) are not installed.
+          FORMAT_CHECKER = Draft7Validator.FORMAT_CHECKER
+
           FAIL = False
 
           def validate(instance_path, schema_path):
@@ -73,7 +80,8 @@ jobs:
                   print(f"::error file={instance_path}::not valid JSON: {e}")
                   FAIL = True
                   return
-              errors = sorted(Draft7Validator(schema).iter_errors(instance), key=str)
+              validator = Draft7Validator(schema, format_checker=FORMAT_CHECKER)
+              errors = sorted(validator.iter_errors(instance), key=str)
               if errors:
                   for e in errors:
                       loc = "/".join(str(p) for p in e.absolute_path) or "(root)"

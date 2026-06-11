@@ -8,9 +8,10 @@
 # This is the "archivist at the door" — you can rearrange the library all you want,
 # but you must update the catalog before you leave.
 #
-# C-339: on same-repo PRs, drift is auto-fixed with a bot commit ([skip ci])
-# instead of failing the PR after the fact. The failing check remains as the
-# backstop for forks and direct pushes.
+# C-339: on drift, the check regenerates the catalog, attaches it as an
+# artifact, and fails with instructions. (An earlier revision auto-pushed the
+# fix, but that advanced the PR head to a SHA that GITHUB_TOKEN pushes don't
+# re-validate — see Codex P1 on PR #299 — so the conservative backstop stands.)
 
 name: Mobius Catalog Integrity Check
 
@@ -26,8 +27,9 @@ on:
       - master
       - develop
 
+# C-339: least privilege — the check reads, regenerates locally, and reports.
 permissions:
-  contents: write
+  contents: read
 
 jobs:
   catalog-check:
@@ -37,10 +39,6 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-        with:
-          # For same-repo PRs, check out the PR branch itself so a drifted
-          # catalog can be regenerated and pushed back (C-339 auto-fix).
-          ref: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository && github.event.pull_request.head.ref || '' }}
 
       - name: Setup Node
         uses: actions/setup-node@v4
@@ -141,27 +139,27 @@ jobs:
             echo "drifted=true" >> $GITHUB_OUTPUT
           fi
 
-      - name: Auto-fix catalog on same-repo PR (C-339)
+      - name: Upload regenerated catalog (drift artifact)
         id: autofix
-        if: >
-          steps.drift.outputs.drifted == 'true' &&
-          github.event_name == 'pull_request' &&
-          github.event.pull_request.head.repo.full_name == github.repository
-        env:
-          HEAD_REF: ${{ github.event.pull_request.head.ref }}
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add catalog/mobius_catalog.json
-          git commit -m "chore(catalog): regenerate catalog [skip ci]"
-          git push origin "HEAD:${HEAD_REF}"
-          echo "fixed=true" >> $GITHUB_OUTPUT
-          echo "✅ Catalog regenerated and pushed to PR branch."
+        if: steps.drift.outputs.drifted == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: regenerated-catalog
+          path: catalog/mobius_catalog.json
+          if-no-files-found: warn
 
-      - name: Fail if catalog drifted and could not be auto-fixed
-        if: steps.drift.outputs.drifted == 'true' && steps.autofix.outputs.fixed != 'true'
+      - name: Fail if catalog drifted
+        if: steps.drift.outputs.drifted == 'true'
         run: |
-          echo "::error::Catalog has drifted. Run 'npm run export:catalog' and commit catalog/mobius_catalog.json."
+          # C-339 follow-up (Codex P1 on PR #299): the earlier auto-push approach
+          # advanced the PR head SHA, but commits pushed with GITHUB_TOKEN do not
+          # trigger workflows (GitHub recursion guard) and [skip ci] compounds it —
+          # the new head would carry NO sentinel review and NO merge-gate run,
+          # defeating mobius-merge-gate.yml's head-SHA requirement. So this check
+          # fails with instructions instead of stranding the PR on an unchecked
+          # head. The regenerated catalog is attached as an artifact for convenience.
+          # (A privileged App token could re-enable safe auto-fix; deferred.)
+          echo "::error::Catalog has drifted. Run 'npm run export:catalog', then 'git add catalog/mobius_catalog.json' and commit. The regenerated file is attached as the 'regenerated-catalog' artifact."
           exit 1
 
       - name: Catalog Summary

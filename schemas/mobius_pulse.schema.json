@@ -12,7 +12,9 @@
     },
     "updated_at": {
       "type": "string",
-      "format": "date-time"
+      "format": "date-time",
+      "comment": "C-339: pattern enforces RFC3339/ISO-8601 since Draft7 format checks are advisory unless a format checker is wired in; canon-state-validate.yml also passes FORMAT_CHECKER.",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(\\.[0-9]+)?(Z|[+-][0-9]{2}:[0-9]{2})$"
     },
     "cycle": {
       "type": "string",
