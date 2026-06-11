@@ -52,7 +52,7 @@
   "homepage": "https://github.com/kaizencycle/OAA-API-Library#readme",
   "dependencies": {
     "@modelcontextprotocol/sdk": "1.29.0",
-    "@types/node": "^20.0.0",
+    "@types/node": "^25.9.3",
     "@types/react": "^18.0.0",
     "@types/react-dom": "^18.0.0",
     "aws-sdk": "^2.1500.0",
