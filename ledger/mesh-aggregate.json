@@ -1,6 +1,6 @@
 {
   "schema": "MNS_AGGREGATE_V1",
-  "updated_at": "2026-06-11T14:30:20.142Z",
+  "updated_at": "2026-06-11T18:05:25.018Z",
   "node_count": 5,
   "live_nodes": 3,
   "total_entries": 38,
@@ -10,7 +10,7 @@
       "tier": "sentinel",
       "node_type": "substrate",
       "entry_count": 0,
-      "fetched_at": "2026-06-11T14:30:19.756Z",
+      "fetched_at": "2026-06-11T18:05:24.692Z",
       "error": null
     },
     {
@@ -18,7 +18,7 @@
       "tier": "contributor",
       "node_type": "app",
       "entry_count": 11,
-      "fetched_at": "2026-06-11T14:30:20.142Z",
+      "fetched_at": "2026-06-11T18:05:25.018Z",
       "error": null
     },
     {
@@ -26,7 +26,7 @@
       "tier": "contributor",
       "node_type": "service",
       "entry_count": 27,
-      "fetched_at": "2026-06-11T14:30:19.757Z",
+      "fetched_at": "2026-06-11T18:05:24.815Z",
       "error": null
     },
     {
@@ -47,6 +47,39 @@
     }
   ],
   "entries": [
+    {
+      "id": "2404da1e-merge",
+      "timestamp": "2026-06-11T18:02:55Z",
+      "author": "kaizencycle",
+      "title": "C-339 PR-C: Terminal operating-plane hardening (16 verified optimizations)",
+      "type": "merge",
+      "severity": "info",
+      "tags": [
+        "merge",
+        "pr"
+      ],
+      "source": "github-commit",
+      "verified": false,
+      "sha": "2404da1e5ef63173503baaf1a89f9b6147ea1d9f",
+      "_mesh_node": "mobius-civic-ai-terminal",
+      "_mesh_tier": "contributor"
+    },
+    {
+      "id": "538de64a-zeus-verify",
+      "timestamp": "2026-06-11T18:01:51Z",
+      "author": "ZEUS",
+      "title": "zeus: verification disputed · C-339 [skip ci]",
+      "type": "zeus-verify",
+      "severity": "info",
+      "tags": [
+        "zeus"
+      ],
+      "source": "github-commit",
+      "verified": false,
+      "sha": "538de64acbc947c85b2302f0c30aecd8ae08fdfc",
+      "_mesh_node": "mobius-civic-ai-terminal",
+      "_mesh_tier": "contributor"
+    },
     {
       "id": "1aa1f41a-zeus-verify",
       "timestamp": "2026-06-11T12:04:55Z",
@@ -195,38 +228,6 @@
       "source": "github-commit",
       "verified": false,
       "sha": "f2fb629b366b2f789db14e42fb8b04b8a574994c",
-      "_mesh_node": "mobius-civic-ai-terminal",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "939c62d6-zeus-verify",
-      "timestamp": "2026-06-10T06:03:19Z",
-      "author": "ZEUS",
-      "title": "zeus: verification disputed · C-338 [skip ci]",
-      "type": "zeus-verify",
-      "severity": "info",
-      "tags": [
-        "zeus"
-      ],
-      "source": "github-commit",
-      "verified": false,
-      "sha": "939c62d693f57e3868486ff43d7f7a4cf13ac04d",
-      "_mesh_node": "mobius-civic-ai-terminal",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "df910bee-zeus-verify",
-      "timestamp": "2026-06-10T00:04:08Z",
-      "author": "ZEUS",
-      "title": "zeus: verification disputed · C-337 [skip ci]",
-      "type": "zeus-verify",
-      "severity": "info",
-      "tags": [
-        "zeus"
-      ],
-      "source": "github-commit",
-      "verified": false,
-      "sha": "df910beef61654a603f3e174c6894e3887f230ff",
       "_mesh_node": "mobius-civic-ai-terminal",
       "_mesh_tier": "contributor"
     },
