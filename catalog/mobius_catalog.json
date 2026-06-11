@@ -1,15 +1,15 @@
 {
   "mobius_catalog_version": "1.0.0",
-  "generated_at": "2026-06-11T18:27:53.857Z",
+  "generated_at": "2026-06-11T19:14:55.401Z",
   "repo": {
     "name": "Mobius-Substrate",
     "url": "https://github.com/kaizencycle/Mobius-Substrate",
     "default_branch": "main",
-    "commit": "6169583711a5a2327fed2eaa21fee92980833f08"
+    "commit": "6c7fc936ae235fa165c75df47aca4f194be24923"
   },
   "stats": {
     "epiconCount": 0,
-    "docCount": 961
+    "docCount": 959
   },
   "epicons": [],
   "docs": [
@@ -7235,22 +7235,6 @@
       "category": "divergence",
       "tags": [],
       "content_hash": "sha256:20239e81c0a77980478705ad52aea317668c9952baad57e88e7b2005aed3592c",
-      "summary": ""
-    },
-    {
-      "path": "docs/divergence/WEEKLY_DIGEST.md",
-      "title": "Mobius Weekly Governance Digest",
-      "category": "divergence",
-      "tags": [],
-      "content_hash": "sha256:ab9ee26c63a6856da7eea894fd9f33189dd5ae1e64eecbe0dcb5e5ccba6acadb",
-      "summary": ""
-    },
-    {
-      "path": "docs/divergence/dashboard.md",
-      "title": "Divergence Dashboard",
-      "category": "divergence",
-      "tags": [],
-      "content_hash": "sha256:8f4f25a5930e12915037da51d951d99f1d515de9f19e9907b8622fe13bd2a95f",
       "summary": ""
     },
     {

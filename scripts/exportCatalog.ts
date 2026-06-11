@@ -100,6 +100,17 @@ const SKIP_DIRS = new Set([
   "__pycache__",
 ]);
 
+// Auto-generated docs that workflows rewrite + commit with [skip ci] (so the
+// catalog is never regenerated). Cataloguing their content hash guarantees
+// perpetual drift — every later PR fails "Check Catalog Freshness" through no
+// fault of its own. These are machine output, not documentation:
+//   - docs/divergence/dashboard.md     (mobius-divergence-dashboard.yml, 6-hourly)
+//   - docs/divergence/WEEKLY_DIGEST.md (mobius-pulse-unified.yml, weekly)
+const IGNORE_DOC_PATHS = new Set<string>([
+  "docs/divergence/dashboard.md",
+  "docs/divergence/WEEKLY_DIGEST.md",
+]);
+
 // ============================================================================
 // UTILITIES
 // ============================================================================
@@ -262,8 +273,14 @@ async function buildDocEntries(docsRoot = "docs"): Promise<DocEntry[]> {
 
   for (const fullPath of files) {
     try {
-      const raw = await fs.readFile(fullPath, "utf8");
       const relPath = path.relative(repoRoot, fullPath);
+
+      // Skip auto-generated docs that would otherwise cause perpetual drift.
+      if (IGNORE_DOC_PATHS.has(relPath.split(path.sep).join("/"))) {
+        continue;
+      }
+
+      const raw = await fs.readFile(fullPath, "utf8");
 
       // Try to extract title from frontmatter or first heading
       const { data } = matter(raw);
