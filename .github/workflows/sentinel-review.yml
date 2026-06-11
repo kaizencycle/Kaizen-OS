@@ -52,13 +52,13 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           fetch-depth: 0
 
       - name: Gate (only run when requested)
         id: gate
-        uses: actions/github-script@v7
+        uses: actions/github-script@v9
         with:
           script: |
             const labels = (context.payload.pull_request.labels || []).map(l => l.name);
@@ -182,7 +182,7 @@ jobs:
       - name: Run AUREA review (OpenAI) -> JSON verdict
         id: aurea
         if: contains(steps.gate.outputs.labels, 'review:aurea') || contains(steps.gate.outputs.labels, 'consensus:requested')
-        uses: actions/github-script@v7
+        uses: actions/github-script@v9
         with:
           script: |
             const fs = require('fs');
@@ -284,7 +284,7 @@ jobs:
       - name: Run ATLAS review (Anthropic preferred) -> JSON verdict
         id: atlas
         if: contains(steps.gate.outputs.labels, 'review:atlas') || contains(steps.gate.outputs.labels, 'consensus:requested')
-        uses: actions/github-script@v7
+        uses: actions/github-script@v9
         with:
           script: |
             const fs = require('fs');
@@ -436,7 +436,7 @@ jobs:
 
       - name: Render combined sentinel report + decide pass/fail
         id: decide
-        uses: actions/github-script@v7
+        uses: actions/github-script@v9
         with:
           script: |
             const labels = `${{ steps.gate.outputs.labels }}` || '';
@@ -559,7 +559,7 @@ jobs:
 
       - name: Auto-label consensus:approved on pass
         if: steps.decide.outputs.pass == 'true' && env.AUTO_LABEL_ON_PASS == 'true'
-        uses: actions/github-script@v7
+        uses: actions/github-script@v9
         with:
           script: |
             const label = process.env.PASS_LABEL || 'consensus:approved';

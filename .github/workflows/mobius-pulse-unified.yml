@@ -124,10 +124,10 @@ jobs:
 
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
           node-version: '18'
 
@@ -196,7 +196,7 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Fetch MII
         id: mii
@@ -238,7 +238,7 @@ jobs:
           echo "{\"schemaVersion\":1,\"label\":\"verdict\",\"message\":\"${VERDICT}\",\"color\":\"${COLOR}\"}" > .badges/verdict.json
 
       - name: Commit badge updates
-        uses: stefanzweifel/git-auto-commit-action@v5
+        uses: stefanzweifel/git-auto-commit-action@v7
         with:
           commit_message: "chore(badges): refresh MII + cycle badges [skip ci]"
           file_pattern: badges/*.json .badges/*.json
@@ -255,10 +255,10 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Setup Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v6
         with:
           python-version: '3.11'
 

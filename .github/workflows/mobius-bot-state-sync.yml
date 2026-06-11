@@ -37,12 +37,12 @@ jobs:
     steps:
       - name: Mint scoped App token (C-336 identity)
         id: app
-        uses: actions/create-github-app-token@v1
+        uses: actions/create-github-app-token@v3
         with:
           app-id: ${{ secrets.MOBIUS_BOT_APP_ID }}
           private-key: ${{ secrets.MOBIUS_BOT_PRIVATE_KEY }}
 
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
         with:
           token: ${{ steps.app.outputs.token }}
 

@@ -27,12 +27,12 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           fetch-depth: 0
 
       - name: Set up Python
-        uses: actions/setup-python@v5  # C-303: was @v4
+        uses: actions/setup-python@v6  # C-303: was @v4
         with:
           python-version: '3.11'
 
@@ -80,7 +80,7 @@ jobs:
 
       - name: Create notification issue if elevation occurred
         if: steps.check_elevation.outputs.elevated == 'true'
-        uses: actions/github-script@v7
+        uses: actions/github-script@v9
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
@@ -179,7 +179,7 @@ jobs:
             }'
 
       - name: Upload activity logs as artifact
-        uses: actions/upload-artifact@v4  # C-303: was @v3
+        uses: actions/upload-artifact@v7  # C-303: was @v3
         with:
           name: guardian-logs
           path: ledger/guardian/*.json

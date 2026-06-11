@@ -49,11 +49,11 @@ jobs:
       scope: ${{ steps.check.outputs.scope }}
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Get changed files
         id: changed
-        uses: dorny/paths-filter@v3
+        uses: dorny/paths-filter@v4
         with:
           list-files: json
           filters: |
@@ -117,12 +117,12 @@ jobs:
       SCOPE: ${{ needs.check-governance-scope.outputs.scope }}
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           fetch-depth: 0
 
       - name: Setup Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v6
         with:
           python-version: '3.11'
 
@@ -218,7 +218,7 @@ jobs:
 
       - name: Post warning comment (script missing)
         if: steps.script_check.outputs.exists == 'false'
-        uses: actions/github-script@v7
+        uses: actions/github-script@v9
         with:
           script: |
             const marker = "<!-- EPICON-03-CONSENSUS -->";
@@ -249,7 +249,7 @@ jobs:
 
       - name: Store attestation artifact
         if: steps.script_check.outputs.exists == 'true'
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: epicon03-attestation
           path: /tmp/attestation.json
