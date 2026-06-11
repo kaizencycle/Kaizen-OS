@@ -1,3 +1,18 @@
+# C-339 GOVERNANCE HARDENING — single merge-blocking consensus authority.
+#
+# This gate requires BOTH:
+#   1. the `consensus:approved` label, AND
+#   2. a completed, successful Sentinel Review check run on the PR head SHA.
+# The label alone is no longer sufficient — a label can be stale or applied
+# out-of-band; the check run proves a review actually executed against the
+# exact code being merged.
+#
+# Related (non-blocking) workflows:
+#   - sentinel-review.yml: produces the review verdict and applies the label.
+#   - mobius-auto-consensus-label.yml: removal-only hygiene for stale labels.
+#   - epicon03-consensus.yml: scope-triggered multi-agent consensus on
+#     governance paths; advisory unless its engine script is deployed.
+
 name: Mobius Merge Gate (Consensus)
 
 on:
@@ -9,6 +24,7 @@ on:
 permissions:
   contents: read
   pull-requests: read
+  checks: read
 
 jobs:
   gate:
@@ -20,6 +36,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           REPO: ${{ github.repository }}
           PR_NUMBER: ${{ github.event.pull_request.number || github.event.pull_request_review.pull_request.number }}
+          SENTINEL_CHECK_NAME: "sentinel"
         run: |
           python3 - << 'PY'
           import os, json, urllib.request, sys
@@ -27,6 +44,7 @@ jobs:
           token = os.environ["GITHUB_TOKEN"]
           repo = os.environ["REPO"]
           pr_number = os.environ["PR_NUMBER"]
+          sentinel_check = os.environ["SENTINEL_CHECK_NAME"]
 
           def gh(method, path):
               url = f"https://api.github.com{path}"
@@ -52,54 +70,63 @@ jobs:
               sys.exit(1)
 
           labels = {l["name"] for l in pr.get("labels", [])}
+          head_sha = pr["head"]["sha"]
 
           # 1) Require consensus label
           NEED_LABEL = "consensus:approved"
           has_label = NEED_LABEL in labels
 
-          # 2) Require at least 1 APPROVED review
-          reviews = gh("GET", f"/repos/{repo}/pulls/{pr_number}/reviews?per_page=100")
-          if reviews is None:
-              reviews = []
+          # 2) Require a completed, successful sentinel review run on the head SHA
+          #    (C-339: the label alone is not consensus — the review must have
+          #    actually run against the code being merged).
+          checks = gh("GET", f"/repos/{repo}/commits/{head_sha}/check-runs?per_page=100")
+          check_runs = checks.get("check_runs", []) if checks else []
+          sentinel_runs = [c for c in check_runs if c.get("name") == sentinel_check]
+          has_sentinel_pass = any(c.get("conclusion") == "success" for c in sentinel_runs)
 
-          # Keep latest review state per user
+          # Informational: human approvals (latest review state per user)
+          reviews = gh("GET", f"/repos/{repo}/pulls/{pr_number}/reviews?per_page=100") or []
           latest = {}
           for r in reviews:
               user = r.get("user", {}).get("login")
               if user:
                   latest[user] = r["state"]
-
           approvals = [u for u, st in latest.items() if st == "APPROVED"]
-          has_approval = len(approvals) >= 1
 
-          # Evaluate - require label OR approval (either is sufficient for consensus)
-          gate_passed = has_label or has_approval
+          gate_passed = has_label and has_sentinel_pass
 
           print("=" * 60)
-          print("MOBIUS MERGE GATE — CONSENSUS CHECK")
+          print("MOBIUS MERGE GATE — CONSENSUS CHECK (C-339 fail-closed)")
           print("=" * 60)
           print(f"PR: #{pr_number}")
+          print(f"HEAD: {head_sha[:8]}")
           print(f"Labels: {', '.join(sorted(labels)) or '(none)'}")
-          print(f"Approvals: {len(approvals)} ({', '.join(approvals) or 'none'})")
+          print(f"Sentinel review runs on HEAD: {len(sentinel_runs)} (passing: {has_sentinel_pass})")
+          print(f"Human approvals (informational): {len(approvals)} ({', '.join(approvals) or 'none'})")
           print()
 
           if not gate_passed:
               print("STATUS: ❌ FAIL")
               print()
-              print(f"  - Missing consensus: need either '{NEED_LABEL}' label OR an APPROVED review")
+              if not has_label:
+                  print(f"  - Missing label '{NEED_LABEL}'")
+              if not has_sentinel_pass:
+                  print(f"  - No successful '{sentinel_check}' check run on head SHA {head_sha[:8]}")
               print()
-              print("To pass this gate (one of the following):")
-              print(f"  1. Add the '{NEED_LABEL}' label, OR")
-              print("  2. Get at least 1 APPROVED review")
+              print("To pass this gate (BOTH required):")
+              print("  1. A sentinel review must run and pass on the current head SHA")
+              print("     (label the PR review:aurea / review:atlas / consensus:requested), AND")
+              print(f"  2. The '{NEED_LABEL}' label must be present")
+              print(f"     (applied by sentinel-review.yml on pass).")
               print()
               sys.exit(1)
 
           print("STATUS: ✅ PASS")
           print()
-          if has_label:
-              print(f"  ✓ Consensus label present: {NEED_LABEL}")
-          if has_approval:
-              print(f"  ✓ Approved reviews: {len(approvals)} ({', '.join(approvals)})")
+          print(f"  ✓ Consensus label present: {NEED_LABEL}")
+          print(f"  ✓ Sentinel review passed on head SHA {head_sha[:8]}")
+          if approvals:
+              print(f"  ✓ Human approvals: {len(approvals)} ({', '.join(approvals)})")
           print()
           sys.exit(0)
           PY

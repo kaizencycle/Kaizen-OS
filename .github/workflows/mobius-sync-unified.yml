@@ -38,6 +38,12 @@ on:
 permissions:
   contents: write
 
+# C-339: scheduled job that commits sync artifacts — overlapping runs race on
+# those writes. Queue instead of overlapping.
+concurrency:
+  group: mobius-sync-unified
+  cancel-in-progress: false
+
 jobs:
   # ═══════════════════════════════════════════════════════════════════════════
   # KAIZEN MANIFEST SYNC

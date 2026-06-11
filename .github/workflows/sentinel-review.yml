@@ -1,4 +1,19 @@
 # .github/workflows/sentinel-review.yml
+#
+# C-339 GOVERNANCE HARDENING — this check FAILS CLOSED.
+#   - No review label on the PR  -> check FAILS (it does not vacuously pass).
+#   - Required API secret absent -> the requested review FAILS with an explicit
+#     error annotation (it does not silently skip and pass).
+#   - `consensus:approved` is an OUTPUT of this workflow, never a trigger:
+#     review produces approval, approval does not produce review.
+#
+# REQUIRED SECRETS (configure in repo settings -> Secrets and variables -> Actions):
+#   OPENAI_API_KEY     — AUREA review (and ATLAS fallback)
+#   ANTHROPIC_API_KEY  — ATLAS review (preferred)
+# Without these, any PR labeled for review will fail this check by design.
+#
+# To request review, label the PR: review:aurea, review:atlas, or
+# consensus:requested (runs both).
 name: Sentinel Review (AUREA + ATLAS)
 
 on:
@@ -47,19 +62,22 @@ jobs:
         with:
           script: |
             const labels = (context.payload.pull_request.labels || []).map(l => l.name);
+            // C-339: consensus:approved removed from the run set — approval is an
+            // output of this workflow, never a trigger for it. Re-checks use
+            // consensus:requested.
             const run =
               labels.includes('review:aurea') ||
               labels.includes('review:atlas') ||
-              labels.includes('consensus:requested') ||
-              labels.includes('consensus:approved'); // allow re-check
+              labels.includes('consensus:requested');
             core.setOutput('run', run ? 'true' : 'false');
             core.setOutput('labels', labels.join(', '));
 
-      - name: Stop (no sentinel labels)
+      - name: Fail closed (no sentinel labels)
         if: steps.gate.outputs.run != 'true'
         run: |
-          echo "Skipping: add label review:aurea, review:atlas, or consensus:requested."
-          exit 0
+          # C-339: a review that was never requested is not a passed review.
+          echo "::error::Sentinel review not requested. Add label review:aurea, review:atlas, or consensus:requested. This check fails closed until a review runs."
+          exit 1
 
       - name: Build PR context + diff (truncated) + file list
         id: ctx
@@ -163,7 +181,7 @@ jobs:
 
       - name: Run AUREA review (OpenAI) -> JSON verdict
         id: aurea
-        if: contains(steps.gate.outputs.labels, 'review:aurea') || contains(steps.gate.outputs.labels, 'consensus:requested') || contains(steps.gate.outputs.labels, 'consensus:approved')
+        if: contains(steps.gate.outputs.labels, 'review:aurea') || contains(steps.gate.outputs.labels, 'consensus:requested')
         uses: actions/github-script@v7
         with:
           script: |
@@ -171,10 +189,10 @@ jobs:
 
             const apiKey = process.env.OPENAI_API_KEY;
             if (!apiKey) {
-              // Skip gracefully if no API key - don't block merge
-              core.setOutput('ok', 'true');
-              core.setOutput('json', JSON.stringify({verdict:"pass", blocking:[], non_blocking:["OPENAI_API_KEY not configured - AUREA review skipped"], summary:"AUREA review skipped (no API key). Configure OPENAI_API_KEY secret to enable."}));
-              core.setOutput('skipped', 'true');
+              // C-339: fail closed — a review that cannot run is a failed review.
+              core.error('OPENAI_API_KEY secret is not configured; AUREA review cannot run. See workflow header for required secrets.');
+              core.setOutput('ok', 'false');
+              core.setOutput('json', JSON.stringify({verdict:"fail", blocking:["OPENAI_API_KEY not configured - AUREA review cannot run"], non_blocking:[], summary:"AUREA review failed closed (no API key). Configure OPENAI_API_KEY secret."}));
               return;
             }
 
@@ -265,7 +283,7 @@ jobs:
 
       - name: Run ATLAS review (Anthropic preferred) -> JSON verdict
         id: atlas
-        if: contains(steps.gate.outputs.labels, 'review:atlas') || contains(steps.gate.outputs.labels, 'consensus:requested') || contains(steps.gate.outputs.labels, 'consensus:approved')
+        if: contains(steps.gate.outputs.labels, 'review:atlas') || contains(steps.gate.outputs.labels, 'consensus:requested')
         uses: actions/github-script@v7
         with:
           script: |
@@ -411,10 +429,10 @@ jobs:
               return;
             }
 
-            // No API keys available - skip gracefully
-            core.setOutput('ok', 'true');
-            core.setOutput('json', JSON.stringify({verdict:"pass", blocking:[], non_blocking:["No API keys configured - ATLAS review skipped"], summary:"ATLAS review skipped (no API key). Configure ANTHROPIC_API_KEY or OPENAI_API_KEY to enable."}));
-            core.setOutput('skipped', 'true');
+            // C-339: fail closed — a review that cannot run is a failed review.
+            core.error('Neither ANTHROPIC_API_KEY nor OPENAI_API_KEY is configured; ATLAS review cannot run. See workflow header for required secrets.');
+            core.setOutput('ok', 'false');
+            core.setOutput('json', JSON.stringify({verdict:"fail", blocking:["No API keys configured - ATLAS review cannot run"], non_blocking:[], summary:"ATLAS review failed closed (no API key). Configure ANTHROPIC_API_KEY or OPENAI_API_KEY."}));
 
       - name: Render combined sentinel report + decide pass/fail
         id: decide
@@ -422,38 +440,38 @@ jobs:
         with:
           script: |
             const labels = `${{ steps.gate.outputs.labels }}` || '';
-            const wantsAurea = labels.includes('review:aurea') || labels.includes('consensus:requested') || labels.includes('consensus:approved');
-            const wantsAtlas = labels.includes('review:atlas') || labels.includes('consensus:requested') || labels.includes('consensus:approved');
-            
+            const wantsAurea = labels.includes('review:aurea') || labels.includes('consensus:requested');
+            const wantsAtlas = labels.includes('review:atlas') || labels.includes('consensus:requested');
+
             let aurea = {};
             let atlas = {};
-            
+
             // Parse AUREA output
             try {
               const aureaJson = `${{ steps.aurea.outputs.json || '{}' }}`;
               if (aureaJson && aureaJson !== '{}') {
                 aurea = JSON.parse(aureaJson);
               } else if (wantsAurea) {
-                // AUREA was requested but didn't produce output
-                aurea = { verdict: 'pass', blocking: [], non_blocking: ['AUREA review did not run (check API key or label)'], summary: 'Review skipped' };
+                // C-339: requested but no output -> fail closed, not silent pass
+                aurea = { verdict: 'fail', blocking: ['AUREA review was requested but did not produce output (check API key and workflow logs)'], non_blocking: [], summary: 'Review did not run' };
               } else {
-                // AUREA not requested - pass by default
+                // AUREA not requested by label - not part of this verdict
                 aurea = { verdict: 'pass', blocking: [], non_blocking: [], summary: 'Not requested' };
               }
             } catch (e) {
               aurea = { verdict: 'fail', blocking: ['Failed to parse AUREA output: ' + e.message], non_blocking: [], summary: 'Parse error' };
             }
-            
+
             // Parse ATLAS output
             try {
               const atlasJson = `${{ steps.atlas.outputs.json || '{}' }}`;
               if (atlasJson && atlasJson !== '{}') {
                 atlas = JSON.parse(atlasJson);
               } else if (wantsAtlas) {
-                // ATLAS was requested but didn't produce output
-                atlas = { verdict: 'pass', blocking: [], non_blocking: ['ATLAS review did not run (check API key or label)'], summary: 'Review skipped' };
+                // C-339: requested but no output -> fail closed, not silent pass
+                atlas = { verdict: 'fail', blocking: ['ATLAS review was requested but did not produce output (check API key and workflow logs)'], non_blocking: [], summary: 'Review did not run' };
               } else {
-                // ATLAS not requested - pass by default
+                // ATLAS not requested by label - not part of this verdict
                 atlas = { verdict: 'pass', blocking: [], non_blocking: [], summary: 'Not requested' };
               }
             } catch (e) {
@@ -462,7 +480,7 @@ jobs:
 
             function normalize(r) {
               return {
-                verdict: r.verdict || "pass",  // Default to pass, not fail
+                verdict: r.verdict || "fail",  // C-339: default to fail (fail closed)
                 summary: r.summary || "",
                 blocking: Array.isArray(r.blocking) ? r.blocking : [],
                 non_blocking: Array.isArray(r.non_blocking) ? r.non_blocking : [],
@@ -473,7 +491,13 @@ jobs:
             const A = normalize(aurea);
             const T = normalize(atlas);
 
+            // C-339: at least one review must actually have been requested and run;
+            // two "not requested" verdicts must never combine into a PASS.
+            const anyRequested = wantsAurea || wantsAtlas;
             const blocking = [...A.blocking, ...T.blocking].filter(Boolean);
+            if (!anyRequested) {
+              blocking.push('No sentinel review was requested (no review:aurea / review:atlas / consensus:requested label)');
+            }
             const pass = blocking.length === 0 && A.verdict === "pass" && T.verdict === "pass";
 
             const labelsDisplay = labels || '(none - add review:aurea, review:atlas, or consensus:requested)';

@@ -81,3 +81,23 @@ If any of these workflows need to be restored:
 ---
 
 *Cycle C-178 | Workflow Optimization | "Intelligence moves. Integrity guides."*
+
+---
+
+## Archive Date: 2026-06-11 (C-339)
+
+#### 5. **cycle-journal-bot.yml** → **cycle-journal-bot.yml.archived**
+- **Reason:** Superseded by the Layer-1 deterministic writer (`mobius-bot-state-sync.yml`, C-338)
+- **Analysis:**
+  - The journal write pipeline died ~C-289 when state commits were coupled to
+    deployments; C-338 revived it as `mobius-bot-state-sync.yml` using the
+    deployment-decoupled `[skip ci]` pattern.
+  - That Layer-1 writer now creates `journals/cycles/{cycle}.json` stubs daily
+    and idempotently. This manual bot wrote stubs to the same directory with a
+    **different JSON shape** (meta/sweep/signals vs cycle/date/writer), making
+    it a dual-writer schema-drift risk rather than a backup path.
+  - It was `workflow_dispatch`-only and has not been part of the live pipeline.
+- **Replacement:** `mobius-bot-state-sync.yml` (Layer 1); narrative enrichment
+  is Layer 3 (ATLAS routine fills the `narrative` field, never the counters).
+- **Risk:** Low — manual-only trigger; restoring it would reintroduce the
+  dual-schema writer problem.

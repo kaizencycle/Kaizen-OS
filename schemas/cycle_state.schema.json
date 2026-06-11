@@ -1,0 +1,80 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/kaizencycle/Mobius-Substrate/main/schemas/cycle_state.schema.json",
+  "title": "Mobius Cycle State (cycle.json)",
+  "description": "Schema for the authoritative cycle pointer at repo root. cycle.json is canon: malformed state must not merge. Introduced C-339.",
+  "type": "object",
+  "required": ["current_cycle", "date", "gi", "mode", "last_updated"],
+  "properties": {
+    "current_cycle": {
+      "type": "string",
+      "pattern": "^C-[0-9]+$",
+      "description": "Cycle pointer, e.g. C-339. Arithmetic from the C-288 = 2026-04-21 anchor (see mobius-bot-state-sync.yml)."
+    },
+    "date": {
+      "type": "string",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+    },
+    "gi": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1,
+      "description": "Global Integrity. Attested value; carried forward (and marked in notes) when the ledger is unreachable."
+    },
+    "mode": {
+      "type": "string",
+      "enum": ["green", "yellow", "red"]
+    },
+    "last_updated": {
+      "type": "string",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}Z$"
+    },
+    "gi_attested_at": {
+      "type": "string",
+      "pattern": "^C-[0-9]+$"
+    },
+    "vault": {
+      "type": "object",
+      "properties": {
+        "in_progress_balance": { "type": "number", "minimum": 0 },
+        "tranche_target": { "type": "number", "exclusiveMinimum": 0 },
+        "hash_coverage_pct": { "type": "number", "minimum": 0, "maximum": 100 },
+        "seals_count": { "type": "integer", "minimum": 0 },
+        "fountain_status": { "type": "string", "enum": ["locked", "active", "paused"] }
+      },
+      "additionalProperties": true
+    },
+    "agents": {
+      "type": "object",
+      "properties": {
+        "roster": {
+          "type": "array",
+          "items": { "type": "string" },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "seal_quorum": {
+          "type": "array",
+          "items": { "type": "string" },
+          "minItems": 1,
+          "uniqueItems": true
+        }
+      },
+      "additionalProperties": true
+    },
+    "open_flags": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "last_state_snapshot": {
+      "type": "string",
+      "pattern": "^C-[0-9]+$"
+    },
+    "next_state_snapshot_expected": {
+      "type": "string",
+      "pattern": "^C-[0-9]+$"
+    },
+    "notes": { "type": "string" }
+  },
+  "additionalProperties": true
+}

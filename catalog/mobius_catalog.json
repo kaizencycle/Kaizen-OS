@@ -1,15 +1,15 @@
 {
   "mobius_catalog_version": "1.0.0",
-  "generated_at": "2026-06-11T06:54:08.005Z",
+  "generated_at": "2026-06-11T16:30:32.405Z",
   "repo": {
     "name": "Mobius-Substrate",
     "url": "https://github.com/kaizencycle/Mobius-Substrate",
     "default_branch": "main",
-    "commit": "4e1416d583ee5f0e1724cd34cce19b1776842fcc"
+    "commit": ""
   },
   "stats": {
     "epiconCount": 0,
-    "docCount": 959
+    "docCount": 961
   },
   "epicons": [],
   "docs": [
@@ -1990,11 +1990,19 @@
       "summary": ""
     },
     {
+      "path": "docs/07-RESEARCH-AND-PUBLICATIONS/INDEX.md",
+      "title": "Research & Publications Index",
+      "category": "07-RESEARCH-AND-PUBLICATIONS",
+      "tags": [],
+      "content_hash": "sha256:0c2e897139cd8667d55461fff13fd119b4481f442455593e9331dfc10d757b12",
+      "summary": ""
+    },
+    {
       "path": "docs/07-RESEARCH-AND-PUBLICATIONS/README.md",
       "title": "Research and Publications",
       "category": "07-RESEARCH-AND-PUBLICATIONS",
       "tags": [],
-      "content_hash": "sha256:28ac8dc3e695807c782b5df016a2920aac92e4afd84ab1f9ad61132574902728",
+      "content_hash": "sha256:c7c8cc47a0edc9cbb7acbc7f246a39d55262b53f0474a71a8c533464e2625332",
       "summary": ""
     },
     {
@@ -7242,7 +7250,7 @@
       "title": "Divergence Dashboard",
       "category": "divergence",
       "tags": [],
-      "content_hash": "sha256:94f2e9d9c9644363ad4060353babea03c26c54e0a02ab2bad3d38344acd4231d",
+      "content_hash": "sha256:b09966edbd4515a3b99d990e120002e44f4e471b0270a230b51375472e788939",
       "summary": ""
     },
     {
@@ -7298,6 +7306,14 @@
       ],
       "content_hash": "sha256:ca76dc0f26decc956fd33fa89040c23aaa1c711a91cfe269b7b5ca8f1ba98002",
       "summary": "Defines the canonical daily closing synthesis and seal artifact written by EVE for substrate-level continuity and audit."
+    },
+    {
+      "path": "docs/epicon/EPICON-C339-GOVERNANCE-HARDENING.md",
+      "title": "EPICON — C-339 Governance Hardening (PR-A)",
+      "category": "epicon",
+      "tags": [],
+      "content_hash": "sha256:399a405a6fb839efde3669a3e3194000183a48943672a8a25320f61ef28b4cdf",
+      "summary": ""
     },
     {
       "path": "docs/epicon/EPICON-DVA-RUNTIME.md",

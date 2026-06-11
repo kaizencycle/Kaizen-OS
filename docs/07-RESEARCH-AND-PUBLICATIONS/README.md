@@ -22,6 +22,8 @@ license: CC-BY-SA-4.0
 
 > **Academic research and public scholarship**
 
+**Looking for a specific paper?** See [INDEX.md](INDEX.md) — the complete, file-level index of this section (generated C-339).
+
 ## Overview
 
 This directory contains all academic research, whitepapers, studies, blueprints, and public communications related to Mobius Systems. Materials are organized for academic rigor and peer review.
