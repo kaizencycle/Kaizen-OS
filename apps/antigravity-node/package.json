@@ -16,8 +16,8 @@
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
-    "@modelcontextprotocol/sdk": "1.25.2",
-    "axios": "^1.7.4",
+    "@modelcontextprotocol/sdk": "1.29.0",
+    "axios": "^1.17.0",
     "eslint-config-next": "14.2.35",
     "ethers": "6.16.0",
     "express": "^4.19.2",

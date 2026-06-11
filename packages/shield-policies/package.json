@@ -11,8 +11,8 @@
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
-    "@modelcontextprotocol/sdk": "1.25.2",
-    "ajv": "^8.12.0",
+    "@modelcontextprotocol/sdk": "1.29.0",
+    "ajv": "^8.20.0",
     "eslint-config-next": "14.2.35",
     "ethers": "6.16.0",
     "express-rate-limit": "^7.1.0",
