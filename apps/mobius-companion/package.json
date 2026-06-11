@@ -15,7 +15,7 @@
   "dependencies": {
     "@civic/integrity-core": "*",
     "@civic/local-ledger": "*",
-    "@modelcontextprotocol/sdk": "1.25.2",
+    "@modelcontextprotocol/sdk": "1.29.0",
     "better-sqlite3": "^9.4.0",
     "eslint-config-next": "14.2.35",
     "ethers": "6.16.0",
