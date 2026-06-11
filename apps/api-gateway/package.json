@@ -17,7 +17,7 @@
     "@civic/integrity-core": "*",
     "@civic/shield-policies": "*",
     "@modelcontextprotocol/sdk": "1.29.0",
-    "@vercel/node": "^5.8.16",
+    "@vercel/node": "^5.8.17",
     "cors": "^2.8.6",
     "dotenv": "^16.4.5",
     "eslint-config-next": "14.2.35",
