@@ -1,24 +1,24 @@
 {
   "schema": "MNS_AGGREGATE_V1",
-  "updated_at": "2026-06-11T05:21:23.851Z",
+  "updated_at": "2026-06-11T10:06:20.209Z",
   "node_count": 5,
   "live_nodes": 3,
-  "total_entries": 39,
+  "total_entries": 37,
   "nodes": [
     {
       "node_id": "mobius-substrate",
       "tier": "sentinel",
       "node_type": "substrate",
       "entry_count": 0,
-      "fetched_at": "2026-06-11T05:21:22.919Z",
+      "fetched_at": "2026-06-11T10:06:19.859Z",
       "error": null
     },
     {
       "node_id": "mobius-civic-ai-terminal",
       "tier": "contributor",
       "node_type": "app",
-      "entry_count": 12,
-      "fetched_at": "2026-06-11T05:21:23.851Z",
+      "entry_count": 10,
+      "fetched_at": "2026-06-11T10:06:20.209Z",
       "error": null
     },
     {
@@ -26,7 +26,7 @@
       "tier": "contributor",
       "node_type": "service",
       "entry_count": 27,
-      "fetched_at": "2026-06-11T05:21:23.016Z",
+      "fetched_at": "2026-06-11T10:06:19.841Z",
       "error": null
     },
     {
@@ -47,6 +47,22 @@
     }
   ],
   "entries": [
+    {
+      "id": "80c181e2-zeus-verify",
+      "timestamp": "2026-06-11T06:04:43Z",
+      "author": "ZEUS",
+      "title": "zeus: verification disputed · C-339 [skip ci]",
+      "type": "zeus-verify",
+      "severity": "info",
+      "tags": [
+        "zeus"
+      ],
+      "source": "github-commit",
+      "verified": false,
+      "sha": "80c181e26d68892cf75f208a3b2bbf88cb70cfa5",
+      "_mesh_node": "mobius-civic-ai-terminal",
+      "_mesh_tier": "contributor"
+    },
     {
       "id": "82ce4412-zeus-verify",
       "timestamp": "2026-06-11T00:04:16Z",
@@ -192,56 +208,6 @@
       "source": "github-commit",
       "verified": false,
       "sha": "df910beef61654a603f3e174c6894e3887f230ff",
-      "_mesh_node": "mobius-civic-ai-terminal",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "c8627299-zeus-verify",
-      "timestamp": "2026-06-09T18:02:37Z",
-      "author": "ZEUS",
-      "title": "zeus: verification disputed · C-337 [skip ci]",
-      "type": "zeus-verify",
-      "severity": "info",
-      "tags": [
-        "zeus"
-      ],
-      "source": "github-commit",
-      "verified": false,
-      "sha": "c8627299cca8d7a32126e9dd03eacab56d086844",
-      "_mesh_node": "mobius-civic-ai-terminal",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "f833cf5e-merge",
-      "timestamp": "2026-06-09T17:48:00Z",
-      "author": "kaizencycle",
-      "title": "C-337: repair 8 failing micro-instruments — lift GI from yellow",
-      "type": "merge",
-      "severity": "info",
-      "tags": [
-        "merge",
-        "pr"
-      ],
-      "source": "github-commit",
-      "verified": false,
-      "sha": "f833cf5e3eacc6cbc117d11cb31faf7a7ba66e0f",
-      "_mesh_node": "mobius-civic-ai-terminal",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "ebc42711-merge",
-      "timestamp": "2026-06-09T16:47:32Z",
-      "author": "kaizencycle",
-      "title": "C-337: diagnostic honesty, log hygiene & signal coverage observability (4 OPTs)",
-      "type": "merge",
-      "severity": "info",
-      "tags": [
-        "merge",
-        "pr"
-      ],
-      "source": "github-commit",
-      "verified": false,
-      "sha": "ebc427119758c1619804104ad6c0483826da61dd",
       "_mesh_node": "mobius-civic-ai-terminal",
       "_mesh_tier": "contributor"
     },
