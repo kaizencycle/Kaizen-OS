@@ -1,11 +1,11 @@
 {
   "mobius_catalog_version": "1.0.0",
-  "generated_at": "2026-06-11T16:30:32.405Z",
+  "generated_at": "2026-06-11T18:27:53.857Z",
   "repo": {
     "name": "Mobius-Substrate",
     "url": "https://github.com/kaizencycle/Mobius-Substrate",
     "default_branch": "main",
-    "commit": ""
+    "commit": "6169583711a5a2327fed2eaa21fee92980833f08"
   },
   "stats": {
     "epiconCount": 0,
@@ -7250,7 +7250,7 @@
       "title": "Divergence Dashboard",
       "category": "divergence",
       "tags": [],
-      "content_hash": "sha256:b09966edbd4515a3b99d990e120002e44f4e471b0270a230b51375472e788939",
+      "content_hash": "sha256:8f4f25a5930e12915037da51d951d99f1d515de9f19e9907b8622fe13bd2a95f",
       "summary": ""
     },
     {
@@ -7312,7 +7312,7 @@
       "title": "EPICON — C-339 Governance Hardening (PR-A)",
       "category": "epicon",
       "tags": [],
-      "content_hash": "sha256:399a405a6fb839efde3669a3e3194000183a48943672a8a25320f61ef28b4cdf",
+      "content_hash": "sha256:086054a14e77af097c6888508b273067e7e679a7438f258fdbbd1596ee0cd1ff",
       "summary": ""
     },
     {
