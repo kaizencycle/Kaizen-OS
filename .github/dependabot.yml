@@ -63,7 +63,11 @@ updates:
       - dependency-name: "@nomicfoundation/hardhat-chai-matchers"
         update-types:
           - "version-update:semver-major"
-      # @types/node must track the runtime (Node 20 repo-wide), not latest.
-      # Declarations aligned to ^20 in C-339; ignore 21+ until runtime moves.
+      # @types/node must track each workspace's runtime, not latest. Block
+      # cross-major jumps (the #312 failure mode: 18->25) while letting
+      # in-range maintenance flow — some workspaces legitimately declare ^22
+      # (tokenomics-engine, sentinels/aurea) and still need 22.x patches.
+      # Runtime upgrades are deliberate migrations, not dependabot bumps.
       - dependency-name: "@types/node"
-        versions: [">=21"]
+        update-types:
+          - "version-update:semver-major"
