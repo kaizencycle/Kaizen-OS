@@ -1,8 +1,8 @@
 # Divergence Dashboard
 
 **Repo:** `kaizencycle/Mobius-Substrate`  
-**Generated:** `2026-06-11T20:33:09Z`  
-**Open PRs:** `6`
+**Generated:** `2026-06-12T04:58:49Z`  
+**Open PRs:** `5`
 
 ## Summary
 
@@ -11,19 +11,18 @@
 | 🔴 High | 0 |
 | 🟡 Medium | 0 |
 | 🟢 Low | 0 |
-| ⚪ Unknown | 6 |
+| ⚪ Unknown | 5 |
 | 🚨 Emergency | 0 |
 
 ## Open PRs
 
 | Sev | PR | Title | Author | EPICON | Gate | Mode | Updated |
 |-----|---:|-------|--------|--------|------|------|---------|
-| ⚪ unknown | [#309](https://github.com/kaizencycle/Mobius-Substrate/pull/309) | fix(catalog): exclude auto-generated docs to stop ... | @kaizencycle | ? | ? | — | 2026-06-11 |
-| ⚪ unknown | [#310](https://github.com/kaizencycle/Mobius-Substrate/pull/310) | chore(deps): bump @vercel/node from 5.8.16 to 5.8.... | @dependabot[bot] | ? | ? | — | 2026-06-11 |
-| ⚪ unknown | [#311](https://github.com/kaizencycle/Mobius-Substrate/pull/311) | chore(deps-dev): bump @nomicfoundation/hardhat-cha... | @dependabot[bot] | ? | ? | — | 2026-06-11 |
-| ⚪ unknown | [#312](https://github.com/kaizencycle/Mobius-Substrate/pull/312) | chore(deps): bump @types/node from 18.19.130 to 25... | @dependabot[bot] | ? | ? | — | 2026-06-11 |
-| ⚪ unknown | [#313](https://github.com/kaizencycle/Mobius-Substrate/pull/313) | chore(deps): bump http-proxy-middleware from 2.0.9... | @dependabot[bot] | ? | ? | — | 2026-06-11 |
-| ⚪ unknown | [#314](https://github.com/kaizencycle/Mobius-Substrate/pull/314) | chore(deps): bump tailwindcss from 3.4.18 to 4.3.0 | @dependabot[bot] | ? | ? | — | 2026-06-11 |
+| ⚪ unknown | [#316](https://github.com/kaizencycle/Mobius-Substrate/pull/316) | chore(deps): bump the npm-minor-patch group with 2... | @dependabot[bot] | ? | ? | — | 2026-06-11 |
+| ⚪ unknown | [#317](https://github.com/kaizencycle/Mobius-Substrate/pull/317) | chore(deps-dev): bump hardhat from 2.22.5 to 3.9.0 | @dependabot[bot] | ? | ? | — | 2026-06-11 |
+| ⚪ unknown | [#318](https://github.com/kaizencycle/Mobius-Substrate/pull/318) | chore(deps-dev): bump supertest and @types/superte... | @dependabot[bot] | ? | ? | — | 2026-06-11 |
+| ⚪ unknown | [#319](https://github.com/kaizencycle/Mobius-Substrate/pull/319) | chore(deps): bump nodemailer and @types/nodemailer | @dependabot[bot] | ? | ? | — | 2026-06-11 |
+| ⚪ unknown | [#320](https://github.com/kaizencycle/Mobius-Substrate/pull/320) | chore(deps): bump lru-cache from 10.2.0 to 11.5.1 | @dependabot[bot] | ? | ? | — | 2026-06-11 |
 
 ---
 
