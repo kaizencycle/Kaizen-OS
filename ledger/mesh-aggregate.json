@@ -1,6 +1,6 @@
 {
   "schema": "MNS_AGGREGATE_V1",
-  "updated_at": "2026-06-15T17:58:32.333Z",
+  "updated_at": "2026-06-15T20:45:33.437Z",
   "node_count": 5,
   "live_nodes": 3,
   "total_entries": 30,
@@ -10,7 +10,7 @@
       "tier": "sentinel",
       "node_type": "substrate",
       "entry_count": 0,
-      "fetched_at": "2026-06-15T17:58:31.814Z",
+      "fetched_at": "2026-06-15T20:45:33.145Z",
       "error": null
     },
     {
@@ -18,7 +18,7 @@
       "tier": "contributor",
       "node_type": "app",
       "entry_count": 3,
-      "fetched_at": "2026-06-15T17:58:32.333Z",
+      "fetched_at": "2026-06-15T20:45:33.437Z",
       "error": null
     },
     {
@@ -26,7 +26,7 @@
       "tier": "contributor",
       "node_type": "service",
       "entry_count": 27,
-      "fetched_at": "2026-06-15T17:58:31.872Z",
+      "fetched_at": "2026-06-15T20:45:33.232Z",
       "error": null
     },
     {
@@ -48,6 +48,39 @@
   ],
   "entries": [
     {
+      "id": "5233477b-merge",
+      "timestamp": "2026-06-15T20:28:16Z",
+      "author": "kaizencycle",
+      "title": "Merge pull request #571 from kaizencycle/cursor/c343-signal-instrument-repairs-252c",
+      "type": "merge",
+      "severity": "info",
+      "tags": [
+        "merge",
+        "pr"
+      ],
+      "source": "github-commit",
+      "verified": false,
+      "sha": "5233477b46a96fcd0bbd5f59811631c5d1931160",
+      "_mesh_node": "mobius-civic-ai-terminal",
+      "_mesh_tier": "contributor"
+    },
+    {
+      "id": "1ff277d8-zeus-verify",
+      "timestamp": "2026-06-15T18:02:46Z",
+      "author": "ZEUS",
+      "title": "zeus: verification disputed · C-343 [skip ci]",
+      "type": "zeus-verify",
+      "severity": "info",
+      "tags": [
+        "zeus"
+      ],
+      "source": "github-commit",
+      "verified": false,
+      "sha": "1ff277d8100c9444570129cfede3693d6b41eae5",
+      "_mesh_node": "mobius-civic-ai-terminal",
+      "_mesh_tier": "contributor"
+    },
+    {
       "id": "dd97f239-merge",
       "timestamp": "2026-06-12T20:48:58Z",
       "author": "kaizencycle",
@@ -61,39 +94,6 @@
       "source": "github-commit",
       "verified": false,
       "sha": "dd97f2391b97b9f72cbd2fb623cbc75aaff92775",
-      "_mesh_node": "mobius-civic-ai-terminal",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "2404da1e-merge",
-      "timestamp": "2026-06-11T18:02:55Z",
-      "author": "kaizencycle",
-      "title": "C-339 PR-C: Terminal operating-plane hardening (16 verified optimizations)",
-      "type": "merge",
-      "severity": "info",
-      "tags": [
-        "merge",
-        "pr"
-      ],
-      "source": "github-commit",
-      "verified": false,
-      "sha": "2404da1e5ef63173503baaf1a89f9b6147ea1d9f",
-      "_mesh_node": "mobius-civic-ai-terminal",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "538de64a-zeus-verify",
-      "timestamp": "2026-06-11T18:01:51Z",
-      "author": "ZEUS",
-      "title": "zeus: verification disputed · C-339 [skip ci]",
-      "type": "zeus-verify",
-      "severity": "info",
-      "tags": [
-        "zeus"
-      ],
-      "source": "github-commit",
-      "verified": false,
-      "sha": "538de64acbc947c85b2302f0c30aecd8ae08fdfc",
       "_mesh_node": "mobius-civic-ai-terminal",
       "_mesh_tier": "contributor"
     },
