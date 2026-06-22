@@ -16,7 +16,7 @@
     "eslint-config-next": "14.2.35",
     "ethers": "6.17.0",
     "fastify": "4.27.0",
-    "lru-cache": "10.2.0",
+    "lru-cache": "11.5.1",
     "next": "14.2.35"
   }
 }
