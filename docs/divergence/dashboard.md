@@ -1,8 +1,8 @@
 # Divergence Dashboard
 
 **Repo:** `kaizencycle/Mobius-Substrate`  
-**Generated:** `2026-06-22T12:23:33Z`  
-**Open PRs:** `5`
+**Generated:** `2026-06-22T17:40:45Z`  
+**Open PRs:** `6`
 
 ## Summary
 
@@ -11,7 +11,7 @@
 | 🔴 High | 0 |
 | 🟡 Medium | 0 |
 | 🟢 Low | 0 |
-| ⚪ Unknown | 5 |
+| ⚪ Unknown | 6 |
 | 🚨 Emergency | 0 |
 
 ## Open PRs
@@ -22,7 +22,8 @@
 | ⚪ unknown | [#318](https://github.com/kaizencycle/Mobius-Substrate/pull/318) | chore(deps-dev): bump supertest and @types/superte... | @dependabot[bot] | ? | ? | — | 2026-06-11 |
 | ⚪ unknown | [#319](https://github.com/kaizencycle/Mobius-Substrate/pull/319) | chore(deps): bump nodemailer and @types/nodemailer | @dependabot[bot] | ? | ? | — | 2026-06-11 |
 | ⚪ unknown | [#320](https://github.com/kaizencycle/Mobius-Substrate/pull/320) | chore(deps): bump lru-cache from 10.2.0 to 11.5.1 | @dependabot[bot] | ? | ? | — | 2026-06-11 |
-| ⚪ unknown | [#322](https://github.com/kaizencycle/Mobius-Substrate/pull/322) | chore(deps): bump the npm-minor-patch group across... | @dependabot[bot] | ? | ? | — | 2026-06-15 |
+| ⚪ unknown | [#323](https://github.com/kaizencycle/Mobius-Substrate/pull/323) | chore(deps): bump actions/checkout from 6 to 7 in ... | @dependabot[bot] | ? | ? | — | 2026-06-22 |
+| ⚪ unknown | [#324](https://github.com/kaizencycle/Mobius-Substrate/pull/324) | chore(deps): bump the npm-minor-patch group across... | @dependabot[bot] | ? | ? | — | 2026-06-22 |
 
 ---
 
