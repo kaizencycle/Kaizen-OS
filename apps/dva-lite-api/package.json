@@ -15,9 +15,9 @@
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "1.29.0",
-    "axios": "^1.17.0",
+    "axios": "^1.18.0",
     "eslint-config-next": "14.2.35",
-    "ethers": "6.16.0",
+    "ethers": "6.17.0",
     "express": "^4.18.0",
     "next": "14.2.35",
     "prom-client": "^15.1.1"
