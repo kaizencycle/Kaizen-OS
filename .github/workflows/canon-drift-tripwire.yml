@@ -28,7 +28,7 @@ jobs:
       MAX_LAG: "2"
       FINGERPRINT: "canon-drift-tripwire"
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
 
       - name: Measure drift
         id: drift
