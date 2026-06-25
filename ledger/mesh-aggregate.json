@@ -1,6 +1,6 @@
 {
   "schema": "MNS_AGGREGATE_V1",
-  "updated_at": "2026-06-24T23:58:53.049Z",
+  "updated_at": "2026-06-25T03:36:11.928Z",
   "node_count": 5,
   "live_nodes": 3,
   "total_entries": 33,
@@ -10,7 +10,7 @@
       "tier": "sentinel",
       "node_type": "substrate",
       "entry_count": 0,
-      "fetched_at": "2026-06-24T23:58:52.622Z",
+      "fetched_at": "2026-06-25T03:36:11.597Z",
       "error": null
     },
     {
@@ -18,7 +18,7 @@
       "tier": "contributor",
       "node_type": "app",
       "entry_count": 6,
-      "fetched_at": "2026-06-24T23:58:53.048Z",
+      "fetched_at": "2026-06-25T03:36:11.928Z",
       "error": null
     },
     {
@@ -26,7 +26,7 @@
       "tier": "contributor",
       "node_type": "service",
       "entry_count": 27,
-      "fetched_at": "2026-06-24T23:58:52.798Z",
+      "fetched_at": "2026-06-25T03:36:11.744Z",
       "error": null
     },
     {
@@ -47,6 +47,22 @@
     }
   ],
   "entries": [
+    {
+      "id": "667894c1-zeus-verify",
+      "timestamp": "2026-06-25T00:02:49Z",
+      "author": "ZEUS",
+      "title": "zeus: verification disputed · C-352 [skip ci]",
+      "type": "zeus-verify",
+      "severity": "info",
+      "tags": [
+        "zeus"
+      ],
+      "source": "github-commit",
+      "verified": false,
+      "sha": "667894c1977a4bdcff31fc9d26d582a595e18b90",
+      "_mesh_node": "mobius-civic-ai-terminal",
+      "_mesh_tier": "contributor"
+    },
     {
       "id": "733072f0-merge",
       "timestamp": "2026-06-24T18:10:41Z",
@@ -125,22 +141,6 @@
       "source": "github-commit",
       "verified": false,
       "sha": "ce02c365251baf9129ed9e9b49c76f62384b04d7",
-      "_mesh_node": "mobius-civic-ai-terminal",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "cb1e5d17-zeus-verify",
-      "timestamp": "2026-06-23T18:02:37Z",
-      "author": "ZEUS",
-      "title": "zeus: verification disputed · C-351 [skip ci]",
-      "type": "zeus-verify",
-      "severity": "info",
-      "tags": [
-        "zeus"
-      ],
-      "source": "github-commit",
-      "verified": false,
-      "sha": "cb1e5d173f31473c4cfe984925400d60f1623359",
       "_mesh_node": "mobius-civic-ai-terminal",
       "_mesh_tier": "contributor"
     },
