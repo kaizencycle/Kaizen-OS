@@ -1,24 +1,24 @@
 {
   "schema": "MNS_AGGREGATE_V1",
-  "updated_at": "2026-06-26T13:03:08.301Z",
+  "updated_at": "2026-06-26T16:07:00.990Z",
   "node_count": 5,
   "live_nodes": 3,
-  "total_entries": 35,
+  "total_entries": 36,
   "nodes": [
     {
       "node_id": "mobius-substrate",
       "tier": "sentinel",
       "node_type": "substrate",
       "entry_count": 0,
-      "fetched_at": "2026-06-26T13:03:06.192Z",
+      "fetched_at": "2026-06-26T16:06:58.903Z",
       "error": null
     },
     {
       "node_id": "mobius-civic-ai-terminal",
       "tier": "contributor",
       "node_type": "app",
-      "entry_count": 8,
-      "fetched_at": "2026-06-26T13:03:08.301Z",
+      "entry_count": 9,
+      "fetched_at": "2026-06-26T16:07:00.990Z",
       "error": null
     },
     {
@@ -26,7 +26,7 @@
       "tier": "contributor",
       "node_type": "service",
       "entry_count": 27,
-      "fetched_at": "2026-06-26T13:03:06.162Z",
+      "fetched_at": "2026-06-26T16:06:58.868Z",
       "error": null
     },
     {
@@ -47,6 +47,57 @@
     }
   ],
   "entries": [
+    {
+      "id": "09b85ad0-merge",
+      "timestamp": "2026-06-26T14:25:31Z",
+      "author": "kaizencycle",
+      "title": "C-354: Bandwidth reduction — cron cadence, micro-lite endpoint, edge caching (~97%)",
+      "type": "merge",
+      "severity": "info",
+      "tags": [
+        "merge",
+        "pr"
+      ],
+      "source": "github-commit",
+      "verified": false,
+      "sha": "09b85ad040524d74b38395ec15ba4e9815050e13",
+      "_mesh_node": "mobius-civic-ai-terminal",
+      "_mesh_tier": "contributor"
+    },
+    {
+      "id": "abfd2d1c-merge",
+      "timestamp": "2026-06-26T14:16:56Z",
+      "author": "kaizencycle",
+      "title": "Merge pull request #575 from kaizencycle/c354-vault-degraded-503",
+      "type": "merge",
+      "severity": "info",
+      "tags": [
+        "merge",
+        "pr"
+      ],
+      "source": "github-commit",
+      "verified": false,
+      "sha": "abfd2d1c5468d401992e8dd4d59c373800839329",
+      "_mesh_node": "mobius-civic-ai-terminal",
+      "_mesh_tier": "contributor"
+    },
+    {
+      "id": "70396b5c-merge",
+      "timestamp": "2026-06-26T13:31:34Z",
+      "author": "kaizencycle",
+      "title": "fix(C-354): P0 — snapshot coalesce timeout + vault hang guard + tripwire fire-and-forget",
+      "type": "merge",
+      "severity": "info",
+      "tags": [
+        "merge",
+        "pr"
+      ],
+      "source": "github-commit",
+      "verified": false,
+      "sha": "70396b5c051766f441e01d8cec62b0a5e3348c71",
+      "_mesh_node": "mobius-civic-ai-terminal",
+      "_mesh_tier": "contributor"
+    },
     {
       "id": "36f62009-zeus-verify",
       "timestamp": "2026-06-26T12:04:30Z",
@@ -140,39 +191,6 @@
       "source": "github-commit",
       "verified": false,
       "sha": "09c71a384f1315168fdc91e452ce95f29c62ecfe",
-      "_mesh_node": "mobius-civic-ai-terminal",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "667894c1-zeus-verify",
-      "timestamp": "2026-06-25T00:02:49Z",
-      "author": "ZEUS",
-      "title": "zeus: verification disputed · C-352 [skip ci]",
-      "type": "zeus-verify",
-      "severity": "info",
-      "tags": [
-        "zeus"
-      ],
-      "source": "github-commit",
-      "verified": false,
-      "sha": "667894c1977a4bdcff31fc9d26d582a595e18b90",
-      "_mesh_node": "mobius-civic-ai-terminal",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "733072f0-merge",
-      "timestamp": "2026-06-24T18:10:41Z",
-      "author": "kaizencycle",
-      "title": "C-352 Optimization Pass — 20 OPTs (19 shipped, OPT-18 deferred)",
-      "type": "merge",
-      "severity": "info",
-      "tags": [
-        "merge",
-        "pr"
-      ],
-      "source": "github-commit",
-      "verified": false,
-      "sha": "733072f0e30d9fcffd1e534f149cd6a7ab4b43b0",
       "_mesh_node": "mobius-civic-ai-terminal",
       "_mesh_tier": "contributor"
     },
