@@ -1,24 +1,24 @@
 {
   "schema": "MNS_AGGREGATE_V1",
-  "updated_at": "2026-06-27T21:54:17.905Z",
+  "updated_at": "2026-06-27T22:54:55.202Z",
   "node_count": 5,
   "live_nodes": 3,
-  "total_entries": 37,
+  "total_entries": 36,
   "nodes": [
     {
       "node_id": "mobius-substrate",
       "tier": "sentinel",
       "node_type": "substrate",
       "entry_count": 0,
-      "fetched_at": "2026-06-27T21:54:15.709Z",
+      "fetched_at": "2026-06-27T22:54:52.704Z",
       "error": null
     },
     {
       "node_id": "mobius-civic-ai-terminal",
       "tier": "contributor",
       "node_type": "app",
-      "entry_count": 10,
-      "fetched_at": "2026-06-27T21:54:17.905Z",
+      "entry_count": 9,
+      "fetched_at": "2026-06-27T22:54:55.202Z",
       "error": null
     },
     {
@@ -26,7 +26,7 @@
       "tier": "contributor",
       "node_type": "service",
       "entry_count": 27,
-      "fetched_at": "2026-06-27T21:54:15.823Z",
+      "fetched_at": "2026-06-27T22:54:52.806Z",
       "error": null
     },
     {
@@ -192,23 +192,6 @@
       "source": "github-commit",
       "verified": false,
       "sha": "fa69a89f6870fc64ff375266a1e54c128802d52d",
-      "_mesh_node": "mobius-civic-ai-terminal",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "09b85ad0-merge",
-      "timestamp": "2026-06-26T14:25:31Z",
-      "author": "kaizencycle",
-      "title": "C-354: Bandwidth reduction — cron cadence, micro-lite endpoint, edge caching (~97%)",
-      "type": "merge",
-      "severity": "info",
-      "tags": [
-        "merge",
-        "pr"
-      ],
-      "source": "github-commit",
-      "verified": false,
-      "sha": "09b85ad040524d74b38395ec15ba4e9815050e13",
       "_mesh_node": "mobius-civic-ai-terminal",
       "_mesh_tier": "contributor"
     },
