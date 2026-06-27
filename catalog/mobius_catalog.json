@@ -1,6 +1,6 @@
 {
   "mobius_catalog_version": "1.0.0",
-  "generated_at": "2026-06-27T15:46:02.263Z",
+  "generated_at": "2026-06-27T16:03:18.767Z",
   "repo": {
     "name": "Mobius-Substrate",
     "url": "https://github.com/kaizencycle/Mobius-Substrate",
@@ -130,7 +130,7 @@
       "title": "EPICON C-355 — Integrity Difficulty Adjustment (IDA)",
       "category": "02-THEORETICAL-FOUNDATIONS",
       "tags": [],
-      "content_hash": "sha256:ddafffc4820269d6e206dd4f0b8aa104c3d48c960920aa8a9aa64bc29a6fc544",
+      "content_hash": "sha256:8e6f785e889d92030dd3d786183509ae58b8fb364fcb4f17a4151df0044b7bdd",
       "summary": ""
     },
     {
