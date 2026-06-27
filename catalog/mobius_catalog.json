@@ -1,15 +1,15 @@
 {
   "mobius_catalog_version": "1.0.0",
-  "generated_at": "2026-06-27T05:57:29.862Z",
+  "generated_at": "2026-06-27T16:03:18.767Z",
   "repo": {
     "name": "Mobius-Substrate",
     "url": "https://github.com/kaizencycle/Mobius-Substrate",
     "default_branch": "main",
-    "commit": "f276f85c58ba048d93488b71f2f8cb7b69f343e7"
+    "commit": ""
   },
   "stats": {
     "epiconCount": 0,
-    "docCount": 959
+    "docCount": 961
   },
   "epicons": [],
   "docs": [
@@ -123,6 +123,22 @@
       "category": "01-INTRODUCTION",
       "tags": [],
       "content_hash": "sha256:d2f79697beddd445928c123f98cbba90306d09dddd02836e33e9ddfdeda73e4a",
+      "summary": ""
+    },
+    {
+      "path": "docs/02-THEORETICAL-FOUNDATIONS/EPICON_C355_IDA.md",
+      "title": "EPICON C-355 — Integrity Difficulty Adjustment (IDA)",
+      "category": "02-THEORETICAL-FOUNDATIONS",
+      "tags": [],
+      "content_hash": "sha256:8e6f785e889d92030dd3d786183509ae58b8fb364fcb4f17a4151df0044b7bdd",
+      "summary": ""
+    },
+    {
+      "path": "docs/02-THEORETICAL-FOUNDATIONS/MOBIUS_CANON_LAWS.md",
+      "title": "MOBIUS CANON LAWS",
+      "category": "02-THEORETICAL-FOUNDATIONS",
+      "tags": [],
+      "content_hash": "sha256:8adde3fe91194349c8bed929805e863cc96639236e7921f99ace0527250f2e88",
       "summary": ""
     },
     {
