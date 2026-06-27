@@ -1,12 +1,12 @@
 {
   "schema": "MOBIUS_PULSE_V1",
-  "updated_at": "2026-06-27T19:20:59.838Z",
+  "updated_at": "2026-06-27T20:50:48.876Z",
   "cycle": "C-348",
   "cycle_date": "2026-06-22",
   "aggregate": {
     "node_count": 5,
     "live_nodes": 3,
-    "total_entries": 39
+    "total_entries": 38
   },
   "network_mii": 0.85,
   "terminal_snapshot": {
