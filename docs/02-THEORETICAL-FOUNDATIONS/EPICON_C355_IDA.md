@@ -229,7 +229,7 @@ Auto-audit. Non-halting.
 **New constitutional variable.**
 
 ```
-IPI = anomaly_density × dissent × volatility × witness_lag
+IPI = max(anomaly_density × dissent × volatility, witness_lag)
 ```
 
 Each variable is normalized to [0, 1].
@@ -246,6 +246,15 @@ Each variable is normalized to [0, 1].
 It directly encodes Judan's Participation Law. As human presence fades,
 IPI rises independent of the GI score. A perfect GI with no human witness
 produces elevated IPI. The system cannot self-certify.
+
+**Why `max` and not a pure product:**
+A multiplicative formula `a × b × c × witness_lag` collapses to zero whenever
+any upstream component is zero — a period of zero anomalies and zero dissent
+would produce IPI = 0 even with a stale or absent human witness. This directly
+contradicts the law above. The `max` form guarantees that `witness_lag` alone
+can drive the IPI into elevated territory regardless of the anomaly signal.
+The product term captures compounding pressure when multiple signals fire
+together; `witness_lag` provides the independent floor when they do not.
 
 **Interpretation:**
 
@@ -424,17 +433,46 @@ export interface IPIResult {
   computed_at: string  // ISO timestamp
 }
 
+// FAP gate inputs required for full Fountain Audit Protocol evaluation.
+// These are separate from IPI components — IPI measures pressure;
+// FAP measures whether the Fountain's confirmation conditions are met.
+export interface FAPInputs {
+  gi: number                  // current GI score
+  gi_volatility: number       // δGI/window — must be below threshold
+  quorum_coherence: number    // sentinel agreement rate [0, 1]
+  hermes_clean: boolean       // no suspicious attestation spikes
+  witness_lag_ok: boolean     // witness_lag below configured threshold
+}
+
+export function evaluateFAP(fap: FAPInputs): 'confirmed' | 'conditional' {
+  const gates = [
+    fap.gi > 0.95,
+    fap.gi_volatility < 0.05,   // implementation sets threshold
+    fap.quorum_coherence > 0.80,
+    fap.hermes_clean,
+    fap.witness_lag_ok,
+  ]
+  return gates.every(Boolean) ? 'confirmed' : 'conditional'
+}
+
 export function computeIPI(components: IPIComponents): IPIResult {
-  const score =
+  // Use max(product, witness_lag) so witness absence independently floors IPI.
+  // A pure product collapses to 0 when any upstream component is 0,
+  // which would hide a stale human witness behind zero anomaly signals.
+  const product =
     components.anomaly_density *
     components.dissent *
-    components.volatility *
-    components.witness_lag
+    components.volatility
+  const score = Math.max(product, components.witness_lag)
 
   const state = classifyIPI(score)
   const triggered_sentinels = getSentinelsForState(state)
   const human_required = score >= 0.95
 
+  // NOTE: fountain_status here reflects the IPI gate only.
+  // Full FAP confirmation (Section VIII) requires evaluateFAP() with
+  // GI, volatility, quorum coherence, HERMES cleanliness, and witness
+  // continuity inputs. Callers must combine both evaluations.
   return {
     score,
     state,
@@ -444,7 +482,7 @@ export function computeIPI(components: IPIComponents): IPIResult {
       ? 'suspended'
       : score >= 0.80
       ? 'conditional'
-      : 'confirmed',
+      : 'conditional',   // IPI alone cannot confirm — FAP gates also required
     human_required,
     computed_at: new Date().toISOString(),
   }
@@ -477,25 +515,37 @@ function getSentinelsForState(state: IPIState): string[] {
 **New contract test:** `tests/contract/ipiEscalation.test.ts`
 
 Test requirements:
-1. IPI 0.20 → state `stable`, no sentinels triggered, fountain `confirmed`
-2. IPI 0.45 → state `elevated`, HERMES + ECHO triggered only
-3. IPI 0.70 → state `critical_drift`, AUREA + JADE added, ZEUS not present
-4. IPI 0.85 → state `constitutional_instability`, ATLAS + EVE added, ZEUS not present
-5. IPI 0.97 → state `integrity_crisis`, all sentinels including ZEUS, fountain `suspended`, `human_required: true`
-6. Peak Integrity Fallacy: GI sequence [0.96, 0.98, 1.00, 0.79] → ZEUS flags anomaly
+1. `{anomaly_density:0.5, dissent:0.4, volatility:0.4, witness_lag:0.20}` → score `max(0.08, 0.20)=0.20`, state `stable`, no sentinels, fountain `conditional` (IPI gate only; FAP needed for `confirmed`)
+2. `{anomaly_density:0.8, dissent:0.7, volatility:0.8, witness_lag:0.10}` → score `max(0.448, 0.10)=0.448`, state `elevated`, HERMES + ECHO only
+3. `{anomaly_density:0.9, dissent:0.9, volatility:0.9, witness_lag:0.10}` → score `max(0.729, 0.10)=0.729`, state `critical_drift`, AUREA + JADE added, ZEUS not present
+4. `{anomaly_density:0.95, dissent:0.95, volatility:0.95, witness_lag:0.10}` → score `max(0.857, 0.10)=0.857`, state `constitutional_instability`, ATLAS + EVE added, ZEUS not present
+5. `{anomaly_density:0.99, dissent:0.99, volatility:0.99, witness_lag:0.10}` → score `max(0.970, 0.10)=0.970`, state `integrity_crisis`, all sentinels including ZEUS, fountain `suspended`, `human_required: true`
+6. Witness floor: `{anomaly_density:0, dissent:0, volatility:0, witness_lag:0.75}` → score `max(0, 0.75)=0.75`, state `critical_drift` — witness absence escalates even with zero anomaly signal
+7. FAP gate: `computeIPI` with score 0.24 returns `fountain_status: 'conditional'`; only `evaluateFAP({gi:0.97, gi_volatility:0.02, quorum_coherence:0.91, hermes_clean:true, witness_lag_ok:true})` returns `'confirmed'`
+8. Peak Integrity Fallacy: GI sequence [0.96, 0.98, 1.00, 0.79] → ZEUS flags anomaly
 
 **Snapshot-lite integration:**
 
-Add `ipi` block to snapshot-lite response:
+Add `ipi` block to snapshot-lite response. `fountain_status` in this block
+reflects IPI gate + FAP gate combined; callers must run `evaluateFAP()` and
+take the stricter of the two results:
 
 ```json
 {
   "ipi": {
     "score": 0.24,
     "state": "stable",
-    "fountain_status": "confirmed",
+    "fountain_status": "conditional",
     "human_required": false,
     "triggered_sentinels": []
+  },
+  "fap": {
+    "gi": 0.97,
+    "gi_volatility": 0.02,
+    "quorum_coherence": 0.91,
+    "hermes_clean": true,
+    "witness_lag_ok": true,
+    "result": "confirmed"
   }
 }
 ```
