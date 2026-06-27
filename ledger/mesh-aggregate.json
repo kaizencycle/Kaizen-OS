@@ -1,24 +1,24 @@
 {
   "schema": "MNS_AGGREGATE_V1",
-  "updated_at": "2026-06-27T20:50:48.786Z",
+  "updated_at": "2026-06-27T21:54:17.905Z",
   "node_count": 5,
   "live_nodes": 3,
-  "total_entries": 38,
+  "total_entries": 37,
   "nodes": [
     {
       "node_id": "mobius-substrate",
       "tier": "sentinel",
       "node_type": "substrate",
       "entry_count": 0,
-      "fetched_at": "2026-06-27T20:50:46.689Z",
+      "fetched_at": "2026-06-27T21:54:15.709Z",
       "error": null
     },
     {
       "node_id": "mobius-civic-ai-terminal",
       "tier": "contributor",
       "node_type": "app",
-      "entry_count": 11,
-      "fetched_at": "2026-06-27T20:50:48.786Z",
+      "entry_count": 10,
+      "fetched_at": "2026-06-27T21:54:17.905Z",
       "error": null
     },
     {
@@ -26,7 +26,7 @@
       "tier": "contributor",
       "node_type": "service",
       "entry_count": 27,
-      "fetched_at": "2026-06-27T20:50:46.814Z",
+      "fetched_at": "2026-06-27T21:54:15.823Z",
       "error": null
     },
     {
@@ -209,23 +209,6 @@
       "source": "github-commit",
       "verified": false,
       "sha": "09b85ad040524d74b38395ec15ba4e9815050e13",
-      "_mesh_node": "mobius-civic-ai-terminal",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "abfd2d1c-merge",
-      "timestamp": "2026-06-26T14:16:56Z",
-      "author": "kaizencycle",
-      "title": "Merge pull request #575 from kaizencycle/c354-vault-degraded-503",
-      "type": "merge",
-      "severity": "info",
-      "tags": [
-        "merge",
-        "pr"
-      ],
-      "source": "github-commit",
-      "verified": false,
-      "sha": "abfd2d1c5468d401992e8dd4d59c373800839329",
       "_mesh_node": "mobius-civic-ai-terminal",
       "_mesh_tier": "contributor"
     },
