@@ -1,7 +1,7 @@
 # Divergence Dashboard
 
 **Repo:** `kaizencycle/Mobius-Substrate`  
-**Generated:** `2026-06-27T14:03:44Z`  
+**Generated:** `2026-06-27T19:42:15Z`  
 **Open PRs:** `3`
 
 ## Summary
@@ -18,9 +18,9 @@
 
 | Sev | PR | Title | Author | EPICON | Gate | Mode | Updated |
 |-----|---:|-------|--------|--------|------|------|---------|
-| ⚪ unknown | [#317](https://github.com/kaizencycle/Mobius-Substrate/pull/317) | chore(deps-dev): bump hardhat from 2.22.5 to 3.9.0 | @dependabot[bot] | ? | ? | — | 2026-06-22 |
+| ⚪ unknown | [#317](https://github.com/kaizencycle/Mobius-Substrate/pull/317) | chore(deps-dev): bump hardhat from 2.22.5 to 3.9.0 | @dependabot[bot] | ? | ? | — | 2026-06-27 |
 | ⚪ unknown | [#320](https://github.com/kaizencycle/Mobius-Substrate/pull/320) | chore(deps): bump lru-cache from 10.2.0 to 11.5.1 | @dependabot[bot] | ? | ? | — | 2026-06-22 |
-| ⚪ unknown | [#326](https://github.com/kaizencycle/Mobius-Substrate/pull/326) | chore(deps): bump nodemailer from 8.0.11 to 9.0.1 | @dependabot[bot] | ? | ? | — | 2026-06-22 |
+| ⚪ unknown | [#326](https://github.com/kaizencycle/Mobius-Substrate/pull/326) | chore(deps): bump nodemailer from 8.0.11 to 9.0.1 | @dependabot[bot] | ? | ? | — | 2026-06-27 |
 
 ---
 

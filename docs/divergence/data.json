@@ -1,6 +1,6 @@
 {
   "repo": "kaizencycle/Mobius-Substrate",
-  "generated_at": "2026-06-27T14:03:44Z",
+  "generated_at": "2026-06-27T19:42:15Z",
   "open_pr_count": 3,
   "by_severity": {
     "high": 0,
@@ -15,7 +15,7 @@
       "title": "chore(deps-dev): bump hardhat from 2.22.5 to 3.9.0",
       "url": "https://github.com/kaizencycle/Mobius-Substrate/pull/317",
       "author": "dependabot[bot]",
-      "updated_at": "2026-06-22T17:43:21Z",
+      "updated_at": "2026-06-27T16:14:02Z",
       "created_at": "2026-06-11T23:45:46Z",
       "labels": [],
       "mode": "normal",
@@ -49,7 +49,7 @@
       "title": "chore(deps): bump nodemailer from 8.0.11 to 9.0.1",
       "url": "https://github.com/kaizencycle/Mobius-Substrate/pull/326",
       "author": "dependabot[bot]",
-      "updated_at": "2026-06-22T17:44:34Z",
+      "updated_at": "2026-06-27T16:13:51Z",
       "created_at": "2026-06-22T17:43:03Z",
       "labels": [],
       "mode": "normal",
