@@ -1,24 +1,24 @@
 {
   "schema": "MNS_AGGREGATE_V1",
-  "updated_at": "2026-06-27T15:08:07.564Z",
+  "updated_at": "2026-06-27T16:57:21.349Z",
   "node_count": 5,
   "live_nodes": 3,
-  "total_entries": 37,
+  "total_entries": 39,
   "nodes": [
     {
       "node_id": "mobius-substrate",
       "tier": "sentinel",
       "node_type": "substrate",
       "entry_count": 0,
-      "fetched_at": "2026-06-27T15:08:05.391Z",
+      "fetched_at": "2026-06-27T16:57:19.183Z",
       "error": null
     },
     {
       "node_id": "mobius-civic-ai-terminal",
       "tier": "contributor",
       "node_type": "app",
-      "entry_count": 10,
-      "fetched_at": "2026-06-27T15:08:07.564Z",
+      "entry_count": 12,
+      "fetched_at": "2026-06-27T16:57:21.348Z",
       "error": null
     },
     {
@@ -26,7 +26,7 @@
       "tier": "contributor",
       "node_type": "service",
       "entry_count": 27,
-      "fetched_at": "2026-06-27T15:08:05.387Z",
+      "fetched_at": "2026-06-27T16:57:19.269Z",
       "error": null
     },
     {
@@ -47,6 +47,57 @@
     }
   ],
   "entries": [
+    {
+      "id": "90bc3f8c-merge",
+      "timestamp": "2026-06-27T16:56:06Z",
+      "author": "kaizencycle",
+      "title": "fix(C-355): address Codex P2s — ipi_data_insufficient always set, assert throws on failure",
+      "type": "merge",
+      "severity": "info",
+      "tags": [
+        "merge",
+        "pr"
+      ],
+      "source": "github-commit",
+      "verified": false,
+      "sha": "90bc3f8ce5a3bd9bd4a8bb94a046b871f6f8167d",
+      "_mesh_node": "mobius-civic-ai-terminal",
+      "_mesh_tier": "contributor"
+    },
+    {
+      "id": "2597d02b-merge",
+      "timestamp": "2026-06-27T16:13:33Z",
+      "author": "kaizencycle",
+      "title": "C-355: IPI Module — Integrity Difficulty Adjustment (IDA)",
+      "type": "merge",
+      "severity": "info",
+      "tags": [
+        "merge",
+        "pr"
+      ],
+      "source": "github-commit",
+      "verified": false,
+      "sha": "2597d02b9a195f9d9efc7545e8fb721859bbd07b",
+      "_mesh_node": "mobius-civic-ai-terminal",
+      "_mesh_tier": "contributor"
+    },
+    {
+      "id": "fbeeb12b-merge",
+      "timestamp": "2026-06-27T16:09:26Z",
+      "author": "kaizencycle",
+      "title": "C-354: Throttle Vercel cron schedules — 547 GB → ~126 GB bandwidth",
+      "type": "merge",
+      "severity": "info",
+      "tags": [
+        "merge",
+        "pr"
+      ],
+      "source": "github-commit",
+      "verified": false,
+      "sha": "fbeeb12ba314cc5833075f7460f8498a699736b5",
+      "_mesh_node": "mobius-civic-ai-terminal",
+      "_mesh_tier": "contributor"
+    },
     {
       "id": "2b579e43-zeus-verify",
       "timestamp": "2026-06-27T12:02:05Z",
@@ -192,22 +243,6 @@
       "source": "github-commit",
       "verified": false,
       "sha": "36f62009e4b3a98c6318e8cb5faa4b67128e4772",
-      "_mesh_node": "mobius-civic-ai-terminal",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "d3f2a7ba-zeus-verify",
-      "timestamp": "2026-06-26T06:03:14Z",
-      "author": "ZEUS",
-      "title": "zeus: verification disputed · C-354 [skip ci]",
-      "type": "zeus-verify",
-      "severity": "info",
-      "tags": [
-        "zeus"
-      ],
-      "source": "github-commit",
-      "verified": false,
-      "sha": "d3f2a7ba58cd14ba29caf3b9b38025b7165bf4f2",
       "_mesh_node": "mobius-civic-ai-terminal",
       "_mesh_tier": "contributor"
     },
