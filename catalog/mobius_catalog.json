@@ -1,15 +1,15 @@
 {
   "mobius_catalog_version": "1.0.0",
-  "generated_at": "2026-06-28T06:23:22.133Z",
+  "generated_at": "2026-06-28T17:03:50.872Z",
   "repo": {
     "name": "Mobius-Substrate",
     "url": "https://github.com/kaizencycle/Mobius-Substrate",
     "default_branch": "main",
-    "commit": "97557bc88cc20dfa2951c5b3d066c9d44657036c"
+    "commit": ""
   },
   "stats": {
     "epiconCount": 0,
-    "docCount": 961
+    "docCount": 962
   },
   "epicons": [],
   "docs": [
@@ -7313,6 +7313,14 @@
       "category": "epicon",
       "tags": [],
       "content_hash": "sha256:086054a14e77af097c6888508b273067e7e679a7438f258fdbbd1596ee0cd1ff",
+      "summary": ""
+    },
+    {
+      "path": "docs/epicon/EPICON-C356-MOBIUS-001.md",
+      "title": "EPICON — C-356 MOBIUS.md Constitutional Machine Interface",
+      "category": "epicon",
+      "tags": [],
+      "content_hash": "sha256:68fd4b453ccfa57587b5e8be038961ff2d0371d41aa2e00351af5ebbe5dcad1c",
       "summary": ""
     },
     {
