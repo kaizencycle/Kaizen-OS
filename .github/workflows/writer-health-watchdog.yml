@@ -60,9 +60,9 @@ jobs:
               now = datetime.now(timezone.utc)
               days_since = (now - last_run).days
 
-          if days_since >= 14:
+          if days_since >= 2:
               status = "stale"
-          elif days_since >= 7:
+          elif days_since >= 1:
               status = "warning"
           else:
               status = "ok"
@@ -75,6 +75,32 @@ jobs:
 
           print(f"Status: {status} | Days since last run: {days_since} | Last cycle: {last_cycle}")
           PY
+
+      - name: Ensure writer-health-watchdog label exists
+        if: steps.health.outputs.writer_status == 'stale' || steps.health.outputs.writer_status == 'missing'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            try {
+              await github.rest.issues.getLabel({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                name: 'writer-health-watchdog',
+              });
+            } catch (e) {
+              if (e.status === 404) {
+                await github.rest.issues.createLabel({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  name: 'writer-health-watchdog',
+                  color: 'f59e0b',
+                  description: 'Opened by writer-health-watchdog when mobius-bot-state-sync is silent',
+                });
+                console.log('Created label writer-health-watchdog');
+              } else {
+                throw e;
+              }
+            }
 
       - name: Open or update writer-health issue (stale or missing)
         if: steps.health.outputs.writer_status == 'stale' || steps.health.outputs.writer_status == 'missing'
@@ -91,7 +117,7 @@ jobs:
             const body = [
               `## Writer Health Alert`,
               '',
-              `Writer has not run in **${days} days** (threshold: 14).`,
+              `Writer has not run in **${days} days** (threshold: 2 days — before drift tripwire fires).`,
               '',
               status === 'missing'
                 ? '`state/writer-health.json` is missing — writer may never have run or the file was deleted.'
@@ -107,7 +133,7 @@ jobs:
               '4. Verify `MOBIUS_BOT_APP_ID` and `MOBIUS_BOT_PRIVATE_KEY` secrets are valid',
               '',
               '**Two-layer detection:**',
-              '- Layer 1 (this watchdog): writer silent 14+ days',
+              '- Layer 1 (this watchdog): writer silent 2+ days — fires before or concurrent with drift',
               '- Layer 2 (canon-drift-tripwire): cycle.json drift 2+ cycles',
               '',
               `Fingerprint: \`${fingerprint}\` — updated in place, never duplicated.`,
