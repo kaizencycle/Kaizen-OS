@@ -1,9 +1,123 @@
 {
-  "cycle": "C-356",
-  "date": "2026-06-28",
-  "writer": "manual-recovery-c356",
-  "ledger_verified": false,
-  "ledger_snapshot": null,
-  "narrative": null,
-  "recovery_note": "Manual stub \u2014 writer scheduling lapsed. See issue #327."
+  "meta": {
+    "cycle_id": "C-356",
+    "date": "2026-06-28",
+    "timezone": "UTC",
+    "chamber": "Cycle Journal",
+    "tags": ["canon_recovery", "writer_health", "infrastructure", "watchdog", "epicon"],
+    "mood_vector": "recovery"
+  },
+  "sweep": {
+    "statement": "C-356 cycle journal — manual recovery. Writer scheduling lapsed (issue #327); STATE/CYCLE.txt lagged at C-348 while cycle.json was C-356. This cycle installs Layer 1 upstream writer-health detection and advances all state pointers.",
+    "style": "mobius"
+  },
+  "signals": [
+    {
+      "timestamp": "2026-06-28T00:00:00Z",
+      "domain": "infrastructure",
+      "statement": "canon-drift-tripwire detected cycle.json at C-348 instead of expected C-356, confirming writer scheduling lapse. Drift accumulated silently over 8 cycles.",
+      "sources": ["github:issue/327", "canon-drift-tripwire"],
+      "confidence": 1.0,
+      "attribution": "kaizencycle (Custodian)"
+    },
+    {
+      "timestamp": "2026-06-28T00:00:00Z",
+      "domain": "governance",
+      "statement": "MOBIUS.md constitutional machine interface committed and merged via PR #329 (C-356). Single authoritative AI orientation document now lives at repo root.",
+      "sources": ["github:pr/329"],
+      "confidence": 1.0,
+      "attribution": "kaizencycle (Custodian)"
+    },
+    {
+      "timestamp": "2026-06-28T00:00:00Z",
+      "domain": "infrastructure",
+      "statement": "Two-layer writer detection installed: Layer 1 writer-health-watchdog (14-day silence threshold) + mobius-bot-state-sync canary stamp. Closes gap where only output drift (Layer 2) was monitored.",
+      "sources": ["github:pr/330", "EPICON-C356-SUBSTRATE-001"],
+      "confidence": 1.0,
+      "attribution": "kaizencycle (Custodian)"
+    }
+  ],
+  "integrity": {
+    "status": "recovery",
+    "domains_touched": ["STATE", "journals/cycles", "state", ".github/workflows"],
+    "watch_items": [
+      {
+        "indicator": "sentinel-api-keys",
+        "direction": "blocked",
+        "note": "ANTHROPIC_API_KEY and OPENAI_API_KEY missing from repo secrets — sentinel review fails closed. Requires owner action in Settings → Secrets → Actions.",
+        "evidence": ["github:pr/330:check/sentinel"]
+      },
+      {
+        "indicator": "writer-scheduling",
+        "direction": "resolved",
+        "note": "mobius-bot-state-sync lapse that caused 8-cycle drift is being addressed with writer-health canary and watchdog.",
+        "evidence": ["github:issue/327", "github:pr/330"]
+      }
+    ]
+  },
+  "agent_alignment": {
+    "atlas": {
+      "posture": "recovery",
+      "note": "Strategic coherence maintained — recovery PR scoped to infrastructure only, no canon mutations."
+    },
+    "zeus": {
+      "posture": "verify",
+      "note": "STATE/CYCLE.txt advanced C-348 → C-356 matches cycle.json arithmetic anchor (C-288 = 2026-04-21)."
+    }
+  },
+  "insight": "Writer silence is invisible until output drifts. Layer 1 upstream detection (writer-health-watchdog) closes the 8-cycle blind spot revealed by issue #327.",
+  "decisions": [
+    {
+      "decision": "Install writer-health canary stamp inside mobius-bot-state-sync",
+      "rationale": "State file approach (not a separate API call) keeps the detection coupled to the writer itself — canary is written iff the writer runs and commits successfully.",
+      "evidence": ["github:issue/327"],
+      "owner": "kaizencycle",
+      "risk": "low"
+    },
+    {
+      "decision": "Seed state/writer-health.json manually for C-356 bootstrap",
+      "rationale": "Watchdog needs a baseline file to avoid false-positive on first run before bot executes.",
+      "evidence": ["EPICON-C356-SUBSTRATE-001"],
+      "owner": "kaizencycle",
+      "risk": "low"
+    }
+  ],
+  "actions": [
+    {
+      "task": "Add ANTHROPIC_API_KEY and OPENAI_API_KEY to repo secrets to unblock sentinel review on PR #330",
+      "priority": "P1",
+      "owner": "kaizencycle"
+    },
+    {
+      "task": "Trigger mobius-bot-state-sync manually post-merge to confirm writer-health canary writes correctly",
+      "priority": "P2",
+      "owner": "kaizencycle"
+    },
+    {
+      "task": "Create writer-health-watchdog label (color #f59e0b) in repo Issues → Labels",
+      "priority": "P2",
+      "owner": "kaizencycle"
+    },
+    {
+      "task": "Evaluate Dependabot hardhat v2→v3 migration (#317) in dedicated branch next cycle",
+      "priority": "P3",
+      "owner": "kaizencycle"
+    }
+  ],
+  "topology": {
+    "nodes": ["mobius-bot-state-sync", "writer-health-watchdog", "canon-drift-tripwire", "STATE/CYCLE.txt", "cycle.json", "state/writer-health.json"],
+    "edges": [
+      {"from": "mobius-bot-state-sync", "to": "state/writer-health.json", "label": "writes canary"},
+      {"from": "writer-health-watchdog", "to": "state/writer-health.json", "label": "reads"},
+      {"from": "canon-drift-tripwire", "to": "cycle.json", "label": "reads"}
+    ],
+    "failure_corridors": ["writer scheduling lapse → drift accumulates → Layer 2 fires after 2 cycles"],
+    "chokepoints": ["MOBIUS_BOT_APP_ID + MOBIUS_BOT_PRIVATE_KEY secrets required for writer"]
+  },
+  "seal": {
+    "compiled_at": "2026-06-28T00:00:00Z",
+    "contributors": ["kaizencycle (Custodian, DVA.02)", "ATLAS (witness)", "ZEUS (witness)"],
+    "canon_hash": "",
+    "statement": "C-356 recovery cycle. State pointers advanced, writer-health detection installed. No canon mutations, no attested values modified."
+  }
 }
