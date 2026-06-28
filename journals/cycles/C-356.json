@@ -56,13 +56,17 @@
     ]
   },
   "agent_alignment": {
-    "atlas": {
-      "strategic_assessment": "Recovery PR scoped to infrastructure only; no canon mutations. Coherence maintained.",
-      "risk_movement": "Writer-health watchdog reduces future blind-spot risk."
+    "jade": {
+      "clarity_improvements": "EPICON intent record and cycle journal provide auditable recovery narrative for the C-348→C-356 drift event.",
+      "blind_spots_reduced": "Writer-health watchdog closes the upstream silence blind spot; Layer 1 now detects writer failure before output drifts."
     },
     "zeus": {
       "risk_movement": "STATE/CYCLE.txt advanced C-348 → C-356 matches cycle.json arithmetic anchor (C-288 = 2026-04-21). Math verified.",
-      "warning_signs": "Sentinel API keys absent — sentinel review cannot complete until owner adds secrets."
+      "warning_signs": "Sentinel API keys absent — sentinel review cannot complete until owner adds ANTHROPIC_API_KEY and OPENAI_API_KEY to repo secrets."
+    },
+    "hermes": {
+      "beneficiaries": "kaizencycle (Custodian) gains early warning via Layer 1 watchdog; all agents benefit from accurate cycle pointer.",
+      "incentive_shifts": "Canary stamp couples writer health signal to writer execution — no run means no canary, no false green."
     }
   },
   "insight": "Writer silence is invisible until output drifts. Layer 1 upstream detection (writer-health-watchdog) closes the 8-cycle blind spot revealed by issue #327.",
