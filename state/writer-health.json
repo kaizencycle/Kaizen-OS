@@ -1,0 +1,7 @@
+{
+  "writer": "mobius-bot-state-sync",
+  "last_run_at": "2026-06-28T00:00:00Z",
+  "last_cycle": "C-356",
+  "status": "manual-seed-c356",
+  "note": "Seeded C-356 recovery. Bot will overwrite on next successful scheduled run. See issue #327."
+}
