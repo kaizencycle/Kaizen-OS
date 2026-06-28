@@ -437,6 +437,9 @@ jobs:
       - name: Render combined sentinel report + decide pass/fail
         id: decide
         uses: actions/github-script@v9
+        env:
+          AUREA_JSON: ${{ steps.aurea.outputs.json || '{}' }}
+          ATLAS_JSON: ${{ steps.atlas.outputs.json || '{}' }}
         with:
           script: |
             const labels = `${{ steps.gate.outputs.labels }}` || '';
@@ -446,9 +449,9 @@ jobs:
             let aurea = {};
             let atlas = {};
 
-            // Parse AUREA output
+            // Parse AUREA output (via env var to avoid control-char injection in template literal)
             try {
-              const aureaJson = `${{ steps.aurea.outputs.json || '{}' }}`;
+              const aureaJson = process.env.AUREA_JSON || '{}';
               if (aureaJson && aureaJson !== '{}') {
                 aurea = JSON.parse(aureaJson);
               } else if (wantsAurea) {
@@ -462,9 +465,9 @@ jobs:
               aurea = { verdict: 'fail', blocking: ['Failed to parse AUREA output: ' + e.message], non_blocking: [], summary: 'Parse error' };
             }
 
-            // Parse ATLAS output
+            // Parse ATLAS output (via env var to avoid control-char injection in template literal)
             try {
-              const atlasJson = `${{ steps.atlas.outputs.json || '{}' }}`;
+              const atlasJson = process.env.ATLAS_JSON || '{}';
               if (atlasJson && atlasJson !== '{}') {
                 atlas = JSON.parse(atlasJson);
               } else if (wantsAtlas) {
