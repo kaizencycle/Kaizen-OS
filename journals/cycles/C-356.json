@@ -5,7 +5,7 @@
     "timezone": "UTC",
     "chamber": "Cycle Journal",
     "tags": ["canon_recovery", "writer_health", "infrastructure", "watchdog", "epicon"],
-    "mood_vector": "recovery"
+    "mood_vector": "Focused"
   },
   "sweep": {
     "statement": "C-356 cycle journal — manual recovery. Writer scheduling lapsed (issue #327); STATE/CYCLE.txt lagged at C-348 while cycle.json was C-356. This cycle installs Layer 1 upstream writer-health detection and advances all state pointers.",
@@ -14,7 +14,7 @@
   "signals": [
     {
       "timestamp": "2026-06-28T00:00:00Z",
-      "domain": "infrastructure",
+      "domain": "tech",
       "statement": "canon-drift-tripwire detected cycle.json at C-348 instead of expected C-356, confirming writer scheduling lapse. Drift accumulated silently over 8 cycles.",
       "sources": ["github:issue/327", "canon-drift-tripwire"],
       "confidence": 1.0,
@@ -30,7 +30,7 @@
     },
     {
       "timestamp": "2026-06-28T00:00:00Z",
-      "domain": "infrastructure",
+      "domain": "tech",
       "statement": "Two-layer writer detection installed: Layer 1 writer-health-watchdog (14-day silence threshold) + mobius-bot-state-sync canary stamp. Closes gap where only output drift (Layer 2) was monitored.",
       "sources": ["github:pr/330", "EPICON-C356-SUBSTRATE-001"],
       "confidence": 1.0,
@@ -38,18 +38,18 @@
     }
   ],
   "integrity": {
-    "status": "recovery",
+    "status": "watch",
     "domains_touched": ["STATE", "journals/cycles", "state", ".github/workflows"],
     "watch_items": [
       {
         "indicator": "sentinel-api-keys",
-        "direction": "blocked",
+        "direction": "flat",
         "note": "ANTHROPIC_API_KEY and OPENAI_API_KEY missing from repo secrets — sentinel review fails closed. Requires owner action in Settings → Secrets → Actions.",
         "evidence": ["github:pr/330:check/sentinel"]
       },
       {
         "indicator": "writer-scheduling",
-        "direction": "resolved",
+        "direction": "down",
         "note": "mobius-bot-state-sync lapse that caused 8-cycle drift is being addressed with writer-health canary and watchdog.",
         "evidence": ["github:issue/327", "github:pr/330"]
       }
@@ -57,12 +57,12 @@
   },
   "agent_alignment": {
     "atlas": {
-      "posture": "recovery",
-      "note": "Strategic coherence maintained — recovery PR scoped to infrastructure only, no canon mutations."
+      "strategic_assessment": "Recovery PR scoped to infrastructure only; no canon mutations. Coherence maintained.",
+      "risk_movement": "Writer-health watchdog reduces future blind-spot risk."
     },
     "zeus": {
-      "posture": "verify",
-      "note": "STATE/CYCLE.txt advanced C-348 → C-356 matches cycle.json arithmetic anchor (C-288 = 2026-04-21)."
+      "risk_movement": "STATE/CYCLE.txt advanced C-348 → C-356 matches cycle.json arithmetic anchor (C-288 = 2026-04-21). Math verified.",
+      "warning_signs": "Sentinel API keys absent — sentinel review cannot complete until owner adds secrets."
     }
   },
   "insight": "Writer silence is invisible until output drifts. Layer 1 upstream detection (writer-health-watchdog) closes the 8-cycle blind spot revealed by issue #327.",
@@ -107,9 +107,9 @@
   "topology": {
     "nodes": ["mobius-bot-state-sync", "writer-health-watchdog", "canon-drift-tripwire", "STATE/CYCLE.txt", "cycle.json", "state/writer-health.json"],
     "edges": [
-      {"from": "mobius-bot-state-sync", "to": "state/writer-health.json", "label": "writes canary"},
-      {"from": "writer-health-watchdog", "to": "state/writer-health.json", "label": "reads"},
-      {"from": "canon-drift-tripwire", "to": "cycle.json", "label": "reads"}
+      {"from": "mobius-bot-state-sync", "to": "state/writer-health.json", "relationship": "writes canary"},
+      {"from": "writer-health-watchdog", "to": "state/writer-health.json", "relationship": "reads"},
+      {"from": "canon-drift-tripwire", "to": "cycle.json", "relationship": "reads"}
     ],
     "failure_corridors": ["writer scheduling lapse → drift accumulates → Layer 2 fires after 2 cycles"],
     "chokepoints": ["MOBIUS_BOT_APP_ID + MOBIUS_BOT_PRIVATE_KEY secrets required for writer"]
