@@ -18,7 +18,6 @@ import {
   hashDatFile,
   datFileName,
   verifyDatChain,
-  parseDatFile,
   GENESIS_HASH,
   DAT_VERSION,
   MIC_PER_BLOCK,

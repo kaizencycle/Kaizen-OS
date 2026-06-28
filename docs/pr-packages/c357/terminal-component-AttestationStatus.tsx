@@ -10,7 +10,6 @@
 
 "use client"
 
-import { useEffect, useState } from "react"
 import type { VaultSealedBlock } from "@/lib/dat/types"
 import type { CpcManifestResponse } from "@/lib/cpc/hashAnchor"
 
