@@ -1,6 +1,6 @@
 {
   "schema": "MNS_AGGREGATE_V1",
-  "updated_at": "2026-06-27T23:54:25.898Z",
+  "updated_at": "2026-06-28T02:34:02.403Z",
   "node_count": 5,
   "live_nodes": 3,
   "total_entries": 37,
@@ -10,7 +10,7 @@
       "tier": "sentinel",
       "node_type": "substrate",
       "entry_count": 0,
-      "fetched_at": "2026-06-27T23:54:25.576Z",
+      "fetched_at": "2026-06-28T02:34:01.806Z",
       "error": null
     },
     {
@@ -18,7 +18,7 @@
       "tier": "contributor",
       "node_type": "app",
       "entry_count": 10,
-      "fetched_at": "2026-06-27T23:54:25.897Z",
+      "fetched_at": "2026-06-28T02:34:02.403Z",
       "error": null
     },
     {
@@ -26,7 +26,7 @@
       "tier": "contributor",
       "node_type": "service",
       "entry_count": 27,
-      "fetched_at": "2026-06-27T23:54:25.605Z",
+      "fetched_at": "2026-06-28T02:34:01.891Z",
       "error": null
     },
     {
@@ -47,6 +47,39 @@
     }
   ],
   "entries": [
+    {
+      "id": "8df47072-zeus-verify",
+      "timestamp": "2026-06-28T00:04:13Z",
+      "author": "ZEUS",
+      "title": "zeus: verification disputed · C-355 [skip ci]",
+      "type": "zeus-verify",
+      "severity": "info",
+      "tags": [
+        "zeus"
+      ],
+      "source": "github-commit",
+      "verified": false,
+      "sha": "8df470720cf76c22652a760aecca106f669cd7a5",
+      "_mesh_node": "mobius-civic-ai-terminal",
+      "_mesh_tier": "contributor"
+    },
+    {
+      "id": "1c26b1ca-merge",
+      "timestamp": "2026-06-27T23:54:50Z",
+      "author": "kaizencycle",
+      "title": "feat(C-356): KV resilience — suspension is a performance event, not a failure",
+      "type": "merge",
+      "severity": "info",
+      "tags": [
+        "merge",
+        "pr"
+      ],
+      "source": "github-commit",
+      "verified": false,
+      "sha": "1c26b1ca634caf7b329951ee779f9839a8faf58c",
+      "_mesh_node": "mobius-civic-ai-terminal",
+      "_mesh_tier": "contributor"
+    },
     {
       "id": "84eee6b5-merge",
       "timestamp": "2026-06-27T23:06:02Z",
@@ -176,39 +209,6 @@
       "source": "github-commit",
       "verified": false,
       "sha": "bd6e73cc4218cfa9456ffbb902901e8e4cc4d043",
-      "_mesh_node": "mobius-civic-ai-terminal",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "e74da536-zeus-verify",
-      "timestamp": "2026-06-26T18:05:06Z",
-      "author": "ZEUS",
-      "title": "zeus: verification disputed · C-354 [skip ci]",
-      "type": "zeus-verify",
-      "severity": "info",
-      "tags": [
-        "zeus"
-      ],
-      "source": "github-commit",
-      "verified": false,
-      "sha": "e74da536e69634208df57bdb7bb053a2c1c00f4f",
-      "_mesh_node": "mobius-civic-ai-terminal",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "fa69a89f-merge",
-      "timestamp": "2026-06-26T17:53:34Z",
-      "author": "kaizencycle",
-      "title": "perf(c354): throttle Vercel cron schedules to reduce Upstash bandwidth",
-      "type": "merge",
-      "severity": "info",
-      "tags": [
-        "merge",
-        "pr"
-      ],
-      "source": "github-commit",
-      "verified": false,
-      "sha": "fa69a89f6870fc64ff375266a1e54c128802d52d",
       "_mesh_node": "mobius-civic-ai-terminal",
       "_mesh_tier": "contributor"
     },
