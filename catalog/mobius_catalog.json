@@ -1,6 +1,6 @@
 {
   "mobius_catalog_version": "1.0.0",
-  "generated_at": "2026-06-28T17:03:50.872Z",
+  "generated_at": "2026-06-28T18:06:08.465Z",
   "repo": {
     "name": "Mobius-Substrate",
     "url": "https://github.com/kaizencycle/Mobius-Substrate",
@@ -9,7 +9,7 @@
   },
   "stats": {
     "epiconCount": 0,
-    "docCount": 962
+    "docCount": 963
   },
   "epicons": [],
   "docs": [
@@ -7321,6 +7321,14 @@
       "category": "epicon",
       "tags": [],
       "content_hash": "sha256:68fd4b453ccfa57587b5e8be038961ff2d0371d41aa2e00351af5ebbe5dcad1c",
+      "summary": ""
+    },
+    {
+      "path": "docs/epicon/EPICON-C356-SUBSTRATE-001.md",
+      "title": "EPICON — C-356 Unified Substrate PR: Cycle Sync Recovery + Writer Health Watchdog",
+      "category": "epicon",
+      "tags": [],
+      "content_hash": "sha256:c80df61b6de46335db35f6812c553140ace34c687e501210515b6bdb241bb6e9",
       "summary": ""
     },
     {
