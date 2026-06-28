@@ -110,6 +110,9 @@ export async function canonizeReserveBlocks(
 
     log(`[canonize] Building ${fileName}: blocks ${blockStart}–${blockEnd}`)
 
+    // Capture the tip before building so we can verify from the correct starting hash
+    const fileStartHash = chainTipHash
+
     // Build records
     const records: DatBlockRecord[] = []
     for (const block of fileBlocks) {
@@ -126,8 +129,8 @@ export async function canonizeReserveBlocks(
 
     if (records.length === 0) continue
 
-    // Verify chain before writing
-    const verification = verifyDatChain(records)
+    // Verify chain before writing — pass the pre-file tip so cross-file prev_hash validates correctly
+    const verification = verifyDatChain(records, fileStartHash)
     if (!verification.valid) {
       errors.push({
         dat_file: fileName,
