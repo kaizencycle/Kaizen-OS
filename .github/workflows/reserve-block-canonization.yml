@@ -1,9 +1,15 @@
+# ## Authority Provenance
+# C-357 cold canon verification workflow. Authority declared using
+# docs/templates/EPICON_FOUNDER_STANDING.md — @kaizencycle (Custodian, DVA.02).
+#
 # MOBIUS-CLASS: canon-integrity
 # OWNER: @kaizencycle
 # INTRODUCED: C-357
 # LAST-REVIEWED: 2026-06-28
 # STATUS: active
-# PURPOSE: Verify Reserve Block NDJSON .dat hash chain on push to canon/reserve-blocks/
+# PURPOSE: Verify Reserve Block NDJSON .dat hash chain on push to
+#          canon/reserve-blocks/. Posts EPICON canonization event to terminal
+#          on main. GitHub commit = substrate attestation for historical blocks.
 
 name: Reserve Block .dat Canonization Seal
 
@@ -17,6 +23,7 @@ on:
     branches:
       - main
       - 'cursor/**'
+      - 'c357-*'
   workflow_dispatch:
     inputs:
       dry_run:
@@ -51,7 +58,7 @@ jobs:
           if [ -f canon/reserve-blocks/MANIFEST.json ]; then
             node scripts/verify-dat-chain.js canon/reserve-blocks/
           else
-            echo "No MANIFEST.json yet — skipping chain verify (placeholder only)"
+            echo "No MANIFEST.json yet — placeholder only, skipping chain verify"
             echo "file_count=0" >> "$GITHUB_OUTPUT"
             echo "total_blocks=0" >> "$GITHUB_OUTPUT"
           fi
@@ -60,16 +67,22 @@ jobs:
         if: always()
         run: |
           echo "## Reserve Block .dat Chain Verification" >> "$GITHUB_STEP_SUMMARY"
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+
           if [ "${{ steps.verify.outcome }}" == "success" ]; then
             echo "### ✅ Chain Valid" >> "$GITHUB_STEP_SUMMARY"
+            echo "" >> "$GITHUB_STEP_SUMMARY"
             echo "| Metric | Value |" >> "$GITHUB_STEP_SUMMARY"
             echo "|--------|-------|" >> "$GITHUB_STEP_SUMMARY"
             echo "| .dat files | ${{ steps.verify.outputs.file_count }} |" >> "$GITHUB_STEP_SUMMARY"
             echo "| Blocks verified | ${{ steps.verify.outputs.total_blocks }} |" >> "$GITHUB_STEP_SUMMARY"
             echo "| Chain tip | \`${{ steps.verify.outputs.chain_tip }}\` |" >> "$GITHUB_STEP_SUMMARY"
+            echo "| Manifest hash | \`${{ steps.verify.outputs.manifest_hash }}\` |" >> "$GITHUB_STEP_SUMMARY"
             echo "| Commit | \`${{ github.sha }}\` |" >> "$GITHUB_STEP_SUMMARY"
           else
-            echo "### ❌ Chain Invalid — see logs" >> "$GITHUB_STEP_SUMMARY"
+            echo "### ❌ Chain Invalid — see logs above" >> "$GITHUB_STEP_SUMMARY"
+            echo "" >> "$GITHUB_STEP_SUMMARY"
+            echo "**Do NOT merge until chain is repaired.**" >> "$GITHUB_STEP_SUMMARY"
           fi
 
       - name: Post EPICON canonization event
@@ -94,7 +107,8 @@ jobs:
             "github_commit": "${{ github.sha }}",
             "github_repo": "${{ github.repository }}",
             "canonized_at": "$(date -u +%Y-%m-%dT%H:%M:%S.000Z)",
-            "attestation_source": "github_action"
+            "attestation_source": "github_action",
+            "attestation_note": "Replaces broken /ledger/attest JWT path for historical blocks (C-338–C-353)"
           }
           EOF
           )
@@ -108,6 +122,13 @@ jobs:
 
           echo "EPICON post HTTP status: ${HTTP_STATUS}"
           cat /tmp/epicon_response.json
+
+          if [ "${HTTP_STATUS}" != "200" ] && [ "${HTTP_STATUS}" != "201" ]; then
+            echo "::warning::EPICON post returned ${HTTP_STATUS} — chain is still valid, GitHub commit is the attestation"
+            exit 0
+          fi
+
+          echo "✓ EPICON canonization event posted"
 
       - name: Fail on invalid chain
         if: steps.verify.outcome != 'success' && steps.verify.outputs.total_blocks != '0'

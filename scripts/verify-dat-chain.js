@@ -1,11 +1,14 @@
 #!/usr/bin/env node
 /**
  * Verifies SHA-256 hash chain integrity across .dat files in canon/reserve-blocks/.
+ *
+ * Exit codes: 0 = valid, 1 = invalid, 2 = missing/parse error
+ *
  * EPICON: C-357 | RESERVE_BLOCK_DAT_CANONIZATION
  */
 
 import { createHash } from 'crypto';
-import { existsSync, readFileSync, appendFileSync } from 'fs';
+import { appendFileSync, existsSync, readFileSync } from 'fs';
 import { join } from 'path';
 
 const dir = process.argv[2] ?? 'canon/reserve-blocks';
@@ -27,8 +30,10 @@ try {
 
 console.log(`
 Mobius .dat Chain Integrity Verifier (C-357)
-  Directory: ${dir}
-  Blocks:    ${manifest.total_blocks} | MIC: ${manifest.total_mic}
+  Directory:    ${dir}
+  Manifest:     v${manifest.version} | ${manifest.total_blocks} blocks | ${manifest.total_mic} MIC
+  Generated:    ${manifest.generated_at}
+  Chain tip:    ${manifest.chain_tip_hash?.slice(0, 20)}...
 `);
 
 let prevHash = GENESIS_HASH;
@@ -52,6 +57,8 @@ for (const filename of datFiles) {
 
   if (actualFileHash !== entry.sha256) {
     console.error(`✗ ${filename}: file hash mismatch`);
+    console.error(`    expected: ${entry.sha256}`);
+    console.error(`    actual:   ${actualFileHash}`);
     failed = true;
     continue;
   }
@@ -64,11 +71,22 @@ for (const filename of datFiles) {
   }
 
   let fileValid = true;
-  for (const line of lines) {
-    const r = JSON.parse(line);
+  for (let i = 0; i < lines.length; i++) {
+    const line = lines[i];
+    let r;
+    try {
+      r = JSON.parse(line);
+    } catch (e) {
+      console.error(`✗ ${filename}: parse error on line ${i + 1} — ${e.message}`);
+      fileValid = false;
+      failed = true;
+      break;
+    }
 
     if (r.prev_hash !== prevHash) {
       console.error(`✗ ${filename} block ${r.block_number}: prev_hash mismatch`);
+      console.error(`    expected: ${prevHash.slice(0, 20)}...`);
+      console.error(`    got:      ${r.prev_hash?.slice(0, 20)}...`);
       fileValid = false;
       failed = true;
       break;
@@ -82,6 +100,8 @@ for (const filename of datFiles) {
 
     if (r.block_hash !== expected) {
       console.error(`✗ ${filename} block ${r.block_number}: block_hash mismatch`);
+      console.error(`    expected: ${expected.slice(0, 20)}...`);
+      console.error(`    got:      ${r.block_hash?.slice(0, 20)}...`);
       fileValid = false;
       failed = true;
       break;
@@ -98,11 +118,13 @@ for (const filename of datFiles) {
 
 if (!failed) {
   if (prevHash !== manifest.chain_tip_hash) {
-    console.error('✗ Chain tip mismatch');
+    console.error('\n✗ Chain tip mismatch');
+    console.error(`    manifest: ${manifest.chain_tip_hash?.slice(0, 20)}...`);
+    console.error(`    computed: ${prevHash.slice(0, 20)}...`);
     failed = true;
   }
   if (globalBlockCount !== manifest.total_blocks) {
-    console.error(`✗ Block count mismatch: ${manifest.total_blocks} vs ${globalBlockCount}`);
+    console.error(`\n✗ Block count mismatch: manifest=${manifest.total_blocks}, verified=${globalBlockCount}`);
     failed = true;
   }
 }
@@ -120,12 +142,11 @@ console.log(`
 `);
 
 if (process.env.GITHUB_OUTPUT) {
+  const manifestContent = readFileSync(manifestPath, 'utf8');
+  const manifestHash = `sha256:${createHash('sha256').update(manifestContent).digest('hex')}`;
   appendFileSync(process.env.GITHUB_OUTPUT, `file_count=${datFiles.length}\n`);
   appendFileSync(process.env.GITHUB_OUTPUT, `total_blocks=${globalBlockCount}\n`);
-  appendFileSync(
-    process.env.GITHUB_OUTPUT,
-    `manifest_hash=sha256:${createHash('sha256').update(readFileSync(manifestPath, 'utf8')).digest('hex')}\n`,
-  );
+  appendFileSync(process.env.GITHUB_OUTPUT, `manifest_hash=${manifestHash}\n`);
   appendFileSync(process.env.GITHUB_OUTPUT, `chain_tip=${prevHash}\n`);
 }
 
