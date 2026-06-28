@@ -1,0 +1,174 @@
+# MOBIUS-CLASS: monitoring
+# OWNER: @kaizencycle
+# INTRODUCED: C-356
+# LAST-REVIEWED: 2026-06-28
+# STATUS: active
+# PURPOSE: Layer 1 upstream detector — catches mobius-bot-state-sync failures
+#          before cycle.json drift accumulates. Reads state/writer-health.json
+#          (stamped by the writer on every run). Opens a GitHub issue if writer
+#          has been silent 14+ days. Auto-closes when healthy.
+#          Companion to canon-drift-tripwire (Layer 2).
+
+name: Writer Health Watchdog
+
+on:
+  schedule:
+    - cron: '0 6 * * *'   # 06:00 UTC — after writer at 04:10 UTC
+  workflow_dispatch:
+
+jobs:
+  check-writer-health:
+    name: Check mobius-bot-state-sync health
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+      contents: read
+
+    steps:
+      - name: Checkout main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Evaluate writer health
+        id: health
+        run: |
+          HEALTH_FILE="state/writer-health.json"
+
+          if [ ! -f "$HEALTH_FILE" ]; then
+            echo "writer_status=missing" >> $GITHUB_OUTPUT
+            echo "days_since=999" >> $GITHUB_OUTPUT
+            echo "last_run=never" >> $GITHUB_OUTPUT
+            echo "last_cycle=unknown" >> $GITHUB_OUTPUT
+            exit 0
+          fi
+
+          python3 - << 'PY'
+          import json, os
+          from datetime import datetime, timezone
+
+          with open("state/writer-health.json") as f:
+              d = json.load(f)
+
+          last_run_str = d.get("last_run_at", "")
+          last_cycle = d.get("last_cycle", "unknown")
+
+          if not last_run_str:
+              days_since = 999
+          else:
+              last_run = datetime.fromisoformat(last_run_str.replace("Z", "+00:00"))
+              now = datetime.now(timezone.utc)
+              days_since = (now - last_run).days
+
+          if days_since >= 14:
+              status = "stale"
+          elif days_since >= 7:
+              status = "warning"
+          else:
+              status = "ok"
+
+          with open(os.environ["GITHUB_OUTPUT"], "a") as f:
+              f.write(f"days_since={days_since}\n")
+              f.write(f"last_run={last_run_str or 'unknown'}\n")
+              f.write(f"last_cycle={last_cycle}\n")
+              f.write(f"writer_status={status}\n")
+
+          print(f"Status: {status} | Days since last run: {days_since} | Last cycle: {last_cycle}")
+          PY
+
+      - name: Open or update writer-health issue (stale or missing)
+        if: steps.health.outputs.writer_status == 'stale' || steps.health.outputs.writer_status == 'missing'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const days = '${{ steps.health.outputs.days_since }}';
+            const lastRun = '${{ steps.health.outputs.last_run }}';
+            const lastCycle = '${{ steps.health.outputs.last_cycle }}';
+            const status = '${{ steps.health.outputs.writer_status }}';
+            const fingerprint = 'writer-health-watchdog';
+
+            const title = `[writer-health] mobius-bot-state-sync stale: ${days} days since last run`;
+            const body = [
+              `## Writer Health Alert`,
+              '',
+              `Writer has not run in **${days} days** (threshold: 14).`,
+              '',
+              status === 'missing'
+                ? '`state/writer-health.json` is missing — writer may never have run or the file was deleted.'
+                : `Last confirmed run: \`${lastRun}\` (cycle ${lastCycle})`,
+              '',
+              'The writer (`mobius-bot-state-sync`) updates `cycle.json` daily.',
+              'If it stops, `canon-drift-tripwire` opens a drift issue within 2 cycles.',
+              '',
+              '**Immediate actions:**',
+              '1. Actions → `mobius-bot-state-sync` → Run workflow (manual dispatch)',
+              '2. Check run logs for auth failures or commit errors',
+              '3. If disabled by GitHub 60-day inactivity rule: re-enable and trigger manually',
+              '4. Verify `MOBIUS_BOT_APP_ID` and `MOBIUS_BOT_PRIVATE_KEY` secrets are valid',
+              '',
+              '**Two-layer detection:**',
+              '- Layer 1 (this watchdog): writer silent 14+ days',
+              '- Layer 2 (canon-drift-tripwire): cycle.json drift 2+ cycles',
+              '',
+              `Fingerprint: \`${fingerprint}\` — updated in place, never duplicated.`,
+            ].join('\n');
+
+            const existing = await github.rest.issues.listForRepo({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: 'open',
+              labels: 'writer-health-watchdog',
+            });
+
+            if (existing.data.length > 0) {
+              await github.rest.issues.update({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: existing.data[0].number,
+                title,
+                body,
+              });
+              console.log(`Updated existing issue #${existing.data[0].number}`);
+            } else {
+              const issue = await github.rest.issues.create({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                title,
+                body,
+                labels: ['writer-health-watchdog'],
+              });
+              console.log(`Created issue #${issue.data.number}`);
+            }
+
+      - name: Auto-close writer-health issue if healthy
+        if: steps.health.outputs.writer_status == 'ok'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const existing = await github.rest.issues.listForRepo({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: 'open',
+              labels: 'writer-health-watchdog',
+            });
+
+            for (const issue of existing.data) {
+              const updatedBody = issue.body + '\n\n---\n_Auto-closed: writer health restored._';
+              await github.rest.issues.update({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: issue.number,
+                state: 'closed',
+                body: updatedBody,
+              });
+              console.log(`Closed issue #${issue.number} — writer healthy`);
+            }
+
+      - name: Summary
+        run: |
+          echo "## Writer Health Watchdog" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "- **Status:** ${{ steps.health.outputs.writer_status }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Days since last run:** ${{ steps.health.outputs.days_since }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Last run:** ${{ steps.health.outputs.last_run }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Last cycle:** ${{ steps.health.outputs.last_cycle }}" >> $GITHUB_STEP_SUMMARY
