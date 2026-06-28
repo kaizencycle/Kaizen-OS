@@ -1,6 +1,6 @@
 {
   "mobius_catalog_version": "1.0.0",
-  "generated_at": "2026-06-28T18:06:08.465Z",
+  "generated_at": "2026-06-28T23:10:55.694Z",
   "repo": {
     "name": "Mobius-Substrate",
     "url": "https://github.com/kaizencycle/Mobius-Substrate",
@@ -9,7 +9,7 @@
   },
   "stats": {
     "epiconCount": 0,
-    "docCount": 963
+    "docCount": 966
   },
   "epicons": [],
   "docs": [
@@ -7332,6 +7332,14 @@
       "summary": ""
     },
     {
+      "path": "docs/epicon/EPICON-C357-DAT-001.md",
+      "title": "EPICON — C-357 Reserve Block .dat Canonization",
+      "category": "epicon",
+      "tags": [],
+      "content_hash": "sha256:7bf22a7d1a2baf9dda9cb454874de980b4733d1b35c827596dce055daf0625ab",
+      "summary": ""
+    },
+    {
       "path": "docs/epicon/EPICON-DVA-RUNTIME.md",
       "title": "DVA Runtime Protocol - Multi-Agent Cognitive Pipeline",
       "category": "epicon",
@@ -7674,6 +7682,22 @@
       "category": "pr-bundles",
       "tags": [],
       "content_hash": "sha256:2920442c9b605fcfd251fa28fd7416170eb229f2167613a5e64b29e070db5cb2",
+      "summary": ""
+    },
+    {
+      "path": "docs/pr-packages/c357/PR_CLAUDE_CODE.md",
+      "title": "[C-357] Reserve Block .dat Canonization — Substrate Infrastructure",
+      "category": "pr-packages",
+      "tags": [],
+      "content_hash": "sha256:d91be66c9c1b6bdd4a5fe31fd55875243d195f64c4792fc2f60f53df38ed1ef4",
+      "summary": ""
+    },
+    {
+      "path": "docs/pr-packages/c357/PR_CURSOR.md",
+      "title": "[C-357] Reserve Block .dat Canonization — Terminal + CPC Changes",
+      "category": "pr-packages",
+      "tags": [],
+      "content_hash": "sha256:b11d8f40af5e709df1c6589a53f3abec4af3d2280c745eb00752613fca4eb0f2",
       "summary": ""
     },
     {

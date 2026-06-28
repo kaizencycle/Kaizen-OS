@@ -1,0 +1,122 @@
+# MOBIUS-CLASS: canon-infrastructure
+# OWNER: @kaizencycle
+# INTRODUCED: C-357
+# LAST-REVIEWED: 2026-06-28
+# STATUS: active
+# PURPOSE: Triggered when .dat files or MANIFEST.json are pushed to
+#          canon/reserve-blocks/. Verifies SHA-256 hash chain integrity
+#          and posts EPICON canonization event to terminal.
+#          This Action IS the substrate attestation for the .dat cold canon
+#          path (replacing the broken live JWT /ledger/attest path).
+
+name: Reserve Block .dat Canonization Seal
+
+on:
+  push:
+    paths:
+      - "canon/reserve-blocks/**.dat"
+      - "canon/reserve-blocks/MANIFEST.json"
+    branches:
+      - main
+      - "c357-*"
+
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "Dry run (verify chain but skip EPICON post)"
+        required: false
+        default: "false"
+
+jobs:
+  verify-and-seal:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    permissions:
+      contents: read
+
+    steps:
+      - name: Checkout Mobius-Substrate
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Verify Reserve Block hash chain
+        id: verify
+        run: |
+          node scripts/verify-dat-chain.js canon/reserve-blocks/
+
+      - name: Write job summary
+        if: always()
+        run: |
+          echo "## Reserve Block .dat Chain Verification" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+
+          if [ "${{ steps.verify.outcome }}" == "success" ]; then
+            echo "### ✅ Chain Valid" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "| Metric | Value |" >> $GITHUB_STEP_SUMMARY
+            echo "|--------|-------|" >> $GITHUB_STEP_SUMMARY
+            echo "| .dat files | ${{ steps.verify.outputs.file_count }} |" >> $GITHUB_STEP_SUMMARY
+            echo "| Blocks verified | ${{ steps.verify.outputs.total_blocks }} |" >> $GITHUB_STEP_SUMMARY
+            echo "| Chain tip | \`${{ steps.verify.outputs.chain_tip }}\` |" >> $GITHUB_STEP_SUMMARY
+            echo "| Manifest hash | \`${{ steps.verify.outputs.manifest_hash }}\` |" >> $GITHUB_STEP_SUMMARY
+            echo "| Commit | \`${{ github.sha }}\` |" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "### ❌ Chain Invalid — see logs above" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "**Do NOT merge this PR until chain is repaired.**" >> $GITHUB_STEP_SUMMARY
+          fi
+
+      - name: Post EPICON canonization event
+        if: |
+          steps.verify.outcome == 'success' &&
+          github.ref == 'refs/heads/main' &&
+          github.event.inputs.dry_run != 'true'
+        env:
+          SUBSTRATE_SERVICE_TOKEN: ${{ secrets.SUBSTRATE_SERVICE_TOKEN }}
+          TERMINAL_API_BASE: ${{ secrets.TERMINAL_API_BASE }}
+        run: |
+          PAYLOAD=$(cat <<EOF
+          {
+            "event_type": "RESERVE_BLOCK_DAT_CANONIZATION",
+            "epicon_cycle": "C-357",
+            "dat_files": ${{ steps.verify.outputs.file_count }},
+            "total_blocks": ${{ steps.verify.outputs.total_blocks }},
+            "total_mic": $(( ${{ steps.verify.outputs.total_blocks }} * 50 )),
+            "manifest_hash": "${{ steps.verify.outputs.manifest_hash }}",
+            "chain_tip": "${{ steps.verify.outputs.chain_tip }}",
+            "github_commit": "${{ github.sha }}",
+            "github_repo": "${{ github.repository }}",
+            "canonized_at": "$(date -u +%Y-%m-%dT%H:%M:%S.000Z)",
+            "attestation_source": "github_action",
+            "attestation_note": "Replaces broken /ledger/attest JWT path for historical blocks (C-338–C-353)"
+          }
+          EOF
+          )
+
+          HTTP_STATUS=$(curl -s -o /tmp/epicon_response.json -w "%{http_code}" \
+            -X POST "${TERMINAL_API_BASE}/api/epicon/canon-event" \
+            -H "Authorization: Bearer ${SUBSTRATE_SERVICE_TOKEN}" \
+            -H "Content-Type: application/json" \
+            -H "X-Mobius-EPICON: C-357:RESERVE_BLOCK_DAT_CANONIZATION" \
+            -d "${PAYLOAD}")
+
+          echo "EPICON post HTTP status: ${HTTP_STATUS}"
+          cat /tmp/epicon_response.json
+
+          if [ "${HTTP_STATUS}" != "200" ] && [ "${HTTP_STATUS}" != "201" ]; then
+            echo "::warning::EPICON post returned ${HTTP_STATUS} — chain is still valid, GitHub commit is the attestation"
+            exit 0
+          fi
+
+          echo "✓ EPICON canonization event posted"
+
+      - name: Fail on invalid chain
+        if: steps.verify.outcome != 'success'
+        run: |
+          echo "::error::Reserve Block hash chain is invalid. Do not merge."
+          exit 1
