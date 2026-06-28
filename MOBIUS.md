@@ -249,8 +249,9 @@ No assumption without evidence.
 
 **2. Connect before concluding.**
 
-Context matters. Read `CURRENT_STATE.md` and `CURRENT_CYCLE.md`
-before touching any runtime file.
+Context matters. Read `cycle.json` (authoritative cycle pointer) and
+fetch the Terminal snapshot (`/api/terminal/snapshot`) before
+touching any runtime file.
 
 **3. Synthesize before mutating.**
 
@@ -407,7 +408,7 @@ Build accordingly.
 | Sentinel Constitution | `docs/03-GOVERNANCE-AND-POLICY/governance/SENTINEL_CONSTITUTION.md` |
 | Virtue Accords | `docs/07-RESEARCH-AND-PUBLICATIONS/for-philosophers/ETHICAL-FOUNDATIONS/virtue-accords/README.md` |
 | GI Formula | `docs/11-SUPPLEMENTARY/ledger/gi-formula.md` |
-| MIC Issuance | `docs/protocols/mic/mic_issuance_protocol.md` |
+| MIC Issuance | `docs/04-TECHNICAL-ARCHITECTURE/mic/mic_issuance_protocol.md` |
 
 ---
 
