@@ -1,0 +1,9 @@
+{
+  "cycle": "C-356",
+  "date": "2026-06-28",
+  "writer": "manual-recovery-c356",
+  "ledger_verified": false,
+  "ledger_snapshot": null,
+  "narrative": null,
+  "recovery_note": "Manual stub \u2014 writer scheduling lapsed. See issue #327."
+}
