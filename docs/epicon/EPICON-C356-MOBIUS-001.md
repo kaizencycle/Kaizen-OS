@@ -54,6 +54,15 @@ solution: dense, precise, self-attesting, authoritative.
 
 ---
 
+## Authority Provenance
+
+Authority declared using EPICON_FOUNDER_STANDING.md
+
+Michael / kaizencycle holds Custodian authority (DVA.02 — Founder Standing).
+This document is additive-only (no existing files mutated, no governance
+surfaces touched), classified as a constitutional declaration, not a
+policy or workflow change. Founder Standing applies.
+
 ## Witnesses
 
 ATLAS · ZEUS
