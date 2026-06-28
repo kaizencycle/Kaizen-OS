@@ -184,5 +184,17 @@ Filed under: `MOBIUS_CANON_LAWS.md` section: "Reserve Block .dat Cold Canon"
 
 ---
 
+## Authority Provenance
+
+Authority declared using `docs/templates/EPICON_FOUNDER_STANDING.md`
+
+Michael / kaizencycle holds Custodian authority (DVA.02 — Founder Standing).
+This specification is additive cold-canon infrastructure for C-357. No attested
+values are modified; no governance surfaces are changed.
+
+See: `docs/epicon/EPICON-C357-DAT-001.md`
+
+---
+
 *CC0 1.0 Universal — No rights reserved.*
 *This document is freely usable without restriction.*
