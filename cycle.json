@@ -1,19 +1,23 @@
 {
-  "current_cycle": "C-356",
+  "current_cycle": "C-357",
   "date": "2026-06-28",
-  "gi": 0.67,
+  "gi": 0.9,
   "mode": "yellow",
-  "terminal": "https://mobius-civic-ai-terminal.vercel.app",
-  "snapshot": "https://mobius-civic-ai-terminal.vercel.app/api/terminal/snapshot",
-  "snapshot_lite": "https://mobius-civic-ai-terminal.vercel.app/api/terminal/snapshot-lite",
-  "vault_status": "https://mobius-civic-ai-terminal.vercel.app/api/vault/status",
-  "vault_seals": "https://mobius-civic-ai-terminal.vercel.app/api/vault/seal",
-  "last_updated": "2026-06-22T00:00:00Z",
+  "canonical_domain": "https://mobius-substrate.com",
+  "handbook": "https://handbook.mobius-substrate.com",
+  "terminal": "https://terminal.mobius-substrate.com",
+  "snapshot_lite": "https://terminal.mobius-substrate.com/api/terminal/snapshot-lite",
+  "snapshot": "https://terminal.mobius-substrate.com/api/terminal/snapshot",
+  "vault_status": "https://terminal.mobius-substrate.com/api/vault/status",
+  "vault_seals": "https://terminal.mobius-substrate.com/api/vault/seal",
+  "last_updated": "2026-06-28T23:00:00Z",
+  "previous_cycle": "C-356",
+  "updated_by": "manual-recovery-c357",
   "vault": {
-    "in_progress_balance": 49.746,
+    "in_progress_balance": 32.13,
     "tranche_target": 50,
     "hash_coverage_pct": 100,
-    "seals_count": 0,
+    "seals_count": 319,
     "fountain_status": "locked"
   },
   "kv": {
@@ -21,13 +25,12 @@
     "backup_redis": true,
     "oaa_bridge": true,
     "mget_bundled": true,
-    "edge_cache_s": 15,
-    "monthly_ops_target": 277000
+    "edge_cache_s": 15
   },
   "mesh": {
     "nodes_registered": 4,
     "mcp_tools": 6,
-    "mcp_endpoint": "https://mobius-civic-ai-terminal.vercel.app/api/mcp"
+    "mcp_endpoint": "https://terminal.mobius-substrate.com/api/mcp"
   },
   "agents": {
     "roster": [
@@ -49,14 +52,12 @@
     ]
   },
   "open_flags": [
-    "ethics:active-tripwire",
-    "ethics:narrative-cluster-spike",
-    "hermes-narrative-lane-dead",
-    "civic-protocol-core-render-failed",
-    "github-archive-credential-expired"
+    "identity-service-creds-missing-vercel",
+    "reserve-block-substrate-attest-401",
+    "mic-wallet-render-crash-loop"
   ],
-  "doc_version": "2.0.0",
-  "last_state_snapshot": "C-348",
-  "next_state_snapshot_expected": "C-349",
-  "notes": "C-348 canon drift resolved: cycle.json manually advanced C-338 → C-348 as part of unified C-348 pass (see issue #321). State-sync bot (mobius-bot-state-sync) already has contents:write; drift was due to bot non-execution, not missing permissions. GI (0.67) carried forward unverified; Vault figures carried forward unverified. Bot will resume daily arithmetic writes from C-348 baseline."
+  "doc_version": "2.1.0",
+  "last_state_snapshot": "C-357",
+  "next_state_snapshot_expected": "C-358",
+  "notes": "C-357 unified canonization: canonical domain mobius-substrate.com propagated across README, handbook journal nav, and terminal CORS. cycle.json advanced from C-356 drift. GI 0.90 recovering (yellow); Terminal Fountain lane PREVIEW (GI preview band, schema fountain_status locked). Reserve blocks: 319 sealed, .dat canonization path active."
 }

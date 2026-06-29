@@ -121,10 +121,15 @@ Mobius-Substrate addresses all three by making integrity a first-class system pr
 
 ## Live Services
 
-| Service | URL |
-|---------|-----|
-| Mobius Portal | [mobius-browser-shell.vercel.app](https://mobius-browser-shell.vercel.app) |
-| Integrity Ledger | [civic-protocol-core-ledger.onrender.com](https://civic-protocol-core-ledger.onrender.com) |
+| Service | URL | Status |
+|---------|-----|--------|
+| School of Chambers | [mobius-substrate.com](https://mobius-substrate.com) | ✓ Live |
+| Civic Terminal | [terminal.mobius-substrate.com](https://terminal.mobius-substrate.com) | ✓ Live |
+| Handbook | [handbook.mobius-substrate.com](https://handbook.mobius-substrate.com) | ✓ Live |
+| Integrity Ledger | [civic-protocol-core-ledger.onrender.com](https://civic-protocol-core-ledger.onrender.com) | ⚠ Degraded |
+| Email | [michael@mobius-substrate.com](mailto:michael@mobius-substrate.com) | ✓ Live |
+
+Legacy Vercel URLs remain reachable during transition; canonical surfaces use `mobius-substrate.com` (registered C-356, propagated C-357).
 
 ---
 
@@ -151,8 +156,12 @@ AGPL-3.0 with Ethical Addendum — See [LICENSE](LICENSE) and [ETHICAL_ADDENDUM.
 
 | Resource | Link |
 |----------|------|
+| Website | [mobius-substrate.com](https://mobius-substrate.com) |
+| Terminal | [terminal.mobius-substrate.com](https://terminal.mobius-substrate.com) |
+| Handbook | [handbook.mobius-substrate.com](https://handbook.mobius-substrate.com) |
 | GitHub | [github.com/kaizencycle/Mobius-Substrate](https://github.com/kaizencycle/Mobius-Substrate) |
 | Substack | [kaizencycle.substack.com](https://kaizencycle.substack.com) |
+| Email | [michael@mobius-substrate.com](mailto:michael@mobius-substrate.com) |
 | Issues | [File an Issue](https://github.com/kaizencycle/Mobius-Substrate/issues) |
 
 ---
