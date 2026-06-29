@@ -2,7 +2,7 @@
 
 **Version:** v0.1
 **Status:** Active
-**Cycle:** C-356
+**Cycle:** C-357
 **Authority:** Michael (kaizencycle) — Custodian / Human-in-the-Loop
 **License:** CC0 Public Domain
 **Classification:** Constitutional Runtime Context
@@ -396,6 +396,18 @@ If scaling pressures rise: do not sacrifice truth for growth.
 Mobius is designed to outlive its builders.
 
 Build accordingly.
+
+---
+
+## CANONICAL URLS (C-357)
+
+| Surface | URL |
+|---------|-----|
+| Domain | [mobius-substrate.com](https://mobius-substrate.com) |
+| Terminal | [terminal.mobius-substrate.com](https://terminal.mobius-substrate.com) |
+| Handbook | [handbook.mobius-substrate.com](https://handbook.mobius-substrate.com) |
+| Email | [michael@mobius-substrate.com](mailto:michael@mobius-substrate.com) |
+| GitHub | [github.com/kaizencycle/Mobius-Substrate](https://github.com/kaizencycle/Mobius-Substrate) |
 
 ---
 
