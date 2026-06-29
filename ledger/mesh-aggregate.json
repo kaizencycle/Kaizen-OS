@@ -1,24 +1,24 @@
 {
   "schema": "MNS_AGGREGATE_V1",
-  "updated_at": "2026-06-29T00:00:46.075Z",
+  "updated_at": "2026-06-29T05:22:33.838Z",
   "node_count": 5,
   "live_nodes": 3,
-  "total_entries": 35,
+  "total_entries": 36,
   "nodes": [
     {
       "node_id": "mobius-substrate",
       "tier": "sentinel",
       "node_type": "substrate",
       "entry_count": 0,
-      "fetched_at": "2026-06-29T00:00:45.651Z",
+      "fetched_at": "2026-06-29T05:22:33.378Z",
       "error": null
     },
     {
       "node_id": "mobius-civic-ai-terminal",
       "tier": "contributor",
       "node_type": "app",
-      "entry_count": 8,
-      "fetched_at": "2026-06-29T00:00:46.074Z",
+      "entry_count": 9,
+      "fetched_at": "2026-06-29T05:22:33.838Z",
       "error": null
     },
     {
@@ -26,7 +26,7 @@
       "tier": "contributor",
       "node_type": "service",
       "entry_count": 27,
-      "fetched_at": "2026-06-29T00:00:45.795Z",
+      "fetched_at": "2026-06-29T05:22:33.434Z",
       "error": null
     },
     {
@@ -47,6 +47,39 @@
     }
   ],
   "entries": [
+    {
+      "id": "55d172c5-merge",
+      "timestamp": "2026-06-29T00:55:40Z",
+      "author": "kaizencycle",
+      "title": "feat(C-357): Reserve Block .dat canonization + live attest JWT repair",
+      "type": "merge",
+      "severity": "info",
+      "tags": [
+        "merge",
+        "pr"
+      ],
+      "source": "github-commit",
+      "verified": false,
+      "sha": "55d172c5270a5e239a5f9067c13cf9bba80de1cc",
+      "_mesh_node": "mobius-civic-ai-terminal",
+      "_mesh_tier": "contributor"
+    },
+    {
+      "id": "1f51f6ed-zeus-verify",
+      "timestamp": "2026-06-29T00:02:08Z",
+      "author": "ZEUS",
+      "title": "zeus: verification disputed · C-356 [skip ci]",
+      "type": "zeus-verify",
+      "severity": "info",
+      "tags": [
+        "zeus"
+      ],
+      "source": "github-commit",
+      "verified": false,
+      "sha": "1f51f6edb9bf3233e5fd12bbfa6d82502a6c5437",
+      "_mesh_node": "mobius-civic-ai-terminal",
+      "_mesh_tier": "contributor"
+    },
     {
       "id": "758702ed-merge",
       "timestamp": "2026-06-28T23:42:22Z",
@@ -159,22 +192,6 @@
       "source": "github-commit",
       "verified": false,
       "sha": "84eee6b5c5bd93b580db86469221c4d4c12eef00",
-      "_mesh_node": "mobius-civic-ai-terminal",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "f9406d1b-zeus-verify",
-      "timestamp": "2026-06-27T18:03:15Z",
-      "author": "ZEUS",
-      "title": "zeus: verification disputed · C-355 [skip ci]",
-      "type": "zeus-verify",
-      "severity": "info",
-      "tags": [
-        "zeus"
-      ],
-      "source": "github-commit",
-      "verified": false,
-      "sha": "f9406d1b61566490a1b933f132f15f08bf6781ca",
       "_mesh_node": "mobius-civic-ai-terminal",
       "_mesh_tier": "contributor"
     },
