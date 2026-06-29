@@ -1,7 +1,9 @@
-site_name: Mobius Handbook
-site_url: https://kaizencycle.github.io/Mobius-Substrate/
-site_description: "Mobius Substrate — public handbook with live Terminal proof. Civic intelligence, auditable signals."
-site_author: Mobius Systems
+site_name: Mobius Substrate — Handbook
+site_url: https://handbook.mobius-substrate.com
+site_description: >
+  The living record of Mobius Substrate. Constitutional laws, cycle history,
+  sentinel decisions, and civic infrastructure documentation.
+site_author: Michael Judan (kaizencycle)
 
 # Repository
 repo_name: kaizencycle/Mobius-Substrate
@@ -118,6 +120,7 @@ extra_css:
   - assets/css/handbook-terminal-theme.css
   - assets/css/mobius-proof.css
   - assets/css/handbook-ux.css
+  - stylesheets/journal.css
 
 # Extra JavaScript
 extra_javascript:
@@ -126,8 +129,12 @@ extra_javascript:
   - assets/js/mobius-proof.js
 
 extra:
-  homepage: https://mobius-civic-ai-terminal.vercel.app/
-  terminal_url: https://mobius-civic-ai-terminal.vercel.app
+  homepage: https://mobius-substrate.com
+  canonical_domain: https://mobius-substrate.com
+  terminal_url: https://terminal.mobius-substrate.com
+  handbook_url: https://handbook.mobius-substrate.com
+  current_cycle: C-357
+  gi_status: recovering
   terminal_repo: https://github.com/kaizencycle/mobius-civic-ai-terminal
   substrate_repo: https://github.com/kaizencycle/Mobius-Substrate
   generator: false
@@ -140,69 +147,56 @@ extra:
       link: https://github.com/kaizencycle/mobius-civic-ai-terminal
     - icon: material/heart-pulse
       name: Live Terminal
-      link: https://mobius-civic-ai-terminal.vercel.app/
+      link: https://terminal.mobius-substrate.com/
   announce: >-
-    This handbook shows <strong>live proof</strong> from the Terminal when your browser can reach it (CORS).
-    Start at <strong>Handbook hub</strong> or <strong>Public hub</strong> in the tabs above.
+    <strong>Journal mode (C-357):</strong> current cycle state is the front door.
+    Live GI proof from <code>terminal.mobius-substrate.com</code> when CORS allows.
 
-# Navigation — public-first, then depth, then archive
+# Navigation — journal-first: current cycle, then constitution, then depth
 nav:
-  - Home: INDEX.md
-  - Handbook hub: 11-SUPPLEMENTARY/handbook/README.md
-  - Public hub:
-      - Start Here: 00-START-HERE/README.md
-      - Live state (C-288): STATE_OF_THE_SUBSTRATE_C-288.md
-      - Live state (C-284, archived): STATE_OF_THE_SUBSTRATE_C-284.md
-      - Interactive library: 11-SUPPLEMENTARY/handbook/interactive-library.md
-      - Proof tags (authoring): 11-SUPPLEMENTARY/handbook/proof-tags-authoring.md
-  - Protocols:
-      - Vault v1 (to Fountain): protocols/vault-to-fountain-protocol.md
-      - Vault v2 (Sealed Reserve): protocols/vault-v2-sealed-reserve.md
-      - Agent Reporting: protocols/agent-reporting-protocol.md
-      - Personalized Tripwires: protocols/personalized-tripwires-protocol.md
-  - Mesh (MNS · C-286):
-      - mobius.yaml v1 (pulse + ingest): 09-MESH/MOBIUS_YAML_V1.md
+  - "↳ Current cycle (C-357)":
+      - "State of the substrate": STATE_OF_THE_SUBSTRATE_LATEST.md
+      - "Canon laws": 02-THEORETICAL-FOUNDATIONS/MOBIUS_CANON_LAWS.md
+      - "EPICON C-355 IDA": 02-THEORETICAL-FOUNDATIONS/EPICON_C355_IDA.md
+      - "MOBIUS.md": MOBIUS.md
+  - "Cycle journal":
+      - "C-357": journals/C-357.md
+      - "C-356": journals/C-356.md
+      - "C-355 and earlier": journals/archive.md
+  - "Constitutional layer":
+      - "Canon laws": 02-THEORETICAL-FOUNDATIONS/MOBIUS_CANON_LAWS.md
+      - "Sentinel Constitution": 03-GOVERNANCE-AND-POLICY/governance/SENTINEL_CONSTITUTION.md
+      - "Virtue Accords": 07-RESEARCH-AND-PUBLICATIONS/for-philosophers/ETHICAL-FOUNDATIONS/virtue-accords/README.md
+      - "EPICON-01": epicon/EPICON-01.md
+      - "EPICON-02": epicon/EPICON-02.md
+      - "EPICON-03": epicon/EPICON-03.md
+  - "Architecture":
+      - "Overview": 04-TECHNICAL-ARCHITECTURE/overview/ARCHITECTURE.md
+      - "GI formula": 04-TECHNICAL-ARCHITECTURE/ledger/gi-formula.md
+      - "MIC issuance": 04-TECHNICAL-ARCHITECTURE/mic/mic_issuance_protocol.md
+      - "IPI / IDA (C-355)": 02-THEORETICAL-FOUNDATIONS/EPICON_C355_IDA.md
+      - "DVA flows": 04-TECHNICAL-ARCHITECTURE/overview/DVA_FLOWS_OVERVIEW.md
+  - "Handbook":
+      - "Public hub": 00-START-HERE/README.md
+      - "Handbook hub": 11-SUPPLEMENTARY/handbook/README.md
+      - "Full index": INDEX.md
+      - "Protocols":
+          - Vault v1 (to Fountain): protocols/vault-to-fountain-protocol.md
+          - Vault v2 (Sealed Reserve): protocols/vault-v2-sealed-reserve.md
+      - "Glossary": 00-START-HERE/GLOSSARY.md
+  - "Research":
+      - "For researchers": 07-RESEARCH-AND-PUBLICATIONS/for-academics/README.md
+      - "For governments": 07-RESEARCH-AND-PUBLICATIONS/for-governments/README.md
+      - "Whitepapers": 07-RESEARCH-AND-PUBLICATIONS/whitepapers/MIC_Whitepaper_v2.1.md
+  - "Mesh (MNS)":
+      - mobius.yaml v1: 09-MESH/MOBIUS_YAML_V1.md
       - OAA sovereign memory: 09-MESH/MNS_OAA_MEMORY.md
-      - Mesh workflow v1 (HIVE): 09-MESH/MESH_WORKFLOW_V1.md
-      - MNS Protocol v1: 09-MESH/MNS_PROTOCOL.md
-      - MCP Bridge (mobius.yaml): 09-MESH/MNS_MCP_BRIDGE.md
-      - Decentralization (Phase 1–2): 09-MESH/DECENTRALIZATION_PHASE1_2.md
-      - KV storage tiers: 09-MESH/KV_STORAGE_TIERS.md
-  - Architecture:
-      - Overview: 04-TECHNICAL-ARCHITECTURE/overview/README.md
-      - MIC (runtime issuance): 04-TECHNICAL-ARCHITECTURE/mic/README.md
-      - MIC Issuance Protocol v1: 04-TECHNICAL-ARCHITECTURE/mic/mic_issuance_protocol.md
-      - DVA Flows: 04-TECHNICAL-ARCHITECTURE/overview/DVA_FLOWS_OVERVIEW.md
-      - MEMT Whitepaper: 04-TECHNICAL-ARCHITECTURE/memt/MEMT/MEMT_WHITEPAPER.md
-      - Ledger GI Formula: 04-TECHNICAL-ARCHITECTURE/ledger/gi-formula.md
-  - Governance:
-      - Overview: 03-GOVERNANCE-AND-POLICY/governance/GOVERNANCE_OVERVIEW.md
-      - Kintsugi Protocol: 03-GOVERNANCE-AND-POLICY/governance/kintsugi_protocol.md
-      - Sentinel Constitution: 03-GOVERNANCE-AND-POLICY/governance/SENTINEL_CONSTITUTION.md
-  - Research:
-      - MII Spec: 04-TECHNICAL-ARCHITECTURE/substrate/mii-spec-v0.1.md
-      - MFS Spec: 07-RESEARCH-AND-PUBLICATIONS/specs/MFS_SPEC_v1.md
-      - Whitepapers: 07-RESEARCH-AND-PUBLICATIONS/whitepapers/MIC_Whitepaper_v2.1.md
-  - Implementation:
-      - Guides: 05-IMPLEMENTATION/guides/README.md
-      - Deployment: 05-IMPLEMENTATION/guides/deployment/DEPLOYMENT_GUIDE.md
-      - Onboarding: 05-IMPLEMENTATION/onboarding/README.md
-  - EPICON:
-      - Overview: epicon/README.md
-      - EPICON-01: epicon/EPICON-01.md
-      - EPICON-02: epicon/EPICON-02.md
-      - EPICON-03: epicon/EPICON-03.md
-  - Reference:
-      - Master Index: 00-META/MASTER_INDEX.md
-      - MIC runtime reference: 08-REFERENCE/mic_runtime_reference.md
-      - Mobius SDK API (C-285 draft): specs/MOBIUS_SDK_API.md
-      - Glossary: 00-START-HERE/GLOSSARY.md
-      - FAQ: 00-START-HERE/FAQ.md
-  - Archives:
-      - Archives overview: 10-ARCHIVES/README.md
-      - Archived handbooks: 10-ARCHIVES/handbook/README.md
-      - Kaizen-OS handbook (2025): 10-ARCHIVES/handbook/kaizen-os-2025/index.md
-      - Legacy index: 10-ARCHIVES/archive/README.md
+      - Mesh workflow v1: 09-MESH/MESH_WORKFLOW_V1.md
+  - "Archives":
+      - "Archive index": 10-ARCHIVES/archive/README.md
+      - "State C-338": STATE_OF_THE_SUBSTRATE_C-338.md
+      - "State C-288": STATE_OF_THE_SUBSTRATE_C-288.md
+      - "Kaizen-OS handbook (2025)": 10-ARCHIVES/handbook/kaizen-os-2025/index.md
 
 # Validation - set to info to avoid breaking strict mode builds
 validation:
