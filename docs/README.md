@@ -274,10 +274,10 @@ The INDEX.md file provides comprehensive navigation for:
 - 💬 [Ask in discussions](https://github.com/kaizencycle/Mobius-Substrate/discussions)
 
 ### Community Support
-- **General**: community@mobius.systems
-- **Technical**: support@mobius.systems
-- **Governance**: governance@mobius.systems
-- **Security**: security@mobius.systems
+- **General**: community@mobius-substrate.com
+- **Technical**: support@mobius-substrate.com
+- **Governance**: governance@mobius-substrate.com
+- **Security**: security@mobius-substrate.com
 
 ---
 
@@ -291,11 +291,11 @@ The INDEX.md file provides comprehensive navigation for:
 
 ## 🔄 Documentation Status
 
-**Last Updated:** 2026-03-17 (C-253)  
+**Last Updated:** 2026-06-28 (C-357)  
 **Total Documents:** 1100+ markdown files  
-**Active Categories:** 12 numbered classifications  
-**Reorganization:** v4.0.0 (C-199 Root Cleanup)  
-**Maintained By:** Mobius Systems Documentation Team
+**Canonical URL:** https://handbook.mobius-substrate.com  
+**Terminal:** https://terminal.mobius-substrate.com  
+**Maintained By:** Michael Judan (kaizencycle) · ATLAS sentinel
 
 ---
 
