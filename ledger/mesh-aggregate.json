@@ -1,6 +1,6 @@
 {
   "schema": "MNS_AGGREGATE_V1",
-  "updated_at": "2026-06-29T10:21:59.837Z",
+  "updated_at": "2026-06-29T14:41:35.470Z",
   "node_count": 5,
   "live_nodes": 3,
   "total_entries": 36,
@@ -10,7 +10,7 @@
       "tier": "sentinel",
       "node_type": "substrate",
       "entry_count": 0,
-      "fetched_at": "2026-06-29T10:21:59.354Z",
+      "fetched_at": "2026-06-29T14:41:34.524Z",
       "error": null
     },
     {
@@ -18,7 +18,7 @@
       "tier": "contributor",
       "node_type": "app",
       "entry_count": 9,
-      "fetched_at": "2026-06-29T10:21:59.837Z",
+      "fetched_at": "2026-06-29T14:41:35.470Z",
       "error": null
     },
     {
@@ -26,7 +26,7 @@
       "tier": "contributor",
       "node_type": "service",
       "entry_count": 27,
-      "fetched_at": "2026-06-29T10:21:59.381Z",
+      "fetched_at": "2026-06-29T14:41:34.660Z",
       "error": null
     },
     {
@@ -47,6 +47,39 @@
     }
   ],
   "entries": [
+    {
+      "id": "3ae1e91e-merge",
+      "timestamp": "2026-06-29T13:18:48Z",
+      "author": "kaizencycle",
+      "title": "docs(C-357): canonical URLs + handbook CORS for mobius-substrate.com",
+      "type": "merge",
+      "severity": "info",
+      "tags": [
+        "merge",
+        "pr"
+      ],
+      "source": "github-commit",
+      "verified": false,
+      "sha": "3ae1e91e056d4dfeb808c54f1bd869c6190edb80",
+      "_mesh_node": "mobius-civic-ai-terminal",
+      "_mesh_tier": "contributor"
+    },
+    {
+      "id": "7dd00020-zeus-verify",
+      "timestamp": "2026-06-29T12:04:49Z",
+      "author": "ZEUS",
+      "title": "zeus: verification disputed · C-357 [skip ci]",
+      "type": "zeus-verify",
+      "severity": "info",
+      "tags": [
+        "zeus"
+      ],
+      "source": "github-commit",
+      "verified": false,
+      "sha": "7dd0002068fcbaabacb785751e0a9a2969e813f7",
+      "_mesh_node": "mobius-civic-ai-terminal",
+      "_mesh_tier": "contributor"
+    },
     {
       "id": "ccdda4e9-zeus-verify",
       "timestamp": "2026-06-29T06:02:58Z",
@@ -158,39 +191,6 @@
       "source": "github-commit",
       "verified": false,
       "sha": "471f8f536d57cd52f9cc01c1d04ff0e4a6b2af02",
-      "_mesh_node": "mobius-civic-ai-terminal",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "8df47072-zeus-verify",
-      "timestamp": "2026-06-28T00:04:13Z",
-      "author": "ZEUS",
-      "title": "zeus: verification disputed · C-355 [skip ci]",
-      "type": "zeus-verify",
-      "severity": "info",
-      "tags": [
-        "zeus"
-      ],
-      "source": "github-commit",
-      "verified": false,
-      "sha": "8df470720cf76c22652a760aecca106f669cd7a5",
-      "_mesh_node": "mobius-civic-ai-terminal",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "1c26b1ca-merge",
-      "timestamp": "2026-06-27T23:54:50Z",
-      "author": "kaizencycle",
-      "title": "feat(C-356): KV resilience — suspension is a performance event, not a failure",
-      "type": "merge",
-      "severity": "info",
-      "tags": [
-        "merge",
-        "pr"
-      ],
-      "source": "github-commit",
-      "verified": false,
-      "sha": "1c26b1ca634caf7b329951ee779f9839a8faf58c",
       "_mesh_node": "mobius-civic-ai-terminal",
       "_mesh_tier": "contributor"
     },
