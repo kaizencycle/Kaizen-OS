@@ -5,7 +5,7 @@
 (function () {
   'use strict';
 
-  var DEFAULT_TERMINAL = 'https://mobius-civic-ai-terminal.vercel.app';
+  var DEFAULT_TERMINAL = 'https://terminal.mobius-substrate.com';
   var CACHE_PREFIX = 'mobius-proof:';
   var CACHE_TTL_MS = 45 * 1000;
   var FETCH_TIMEOUT_MS = 8000;

@@ -2,6 +2,6 @@
 
 {% block extrahead %}
   {{ super() }}
-  <meta name="mobius-terminal-base" content="https://mobius-civic-ai-terminal.vercel.app" />
+  <meta name="mobius-terminal-base" content="{{ config.extra.terminal_url | default('https://terminal.mobius-substrate.com') }}" />
   <meta name="color-scheme" content="dark" />
 {% endblock %}

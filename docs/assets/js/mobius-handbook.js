@@ -28,7 +28,7 @@
 
   function terminalBase() {
     var m = document.querySelector(TERMINAL_META);
-    return (m && m.getAttribute('content')) || 'https://mobius-civic-ai-terminal.vercel.app';
+    return (m && m.getAttribute('content')) || 'https://terminal.mobius-substrate.com';
   }
 
   function forceDarkScheme() {

@@ -1,15 +1,15 @@
 {
   "mobius_catalog_version": "1.0.0",
-  "generated_at": "2026-06-29T06:53:35.470Z",
+  "generated_at": "2026-06-29T13:25:19.719Z",
   "repo": {
     "name": "Mobius-Substrate",
     "url": "https://github.com/kaizencycle/Mobius-Substrate",
     "default_branch": "main",
-    "commit": "760e10b1ff3e41775d8fb5fd595a47cb85ad2dba"
+    "commit": ""
   },
   "stats": {
     "epiconCount": 0,
-    "docCount": 966
+    "docCount": 971
   },
   "epicons": [],
   "docs": [
@@ -7086,6 +7086,14 @@
       "summary": ""
     },
     {
+      "path": "docs/MOBIUS.md",
+      "title": "MOBIUS — Constitutional Machine Interface",
+      "category": "MOBIUS.md",
+      "tags": [],
+      "content_hash": "sha256:491b39c124dc6401d51d6a8f56343dd2fa2dd85370945c10653ff7c8a2b74f5a",
+      "summary": ""
+    },
+    {
       "path": "docs/MOBIUS_ARCHIVE_V1.md",
       "title": "MOBIUS_ARCHIVE_V1",
       "category": "MOBIUS_ARCHIVE_V1.md",
@@ -7106,7 +7114,7 @@
       "title": "🌀 Mobius Substrate Documentation Portal",
       "category": "README.md",
       "tags": [],
-      "content_hash": "sha256:7b0ae8396dd3217c37cd59f06b21d72321c4be87ea1bdf70c3fe90d7fe8a9883",
+      "content_hash": "sha256:0556725d4a40dc15be29f41692dc19e588f59ec7699a3eca8ede9a6116f2a1e5",
       "summary": ""
     },
     {
@@ -7163,6 +7171,14 @@
       "category": "STATE_OF_THE_SUBSTRATE_C-338.md",
       "tags": [],
       "content_hash": "sha256:af8d843ae021e066b87b003caebe94695dd1a5c7f07bbb9ca805fe86bc561c2b",
+      "summary": ""
+    },
+    {
+      "path": "docs/STATE_OF_THE_SUBSTRATE_LATEST.md",
+      "title": "State of the Substrate — Latest",
+      "category": "STATE_OF_THE_SUBSTRATE_LATEST.md",
+      "tags": [],
+      "content_hash": "sha256:f9d393e679e2b77eba5bfccf9e208f668f9e90f9b0c6d2495249cd1b715e8373",
       "summary": ""
     },
     {
@@ -7610,6 +7626,30 @@
       "category": "handbook",
       "tags": [],
       "content_hash": "sha256:22015e30929e1402a86770ac81c82bb2acecaaf9fb91bbc94931e49a07880386",
+      "summary": ""
+    },
+    {
+      "path": "docs/journals/C-356.md",
+      "title": "Cycle Journal — C-356",
+      "category": "journals",
+      "tags": [],
+      "content_hash": "sha256:2c843eb3328d6c76191273e36dab5758f226e3d48d90c043ba3cef5f4d4c862c",
+      "summary": ""
+    },
+    {
+      "path": "docs/journals/C-357.md",
+      "title": "Cycle Journal — C-357",
+      "category": "journals",
+      "tags": [],
+      "content_hash": "sha256:1a5f64ba633c34ca055b270b6fcd2bb5e2cd6935f0731d81281c5dc832d4bd63",
+      "summary": ""
+    },
+    {
+      "path": "docs/journals/archive.md",
+      "title": "Cycle Journal — Archive",
+      "category": "journals",
+      "tags": [],
+      "content_hash": "sha256:d950d917eae8801e2da7f5ca52dc3230754112ee5759eb52f98b674af4b4ee48",
       "summary": ""
     },
     {
