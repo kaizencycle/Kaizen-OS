@@ -149,7 +149,7 @@ Proposal → Extended Discussion → Vote → 5/5 = Approved
 
 ```bash
 # Verify consensus was genuine
-curl https://pulse.mobius.systems/philosophy/verify-consensus?id=PR-1234
+curl https://terminal.mobius-substrate.com/philosophy/verify-consensus?id=PR-1234
 ```
 
 ---

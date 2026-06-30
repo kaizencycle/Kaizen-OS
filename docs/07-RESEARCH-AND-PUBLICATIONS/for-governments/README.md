@@ -275,10 +275,10 @@ For programmatic access to government resources, see [endpoints.json](./endpoint
 ```bash
 # Get compliance report (requires API key)
 curl -H "Authorization: Bearer $GOV_API_KEY" \
-  https://pulse.mobius.systems/government/compliance-report.json
+  https://terminal.mobius-substrate.com/government/compliance-report.json
 
 # Get transparency report
-curl https://pulse.mobius.systems/government/transparency.pdf
+curl https://terminal.mobius-substrate.com/government/transparency.pdf
 ```
 
 **Full API Documentation**: [ENDPOINTS.md](./ENDPOINTS.md)

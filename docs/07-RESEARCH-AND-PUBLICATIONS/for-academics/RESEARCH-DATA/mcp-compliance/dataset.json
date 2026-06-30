@@ -30,7 +30,7 @@
     "violations_resolved": "integer - Violations resolved within cycle"
   },
   "download": {
-    "full_dataset": "https://pulse.mobius.systems/academics/datasets/mcp-compliance.csv",
+    "full_dataset": "https://terminal.mobius-substrate.com/academics/datasets/mcp-compliance.csv",
     "format": "CSV",
     "records": 46,
     "size_bytes": 3800

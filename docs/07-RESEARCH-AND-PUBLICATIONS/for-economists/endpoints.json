@@ -6,40 +6,40 @@
   "multiplier": 1.5,
   "endpoints": {
     "supply": {
-      "url": "https://pulse.mobius.systems/economy/supply",
+      "url": "https://terminal.mobius-substrate.com/economy/supply",
       "format": "JSON",
       "update_frequency": "real-time",
       "description": "Current MIC total supply and distribution",
       "fields": ["total_supply", "circulating", "locked", "burned"]
     },
     "mii": {
-      "url": "https://pulse.mobius.systems/economy/mii",
+      "url": "https://terminal.mobius-substrate.com/economy/mii",
       "format": "JSON",
       "update_frequency": "6 hours",
       "description": "Current Mobius Integrity Index and threshold"
     },
     "coordination": {
-      "url": "https://pulse.mobius.systems/economy/coordination",
+      "url": "https://terminal.mobius-substrate.com/economy/coordination",
       "format": "JSON",
       "description": "Average coordination score across all sentinels"
     },
     "roi": {
-      "url": "https://pulse.mobius.systems/economy/roi",
+      "url": "https://terminal.mobius-substrate.com/economy/roi",
       "format": "JSON",
       "description": "Sentinel ROI analysis by cathedral"
     },
     "mic_history": {
-      "url": "https://pulse.mobius.systems/economy/mic-history.csv",
+      "url": "https://terminal.mobius-substrate.com/economy/mic-history.csv",
       "format": "CSV",
       "description": "Complete MIC minting history since genesis"
     },
     "sentinel_roi": {
-      "url": "https://pulse.mobius.systems/economy/sentinel-roi.json",
+      "url": "https://terminal.mobius-substrate.com/economy/sentinel-roi.json",
       "format": "JSON",
       "description": "Per-sentinel ROI breakdown"
     },
     "cathedral_multipliers": {
-      "url": "https://pulse.mobius.systems/economy/cathedral-multipliers.csv",
+      "url": "https://terminal.mobius-substrate.com/economy/cathedral-multipliers.csv",
       "format": "CSV",
       "description": "Historical cathedral multiplier timeline"
     }

@@ -2,7 +2,7 @@
 
 **Version**: C-151  
 **Cathedral**: FOR-ACADEMICS  
-**Base URL**: `https://pulse.mobius.systems/academics`
+**Base URL**: `https://terminal.mobius-substrate.com/academics`
 
 ---
 
@@ -39,7 +39,7 @@ The Research Cathedral provides programmatic access to research data, papers, ci
 
 **Example Request**:
 ```bash
-curl https://pulse.mobius.systems/academics/dataset.json
+curl https://terminal.mobius-substrate.com/academics/dataset.json
 ```
 
 **Example Response**:
@@ -83,7 +83,7 @@ curl https://pulse.mobius.systems/academics/dataset.json
 
 **Example Request**:
 ```bash
-curl https://pulse.mobius.systems/academics/mii-timeline.csv
+curl https://terminal.mobius-substrate.com/academics/mii-timeline.csv
 ```
 
 **Example Response**:
@@ -112,7 +112,7 @@ timestamp,mii_score,cycle,sentinel_count
 
 **Example Request**:
 ```bash
-curl https://pulse.mobius.systems/academics/sentinel-coordination.json
+curl https://terminal.mobius-substrate.com/academics/sentinel-coordination.json
 ```
 
 **Example Response**:
@@ -150,7 +150,7 @@ curl https://pulse.mobius.systems/academics/sentinel-coordination.json
 
 **Example Request**:
 ```bash
-curl https://pulse.mobius.systems/academics/papers.json
+curl https://terminal.mobius-substrate.com/academics/papers.json
 ```
 
 **Example Response**:
@@ -187,7 +187,7 @@ curl https://pulse.mobius.systems/academics/papers.json
 
 **Example Request**:
 ```bash
-curl https://pulse.mobius.systems/academics/citations.bib
+curl https://terminal.mobius-substrate.com/academics/citations.bib
 ```
 
 **Example Response**:

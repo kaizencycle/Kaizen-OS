@@ -28,7 +28,7 @@ on:
 env:
   LEDGER_RPC: ${{ secrets.LEDGER_RPC }}
   MIC_CONTRACT: ${{ vars.MIC_CONTRACT_ADDRESS }}
-  PULSE_URL: ${{ vars.PULSE_URL || 'https://pulse.mobius.systems/latest.json' }}
+  PULSE_URL: ${{ vars.PULSE_URL || 'https://terminal.mobius-substrate.com/api/terminal/snapshot-lite' }}
 
 permissions:
   contents: read
