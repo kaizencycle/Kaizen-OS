@@ -26,7 +26,7 @@ jobs:
 
     steps:
       - name: Checkout main
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           ref: main
 
@@ -78,7 +78,7 @@ jobs:
 
       - name: Ensure writer-health-watchdog label exists
         if: steps.health.outputs.writer_status == 'stale' || steps.health.outputs.writer_status == 'missing'
-        uses: actions/github-script@v7
+        uses: actions/github-script@v9
         with:
           script: |
             try {
@@ -104,7 +104,7 @@ jobs:
 
       - name: Open or update writer-health issue (stale or missing)
         if: steps.health.outputs.writer_status == 'stale' || steps.health.outputs.writer_status == 'missing'
-        uses: actions/github-script@v7
+        uses: actions/github-script@v9
         with:
           script: |
             const days = '${{ steps.health.outputs.days_since }}';
@@ -168,7 +168,7 @@ jobs:
 
       - name: Auto-close writer-health issue if healthy
         if: steps.health.outputs.writer_status == 'ok'
-        uses: actions/github-script@v7
+        uses: actions/github-script@v9
         with:
           script: |
             const existing = await github.rest.issues.listForRepo({
