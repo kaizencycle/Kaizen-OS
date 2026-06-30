@@ -1,8 +1,8 @@
 # Divergence Dashboard
 
 **Repo:** `kaizencycle/Mobius-Substrate`  
-**Generated:** `2026-06-30T14:39:33Z`  
-**Open PRs:** `8`
+**Generated:** `2026-06-30T20:14:30Z`  
+**Open PRs:** `5`
 
 ## Summary
 
@@ -11,21 +11,18 @@
 | 🔴 High | 0 |
 | 🟡 Medium | 0 |
 | 🟢 Low | 0 |
-| ⚪ Unknown | 8 |
+| ⚪ Unknown | 5 |
 | 🚨 Emergency | 0 |
 
 ## Open PRs
 
 | Sev | PR | Title | Author | EPICON | Gate | Mode | Updated |
 |-----|---:|-------|--------|--------|------|------|---------|
-| ⚪ unknown | [#317](https://github.com/kaizencycle/Mobius-Substrate/pull/317) | chore(deps-dev): bump hardhat from 2.22.5 to 3.9.0 | @dependabot[bot] | ? | ? | — | 2026-06-28 |
-| ⚪ unknown | [#320](https://github.com/kaizencycle/Mobius-Substrate/pull/320) | chore(deps): bump lru-cache from 10.2.0 to 11.5.1 | @dependabot[bot] | ? | ? | — | 2026-06-28 |
-| ⚪ unknown | [#326](https://github.com/kaizencycle/Mobius-Substrate/pull/326) | chore(deps): bump nodemailer from 8.0.11 to 9.0.1 | @dependabot[bot] | ? | ? | — | 2026-06-27 |
-| ⚪ unknown | [#335](https://github.com/kaizencycle/Mobius-Substrate/pull/335) | chore(deps): unify nodemailer 9 + lru-cache 11 (su... | @kaizencycle | ? | ? | — | 2026-06-29 |
-| ⚪ unknown | [#336](https://github.com/kaizencycle/Mobius-Substrate/pull/336) | chore(deps): bump the actions group with 4 updates | @dependabot[bot] | ? | ? | — | 2026-06-29 |
-| ⚪ unknown | [#337](https://github.com/kaizencycle/Mobius-Substrate/pull/337) | chore(deps): bump the npm-minor-patch group with 1... | @dependabot[bot] | ? | ? | — | 2026-06-29 |
-| ⚪ unknown | [#338](https://github.com/kaizencycle/Mobius-Substrate/pull/338) | chore(deps): bump js-yaml from 4.2.0 to 5.2.0 | @dependabot[bot] | ? | ? | — | 2026-06-29 |
-| ⚪ unknown | [#342](https://github.com/kaizencycle/Mobius-Substrate/pull/342) | chore(deps): unified dependency bumps C-358 — acti... | @kaizencycle | ? | ? | — | 2026-06-30 |
+| ⚪ unknown | [#343](https://github.com/kaizencycle/Mobius-Substrate/pull/343) | chore(deps): bump the npm-minor-patch group with 5... | @dependabot[bot] | ? | ? | — | 2026-06-30 |
+| ⚪ unknown | [#344](https://github.com/kaizencycle/Mobius-Substrate/pull/344) | chore(deps): bump zustand from 4.5.7 to 5.0.14 | @dependabot[bot] | ? | ? | — | 2026-06-30 |
+| ⚪ unknown | [#345](https://github.com/kaizencycle/Mobius-Substrate/pull/345) | chore(deps): bump lucide-react from 0.378.0 to 1.2... | @dependabot[bot] | ? | ? | — | 2026-06-30 |
+| ⚪ unknown | [#346](https://github.com/kaizencycle/Mobius-Substrate/pull/346) | chore(deps): bump tailwind-merge from 2.6.0 to 3.6... | @dependabot[bot] | ? | ? | — | 2026-06-30 |
+| ⚪ unknown | [#347](https://github.com/kaizencycle/Mobius-Substrate/pull/347) | chore(deps): bump zod from 3.25.76 to 4.4.3 | @dependabot[bot] | ? | ? | — | 2026-06-30 |
 
 ---
 
