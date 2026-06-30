@@ -2,7 +2,7 @@
 
 **Version**: C-151  
 **Cathedral**: FOR-PHILOSOPHERS  
-**Base URL**: `https://pulse.mobius.systems/philosophy`
+**Base URL**: `https://terminal.mobius-substrate.com/philosophy`
 
 ---
 
@@ -26,7 +26,7 @@ The Ethics Cathedral provides access to sentinel deliberations, virtue metrics, 
 
 **Example Request**:
 ```bash
-curl https://pulse.mobius.systems/philosophy/deliberations.json
+curl https://terminal.mobius-substrate.com/philosophy/deliberations.json
 ```
 
 **Example Response**:
@@ -76,7 +76,7 @@ curl https://pulse.mobius.systems/philosophy/deliberations.json
 
 **Example Request**:
 ```bash
-curl https://pulse.mobius.systems/philosophy/virtues.json
+curl https://terminal.mobius-substrate.com/philosophy/virtues.json
 ```
 
 **Example Response**:
@@ -132,7 +132,7 @@ curl https://pulse.mobius.systems/philosophy/virtues.json
 
 **Example Request**:
 ```bash
-curl https://pulse.mobius.systems/philosophy/decisions.json
+curl https://terminal.mobius-substrate.com/philosophy/decisions.json
 ```
 
 **Example Response**:
@@ -172,7 +172,7 @@ curl https://pulse.mobius.systems/philosophy/decisions.json
 
 **Connection**:
 ```javascript
-const ws = new WebSocket('wss://pulse.mobius.systems/philosophy/simulation');
+const ws = new WebSocket('wss://terminal.mobius-substrate.com/philosophy/simulation');
 
 ws.onopen = () => {
   ws.send(JSON.stringify({
@@ -216,7 +216,7 @@ ws.onmessage = (event) => {
 
 **Example Request**:
 ```bash
-curl https://pulse.mobius.systems/philosophy/drift-analysis.json
+curl https://terminal.mobius-substrate.com/philosophy/drift-analysis.json
 ```
 
 **Example Response**:

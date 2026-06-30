@@ -112,7 +112,7 @@ ROI = ($59.5B × 5 - $200M) / $200M × 100 = 148,650%
 
 ```bash
 # Calculate via API
-curl -X POST https://pulse.mobius.systems/economy/calculate-roi \
+curl -X POST https://terminal.mobius-substrate.com/economy/calculate-roi \
   -H "Content-Type: application/json" \
   -d '{
     "debt": 37000000000000,

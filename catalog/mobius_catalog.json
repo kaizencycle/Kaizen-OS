@@ -1,11 +1,11 @@
 {
   "mobius_catalog_version": "1.0.0",
-  "generated_at": "2026-06-30T06:16:57.200Z",
+  "generated_at": "2026-06-30T14:21:35.939Z",
   "repo": {
     "name": "Mobius-Substrate",
     "url": "https://github.com/kaizencycle/Mobius-Substrate",
     "default_branch": "main",
-    "commit": "49f4d2438fde403a576ae4958987c65d3d650b1b"
+    "commit": ""
   },
   "stats": {
     "epiconCount": 0,
@@ -2194,7 +2194,7 @@
       "title": "Research Cathedral — API Endpoints",
       "category": "07-RESEARCH-AND-PUBLICATIONS",
       "tags": [],
-      "content_hash": "sha256:2faf6c182a26e3d15bf4caf46b48a77624fc438ec2ce4874c5b532ee998f1836",
+      "content_hash": "sha256:4fcc11aabb65875aa1a47a6c2c914313524733cc38e767795b7b78a6d05643c6",
       "summary": ""
     },
     {
@@ -2258,7 +2258,7 @@
       "title": "🎓 For Academics — Research Cathedral",
       "category": "07-RESEARCH-AND-PUBLICATIONS",
       "tags": [],
-      "content_hash": "sha256:0aac93f31ac8b04efccdbbfb121107a78b720087dafd568756b280a96f9e2a7c",
+      "content_hash": "sha256:e896d1100ba2c86a298fcf3f0be3be35fe4f1d8969f1f095be924d650f7fbacf",
       "summary": ""
     },
     {
@@ -2322,7 +2322,7 @@
       "title": "📈 Empirical Validation",
       "category": "07-RESEARCH-AND-PUBLICATIONS",
       "tags": [],
-      "content_hash": "sha256:8dc29835a2d8fba82ab01b2e247e8d823e50915e3a6251339a49890e76c419e7",
+      "content_hash": "sha256:f18c7eeb4b0de1b8791116becd45e7adf05547e307460b93f77f0923396929fd",
       "summary": ""
     },
     {
@@ -2370,7 +2370,7 @@
       "title": "Market Cathedral — API Endpoints",
       "category": "07-RESEARCH-AND-PUBLICATIONS",
       "tags": [],
-      "content_hash": "sha256:3b7ad5208b476ba36131793eb603ad56c11464d62402f90632eaefede8a2bb79",
+      "content_hash": "sha256:fa93b5b75f79a1a7052b20e0d40cfafd86d5fd84847907b362fcfb35fc684e9a",
       "summary": ""
     },
     {
@@ -2418,7 +2418,7 @@
       "title": "📊 Market Data",
       "category": "07-RESEARCH-AND-PUBLICATIONS",
       "tags": [],
-      "content_hash": "sha256:83ab76441421f820a37a8c8ca978a529e42d9a320247782037649c17d9cd55ad",
+      "content_hash": "sha256:ef6fe881c686b3919cd9a5c02c4e1201c7037ded7aeacda405099f9226399e89",
       "summary": ""
     },
     {
@@ -2434,7 +2434,7 @@
       "title": "💰 For Economists — Market Cathedral",
       "category": "07-RESEARCH-AND-PUBLICATIONS",
       "tags": [],
-      "content_hash": "sha256:d8ed3bb9c669418d966f9c08378f756709eb70bd019d7a1d01436086a8b9f3bf",
+      "content_hash": "sha256:02f4d731e88e0b3d4450e999de5add867d31af8ba4df7de672cdc5abe98411d6",
       "summary": ""
     },
     {
@@ -2450,7 +2450,7 @@
       "title": "📈 ROI Calculator Guide",
       "category": "07-RESEARCH-AND-PUBLICATIONS",
       "tags": [],
-      "content_hash": "sha256:82707a2952111022c6236ceb66347dc5b237076e1df9924e3a1232bf35bdddab",
+      "content_hash": "sha256:9a07baed915dd7483a9fc086e0fe0b9aa305725630bc5e290360a379499ab20f",
       "summary": ""
     },
     {
@@ -2466,7 +2466,7 @@
       "title": "Diplomacy Cathedral — API Endpoints",
       "category": "07-RESEARCH-AND-PUBLICATIONS",
       "tags": [],
-      "content_hash": "sha256:2fb87f87dc9c00ba57d27e9f45c99edbd31efb32a892c8c851053bdd2431bd82",
+      "content_hash": "sha256:218ae01cb6258b15fc9f136f20c75344a3c60f73a401acbb0ac13913379b4f96",
       "summary": ""
     },
     {
@@ -2626,7 +2626,7 @@
       "title": "Policy Cathedral — API Endpoints",
       "category": "07-RESEARCH-AND-PUBLICATIONS",
       "tags": [],
-      "content_hash": "sha256:03bfd010f7762a7c4d60b9305536dc40c8ccfba5de08a6e60139d856046ee6a9",
+      "content_hash": "sha256:895056bddc2450c4e6df0173ab25271e1738092fb94e3a913415a64aa95b9148",
       "summary": ""
     },
     {
@@ -2738,7 +2738,7 @@
       "title": "🏛️ For Governments — Policy Cathedral",
       "category": "07-RESEARCH-AND-PUBLICATIONS",
       "tags": [],
-      "content_hash": "sha256:023271c41013bb70ac5d1ea2b8b33a6bb5023c6f93eeec4059eb285e2fdb19ec",
+      "content_hash": "sha256:f2722eac94fb3560326e367ba7053220677cae5b6710418548b48a63f58e8e14",
       "summary": ""
     },
     {
@@ -2770,7 +2770,7 @@
       "title": "Ethics Cathedral — API Endpoints",
       "category": "07-RESEARCH-AND-PUBLICATIONS",
       "tags": [],
-      "content_hash": "sha256:b78aa4332aa138583a64e93220a950cd348aeb4a17b4900885be5165a4e990d3",
+      "content_hash": "sha256:0bff0cf258668a9c1d683781271676ff3d91bcd91dadc70ca2181cf46465720e",
       "summary": ""
     },
     {
@@ -2882,7 +2882,7 @@
       "title": "🗳️ Consensus Protocols",
       "category": "07-RESEARCH-AND-PUBLICATIONS",
       "tags": [],
-      "content_hash": "sha256:d5922d7921193bf857cad03f1bb4ebe827d15d789d018f04d871c49b2dd48e73",
+      "content_hash": "sha256:2c381c368932251f11dc1941451cf115c7e75c1d222d3b0bd2f655861c5c031b",
       "summary": ""
     },
     {
@@ -2922,7 +2922,7 @@
       "title": "🧠 For Philosophers — Ethics Cathedral",
       "category": "07-RESEARCH-AND-PUBLICATIONS",
       "tags": [],
-      "content_hash": "sha256:ada06fd05be6ae1cfd489abac66d4ce4accec322b619bf8f4ebf1269dea17abb",
+      "content_hash": "sha256:4a97cec2ff66ab8f57c6cde99a037e031d6307d6e4b20f42e59b980f796bb32c",
       "summary": ""
     },
     {

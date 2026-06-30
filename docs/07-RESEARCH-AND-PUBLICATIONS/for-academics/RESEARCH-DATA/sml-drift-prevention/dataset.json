@@ -52,7 +52,7 @@
     }
   ],
   "download": {
-    "full_dataset": "https://pulse.mobius.systems/academics/datasets/sml-drift-prevention.csv",
+    "full_dataset": "https://terminal.mobius-substrate.com/academics/datasets/sml-drift-prevention.csv",
     "format": "CSV",
     "records": 46,
     "size_bytes": 4200

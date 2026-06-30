@@ -41,7 +41,7 @@
     "negentropy_proxy": "number - Order creation estimate"
   },
   "download": {
-    "full_dataset": "https://pulse.mobius.systems/academics/datasets/economic-validation.csv",
+    "full_dataset": "https://terminal.mobius-substrate.com/academics/datasets/economic-validation.csv",
     "format": "CSV",
     "records": 1200,
     "size_bytes": 156000

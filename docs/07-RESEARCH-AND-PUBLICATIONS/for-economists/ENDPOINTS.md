@@ -2,7 +2,7 @@
 
 **Version**: C-151  
 **Cathedral**: FOR-ECONOMISTS  
-**Base URL**: `https://pulse.mobius.systems/economy`
+**Base URL**: `https://terminal.mobius-substrate.com/economy`
 
 ---
 
@@ -34,7 +34,7 @@ The Market Cathedral provides real-time access to MIC economy data, coordination
 
 **Example Request**:
 ```bash
-curl https://pulse.mobius.systems/economy/supply
+curl https://terminal.mobius-substrate.com/economy/supply
 ```
 
 **Example Response**:
@@ -68,7 +68,7 @@ curl https://pulse.mobius.systems/economy/supply
 
 **Example Request**:
 ```bash
-curl https://pulse.mobius.systems/economy/mii
+curl https://terminal.mobius-substrate.com/economy/mii
 ```
 
 **Example Response**:
@@ -100,7 +100,7 @@ curl https://pulse.mobius.systems/economy/mii
 
 **Example Request**:
 ```bash
-curl https://pulse.mobius.systems/economy/coordination
+curl https://terminal.mobius-substrate.com/economy/coordination
 ```
 
 **Example Response**:
@@ -137,7 +137,7 @@ curl https://pulse.mobius.systems/economy/coordination
 
 **Example Request**:
 ```bash
-curl https://pulse.mobius.systems/economy/roi
+curl https://terminal.mobius-substrate.com/economy/roi
 ```
 
 **Example Response**:
@@ -179,7 +179,7 @@ curl https://pulse.mobius.systems/economy/roi
 
 **Example Request**:
 ```bash
-curl https://pulse.mobius.systems/economy/mic-history.csv
+curl https://terminal.mobius-substrate.com/economy/mic-history.csv
 ```
 
 **Example Response**:
@@ -208,7 +208,7 @@ timestamp,cycle,sentinel,amount,cathedral,coordination_score
 
 **Example Request**:
 ```bash
-curl https://pulse.mobius.systems/economy/sentinel-roi.json
+curl https://terminal.mobius-substrate.com/economy/sentinel-roi.json
 ```
 
 **Example Response**:
@@ -246,7 +246,7 @@ curl https://pulse.mobius.systems/economy/sentinel-roi.json
 
 **Example Request**:
 ```bash
-curl https://pulse.mobius.systems/economy/cathedral-multipliers.csv
+curl https://terminal.mobius-substrate.com/economy/cathedral-multipliers.csv
 ```
 
 **Example Response**:

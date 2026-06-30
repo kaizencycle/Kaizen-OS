@@ -6,7 +6,7 @@
   "multiplier": 2.0,
   "endpoints": {
     "compliance_report": {
-      "url": "https://pulse.mobius.systems/government/compliance-report.json",
+      "url": "https://terminal.mobius-substrate.com/government/compliance-report.json",
       "format": "JSON",
       "auth_required": true,
       "description": "Complete regulatory compliance status"
@@ -19,17 +19,17 @@
       "description": "Exportable audit trail for regulatory review"
     },
     "transparency_report": {
-      "url": "https://pulse.mobius.systems/government/transparency.pdf",
+      "url": "https://terminal.mobius-substrate.com/government/transparency.pdf",
       "format": "PDF",
       "description": "Annual transparency report"
     },
     "sentinel_status": {
-      "url": "https://pulse.mobius.systems/government/sentinel-status.json",
+      "url": "https://terminal.mobius-substrate.com/government/sentinel-status.json",
       "format": "JSON",
       "description": "Real-time sentinel operational status"
     },
     "policy_impact": {
-      "url": "https://pulse.mobius.systems/government/policy-impact.json",
+      "url": "https://terminal.mobius-substrate.com/government/policy-impact.json",
       "format": "JSON",
       "description": "Economic and social impact projections"
     }

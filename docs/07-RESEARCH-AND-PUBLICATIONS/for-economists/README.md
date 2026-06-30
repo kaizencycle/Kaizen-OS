@@ -277,10 +277,10 @@ For programmatic access to economic data, see [endpoints.json](./endpoints.json)
 
 ```bash
 # Get MIC supply data
-curl https://pulse.mobius.systems/economy/supply
+curl https://terminal.mobius-substrate.com/economy/supply
 
 # Download complete MIC history
-curl https://pulse.mobius.systems/economy/mic-history.csv > mic-history.csv
+curl https://terminal.mobius-substrate.com/economy/mic-history.csv > mic-history.csv
 ```
 
 **Full API Documentation**: [ENDPOINTS.md](./ENDPOINTS.md)

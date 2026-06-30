@@ -98,7 +98,7 @@ jupyter notebook validation_analysis.ipynb
 ### Data Access
 
 All datasets available at:
-- `https://pulse.mobius.systems/economy/datasets/`
+- `https://terminal.mobius-substrate.com/economy/datasets/`
 - Academic access: Apply with institution email
 
 ---
