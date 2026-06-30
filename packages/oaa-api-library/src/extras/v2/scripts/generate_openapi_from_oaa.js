@@ -6,7 +6,7 @@
  */
 const fs = require('fs');
 const path = require('path');
-const yaml = require('js-yaml');
+const { load } = require('js-yaml');
 
 function ensureDir(p){ fs.mkdirSync(p, { recursive: true }); }
 
@@ -59,7 +59,7 @@ function main(){
     const id = path.basename(file, '.oaa');
     const raw = fs.readFileSync(path.join(oaaDir, file), 'utf8');
     let capsule;
-    try { capsule = yaml.load(raw); } catch { try { capsule = JSON.parse(raw); } catch(e) { capsule = { id }; } }
+    try { capsule = load(raw); } catch { try { capsule = JSON.parse(raw); } catch(e) { capsule = { id }; } }
     const spec = toOpenAPI(id, capsule || {});
     const outDir = path.join(apisDir, id);
     ensureDir(outDir);

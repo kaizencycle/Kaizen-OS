@@ -22,12 +22,12 @@
     "test:all": "npm run build && npm run test:config && npm run test:providers && npm run test:consensus"
   },
   "dependencies": {
-    "@anthropic-ai/sdk": "^0.105.0",
+    "@anthropic-ai/sdk": "^0.107.0",
     "@google/generative-ai": "^0.24.1",
     "@modelcontextprotocol/sdk": "1.29.0",
     "eslint-config-next": "14.2.35",
     "ethers": "6.17.0",
-    "lru-cache": "^10.2.2",
+    "lru-cache": "^11.5.1",
     "next": "14.2.35",
     "node-fetch": "^3.3.2",
     "openai": "^4.56.0"

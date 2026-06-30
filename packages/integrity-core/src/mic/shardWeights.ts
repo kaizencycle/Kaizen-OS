@@ -3,7 +3,7 @@
 
 import fs from 'node:fs';
 import path from 'node:path';
-import yaml from 'js-yaml';
+import { load } from 'js-yaml';
 import { ShardType } from './types';
 
 export interface ShardWeightsConfig {
@@ -54,7 +54,7 @@ export function loadShardWeightsConfig(): ShardWeightsConfig {
   }
 
   const raw = fs.readFileSync(configPath, 'utf8');
-  const parsed = yaml.load(raw) as ShardWeightsConfig;
+  const parsed = load(raw) as ShardWeightsConfig;
 
   cachedConfig = parsed;
   return parsed;
