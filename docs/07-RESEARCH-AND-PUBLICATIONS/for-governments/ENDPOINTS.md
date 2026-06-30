@@ -2,7 +2,7 @@
 
 **Version**: C-151  
 **Cathedral**: FOR-GOVERNMENTS  
-**Base URL**: `https://pulse.mobius.systems/government`
+**Base URL**: `https://terminal.mobius-substrate.com/government`
 
 ---
 
@@ -31,7 +31,7 @@ The Policy Cathedral provides access to regulatory compliance reports, audit tra
 **Example Request**:
 ```bash
 curl -H "Authorization: Bearer $GOV_API_KEY" \
-  https://pulse.mobius.systems/government/compliance-report.json
+  https://terminal.mobius-substrate.com/government/compliance-report.json
 ```
 
 **Example Response**:
@@ -125,7 +125,7 @@ timestamp,event_type,agent,data,attestation_hash
 **Example Request**:
 ```bash
 curl -o transparency-report-2025.pdf \
-  https://pulse.mobius.systems/government/transparency.pdf
+  https://terminal.mobius-substrate.com/government/transparency.pdf
 ```
 
 **Contents**:
@@ -156,7 +156,7 @@ curl -o transparency-report-2025.pdf \
 
 **Example Request**:
 ```bash
-curl https://pulse.mobius.systems/government/sentinel-status.json
+curl https://terminal.mobius-substrate.com/government/sentinel-status.json
 ```
 
 **Example Response**:
@@ -202,7 +202,7 @@ curl https://pulse.mobius.systems/government/sentinel-status.json
 **Example Request**:
 ```bash
 curl -H "Authorization: Bearer $GOV_API_KEY" \
-  https://pulse.mobius.systems/government/policy-impact.json
+  https://terminal.mobius-substrate.com/government/policy-impact.json
 ```
 
 **Example Response**:

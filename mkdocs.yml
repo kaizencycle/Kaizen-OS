@@ -11,7 +11,7 @@ repo_url: https://github.com/kaizencycle/Mobius-Substrate
 edit_uri: edit/main/docs/
 
 # Copyright
-copyright: Copyright &copy; 2026 Mobius Systems — CC-BY-SA 4.0
+copyright: Copyright &copy; 2026 Mobius Substrate — CC-BY-SA 4.0
 
 # Theme: Material for MkDocs
 theme:

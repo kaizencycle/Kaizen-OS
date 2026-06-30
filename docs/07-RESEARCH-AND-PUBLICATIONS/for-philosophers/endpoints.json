@@ -6,27 +6,27 @@
   "multiplier": 1.0,
   "endpoints": {
     "deliberations": {
-      "url": "https://pulse.mobius.systems/philosophy/deliberations.json",
+      "url": "https://terminal.mobius-substrate.com/philosophy/deliberations.json",
       "format": "JSON",
       "description": "Live sentinel deliberation logs with reasoning traces"
     },
     "virtue_metrics": {
-      "url": "https://pulse.mobius.systems/philosophy/virtues.json",
+      "url": "https://terminal.mobius-substrate.com/philosophy/virtues.json",
       "format": "JSON",
       "description": "Real-time virtue accord compliance scores"
     },
     "ethical_decisions": {
-      "url": "https://pulse.mobius.systems/philosophy/decisions.json",
+      "url": "https://terminal.mobius-substrate.com/philosophy/decisions.json",
       "format": "JSON",
       "description": "Historical ethical decision archive"
     },
     "governance_simulation": {
-      "url": "https://pulse.mobius.systems/philosophy/simulation",
+      "url": "https://terminal.mobius-substrate.com/philosophy/simulation",
       "format": "WebSocket",
       "description": "Interactive governance ethics simulation"
     },
     "drift_analysis": {
-      "url": "https://pulse.mobius.systems/philosophy/drift-analysis.json",
+      "url": "https://terminal.mobius-substrate.com/philosophy/drift-analysis.json",
       "format": "JSON",
       "description": "Value drift detection and analysis"
     }

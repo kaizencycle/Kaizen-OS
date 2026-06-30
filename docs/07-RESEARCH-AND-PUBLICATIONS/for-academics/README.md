@@ -188,10 +188,10 @@ For programmatic access to academic resources, see [endpoints.json](./endpoints.
 
 ```bash
 # Quick start - download research dataset
-curl https://pulse.mobius.systems/academics/dataset.json > mobius-research.json
+curl https://terminal.mobius-substrate.com/academics/dataset.json > mobius-research.json
 
 # Get 30-day MII timeline
-curl https://pulse.mobius.systems/academics/mii-timeline.csv
+curl https://terminal.mobius-substrate.com/academics/mii-timeline.csv
 ```
 
 **Full API Documentation**: [ENDPOINTS.md](./ENDPOINTS.md)

@@ -285,10 +285,10 @@ For programmatic access to philosophical resources, see [endpoints.json](./endpo
 
 ```bash
 # Get sentinel deliberation logs
-curl https://pulse.mobius.systems/philosophy/deliberations.json
+curl https://terminal.mobius-substrate.com/philosophy/deliberations.json
 
 # Get virtue metrics
-curl https://pulse.mobius.systems/philosophy/virtues.json
+curl https://terminal.mobius-substrate.com/philosophy/virtues.json
 ```
 
 **Full API Documentation**: [ENDPOINTS.md](./ENDPOINTS.md)

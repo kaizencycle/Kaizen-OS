@@ -5,7 +5,7 @@
   "description": "Research the Mobius Systems without reading code",
   "endpoints": {
     "dataset": {
-      "url": "https://pulse.mobius.systems/academics/dataset.json",
+      "url": "https://terminal.mobius-substrate.com/academics/dataset.json",
       "format": "JSON",
       "update_frequency": "6 hours",
       "description": "Complete system snapshot for research",
@@ -18,23 +18,23 @@
       }
     },
     "mii_timeline": {
-      "url": "https://pulse.mobius.systems/academics/mii-timeline.csv",
+      "url": "https://terminal.mobius-substrate.com/academics/mii-timeline.csv",
       "format": "CSV",
       "columns": ["timestamp", "mii_score", "cycle", "sentinel_count"],
       "description": "30-day MII scores for economic modeling"
     },
     "sentinel_coordination": {
-      "url": "https://pulse.mobius.systems/academics/sentinel-coordination.json",
+      "url": "https://terminal.mobius-substrate.com/academics/sentinel-coordination.json",
       "format": "JSON",
       "description": "Sentinel performance metrics and coordination data"
     },
     "papers_index": {
-      "url": "https://pulse.mobius.systems/academics/papers.json",
+      "url": "https://terminal.mobius-substrate.com/academics/papers.json",
       "format": "JSON",
       "description": "Index of published and working papers"
     },
     "citations": {
-      "url": "https://pulse.mobius.systems/academics/citations.bib",
+      "url": "https://terminal.mobius-substrate.com/academics/citations.bib",
       "format": "BibTeX",
       "description": "Complete citation database"
     }

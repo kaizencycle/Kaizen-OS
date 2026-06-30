@@ -58,17 +58,17 @@
 
 ```bash
 # MIC History
-curl https://pulse.mobius.systems/economy/mic-history.csv > mic-history.csv
+curl https://terminal.mobius-substrate.com/economy/mic-history.csv > mic-history.csv
 
 # Debt-Entropy Data
-curl https://pulse.mobius.systems/economy/debt-entropy.csv > debt-entropy.csv
+curl https://terminal.mobius-substrate.com/economy/debt-entropy.csv > debt-entropy.csv
 ```
 
 ### API Access
 
 ```javascript
 // Get latest market data
-const response = await fetch('https://pulse.mobius.systems/economy/snapshot.json');
+const response = await fetch('https://terminal.mobius-substrate.com/economy/snapshot.json');
 const data = await response.json();
 
 console.log('MIC Supply:', data.mic_supply);
@@ -94,7 +94,7 @@ console.log('Coordination Avg:', data.coordination_average);
   title={Mobius Systems Market Data},
   author={Mobius Systems Foundation},
   year={2025},
-  url={https://pulse.mobius.systems/economy/},
+  url={https://terminal.mobius-substrate.com/economy/},
   license={CC0 1.0}
 }
 ```

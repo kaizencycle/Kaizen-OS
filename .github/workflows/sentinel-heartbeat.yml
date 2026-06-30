@@ -1,3 +1,8 @@
+# ## Authority Provenance
+# C-358 corrective fix: remove dead external pulse default; snapshot-lite is
+# GI/mode-only and must not feed coordination scores. Authority: @kaizencycle.
+# See docs/templates/EPICON_FOUNDER_STANDING.md
+#
 # ═══════════════════════════════════════════════════════════════════════════════
 # C-151 Sentinel Heartbeat Workflow
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -28,7 +33,9 @@ on:
 env:
   LEDGER_RPC: ${{ secrets.LEDGER_RPC }}
   MIC_CONTRACT: ${{ vars.MIC_CONTRACT_ADDRESS }}
-  PULSE_URL: ${{ vars.PULSE_URL || 'https://pulse.mobius.systems/latest.json' }}
+  # Optional override for a full pulse JSON (must include structure.{apps,packages,workflows}).
+  # Unset → generate_pulse.js from checked-out repo (C-358: do not default to snapshot-lite).
+  PULSE_URL: ${{ vars.PULSE_URL }}
 
 permissions:
   contents: read
@@ -85,10 +92,24 @@ jobs:
       - name: Fetch Pulse Data
         id: fetch
         run: |
-          if curl -sf "$PULSE_URL" -o pulse.json; then
-            echo "✅ Fetched pulse from $PULSE_URL"
-          else
-            echo "⚠️ Pulse API unavailable, generating from repo state..."
+          USE_REMOTE=false
+
+          if [ -n "${PULSE_URL:-}" ]; then
+            if curl -sf "$PULSE_URL" -o pulse-remote.json; then
+              if jq -e '.structure | type == "object" and ((.apps != null) or (.packages != null) or (.workflows != null))' pulse-remote.json >/dev/null 2>&1; then
+                mv pulse-remote.json pulse.json
+                USE_REMOTE=true
+                echo "✅ Fetched full pulse from $PULSE_URL"
+              else
+                echo "⚠️ $PULSE_URL lacks structure.{apps,packages,workflows} — not suitable for coordination scores"
+              fi
+            else
+              echo "⚠️ Pulse API unavailable at $PULSE_URL"
+            fi
+          fi
+
+          if [ "$USE_REMOTE" != "true" ]; then
+            echo "📦 Generating pulse from repository state..."
             node scripts/generate_pulse.js > pulse.json
           fi
 

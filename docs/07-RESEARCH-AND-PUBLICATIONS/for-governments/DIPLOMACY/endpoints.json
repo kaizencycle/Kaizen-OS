@@ -5,17 +5,17 @@
   "description": "Diplomatic and international relations API",
   "endpoints": {
     "treaty_framework": {
-      "url": "https://pulse.mobius.systems/diplomacy/treaty-framework.json",
+      "url": "https://terminal.mobius-substrate.com/diplomacy/treaty-framework.json",
       "format": "JSON",
       "description": "Complete treaty framework documentation"
     },
     "standards": {
-      "url": "https://pulse.mobius.systems/diplomacy/standards.json",
+      "url": "https://terminal.mobius-substrate.com/diplomacy/standards.json",
       "format": "JSON",
       "description": "International integrity standards"
     },
     "protocols": {
-      "url": "https://pulse.mobius.systems/diplomacy/protocols.json",
+      "url": "https://terminal.mobius-substrate.com/diplomacy/protocols.json",
       "format": "JSON",
       "description": "Diplomatic protocols and engagement guidelines"
     }

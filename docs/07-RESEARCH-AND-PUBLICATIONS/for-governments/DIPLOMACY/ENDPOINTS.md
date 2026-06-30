@@ -2,7 +2,7 @@
 
 **Version**: C-156  
 **Cathedral**: DIPLOMACY  
-**Base URL**: `https://pulse.mobius.systems/diplomacy`
+**Base URL**: `https://terminal.mobius-substrate.com/diplomacy`
 
 ---
 
@@ -28,7 +28,7 @@ The Diplomacy Cathedral provides access to international relations documentation
 
 **Example Request**:
 ```bash
-curl https://pulse.mobius.systems/diplomacy/treaty-framework.json
+curl https://terminal.mobius-substrate.com/diplomacy/treaty-framework.json
 ```
 
 ---
@@ -43,7 +43,7 @@ curl https://pulse.mobius.systems/diplomacy/treaty-framework.json
 
 **Example Request**:
 ```bash
-curl https://pulse.mobius.systems/diplomacy/standards.json
+curl https://terminal.mobius-substrate.com/diplomacy/standards.json
 ```
 
 ---
@@ -58,7 +58,7 @@ curl https://pulse.mobius.systems/diplomacy/standards.json
 
 **Example Request**:
 ```bash
-curl https://pulse.mobius.systems/diplomacy/protocols.json
+curl https://terminal.mobius-substrate.com/diplomacy/protocols.json
 ```
 
 ---
