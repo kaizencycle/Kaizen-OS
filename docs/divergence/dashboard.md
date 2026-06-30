@@ -1,8 +1,8 @@
 # Divergence Dashboard
 
 **Repo:** `kaizencycle/Mobius-Substrate`  
-**Generated:** `2026-06-30T09:57:45Z`  
-**Open PRs:** `7`
+**Generated:** `2026-06-30T14:39:33Z`  
+**Open PRs:** `8`
 
 ## Summary
 
@@ -11,7 +11,7 @@
 | 🔴 High | 0 |
 | 🟡 Medium | 0 |
 | 🟢 Low | 0 |
-| ⚪ Unknown | 7 |
+| ⚪ Unknown | 8 |
 | 🚨 Emergency | 0 |
 
 ## Open PRs
@@ -25,6 +25,7 @@
 | ⚪ unknown | [#336](https://github.com/kaizencycle/Mobius-Substrate/pull/336) | chore(deps): bump the actions group with 4 updates | @dependabot[bot] | ? | ? | — | 2026-06-29 |
 | ⚪ unknown | [#337](https://github.com/kaizencycle/Mobius-Substrate/pull/337) | chore(deps): bump the npm-minor-patch group with 1... | @dependabot[bot] | ? | ? | — | 2026-06-29 |
 | ⚪ unknown | [#338](https://github.com/kaizencycle/Mobius-Substrate/pull/338) | chore(deps): bump js-yaml from 4.2.0 to 5.2.0 | @dependabot[bot] | ? | ? | — | 2026-06-29 |
+| ⚪ unknown | [#342](https://github.com/kaizencycle/Mobius-Substrate/pull/342) | chore(deps): unified dependency bumps C-358 — acti... | @kaizencycle | ? | ? | — | 2026-06-30 |
 
 ---
 
