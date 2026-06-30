@@ -1,6 +1,6 @@
 {
-  "current_cycle": "C-357",
-  "date": "2026-06-28",
+  "current_cycle": "C-358",
+  "date": "2026-06-30",
   "gi": 0.9,
   "mode": "yellow",
   "canonical_domain": "https://mobius-substrate.com",
@@ -10,9 +10,9 @@
   "snapshot": "https://terminal.mobius-substrate.com/api/terminal/snapshot",
   "vault_status": "https://terminal.mobius-substrate.com/api/vault/status",
   "vault_seals": "https://terminal.mobius-substrate.com/api/vault/seal",
-  "last_updated": "2026-06-28T23:00:00Z",
-  "previous_cycle": "C-356",
-  "updated_by": "manual-recovery-c357",
+  "last_updated": "2026-06-30T09:00:00Z",
+  "previous_cycle": "C-357",
+  "updated_by": "manual-recovery-c358",
   "vault": {
     "in_progress_balance": 32.13,
     "tranche_target": 50,
@@ -57,7 +57,7 @@
     "mic-wallet-render-crash-loop"
   ],
   "doc_version": "2.1.0",
-  "last_state_snapshot": "C-357",
-  "next_state_snapshot_expected": "C-358",
-  "notes": "C-357 unified canonization: canonical domain mobius-substrate.com propagated across README, handbook journal nav, and terminal CORS. cycle.json advanced from C-356 drift. GI 0.90 recovering (yellow); Terminal Fountain lane PREVIEW (GI preview band, schema fountain_status locked). Reserve blocks: 319 sealed, .dat canonization path active."
+  "last_state_snapshot": "C-358",
+  "next_state_snapshot_expected": "C-359",
+  "notes": "C-358 manual recovery: mobius-bot-state-sync GitHub App credentials broken (MOBIUS_BOT_APP_ID/MOBIUS_BOT_PRIVATE_KEY invalid — daily scheduled runs failing since C-356). Advanced C-357→C-358 manually. Root cause: App credential rotation required in GitHub Settings. WHAT_IS_MOBIUS.md canonical AEO document published (EPICON-C358-DISAMBIGUATION-001). Reserve blocks: 319 sealed, .dat canonization path active."
 }
