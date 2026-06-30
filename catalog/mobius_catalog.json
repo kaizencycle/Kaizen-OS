@@ -1,6 +1,6 @@
 {
   "mobius_catalog_version": "1.0.0",
-  "generated_at": "2026-06-30T14:21:35.939Z",
+  "generated_at": "2026-06-30T14:28:34.259Z",
   "repo": {
     "name": "Mobius-Substrate",
     "url": "https://github.com/kaizencycle/Mobius-Substrate",
@@ -9,7 +9,7 @@
   },
   "stats": {
     "epiconCount": 0,
-    "docCount": 971
+    "docCount": 972
   },
   "epicons": [],
   "docs": [
@@ -99,6 +99,14 @@
       "category": "00-START-HERE",
       "tags": [],
       "content_hash": "sha256:49b591112da61be74842e5070dc1123ad4bf5d5669e1201cb09fcc8cef09b2be",
+      "summary": ""
+    },
+    {
+      "path": "docs/00-START-HERE/WHAT_IS_MOBIUS.md",
+      "title": "What Mobius Substrate Actually Is",
+      "category": "00-START-HERE",
+      "tags": [],
+      "content_hash": "sha256:890467e8fa811c5774e4e7041cd51573340208e25195137aa0101c02e2cac2d8",
       "summary": ""
     },
     {
