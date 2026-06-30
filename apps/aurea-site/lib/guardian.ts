@@ -5,7 +5,7 @@
 
 import fs from 'fs'
 import path from 'path'
-import yaml from 'js-yaml'
+import { load } from 'js-yaml'
 
 export interface GuardianManifest {
   guardian: {
@@ -64,7 +64,7 @@ export function loadGuardianManifest(): GuardianManifest | null {
       'aurea-kaizen-guardian.yaml'
     )
     const fileContents = fs.readFileSync(filePath, 'utf8')
-    const data = yaml.load(fileContents) as GuardianManifest
+    const data = load(fileContents) as GuardianManifest
 
     if (!data.guardian?.name || !data.ward?.name) {
       throw new Error('Invalid manifest: missing guardian or ward fields')

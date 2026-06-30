@@ -1,6 +1,6 @@
 import fs from "node:fs";
 import path from "node:path";
-import yaml from "js-yaml";
+import { load } from "js-yaml";
 
 import type { MKM } from "../types.js";
 
@@ -13,7 +13,7 @@ export function loadMKM(customPath?: string): MKM {
   }
 
   const yamlText = fs.readFileSync(mkmPath, "utf-8");
-  const parsed = yaml.load(yamlText);
+  const parsed = load(yamlText);
 
   if (!parsed || typeof parsed !== "object") {
     throw new Error(`Failed to parse MKM YAML at path: ${mkmPath}`);
