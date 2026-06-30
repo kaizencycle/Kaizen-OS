@@ -27,7 +27,7 @@
     "@modelcontextprotocol/sdk": "1.29.0",
     "eslint-config-next": "14.2.35",
     "ethers": "6.17.0",
-    "lru-cache": "^10.2.2",
+    "lru-cache": "^11.5.1",
     "next": "14.2.35",
     "node-fetch": "^3.3.2",
     "openai": "^4.56.0"

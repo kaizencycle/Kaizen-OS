@@ -60,6 +60,9 @@ updates:
           - "version-update:semver-major"
       # hardhat-chai-matchers v3 requires hardhat v3; gic-registry-contracts
       # pins hardhat 2.22.5. Bump together with a hardhat 3 migration.
+      - dependency-name: "hardhat"
+        update-types:
+          - "version-update:semver-major"
       - dependency-name: "@nomicfoundation/hardhat-chai-matchers"
         update-types:
           - "version-update:semver-major"
