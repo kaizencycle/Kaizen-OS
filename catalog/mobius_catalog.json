@@ -1,15 +1,15 @@
 {
   "mobius_catalog_version": "1.0.0",
-  "generated_at": "2026-07-02T06:04:15.061Z",
+  "generated_at": "2026-07-03T05:58:21.624Z",
   "repo": {
     "name": "Mobius-Substrate",
     "url": "https://github.com/kaizencycle/Mobius-Substrate",
     "default_branch": "main",
-    "commit": "41d399d53624fbf0eb08bb347ab12acf90e07d19"
+    "commit": "20106be38c6a78ee0579d690b65d0ac4db1e5eee"
   },
   "stats": {
     "epiconCount": 0,
-    "docCount": 972
+    "docCount": 973
   },
   "epicons": [],
   "docs": [
@@ -7186,7 +7186,7 @@
       "title": "State of the Substrate — Latest",
       "category": "STATE_OF_THE_SUBSTRATE_LATEST.md",
       "tags": [],
-      "content_hash": "sha256:f9d393e679e2b77eba5bfccf9e208f668f9e90f9b0c6d2495249cd1b715e8373",
+      "content_hash": "sha256:75733baabba1348f4b6a8f1797e7577fa87ce706f29aa66a7c6e6685c8f8f807",
       "summary": ""
     },
     {
@@ -7650,6 +7650,14 @@
       "category": "journals",
       "tags": [],
       "content_hash": "sha256:1a5f64ba633c34ca055b270b6fcd2bb5e2cd6935f0731d81281c5dc832d4bd63",
+      "summary": ""
+    },
+    {
+      "path": "docs/journals/C-360.md",
+      "title": "Cycle Journal — C-360",
+      "category": "journals",
+      "tags": [],
+      "content_hash": "sha256:737995272e9eb34404403a4f8ad266df50151b28e6e31bf5e9684f982b327986",
       "summary": ""
     },
     {
