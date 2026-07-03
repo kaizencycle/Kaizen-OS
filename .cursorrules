@@ -79,7 +79,7 @@ Both AUREA and ATLAS must:
 - Use `scripts/gi-consensus-validate.sh` for commit validation
 - Use `packages/atlas-sentinel` for ATLAS evaluation
 - Use `apps/aurea-site` or OpenAI API for AUREA evaluation
-- Store consensus results in `.gi/consensus-{timestamp}.json`
+- Store consensus results in `docs/10-ARCHIVES/gi-attestations/consensus-{timestamp}.json`
 - Include consensus hash in commit message footer
 
 ## EXCEPTIONS

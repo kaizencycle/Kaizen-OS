@@ -404,7 +404,7 @@ jobs:
         run: |
           git config user.name "mobius-bot"
           git config user.email "bot@mobius.systems"
-          git add .badges/ .gi/
+          git add .badges/ docs/10-ARCHIVES/gi-attestations/
           git commit -m "chore: Update pulse and badges [skip ci]" || true
           git push
 ```

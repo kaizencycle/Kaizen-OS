@@ -259,7 +259,7 @@ A cycle journal system is "live" when:
 
 ## Related Documentation
 
-- [DVA Runtime Protocol](../DVA_RUNTIME.md)
+- [DVA Runtime Protocol](../06-OPERATIONS/DVA_RUNTIME.md)
 - [Cycle Journal Publishing](./CYCLE_JOURNAL_PUBLISHING.md)
 - [EPICON Template](./epicon/TEMPLATE_EPICON.md)
 
