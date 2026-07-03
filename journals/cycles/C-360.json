@@ -1,8 +1,118 @@
 {
-  "cycle": "C-360",
-  "date": "2026-07-02",
-  "writer": "c360-federation-sweep (manual)",
-  "ledger_verified": false,
-  "ledger_snapshot": null,
-  "narrative": "C-360 Federation Optimization Sweep opened — constitutional consistency PR-B (license, cycle pointer, sentinel roster)."
+  "meta": {
+    "cycle_id": "C-360",
+    "date": "2026-07-02",
+    "timezone": "UTC",
+    "chamber": "Cycle Journal",
+    "tags": ["c360", "federation_sweep", "constitutional", "license", "sentinel_roster"],
+    "mood_vector": "Focused"
+  },
+  "sweep": {
+    "statement": "C-360 Federation Optimization Sweep — constitutional consistency PR-B: license harmonization, cycle pointer sync, sentinel roster expansion to 10 (URIEL + ZENITH).",
+    "style": "mobius"
+  },
+  "signals": [
+    {
+      "timestamp": "2026-07-02T12:00:00Z",
+      "domain": "governance",
+      "statement": "C-360 opens a 30-item federation optimization program across five repos in six PR batches; PR-B lands license-policy.yaml, cycle pointer CI gate, and sentinel roster URIEL/ZENITH.",
+      "sources": ["docs/journals/C-360.md", "cycle.json"],
+      "confidence": 1.0,
+      "attribution": "kaizencycle (Custodian)"
+    },
+    {
+      "timestamp": "2026-07-02T12:00:00Z",
+      "domain": "tech",
+      "statement": "GI at 0.90 (yellow); mobius-bot-state-sync still blocked on MOBIUS_BOT_APP_ID / MOBIUS_BOT_PRIVATE_KEY; Terminal identity creds need Vercel redeploy before reattest drain.",
+      "sources": ["cycle.json"],
+      "confidence": 0.95,
+      "attribution": "ATLAS (witness)"
+    }
+  ],
+  "integrity": {
+    "status": "watch",
+    "domains_touched": ["configs", "STATE", "sentinels", "docs", "cycle.json"],
+    "mii_current": 0.9,
+    "mii_trend": "flat",
+    "watch_items": [
+      {
+        "indicator": "writer-scheduling",
+        "direction": "flat",
+        "note": "mobius-bot-state-sync daily failures at scoped App token mint — MOBIUS_BOT_APP_ID / MOBIUS_BOT_PRIVATE_KEY need owner rotation.",
+        "evidence": ["github:issue/339"]
+      },
+      {
+        "indicator": "terminal-identity",
+        "direction": "flat",
+        "note": "Vercel IDENTITY_SERVICE_EMAIL/PASSWORD must match Render identity disk before reattest drain.",
+        "evidence": ["cycle.json"]
+      }
+    ]
+  },
+  "agent_alignment": {
+    "jade": {
+      "clarity_improvements": "License-policy.yaml and check-cycle-pointer.mjs make constitutional drift machine-detectable.",
+      "blind_spots_reduced": "README and mkdocs now point at STATE_OF_THE_SUBSTRATE_LATEST instead of a stale C-338 snapshot."
+    },
+    "zeus": {
+      "risk_movement": "Seal quorum unchanged at five sentinels despite roster expansion to ten — attestation bar held.",
+      "warning_signs": "Writer and Terminal identity blockers remain open; GI yellow at 0.90."
+    },
+    "hermes": {
+      "beneficiaries": "Federation repos gain shared license and cycle-pointer contracts before hygiene and Terminal batches.",
+      "incentive_shifts": "CI gates shift review burden from human spot-checks to scripted constitutional checks."
+    }
+  },
+  "insight": "Constitutional consistency must precede federation hygiene — license, cycle pointer, and roster truth before the 30-item sweep spreads.",
+  "decisions": [
+    {
+      "decision": "Harmonize license policy with AGPL code / CC-BY-SA docs / CC0 data map",
+      "rationale": "OPT-01 removes ambiguous root LICENSE pointers and adds check-license-policy.mjs CI gate.",
+      "owner": "kaizencycle",
+      "risk": "low"
+    },
+    {
+      "decision": "Sync cycle pointer across cycle.json, STATE/CYCLE.txt, mkdocs.yml, and STATE_OF_THE_SUBSTRATE_LATEST.md",
+      "rationale": "OPT-02 closes doc drift where README still linked a cycle-stamped C-338 snapshot.",
+      "owner": "kaizencycle",
+      "risk": "low"
+    },
+    {
+      "decision": "Expand sentinel roster to 10 with URIEL and ZENITH; seal quorum unchanged at 5",
+      "rationale": "OPT-03 aligns roster with C-360 federation sweep without changing attestation quorum.",
+      "owner": "kaizencycle",
+      "risk": "low"
+    }
+  ],
+  "actions": [
+    {
+      "task": "Merge PR-B (#348) constitutional gates after cycle journal schema validation passes",
+      "priority": "P1",
+      "owner": "kaizencycle"
+    },
+    {
+      "task": "Ship PR-A CPC health and PR-C substrate hygiene batches",
+      "priority": "P1",
+      "owner": "kaizencycle"
+    },
+    {
+      "task": "Rotate MOBIUS_BOT_APP_ID / MOBIUS_BOT_PRIVATE_KEY and confirm mobius-bot-state-sync",
+      "priority": "P1",
+      "owner": "kaizencycle"
+    }
+  ],
+  "topology": {
+    "nodes": ["cycle.json", "STATE/CYCLE.txt", "configs/license-policy.yaml", "sentinels", "c360-constitutional-gates"],
+    "edges": [
+      {"from": "check-cycle-pointer.mjs", "to": "cycle.json", "relationship": "validates"},
+      {"from": "check-license-policy.mjs", "to": "configs/license-policy.yaml", "relationship": "validates"}
+    ],
+    "failure_corridors": ["writer lapse → cycle doc drift → federation batches ship on stale pointers"],
+    "chokepoints": ["MOBIUS_BOT_APP_ID + MOBIUS_BOT_PRIVATE_KEY secrets"]
+  },
+  "seal": {
+    "compiled_at": "2026-07-02T12:00:00Z",
+    "contributors": ["kaizencycle (Custodian)", "ATLAS (witness)"],
+    "statement": "C-360 opened. Constitutional consistency landed in PR-B. Federation sweep continues."
+  }
 }
