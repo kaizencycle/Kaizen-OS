@@ -1,8 +1,8 @@
 # Divergence Dashboard
 
 **Repo:** `kaizencycle/Mobius-Substrate`  
-**Generated:** `2026-07-03T09:32:40Z`  
-**Open PRs:** `6`
+**Generated:** `2026-07-03T14:28:59Z`  
+**Open PRs:** `5`
 
 ## Summary
 
@@ -11,7 +11,7 @@
 | 🔴 High | 0 |
 | 🟡 Medium | 0 |
 | 🟢 Low | 0 |
-| ⚪ Unknown | 6 |
+| ⚪ Unknown | 5 |
 | 🚨 Emergency | 0 |
 
 ## Open PRs
@@ -23,7 +23,6 @@
 | ⚪ unknown | [#345](https://github.com/kaizencycle/Mobius-Substrate/pull/345) | chore(deps): bump lucide-react from 0.378.0 to 1.2... | @dependabot[bot] | ? | ? | — | 2026-06-30 |
 | ⚪ unknown | [#346](https://github.com/kaizencycle/Mobius-Substrate/pull/346) | chore(deps): bump tailwind-merge from 2.6.0 to 3.6... | @dependabot[bot] | ? | ? | — | 2026-06-30 |
 | ⚪ unknown | [#347](https://github.com/kaizencycle/Mobius-Substrate/pull/347) | chore(deps): bump zod from 3.25.76 to 4.4.3 | @dependabot[bot] | ? | ? | — | 2026-06-30 |
-| ⚪ unknown | [#349](https://github.com/kaizencycle/Mobius-Substrate/pull/349) | C-360 PR-C: Substrate hygiene — root file moves, S... | @kaizencycle | ? | ? | — | 2026-07-03 |
 
 ---
 

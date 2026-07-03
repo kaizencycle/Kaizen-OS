@@ -1,12 +1,12 @@
 {
   "repo": "kaizencycle/Mobius-Substrate",
-  "generated_at": "2026-07-03T09:32:40Z",
-  "open_pr_count": 6,
+  "generated_at": "2026-07-03T14:28:59Z",
+  "open_pr_count": 5,
   "by_severity": {
     "high": 0,
     "medium": 0,
     "low": 0,
-    "unknown": 6
+    "unknown": 5
   },
   "emergency_count": 0,
   "items": [
@@ -85,23 +85,6 @@
       "author": "dependabot[bot]",
       "updated_at": "2026-06-30T15:15:17Z",
       "created_at": "2026-06-30T15:11:47Z",
-      "labels": [],
-      "mode": "normal",
-      "has_debt": false,
-      "severity": "unknown",
-      "justification_hash": "",
-      "checks": {
-        "epicon": "unknown",
-        "merge_gate": "unknown"
-      }
-    },
-    {
-      "pr": 349,
-      "title": "C-360 PR-C: Substrate hygiene \u2014 root file moves, STATE writer-health, legacy lint",
-      "url": "https://github.com/kaizencycle/Mobius-Substrate/pull/349",
-      "author": "kaizencycle",
-      "updated_at": "2026-07-03T03:59:06Z",
-      "created_at": "2026-07-03T03:58:48Z",
       "labels": [],
       "mode": "normal",
       "has_debt": false,
