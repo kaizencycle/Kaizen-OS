@@ -108,14 +108,13 @@ jobs:
 
           # C-356: write writer-health canary so watchdog can detect writer failures
           # before cycle.json drift accumulates (Layer 1 upstream detection).
-          os.makedirs("state", exist_ok=True)
           health = {
               "writer": "mobius-bot-state-sync",
               "last_run_at": datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
               "last_cycle": cycle,
               "status": "ok",
           }
-          with open("state/writer-health.json", "w") as f:
+          with open("STATE/writer-health.json", "w") as f:
               json.dump(health, f, indent=2); f.write("\n")
 
           with open(os.environ["GITHUB_OUTPUT"], "a") as f:
@@ -126,7 +125,7 @@ jobs:
         run: |
           git config user.name "mobius-bot[bot]"
           git config user.email "mobius-bot[bot]@users.noreply.github.com"
-          git add cycle.json STATE/CYCLE.txt journals/cycles/ state/writer-health.json
+          git add cycle.json STATE/CYCLE.txt STATE/writer-health.json journals/cycles/
           git diff --cached --quiet && { echo "No drift — nothing to write."; exit 0; }
           git commit -m "canon: ${{ steps.state.outputs.cycle }} daily state sync [skip ci]" \
                      -m "EPICON-INTENT: scheduled deterministic cycle-state write; allowed paths only; no attested values invented." \
