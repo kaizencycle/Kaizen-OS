@@ -1,5 +1,6 @@
 # opencode.config.yaml
 # Kaizen OS — OpenCode federation config
+# Pair with opencode.yaml (hub manifest). This file: agents, index, workflows.
 
 project:
   name: Mobius-Substrate

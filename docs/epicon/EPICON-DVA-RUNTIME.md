@@ -230,7 +230,7 @@ Signal → Triage → Multi-lens Analysis → Integrity Scoring → Action → L
 
 ### Files
 
-- **Root Spec:** [DVA_RUNTIME.md](https://github.com/kaizencycle/Mobius-Substrate/blob/main/DVA_RUNTIME.md)
+- **Root Spec:** [DVA_RUNTIME.md](https://github.com/kaizencycle/Mobius-Substrate/blob/main/docs/06-OPERATIONS/DVA_RUNTIME.md)
 - **Technical Spec:** [DVA_RUNTIME_PROTOCOL.md](../04-TECHNICAL-ARCHITECTURE/dva/DVA_RUNTIME_PROTOCOL.md)
 - **Schema:** [dva_event_ledger.schema.json](https://github.com/kaizencycle/Mobius-Substrate/blob/main/schemas/dva_event_ledger.schema.json)
 
@@ -262,7 +262,7 @@ Questions for future reflections:
 
 ## 9. Agent Skill Trees (Reference)
 
-This EPICON includes canonical skill trees for each agent. See [DVA_RUNTIME.md](https://github.com/kaizencycle/Mobius-Substrate/blob/main/DVA_RUNTIME.md) Section 8 for full progression tiers.
+This EPICON includes canonical skill trees for each agent. See [DVA_RUNTIME.md](https://github.com/kaizencycle/Mobius-Substrate/blob/main/docs/06-OPERATIONS/DVA_RUNTIME.md) Section 8 for full progression tiers.
 
 ### Summary
 

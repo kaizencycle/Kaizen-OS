@@ -8,7 +8,7 @@ From a clone of [mobius-browser-shell](https://github.com/kaizencycle/mobius-bro
 
 ```bash
 git checkout -b cursor/c274-shell-flywheel-wire
-git am /path/to/Mobius-Substrate/exports/mobius-browser-shell-c274/C274-flywheel.patch
+git am /path/to/Mobius-Substrate/docs/pr-bundles/mobius-browser-shell-c274/C274-flywheel.patch
 # or copy files from this directory over the repo root (same paths as upstream)
 npm ci && npm run lint && npm run build
 git push -u origin cursor/c274-shell-flywheel-wire
