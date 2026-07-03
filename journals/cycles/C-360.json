@@ -1,0 +1,8 @@
+{
+  "cycle": "C-360",
+  "date": "2026-07-02",
+  "writer": "c360-federation-sweep (manual)",
+  "ledger_verified": false,
+  "ledger_snapshot": null,
+  "narrative": "C-360 Federation Optimization Sweep opened — constitutional consistency PR-B (license, cycle pointer, sentinel roster)."
+}

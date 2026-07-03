@@ -1,6 +1,6 @@
 {
-  "current_cycle": "C-358",
-  "date": "2026-06-30",
+  "current_cycle": "C-360",
+  "date": "2026-07-02",
   "gi": 0.9,
   "mode": "yellow",
   "canonical_domain": "https://mobius-substrate.com",
@@ -10,9 +10,9 @@
   "snapshot": "https://terminal.mobius-substrate.com/api/terminal/snapshot",
   "vault_status": "https://terminal.mobius-substrate.com/api/vault/status",
   "vault_seals": "https://terminal.mobius-substrate.com/api/vault/seal",
-  "last_updated": "2026-06-30T09:00:00Z",
-  "previous_cycle": "C-357",
-  "updated_by": "manual-recovery-c358",
+  "last_updated": "2026-07-02T12:00:00Z",
+  "previous_cycle": "C-358",
+  "updated_by": "c360-pr-b-constitutional",
   "vault": {
     "in_progress_balance": 32.13,
     "tranche_target": 50,
@@ -41,7 +41,9 @@
       "AUREA",
       "HERMES",
       "ECHO",
-      "DAEDALUS"
+      "DAEDALUS",
+      "URIEL",
+      "ZENITH"
     ],
     "seal_quorum": [
       "ATLAS",
@@ -52,12 +54,13 @@
     ]
   },
   "open_flags": [
-    "identity-service-creds-missing-vercel",
-    "reserve-block-substrate-attest-401",
-    "mic-wallet-render-crash-loop"
+    "mobius-bot-app-credentials-rotation-required",
+    "identity-vercel-creds-pending-reattest",
+    "mic-wallet-render-crash-loop",
+    "c360-federation-sweep-in-progress"
   ],
-  "doc_version": "2.1.0",
-  "last_state_snapshot": "C-358",
-  "next_state_snapshot_expected": "C-359",
-  "notes": "C-358 manual recovery: mobius-bot-state-sync GitHub App credentials broken (MOBIUS_BOT_APP_ID/MOBIUS_BOT_PRIVATE_KEY invalid — daily scheduled runs failing since C-356). Advanced C-357→C-358 manually. Root cause: App credential rotation required in GitHub Settings. WHAT_IS_MOBIUS.md canonical AEO document published (EPICON-C358-DISAMBIGUATION-001). Reserve blocks: 319 sealed, .dat canonization path active."
+  "doc_version": "2.2.0",
+  "last_state_snapshot": "C-360",
+  "next_state_snapshot_expected": "C-361",
+  "notes": "C-360 Federation Optimization Sweep (PR-B): license policy ratified (AGPL code / CC-BY-SA docs / CC0 data); cycle pointer synced; sentinel roster 10 (URIEL truth, ZENITH shadow). mobius-bot-state-sync still blocked on GitHub App secret rotation. Identity service account provisioned; Vercel creds + reattest pending."
 }
