@@ -45,7 +45,7 @@ New to the repo? Read in this order:
 3. `docs/START_HERE.md`
 4. `docs/05-IMPLEMENTATION/guides/quickstart/HELLO_WORLD.md`
 
-**Current system snapshot:** [docs/STATE_OF_THE_SUBSTRATE_C-338.md](docs/STATE_OF_THE_SUBSTRATE_C-338.md) — live cycle pointer is [`cycle.json`](cycle.json) (authoritative when docs disagree).
+**Current system snapshot:** [docs/STATE_OF_THE_SUBSTRATE_LATEST.md](docs/STATE_OF_THE_SUBSTRATE_LATEST.md) — live cycle pointer is [`cycle.json`](cycle.json) (authoritative when docs disagree).
 
 ---
 
@@ -84,7 +84,7 @@ Mobius-Substrate/
 ├── apps/              # Deployable applications (portal, broker, indexer, shield, gateway)
 ├── services/          # Backend services (civic-ledger, gi-aggregator, epoch-burn)
 ├── packages/          # Shared libraries (integrity-core, civic-sdk, oaa-memory)
-├── sentinels/         # AI governance agents (ATLAS, ZEUS, EVE, JADE, AUREA, HERMES, ECHO, DAEDALUS)
+├── sentinels/         # AI governance agents (ATLAS, ZEUS, EVE, JADE, AUREA, HERMES, ECHO, DAEDALUS, URIEL, ZENITH)
 ├── docs/              # Technical documentation, architecture, operations
 ├── specs/             # Protocol specifications
 ├── tests/             # Test suites
@@ -148,7 +148,13 @@ We welcome contributions. The system uses additive-only changes with integrity g
 
 ## License
 
-AGPL-3.0 with Ethical Addendum — See [LICENSE](LICENSE) and [ETHICAL_ADDENDUM.md](ETHICAL_ADDENDUM.md)
+Dual-license posture (ratified C-360) — see [configs/license-policy.yaml](configs/license-policy.yaml):
+
+| Surface | License |
+|---------|---------|
+| Source code | AGPL-3.0 + [Ethical Addendum](ETHICAL_ADDENDUM.md) — [LICENSE](LICENSE) |
+| Handbook / docs | CC-BY-SA 4.0 |
+| Research data citations | CC0 1.0 (where marked in publication docs) |
 
 ---
 

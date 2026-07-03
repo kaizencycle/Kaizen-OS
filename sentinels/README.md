@@ -275,7 +275,7 @@ Unlike specialized sentinels who focus on specific domains, **Daedalus operates 
 ## C-188 Improvements
 
 ### Documentation
-- ✅ Complete CODEX documentation for all core sentinels (ATLAS, AUREA, JADE, EVE, HERMES, ZEUS, ECHO, DAEDALUS)
+- ✅ Complete CODEX documentation for all core sentinels (ATLAS, AUREA, JADE, EVE, HERMES, ZEUS, ECHO, DAEDALUS, URIEL, ZENITH)
 - ✅ Comprehensive permissions.json with all 10 sentinels
 - ✅ Improvement roadmap document (`C-188-AGENT-IMPROVEMENTS.md`)
 

@@ -1,8 +1,55 @@
 {
-  "cycle": "C-358",
-  "date": "2026-06-30",
-  "writer": "mobius-bot/state-sync (manual-recovery)",
-  "ledger_verified": false,
-  "ledger_snapshot": null,
-  "narrative": null
+  "meta": {
+    "cycle_id": "C-358",
+    "date": "2026-06-30",
+    "timezone": "UTC",
+    "chamber": "Cycle Journal",
+    "tags": ["manual_recovery", "writer_sync"],
+    "mood_vector": "Focused"
+  },
+  "sweep": {
+    "statement": "C-358 manual state recovery — mobius-bot/state-sync advanced the cycle pointer after a writer scheduling lapse.",
+    "style": "minimal"
+  },
+  "signals": [
+    {
+      "timestamp": "2026-06-30T00:00:00Z",
+      "domain": "governance",
+      "statement": "Cycle pointer manually advanced to C-358; ledger pulse was unreachable at write time and attested fields were carried forward unverified.",
+      "confidence": 0.9,
+      "attribution": "mobius-bot/state-sync (manual-recovery)"
+    }
+  ],
+  "integrity": {
+    "status": "watch",
+    "domains_touched": ["cycle.json", "STATE/CYCLE.txt", "journals/cycles"],
+    "watch_items": [
+      {
+        "indicator": "ledger_verification",
+        "direction": "flat",
+        "note": "Ledger pulse unreachable during manual recovery — GI fields not refreshed from ledger.",
+        "evidence": ["mobius-bot/state-sync"]
+      }
+    ]
+  },
+  "decisions": [
+    {
+      "decision": "Advance cycle pointer to C-358 via manual recovery",
+      "rationale": "Writer scheduling lapse required custodian catch-up without inventing ledger attestations.",
+      "owner": "kaizencycle",
+      "risk": "medium"
+    }
+  ],
+  "actions": [
+    {
+      "task": "Restore mobius-bot-state-sync credentials and confirm daily writer runs",
+      "priority": "P1",
+      "owner": "kaizencycle"
+    }
+  ],
+  "seal": {
+    "compiled_at": "2026-06-30T00:00:00Z",
+    "contributors": ["mobius-bot/state-sync", "kaizencycle (Custodian)"],
+    "statement": "C-358 recovery entry. Ledger unverified at seal time."
+  }
 }
