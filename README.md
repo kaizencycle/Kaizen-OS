@@ -42,8 +42,9 @@ New to the repo? Read in this order:
 
 1. `README.md` (this file)
 2. `CONTRIBUTING.md`
-3. `docs/START_HERE.md`
-4. `docs/05-IMPLEMENTATION/guides/quickstart/HELLO_WORLD.md`
+3. [`docs/00-START-HERE/DOCS.md`](docs/00-START-HERE/DOCS.md) — navigation hub
+4. [`docs/00-START-HERE/REPO_DIGEST.md`](docs/00-START-HERE/REPO_DIGEST.md) — repository map
+5. `docs/05-IMPLEMENTATION/guides/quickstart/HELLO_WORLD.md`
 
 **Current system snapshot:** [docs/STATE_OF_THE_SUBSTRATE_LATEST.md](docs/STATE_OF_THE_SUBSTRATE_LATEST.md) — live cycle pointer is [`cycle.json`](cycle.json) (authoritative when docs disagree).
 
