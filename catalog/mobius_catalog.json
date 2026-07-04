@@ -1,15 +1,15 @@
 {
   "mobius_catalog_version": "1.0.0",
-  "generated_at": "2026-07-03T05:58:21.624Z",
+  "generated_at": "2026-07-04T05:50:47.084Z",
   "repo": {
     "name": "Mobius-Substrate",
     "url": "https://github.com/kaizencycle/Mobius-Substrate",
     "default_branch": "main",
-    "commit": "20106be38c6a78ee0579d690b65d0ac4db1e5eee"
+    "commit": "a7bb275776020d2118deba86e862c9ca77acec58"
   },
   "stats": {
     "epiconCount": 0,
-    "docCount": 973
+    "docCount": 981
   },
   "epicons": [],
   "docs": [
@@ -62,6 +62,14 @@
       "summary": ""
     },
     {
+      "path": "docs/00-START-HERE/DOCS.md",
+      "title": "🌀 Mobius Substrate — Complete Documentation Navigator",
+      "category": "00-START-HERE",
+      "tags": [],
+      "content_hash": "sha256:a944f630db484a20248986ee09f7d5ee37bd8d940cc4d228da962b689c83f47a",
+      "summary": ""
+    },
+    {
       "path": "docs/00-START-HERE/FAQ.md",
       "title": "Mobius Substrate FAQ",
       "category": "00-START-HERE",
@@ -91,6 +99,22 @@
       "category": "00-START-HERE",
       "tags": [],
       "content_hash": "sha256:f708e6b207cb0f9a44b9c4f02aea12e153facb30fd3679b10ba0e524f89d99ee",
+      "summary": ""
+    },
+    {
+      "path": "docs/00-START-HERE/REPO_DIGEST.md",
+      "title": "REPO_DIGEST.md — Mobius Substrate Repository Map (v1)",
+      "category": "00-START-HERE",
+      "tags": [],
+      "content_hash": "sha256:1ab44cfab6aacbd04b266c04ff78f506e19d4a8dc3d46af823d07849a48308d7",
+      "summary": ""
+    },
+    {
+      "path": "docs/00-START-HERE/REPO_MAP_TREE.md",
+      "title": "REPO_MAP_TREE.md — Mobius Substrate File Tree (High-Level)",
+      "category": "00-START-HERE",
+      "tags": [],
+      "content_hash": "sha256:4e0a6724c8cf931d12e1591a1b3be9a558c7bc44228ba922d0834d7728c53358",
       "summary": ""
     },
     {
@@ -922,7 +946,7 @@
       "title": "DVA Runtime Protocol",
       "category": "04-TECHNICAL-ARCHITECTURE",
       "tags": [],
-      "content_hash": "sha256:17a084443334138d3997599766202e171edf643487764dcb8fb0e0266761bfd8",
+      "content_hash": "sha256:a740f4607cf1a4c081943a3b7931ba3ce1b3be83e32787d46fbf81b3e0a75ff3",
       "summary": ""
     },
     {
@@ -1707,6 +1731,14 @@
       "category": "05-IMPLEMENTATION",
       "tags": [],
       "content_hash": "sha256:e36f93c5f2332ec2e67048c3ec5e3ac95d81589d4ed89c33e1237420db309209",
+      "summary": ""
+    },
+    {
+      "path": "docs/06-OPERATIONS/DVA_RUNTIME.md",
+      "title": "DVA Runtime Protocol (Mobius / DVA)",
+      "category": "06-OPERATIONS",
+      "tags": [],
+      "content_hash": "sha256:1d83d5ba05bc7960afd768d63379b896a5053749217ce737d03a7e097ab4b52e",
       "summary": ""
     },
     {
@@ -2970,7 +3002,7 @@
       "title": "THE MOBIUS SYSTEMS — BRIEFING DOSSIER",
       "category": "07-RESEARCH-AND-PUBLICATIONS",
       "tags": [],
-      "content_hash": "sha256:681049ebf19d4362a081d2eb9ea53785bda4ef6b1d1dfe784bbafdf79c39cd5a",
+      "content_hash": "sha256:7a5470ef3f47db2a0aed2456ad4f46bdfa8baff5e832a75b63358ee790a453a5",
       "summary": ""
     },
     {
@@ -4806,6 +4838,14 @@
       "summary": ""
     },
     {
+      "path": "docs/10-ARCHIVES/gi-attestations/README.md",
+      "title": "GI consensus attestations (archived)",
+      "category": "10-ARCHIVES",
+      "tags": [],
+      "content_hash": "sha256:827f0c58facb071143dce698d346b943b213c6e968ea62e4ec91cdb965982c3a",
+      "summary": ""
+    },
+    {
       "path": "docs/10-ARCHIVES/handbook/README.md",
       "title": "Archived handbooks",
       "category": "10-ARCHIVES",
@@ -5846,6 +5886,22 @@
       "summary": ""
     },
     {
+      "path": "docs/10-ARCHIVES/root-files/PR_DESCRIPTION_C180.md",
+      "title": "Performance Optimization: Critical N+1 Queries and Memory Leaks",
+      "category": "10-ARCHIVES",
+      "tags": [],
+      "content_hash": "sha256:2797af2b1e02ce1e9256d6f00f281a2e81e682d4c74e778e7085bd0621f8f92b",
+      "summary": ""
+    },
+    {
+      "path": "docs/10-ARCHIVES/root-files/PR_STATUS_C180.md",
+      "title": "🚦 PR Status & Next Steps",
+      "category": "10-ARCHIVES",
+      "tags": [],
+      "content_hash": "sha256:81464acd8da9f9845ce0f3842d36fea6b725ca0608f078936c67956770d39a52",
+      "summary": ""
+    },
+    {
       "path": "docs/10-ARCHIVES/root-files/README_KTT_OUTREACH.md",
       "title": "📘 Mobius Systems — KTT-001 Outreach README",
       "category": "10-ARCHIVES",
@@ -6770,7 +6826,7 @@
       "title": "THE MOBIUS SYSTEMS — BRIEFING DOSSIER",
       "category": "11-SUPPLEMENTARY",
       "tags": [],
-      "content_hash": "sha256:681049ebf19d4362a081d2eb9ea53785bda4ef6b1d1dfe784bbafdf79c39cd5a",
+      "content_hash": "sha256:7a5470ef3f47db2a0aed2456ad4f46bdfa8baff5e832a75b63358ee790a453a5",
       "summary": ""
     },
     {
@@ -7050,7 +7106,7 @@
       "title": "Cycle Journal Runtime (Mobius)",
       "category": "CYCLE_JOURNAL_RUNTIME.md",
       "tags": [],
-      "content_hash": "sha256:493fae03cc5ea71795ebba4bed3ae2aa86e9821064912cc5bf32e4594d0b6343",
+      "content_hash": "sha256:6d9a2e9adcff60ba332046cc328ec5f62ce306048a5fe828444e13ad1271adf5",
       "summary": ""
     },
     {
@@ -7210,7 +7266,7 @@
       "title": "Workflow Consolidation Plan — EPICON Era",
       "category": "WORKFLOW_CONSOLIDATION_PLAN.md",
       "tags": [],
-      "content_hash": "sha256:40a216785525523377d7ae76e03c0f5c2541288babe8f92a956b86e110baad40",
+      "content_hash": "sha256:0d856dddf6737fb3335b99f7d55142b6a7a6ac33f800b98b73fecbe4143d586c",
       "summary": ""
     },
     {
@@ -7375,7 +7431,7 @@
         "safe-stop",
         "ledger"
       ],
-      "content_hash": "sha256:b05eee6aba4569bbf0d9fee60970a1fc126645355794af56355cdb8fbdd5e736",
+      "content_hash": "sha256:8f8d2d82e9c5214b8b27c9d1d90a5a08fce3c349753ce00979b984c7bcbd87e0",
       "summary": "Defines the canonical DVA runtime loop for multi-agent cognitive processing with safe-stop guardrails"
     },
     {
@@ -7737,7 +7793,15 @@
       "title": "C-322 · GitHub-Federated KV Cache",
       "category": "pr-bundles",
       "tags": [],
-      "content_hash": "sha256:2920442c9b605fcfd251fa28fd7416170eb229f2167613a5e64b29e070db5cb2",
+      "content_hash": "sha256:56ed5259b5dd3e1029c11778347b472e4b296d1872e7eebcc677fcfa668f5699",
+      "summary": ""
+    },
+    {
+      "path": "docs/pr-bundles/mobius-browser-shell-c274/README.md",
+      "title": "mobius-browser-shell — C-274 flywheel export",
+      "category": "pr-bundles",
+      "tags": [],
+      "content_hash": "sha256:e939afa314545eb310149e33e8366f34ce3910aa685e25d2a3259d6b263644e8",
       "summary": ""
     },
     {
