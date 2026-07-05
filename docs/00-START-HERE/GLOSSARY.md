@@ -1,5 +1,7 @@
 # Mobius Systems Glossary
 
+> **C-363:** Prefer [Canonical Definitions](./CANONICAL_DEFINITIONS.md) for new docs. This file retains extended historical entries.
+
 > This is a living document. Terms will expand as the stack matures.
 
 ---

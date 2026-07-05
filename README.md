@@ -40,11 +40,11 @@ curl http://localhost:3000/gi
 
 New to the repo? Read in this order:
 
-1. `README.md` (this file)
-2. `CONTRIBUTING.md`
-3. [`docs/00-START-HERE/DOCS.md`](docs/00-START-HERE/DOCS.md) — navigation hub
-4. [`docs/00-START-HERE/REPO_DIGEST.md`](docs/00-START-HERE/REPO_DIGEST.md) — repository map
-5. `docs/05-IMPLEMENTATION/guides/quickstart/HELLO_WORLD.md`
+1. [`docs/00-START-HERE/WHAT_IS_MOBIUS.md`](docs/00-START-HERE/WHAT_IS_MOBIUS.md) — what Mobius is (and is not)
+2. [`docs/00-START-HERE/FIVE_SURFACES.md`](docs/00-START-HERE/FIVE_SURFACES.md) — five-surface federation topology
+3. [`docs/00-START-HERE/SCHOOL_OF_CHAMBERS.md`](docs/00-START-HERE/SCHOOL_OF_CHAMBERS.md) — public chamber names
+4. [`docs/00-START-HERE/CANONICAL_DEFINITIONS.md`](docs/00-START-HERE/CANONICAL_DEFINITIONS.md) — one glossary
+5. [`docs/00-START-HERE/DOCS.md`](docs/00-START-HERE/DOCS.md) — full navigation hub
 
 **Current system snapshot:** [docs/STATE_OF_THE_SUBSTRATE_LATEST.md](docs/STATE_OF_THE_SUBSTRATE_LATEST.md) — live cycle pointer is [`cycle.json`](cycle.json) (authoritative when docs disagree).
 
