@@ -179,6 +179,11 @@ nav:
       - "DVA flows": 04-TECHNICAL-ARCHITECTURE/overview/DVA_FLOWS_OVERVIEW.md
   - "Handbook":
       - "Public hub": 00-START-HERE/README.md
+      - "What is Mobius?": 00-START-HERE/WHAT_IS_MOBIUS.md
+      - "Five Surfaces": 00-START-HERE/FIVE_SURFACES.md
+      - "School of Chambers": 00-START-HERE/SCHOOL_OF_CHAMBERS.md
+      - "Canonical Definitions": 00-START-HERE/CANONICAL_DEFINITIONS.md
+      - "EPICON Philosophy": 00-START-HERE/EPICON_PHILOSOPHY.md
       - "Handbook hub": 11-SUPPLEMENTARY/handbook/README.md
       - "Full index": INDEX.md
       - "Protocols":
