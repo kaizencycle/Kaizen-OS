@@ -1,6 +1,6 @@
 {
   "repo": "kaizencycle/Mobius-Substrate",
-  "generated_at": "2026-07-06T10:58:03Z",
+  "generated_at": "2026-07-06T15:52:47Z",
   "open_pr_count": 5,
   "by_severity": {
     "high": 0,
@@ -15,7 +15,7 @@
       "title": "chore(deps): bump the npm-minor-patch group with 5 updates",
       "url": "https://github.com/kaizencycle/Mobius-Substrate/pull/343",
       "author": "dependabot[bot]",
-      "updated_at": "2026-06-30T15:10:04Z",
+      "updated_at": "2026-07-06T15:35:15Z",
       "created_at": "2026-06-30T15:09:46Z",
       "labels": [],
       "mode": "normal",
