@@ -25,7 +25,7 @@ Do not redefine these terms in new docs — link here instead.
 | **Reserve Block** | Canonical `.dat` bundle of sealed history; replayable archive unit |
 | **Seal** | Vault tranche completion record with sentinel attestations |
 | **Attestation** | Signed or logged proof that an event or seal was witnessed |
-| **Quorum** | Minimum sentinel set required to validate a seal (currently five of ten roster) |
+| **Quorum** | [Seal attestation rule](../protocols/vault-v2-sealed-reserve.md#6-quorum-rules) (Vault v2 §6): ZEUS `pass` required; ≥4 of 5 Seal Sentinels `pass` (ATLAS, ZEUS, EVE, JADE, AUREA); no non-ZEUS `reject` — not the full ten-Sentinel roster |
 
 ---
 
