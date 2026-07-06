@@ -1,15 +1,15 @@
 {
   "mobius_catalog_version": "1.0.0",
-  "generated_at": "2026-07-05T06:09:57.424Z",
+  "generated_at": "2026-07-06T06:41:18.309Z",
   "repo": {
     "name": "Mobius-Substrate",
     "url": "https://github.com/kaizencycle/Mobius-Substrate",
     "default_branch": "main",
-    "commit": "ee44add351ef0e306a0c1a12a410eba0e39c8ad7"
+    "commit": "08228974fa2d11d56f4a1e35f4713a312103941f"
   },
   "stats": {
     "epiconCount": 0,
-    "docCount": 981
+    "docCount": 985
   },
   "epicons": [],
   "docs": [
@@ -62,11 +62,27 @@
       "summary": ""
     },
     {
+      "path": "docs/00-START-HERE/CANONICAL_DEFINITIONS.md",
+      "title": "Canonical Definitions",
+      "category": "00-START-HERE",
+      "tags": [],
+      "content_hash": "sha256:bb23fe1cdf488d00779e2515b39e7e5439ffc78a090c52523177654eccf2673c",
+      "summary": ""
+    },
+    {
       "path": "docs/00-START-HERE/DOCS.md",
       "title": "🌀 Mobius Substrate — Complete Documentation Navigator",
       "category": "00-START-HERE",
       "tags": [],
       "content_hash": "sha256:a944f630db484a20248986ee09f7d5ee37bd8d940cc4d228da962b689c83f47a",
+      "summary": ""
+    },
+    {
+      "path": "docs/00-START-HERE/EPICON_PHILOSOPHY.md",
+      "title": "EPICON Philosophy",
+      "category": "00-START-HERE",
+      "tags": [],
+      "content_hash": "sha256:308afff3fe9ebcfd3ac1d9c53999850677570524e9b4c567fc753bad760c9e88",
       "summary": ""
     },
     {
@@ -78,11 +94,19 @@
       "summary": ""
     },
     {
+      "path": "docs/00-START-HERE/FIVE_SURFACES.md",
+      "title": "Five Surfaces — Mobius Federation Topology",
+      "category": "00-START-HERE",
+      "tags": [],
+      "content_hash": "sha256:26d682e0cad4f457b4bdaae9c85e2c4380920350a7c8a9bfadab013ee5426b2a",
+      "summary": ""
+    },
+    {
       "path": "docs/00-START-HERE/GLOSSARY.md",
       "title": "Mobius Systems Glossary",
       "category": "00-START-HERE",
       "tags": [],
-      "content_hash": "sha256:c5bd9eae3381d2e9b0e86fd5ff0bbaa9d49953c9421294d58779cd68e03e408d",
+      "content_hash": "sha256:fe3774194173cee739cfc20a9b6cde4267c7d03eef7a7cbc72442e0d3bdaf1ba",
       "summary": ""
     },
     {
@@ -98,7 +122,7 @@
       "title": "Welcome to Mobius Substrate Documentation",
       "category": "00-START-HERE",
       "tags": [],
-      "content_hash": "sha256:f708e6b207cb0f9a44b9c4f02aea12e153facb30fd3679b10ba0e524f89d99ee",
+      "content_hash": "sha256:50e86ecb978170e0bdfd5365c9fb5a8d3ccb43108251215a611a34d2979b27b5",
       "summary": ""
     },
     {
@@ -118,6 +142,14 @@
       "summary": ""
     },
     {
+      "path": "docs/00-START-HERE/SCHOOL_OF_CHAMBERS.md",
+      "title": "School of Chambers — Public Navigation Map",
+      "category": "00-START-HERE",
+      "tags": [],
+      "content_hash": "sha256:c3bf0f340efa44aa57f1ad56fc56519a7ece03a17052b418c0e12cdbcf85686d",
+      "summary": ""
+    },
+    {
       "path": "docs/00-START-HERE/SYSTEM-OVERVIEW.md",
       "title": "🌀 MOBIUS SUBSTRATE: COMPLETE SYSTEM OVERVIEW",
       "category": "00-START-HERE",
@@ -127,10 +159,10 @@
     },
     {
       "path": "docs/00-START-HERE/WHAT_IS_MOBIUS.md",
-      "title": "What Mobius Substrate Actually Is",
+      "title": "What is Mobius?",
       "category": "00-START-HERE",
       "tags": [],
-      "content_hash": "sha256:890467e8fa811c5774e4e7041cd51573340208e25195137aa0101c02e2cac2d8",
+      "content_hash": "sha256:aa182f48c4f3ffb31eb4ca6eb8a61d8660e81ca0bdfb63d9d83eda878869aa9d",
       "summary": ""
     },
     {
