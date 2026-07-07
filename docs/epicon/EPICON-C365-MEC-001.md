@@ -9,6 +9,17 @@
 
 ---
 
+## Authority Provenance & Standing
+
+*Authority declared using `docs/templates/EPICON_FOUNDER_STANDING.md` v0.1*
+
+Michael (kaizencycle) exercises **founder–custodian standing** to ratify MEC as
+constitutional citation grammar (C-365). Scope is limited to the grammar,
+parser reference, and glossary entries listed below — not Vault minting,
+quorum rules, or runtime seal lifecycle changes.
+
+---
+
 ## Intent
 
 Establish **Mobius Extraction Code (MEC)** as constitutional citation shorthand:
