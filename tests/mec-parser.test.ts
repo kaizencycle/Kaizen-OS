@@ -1,72 +1,71 @@
 import { describe, expect, it } from 'vitest';
 import {
-  buildMec,
-  decodeGiField,
+  MECParseError,
   encodeGiField,
-  formatMec,
-  formatSealCode,
-  parseMec,
+  expandMEC,
+  formatMEC,
+  parseMEC,
+  toSealCode,
 } from '../packages/mec-parser/src/mec-parser';
 
 const CANONICAL = 'E01.RB341.C365.S016:Q5:AT+ZE+EV+JA+AU:GI064';
 
-describe('parseMec', () => {
+describe('parseMEC', () => {
   it('parses the canonical example', () => {
-    const result = parseMec(CANONICAL);
-    expect(result.ok).toBe(true);
-    if (!result.ok) return;
-
-    expect(result.value).toMatchObject({
+    const parsed = parseMEC(CANONICAL);
+    expect(parsed).toMatchObject({
       epoch: 1,
       reserveBlock: 341,
       cycle: 365,
       seal: 16,
+      amendment: null,
       quorum: 5,
       agents: ['AT', 'ZE', 'EV', 'JA', 'AU'],
       gi: 0.64,
+      raw: CANONICAL,
     });
-    expect(result.canonical).toBe(CANONICAL);
   });
 
   it('parses seal amendments', () => {
     const amended = 'E01.RB341.C365.S016A:Q5:AT+ZE+EV+JA+AU:GI064';
-    const result = parseMec(amended);
-    expect(result.ok).toBe(true);
-    if (!result.ok) return;
-    expect(result.value.amendment).toBe('A');
-    expect(result.canonical).toBe(amended);
+    const parsed = parseMEC(amended);
+    expect(parsed.amendment).toBe('A');
+    expect(formatMEC(parsed)).toBe(amended);
   });
 
-  it('rejects malformed separators', () => {
-    expect(parseMec('E01-RB341.C365.S016:Q5:AT+ZE+EV+JA+AU:GI064').ok).toBe(false);
-    expect(parseMec('E01.RB341.C365.S016:Q5:AT_ZE_EV_JA_AU:GI064').ok).toBe(false);
-    expect(parseMec('E01.RB341.C365.S016 Q5 AT ZE GI064').ok).toBe(false);
+  it('throws on malformed separators', () => {
+    expect(() => parseMEC('E01-RB341.C365.S016:Q5:AT+ZE+EV+JA+AU:GI064')).toThrow(
+      MECParseError,
+    );
+    expect(() => parseMEC('E01.RB341.C365.S016 Q5 AT ZE GI064')).toThrow(MECParseError);
   });
 
-  it('rejects unknown agent codes', () => {
-    expect(parseMec('E01.RB341.C365.S016:Q5:AT+XX+EV+JA+AU:GI064').ok).toBe(false);
+  it('throws on unknown agent codes', () => {
+    expect(() => parseMEC('E01.RB341.C365.S016:Q5:AT+XX+EV+JA+AU:GI064')).toThrow(
+      MECParseError,
+    );
   });
 
-  it('rejects invalid GI width', () => {
-    expect(parseMec('E01.RB341.C365.S016:Q5:AT+ZE+EV+JA+AU:GI64').ok).toBe(false);
+  it('throws on invalid GI width', () => {
+    expect(() => parseMEC('E01.RB341.C365.S016:Q5:AT+ZE+EV+JA+AU:GI64')).toThrow(
+      MECParseError,
+    );
   });
 });
 
-describe('formatMec round-trip', () => {
+describe('formatMEC round-trip', () => {
   it('round-trips canonical example', () => {
-    const parsed = parseMec(CANONICAL);
-    expect(parsed.ok).toBe(true);
-    if (!parsed.ok) return;
-    expect(formatMec(parsed.value)).toBe(CANONICAL);
+    expect(formatMEC(parseMEC(CANONICAL))).toBe(CANONICAL);
   });
 
-  it('builds from structured record', () => {
+  it('builds from structured fields', () => {
     expect(
-      buildMec({
+      formatMEC({
         epoch: 1,
         reserveBlock: 341,
         cycle: 365,
         seal: 16,
+        amendment: null,
         quorum: 5,
         agents: ['AT', 'ZE', 'EV', 'JA', 'AU'],
         gi: 0.64,
@@ -76,37 +75,31 @@ describe('formatMec round-trip', () => {
 });
 
 describe('GI encoding', () => {
-  it('truncates rather than rounds', () => {
+  it('truncates rather than rounds on encode', () => {
     expect(encodeGiField(0.649)).toBe('GI064');
-    expect(decodeGiField('GI064')).toBe(0.64);
-    expect(decodeGiField('GI095')).toBe(0.95);
-    expect(decodeGiField('GI100')).toBe(1);
-    expect(decodeGiField('GI006')).toBe(0.06);
+    expect(encodeGiField(0.95)).toBe('GI095');
+    expect(encodeGiField(1)).toBe('GI100');
+    expect(encodeGiField(0.06)).toBe('GI006');
   });
 });
 
-describe('formatSealCode', () => {
+describe('toSealCode', () => {
   it('renders operator card without extra fields', () => {
-    const parsed = parseMec(CANONICAL);
-    expect(parsed.ok).toBe(true);
-    if (!parsed.ok) return;
-
-    expect(formatSealCode(parsed.value)).toBe(
-      [
-        'RB341',
-        'C365',
-        'S016',
-        'AT✓ ZE✓ EV✓ JA✓ AU✓',
-        'GI .64',
-      ].join('\n'),
+    const parsed = parseMEC(CANONICAL);
+    expect(toSealCode(parsed)).toBe(
+      ['RB341', 'C365', 'S016', 'AT✓ ZE✓ EV✓ JA✓ AU✓', 'GI .64'].join('\n'),
     );
-    expect(formatMec(parsed.value)).toBe(CANONICAL);
+    expect(formatMEC(parsed)).toBe(CANONICAL);
   });
 
   it('renders GI 1.00 at ceiling', () => {
-    const parsed = parseMec('E01.RB001.C365.S001:Q5:AT+ZE+EV+JA+AU:GI100');
-    expect(parsed.ok).toBe(true);
-    if (!parsed.ok) return;
-    expect(formatSealCode(parsed.value)).toContain('GI 1.00');
+    const parsed = parseMEC('E01.RB001.C365.S001:Q5:AT+ZE+EV+JA+AU:GI100');
+    expect(toSealCode(parsed)).toContain('GI 1.00');
+  });
+});
+
+describe('expandMEC', () => {
+  it('remains a stub until wired to EPICON/ledger', async () => {
+    await expect(expandMEC(parseMEC(CANONICAL))).rejects.toThrow(/stub/);
   });
 });

@@ -8,14 +8,12 @@ Spec: [`specs/MEC_SPEC_v0.1.md`](../../specs/MEC_SPEC_v0.1.md)
 ## Usage
 
 ```typescript
-import { parseMec, formatMec, formatSealCode } from '@mobius/mec-parser';
+import { parseMEC, formatMEC, toSealCode } from '@mobius/mec-parser';
 
-const parsed = parseMec('E01.RB341.C365.S016:Q5:AT+ZE+EV+JA+AU:GI064');
-if (parsed.ok) {
-  console.log(parsed.value.gi); // 0.64
-  console.log(formatMec(parsed.value)); // round-trip canonical string
-  console.log(formatSealCode(parsed.value)); // operator card display
-}
+const parsed = parseMEC('E01.RB341.C365.S016:Q5:AT+ZE+EV+JA+AU:GI064');
+console.log(parsed.gi); // 0.64
+console.log(formatMEC(parsed)); // round-trip canonical string
+console.log(toSealCode(parsed)); // operator card display
 ```
 
 Terminal, HIVE, and CPC should import from this package — do not fork the regex.
