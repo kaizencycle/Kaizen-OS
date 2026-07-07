@@ -61,7 +61,7 @@ Three layers, never conflated:
 ## GRAMMAR
 
 ```
-E{epoch}.RB{block}.C{cycle}.S{seal}[amendment]:Q{quorum}:{agents}:GI{gi}
+E{epoch}.RB{block}.C{cycle}.S{seal}:Q{quorum}:{agents}:GI{gi}
 ```
 
 ### Canonical example
@@ -116,21 +116,21 @@ valid (0.06), `GI64` is not.
 
 ---
 
-## AMENDMENTS
+## CORRECTIONS (APPEND-ONLY)
 
 Seals are **append-only**. A MEC never mutates once minted — this is what
 makes it hash-like and safe to cite permanently.
 
-- **Correction of the same seal event** → suffix a letter: `S016A`,
-  `S016B` (a superseding record for the *same* underlying event, e.g. a
-  corrected agent list discovered post-seal).
-- **New seal event entirely** → mint the next seal number: `S017`.
+**Constitutional rule (C-365, Option B):** no letter-suffix amendments on
+seal numbers. `S016A` is **not** valid MEC grammar.
 
-Rule of thumb: if the underlying quorum/attestation event is the same and
-only its record needed correcting, use a letter suffix. If it's a new
-attestation event, it gets a new seal number. Old MECs are never deleted
-or rewritten — a corrected MEC exists *alongside* the one it supersedes,
-with EPICON carrying the cross-reference.
+- **Any correction or superseding record** → mint the **next** seal number
+  (`S017`, `S018`, …).
+- **Prior MECs are never deleted or rewritten** — they remain citeable;
+  EPICON carries the cross-reference to the superseding seal.
+
+This keeps the citation layer as clean as a commit hash: one event, one
+address, one seal number.
 
 ---
 

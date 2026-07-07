@@ -172,6 +172,7 @@ nav:
       - "EPICON-01": epicon/EPICON-01.md
       - "EPICON-02": epicon/EPICON-02.md
       - "EPICON-03": epicon/EPICON-03.md
+      - "EPICON-C365-MEC": epicon/EPICON-C365-MEC-001.md
       - "MEC (C-365)": specs/MEC_SPEC_v0.1.md
   - "Architecture":
       - "Overview": 04-TECHNICAL-ARCHITECTURE/overview/ARCHITECTURE.md

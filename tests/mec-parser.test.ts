@@ -18,7 +18,6 @@ describe('parseMEC', () => {
       reserveBlock: 341,
       cycle: 365,
       seal: 16,
-      amendment: null,
       quorum: 5,
       agents: ['AT', 'ZE', 'EV', 'JA', 'AU'],
       gi: 0.64,
@@ -26,11 +25,10 @@ describe('parseMEC', () => {
     });
   });
 
-  it('parses seal amendments', () => {
-    const amended = 'E01.RB341.C365.S016A:Q5:AT+ZE+EV+JA+AU:GI064';
-    const parsed = parseMEC(amended);
-    expect(parsed.amendment).toBe('A');
-    expect(formatMEC(parsed)).toBe(amended);
+  it('rejects letter-suffix amendments (Option B)', () => {
+    expect(() =>
+      parseMEC('E01.RB341.C365.S016A:Q5:AT+ZE+EV+JA+AU:GI064'),
+    ).toThrow(MECParseError);
   });
 
   it('throws on malformed separators', () => {
@@ -65,7 +63,6 @@ describe('formatMEC round-trip', () => {
         reserveBlock: 341,
         cycle: 365,
         seal: 16,
-        amendment: null,
         quorum: 5,
         agents: ['AT', 'ZE', 'EV', 'JA', 'AU'],
         gi: 0.64,

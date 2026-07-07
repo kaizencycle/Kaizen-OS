@@ -5,7 +5,7 @@
  * See docs/specs/MEC_SPEC_v0.1.md for the constitutional definition.
  *
  * Canonical form:
- *   E{epoch}.RB{block}.C{cycle}.S{seal}[amendment]:Q{quorum}:{agents}:GI{gi}
+ *   E{epoch}.RB{block}.C{cycle}.S{seal}:Q{quorum}:{agents}:GI{gi}
  *
  * Example:
  *   E01.RB341.C365.S016:Q5:AT+ZE+EV+JA+AU:GI064
@@ -13,6 +13,8 @@
  * Rule: MEC never replaces EPICON. It only points to it. Expansion is a
  * separate lookup (expandMEC) against the EPICON/ledger store — this file
  * only handles the grammar, not resolution.
+ *
+ * Corrections mint the next seal number (Option B) — no S016A suffixes.
  */
 
 export const AGENT_CODES = {
@@ -39,7 +41,6 @@ export interface ParsedMEC {
   reserveBlock: number;
   cycle: number;
   seal: number;
-  amendment: string | null;
   quorum: number;
   agents: AgentCode[];
   gi: number;
@@ -47,11 +48,11 @@ export interface ParsedMEC {
 }
 
 /** @deprecated Use ParsedMEC */
-export type MecRecord = Omit<ParsedMEC, 'raw'> & { amendment?: string };
+export type MecRecord = Omit<ParsedMEC, 'raw'>;
 
 // Fixed grammar. No other separators are valid — see spec §Separator rules.
 export const MEC_REGEX =
-  /^E(\d+)\.RB(\d+)\.C(\d+)\.S(\d+)([A-Z])?:Q(\d+):([A-Z]{2}(?:\+[A-Z]{2})*):GI(\d{3})$/;
+  /^E(\d+)\.RB(\d+)\.C(\d+)\.S(\d+):Q(\d+):([A-Z]{2}(?:\+[A-Z]{2})*):GI(\d{3})$/;
 
 /** @deprecated Use MEC_REGEX */
 export const MEC_CANONICAL_REGEX = MEC_REGEX;
@@ -97,7 +98,7 @@ export function parseMEC(raw: string): ParsedMEC {
     throw new MECParseError(raw, 'does not match canonical grammar');
   }
 
-  const [, epoch, block, cycle, seal, amendment, quorum, agentField, giField] = match;
+  const [, epoch, block, cycle, seal, quorum, agentField, giField] = match;
 
   const agentCodes = agentField.split('+') as AgentCode[];
   for (const code of agentCodes) {
@@ -113,7 +114,6 @@ export function parseMEC(raw: string): ParsedMEC {
     reserveBlock: Number(block),
     cycle: Number(cycle),
     seal: Number(seal),
-    amendment: amendment || null,
     quorum: Number(quorum),
     agents: agentCodes,
     gi,
@@ -128,10 +128,7 @@ export function parseMec(raw: string) {
     const { raw: _raw, ...rest } = value;
     return {
       ok: true as const,
-      value: {
-        ...rest,
-        amendment: rest.amendment ?? undefined,
-      },
+      value: rest,
       canonical: formatMEC(rest),
     };
   } catch (error) {
@@ -152,7 +149,7 @@ export function formatMEC(fields: Omit<ParsedMEC, 'raw'>): string {
     throw new MECParseError('(constructed)', 'GI cannot exceed 1.00');
   }
 
-  const sealPart = `S${String(fields.seal).padStart(3, '0')}${fields.amendment ?? ''}`;
+  const sealPart = `S${String(fields.seal).padStart(3, '0')}`;
 
   return (
     `E${String(fields.epoch).padStart(2, '0')}` +
@@ -179,7 +176,7 @@ export function toSealCode(fields: ParsedMEC): string {
   return [
     `RB${String(fields.reserveBlock).padStart(3, '0')}`,
     `C${String(fields.cycle).padStart(3, '0')}`,
-    `S${String(fields.seal).padStart(3, '0')}${fields.amendment ?? ''}`,
+    `S${String(fields.seal).padStart(3, '0')}`,
     agentLine,
     `GI ${giDisplay}`,
   ].join('\n');

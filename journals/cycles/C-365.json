@@ -15,7 +15,7 @@
     {
       "timestamp": "2026-07-07T14:00:00Z",
       "domain": "governance",
-      "statement": "MEC v0.1 spec ratified: grammar E{epoch}.RB{block}.C{cycle}.S{seal}[amendment]:Q{quorum}:{agents}:GI{gi}; SealCode is display-only and round-trips to one MEC.",
+      "statement": "MEC v0.1 spec ratified: grammar E{epoch}.RB{block}.C{cycle}.S{seal}:Q{quorum}:{agents}:GI{gi}; Option B — no letter-suffix amendments, corrections mint next seal.",
       "sources": ["docs/specs/MEC_SPEC_v0.1.md", "packages/mec-parser"],
       "confidence": 1.0,
       "attribution": "kaizencycle (Custodian)"
@@ -40,6 +40,12 @@
     {
       "decision": "Adopt MEC as constitutional citation grammar; EPICON remains authoritative narrative",
       "rationale": "Core law: MEC must never replace EPICON — it only points to it.",
+      "owner": "kaizencycle",
+      "risk": "low"
+    },
+    {
+      "decision": "Ratify Option B: no S016A suffixes; corrections mint next seal number",
+      "rationale": "ZEUS recommendation for constitutional cleanliness — one event, one MEC address.",
       "owner": "kaizencycle",
       "risk": "low"
     },
