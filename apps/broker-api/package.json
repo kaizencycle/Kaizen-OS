@@ -16,7 +16,7 @@
     "test": "jest --passWithNoTests"
   },
   "dependencies": {
-    "@anthropic-ai/sdk": "^0.107.0",
+    "@anthropic-ai/sdk": "^0.110.0",
     "@civic/integrity-core": "*",
     "@civic/sdk": "*",
     "@google/generative-ai": "^0.24.1",
@@ -38,7 +38,7 @@
     "nanoid": "^5.1.16",
     "next": "14.2.35",
     "node-fetch": "^2.7.0",
-    "nodemailer": "^9.0.1",
+    "nodemailer": "^9.0.3",
     "openai": "^4.20.0",
     "pg": "^8.22.0",
     "swagger-jsdoc": "^6.3.0",
