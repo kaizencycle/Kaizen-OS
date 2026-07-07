@@ -1,0 +1,36 @@
+{
+  "name": "@mobius/mec-parser",
+  "version": "0.1.0",
+  "description": "Reference parser and formatter for Mobius Extraction Code (MEC) — C-365",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "clean": "rm -rf dist",
+    "type-check": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "typescript": "^5.0.0"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "license": "CC0-1.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kaizencycle/Mobius-Substrate.git",
+    "directory": "packages/mec-parser"
+  },
+  "keywords": [
+    "mobius",
+    "mec",
+    "seal",
+    "epicon",
+    "civic"
+  ]
+}

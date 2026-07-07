@@ -1,15 +1,15 @@
 {
   "mobius_catalog_version": "1.0.0",
-  "generated_at": "2026-07-07T06:14:06.993Z",
+  "generated_at": "2026-07-07T15:51:46.492Z",
   "repo": {
     "name": "Mobius-Substrate",
     "url": "https://github.com/kaizencycle/Mobius-Substrate",
     "default_branch": "main",
-    "commit": "3b85110827e352cc2d5d7df96ca92a766b8cacfe"
+    "commit": ""
   },
   "stats": {
     "epiconCount": 0,
-    "docCount": 985
+    "docCount": 988
   },
   "epicons": [],
   "docs": [
@@ -66,7 +66,7 @@
       "title": "Canonical Definitions",
       "category": "00-START-HERE",
       "tags": [],
-      "content_hash": "sha256:bb23fe1cdf488d00779e2515b39e7e5439ffc78a090c52523177654eccf2673c",
+      "content_hash": "sha256:0d48a922edaacd2b13f7e226f45c4cf06299764e98e129ab8973da056b225002",
       "summary": ""
     },
     {
@@ -7452,6 +7452,14 @@
       "summary": ""
     },
     {
+      "path": "docs/epicon/EPICON-C365-MEC-001.md",
+      "title": "EPICON — C-365 Mobius Extraction Code (MEC)",
+      "category": "epicon",
+      "tags": [],
+      "content_hash": "sha256:3e2eba6cb8cb978509cf5f59e45344cf2a2c6d7ec353932fe0d2f06919605c21",
+      "summary": ""
+    },
+    {
       "path": "docs/epicon/EPICON-DVA-RUNTIME.md",
       "title": "DVA Runtime Protocol - Multi-Agent Cognitive Pipeline",
       "category": "epicon",
@@ -7749,6 +7757,14 @@
       "summary": ""
     },
     {
+      "path": "docs/journals/C-365.md",
+      "title": "Cycle Journal — C-365",
+      "category": "journals",
+      "tags": [],
+      "content_hash": "sha256:cf6ad7207f5315cd04417330b903814373a80b3562efe958fef74f30d232bd31",
+      "summary": ""
+    },
+    {
       "path": "docs/journals/archive.md",
       "title": "Cycle Journal — Archive",
       "category": "journals",
@@ -7994,6 +8010,14 @@
       "category": "simulations",
       "tags": [],
       "content_hash": "sha256:6f35c7db5092d8354e0cea65ecda051726de9d362cfad1e4b7fbb049e7d57b31",
+      "summary": ""
+    },
+    {
+      "path": "docs/specs/MEC_SPEC_v0.1.md",
+      "title": "MOBIUS EXTRACTION CODE (MEC) — CONSTITUTIONAL SHORTHAND SPEC",
+      "category": "specs",
+      "tags": [],
+      "content_hash": "sha256:3ff488644b4ede254765a3ab256bba1c55596dc2533627bd90c9e436ca5d914f",
       "summary": ""
     },
     {
