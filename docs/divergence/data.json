@@ -1,12 +1,12 @@
 {
   "repo": "kaizencycle/Mobius-Substrate",
-  "generated_at": "2026-07-07T15:10:05Z",
-  "open_pr_count": 6,
+  "generated_at": "2026-07-07T20:09:15Z",
+  "open_pr_count": 5,
   "by_severity": {
     "high": 0,
     "medium": 0,
     "low": 0,
-    "unknown": 6
+    "unknown": 5
   },
   "emergency_count": 0,
   "items": [
@@ -29,10 +29,10 @@
     },
     {
       "pr": 345,
-      "title": "chore(deps): bump lucide-react from 0.378.0 to 1.22.0",
+      "title": "chore(deps): bump lucide-react from 0.378.0 to 1.23.0",
       "url": "https://github.com/kaizencycle/Mobius-Substrate/pull/345",
       "author": "dependabot[bot]",
-      "updated_at": "2026-06-30T15:11:32Z",
+      "updated_at": "2026-07-07T17:15:37Z",
       "created_at": "2026-06-30T15:10:49Z",
       "labels": [],
       "mode": "normal",
@@ -66,7 +66,7 @@
       "title": "chore(deps): bump zod from 3.25.76 to 4.4.3",
       "url": "https://github.com/kaizencycle/Mobius-Substrate/pull/347",
       "author": "dependabot[bot]",
-      "updated_at": "2026-06-30T15:15:17Z",
+      "updated_at": "2026-07-07T17:15:45Z",
       "created_at": "2026-06-30T15:11:47Z",
       "labels": [],
       "mode": "normal",
@@ -83,25 +83,8 @@
       "title": "chore(deps): bump the npm-minor-patch group across 1 directory with 9 updates",
       "url": "https://github.com/kaizencycle/Mobius-Substrate/pull/353",
       "author": "dependabot[bot]",
-      "updated_at": "2026-07-06T16:01:19Z",
+      "updated_at": "2026-07-07T17:38:49Z",
       "created_at": "2026-07-06T16:01:04Z",
-      "labels": [],
-      "mode": "normal",
-      "has_debt": false,
-      "severity": "unknown",
-      "justification_hash": "",
-      "checks": {
-        "epicon": "unknown",
-        "merge_gate": "unknown"
-      }
-    },
-    {
-      "pr": 354,
-      "title": "C-365: MEC constitutional citation grammar + @mobius/mec-parser",
-      "url": "https://github.com/kaizencycle/Mobius-Substrate/pull/354",
-      "author": "kaizencycle",
-      "updated_at": "2026-07-07T14:50:28Z",
-      "created_at": "2026-07-07T14:46:19Z",
       "labels": [],
       "mode": "normal",
       "has_debt": false,
