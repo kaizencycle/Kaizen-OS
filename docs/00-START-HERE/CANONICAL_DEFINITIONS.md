@@ -25,7 +25,9 @@ Do not redefine these terms in new docs — link here instead.
 | **Reserve Block** | Canonical `.dat` bundle of sealed history; replayable archive unit |
 | **Seal** | Vault tranche completion record with sentinel attestations |
 | **Attestation** | Signed or logged proof that an event or seal was witnessed |
-| **Quorum** | Minimum sentinel set required to validate a seal (currently five of ten roster) |
+| **Quorum** | [Seal attestation rule](../protocols/vault-v2-sealed-reserve.md#6-quorum-rules) (Vault v2 §6): ZEUS `pass` required; ≥4 of 5 Seal Sentinels `pass` (ATLAS, ZEUS, EVE, JADE, AUREA); no non-ZEUS `reject` — not the full ten-Sentinel roster |
+| **MEC** | Mobius Extraction Code — compact citation address for a Seal / Reserve Block / Epoch; points at EPICON, never replaces it ([MEC spec v0.1](../specs/MEC_SPEC_v0.1.md)) |
+| **SealCode** | Human-friendly multi-line display of a MEC for operator UI; round-trips to exactly one canonical MEC string |
 
 ---
 

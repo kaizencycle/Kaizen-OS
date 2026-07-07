@@ -1,0 +1,70 @@
+{
+  "meta": {
+    "cycle_id": "C-365",
+    "date": "2026-07-07",
+    "timezone": "UTC",
+    "chamber": "Cycle Journal",
+    "tags": ["c365", "mec", "constitutional", "citation", "parser"],
+    "mood_vector": "Focused"
+  },
+  "sweep": {
+    "statement": "C-365 establishes Mobius Extraction Code (MEC) — constitutional citation shorthand for Seals, Reserve Blocks, and Epochs without replacing EPICON narratives.",
+    "style": "mobius"
+  },
+  "signals": [
+    {
+      "timestamp": "2026-07-07T14:00:00Z",
+      "domain": "governance",
+      "statement": "MEC v0.1 spec ratified: grammar E{epoch}.RB{block}.C{cycle}.S{seal}[amendment]:Q{quorum}:{agents}:GI{gi}; SealCode is display-only and round-trips to one MEC.",
+      "sources": ["docs/specs/MEC_SPEC_v0.1.md", "packages/mec-parser"],
+      "confidence": 1.0,
+      "attribution": "kaizencycle (Custodian)"
+    },
+    {
+      "timestamp": "2026-07-07T14:00:00Z",
+      "domain": "tech",
+      "statement": "@mobius/mec-parser reference implementation ships parse/format/SealCode with vitest coverage; Terminal/HIVE/CPC should import shared parser.",
+      "sources": ["packages/mec-parser/src/mec-parser.ts", "tests/mec-parser.test.ts"],
+      "confidence": 1.0,
+      "attribution": "ATLAS (witness)"
+    }
+  ],
+  "integrity": {
+    "status": "normal",
+    "domains_touched": ["specs", "docs", "packages"],
+    "mii_current": 0.9,
+    "mii_trend": "flat",
+    "watch_items": []
+  },
+  "decisions": [
+    {
+      "decision": "Adopt MEC as constitutional citation grammar; EPICON remains authoritative narrative",
+      "rationale": "Core law: MEC must never replace EPICON — it only points to it.",
+      "owner": "kaizencycle",
+      "risk": "low"
+    },
+    {
+      "decision": "Ship @mobius/mec-parser as single shared regex/formatter for federation surfaces",
+      "rationale": "Prevents divergent parsers across Terminal, HIVE, and CPC.",
+      "owner": "kaizencycle",
+      "risk": "low"
+    }
+  ],
+  "actions": [
+    {
+      "task": "Wire Terminal vault seal cards to @mobius/mec-parser formatSealCode",
+      "priority": "P2",
+      "owner": "kaizencycle"
+    },
+    {
+      "task": "Add MEC field to Reserve Block manifests when next seal mints in C-365+",
+      "priority": "P2",
+      "owner": "kaizencycle"
+    }
+  ],
+  "seal": {
+    "compiled_at": "2026-07-07T14:00:00Z",
+    "contributors": ["kaizencycle (Custodian)", "ATLAS (witness)"],
+    "statement": "C-365 opened. MEC constitutional shorthand active."
+  }
+}
