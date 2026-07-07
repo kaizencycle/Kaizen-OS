@@ -1,6 +1,6 @@
 {
   "repo": "kaizencycle/Mobius-Substrate",
-  "updated_at": "2026-07-07T09:58:28Z",
+  "updated_at": "2026-07-07T15:10:05Z",
   "events": [
     {
       "ts": "2026-01-05T01:23:06Z",
@@ -601,6 +601,14 @@
       "url": "https://github.com/kaizencycle/Mobius-Substrate/pull/343",
       "severity": "unknown",
       "detail": "PR closed/merged"
+    },
+    {
+      "ts": "2026-07-07T15:10:05Z",
+      "type": "pr_opened",
+      "pr": 354,
+      "url": "https://github.com/kaizencycle/Mobius-Substrate/pull/354",
+      "severity": "unknown",
+      "detail": "PR opened (severity=unknown)"
     }
   ]
 }
