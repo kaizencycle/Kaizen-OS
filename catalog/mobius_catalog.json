@@ -1,6 +1,6 @@
 {
   "mobius_catalog_version": "1.0.0",
-  "generated_at": "2026-07-07T15:51:46.492Z",
+  "generated_at": "2026-07-07T17:52:53.414Z",
   "repo": {
     "name": "Mobius-Substrate",
     "url": "https://github.com/kaizencycle/Mobius-Substrate",
@@ -7456,7 +7456,7 @@
       "title": "EPICON — C-365 Mobius Extraction Code (MEC)",
       "category": "epicon",
       "tags": [],
-      "content_hash": "sha256:3e2eba6cb8cb978509cf5f59e45344cf2a2c6d7ec353932fe0d2f06919605c21",
+      "content_hash": "sha256:1045a7458f8713ff0bb4f9a815964486c33a0d2ba105a9be4729a4b04e3024fd",
       "summary": ""
     },
     {
