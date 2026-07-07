@@ -18,7 +18,7 @@
     "js-yaml": "^5.2.0",
     "next": "14.2.35",
     "tweetnacl": "^1.0.3",
-    "zod": "^3.22.0"
+    "zod": "^4.4.3"
   },
   "devDependencies": {
     "@types/js-yaml": "^4.0.9",
