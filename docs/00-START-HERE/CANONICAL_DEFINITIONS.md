@@ -22,6 +22,8 @@ Do not redefine these terms in new docs — link here instead.
 | Term | Definition |
 |------|------------|
 | **EPICON** | Intent protocol — declares who, why, and what before important actions |
+| **EP-1 / EP-2 / EP-3** | EPICON consequence tiers (low-risk record / meaningful state change / consequential action). Distinct from DVA agent tiers T1/T2/T3. Policy assigns tier; unknown actions default EP-3. ([Tiering spec v0.1](../specs/EPICON_TIERING_SPEC_v0.1.md)) |
+| **Constitutional EPICON** | Compact ledger commitment derived from operational EPICON before EP-2 (elective) or EP-3 (mandatory) execution — hashes and attestations only, never raw evidence |
 | **Reserve Block** | Canonical `.dat` bundle of sealed history; replayable archive unit |
 | **Seal** | Vault tranche completion record with sentinel attestations |
 | **Attestation** | Signed or logged proof that an event or seal was witnessed |

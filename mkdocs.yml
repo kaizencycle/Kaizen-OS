@@ -160,6 +160,7 @@ nav:
       - "EPICON C-355 IDA": 02-THEORETICAL-FOUNDATIONS/EPICON_C355_IDA.md
       - "MOBIUS.md": MOBIUS.md
   - "Cycle journal":
+      - "C-366": journals/C-366.md
       - "C-365": journals/C-365.md
       - "C-360": journals/C-360.md
       - "C-357": journals/C-357.md
@@ -173,7 +174,9 @@ nav:
       - "EPICON-02": epicon/EPICON-02.md
       - "EPICON-03": epicon/EPICON-03.md
       - "EPICON-C365-MEC": epicon/EPICON-C365-MEC-001.md
+      - "EPICON-C366-Tiering": epicon/EPICON-C366-TIERING-001.md
       - "MEC (C-365)": specs/MEC_SPEC_v0.1.md
+      - "EPICON Tiering (C-366)": specs/EPICON_TIERING_SPEC_v0.1.md
   - "Architecture":
       - "Overview": 04-TECHNICAL-ARCHITECTURE/overview/ARCHITECTURE.md
       - "GI formula": 04-TECHNICAL-ARCHITECTURE/ledger/gi-formula.md

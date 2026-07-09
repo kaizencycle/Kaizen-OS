@@ -1,6 +1,8 @@
 import { describe, expect, it } from 'vitest';
 import {
   MECParseError,
+  MEC_CONSTITUTIONAL_REGEX,
+  MEC_REGEX,
   encodeGiField,
   expandMEC,
   formatMEC,
@@ -42,6 +44,12 @@ describe('parseMEC', () => {
     expect(() => parseMEC('E01.RB341.C365.S016:Q5:AT+XX+EV+JA+AU:GI064')).toThrow(
       MECParseError,
     );
+  });
+
+  it('constitutional regex rejects unknown agent codes before parseMEC', () => {
+    const bad = 'E01.RB341.C365.S016:Q5:AT+XX+EV+JA+AU:GI064';
+    expect(MEC_REGEX.test(bad)).toBe(true);
+    expect(MEC_CONSTITUTIONAL_REGEX.test(bad)).toBe(false);
   });
 
   it('throws on invalid GI width', () => {
