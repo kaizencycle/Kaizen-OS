@@ -1,0 +1,83 @@
+{
+  "meta": {
+    "cycle_id": "C-366",
+    "date": "2026-07-08",
+    "timezone": "UTC",
+    "chamber": "Cycle Journal",
+    "tags": ["c366", "epicon", "tiering", "constitutional", "gate"],
+    "mood_vector": "Focused"
+  },
+  "sweep": {
+    "statement": "C-366 proposes EPICON tiering — graduated pre-execution constitutional gate (EP-1/EP-2/EP-3) with policy-based classification, reconstructability semantics, and fail-closed EP-3 behavior.",
+    "style": "mobius"
+  },
+  "signals": [
+    {
+      "timestamp": "2026-07-08T00:00:00Z",
+      "domain": "governance",
+      "statement": "EPICON Tiering v0.1 draft: EP-1 low-risk record / EP-2 meaningful state change / EP-3 consequential action; acting agent never self-classifies; unknown types default EP-3.",
+      "sources": ["docs/specs/EPICON_TIERING_SPEC_v0.1.md", "schemas/epicon_constitutional_v1.schema.json"],
+      "confidence": 0.95,
+      "attribution": "kaizencycle (Custodian)"
+    },
+    {
+      "timestamp": "2026-07-08T00:00:00Z",
+      "domain": "tech",
+      "statement": "Constitutional EPICON JSON Schema (2020-12) ships with MEC citation regex aligned to C-365 Option B grammar; .dat chain prev_hash compatible.",
+      "sources": ["schemas/epicon_constitutional_v1.schema.json"],
+      "confidence": 0.95,
+      "attribution": "ATLAS (drafting)"
+    }
+  ],
+  "integrity": {
+    "status": "normal",
+    "domains_touched": ["specs", "docs", "schemas"],
+    "mii_current": 0.9,
+    "mii_trend": "flat",
+    "watch_items": [
+      {
+        "indicator": "epicon-tiering-quorum",
+        "direction": "flat",
+        "note": "Seal quorum review pending for EPICON tiering spec v0.1.",
+        "evidence": ["docs/specs/EPICON_TIERING_SPEC_v0.1.md"]
+      }
+    ]
+  },
+  "decisions": [
+    {
+      "decision": "Propose EPICON tiers EP-1/EP-2/EP-3 as constitutional gate semantics",
+      "rationale": "Graduated witness requirement scales with consequence; closes Goodhart surface on self-classification.",
+      "owner": "kaizencycle",
+      "risk": "low"
+    },
+    {
+      "decision": "Define replay as reconstructability (evidence hash chain), not model reproducibility",
+      "rationale": "Hosted LLMs are non-deterministic; canon must not promise bitwise re-derivation.",
+      "owner": "kaizencycle",
+      "risk": "low"
+    },
+    {
+      "decision": "Spec-first delivery — no runtime gate implementation in C-366",
+      "rationale": "Same pattern as MEC and tokenomics; quorum reviews grammar before code enforcement.",
+      "owner": "kaizencycle",
+      "risk": "low"
+    }
+  ],
+  "actions": [
+    {
+      "task": "Sentinel quorum review: ATLAS, ZEUS, EVE, JADE, AUREA on tiering spec",
+      "priority": "P1",
+      "owner": "kaizencycle"
+    },
+    {
+      "task": "Implement policy registry + gate middleware (follow-up after seal)",
+      "priority": "P2",
+      "owner": "kaizencycle"
+    }
+  ],
+  "seal": {
+    "compiled_at": "2026-07-08T00:00:00Z",
+    "contributors": ["kaizencycle (Custodian)", "ATLAS (drafting)"],
+    "statement": "C-366 opened. EPICON tiering v0.1 proposed — seal quorum pending."
+  }
+}

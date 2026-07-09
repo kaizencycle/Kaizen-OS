@@ -1,15 +1,15 @@
 {
   "mobius_catalog_version": "1.0.0",
-  "generated_at": "2026-07-08T05:25:59.163Z",
+  "generated_at": "2026-07-09T01:57:13.689Z",
   "repo": {
     "name": "Mobius-Substrate",
     "url": "https://github.com/kaizencycle/Mobius-Substrate",
     "default_branch": "main",
-    "commit": "88a946f01c779a5ead48fe11d0a1e8b50e466172"
+    "commit": ""
   },
   "stats": {
     "epiconCount": 0,
-    "docCount": 988
+    "docCount": 991
   },
   "epicons": [],
   "docs": [
@@ -66,7 +66,7 @@
       "title": "Canonical Definitions",
       "category": "00-START-HERE",
       "tags": [],
-      "content_hash": "sha256:0d48a922edaacd2b13f7e226f45c4cf06299764e98e129ab8973da056b225002",
+      "content_hash": "sha256:4ec2eb00d15f42a80ff46d6f6eb1ab9b22079dbaa950e7935e80e553b3b748ec",
       "summary": ""
     },
     {
@@ -7460,6 +7460,14 @@
       "summary": ""
     },
     {
+      "path": "docs/epicon/EPICON-C366-TIERING-001.md",
+      "title": "EPICON — C-366 EPICON Tiering",
+      "category": "epicon",
+      "tags": [],
+      "content_hash": "sha256:d271291025606a0fdb4000aa02e6c42ab21721cecf4776a6fc54dce4ef447958",
+      "summary": ""
+    },
+    {
       "path": "docs/epicon/EPICON-DVA-RUNTIME.md",
       "title": "DVA Runtime Protocol - Multi-Agent Cognitive Pipeline",
       "category": "epicon",
@@ -7765,6 +7773,14 @@
       "summary": ""
     },
     {
+      "path": "docs/journals/C-366.md",
+      "title": "Cycle Journal — C-366",
+      "category": "journals",
+      "tags": [],
+      "content_hash": "sha256:827f594c399bba5f8a0268e625756f489a9ed725e7843188ed57c140d5199e21",
+      "summary": ""
+    },
+    {
       "path": "docs/journals/archive.md",
       "title": "Cycle Journal — Archive",
       "category": "journals",
@@ -8010,6 +8026,14 @@
       "category": "simulations",
       "tags": [],
       "content_hash": "sha256:6f35c7db5092d8354e0cea65ecda051726de9d362cfad1e4b7fbb049e7d57b31",
+      "summary": ""
+    },
+    {
+      "path": "docs/specs/EPICON_TIERING_SPEC_v0.1.md",
+      "title": "EPICON Tiering Specification",
+      "category": "specs",
+      "tags": [],
+      "content_hash": "sha256:ff3d8355b6fe8458cb159cca2502021a721d570a69e5937a64199802c9e30d1e",
       "summary": ""
     },
     {
