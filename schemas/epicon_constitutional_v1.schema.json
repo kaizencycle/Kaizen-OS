@@ -93,8 +93,8 @@
     },
     "mec_citation": {
       "type": "string",
-      "pattern": "^E\\d+\\.RB\\d+\\.C\\d+\\.S\\d+:Q\\d+:[A-Z]{2}(?:\\+[A-Z]{2})*:GI\\d{3}$",
-      "description": "Optional MEC-grammar citation binding this action to sealed canon (C-365 Option B — no letter-suffix amendments). Example: E01.RB341.C365.S016:Q5:AT+ZE+EV+JA+AU:GI064."
+      "pattern": "^E(\\d+)\\.RB(\\d+)\\.C(\\d+)\\.S(\\d+):Q(\\d+):([A-Z]{2}(?:\\+[A-Z]{2})*):GI(\\d{3})$",
+      "description": "Optional MEC-grammar citation binding this action to sealed canon (C-365 Option B — no letter-suffix amendments). Pattern MUST match packages/mec-parser MEC_REGEX.source. Example: E01.RB341.C365.S016:Q5:AT+ZE+EV+JA+AU:GI064."
     },
     "prev_hash": {
       "type": "string",

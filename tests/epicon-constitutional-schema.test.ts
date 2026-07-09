@@ -35,6 +35,10 @@ const validBase = {
 };
 
 describe('epicon_constitutional_v1.schema.json', () => {
+  it('locks mec_citation schema pattern to MEC_REGEX (no parser/schema drift)', () => {
+    expect(schema.properties.mec_citation.pattern).toBe(MEC_REGEX.source);
+  });
+
   it('validates a minimal EP-3 constitutional EPICON', () => {
     const ok = validate(validBase);
     expect(validate.errors ?? []).toEqual([]);
