@@ -19,8 +19,8 @@
   "properties": {
     "id": {
       "type": "string",
-      "format": "uuid",
-      "description": "UUIDv7 shared with the originating operational EPICON."
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "description": "UUIDv7 shared with the originating operational EPICON. Version nibble MUST be 7; variant nibble MUST be 8/9/a/b (RFC 9562)."
     },
     "tier": {
       "type": "string",
@@ -93,8 +93,8 @@
     },
     "mec_citation": {
       "type": "string",
-      "pattern": "^E(\\d+)\\.RB(\\d+)\\.C(\\d+)\\.S(\\d+):Q(\\d+):([A-Z]{2}(?:\\+[A-Z]{2})*):GI(\\d{3})$",
-      "description": "Optional MEC-grammar citation binding this action to sealed canon (C-365 Option B — no letter-suffix amendments). Pattern MUST match packages/mec-parser MEC_REGEX.source. Example: E01.RB341.C365.S016:Q5:AT+ZE+EV+JA+AU:GI064."
+      "pattern": "^E(\\d+)\\.RB(\\d+)\\.C(\\d+)\\.S(\\d+):Q(\\d+):((?:AT|ZE|EV|JA|AU|HE|EC|DA|UR|ZN)(?:\\+(?:AT|ZE|EV|JA|AU|HE|EC|DA|UR|ZN))*):GI(\\d{3})$",
+      "description": "Optional MEC-grammar citation binding this action to sealed canon (C-365 Option B). Agent codes MUST be members of AGENT_CODES in packages/mec-parser — pattern MUST match MEC_CONSTITUTIONAL_PATTERN. Example: E01.RB341.C365.S016:Q5:AT+ZE+EV+JA+AU:GI064."
     },
     "prev_hash": {
       "type": "string",

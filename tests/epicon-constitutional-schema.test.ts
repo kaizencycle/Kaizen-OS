@@ -4,7 +4,13 @@ import { fileURLToPath } from 'node:url';
 import Ajv2020 from 'ajv/dist/2020';
 import addFormats from 'ajv-formats';
 import { describe, expect, it } from 'vitest';
-import { MEC_REGEX } from '../packages/mec-parser/src/mec-parser';
+import {
+  MEC_CONSTITUTIONAL_PATTERN,
+  MEC_CONSTITUTIONAL_REGEX,
+  MEC_REGEX,
+  MECParseError,
+  parseMEC,
+} from '../packages/mec-parser/src/mec-parser';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const schemaPath = join(__dirname, '../schemas/epicon_constitutional_v1.schema.json');
@@ -35,8 +41,14 @@ const validBase = {
 };
 
 describe('epicon_constitutional_v1.schema.json', () => {
-  it('locks mec_citation schema pattern to MEC_REGEX (no parser/schema drift)', () => {
-    expect(schema.properties.mec_citation.pattern).toBe(MEC_REGEX.source);
+  it('locks mec_citation schema pattern to MEC_CONSTITUTIONAL_PATTERN (roster-validated)', () => {
+    expect(schema.properties.mec_citation.pattern).toBe(MEC_CONSTITUTIONAL_PATTERN);
+  });
+
+  it('locks id schema pattern to UUIDv7', () => {
+    expect(schema.properties.id.pattern).toBe(
+      '^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$',
+    );
   });
 
   it('validates a minimal EP-3 constitutional EPICON', () => {
@@ -54,8 +66,25 @@ describe('epicon_constitutional_v1.schema.json', () => {
 
   it('rejects letter-suffix MEC amendments (Option B)', () => {
     const badMec = 'E01.RB341.C365.S016A:Q5:AT+ZE+EV+JA+AU:GI064';
-    expect(MEC_REGEX.test(badMec)).toBe(false);
+    expect(MEC_CONSTITUTIONAL_REGEX.test(badMec)).toBe(false);
     const ok = validate({ ...validBase, mec_citation: badMec });
+    expect(ok).toBe(false);
+  });
+
+  it('rejects unknown MEC agent codes not in AGENT_CODES roster', () => {
+    const badMec = 'E01.RB341.C365.S016:Q5:AT+XX+EV+JA+AU:GI064';
+    expect(MEC_REGEX.test(badMec)).toBe(true);
+    expect(MEC_CONSTITUTIONAL_REGEX.test(badMec)).toBe(false);
+    expect(() => parseMEC(badMec)).toThrow(MECParseError);
+    const ok = validate({ ...validBase, mec_citation: badMec });
+    expect(ok).toBe(false);
+  });
+
+  it('rejects non-UUIDv7 ids', () => {
+    const ok = validate({
+      ...validBase,
+      id: '550e8400-e29b-41d4-a716-446655440000',
+    });
     expect(ok).toBe(false);
   });
 

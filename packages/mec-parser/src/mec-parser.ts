@@ -36,6 +36,22 @@ export const AGENT_CODE_TO_NAME = AGENT_CODES;
 export type AgentCode = keyof typeof AGENT_CODES;
 export type AgentName = (typeof AGENT_CODES)[AgentCode];
 
+const MEC_ROSTER_ALTS = Object.keys(AGENT_CODES).join('|');
+
+/**
+ * Agent field restricted to the known AGENT_CODES roster.
+ * Stricter than MEC_REGEX — rejects unknown codes (e.g. XX) at validation time.
+ * Used by constitutional EPICON schema and ledger admission paths.
+ */
+export const MEC_ROSTER_AGENT_SEGMENT =
+  `(?:${MEC_ROSTER_ALTS})(?:\\+(?:${MEC_ROSTER_ALTS}))*`;
+
+/** Constitutional / ledger MEC pattern — roster-validated agent codes only. */
+export const MEC_CONSTITUTIONAL_PATTERN =
+  `^E(\\d+)\\.RB(\\d+)\\.C(\\d+)\\.S(\\d+):Q(\\d+):(${MEC_ROSTER_AGENT_SEGMENT}):GI(\\d{3})$`;
+
+export const MEC_CONSTITUTIONAL_REGEX = new RegExp(MEC_CONSTITUTIONAL_PATTERN);
+
 export interface ParsedMEC {
   epoch: number;
   reserveBlock: number;
