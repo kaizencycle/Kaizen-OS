@@ -1,24 +1,24 @@
 {
   "schema": "MNS_AGGREGATE_V1",
-  "updated_at": "2026-07-09T23:57:39.245Z",
+  "updated_at": "2026-07-10T02:44:52.144Z",
   "node_count": 5,
   "live_nodes": 3,
-  "total_entries": 33,
+  "total_entries": 34,
   "nodes": [
     {
       "node_id": "mobius-substrate",
       "tier": "sentinel",
       "node_type": "substrate",
       "entry_count": 0,
-      "fetched_at": "2026-07-09T23:57:38.887Z",
+      "fetched_at": "2026-07-10T02:44:51.695Z",
       "error": null
     },
     {
       "node_id": "mobius-civic-ai-terminal",
       "tier": "contributor",
       "node_type": "app",
-      "entry_count": 6,
-      "fetched_at": "2026-07-09T23:57:39.244Z",
+      "entry_count": 7,
+      "fetched_at": "2026-07-10T02:44:52.144Z",
       "error": null
     },
     {
@@ -26,7 +26,7 @@
       "tier": "contributor",
       "node_type": "service",
       "entry_count": 27,
-      "fetched_at": "2026-07-09T23:57:38.889Z",
+      "fetched_at": "2026-07-10T02:44:51.811Z",
       "error": null
     },
     {
@@ -47,6 +47,39 @@
     }
   ],
   "entries": [
+    {
+      "id": "3a716df3-merge",
+      "timestamp": "2026-07-10T00:40:39Z",
+      "author": "kaizencycle",
+      "title": "ci(epicon): install Intent Publication Gate and tier policy (C-367)",
+      "type": "merge",
+      "severity": "info",
+      "tags": [
+        "merge",
+        "pr"
+      ],
+      "source": "github-commit",
+      "verified": false,
+      "sha": "3a716df3a06e5cba37253b68546094e5a1db52bc",
+      "_mesh_node": "mobius-civic-ai-terminal",
+      "_mesh_tier": "contributor"
+    },
+    {
+      "id": "05f68e7c-zeus-verify",
+      "timestamp": "2026-07-10T00:05:24Z",
+      "author": "ZEUS",
+      "title": "zeus: verification disputed · C-367 [skip ci]",
+      "type": "zeus-verify",
+      "severity": "info",
+      "tags": [
+        "zeus"
+      ],
+      "source": "github-commit",
+      "verified": false,
+      "sha": "05f68e7cbb2c696f8012956abc2df700bb3b0c2d",
+      "_mesh_node": "mobius-civic-ai-terminal",
+      "_mesh_tier": "contributor"
+    },
     {
       "id": "8ebc759d-zeus-verify",
       "timestamp": "2026-07-09T18:04:16Z",
@@ -124,22 +157,6 @@
       "source": "github-commit",
       "verified": false,
       "sha": "0de7ec3464fe14d1b4b4c1dd05df3e9c7a03ab78",
-      "_mesh_node": "mobius-civic-ai-terminal",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "9f7e8173-zeus-verify",
-      "timestamp": "2026-07-08T12:01:51Z",
-      "author": "ZEUS",
-      "title": "zeus: verification disputed · C-366 [skip ci]",
-      "type": "zeus-verify",
-      "severity": "info",
-      "tags": [
-        "zeus"
-      ],
-      "source": "github-commit",
-      "verified": false,
-      "sha": "9f7e81732a3eea19977a7550a4559b36082d2bdc",
       "_mesh_node": "mobius-civic-ai-terminal",
       "_mesh_tier": "contributor"
     },
