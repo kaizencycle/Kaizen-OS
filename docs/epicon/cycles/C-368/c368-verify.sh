@@ -28,7 +28,7 @@ pr1(){
   esac
   code=$(curl -s -o /dev/null -w "%{http_code}" --max-time 30 "$OAA/api/debug/test-openai")
   [ "$code" = "404" ] && ok "debug endpoint gated (404)" || bad "debug endpoint exposed ($code)"
-  jwt=$(curl -s --max-time 30 "$OAA/" | python3 -c "import json,sys;print(json.load(sys.stdin).get('jwt_configured'))" 2>/dev/null)
+  jwt=$(curl -s --max-time 30 "$OAA/" | python3 -c "import json,sys;d=json.load(sys.stdin);print(d.get('jwt_configured', d.get('auth',{}).get('jwt_configured')))" 2>/dev/null)
   [ "$jwt" = "True" ] && ok "manifest jwt_configured: true" || bad "manifest jwt_configured: $jwt (expected true)"
   rv=$(curl -s --max-time 30 "$OAA/" | python3 -c "import json,sys;print(json.load(sys.stdin).get('version'))" 2>/dev/null)
   ov=$(curl -s --max-time 30 "$OAA/openapi.json" | python3 -c "import json,sys;print(json.load(sys.stdin)['info']['version'])" 2>/dev/null)
