@@ -1,3 +1,7 @@
+# ## Authority Provenance
+# Watchdog copy update for Mobius Bot client-id secret naming. Authority:
+# @kaizencycle (founder standing). See docs/templates/EPICON_FOUNDER_STANDING.md
+#
 # MOBIUS-CLASS: monitoring
 # OWNER: @kaizencycle
 # INTRODUCED: C-356
@@ -130,7 +134,7 @@ jobs:
               '1. Actions → `mobius-bot-state-sync` → Run workflow (manual dispatch)',
               '2. Check run logs for auth failures or commit errors',
               '3. If disabled by GitHub 60-day inactivity rule: re-enable and trigger manually',
-              '4. Verify `MOBIUS_BOT_APP_ID` and `MOBIUS_BOT_PRIVATE_KEY` secrets are valid',
+              '4. Verify `MOBIUS_BOT_APP_ID` (GitHub App client ID) and `MOBIUS_BOT_PRIVATE_KEY` secrets are valid',
               '',
               '**Two-layer detection:**',
               '- Layer 1 (this watchdog): writer silent 2+ days — fires before or concurrent with drift',

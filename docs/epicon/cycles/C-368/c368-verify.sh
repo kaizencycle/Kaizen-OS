@@ -28,8 +28,25 @@ pr1(){
   esac
   code=$(curl -s -o /dev/null -w "%{http_code}" --max-time 30 "$OAA/api/debug/test-openai")
   [ "$code" = "404" ] && ok "debug endpoint gated (404)" || bad "debug endpoint exposed ($code)"
-  jwt=$(curl -s --max-time 30 "$OAA/" | python3 -c "import json,sys;d=json.load(sys.stdin);print(d.get('jwt_configured', d.get('auth',{}).get('jwt_configured')))" 2>/dev/null)
-  [ "$jwt" = "True" ] && ok "manifest jwt_configured: true" || bad "manifest jwt_configured: $jwt (expected true)"
+  jwt=$(curl -s --max-time 30 "$OAA/" | python3 -c "
+import json,sys
+d=json.load(sys.stdin)
+auth=d.get('auth',{})
+iv=auth.get('identity_verification',{})
+print(iv.get('jwt_configured', d.get('jwt_configured', auth.get('jwt_configured'))))
+print(iv.get('method',''))
+print(iv.get('introspect',{}).get('uses_runtime_default',''))
+" 2>/dev/null)
+  jwt_val=$(echo "$jwt" | sed -n '1p')
+  method=$(echo "$jwt" | sed -n '2p')
+  uses_default=$(echo "$jwt" | sed -n '3p')
+  if [ "$jwt_val" = "True" ]; then
+    ok "manifest jwt_configured: true (method=$method)"
+  elif [ "$uses_default" = "True" ] && [ "$method" = "introspect_default" ]; then
+    ok "manifest truthful: introspect_default (set IDENTITY_API_BASE on Render for explicit config)"
+  else
+    bad "manifest jwt_configured: $jwt_val method=$method (expected explicit config or introspect_default truth)"
+  fi
   rv=$(curl -s --max-time 30 "$OAA/" | python3 -c "import json,sys;print(json.load(sys.stdin).get('version'))" 2>/dev/null)
   ov=$(curl -s --max-time 30 "$OAA/openapi.json" | python3 -c "import json,sys;print(json.load(sys.stdin)['info']['version'])" 2>/dev/null)
   [ -n "$rv" ] && [ "$rv" = "$ov" ] && ok "version drift resolved ($rv)" || bad "version drift: root=$rv openapi=$ov"

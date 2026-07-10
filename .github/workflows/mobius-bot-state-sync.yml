@@ -1,3 +1,8 @@
+# ## Authority Provenance
+# Repairs canon writer workflow (client-id API, credential preflight). Does not
+# advance cycle.json manually. Authority: @kaizencycle (founder standing).
+# See docs/templates/EPICON_FOUNDER_STANDING.md
+#
 # MOBIUS-CLASS: canon-state-writer
 # OWNER: @kaizencycle
 # INTRODUCED: C-338
@@ -35,11 +40,28 @@ jobs:
   sync:
     runs-on: ubuntu-latest
     steps:
+      - name: Verify Mobius Bot credentials
+        env:
+          APP_ID: ${{ secrets.MOBIUS_BOT_APP_ID }}
+          APP_KEY: ${{ secrets.MOBIUS_BOT_PRIVATE_KEY }}
+        run: |
+          if [ -z "$APP_ID" ]; then
+            echo "::error::MOBIUS_BOT_APP_ID is missing or empty."
+            echo "::error::Set the Mobius GitHub App client ID at Settings → Secrets → Actions."
+            echo "::error::See STATE/writer-health.json, issues #339 and #351."
+            exit 1
+          fi
+          if [ -z "$APP_KEY" ]; then
+            echo "::error::MOBIUS_BOT_PRIVATE_KEY is missing or empty."
+            echo "::error::Rotate the Mobius GitHub App private key and update the repo secret."
+            exit 1
+          fi
+
       - name: Mint scoped App token (C-336 identity)
         id: app
         uses: actions/create-github-app-token@v3
         with:
-          app-id: ${{ secrets.MOBIUS_BOT_APP_ID }}
+          client-id: ${{ secrets.MOBIUS_BOT_APP_ID }}
           private-key: ${{ secrets.MOBIUS_BOT_PRIVATE_KEY }}
 
       - uses: actions/checkout@v7
