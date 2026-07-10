@@ -7,7 +7,7 @@ Tracks superseded, duplicate, or obsolete-terminology repositories under `kaizen
 
 | Repository | Canonical successor | Status | PR |
 |---|---|---|---|
-| `mobius-civic-ai-terminal-main` | `mobius-civic-ai-terminal` | Deprecation README pushed | [#1](https://github.com/kaizencycle/mobius-civic-ai-terminal-main/pull/1) |
+| `mobius-civic-ai-terminal-main` | `mobius-civic-ai-terminal` | README merged ([#1](https://github.com/kaizencycle/mobius-civic-ai-terminal-main/pull/1)) — **archive pending owner** | Archive after merge ✅ |
 | `hive` | `mobius-hive` | README template in `docs/org/deprecation-readmes/hive.md` | Owner push required |
 | `reflections-app-pr-bundle-founders` | `reflections-app` | README template in `docs/org/deprecation-readmes/reflections-app-pr-bundle-founders.md` | Owner push required |
 

@@ -28,15 +28,25 @@ Live thresholds (13:47Z): `healthy 0.9 / warning 0.75 / critical 0.6 / circuit_b
 `GET /health` → `{"ok":false,"error":"not found"}` · `GET /` → `{"ok":true,"service":"epicon-github-webhook"}` (200, 45 bytes). Target: `/health` 200 `ok:true` + version; root manifest gains `role`, `version`, endpoint list; source repo documented.
 
 ### PR 5 — Guard App Phase 1
-`apps/guard-app/` and `packages/guard-core/` absent from `kaizencycle/epicon@main`. Deployment target now known: **epicon-api service**. I2 behavioral test (edit intent without version bump → check fails) is a manual acceptance step.
+`apps/guard-app/` and `packages/guard-core/` **on main** (scaffold merged PR #14). Wire merged **PR #17** (2026-07-10T22:53Z) — Probot I2 boot via `Server.load()` + `guardAppFn`. Deployment target: **epicon-api service**. Live host still **`enforcement_mode: transport-only`** until Render redeploy with `APP_ID` + `PRIVATE_KEY` + `GITHUB_WEBHOOK_SECRET`. I2 behavioral test (edit intent without version bump → check fails) is a manual acceptance step.
 
 ### PR 6 — duplicate repo
-`mobius-civic-ai-terminal-main`: exists, reachable, **not archived**. Uniqueness check not yet recorded.
+`mobius-civic-ai-terminal-main`: deprecation README **merged** ([#1](https://github.com/kaizencycle/mobius-civic-ai-terminal-main/pull/1), 2026-07-10). Uniqueness check: **1 orphan init commit** — canonical is strict superset. **Not yet archived** — owner action: `gh repo archive kaizencycle/mobius-civic-ai-terminal-main --yes`.
 
 ### PR 7 — Reserve Block cold canon prime
-`Mobius-Substrate/canon/reserve-blocks/`: **only `.gitkeep`** (no `.dat`, no `MANIFEST.json`). Terminal attests **349 blocks sealed** (~17,450 MIC) in hot KV. C-357 lane armed on main (`verify-dat-chain.js`, `reserve-block-canonization.yml`) but **workflow never fired**. Exporter exists at `mobius-civic-ai-terminal/scripts/canonize-reserve-blocks.ts`. Target: four `.dat` files + MANIFEST, chain verify green, canon-event posted (secrets permitting).
+**Automation merged** on terminal **PR #591** (2026-07-10T22:03Z): export workflow (`workflow_dispatch`), Vercel cron `/api/cron/reserve-canon-append`, incremental append + Substrate PR opener. `Mobius-Substrate/canon/reserve-blocks/`: **still only `.gitkeep`** (no `.dat`, no `MANIFEST.json`) — **operator prime pending**. Terminal attests **350 blocks sealed** (~17,500 MIC) in hot KV (22:54Z). Target: four `.dat` files + MANIFEST, chain verify green, canon-event posted (secrets + manual workflow run).
 
 ## Standing environment facts
 - OAA responds in <1s when warm; a 13:42Z probe returned HTTP 000 (transient or spin-down) — if Render free-tier sleep applies to OAA, the identity-service cold-start pattern (C-357) will affect PR 1's auth calls too; consider keep-warm or paid instance as a follow-up.
 - Guard-on-main status: Substrate ✅ CPC ✅ Terminal ✅ Browser-Shell ✅ Hive ✅ OAA ✅.
 - Required-status-check binding: **not yet verified** — recommend binding Substrate + CPC now, report-only elsewhere for one calibration week (per C-367 close).
+
+## Post-merge witness (2026-07-10T22:54Z)
+
+| PR | Code merged | Operator / live gap |
+|---|---|---|
+| PR5 | epicon [#17](https://github.com/kaizencycle/epicon/pull/17) ✅ | Render redeploy + `APP_ID`/`PRIVATE_KEY` → `enforcement_mode: probot-i2` |
+| PR6 | terminal-main [#1](https://github.com/kaizencycle/mobius-civic-ai-terminal-main/pull/1) ✅ | `gh repo archive kaizencycle/mobius-civic-ai-terminal-main --yes` |
+| PR7 | terminal [#591](https://github.com/kaizencycle/mobius-civic-ai-terminal/pull/591) ✅ | KV + `SUBSTRATE_GITHUB_TOKEN` secrets → run Reserve Block Canon Export (`incremental: false`) |
+
+**Harness:** `c368-verify.sh pr1–pr4` pass · `pr5` structural pass (I2 manual) · `pr6` fail (not archived) · `pr7` fail (no `.dat` on Substrate main).
