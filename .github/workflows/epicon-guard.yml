@@ -13,8 +13,7 @@ jobs:
     name: Intent Publication Gate
     runs-on: ubuntu-latest
     steps:
-      # v1.1 policy-ref:base — interim host on Substrate until kaizencycle/epicon@v1.1
-      - uses: kaizencycle/Mobius-Substrate/.github/actions/epicon-guard@5e02b84ddb6af5c7d7dc531437ed3855f0f05a2e
+      - uses: ./.github/actions/epicon-guard
         with:
           mode: enforce
           policy-ref: base
