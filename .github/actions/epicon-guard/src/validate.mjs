@@ -339,7 +339,7 @@ async function fetchChangedFiles() {
   if (!token) { warn('No token available — skipping changed-file analysis (tier + divergence).'); return null; }
   const files = [];
   let page = 1;
-  while (page <= 10) { // 3000-file ceiling
+  while (page <= 30) { // 3000-file ceiling (30 pages × 100 per page)
     const res = await fetch(
       `https://api.github.com/repos/${repoFull}/pulls/${pr.number}/files?per_page=100&page=${page}`,
       { headers: { authorization: `Bearer ${token}`, accept: 'application/vnd.github+json' } }
