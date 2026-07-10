@@ -1,0 +1,19 @@
+name: EPICON Guard
+
+on:
+  pull_request:
+    types: [opened, edited, synchronize, reopened]
+
+permissions:
+  contents: read
+  pull-requests: read
+
+jobs:
+  epicon:
+    name: Intent Publication Gate
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: kaizencycle/epicon@v1
+        with:
+          mode: enforce
