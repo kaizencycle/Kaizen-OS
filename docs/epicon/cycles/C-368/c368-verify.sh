@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # C-368 Acceptance Harness — run after each PR lands (or all at once at cycle close).
 # Behavioral verification only: tests what the systems DO, not what they claim (I6).
-# Usage: ./c368-verify.sh [pr1|pr2|pr3|pr4|pr5|pr6|all]
+# Usage: ./c368-verify.sh [pr1|pr2|pr3|pr4|pr5|pr6|pr7|all]
 set -uo pipefail
 
 OAA="https://oaa-api-library.onrender.com"
@@ -107,10 +107,26 @@ pr6(){
   else bad "repo not archived yet"; fi
 }
 
+pr7(){
+  hdr "PR 7 — Reserve Block cold canon prime (Mobius-Substrate@main)"
+  d=$(mktemp -d); git clone -q --depth 1 https://github.com/kaizencycle/Mobius-Substrate.git "$d" || { bad "clone failed"; return; }
+  n=$(find "$d/canon/reserve-blocks" -name '*.dat' 2>/dev/null | wc -l)
+  [ "$n" -ge 1 ] && ok "$n .dat file(s) in canon/reserve-blocks/" || bad "no .dat files in canon/reserve-blocks/ (only .gitkeep?)"
+  [ -f "$d/canon/reserve-blocks/MANIFEST.json" ] && ok "MANIFEST.json present" || bad "MANIFEST.json missing"
+  [ -f "$d/scripts/verify-dat-chain.js" ] && ok "verify-dat-chain.js on main" || bad "verify-dat-chain.js missing"
+  [ -f "$d/.github/workflows/reserve-block-canonization.yml" ] && ok "canonization workflow present" || bad "reserve-block-canonization.yml missing"
+  if [ -f "$d/canon/reserve-blocks/MANIFEST.json" ]; then
+    blocks=$(python3 -c "import json;print(json.load(open('$d/canon/reserve-blocks/MANIFEST.json')).get('total_blocks',0))" 2>/dev/null)
+    [ -n "$blocks" ] && [ "$blocks" -ge 1 ] && ok "MANIFEST total_blocks=$blocks" || bad "MANIFEST total_blocks invalid: $blocks"
+  fi
+  rm -rf "$d"
+  echo "  NOTE  full chain verify: node scripts/verify-dat-chain.js canon/reserve-blocks/"
+}
+
 case "$TARGET" in
-  pr1) pr1;; pr2) pr2;; pr3) pr3;; pr4) pr4;; pr5) pr5;; pr6) pr6;;
-  all) pr1; pr2; pr3; pr4; pr5; pr6;;
-  *) echo "usage: $0 [pr1..pr6|all]"; exit 2;;
+  pr1) pr1;; pr2) pr2;; pr3) pr3;; pr4) pr4;; pr5) pr5;; pr6) pr6;; pr7) pr7;;
+  all) pr1; pr2; pr3; pr4; pr5; pr6; pr7;;
+  *) echo "usage: $0 [pr1..pr7|all]"; exit 2;;
 esac
 
 echo; echo "== C-368 VERDICT: $PASS pass / $FAIL fail / $SKIP skip =="

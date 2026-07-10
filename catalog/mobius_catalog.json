@@ -1,6 +1,6 @@
 {
   "mobius_catalog_version": "1.0.0",
-  "generated_at": "2026-07-10T18:23:36.692Z",
+  "generated_at": "2026-07-10T18:49:14.396Z",
   "repo": {
     "name": "Mobius-Substrate",
     "url": "https://github.com/kaizencycle/Mobius-Substrate",
@@ -9,7 +9,7 @@
   },
   "stats": {
     "epiconCount": 0,
-    "docCount": 1006
+    "docCount": 1007
   },
   "epicons": [],
   "docs": [
@@ -7737,15 +7737,15 @@
       "title": "C-368 Baseline — Witnessed Pre-State",
       "category": "epicon",
       "tags": [],
-      "content_hash": "sha256:9980c4c3092987daf5bedd4ab0c59bb120505d62f095869984a6acb3484f2995",
+      "content_hash": "sha256:0ffc0962a311589ca24dbd10ba3a9d588e26fd4634ced91b1733fdf16814b5ac",
       "summary": ""
     },
     {
       "path": "docs/epicon/cycles/C-368/C-368-opener.md",
-      "title": "C-368 Opener — Six Optimizations",
+      "title": "C-368 Opener — Seven Optimizations",
       "category": "epicon",
       "tags": [],
-      "content_hash": "sha256:7750a95f3ebe5de239e82a31002ad1d0dc0b0931c4b70d41836634f6e65144c8",
+      "content_hash": "sha256:64b6c3ded6d4a70128ef16fd3eb7774e6e37b3805d14853311a9c667bb1a9884",
       "summary": ""
     },
     {
@@ -7794,6 +7794,14 @@
       "category": "epicon",
       "tags": [],
       "content_hash": "sha256:8f65cd8075cbfc3f687db6e5b0af3e7542bff79b23c19055b4732b2085d31d09",
+      "summary": ""
+    },
+    {
+      "path": "docs/epicon/cycles/C-368/C368-PR7_reserve-canon-prime.md",
+      "title": "C-368 · PR 7 — Prime the cold canon (349 Reserve Blocks → Substrate)",
+      "category": "epicon",
+      "tags": [],
+      "content_hash": "sha256:8d316ddc046f3d1aaf9970e9b50356e4e272a5d171c3d7321ec26dcc02347a99",
       "summary": ""
     },
     {
