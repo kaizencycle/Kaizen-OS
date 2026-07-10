@@ -46,6 +46,7 @@
     "cycles/**",
     "kaizen_manifest.yaml",
     ".github/workflows/**",
+    ".github/actions/**",
     "CODEOWNERS",
     "SECURITY.md",
     "render.yaml",

@@ -1,30 +1,27 @@
 {
   "repo": "kaizencycle/Mobius-Substrate",
-  "generated_at": "2026-07-10T09:50:48Z",
+  "generated_at": "2026-07-10T14:48:38Z",
   "open_pr_count": 6,
   "by_severity": {
-    "high": 0,
+    "high": 1,
     "medium": 0,
-    "low": 1,
+    "low": 0,
     "unknown": 5
   },
   "emergency_count": 0,
   "items": [
     {
-      "pr": 359,
-      "title": "feat(epicon): vendor Guard v1.1 with policy-ref base loading (C-367 follow-up)",
-      "url": "https://github.com/kaizencycle/Mobius-Substrate/pull/359",
+      "pr": 360,
+      "title": "docs(epicon): C-368 opener \u2014 six optimization PR briefs (Guard-validated)",
+      "url": "https://github.com/kaizencycle/Mobius-Substrate/pull/360",
       "author": "kaizencycle",
-      "updated_at": "2026-07-10T02:11:04Z",
-      "created_at": "2026-07-10T01:47:07Z",
-      "labels": [
-        "scope:docs",
-        "scope:ci"
-      ],
+      "updated_at": "2026-07-10T14:16:58Z",
+      "created_at": "2026-07-10T13:36:31Z",
+      "labels": [],
       "mode": "normal",
       "has_debt": false,
-      "severity": "low",
-      "justification_hash": "67b17d29c4b864d06bdd2fa9db83251b09f58bc4accde8949e15e3b846e27886",
+      "severity": "high",
+      "justification_hash": "",
       "checks": {
         "epicon": "unknown",
         "merge_gate": "unknown"
