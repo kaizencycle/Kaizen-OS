@@ -28,10 +28,10 @@ Live thresholds (13:47Z): `healthy 0.9 / warning 0.75 / critical 0.6 / circuit_b
 `GET /health` → `{"ok":false,"error":"not found"}` · `GET /` → `{"ok":true,"service":"epicon-github-webhook"}` (200, 45 bytes). Target: `/health` 200 `ok:true` + version; root manifest gains `role`, `version`, endpoint list; source repo documented.
 
 ### PR 5 — Guard App Phase 1
-`apps/guard-app/` and `packages/guard-core/` absent from `kaizencycle/epicon@main`. Deployment target now known: **epicon-api service**. I2 behavioral test (edit intent without version bump → check fails) is a manual acceptance step.
+`apps/guard-app/` and `packages/guard-core/` **on main** (merged PR #14). Deployment target: **epicon-api service**. Live host still **transport-only** until `APP_ID` + `PRIVATE_KEY` set on Render — wire PR pending. I2 behavioral test (edit intent without version bump → check fails) is a manual acceptance step.
 
 ### PR 6 — duplicate repo
-`mobius-civic-ai-terminal-main`: exists, reachable, **not archived**. Uniqueness check not yet recorded.
+`mobius-civic-ai-terminal-main`: deprecation README **merged** ([#1](https://github.com/kaizencycle/mobius-civic-ai-terminal-main/pull/1), 2026-07-10). Uniqueness check: **1 orphan init commit** — canonical is strict superset. **Not yet archived** — owner action: `gh repo archive kaizencycle/mobius-civic-ai-terminal-main --yes`.
 
 ### PR 7 — Reserve Block cold canon prime
 `Mobius-Substrate/canon/reserve-blocks/`: **only `.gitkeep`** (no `.dat`, no `MANIFEST.json`). Terminal attests **349 blocks sealed** (~17,450 MIC) in hot KV. C-357 lane armed on main (`verify-dat-chain.js`, `reserve-block-canonization.yml`) but **workflow never fired**. Exporter exists at `mobius-civic-ai-terminal/scripts/canonize-reserve-blocks.ts`. Target: four `.dat` files + MANIFEST, chain verify green, canon-event posted (secrets permitting).
