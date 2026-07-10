@@ -33,6 +33,9 @@ Live thresholds (13:47Z): `healthy 0.9 / warning 0.75 / critical 0.6 / circuit_b
 ### PR 6 — duplicate repo
 `mobius-civic-ai-terminal-main`: exists, reachable, **not archived**. Uniqueness check not yet recorded.
 
+### PR 7 — Reserve Block cold canon prime
+`Mobius-Substrate/canon/reserve-blocks/`: **only `.gitkeep`** (no `.dat`, no `MANIFEST.json`). Terminal attests **349 blocks sealed** (~17,450 MIC) in hot KV. C-357 lane armed on main (`verify-dat-chain.js`, `reserve-block-canonization.yml`) but **workflow never fired**. Exporter exists at `mobius-civic-ai-terminal/scripts/canonize-reserve-blocks.ts`. Target: four `.dat` files + MANIFEST, chain verify green, canon-event posted (secrets permitting).
+
 ## Standing environment facts
 - OAA responds in <1s when warm; a 13:42Z probe returned HTTP 000 (transient or spin-down) — if Render free-tier sleep applies to OAA, the identity-service cold-start pattern (C-357) will affect PR 1's auth calls too; consider keep-warm or paid instance as a follow-up.
 - Guard-on-main status: Substrate ✅ CPC ✅ Terminal ✅ Browser-Shell ✅ Hive ✅ OAA ✅.
