@@ -1,6 +1,15 @@
 # C-368 Baseline — Witnessed Pre-State
 **Captured:** 2026-07-10T13:42–13:48Z · **Witness:** ATLAS · **Purpose:** evidence anchor for the six-PR acceptance run. Every claim below was measured, not recalled.
 
+## Authority Provenance
+
+*Authority declared using `docs/templates/EPICON_FOUNDER_STANDING.md` v0.1*
+
+- **Actor:** ATLAS (on behalf of kaizencycle)
+- **Authority Source:** Cycle documentation — post-merge witness update only
+- **Scope Limitation:** `docs/epicon/cycles/C-368/` baseline and operator runbook
+- **Expiration:** 2026-10-08T00:00:00Z
+
 ## Headline deltas since C-367 close
 
 1. **Rollout is COMPLETE.** All six federation repos have `epicon-guard.yml` on `main` — the C-367 PRs merged. Tags `v1` and `v1.1` resolve on `kaizencycle/epicon`. The federation is gated.
