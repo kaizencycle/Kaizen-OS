@@ -242,11 +242,22 @@ if (intentRaw) {
     }
   }
 
-  // scope (I3 — authority must be scoped)
+  // scope (I3 — authority must be scoped; comma-separated union per mobius_pr_bot)
   if (!fields.scope) {
     fail('I3 VIOLATION — Missing scope. Authority must be scoped (EPICON-02 §2.3).');
-  } else if (!VALID_SCOPES.includes(fields.scope)) {
-    fail(`Invalid scope "${fields.scope}". Allowed: ${VALID_SCOPES.join(' | ')}.`);
+  } else {
+    const scopeLabels = parseScopeLabels(fields.scope);
+    if (scopeLabels.length === 0) {
+      fail('I3 VIOLATION — Missing scope. Authority must be scoped (EPICON-02 §2.3).');
+    } else {
+      const unknown = scopeLabels.filter((label) => !VALID_SCOPES.includes(label));
+      if (unknown.length > 0) {
+        fail(
+          `Invalid scope "${fields.scope}". Unknown label(s): ${unknown.join(', ')}. ` +
+          `Allowed: ${VALID_SCOPES.join(' | ')}.`
+        );
+      }
+    }
   }
 
   // mode
@@ -435,9 +446,19 @@ function classifyFile(policy, path) {
   return { tier: 'EP-3', rule: `${policy.policy_id || 'default'}:5.2-deny-by-default` };
 }
 
-function inEnvelope(scope, path) {
-  const prefixes = SCOPE_ENVELOPES[scope] || [];
-  return prefixes.some((p) => path.startsWith(p) || (p.includes('.') && path === p));
+function parseScopeLabels(scopeField) {
+  return String(scopeField || '')
+    .split(',')
+    .map((s) => s.trim())
+    .filter(Boolean);
+}
+
+function inEnvelope(scopeField, path) {
+  const labels = parseScopeLabels(scopeField);
+  return labels.some((scope) => {
+    const prefixes = SCOPE_ENVELOPES[scope] || [];
+    return prefixes.some((p) => path.startsWith(p) || (p.includes('.') && path === p));
+  });
 }
 
 const policy = await loadPolicy();
@@ -455,7 +476,9 @@ if (changed && changed.length > 0) {
   for (const f of changed) {
     const { tier, rule } = classifyFile(policy, f);
     if (TIER_ORDER[tier] > TIER_ORDER[prTier]) { prTier = tier; tierRule = rule; }
-    if (fields.scope && VALID_SCOPES.includes(fields.scope) && !inEnvelope(fields.scope, f)) {
+    const scopeLabels = fields.scope ? parseScopeLabels(fields.scope) : [];
+    const scopesValid = scopeLabels.length > 0 && scopeLabels.every((s) => VALID_SCOPES.includes(s));
+    if (scopesValid && !inEnvelope(fields.scope, f)) {
       divergent.push(f);
     }
   }
