@@ -38,17 +38,17 @@ pr1(){
 pr2(){
   hdr "PR 2 — GII canon thresholds"
   t=$(curl -s --max-time 60 "$OAA/api/learning/system-status")
-  python3 - "$t" <<'PY'
+  if python3 - "$t" <<'PY'
 import json,sys
 try: d=json.loads(sys.argv[1]); th=d.get("thresholds",{})
-except: print("  FAIL  system-status unparseable"); sys.exit(1)
+except: sys.exit(1)
 want={"circuit_breaker":0.85,"reward_floor":0.90,"mint_gate":0.95}
 missing=[k for k in want if abs(float(th.get(k,-1))-want[k])>1e-9]
-if not missing: print("  PASS  thresholds match canon (0.85/0.90/0.95)")
-else: print(f"  FAIL  thresholds off-canon: live={th} missing/wrong={missing}")
+sys.exit(0 if not missing else 1)
 PY
-  # count python's own PASS/FAIL lines
-  case "$?" in 0) PASS=$((PASS+1));; *) FAIL=$((FAIL+1));; esac
+  then ok "thresholds match canon (0.85/0.90/0.95)"
+  else bad "thresholds off-canon: live=$(echo "$t" | python3 -c "import json,sys;print(json.load(sys.stdin).get('thresholds',{}))" 2>/dev/null)"
+  fi
 }
 
 pr3(){
@@ -75,9 +75,10 @@ pr4(){
 
 pr5(){
   hdr "PR 5 — Guard App Phase 1 (structural checks; I2 behavioral test is manual)"
+  EPICON_BRANCH="${EPICON_BRANCH:-main}"
   for p in "apps/guard-app/package.json" "packages/guard-core/package.json"; do
-    curl -s --max-time 20 "https://raw.githubusercontent.com/kaizencycle/epicon/main/$p" -o /dev/null -w "%{http_code}" | grep -q 200 \
-      && ok "$p on main" || bad "$p missing"
+    curl -s --max-time 20 "https://raw.githubusercontent.com/kaizencycle/epicon/${EPICON_BRANCH}/$p" -o /dev/null -w "%{http_code}" | grep -q 200 \
+      && ok "$p on ${EPICON_BRANCH}" || bad "$p missing on ${EPICON_BRANCH} (set EPICON_BRANCH for open PR branches)"
   done
   echo "  NOTE  manual acceptance: edit a test PR's intent w/o version bump -> check must fail with I2 VIOLATION"
 }
