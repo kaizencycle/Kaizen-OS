@@ -1,3 +1,8 @@
+# ## Authority Provenance
+# Repairs canon writer workflow (client-id API, credential preflight). Does not
+# advance cycle.json manually. Authority: @kaizencycle (founder standing).
+# See docs/templates/EPICON_FOUNDER_STANDING.md
+#
 # MOBIUS-CLASS: canon-state-writer
 # OWNER: @kaizencycle
 # INTRODUCED: C-338
