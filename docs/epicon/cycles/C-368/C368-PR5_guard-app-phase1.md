@@ -39,12 +39,15 @@ On `issue_comment` `/epicon revalidate`: re-run validation, post result as comme
 
 ## 4. Deployment
 
-If PR 4 confirmed `epicon-api` as the App host, deploy there (Probot as middleware on its
-Express server). Otherwise: new Render web service `epicon-guard-app` from `apps/guard-app`.
-Register the App at github.com/settings/apps → name **EPICON Guard**, webhook URL = service
-URL, permissions per `app.yml`. Install on the six federation repos. **This also begins PAT
-retirement:** installation tokens are scoped and short-lived — the structural fix for the
-org-wide git-exit-128 CI failures.
+**Resolved (C-368 baseline, 2026-07-10):** `epicon-api` root returns
+`{"ok":true,"service":"epicon-github-webhook"}` — it is the Guard App webhook host.
+Deploy Phase 1 there (Probot as middleware on its Express server). **Do not create
+a new `epicon-guard-app` service.**
+
+Register the App at github.com/settings/apps → name **EPICON Guard**, webhook URL =
+the epicon-api service URL, permissions per `app.yml`. Install on the six federation
+repos. **This also begins PAT retirement:** installation tokens are scoped and
+short-lived — the structural fix for the org-wide git-exit-128 CI failures.
 
 ## 5. Acceptance criteria
 
