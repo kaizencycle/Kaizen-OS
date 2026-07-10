@@ -1,8 +1,9 @@
 {
   "writer": "mobius-bot-state-sync",
-  "last_run_at": "2026-07-10T07:48:16Z",
-  "last_cycle": "C-360",
+  "last_run_at": "2026-06-30T09:00:00Z",
+  "last_cycle": "C-358",
   "status": "blocked",
+  "last_failed_attempt_at": "2026-07-10T07:48:16Z",
   "failure_reason": "MOBIUS_BOT_APP_ID secret empty — create-github-app-token fails at mint step",
-  "recovery_note": "Owner action: set MOBIUS_BOT_APP_ID (GitHub App client ID) and MOBIUS_BOT_PRIVATE_KEY in Settings → Secrets → Actions, then workflow_dispatch mobius-bot-state-sync. Do not manually advance cycle.json — let the writer catch up deterministically."
+  "recovery_note": "Owner action: set MOBIUS_BOT_APP_ID (GitHub App client ID) and MOBIUS_BOT_PRIVATE_KEY in Settings → Secrets → Actions, then workflow_dispatch mobius-bot-state-sync. Do not manually advance cycle.json — let the writer catch up deterministically. last_run_at is the last successful stamp only; failed attempts are recorded in last_failed_attempt_at."
 }
