@@ -1,16 +1,16 @@
 # Divergence Dashboard
 
 **Repo:** `kaizencycle/Mobius-Substrate`  
-**Generated:** `2026-07-10T09:50:48Z`  
+**Generated:** `2026-07-10T14:48:38Z`  
 **Open PRs:** `6`
 
 ## Summary
 
 | Severity | Count |
 |----------|-------|
-| 🔴 High | 0 |
+| 🔴 High | 1 |
 | 🟡 Medium | 0 |
-| 🟢 Low | 1 |
+| 🟢 Low | 0 |
 | ⚪ Unknown | 5 |
 | 🚨 Emergency | 0 |
 
@@ -18,7 +18,7 @@
 
 | Sev | PR | Title | Author | EPICON | Gate | Mode | Updated |
 |-----|---:|-------|--------|--------|------|------|---------|
-| 🟢 low | [#359](https://github.com/kaizencycle/Mobius-Substrate/pull/359) | feat(epicon): vendor Guard v1.1 with policy-ref ba... | @kaizencycle | ? | ? | — | 2026-07-10 |
+| 🔴 high | [#360](https://github.com/kaizencycle/Mobius-Substrate/pull/360) | docs(epicon): C-368 opener — six optimization PR b... | @kaizencycle | ? | ? | — | 2026-07-10 |
 | ⚪ unknown | [#344](https://github.com/kaizencycle/Mobius-Substrate/pull/344) | chore(deps): bump zustand from 4.5.7 to 5.0.14 | @dependabot[bot] | ? | ? | — | 2026-06-30 |
 | ⚪ unknown | [#345](https://github.com/kaizencycle/Mobius-Substrate/pull/345) | chore(deps): bump lucide-react from 0.378.0 to 1.2... | @dependabot[bot] | ? | ? | — | 2026-07-07 |
 | ⚪ unknown | [#346](https://github.com/kaizencycle/Mobius-Substrate/pull/346) | chore(deps): bump tailwind-merge from 2.6.0 to 3.6... | @dependabot[bot] | ? | ? | — | 2026-06-30 |
