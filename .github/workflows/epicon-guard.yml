@@ -1,3 +1,7 @@
+# ## Authority Provenance
+# C-367 EPICON Guard v1.1 workflow. Authority declared using
+# docs/templates/EPICON_FOUNDER_STANDING.md — @kaizencycle (Custodian, DVA.02).
+
 name: EPICON Guard
 
 on:
@@ -13,23 +17,11 @@ jobs:
     name: Intent Publication Gate
     runs-on: ubuntu-latest
     steps:
+      # Required so ./.github/actions/epicon-guard resolves on disk.
+      # Policy still loads from base SHA via policy-ref (not from checkout).
       - uses: actions/checkout@v4
 
-      # Classify using the merged base policy, not the PR's own policy edits.
-      # Without this, a PR could weaken epicon-policy.json in the same change set
-      # and downgrade its tier before the guard runs (Rule 5.1 proposer-independence).
-      - name: Pin tier policy to base revision
-        run: |
-          set -euo pipefail
-          base_sha="${{ github.event.pull_request.base.sha }}"
-          git fetch --depth=1 origin "${base_sha}"
-          if git show "${base_sha}:.github/epicon-policy.json" > .github/epicon-policy.json 2>/dev/null; then
-            echo "Using trusted policy from base ${base_sha}"
-          else
-            rm -f .github/epicon-policy.json
-            echo "No base policy on ${base_sha}; Guard uses built-in deny-by-default registry"
-          fi
-
-      - uses: kaizencycle/epicon@v1
+      - uses: ./.github/actions/epicon-guard
         with:
           mode: enforce
+          policy-ref: base
