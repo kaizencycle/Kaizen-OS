@@ -1,24 +1,24 @@
 {
   "schema": "MNS_AGGREGATE_V1",
-  "updated_at": "2026-07-10T21:51:21.183Z",
+  "updated_at": "2026-07-10T22:50:34.105Z",
   "node_count": 5,
   "live_nodes": 3,
-  "total_entries": 34,
+  "total_entries": 35,
   "nodes": [
     {
       "node_id": "mobius-substrate",
       "tier": "sentinel",
       "node_type": "substrate",
       "entry_count": 0,
-      "fetched_at": "2026-07-10T21:51:20.881Z",
+      "fetched_at": "2026-07-10T22:50:33.835Z",
       "error": null
     },
     {
       "node_id": "mobius-civic-ai-terminal",
       "tier": "contributor",
       "node_type": "app",
-      "entry_count": 7,
-      "fetched_at": "2026-07-10T21:51:21.183Z",
+      "entry_count": 8,
+      "fetched_at": "2026-07-10T22:50:34.105Z",
       "error": null
     },
     {
@@ -26,7 +26,7 @@
       "tier": "contributor",
       "node_type": "service",
       "entry_count": 27,
-      "fetched_at": "2026-07-10T21:51:20.877Z",
+      "fetched_at": "2026-07-10T22:50:33.817Z",
       "error": null
     },
     {
@@ -47,6 +47,23 @@
     }
   ],
   "entries": [
+    {
+      "id": "6619e0ba-merge",
+      "timestamp": "2026-07-10T22:03:06Z",
+      "author": "kaizencycle",
+      "title": "feat(canon): C-368 PR7 reserve canon export + continuous append lane",
+      "type": "merge",
+      "severity": "info",
+      "tags": [
+        "merge",
+        "pr"
+      ],
+      "source": "github-commit",
+      "verified": false,
+      "sha": "6619e0bae107f6c80ff8f93f74a968019a8ad357",
+      "_mesh_node": "mobius-civic-ai-terminal",
+      "_mesh_tier": "contributor"
+    },
     {
       "id": "e4923118-zeus-verify",
       "timestamp": "2026-07-10T18:02:41Z",
