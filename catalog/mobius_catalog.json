@@ -1,6 +1,6 @@
 {
   "mobius_catalog_version": "1.0.0",
-  "generated_at": "2026-07-10T18:02:48.781Z",
+  "generated_at": "2026-07-10T18:23:36.692Z",
   "repo": {
     "name": "Mobius-Substrate",
     "url": "https://github.com/kaizencycle/Mobius-Substrate",
@@ -9,7 +9,7 @@
   },
   "stats": {
     "epiconCount": 0,
-    "docCount": 1002
+    "docCount": 1006
   },
   "epicons": [],
   "docs": [
@@ -7938,6 +7938,38 @@
       "category": "mobius",
       "tags": [],
       "content_hash": "sha256:809375bfd9bf45198772f01dc62450a274d61ba6a45ea1862bac473040540031",
+      "summary": ""
+    },
+    {
+      "path": "docs/org/REPO_DEPRECATION_INDEX.md",
+      "title": "Organization Repository Deprecation Index",
+      "category": "org",
+      "tags": [],
+      "content_hash": "sha256:3240dd45272fb72c66e47f1279d05f111b43a74861490f3b3dc80e090e68dc03",
+      "summary": ""
+    },
+    {
+      "path": "docs/org/deprecation-readmes/gic-era-repos.md",
+      "title": "Deprecation README — GIC-era repositories (templates)",
+      "category": "org",
+      "tags": [],
+      "content_hash": "sha256:e7c9981dc9809bcd86ac6cae05d7988a8c22a612f295a84ccf6708b39bc1ccf8",
+      "summary": ""
+    },
+    {
+      "path": "docs/org/deprecation-readmes/hive.md",
+      "title": "Deprecation README — `kaizencycle/hive`",
+      "category": "org",
+      "tags": [],
+      "content_hash": "sha256:91712b5730032d0a94aa9b1389831ae6174bbe51b4b3951403f2c3c9078077e1",
+      "summary": ""
+    },
+    {
+      "path": "docs/org/deprecation-readmes/reflections-app-pr-bundle-founders.md",
+      "title": "Deprecation README — `kaizencycle/reflections-app-pr-bundle-founders`",
+      "category": "org",
+      "tags": [],
+      "content_hash": "sha256:85beccb54c99f9aecec4cd288186edd69eb259a61708ae5ee2f61f5a2c56c4b1",
       "summary": ""
     },
     {

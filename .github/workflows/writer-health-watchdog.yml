@@ -56,6 +56,7 @@ jobs:
 
           last_run_str = d.get("last_run_at", "")
           last_cycle = d.get("last_cycle", "unknown")
+          health_status = (d.get("status") or "").strip().lower()
 
           if not last_run_str:
               days_since = 999
@@ -64,7 +65,10 @@ jobs:
               now = datetime.now(timezone.utc)
               days_since = (now - last_run).days
 
-          if days_since >= 2:
+          # Non-ok status (blocked, manual-recovery, etc.) must not mask stale writer
+          if health_status and health_status not in ("ok", "healthy"):
+              status = "stale"
+          elif days_since >= 2:
               status = "stale"
           elif days_since >= 1:
               status = "warning"
