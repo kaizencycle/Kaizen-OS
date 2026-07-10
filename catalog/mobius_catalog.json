@@ -1,6 +1,6 @@
 {
   "mobius_catalog_version": "1.0.0",
-  "generated_at": "2026-07-10T15:36:16.048Z",
+  "generated_at": "2026-07-10T18:02:48.781Z",
   "repo": {
     "name": "Mobius-Substrate",
     "url": "https://github.com/kaizencycle/Mobius-Substrate",
@@ -9,7 +9,7 @@
   },
   "stats": {
     "epiconCount": 0,
-    "docCount": 1000
+    "docCount": 1002
   },
   "epicons": [],
   "docs": [
@@ -7126,6 +7126,14 @@
       "summary": ""
     },
     {
+      "path": "docs/CANON_WRITER_REPAIR.md",
+      "title": "Canon Writer Repair — mobius-bot-state-sync",
+      "category": "CANON_WRITER_REPAIR.md",
+      "tags": [],
+      "content_hash": "sha256:45d0f65e281d14a99b992862eba87510690a66cc68e9e8e22f015d75615737b7",
+      "summary": ""
+    },
+    {
       "path": "docs/CYCLE_JOURNAL_PUBLISHING.md",
       "title": "Cycle Journal Publishing",
       "category": "CYCLE_JOURNAL_PUBLISHING.md",
@@ -7500,7 +7508,7 @@
       "title": "EPICON Guard v1.1",
       "category": "epicon",
       "tags": [],
-      "content_hash": "sha256:464f405e6c93a4fbcebd81596cef3444fccb106a42710615ef55dd94607b87df",
+      "content_hash": "sha256:bf79503c77c9af0a64c76394846360184b9edff3f78d7ca8d05f179cd360283d",
       "summary": ""
     },
     {
@@ -7737,7 +7745,7 @@
       "title": "C-368 Opener — Six Optimizations",
       "category": "epicon",
       "tags": [],
-      "content_hash": "sha256:607bc31c3abae054bc85a52adf507cba7b1e9c66cf5d7d99ee205f94db668f6a",
+      "content_hash": "sha256:7750a95f3ebe5de239e82a31002ad1d0dc0b0931c4b70d41836634f6e65144c8",
       "summary": ""
     },
     {
