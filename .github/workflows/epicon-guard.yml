@@ -1,0 +1,35 @@
+name: EPICON Guard
+
+on:
+  pull_request:
+    types: [opened, edited, synchronize, reopened]
+
+permissions:
+  contents: read
+  pull-requests: read
+
+jobs:
+  epicon:
+    name: Intent Publication Gate
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # Classify using the merged base policy, not the PR's own policy edits.
+      # Without this, a PR could weaken epicon-policy.json in the same change set
+      # and downgrade its tier before the guard runs (Rule 5.1 proposer-independence).
+      - name: Pin tier policy to base revision
+        run: |
+          set -euo pipefail
+          base_sha="${{ github.event.pull_request.base.sha }}"
+          git fetch --depth=1 origin "${base_sha}"
+          if git show "${base_sha}:.github/epicon-policy.json" > .github/epicon-policy.json 2>/dev/null; then
+            echo "Using trusted policy from base ${base_sha}"
+          else
+            rm -f .github/epicon-policy.json
+            echo "No base policy on ${base_sha}; Guard uses built-in deny-by-default registry"
+          fi
+
+      - uses: kaizencycle/epicon@v1
+        with:
+          mode: enforce
