@@ -1,6 +1,6 @@
 {
   "mobius_catalog_version": "1.0.0",
-  "generated_at": "2026-07-10T23:00:04.808Z",
+  "generated_at": "2026-07-10T23:00:53.683Z",
   "repo": {
     "name": "Mobius-Substrate",
     "url": "https://github.com/kaizencycle/Mobius-Substrate",
@@ -7737,7 +7737,7 @@
       "title": "C-368 Baseline — Witnessed Pre-State",
       "category": "epicon",
       "tags": [],
-      "content_hash": "sha256:d4a054fe12119e649aa7039f9f2259d24275a5e7379b3277eaa69b095002a434",
+      "content_hash": "sha256:7d2e1f1b89378abbec1a018d23e2d73320f8b1d107c4e295026134b2c6ff2f5d",
       "summary": ""
     },
     {
