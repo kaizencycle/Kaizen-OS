@@ -6,6 +6,16 @@
 Trusted base-policy loading for pull requests — closes the self-classification
 bypass where a PR could weaken `.github/epicon-policy.json` in the same diff.
 
+## Authority Provenance & Standing
+
+*Authority declared using `docs/templates/EPICON_FOUNDER_STANDING.md` v0.1*
+
+Michael (kaizencycle) exercises **founder–custodian standing** to vendor EPICON
+Guard v1.1 on Mobius-Substrate (C-367 follow-up). Scope is limited to the CI
+composite action, workflow wiring, and release documentation listed here — not
+runtime application code, deployment surfaces, or federation repo policy
+registries.
+
 ## Upgrade
 
 ```yaml

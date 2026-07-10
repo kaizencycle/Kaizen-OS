@@ -1,3 +1,7 @@
+# ## Authority Provenance
+# C-367 EPICON Guard v1.1 workflow. Authority declared using
+# docs/templates/EPICON_FOUNDER_STANDING.md — @kaizencycle (Custodian, DVA.02).
+
 name: EPICON Guard
 
 on:

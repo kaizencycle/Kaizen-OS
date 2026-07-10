@@ -1,15 +1,15 @@
 {
   "mobius_catalog_version": "1.0.0",
-  "generated_at": "2026-07-09T06:10:02.732Z",
+  "generated_at": "2026-07-10T02:10:11.356Z",
   "repo": {
     "name": "Mobius-Substrate",
     "url": "https://github.com/kaizencycle/Mobius-Substrate",
     "default_branch": "main",
-    "commit": "cd995f7a8202480febffbf2ec3374dd0c122364e"
+    "commit": ""
   },
   "stats": {
     "epiconCount": 0,
-    "docCount": 991
+    "docCount": 992
   },
   "epicons": [],
   "docs": [
@@ -7494,6 +7494,14 @@
       ],
       "content_hash": "sha256:da2a8c7f3135d07a9a69458145c00d4db21b7852cdc7de3447d9d70b6955f3d2",
       "summary": "Add canonical START_HERE, CONTRIBUTING, and CREATE_PR docs for contributor onboarding"
+    },
+    {
+      "path": "docs/epicon/EPICON_GUARD_v1.1_RELEASE.md",
+      "title": "EPICON Guard v1.1",
+      "category": "epicon",
+      "tags": [],
+      "content_hash": "sha256:464f405e6c93a4fbcebd81596cef3444fccb106a42710615ef55dd94607b87df",
+      "summary": ""
     },
     {
       "path": "docs/epicon/EXPLAIN_FAILURE.md",
