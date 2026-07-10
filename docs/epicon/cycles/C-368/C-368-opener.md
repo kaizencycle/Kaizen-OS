@@ -1,6 +1,15 @@
 # C-368 Opener — Six Optimizations
 **Cycle:** C-368 (2026-07-10) · **Drafted:** ATLAS, C-367 close · **All intents pre-validated: PASS**
 
+## Authority Provenance
+
+*Authority declared using `docs/templates/EPICON_FOUNDER_STANDING.md` v0.1*
+
+- **Actor:** ATLAS (on behalf of kaizencycle)
+- **Authority Source:** Cycle documentation — no runtime or governance surface changes
+- **Scope Limitation:** `docs/epicon/cycles/C-368/` cycle pack, baseline, and acceptance harness only
+- **Expiration:** 2026-10-08T00:00:00Z
+
 Yesterday the constitution acquired teeth (Guard live on six repo-heads). Today closes the
 gaps the rollout exposed. Each file below is a complete PR body — intent embedded — ready
 for Cursor / Claude Code.
