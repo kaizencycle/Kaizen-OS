@@ -1,15 +1,15 @@
 {
   "mobius_catalog_version": "1.0.0",
-  "generated_at": "2026-07-10T06:08:43.452Z",
+  "generated_at": "2026-07-10T15:36:16.048Z",
   "repo": {
     "name": "Mobius-Substrate",
     "url": "https://github.com/kaizencycle/Mobius-Substrate",
     "default_branch": "main",
-    "commit": "b4fae6d9d46610964d9d1f323389a38faa237f6c"
+    "commit": ""
   },
   "stats": {
     "epiconCount": 0,
-    "docCount": 992
+    "docCount": 1000
   },
   "epicons": [],
   "docs": [
@@ -7723,6 +7723,78 @@
       ],
       "content_hash": "sha256:d14d51935e27b96236602d18f5928f404902031cc3dc445edb19ea74bcaa8e19",
       "summary": "Built and deployed Signal Engine V1 — scores every EPICON event across signal (verification strength), narrative (amplification level), and volatility (system reaction) dimensions, classifying events as SIGNAL, EMERGING, or DISTORTION. First real-world test against Iran-Hormuz crisis intelligence."
+    },
+    {
+      "path": "docs/epicon/cycles/C-368/C-368-baseline.md",
+      "title": "C-368 Baseline — Witnessed Pre-State",
+      "category": "epicon",
+      "tags": [],
+      "content_hash": "sha256:9980c4c3092987daf5bedd4ab0c59bb120505d62f095869984a6acb3484f2995",
+      "summary": ""
+    },
+    {
+      "path": "docs/epicon/cycles/C-368/C-368-opener.md",
+      "title": "C-368 Opener — Six Optimizations",
+      "category": "epicon",
+      "tags": [],
+      "content_hash": "sha256:607bc31c3abae054bc85a52adf507cba7b1e9c66cf5d7d99ee205f94db668f6a",
+      "summary": ""
+    },
+    {
+      "path": "docs/epicon/cycles/C-368/C368-PR1_oaa-mint-auth.md",
+      "title": "C-368 · PR 1 — OAA mint-path authentication",
+      "category": "epicon",
+      "tags": [],
+      "content_hash": "sha256:661190b8179874521acbd4b44cb979a26811b339c706ccc372b648483f977cdc",
+      "summary": ""
+    },
+    {
+      "path": "docs/epicon/cycles/C-368/C368-PR2_oaa-gii-canon.md",
+      "title": "C-368 · PR 2 — GII thresholds aligned to canon",
+      "category": "epicon",
+      "tags": [],
+      "content_hash": "sha256:4d5e00b50a8ab8704e0a8a2d9622acb82c56f391bb15076455a50560714ff251",
+      "summary": ""
+    },
+    {
+      "path": "docs/epicon/cycles/C-368/C368-PR3_epicon-cc0.md",
+      "title": "C-368 · PR 3 — License ratification: CC0",
+      "category": "epicon",
+      "tags": [],
+      "content_hash": "sha256:691adb486913dea2aeeb5f2100fd6770071b4a91b08781f287ecb0f62508d281",
+      "summary": ""
+    },
+    {
+      "path": "docs/epicon/cycles/C-368/C368-PR4_epicon-api-truthful-health.md",
+      "title": "C-368 · PR 4 — epicon-api: truthful health + discoverable source",
+      "category": "epicon",
+      "tags": [],
+      "content_hash": "sha256:52921d8519b86857df64c177945b132ad16ffc878b5929895c7209d95861e691",
+      "summary": ""
+    },
+    {
+      "path": "docs/epicon/cycles/C-368/C368-PR5_guard-app-phase1.md",
+      "title": "C-368 · PR 5 — Guard App Phase 1 scaffold (I2 enforcement)",
+      "category": "epicon",
+      "tags": [],
+      "content_hash": "sha256:b503359d1121cd0311c0bbfff038a99ca5b078d777627d7be1bb2ce06b7a2bae",
+      "summary": ""
+    },
+    {
+      "path": "docs/epicon/cycles/C-368/C368-PR6_org-dedup.md",
+      "title": "C-368 · PR 6 — Org hygiene: retire the duplicate terminal repo",
+      "category": "epicon",
+      "tags": [],
+      "content_hash": "sha256:8f65cd8075cbfc3f687db6e5b0af3e7542bff79b23c19055b4732b2085d31d09",
+      "summary": ""
+    },
+    {
+      "path": "docs/epicon/cycles/C-368/GUARD_VALIDATION.md",
+      "title": "C-368 Guard validation manifest",
+      "category": "epicon",
+      "tags": [],
+      "content_hash": "sha256:cfbfb4e7ada8fd235193b961ea014fd0fae7c50e65cfab141f7cbed774167de4",
+      "summary": ""
     },
     {
       "path": "docs/epicon/cycles/C-ATLAS/EPICON_C-ATLAS_INFRA_mobiusatlas-agent-launch_v1.md",
