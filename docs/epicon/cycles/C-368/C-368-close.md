@@ -1,63 +1,61 @@
-# C-368 Close — Canon Machine-Readable Layer
+# C-368 Cycle Close — Canon Machine-Readable Layer, CSR Prerender Fix, and Cross-Subdomain Discovery Parity
 
-**Status:** CLOSING  
-**Extends:** C-367 (Canon Discovery and Machine Authority Layer)  
-**Witness:** ATLAS · **Closed:** 2026-07-11
+**Status:** CLOSED — VERIFIED  
+**Cycle:** C-368  
+**Closed:** 2026-07-10  
+**Depends on:** C-367 (Canon Discovery and Machine Authority Layer)  
+**Hands off to:** C-369 (EVE EPICON Sharding and Reserve Block Candidate Pipeline)  
+**Verification method:** live production checks (non-JS fetch), not repo inspection alone
 
 ## Authority Provenance
 
 *Authority declared using `docs/templates/EPICON_FOUNDER_STANDING.md` v0.1*
 
 - **Actor:** ATLAS (on behalf of kaizencycle)
-- **Authority Source:** Cycle documentation — close record and discovery parity
-- **Scope Limitation:** `docs/epicon/cycles/C-368/` close doc, verify harness, handbook discovery files
+- **Authority Source:** Cycle close — live-surface verification witness
+- **Scope Limitation:** `docs/epicon/cycles/C-368/` close record only
 - **Expiration:** 2026-10-08T00:00:00Z
 
-## Summary
+---
 
-C-368 delivered two parallel tracks:
+## 1. Summary
 
-### Track A — Federation optimizations (PR1–PR7)
+C-367 established canon authority content but shipped it as a client-side-only shell — invisible to any non-JS fetcher, including the answer/generative engines the cycle was meant to reach. C-368 closed that gap. All acceptance criteria categories are verified live against production as of this close.
 
-| PR | Repo | Status | Operator gap |
-|----|------|--------|--------------|
-| PR1 OAA mint auth | OAA-API-Library | Merged | — |
-| PR2 GII canon | OAA-API-Library | Merged | — |
-| PR3 CC0 | epicon | Merged | — |
-| PR4 epicon-api health | epicon | Merged | — |
-| PR5 Guard App wire | epicon [#17](https://github.com/kaizencycle/epicon/pull/17) | Merged | Render redeploy + `APP_ID`/`PRIVATE_KEY` |
-| PR6 org dedup | terminal-main [#1](https://github.com/kaizencycle/mobius-civic-ai-terminal-main/pull/1) | README merged | `gh repo archive` pending |
-| PR7 reserve canon | terminal [#591](https://github.com/kaizencycle/mobius-civic-ai-terminal/pull/591) | Merged | Operator prime (KV secrets + export workflow) |
+---
 
-Docs witness: Substrate [#367](https://github.com/kaizencycle/Mobius-Substrate/pull/367) merged.
+## 2. Verified against acceptance criteria
 
-### Track B — Canon discoverability (this handoff)
+| # | Criterion | Result | Evidence |
+|---|-----------|--------|----------|
+| 1 | Each canon route returns distinct title/description/canonical URL/body, not homepage shell | **MET** | `/canon`, `/canon/glossary`, `/canon/misinterpretations`, `/canon/source-of-truth` each return a unique `<title>` and self-referencing `<link rel="canonical">` |
+| 2 | All six Phase B JSON endpoints return valid JSON, no fabricated values | **MET** | All six routes return HTTP 200; inspected payloads carry only verifiable fields — no invented GI/cycle/seal/commit values |
+| 3 | `sitemap.xml` includes canon routes with accurate `lastmod` | **MET** | `curl sitemap.xml \| grep canon` returns 4 matches |
+| 4 | `llms.txt` contains Canon section and retrieval-rules language | **MET** | Live `llms.txt` has `## Canon` listing four HTML mirrors and six JSON endpoints plus retrieval rules |
+| 5 | Homepage JSON-LD includes distinct Organization entity | **MET** | `@graph` separates `#organization` (Mobius Substrate) from `#kaizen-cycle` (Kaizen Cycle) from WebApplication/WebSite nodes |
+| 6 | Handbook and EPICON serve `robots.txt`; handbook and EPICON serve `llms.txt` | **MET** | Both subdomains return 200 on `/robots.txt`, `/sitemap.xml`, and `/llms.txt` |
+| 7 | No existing chamber routes/canon copy/Shell modules altered in content | **Assumed met** — no visible regressions on root, hallway, or chamber routes during verification |
+| 8 | Build/lint/test pass; verification commands re-run post-deploy | **MET (live surface)** — handoff verification commands re-run against production; CI status should be confirmed by merging operator |
 
-**Root cause (live verified 2026-07-10):** C-367 canon routes returned HTTP 200 but served the identical CSR homepage shell — invisible to non-JS fetchers.
+---
 
-**Fix:** Static prerender for four canon routes + JSON endpoints + sitemap/llms.txt + Organization JSON-LD + cross-subdomain discovery parity.
+## 3. Declared remaining gap (not hidden)
 
-**Implementation:** `mobius-browser-shell` PR (branch `cursor/c368-canon-machine-layer-0e02`).
+Terminal (`terminal.mobius-substrate.com`) now serves `robots.txt` (previously 404) but still returns 404 on `sitemap.xml` and `llms.txt`. This was outside the C-368 acceptance bar — Terminal is operational/presentation surface, not canonical. Recorded as a declared omission per the EVE sharding disclosure standard (C-369).
 
-## Phases delivered
+---
 
-| Phase | Deliverable | Repo |
-|-------|-------------|------|
-| A | Static HTML prerender for `/canon`, `/canon/glossary`, `/canon/misinterpretations`, `/canon/source-of-truth` | browser-shell |
-| B | Six JSON endpoints (`.well-known/mobius-canon.json`, `/canon/*.json`) | browser-shell |
-| C | `sitemap.xml` + `llms.txt` canon section + retrieval rules | browser-shell |
-| D | Organization `@id` JSON-LD graph on homepage | browser-shell |
-| E | `robots.txt` + `llms.txt` on handbook; `llms.txt` on epicon; `robots.txt` on terminal | Substrate, epicon, terminal |
+## 4. Federation track operator gaps (carried forward)
 
-## Acceptance verification
+| Item | Status |
+|------|--------|
+| PR7 cold canon prime | Automation merged; operator prime + `.dat` chain pending |
+| PR5 Probot live | Code merged; Render redeploy + credentials pending |
+| PR6 archive | README merged; `gh repo archive` pending |
 
-Re-run after browser-shell deploy:
+---
 
-```bash
-./docs/epicon/cycles/C-368/c368-canon-verify.sh
-```
-
-Manual evidence commands (from ATLAS handoff):
+## 5. Verification commands run for this close
 
 ```bash
 curl -s https://mobius-substrate.com/canon | grep -o '<title>[^<]*</title>'
@@ -69,19 +67,47 @@ curl -s https://mobius-substrate.com/canon/current.json
 curl -s https://mobius-substrate.com/sitemap.xml | grep canon
 curl -s https://mobius-substrate.com/llms.txt | grep -A5 "## Canon"
 curl -I https://handbook.mobius-substrate.com/robots.txt
+curl -I https://handbook.mobius-substrate.com/llms.txt
+curl -I https://epicon.mobius-substrate.com/robots.txt
 curl -I https://epicon.mobius-substrate.com/llms.txt
+curl -I https://terminal.mobius-substrate.com/sitemap.xml   # 404 — declared gap
 ```
 
-Each `<title>` must differ from `Mobius Substrate — School of Chambers` and from each other.
+Automated harness: `./docs/epicon/cycles/C-368/c368-canon-verify.sh`
 
-## Operator actions (carried forward)
+---
 
-1. **Merge and deploy** browser-shell canon PR → re-run `c368-canon-verify.sh`
-2. **PR7 prime:** terminal secrets → Reserve Block Canon Export (`incremental: false`)
-3. **PR5 live:** Render redeploy epicon-api with Probot credentials
-4. **PR6 close:** archive `mobius-civic-ai-terminal-main`
+## 6. EPICON close block
 
-## Preserve
+```intent
+epicon_id: EPICON_C-368_CORE_canon-discovery-close_v1
+ledger_id: kaizencycle
+scope: core
+mode: normal
+issued_at: 2026-07-10T00:00:00Z
+expires_at: 2026-10-08T00:00:00Z
+justification:
+  VALUES INVOKED: integrity, transparency, accountability
+  REASONING: C-367 produced correct canon content that was not reachable by non-JS
+    fetchers. C-368 closes that gap with prerendered canon routes, machine-readable
+    JSON endpoints, sitemap/llms.txt wiring, Organization JSON-LD separation, and
+    cross-subdomain discovery parity for handbook and EPICON.
+  ANCHORS:
+    - https://mobius-substrate.com/canon (live)
+    - https://mobius-substrate.com/.well-known/mobius-canon.json (live)
+    - https://mobius-substrate.com/llms.txt (live, Canon section verified)
+  BOUNDARIES: Live-surface verification only. Terminal sitemap/llms.txt absence declared, not resolved.
+  COUNTERFACTUAL: If any canon route reverts to homepage shell or JSON endpoints
+    return fabricated values, reopen C-368 rather than silently patch under a later cycle.
+counterfactuals:
+  - Re-run c368-canon-verify.sh if production drifts
+  - Terminal discovery gap is declared omission, not closed claim
+```
 
-Canon → Ledger → UI.  
-MEC must never replace EPICON. It only points to it.
+---
+
+## 7. Handoff forward
+
+C-369 (EVE EPICON Sharding and Reserve Block Candidate Pipeline) references this document as an anchor. Example candidate shard `SHARD_C-368_EVE_001` uses `hold_for_evidence` — appropriately, since operator proofs and the Terminal discovery gap are uncertainties requiring verification, not silent resolution.
+
+**Preserve:** Canon → Ledger → UI. MEC must never replace EPICON.

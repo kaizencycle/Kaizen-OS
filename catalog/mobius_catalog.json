@@ -9,7 +9,7 @@
   },
   "stats": {
     "epiconCount": 0,
-    "docCount": 1010
+    "docCount": 1015
   },
   "epicons": [],
   "docs": [
@@ -1003,6 +1003,22 @@
       "category": "04-TECHNICAL-ARCHITECTURE",
       "tags": [],
       "content_hash": "sha256:ac8a6abc56d9892789609e7251008b911d854ce80cd79bbb12c7824ece736b6b",
+      "summary": ""
+    },
+    {
+      "path": "docs/04-TECHNICAL-ARCHITECTURE/epicon/EVE_SHARDING_PROTOCOL.md",
+      "title": "EVE Sharding Protocol — Reserve Block Candidate Pipeline",
+      "category": "04-TECHNICAL-ARCHITECTURE",
+      "tags": [],
+      "content_hash": "sha256:d005313f269f738cedce83a351b5d267f2b7b060d850328a7677f9d4578921d3",
+      "summary": ""
+    },
+    {
+      "path": "docs/04-TECHNICAL-ARCHITECTURE/epicon/EVE_SHARD_SELECTION_POLICY.md",
+      "title": "EVE Shard Selection Policy",
+      "category": "04-TECHNICAL-ARCHITECTURE",
+      "tags": [],
+      "content_hash": "sha256:6a9badb32a896087a1d157698fc72050304e9304b4028c767e060d3d43baae44",
       "summary": ""
     },
     {
@@ -7750,10 +7766,10 @@
     },
     {
       "path": "docs/epicon/cycles/C-368/C-368-close.md",
-      "title": "C-368 Close — Canon Machine-Readable Layer",
+      "title": "C-368 Cycle Close — Canon Machine-Readable Layer, CSR Prerender Fix, and Cross-Subdomain Discovery Parity",
       "category": "epicon",
       "tags": [],
-      "content_hash": "sha256:80dd1b4a7835a243c6c368fd34213142615d97377cfb4a1fcd46986ce175e5c0",
+      "content_hash": "sha256:d42aa2c97ce77d503a67a3325b73c9ca25725ff586d4460413582766a4600c94",
       "summary": ""
     },
     {
@@ -7834,6 +7850,30 @@
       "category": "epicon",
       "tags": [],
       "content_hash": "sha256:bb448ae056a80e5b4c078e619e5311cfdb60a597b872d5fe487a98c5ae78f31b",
+      "summary": ""
+    },
+    {
+      "path": "docs/epicon/cycles/C-369/C-369-baseline.md",
+      "title": "C-369 Baseline — Witnessed Pre-State",
+      "category": "epicon",
+      "tags": [],
+      "content_hash": "sha256:b78a4f265ec476557a22aad1add8fa44aa4689a896a30f643b3a8403588ec556",
+      "summary": ""
+    },
+    {
+      "path": "docs/epicon/cycles/C-369/C-369-opener.md",
+      "title": "C-369 Opener — EVE EPICON Sharding and Reserve Block Candidate Pipeline",
+      "category": "epicon",
+      "tags": [],
+      "content_hash": "sha256:cb831b6cfdc8b9ae664579d8aa43a39a174f87eb45514fc9c692c5f10f9ca269",
+      "summary": ""
+    },
+    {
+      "path": "docs/epicon/cycles/C-369/EVE-SHARD-HANDOFF.md",
+      "title": "ATLAS Handoff — EVE EPICON Sharding and Reserve Block Candidate Pipeline",
+      "category": "epicon",
+      "tags": [],
+      "content_hash": "sha256:b6fd49ea76a340c1e4b7c34195368a3b6b05e3ea8f457b093ea6bdabf9f018df",
       "summary": ""
     },
     {
