@@ -1,6 +1,6 @@
 {
   "mobius_catalog_version": "1.0.0",
-  "generated_at": "2026-07-10T23:00:53.683Z",
+  "generated_at": "2026-07-11T01:57:10.494Z",
   "repo": {
     "name": "Mobius-Substrate",
     "url": "https://github.com/kaizencycle/Mobius-Substrate",
@@ -9,7 +9,7 @@
   },
   "stats": {
     "epiconCount": 0,
-    "docCount": 1008
+    "docCount": 1009
   },
   "epicons": [],
   "docs": [
@@ -2171,6 +2171,14 @@
       "category": "07-RESEARCH-AND-PUBLICATIONS",
       "tags": [],
       "content_hash": "sha256:f8f32e0f62c1683f8f748d645cbb24eb26056b3f0860fc04a029984ea4d080be",
+      "summary": ""
+    },
+    {
+      "path": "docs/07-RESEARCH-AND-PUBLICATIONS/civic-budget-audits/EPICON-C367-US-NY-NYC-BUDGET-TRACE.md",
+      "title": "EPICON — U.S. → New York State → New York City Budget Trace",
+      "category": "07-RESEARCH-AND-PUBLICATIONS",
+      "tags": [],
+      "content_hash": "sha256:4fc4a9cd764224ef20b4b9c4dfa0427f2c8787328571d72582db6585f9b586cc",
       "summary": ""
     },
     {
