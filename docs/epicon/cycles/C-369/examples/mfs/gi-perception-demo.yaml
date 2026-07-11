@@ -1,0 +1,32 @@
+schema_version: "0.1"
+gi:
+  value: 0.91
+  confidence: 0.76
+  confidence_label: moderate
+  measured_domains:
+    - healthcare_coordination
+    - civic_infrastructure
+    - education_access
+    - emergency_response
+    - provenance_health
+  instrument_count: 40
+  healthy_instruments: 35
+  degraded_instruments: 3
+  unavailable_instruments: 2
+  source_diversity: moderate
+  known_blind_spots:
+    - Healthcare API offline in Region 7
+    - Regional education data delayed 48h
+    - Two independent instruments unavailable since 2026-07-08
+  weight_version: gi-weights-2026-Q2-v3
+  observed_at: "2026-07-10T12:00:00Z"
+canary_signals:
+  - domain: independent_hospital_wait_times
+    correlation_expected: high
+    correlation_observed: 0.82
+    divergence_alert: false
+  - domain: civic_complaint_resolution_latency
+    correlation_expected: high
+    correlation_observed: 0.71
+    divergence_alert: false
+observed_at: "2026-07-10T12:00:00Z"
