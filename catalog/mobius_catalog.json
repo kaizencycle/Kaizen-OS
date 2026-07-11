@@ -1,6 +1,6 @@
 {
   "mobius_catalog_version": "1.0.0",
-  "generated_at": "2026-07-11T01:57:10.494Z",
+  "generated_at": "2026-07-11T02:07:02.460Z",
   "repo": {
     "name": "Mobius-Substrate",
     "url": "https://github.com/kaizencycle/Mobius-Substrate",
@@ -9,7 +9,7 @@
   },
   "stats": {
     "epiconCount": 0,
-    "docCount": 1009
+    "docCount": 1010
   },
   "epicons": [],
   "docs": [
@@ -7746,6 +7746,14 @@
       "category": "epicon",
       "tags": [],
       "content_hash": "sha256:7d2e1f1b89378abbec1a018d23e2d73320f8b1d107c4e295026134b2c6ff2f5d",
+      "summary": ""
+    },
+    {
+      "path": "docs/epicon/cycles/C-368/C-368-close.md",
+      "title": "C-368 Close — Canon Machine-Readable Layer",
+      "category": "epicon",
+      "tags": [],
+      "content_hash": "sha256:80dd1b4a7835a243c6c368fd34213142615d97377cfb4a1fcd46986ce175e5c0",
       "summary": ""
     },
     {
