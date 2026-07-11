@@ -13,9 +13,14 @@ HOME_TITLE='Mobius Substrate — School of Chambers'
 
 hdr "Phase A — distinct canon titles (no JS)"
 for path in /canon /canon/glossary /canon/misinterpretations /canon/source-of-truth; do
-  title=$(curl -s --max-time 20 "${ORIGIN}${path}" | grep -o '<title>[^<]*</title>' | head -1)
-  if [ -z "$title" ]; then
-    bad "${path}: no title"
+  body_file=$(mktemp)
+  code=$(curl -s -o "$body_file" -w "%{http_code}" --max-time 20 "${ORIGIN}${path}")
+  title=$(grep -o '<title>[^<]*</title>' "$body_file" | head -1)
+  rm -f "$body_file"
+  if [ "$code" != "200" ]; then
+    bad "${path}: HTTP ${code} (expected 200)"
+  elif [ -z "$title" ]; then
+    bad "${path}: no title (HTTP 200)"
   elif [ "$title" = "<title>${HOME_TITLE}</title>" ]; then
     bad "${path}: still homepage CSR shell ($title)"
   else
