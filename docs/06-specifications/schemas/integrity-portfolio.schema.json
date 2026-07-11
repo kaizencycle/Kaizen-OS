@@ -1,0 +1,75 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://mobius-substrate.com/schemas/integrity-portfolio.v0_1.json",
+  "title": "Integrity Portfolio",
+  "description": "User portfolio of MFS attestations grouped by skill domain. Each badge resolves to evidence.",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "portfolio_id",
+    "owner_id",
+    "summary",
+    "shards",
+    "portfolio_root_hash",
+    "updated_at"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "const": "0.1"
+    },
+    "portfolio_id": {
+      "type": "string",
+      "pattern": "^PORT-[A-Z0-9_-]+$"
+    },
+    "owner_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "summary": {
+      "type": "object",
+      "description": "Domain counts for public display",
+      "additionalProperties": {
+        "type": "integer",
+        "minimum": 0
+      },
+      "minProperties": 1
+    },
+    "shards": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["mfs_id", "skill_type", "evidence_hash", "issued_at"],
+        "additionalProperties": false,
+        "properties": {
+          "mfs_id": { "type": "string" },
+          "skill_type": { "type": "string" },
+          "skill_level": { "type": ["string", "null"] },
+          "assessment_version": { "type": "string" },
+          "source": { "type": "string" },
+          "evidence_hash": {
+            "type": "string",
+            "pattern": "^sha256:[a-f0-9]{64}$"
+          },
+          "issued_at": { "type": "string", "format": "date-time" },
+          "transferable": { "type": "boolean", "const": false }
+        }
+      },
+      "minItems": 1
+    },
+    "portfolio_root_hash": {
+      "type": "string",
+      "pattern": "^sha256:[a-f0-9]{64}$"
+    },
+    "frozen_at": {
+      "type": ["string", "null"],
+      "format": "date-time",
+      "description": "Set when portfolio snapshot is frozen for Integrity Grade review"
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time"
+    }
+  }
+}
