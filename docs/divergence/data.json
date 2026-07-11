@@ -1,15 +1,34 @@
 {
   "repo": "kaizencycle/Mobius-Substrate",
-  "generated_at": "2026-07-11T03:35:56Z",
-  "open_pr_count": 6,
+  "generated_at": "2026-07-11T08:10:02Z",
+  "open_pr_count": 7,
   "by_severity": {
     "high": 0,
-    "medium": 0,
+    "medium": 1,
     "low": 1,
     "unknown": 5
   },
   "emergency_count": 0,
   "items": [
+    {
+      "pr": 370,
+      "title": "feat(c369): eve-shard-core deterministic compiler (PR2)",
+      "url": "https://github.com/kaizencycle/Mobius-Substrate/pull/370",
+      "author": "kaizencycle",
+      "updated_at": "2026-07-11T06:32:47Z",
+      "created_at": "2026-07-11T06:32:35Z",
+      "labels": [
+        "scope:core"
+      ],
+      "mode": "normal",
+      "has_debt": false,
+      "severity": "medium",
+      "justification_hash": "22959dee11e1f4be5aadb0ec72a34e3e19e0474c94bc4f9daa2c5416b02202ca",
+      "checks": {
+        "epicon": "unknown",
+        "merge_gate": "unknown"
+      }
+    },
     {
       "pr": 369,
       "title": "docs(epicon): C-369 EVE Reserve Block shard protocol (PR1)",
