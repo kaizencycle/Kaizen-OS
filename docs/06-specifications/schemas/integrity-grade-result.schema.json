@@ -1,0 +1,147 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://mobius-substrate.com/schemas/integrity-grade-result.v0_1.json",
+  "title": "Integrity Grade Result",
+  "description": "Outcome of Integrity Grade review. May include possible MIC recognition — never automatic mint.",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "result_id",
+    "request_id",
+    "status",
+    "findings",
+    "recognition",
+    "review",
+    "completed_at"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "const": "0.1"
+    },
+    "result_id": {
+      "type": "string",
+      "pattern": "^IG-[A-Z0-9_-]+$"
+    },
+    "request_id": {
+      "type": "string",
+      "pattern": "^IGR-[A-Z0-9_-]+$"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "NOT_ELIGIBLE",
+        "NEEDS_MORE_EVIDENCE",
+        "CLARIFY",
+        "QUARANTINED",
+        "STEWARDSHIP_VERIFIED",
+        "RECOGNITION_PENDING",
+        "RECOGNIZED"
+      ]
+    },
+    "grade": {
+      "type": ["string", "null"],
+      "description": "Optional qualitative grade label; null when not granted"
+    },
+    "findings": {
+      "type": "object",
+      "required": [
+        "capability_diversity",
+        "demonstrated_application",
+        "provenance",
+        "farming_risk",
+        "time_continuity"
+      ],
+      "additionalProperties": true,
+      "properties": {
+        "capability_diversity": { "type": "string" },
+        "demonstrated_application": { "type": "string" },
+        "provenance": { "type": "string" },
+        "farming_risk": { "type": "string" },
+        "time_continuity": { "type": "string" },
+        "reviewed": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "missing": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "inferred": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "uncertain": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "rationale": { "type": "string" }
+      }
+    },
+    "recognition": {
+      "type": "object",
+      "required": ["mic", "reserve_block_ref"],
+      "additionalProperties": false,
+      "properties": {
+        "mic": {
+          "type": "number",
+          "minimum": 0,
+          "description": "MIC units recognized; 0 when withheld"
+        },
+        "reserve_block_ref": {
+          "type": ["string", "null"],
+          "description": "Reserve Block attribution reference, e.g. RB-XXXXX"
+        },
+        "seal_ref": {
+          "type": ["string", "null"]
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "none",
+            "pending",
+            "recognized",
+            "quarantined",
+            "clawback_annotated"
+          ]
+        }
+      }
+    },
+    "review": {
+      "type": "object",
+      "required": ["atlas", "zeus", "eve", "jade", "aurea", "human"],
+      "additionalProperties": false,
+      "properties": {
+        "atlas": {
+          "type": "string",
+          "enum": ["pass", "clarify", "reject", "pending"]
+        },
+        "zeus": {
+          "type": "string",
+          "enum": ["pass", "clarify", "reject", "pending"]
+        },
+        "eve": {
+          "type": "string",
+          "enum": ["pass", "clarify", "reject", "pending"]
+        },
+        "jade": {
+          "type": "string",
+          "enum": ["pass", "clarify", "reject", "pending"]
+        },
+        "aurea": {
+          "type": "string",
+          "enum": ["pass", "clarify", "reject", "pending"]
+        },
+        "human": {
+          "type": "string",
+          "enum": ["approved", "pending", "rejected", "deferred"]
+        }
+      }
+    },
+    "completed_at": {
+      "type": "string",
+      "format": "date-time"
+    }
+  }
+}
