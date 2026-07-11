@@ -83,7 +83,7 @@ Response must never return `sealed: true` from generation alone.
 - [x] Privacy rules documented
 - [x] C-368 example shard included
 - [x] Versioned JSON schema with required uncertainty + human_review fields
-- [ ] Runtime compiler (PR 2)
+- [x] Runtime compiler (PR 2)
 - [ ] Proposal endpoint (PR 3)
 
 ## 10. Validation (PR 2+)
