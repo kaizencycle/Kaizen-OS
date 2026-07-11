@@ -1,5 +1,9 @@
 # C-369 MFS / Integrity Grade Schema Examples
 
+## Authority Provenance
+
+*Authority declared using `docs/templates/EPICON_FOUNDER_STANDING.md` v0.1*
+
 Representative fixtures for constitutional clarification (Track A). **Not live runtime data.**
 
 | File | Schema |
