@@ -1,15 +1,15 @@
 {
   "mobius_catalog_version": "1.0.0",
-  "generated_at": "2026-07-11T05:17:37.535Z",
+  "generated_at": "2026-07-11T13:47:01.531Z",
   "repo": {
     "name": "Mobius-Substrate",
     "url": "https://github.com/kaizencycle/Mobius-Substrate",
     "default_branch": "main",
-    "commit": "6866cac962e2dc0c0729e85fab3817e5b7b32ed4"
+    "commit": ""
   },
   "stats": {
     "epiconCount": 0,
-    "docCount": 1015
+    "docCount": 1024
   },
   "epicons": [],
   "docs": [
@@ -66,7 +66,7 @@
       "title": "Canonical Definitions",
       "category": "00-START-HERE",
       "tags": [],
-      "content_hash": "sha256:4ec2eb00d15f42a80ff46d6f6eb1ab9b22079dbaa950e7935e80e553b3b748ec",
+      "content_hash": "sha256:c1da4651ddda7d98fe0f8ae855343c5c05c0825b13c635e96522291ae6e30763",
       "summary": ""
     },
     {
@@ -1019,6 +1019,62 @@
       "category": "04-TECHNICAL-ARCHITECTURE",
       "tags": [],
       "content_hash": "sha256:6a9badb32a896087a1d157698fc72050304e9304b4028c767e060d3d43baae44",
+      "summary": ""
+    },
+    {
+      "path": "docs/04-TECHNICAL-ARCHITECTURE/integrity/FOUNTAIN_ANTI_GAMING_DOCTRINE.md",
+      "title": "Fountain Anti-Gaming Doctrine — GI95 as Provisional Review Gate",
+      "category": "04-TECHNICAL-ARCHITECTURE",
+      "tags": [],
+      "content_hash": "sha256:5a2d7a803116e4a569b7b5ecaf79d203abfcca6ac9b467c4cbe4bb2faa7db5e7",
+      "summary": ""
+    },
+    {
+      "path": "docs/04-TECHNICAL-ARCHITECTURE/integrity/GI_PERCEPTION_DOCTRINE.md",
+      "title": "GI Perception Doctrine — Attested Estimate, Not Objective Truth",
+      "category": "04-TECHNICAL-ARCHITECTURE",
+      "tags": [],
+      "content_hash": "sha256:5269f70bea6c9eb3cc653d81b58df3fe89106c20a7ca2c7d836c521e008d42e6",
+      "summary": ""
+    },
+    {
+      "path": "docs/04-TECHNICAL-ARCHITECTURE/integrity/GOODHART_RESISTANCE_DOCTRINE.md",
+      "title": "Goodhart Resistance Doctrine — The Witness Principle",
+      "category": "04-TECHNICAL-ARCHITECTURE",
+      "tags": [],
+      "content_hash": "sha256:a9c0870e5d801815c060e4016532014a917b4cd2a913b842b05a334e085c3db6",
+      "summary": ""
+    },
+    {
+      "path": "docs/04-TECHNICAL-ARCHITECTURE/integrity/HIGH_INTEGRITY_BASIN_MODEL.md",
+      "title": "High-Integrity Basin Model — Shared Burden, Not Exported Burden",
+      "category": "04-TECHNICAL-ARCHITECTURE",
+      "tags": [],
+      "content_hash": "sha256:5585f29d6a5f256ef9c93cd472b6d9f6cec655f7f4be65efb58d73f046484ba9",
+      "summary": ""
+    },
+    {
+      "path": "docs/04-TECHNICAL-ARCHITECTURE/integrity/INTEGRITY_GRADE_WORKFLOW.md",
+      "title": "Integrity Grade Workflow — Request, Review, Possible Recognition",
+      "category": "04-TECHNICAL-ARCHITECTURE",
+      "tags": [],
+      "content_hash": "sha256:52a1d3c932a455c23089ccc57c23f5fadcb59422d44b353284e83088c8b3a359",
+      "summary": ""
+    },
+    {
+      "path": "docs/04-TECHNICAL-ARCHITECTURE/integrity/MFS_CONSTITUTIONAL_DOCTRINE.md",
+      "title": "MFS Constitutional Doctrine — Capability Evidence, Not Currency",
+      "category": "04-TECHNICAL-ARCHITECTURE",
+      "tags": [],
+      "content_hash": "sha256:376ffc01a79b4264284447d7c594ef4a5a4d7da56449637c842b2bc02d6bdc4e",
+      "summary": ""
+    },
+    {
+      "path": "docs/04-TECHNICAL-ARCHITECTURE/integrity/RESERVE_BLOCK_ATTRIBUTION.md",
+      "title": "Reserve Block Attribution — Custodian Reference, Not Archive Ownership",
+      "category": "04-TECHNICAL-ARCHITECTURE",
+      "tags": [],
+      "content_hash": "sha256:da3172fac446cefbb561da23841173220128996fd29beb082a760b290874eb00",
       "summary": ""
     },
     {
@@ -3282,7 +3338,7 @@
       "title": "Mobius Fractal Shards (MFS)",
       "category": "07-RESEARCH-AND-PUBLICATIONS",
       "tags": [],
-      "content_hash": "sha256:6ae2b818dba7a614f4ab678f4384594a2e4b2f20c84a5743c42b4293c73112ed",
+      "content_hash": "sha256:a3462ef8c38a7db9c2be9232be191ac43832caf7eab68ca58f555b651b397175",
       "summary": ""
     },
     {
@@ -7862,10 +7918,10 @@
     },
     {
       "path": "docs/epicon/cycles/C-369/C-369-opener.md",
-      "title": "C-369 Opener — EVE EPICON Sharding and Reserve Block Candidate Pipeline",
+      "title": "C-369 Opener — Constitutional Clarification + EVE Sharding",
       "category": "epicon",
       "tags": [],
-      "content_hash": "sha256:cb831b6cfdc8b9ae664579d8aa43a39a174f87eb45514fc9c692c5f10f9ca269",
+      "content_hash": "sha256:44d88e1274402b88d7881ad83be2074b264246845080f9f68c44b4a72b261b05",
       "summary": ""
     },
     {
@@ -7874,6 +7930,22 @@
       "category": "epicon",
       "tags": [],
       "content_hash": "sha256:b6fd49ea76a340c1e4b7c34195368a3b6b05e3ea8f457b093ea6bdabf9f018df",
+      "summary": ""
+    },
+    {
+      "path": "docs/epicon/cycles/C-369/MFS-FOUNTAIN-HANDOFF.md",
+      "title": "ATLAS Handoff — Fractal Learning, Integrity Perception, and Fountain Anti-Gaming",
+      "category": "epicon",
+      "tags": [],
+      "content_hash": "sha256:2a4d85c15b5c73e17cad195cd3766ebc020782d95fe7ad7c1e1fad9110d78dd9",
+      "summary": ""
+    },
+    {
+      "path": "docs/epicon/cycles/C-369/examples/mfs/README.md",
+      "title": "C-369 MFS / Integrity Grade Schema Examples",
+      "category": "epicon",
+      "tags": [],
+      "content_hash": "sha256:96d08de24fde4ab9daa3026513f4760e8bc60f8eb58659f969d70fced66bf7d7",
       "summary": ""
     },
     {

@@ -5,6 +5,8 @@
 **Owner:** Mobius Systems Foundation  
 **Authors:** AUREA, ATLAS, Mobius Systems Foundation
 
+> **C-369 constitutional clarification (2026-07-11):** MFS attests demonstrated capability; it does **not** convert arithmetically to MIC and is **non-transferable**. Recognition paths require Integrity Grade quorum, sustained Fountain review, and human approval. Operational weights in this v1 spec remain historical configuration; see [MFS_CONSTITUTIONAL_DOCTRINE.md](../../04-TECHNICAL-ARCHITECTURE/integrity/MFS_CONSTITUTIONAL_DOCTRINE.md) and [GOODHART_RESISTANCE_DOCTRINE.md](../../04-TECHNICAL-ARCHITECTURE/integrity/GOODHART_RESISTANCE_DOCTRINE.md).
+
 ---
 
 ## 1. Overview
