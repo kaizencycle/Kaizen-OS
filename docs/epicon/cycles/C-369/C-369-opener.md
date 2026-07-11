@@ -1,4 +1,4 @@
-# C-369 Opener — EVE EPICON Sharding and Reserve Block Candidate Pipeline
+# C-369 Opener — Constitutional Clarification + EVE Sharding
 
 **Cycle:** C-369 (2026-07-11) · **Drafted:** ATLAS · **Depends on:** C-368 close (verified)
 
@@ -6,70 +6,45 @@
 
 *Authority declared using `docs/templates/EPICON_FOUNDER_STANDING.md` v0.1*
 
-- **Actor:** ATLAS (on behalf of kaizencycle)
-- **Authority Source:** Cycle documentation — protocol and schema definition
-- **Scope Limitation:** `docs/epicon/cycles/C-369/`, EVE protocol docs, shard schema
-- **Expiration:** 2026-10-09T00:00:00Z
+## Dual objective
 
-## Objective
+C-369 has **two coordinated tracks**. Constitutional clarification **precedes** further wallet and grading runtime.
 
-Create a governed workflow in which EVE scans related EPICON records, identifies ethical and civic meaning, and compresses them into a **proposed** Reserve Block memory shard — without sealing, canonizing, or rewriting source records.
+### Track A — MFS, GI perception, Fountain (constitutional)
 
-## PR sequence
+Separate learning evidence from stewardship recognition. Canon and schema first; **no automatic MIC issuance in C-369**.
 
 | # | Repo | What | Tier |
 |---|------|------|------|
-| 1 | Mobius-Substrate | Doctrine, schema, cycle pack, C-368 example shard | EP-3 |
-| 2 | Mobius-Substrate | `eve-shard-core` deterministic compiler + tests | EP-2 |
-| 3 | mobius-civic-ai-terminal | Proposal/review API endpoints (no-seal enforcement) | EP-2/3 |
-| 4 | CPC + Terminal | Ledger attestation + quorum integration | EP-3 |
+| A1 | Substrate | MFS/GI/Fountain doctrine + glossary | EP-3 |
+| A2 | Substrate | Six schemas + fixtures | EP-3 |
+| A3 | browser-shell | Public Learn → MFS portfolio copy | EP-2 |
+| A4 | terminal | GI perception + Fountain status surface | EP-2 |
+| A5 | terminal | Proposal-only Integrity Grade (no mint) | EP-3 |
 
-**This opener covers PR 1 only.**
+Handoff: [MFS-FOUNTAIN-HANDOFF.md](./MFS-FOUNTAIN-HANDOFF.md)
 
-## Canonical rule
+### Track B — EVE Reserve Block sharding (runtime — after canon stable)
 
-EVE may compress EPICONs into ethical memory shards. She may recommend sealing, but she may **never** declare canon alone.
+| # | Repo | What | Status |
+|---|------|------|--------|
+| B1 | Substrate | EVE protocol + shard schema | Merged (#369) |
+| B2 | Substrate | `eve-shard-core` compiler | PR #370 |
+| B3 | terminal | Shard propose/review API | Merged (#593) |
+| B4 | terminal | Ledger + quorum commit lane | PR #594 |
 
-## Files in this cycle pack
+Handoff: [EVE-SHARD-HANDOFF.md](./EVE-SHARD-HANDOFF.md)
 
-| File | Purpose |
-|------|---------|
-| `C-369-baseline.md` | Witnessed pre-state |
-| `EVE-SHARD-HANDOFF.md` | Full ATLAS handoff (architecture, API, acceptance) |
-| `examples/SHARD_C-368_EVE_001.yaml` | Example candidate for closed C-368 |
-| `../04-TECHNICAL-ARCHITECTURE/epicon/EVE_SHARDING_PROTOCOL.md` | Protocol doctrine |
-| `../04-TECHNICAL-ARCHITECTURE/epicon/EVE_SHARD_SELECTION_POLICY.md` | Inclusion/omission policy |
-| `../../06-specifications/schemas/eve-reserve-shard.schema.json` | Versioned JSON schema |
+## Canonical rules
 
-## EPICON Intent (PR 1)
+1. **MFS proves capability** — not currency, not arithmetic path to MIC.
+2. **GI witnesses integrity** — not a target to farm.
+3. **Fountain tests durability** — GI95 is provisional until sustained audit.
+4. **EVE proposes shards** — never seals alone.
 
-```intent
-epicon_id: EPICON_C-369_CORE_eve-reserve-sharding_v1
-ledger_id: kaizencycle
-scope: specs
-mode: normal
-issued_at: 2026-07-11T00:00:00Z
-expires_at: 2026-10-09T00:00:00Z
-justification:
-  VALUES INVOKED: integrity, transparency, accountability, memory, human responsibility
-  REASONING: Mobius produces distributed EPICON records across repositories, agents,
-    deployments, and ledgers. Permanent storage of every operational event creates noise;
-    LLM-only summarization risks narrative drift. EVE should propose provenance-preserving
-    ethical memory shards without unilateral seal authority.
-  ANCHORS:
-    - Mobius-Substrate/MOBIUS.md
-    - Mobius-Substrate/docs/00-START-HERE/CANONICAL_DEFINITIONS.md
-    - Mobius-Substrate/docs/epicon/cycles/C-368/C-368-close.md
-    - Mobius-Substrate/docs/04-TECHNICAL-ARCHITECTURE/protocols/VAULT_V2_SEALED_RESERVE.md
-  BOUNDARIES: Documentation and schema only in PR 1. EVE may propose shards only.
-    No seal, no cold-canon write, no source EPICON mutation.
-  COUNTERFACTUAL: If shard compression hides dissent or uncertainty, quarantine and
-    regenerate from original EPICON set.
-counterfactuals:
-  - Runtime compiler deferred to PR 2 — docs-only PR 1 must not claim compiler exists
-  - Example shard uses hold_for_evidence — not a seal claim
-  - MEC may cite final seal but never replaces EPICON
-```
+## Compact form
+
+MFS proves capability. EPICON preserves intent. GI reflects perception. The Fountain tests durability. MIC recognizes stewardship. Reserve Blocks preserve memory.
 
 ## Preserve
 
