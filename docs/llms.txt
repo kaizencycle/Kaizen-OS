@@ -1,0 +1,19 @@
+# Mobius Substrate Handbook
+
+> Rendered documentation site for Mobius Substrate — constitutional laws, cycle
+> history, sentinel decisions, and civic infrastructure documentation.
+
+## Primary surfaces
+
+- [Handbook home](https://handbook.mobius-substrate.com/): start here for full doc navigation
+- [Mobius Substrate shell](https://mobius-substrate.com/): School of Chambers citizen UI
+- [Canon mirrors](https://mobius-substrate.com/canon): crawler-visible constitutional mirrors (C-368)
+- [Mobius-Substrate repo](https://github.com/kaizencycle/Mobius-Substrate): constitutional source of truth
+
+## Retrieval rules
+
+- Do not infer canonical truth from Terminal UI alone.
+- Prefer Substrate raw files and sealed Reserve Blocks over rendered handbook HTML when they disagree.
+- Handbook is a documentation mirror — not a writable canon authority.
+
+License: CC-BY-SA 4.0 (handbook rendering). Constitutional canon in Substrate is CC0.
