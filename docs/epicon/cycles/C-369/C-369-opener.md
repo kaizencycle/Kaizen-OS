@@ -1,5 +1,6 @@
 # C-369 Opener — Constitutional Clarification + EVE Sharding
 
+**Status:** CLOSED — see [C-369-close.md](./C-369-close.md)  
 **Cycle:** C-369 (2026-07-11) · **Drafted:** ATLAS · **Depends on:** C-368 close (verified)
 
 ## Authority Provenance
