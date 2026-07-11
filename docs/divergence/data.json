@@ -1,6 +1,6 @@
 {
   "repo": "kaizencycle/Mobius-Substrate",
-  "generated_at": "2026-07-11T08:10:02Z",
+  "generated_at": "2026-07-11T13:48:26Z",
   "open_pr_count": 7,
   "by_severity": {
     "high": 0,
@@ -11,38 +11,38 @@
   "emergency_count": 0,
   "items": [
     {
-      "pr": 370,
-      "title": "feat(c369): eve-shard-core deterministic compiler (PR2)",
-      "url": "https://github.com/kaizencycle/Mobius-Substrate/pull/370",
+      "pr": 372,
+      "title": "feat(spec): add MFS portfolio and Integrity Grade schemas (C-369 A2)",
+      "url": "https://github.com/kaizencycle/Mobius-Substrate/pull/372",
       "author": "kaizencycle",
-      "updated_at": "2026-07-11T06:32:47Z",
-      "created_at": "2026-07-11T06:32:35Z",
+      "updated_at": "2026-07-11T13:48:16Z",
+      "created_at": "2026-07-11T13:47:49Z",
       "labels": [
-        "scope:core"
+        "scope:specs"
       ],
       "mode": "normal",
       "has_debt": false,
       "severity": "medium",
-      "justification_hash": "22959dee11e1f4be5aadb0ec72a34e3e19e0474c94bc4f9daa2c5416b02202ca",
+      "justification_hash": "a6457223f249a778c6d7a62703ff965c891e5bdd1d81bd52fab33ca8afd71c53",
       "checks": {
         "epicon": "unknown",
         "merge_gate": "unknown"
       }
     },
     {
-      "pr": 369,
-      "title": "docs(epicon): C-369 EVE Reserve Block shard protocol (PR1)",
-      "url": "https://github.com/kaizencycle/Mobius-Substrate/pull/369",
+      "pr": 373,
+      "title": "docs(canon): define MFS, GI perception, and Fountain safeguards (C-369 A1)",
+      "url": "https://github.com/kaizencycle/Mobius-Substrate/pull/373",
       "author": "kaizencycle",
-      "updated_at": "2026-07-11T03:09:29Z",
-      "created_at": "2026-07-11T03:09:16Z",
+      "updated_at": "2026-07-11T13:48:06Z",
+      "created_at": "2026-07-11T13:47:49Z",
       "labels": [
         "scope:docs"
       ],
       "mode": "normal",
       "has_debt": false,
       "severity": "low",
-      "justification_hash": "9e17a5175148611b98516ec3ef27d55c2078e2a6f3960ff0a2ffe01e244f2f5a",
+      "justification_hash": "792e77effe9eebf166276f34a407f63f13819978e97e70964e6984073e1d9b3f",
       "checks": {
         "epicon": "unknown",
         "merge_gate": "unknown"
