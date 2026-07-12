@@ -1,6 +1,6 @@
 {
   "schema": "MNS_AGGREGATE_V1",
-  "updated_at": "2026-07-12T15:50:01.111Z",
+  "updated_at": "2026-07-12T16:46:30.465Z",
   "node_count": 5,
   "live_nodes": 3,
   "total_entries": 36,
@@ -10,7 +10,7 @@
       "tier": "sentinel",
       "node_type": "substrate",
       "entry_count": 0,
-      "fetched_at": "2026-07-12T15:50:00.646Z",
+      "fetched_at": "2026-07-12T16:46:30.038Z",
       "error": null
     },
     {
@@ -18,7 +18,7 @@
       "tier": "contributor",
       "node_type": "app",
       "entry_count": 9,
-      "fetched_at": "2026-07-12T15:50:01.110Z",
+      "fetched_at": "2026-07-12T16:46:30.465Z",
       "error": null
     },
     {
@@ -26,7 +26,7 @@
       "tier": "contributor",
       "node_type": "service",
       "entry_count": 27,
-      "fetched_at": "2026-07-12T15:50:00.647Z",
+      "fetched_at": "2026-07-12T16:46:30.195Z",
       "error": null
     },
     {
@@ -47,6 +47,40 @@
     }
   ],
   "entries": [
+    {
+      "id": "3600c5e7-merge",
+      "timestamp": "2026-07-12T16:45:39Z",
+      "author": "cursor-agent",
+      "title": "epicon(C-370): handoff to AUREA for remaining 18 items",
+      "type": "merge",
+      "severity": "info",
+      "tags": [
+        "merge",
+        "pr"
+      ],
+      "source": "github-commit",
+      "verified": false,
+      "sha": "3600c5e7f148e8ede511a398f43500b1bb9cfccd",
+      "_mesh_node": "mobius-civic-ai-terminal",
+      "_mesh_tier": "contributor"
+    },
+    {
+      "id": "a18a6719-merge",
+      "timestamp": "2026-07-12T16:37:54Z",
+      "author": "kaizencycle",
+      "title": "epicon(C-370): ratify MIC issuance doctrine, gate earnMIC on Fountain GI threshold",
+      "type": "merge",
+      "severity": "info",
+      "tags": [
+        "merge",
+        "pr"
+      ],
+      "source": "github-commit",
+      "verified": false,
+      "sha": "a18a67198a19b2d428eec361a891d144fc1dcb04",
+      "_mesh_node": "mobius-civic-ai-terminal",
+      "_mesh_tier": "contributor"
+    },
     {
       "id": "283de0ea-zeus-verify",
       "timestamp": "2026-07-12T12:03:02Z",
@@ -159,42 +193,6 @@
       "source": "github-commit",
       "verified": false,
       "sha": "6b6a3d0043119c7b1f731a4a2857e9370a6ed729",
-      "_mesh_node": "mobius-civic-ai-terminal",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "16dcfaa0-merge",
-      "timestamp": "2026-07-11T13:23:30Z",
-      "author": "kaizencycle",
-      "title": "feat(c369): EVE shard proposal and review API (PR3)",
-      "type": "merge",
-      "severity": "info",
-      "tags": [
-        "merge",
-        "pr"
-      ],
-      "source": "github-commit",
-      "verified": false,
-      "sha": "16dcfaa096e1096b4beba31d9e3607b32f0b839b",
-      "_mesh_node": "mobius-civic-ai-terminal",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "70f28d17-zeus-verify",
-      "timestamp": "2026-07-11T12:03:07Z",
-      "author": "ZEUS",
-      "title": "ZEUS: Verification confirmed",
-      "type": "zeus-verify",
-      "severity": "nominal",
-      "tags": [
-        "zeus",
-        "verification",
-        "confirmed"
-      ],
-      "source": "github-commit",
-      "verified": true,
-      "sha": "70f28d17a61ff23a6d8e76b5a13f365f20e6e8d0",
-      "verifiedBy": "ZEUS",
       "_mesh_node": "mobius-civic-ai-terminal",
       "_mesh_tier": "contributor"
     },
