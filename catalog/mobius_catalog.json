@@ -1,6 +1,6 @@
 {
   "mobius_catalog_version": "1.0.0",
-  "generated_at": "2026-07-12T00:23:44.557Z",
+  "generated_at": "2026-07-12T01:12:25.529Z",
   "repo": {
     "name": "Mobius-Substrate",
     "url": "https://github.com/kaizencycle/Mobius-Substrate",
@@ -9,7 +9,7 @@
   },
   "stats": {
     "epiconCount": 0,
-    "docCount": 1024
+    "docCount": 1026
   },
   "epicons": [],
   "docs": [
@@ -7909,6 +7909,14 @@
       "summary": ""
     },
     {
+      "path": "docs/epicon/cycles/C-369/C-369-ATLAS-AUDIT-SEAL.md",
+      "title": "C-369 Independent Audit Seal — ATLAS External Verification",
+      "category": "epicon",
+      "tags": [],
+      "content_hash": "sha256:51727c9c9e6e4e7fae9faf8cbd9d172a5234cd2db8c620b222b6fe6da7971a65",
+      "summary": ""
+    },
+    {
       "path": "docs/epicon/cycles/C-369/C-369-baseline.md",
       "title": "C-369 Baseline — Witnessed Pre-State",
       "category": "epicon",
@@ -7946,6 +7954,14 @@
       "category": "epicon",
       "tags": [],
       "content_hash": "sha256:2a4d85c15b5c73e17cad195cd3766ebc020782d95fe7ad7c1e1fad9110d78dd9",
+      "summary": ""
+    },
+    {
+      "path": "docs/epicon/cycles/C-369/examples/mfs/README.md",
+      "title": "C-369 MFS / Integrity Grade Schema Examples",
+      "category": "epicon",
+      "tags": [],
+      "content_hash": "sha256:e900cd0ecd8cdf79ffdfa82b0d3e0b4a44b90ac7a3208b5f6c0a7efce3f71f2a",
       "summary": ""
     },
     {

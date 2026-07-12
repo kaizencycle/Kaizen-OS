@@ -1,0 +1,97 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://mobius-substrate.com/schemas/integrity-grade-request.v0_1.json",
+  "title": "Integrity Grade Request",
+  "description": "User-initiated portfolio review request. Does not mint or promise MIC.",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "request_id",
+    "wallet_id",
+    "portfolio_root_hash",
+    "consent",
+    "requested_at",
+    "fountain_state",
+    "status"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "const": "0.1"
+    },
+    "request_id": {
+      "type": "string",
+      "pattern": "^IGR-[A-Z0-9_-]+$"
+    },
+    "wallet_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "portfolio_id": {
+      "type": "string"
+    },
+    "portfolio_root_hash": {
+      "type": "string",
+      "pattern": "^sha256:[a-f0-9]{64}$"
+    },
+    "consent": {
+      "type": "object",
+      "required": [
+        "granted",
+        "scope",
+        "recorded_at"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "granted": {
+          "type": "boolean",
+          "const": true
+        },
+        "scope": {
+          "type": "string",
+          "enum": [
+            "portfolio_review"
+          ]
+        },
+        "recorded_at": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "requested_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "fountain_state": {
+      "type": "string",
+      "enum": [
+        "DORMANT",
+        "OBSERVING",
+        "APPROACHING",
+        "AUDIT_REQUIRED",
+        "PROVISIONAL_GI95",
+        "SUSTAINED_GI95",
+        "REVIEW_WINDOW_OPEN",
+        "QUARANTINED",
+        "CLOSED"
+      ]
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "PROPOSED",
+        "ACCEPTED",
+        "IN_REVIEW",
+        "COMPLETED",
+        "WITHDRAWN",
+        "REJECTED"
+      ]
+    },
+    "epicon_id": {
+      "type": "string",
+      "description": "EPICON created when request enters review"
+    }
+  }
+}
