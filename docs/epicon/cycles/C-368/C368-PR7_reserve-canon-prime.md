@@ -18,7 +18,7 @@ The terminal shows **349 blocks sealed & attested** (17,450 MIC, latest `seal-C-
 2. Update block target from hardcoded 319 to **all sealed+attested blocks** (dynamic — export whatever is sealed at run time; exclude in-progress block).
 3. Run with production KV access. Output per spec:
    `blk0000.dat` (1–100) · `blk0001.dat` (101–200) · `blk0002.dat` (201–300) · `blk0003.dat` (301–349) · `MANIFEST.json`
-4. **Verify locally before any push:** `node scripts/verify-dat-chain.js canon/reserve-blocks/` must pass; MANIFEST must show `total_blocks: 349`, `total_mic: 17450.0` (or current sealed count at run time).
+4. **Verify locally before any push:** `node scripts/verify-dat-chain.js canon/reserve-blocks/` must pass; MANIFEST must show `total_blocks` equal to the **deduplicated unique `block_number` count** at export time (2026-07-12 prime: **194**, not raw `seals_count`). See `C368-PR7_prime-count-clarification.md`.
 5. Exporter must enforce, not assume: `block_number` strictly ascending with no gaps, `mic_value === 50.00` on every record, every record carries the full 5-quorum `seal_quorum`, `gi_at_seal` and `source_entries` present. Any violation aborts the export with the offending block id — a bad record canonized is worse than a late canon.
 
 ## 2. Phase B — Canonization PR (Substrate repo)
@@ -33,7 +33,7 @@ One-time backfill without automation recreates this debt by C-370. Add to the te
 
 ## 4. Acceptance criteria
 
-- `verify-dat-chain.js` green locally AND in the workflow run on main; job summary shows 4 files / 349 blocks / chain tip hash.
+- `verify-dat-chain.js` green locally AND in the workflow run on main; job summary shows MANIFEST `total_blocks` matching deduplicated export count (2026-07-12 prime: 2 `.dat` files / **194** unique blocks / chain tip hash).
 - Terminal vault flips blocks to canonized/immortalized state on receipt of the canon-event (or the follow-up UI wiring is filed as its own item).
 - CPC `dat_hash_anchors` receives the four file hashes + chain tip (if the CPC route from `docs/pr-packages/c357/cpc-routes-canon_reserve_blocks.py` is deployed; if not, file it as the Phase C rider).
 - Re-running the exporter is idempotent: identical bytes, identical hashes.
