@@ -117,7 +117,14 @@ pr7(){
   [ -f "$d/.github/workflows/reserve-block-canonization.yml" ] && ok "canonization workflow present" || bad "reserve-block-canonization.yml missing"
   if [ -f "$d/canon/reserve-blocks/MANIFEST.json" ]; then
     blocks=$(python3 -c "import json;print(json.load(open('$d/canon/reserve-blocks/MANIFEST.json')).get('total_blocks',0))" 2>/dev/null)
-    [ -n "$blocks" ] && [ "$blocks" -ge 1 ] && ok "MANIFEST total_blocks=$blocks" || bad "MANIFEST total_blocks invalid: $blocks"
+    expected="${C368_PRIME_EXPECTED_BLOCKS:-}"
+    if [ -n "$expected" ]; then
+      [ -n "$blocks" ] && [ "$blocks" -eq "$expected" ] && ok "MANIFEST total_blocks=$blocks (matches audited prime $expected)" \
+        || bad "MANIFEST total_blocks=$blocks expected audited prime $expected — run collision audit and re-export"
+    else
+      [ -n "$blocks" ] && [ "$blocks" -ge 1 ] && ok "MANIFEST total_blocks=$blocks (set C368_PRIME_EXPECTED_BLOCKS for prime acceptance)" \
+        || bad "MANIFEST total_blocks invalid: $blocks"
+    fi
   fi
   rm -rf "$d"
   echo "  NOTE  full chain verify: node scripts/verify-dat-chain.js canon/reserve-blocks/"

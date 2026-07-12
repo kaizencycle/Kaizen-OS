@@ -49,7 +49,10 @@ Duplicate-era example: block #1 sealed in C-332 and again in C-359 — only one 
 1. Paste EPICON-02 body from terminal `docs/epicon/cycles/C-370/PR380_body.md`
 2. Run `npx tsx scripts/audit-reserve-block-collisions.ts` (terminal repo, KV creds)
 3. If `hash_divergent_collisions > 0` → **hold merge** (two different payloads at same number)
-4. If hash-divergent count is 0 → merge 194-block prime; file KV era cleanup as follow-up
+4. If hash-divergent count is 0 → verify prime count:  
+   `C368_PRIME_EXPECTED_BLOCKS=<unique_block_count> ./docs/epicon/cycles/C-368/c368-verify.sh pr7`  
+   (2026-07-12: `C368_PRIME_EXPECTED_BLOCKS=194`)
+5. Merge when EPICON gate + audited count match
 
 ## Follow-up (C-370, not PR #380 blocker)
 
