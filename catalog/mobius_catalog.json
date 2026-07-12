@@ -9,7 +9,7 @@
   },
   "stats": {
     "epiconCount": 0,
-    "docCount": 1025
+    "docCount": 1026
   },
   "epicons": [],
   "docs": [
@@ -7954,6 +7954,14 @@
       "category": "epicon",
       "tags": [],
       "content_hash": "sha256:2a4d85c15b5c73e17cad195cd3766ebc020782d95fe7ad7c1e1fad9110d78dd9",
+      "summary": ""
+    },
+    {
+      "path": "docs/epicon/cycles/C-369/examples/mfs/README.md",
+      "title": "C-369 MFS / Integrity Grade Schema Examples",
+      "category": "epicon",
+      "tags": [],
+      "content_hash": "sha256:e900cd0ecd8cdf79ffdfa82b0d3e0b4a44b90ac7a3208b5f6c0a7efce3f71f2a",
       "summary": ""
     },
     {

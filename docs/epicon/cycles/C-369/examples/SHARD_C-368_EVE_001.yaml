@@ -154,8 +154,8 @@ verification:
   human: "pending"
 provenance:
   manifest_hash: ""
-  source_root_hash: "sha256:pending-compiler-pr2"
-  generator_version: "eve-shard-core/0.0.0-docs-only"
+  source_root_hash: "sha256:669abacd6fce1b68c620d68c15aab2b0eda1c301a3ff4fe78f46f1444f67c70d"
+  generator_version: "eve-shard-core/0.1.0"
 pipeline_status:
   seal_status: "not_requested"
   ledger_status: "not_ingested"

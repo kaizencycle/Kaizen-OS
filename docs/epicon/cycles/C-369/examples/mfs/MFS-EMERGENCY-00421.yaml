@@ -1,0 +1,15 @@
+schema_version: "0.1"
+mfs_id: MFS-EMERGENCY-00421
+owner_id: wallet:demo-citizen-001
+skill_type: emergency_preparedness
+skill_level: demonstrated
+issuer: mobius-school-of-chambers
+assessment_ref: emergency-preparedness-v1.2
+assessment_version: "1.2"
+source: verified_seminar
+evidence_hash: sha256:a3f5c8d9e2b1476890abcdef1234567890abcdef1234567890abcdef12345678
+issued_at: "2026-06-15T14:30:00Z"
+expires_at: null
+transferable: false
+revocable: true
+revocation_policy: farming_or_provenance_failure_may_revoke_with_quorum_review
