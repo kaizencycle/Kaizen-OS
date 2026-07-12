@@ -1,0 +1,264 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://mobius-substrate.com/schemas/eve-reserve-shard.v0_1.json",
+  "title": "EVE Reserve Block Shard Candidate",
+  "description": "Proposed ethical memory shard — advisory only until human approval and quorum. EVE may propose; EVE may not seal.",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "shard",
+    "scope",
+    "source_status",
+    "intent",
+    "consequential_actions",
+    "ethical_assessment",
+    "uncertainties",
+    "omissions",
+    "cycle_outcome",
+    "seal_recommendation",
+    "verification",
+    "provenance",
+    "pipeline_status"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "const": "0.1"
+    },
+    "shard": {
+      "type": "object",
+      "required": ["id", "cycle", "status", "generated_by", "generated_at"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "type": "string", "pattern": "^SHARD_C-[0-9]+_EVE_[0-9]{3}$" },
+        "cycle": { "type": "string", "pattern": "^C-[0-9]+$" },
+        "status": {
+          "type": "string",
+          "enum": [
+            "proposed",
+            "needs_evidence",
+            "clarify",
+            "quarantined",
+            "rejected",
+            "approved_for_quorum",
+            "sealed",
+            "export_pending",
+            "cold_canon_verified"
+          ]
+        },
+        "generated_by": { "type": "string", "const": "EVE" },
+        "generated_at": { "type": "string", "format": "date-time" },
+        "amends_shard_id": { "type": "string" }
+      }
+    },
+    "scope": {
+      "type": "object",
+      "required": ["repositories", "epicon_ids"],
+      "properties": {
+        "repositories": {
+          "type": "array",
+          "items": { "type": "string" },
+          "minItems": 1
+        },
+        "epicon_ids": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "time_window": {
+          "type": "object",
+          "properties": {
+            "opened_at": { "type": ["string", "null"], "format": "date-time" },
+            "closed_at": { "type": ["string", "null"], "format": "date-time" }
+          }
+        }
+      }
+    },
+    "source_status": {
+      "type": "object",
+      "required": [
+        "declared_count",
+        "repository_preserved_count",
+        "ledger_ingested_count",
+        "sealed_count",
+        "cold_canon_exported_count"
+      ],
+      "properties": {
+        "declared_count": { "type": "integer", "minimum": 0 },
+        "repository_preserved_count": { "type": "integer", "minimum": 0 },
+        "ledger_ingested_count": { "type": "integer", "minimum": 0 },
+        "sealed_count": { "type": "integer", "minimum": 0 },
+        "cold_canon_exported_count": { "type": "integer", "minimum": 0 },
+        "sources": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["epicon_id", "declared", "repository_preserved"],
+            "properties": {
+              "epicon_id": { "type": "string" },
+              "declared": { "type": "boolean" },
+              "repository_preserved": { "type": "boolean" },
+              "ledger_ingested": { "type": ["boolean", "null"] },
+              "sealed": { "type": "boolean" },
+              "cold_canon_exported": { "type": "boolean" },
+              "source_refs": {
+                "type": "array",
+                "items": { "type": "string" },
+                "minItems": 1
+              },
+              "evidence_hashes": {
+                "type": "array",
+                "items": { "type": "string" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "intent": {
+      "type": "object",
+      "required": ["original", "final", "drift_detected"],
+      "properties": {
+        "original": { "type": "string", "minLength": 1 },
+        "final": { "type": "string", "minLength": 1 },
+        "drift_detected": { "type": "boolean" },
+        "drift_notes": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "consequential_actions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["description", "outcome", "source_refs"],
+        "properties": {
+          "action_id": { "type": "string" },
+          "description": { "type": "string" },
+          "actor": { "type": "string" },
+          "authority_ref": { "type": "string" },
+          "source_refs": {
+            "type": "array",
+            "items": { "type": "string" },
+            "minItems": 1
+          },
+          "evidence_hashes": { "type": "array", "items": { "type": "string" } },
+          "outcome": { "type": "string" },
+          "verification": { "type": "string" },
+          "status": {
+            "type": "string",
+            "enum": ["verified", "inferred", "provisional", "disputed", "merged_unverified"]
+          }
+        }
+      }
+    },
+    "ethical_assessment": {
+      "type": "object",
+      "required": ["rights_or_values", "risks"],
+      "properties": {
+        "affected_parties": { "type": "array", "items": { "type": "string" } },
+        "rights_or_values": {
+          "type": "array",
+          "items": { "type": "string" },
+          "minItems": 1
+        },
+        "improvements": { "type": "array", "items": { "type": "string" } },
+        "risks": { "type": "array", "items": { "type": "string" } },
+        "mitigations": { "type": "array", "items": { "type": "string" } },
+        "unresolved_concerns": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "dissent": {
+      "type": "object",
+      "properties": {
+        "present": { "type": "boolean" },
+        "records": { "type": "array", "items": { "type": "object" } }
+      }
+    },
+    "uncertainties": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["claim", "required_verification"],
+        "properties": {
+          "claim": { "type": "string" },
+          "reason": { "type": "string" },
+          "required_verification": { "type": "string" }
+        }
+      }
+    },
+    "omissions": {
+      "type": "object",
+      "required": ["policy", "declared_categories"],
+      "properties": {
+        "policy": { "type": "string" },
+        "declared_categories": {
+          "type": "array",
+          "items": { "type": "string" },
+          "minItems": 1
+        }
+      }
+    },
+    "cycle_outcome": {
+      "type": "object",
+      "properties": {
+        "completed": { "type": "array", "items": { "type": "string" } },
+        "pending": { "type": "array", "items": { "type": "string" } },
+        "failed": { "type": "array", "items": { "type": "string" } },
+        "remediated": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "seal_recommendation": {
+      "type": "object",
+      "required": ["recommendation", "proposed_tier", "rationale", "human_review_required"],
+      "properties": {
+        "recommendation": {
+          "type": "string",
+          "enum": [
+            "do_not_seal",
+            "hold_for_evidence",
+            "seal_as_cycle_memory",
+            "seal_as_exception_record",
+            "quarantine"
+          ]
+        },
+        "proposed_tier": { "type": "string", "enum": ["EP-1", "EP-2", "EP-3"] },
+        "rationale": { "type": "string", "minLength": 1 },
+        "human_review_required": { "type": "boolean", "const": true }
+      }
+    },
+    "verification": {
+      "type": "object",
+      "required": ["atlas", "zeus", "aurea", "jade"],
+      "properties": {
+        "atlas": { "type": "string" },
+        "zeus": { "type": "string" },
+        "aurea": { "type": "string" },
+        "jade": { "type": "string" },
+        "human": { "type": "string" }
+      }
+    },
+    "provenance": {
+      "type": "object",
+      "required": ["source_root_hash", "generator_version"],
+      "properties": {
+        "manifest_hash": { "type": "string" },
+        "source_root_hash": { "type": "string", "pattern": "^sha256:" },
+        "generator_version": { "type": "string" }
+      }
+    },
+    "pipeline_status": {
+      "type": "object",
+      "required": ["seal_status", "ledger_status"],
+      "properties": {
+        "seal_status": {
+          "type": "string",
+          "enum": ["not_requested", "pending_quorum", "sealed", "rejected"]
+        },
+        "ledger_status": {
+          "type": "string",
+          "enum": ["not_ingested", "candidate_committed", "attested"]
+        }
+      }
+    }
+  }
+}
