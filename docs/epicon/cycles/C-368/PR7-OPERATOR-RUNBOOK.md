@@ -1,6 +1,11 @@
 # C-368 PR7 — Operator Runbook: Prime Reserve Block Cold Canon
 
-**Witnessed gap (2026-07-10T22:54Z):** 350 sealed blocks in terminal KV · 0 `.dat` files on Substrate main.
+**Witnessed gap (2026-07-10T22:54Z):** ~350 attested **seal records** in terminal KV · 0 `.dat` files on Substrate main.
+
+> **C-370 correction (2026-07-12):** The prime export found **313 attested seals → 194 unique
+> `block_number` values** after dedupe (119 duplicate-sequence collisions across chain eras).
+> Cold canon counts **unique block_numbers**, not raw seal index cardinality. See
+> `docs/epicon/cycles/C-368/C368-PR7_prime-count-clarification.md`.
 
 ## Prerequisites
 
@@ -21,7 +26,7 @@ Configure on **Mobius-Substrate** (for post-merge canon-event):
 | `SUBSTRATE_SERVICE_TOKEN` | POST to terminal `/api/epicon/canon-event` |
 | `TERMINAL_API_BASE` | Production terminal URL |
 
-## Phase A+B — One-shot prime (350 blocks)
+## Phase A+B — One-shot prime (all unique sealed block_numbers)
 
 1. Open **Actions → Reserve Block Canon Export → Run workflow**
 2. Inputs:
@@ -29,13 +34,13 @@ Configure on **Mobius-Substrate** (for post-merge canon-event):
    - `dry_run`: **false**
    - `open_substrate_pr`: **true**
 3. Workflow will:
-   - Export all attested seals from KV → `blk0000`–`blk0003` + `MANIFEST.json`
+   - Export all attested seals from KV → dedupe by `block_number` → `blk0000`+ + `MANIFEST.json`
    - Run `node scripts/verify-dat-chain.js canon/reserve-blocks/`
    - Open draft PR on `kaizencycle/Mobius-Substrate` branch `canon/reserve-blocks-prime-c368`
 4. Review PR — expect EP-3 Guard I4 warning on `canon/**` (expected, non-blocking)
 5. Merge → `reserve-block-canonization.yml` verifies chain on main and posts canon-event
 
-**Acceptance:** `./docs/epicon/cycles/C-368/c368-verify.sh pr7` passes (≥1 `.dat`, MANIFEST with `total_blocks` ≥ 350).
+**Acceptance:** `./docs/epicon/cycles/C-368/c368-verify.sh pr7` passes (≥1 `.dat`, MANIFEST with `total_blocks` ≥ 1). **Prime count** = deduplicated unique `block_number` count from export (2026-07-12 prime: **194** blocks / 9,700 MIC), **not** raw `seals_count` from `/api/vault/status` (which counts seal records and may include duplicate sequences). Re-export without resolving KV collisions reproduces the same deduped count.
 
 ## Phase C — Continuous append (after prime)
 
