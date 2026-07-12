@@ -1,24 +1,24 @@
 {
   "schema": "MNS_AGGREGATE_V1",
-  "updated_at": "2026-07-12T17:51:30.576Z",
+  "updated_at": "2026-07-12T18:50:51.016Z",
   "node_count": 5,
   "live_nodes": 3,
-  "total_entries": 40,
+  "total_entries": 44,
   "nodes": [
     {
       "node_id": "mobius-substrate",
       "tier": "sentinel",
       "node_type": "substrate",
       "entry_count": 0,
-      "fetched_at": "2026-07-12T17:51:30.167Z",
+      "fetched_at": "2026-07-12T18:50:50.242Z",
       "error": null
     },
     {
       "node_id": "mobius-civic-ai-terminal",
       "tier": "contributor",
       "node_type": "app",
-      "entry_count": 13,
-      "fetched_at": "2026-07-12T17:51:30.576Z",
+      "entry_count": 17,
+      "fetched_at": "2026-07-12T18:50:51.016Z",
       "error": null
     },
     {
@@ -26,7 +26,7 @@
       "tier": "contributor",
       "node_type": "service",
       "entry_count": 27,
-      "fetched_at": "2026-07-12T17:51:30.184Z",
+      "fetched_at": "2026-07-12T18:50:50.238Z",
       "error": null
     },
     {
@@ -47,6 +47,93 @@
     }
   ],
   "entries": [
+    {
+      "id": "0de64b9a-merge",
+      "timestamp": "2026-07-12T18:39:45Z",
+      "author": "kaizencycle",
+      "title": "fix(ci): preserve canon artifact when Substrate PR token lacks write access",
+      "type": "merge",
+      "severity": "info",
+      "tags": [
+        "merge",
+        "pr"
+      ],
+      "source": "github-commit",
+      "verified": false,
+      "sha": "0de64b9a5312662907041eafa6c6603df6ca5ffe",
+      "_mesh_node": "mobius-civic-ai-terminal",
+      "_mesh_tier": "contributor"
+    },
+    {
+      "id": "d51a055f-merge",
+      "timestamp": "2026-07-12T18:17:46Z",
+      "author": "kaizencycle",
+      "title": "fix(canon): gap-tolerant full prime export for attested reserve blocks",
+      "type": "merge",
+      "severity": "info",
+      "tags": [
+        "merge",
+        "pr"
+      ],
+      "source": "github-commit",
+      "verified": false,
+      "sha": "d51a055f4f41a44775b51fe77f42408b4893b501",
+      "_mesh_node": "mobius-civic-ai-terminal",
+      "_mesh_tier": "contributor"
+    },
+    {
+      "id": "696a4c7f-merge",
+      "timestamp": "2026-07-12T18:09:41Z",
+      "author": "kaizencycle",
+      "title": "fix(ci): trim KV secrets and guard zero-block full prime export",
+      "type": "merge",
+      "severity": "info",
+      "tags": [
+        "merge",
+        "pr"
+      ],
+      "source": "github-commit",
+      "verified": false,
+      "sha": "696a4c7f93296c0c1498b07972ddf48c452d9464",
+      "_mesh_node": "mobius-civic-ai-terminal",
+      "_mesh_tier": "contributor"
+    },
+    {
+      "id": "4dc7e8b5-zeus-verify",
+      "timestamp": "2026-07-12T18:03:07Z",
+      "author": "ZEUS",
+      "title": "ZEUS: Verification confirmed",
+      "type": "zeus-verify",
+      "severity": "nominal",
+      "tags": [
+        "zeus",
+        "verification",
+        "confirmed"
+      ],
+      "source": "github-commit",
+      "verified": true,
+      "sha": "4dc7e8b5c9847b6f9822797197f22ba6463665d5",
+      "verifiedBy": "ZEUS",
+      "_mesh_node": "mobius-civic-ai-terminal",
+      "_mesh_tier": "contributor"
+    },
+    {
+      "id": "04f042c2-merge",
+      "timestamp": "2026-07-12T17:59:53Z",
+      "author": "kaizencycle",
+      "title": "fix(ci): canonize-reserve-blocks top-level await in GitHub Actions",
+      "type": "merge",
+      "severity": "info",
+      "tags": [
+        "merge",
+        "pr"
+      ],
+      "source": "github-commit",
+      "verified": false,
+      "sha": "04f042c20eb800a26dd3cd3cc7f1d0ab4ad5981f",
+      "_mesh_node": "mobius-civic-ai-terminal",
+      "_mesh_tier": "contributor"
+    },
     {
       "id": "bd276b3a-merge",
       "timestamp": "2026-07-12T17:43:40Z",
@@ -245,22 +332,6 @@
       "source": "github-commit",
       "verified": false,
       "sha": "f9681364c2ff8c0328bf8717f4b168504febd7e7",
-      "_mesh_node": "mobius-civic-ai-terminal",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "5034dd90-zeus-verify",
-      "timestamp": "2026-07-11T18:01:41Z",
-      "author": "ZEUS",
-      "title": "zeus: verification disputed · C-369 [skip ci]",
-      "type": "zeus-verify",
-      "severity": "info",
-      "tags": [
-        "zeus"
-      ],
-      "source": "github-commit",
-      "verified": false,
-      "sha": "5034dd907c91969040e98c6be23af601054a100c",
       "_mesh_node": "mobius-civic-ai-terminal",
       "_mesh_tier": "contributor"
     },
