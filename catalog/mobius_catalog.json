@@ -1,11 +1,11 @@
 {
   "mobius_catalog_version": "1.0.0",
-  "generated_at": "2026-07-12T01:29:43.642Z",
+  "generated_at": "2026-07-12T05:33:13.950Z",
   "repo": {
     "name": "Mobius-Substrate",
     "url": "https://github.com/kaizencycle/Mobius-Substrate",
     "default_branch": "main",
-    "commit": ""
+    "commit": "a8db7a874f10cc8b24c2cd007a5bfdc8469f7e42"
   },
   "stats": {
     "epiconCount": 0,
@@ -7913,7 +7913,7 @@
       "title": "C-369 Independent Audit Seal — ATLAS External Verification",
       "category": "epicon",
       "tags": [],
-      "content_hash": "sha256:51727c9c9e6e4e7fae9faf8cbd9d172a5234cd2db8c620b222b6fe6da7971a65",
+      "content_hash": "sha256:74b5481909f922e94e24dacef75cb869eaaa45a98f3502ee3d1f363db7dff28d",
       "summary": ""
     },
     {
@@ -7945,7 +7945,7 @@
       "title": "ATLAS Handoff — EVE EPICON Sharding and Reserve Block Candidate Pipeline",
       "category": "epicon",
       "tags": [],
-      "content_hash": "sha256:b6fd49ea76a340c1e4b7c34195368a3b6b05e3ea8f457b093ea6bdabf9f018df",
+      "content_hash": "sha256:1ce86bb84b8e739a32a8332f94a26c0922b6322d0220dc0d460c803f97254078",
       "summary": ""
     },
     {
