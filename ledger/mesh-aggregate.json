@@ -1,24 +1,24 @@
 {
   "schema": "MNS_AGGREGATE_V1",
-  "updated_at": "2026-07-12T20:02:02.182Z",
+  "updated_at": "2026-07-12T21:39:06.706Z",
   "node_count": 5,
   "live_nodes": 3,
-  "total_entries": 44,
+  "total_entries": 43,
   "nodes": [
     {
       "node_id": "mobius-substrate",
       "tier": "sentinel",
       "node_type": "substrate",
       "entry_count": 0,
-      "fetched_at": "2026-07-12T20:02:01.766Z",
+      "fetched_at": "2026-07-12T21:39:06.291Z",
       "error": null
     },
     {
       "node_id": "mobius-civic-ai-terminal",
       "tier": "contributor",
       "node_type": "app",
-      "entry_count": 17,
-      "fetched_at": "2026-07-12T20:02:02.182Z",
+      "entry_count": 16,
+      "fetched_at": "2026-07-12T21:39:06.705Z",
       "error": null
     },
     {
@@ -26,7 +26,7 @@
       "tier": "contributor",
       "node_type": "service",
       "entry_count": 27,
-      "fetched_at": "2026-07-12T20:02:01.854Z",
+      "fetched_at": "2026-07-12T21:39:06.374Z",
       "error": null
     },
     {
@@ -47,6 +47,40 @@
     }
   ],
   "entries": [
+    {
+      "id": "070b599c-merge",
+      "timestamp": "2026-07-12T21:10:28Z",
+      "author": "kaizencycle",
+      "title": "fix(c370): production log audit — promote 401, ZEUS sweep, vault log context",
+      "type": "merge",
+      "severity": "info",
+      "tags": [
+        "merge",
+        "pr"
+      ],
+      "source": "github-commit",
+      "verified": false,
+      "sha": "070b599c425979daeb6359667ce8ed2d84751b6a",
+      "_mesh_node": "mobius-civic-ai-terminal",
+      "_mesh_tier": "contributor"
+    },
+    {
+      "id": "0c800d26-merge",
+      "timestamp": "2026-07-12T20:32:22Z",
+      "author": "kaizencycle",
+      "title": "feat(c370): reserve canon integrity cron + collision forensics",
+      "type": "merge",
+      "severity": "info",
+      "tags": [
+        "merge",
+        "pr"
+      ],
+      "source": "github-commit",
+      "verified": false,
+      "sha": "0c800d268da28c9b2615d86a4e0c6386b293e1c7",
+      "_mesh_node": "mobius-civic-ai-terminal",
+      "_mesh_tier": "contributor"
+    },
     {
       "id": "0de64b9a-merge",
       "timestamp": "2026-07-12T18:39:45Z",
@@ -282,56 +316,6 @@
       "source": "github-commit",
       "verified": false,
       "sha": "24db3b221125a58d51fdf6997a610c5b6e985342",
-      "_mesh_node": "mobius-civic-ai-terminal",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "3242a185-zeus-verify",
-      "timestamp": "2026-07-12T00:04:04Z",
-      "author": "ZEUS",
-      "title": "zeus: verification disputed · C-369 [skip ci]",
-      "type": "zeus-verify",
-      "severity": "info",
-      "tags": [
-        "zeus"
-      ],
-      "source": "github-commit",
-      "verified": false,
-      "sha": "3242a18546418484f11cc49f81a118c18b1bb64c",
-      "_mesh_node": "mobius-civic-ai-terminal",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "32c8c5fc-merge",
-      "timestamp": "2026-07-11T23:14:11Z",
-      "author": "kaizencycle",
-      "title": "feat(c369): proposal-only Integrity Grade requests and review surface (A5)",
-      "type": "merge",
-      "severity": "info",
-      "tags": [
-        "merge",
-        "pr"
-      ],
-      "source": "github-commit",
-      "verified": false,
-      "sha": "32c8c5fcb73514c80d114b8dc1189093f615b7b4",
-      "_mesh_node": "mobius-civic-ai-terminal",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "f9681364-merge",
-      "timestamp": "2026-07-11T22:41:35Z",
-      "author": "kaizencycle",
-      "title": "feat(fountain): add GI perception and eligibility status surface (C-369 A4)",
-      "type": "merge",
-      "severity": "info",
-      "tags": [
-        "merge",
-        "pr"
-      ],
-      "source": "github-commit",
-      "verified": false,
-      "sha": "f9681364c2ff8c0328bf8717f4b168504febd7e7",
       "_mesh_node": "mobius-civic-ai-terminal",
       "_mesh_tier": "contributor"
     },
