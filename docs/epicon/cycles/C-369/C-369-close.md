@@ -112,7 +112,7 @@ ledger_id: kaizencycle
 scope: specs
 mode: normal
 issued_at: 2026-07-11T23:30:00Z
-expires_at: 2026-10-11T23:30:00Z
+expires_at: 2026-10-09T23:30:00Z
 justification:
   VALUES INVOKED: integrity, stewardship, transparency, anti-capture, intergenerational continuity
   REASONING: C-369 constitutional clarification is structurally complete. Canon, schemas, public copy,

@@ -1,6 +1,6 @@
 {
   "mobius_catalog_version": "1.0.0",
-  "generated_at": "2026-07-11T13:47:01.531Z",
+  "generated_at": "2026-07-12T00:20:35.086Z",
   "repo": {
     "name": "Mobius-Substrate",
     "url": "https://github.com/kaizencycle/Mobius-Substrate",
@@ -7917,11 +7917,19 @@
       "summary": ""
     },
     {
+      "path": "docs/epicon/cycles/C-369/C-369-close.md",
+      "title": "C-369 Cycle Close — Constitutional Clarification + EVE Sharding",
+      "category": "epicon",
+      "tags": [],
+      "content_hash": "sha256:1c1a0d8b2781032f059053acd3b4ba35aa8bbdffe19c1d692844288df2bbaa97",
+      "summary": ""
+    },
+    {
       "path": "docs/epicon/cycles/C-369/C-369-opener.md",
       "title": "C-369 Opener — Constitutional Clarification + EVE Sharding",
       "category": "epicon",
       "tags": [],
-      "content_hash": "sha256:44d88e1274402b88d7881ad83be2074b264246845080f9f68c44b4a72b261b05",
+      "content_hash": "sha256:9fd7e536d2cd485f499315c310a9996d43c8116a5c3c7a847c147ac173766778",
       "summary": ""
     },
     {
@@ -7938,14 +7946,6 @@
       "category": "epicon",
       "tags": [],
       "content_hash": "sha256:2a4d85c15b5c73e17cad195cd3766ebc020782d95fe7ad7c1e1fad9110d78dd9",
-      "summary": ""
-    },
-    {
-      "path": "docs/epicon/cycles/C-369/examples/mfs/README.md",
-      "title": "C-369 MFS / Integrity Grade Schema Examples",
-      "category": "epicon",
-      "tags": [],
-      "content_hash": "sha256:96d08de24fde4ab9daa3026513f4760e8bc60f8eb58659f969d70fced66bf7d7",
       "summary": ""
     },
     {
