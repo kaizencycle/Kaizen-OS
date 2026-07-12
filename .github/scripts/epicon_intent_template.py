@@ -29,7 +29,7 @@ SCOPE_MAP = {
     "infra": ["infra/", "deploy/", "docker/", "monitoring/", "grafana/"],
     "sentinels": ["sentinels/"],
     "labs": ["labs/"],
-    "specs": ["specs/", "schemas/", "configs/", "tests/"],
+    "specs": ["specs/", "schemas/", "configs/", "tests/", "canon/"],
 }
 
 # Governance-sensitive patterns

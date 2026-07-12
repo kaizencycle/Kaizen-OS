@@ -63,7 +63,7 @@ const SCOPE_ENVELOPES = {
   infra: ['infra/', 'render.yaml', 'vercel.json', 'Dockerfile', 'docker-compose', 'netlify.toml'],
   sentinels: ['sentinels/', 'agents/'],
   labs: ['labs/', 'experiments/'],
-  specs: ['docs/specs/', 'schemas/', 'docs/epicon/'],
+  specs: ['docs/specs/', 'schemas/', 'docs/epicon/', 'canon/'],
 };
 
 // Default tier policy registry (Rule 5.1: declarative, independent of proposer).
