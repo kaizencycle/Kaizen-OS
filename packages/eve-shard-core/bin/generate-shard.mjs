@@ -3,9 +3,9 @@ import { writeFileSync } from 'node:fs';
 
 import { generateShard } from '../dist/generate.js';
 
-function parseArgs(argv: string[]): { cycle: string; out?: string } {
+function parseArgs(argv) {
   let cycle = 'C-368';
-  let out: string | undefined;
+  let out;
 
   for (let index = 0; index < argv.length; index += 1) {
     const arg = argv[index];
