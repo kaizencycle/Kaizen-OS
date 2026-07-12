@@ -45,7 +45,7 @@ C-369 separated **learning evidence (MFS)** from **stewardship recognition (MIC)
 | A2 | Substrate | [#372](https://github.com/kaizencycle/Mobius-Substrate/pull/372) | `cursor/c369-mfs-fountain-canon-0e02` | `docs/06-specifications/schemas/integrity-*.schema.json`, `docs/epicon/cycles/C-369/examples/mfs/` |
 | B2 | Substrate | [#370](https://github.com/kaizencycle/Mobius-Substrate/pull/370) | `cursor/c369-eve-shard-protocol-0e02` | `packages/eve-shard-core/` |
 
-**Required before claiming schema/compiler complete on `main`:** merge `cursor/c369-mfs-fountain-schemas-0e02` and `cursor/c369-eve-shard-core-0e02` (or equivalent) into `main`.
+**Required before claiming schema/compiler complete on `main`:** merge [PR #378](https://github.com/kaizencycle/Mobius-Substrate/pull/378) (`cursor/c369-stacked-main-integration-0e02`), which consolidates recovery branches `cursor/c369-mfs-fountain-schemas-0e02` (A2 fixtures restored) and `cursor/c369-eve-shard-core-0e02` (B2 tests/config restored) derived from the stacked merge targets above.
 
 ### Prior (pre-C-369 window)
 
@@ -89,7 +89,7 @@ C-369 separated **learning evidence (MFS)** from **stewardship recognition (MIC)
 ## 4. Declared remaining gaps (not hidden)
 
 1. **Live `earnMIC` runtime (material)** — `computeMICReward` in `mobius-browser-shell` (`src/lib/oaa/mic.ts`) is **actively invoked** on course/quiz completion from `OAASeminarFeed.tsx` and `LearningProgressTracker.tsx`, calling `earnMIC()` in `WalletContext.tsx` with a hardcoded score-to-MIC formula (`≥0.8 → 5 MIC`, bonuses up to +5). This is **not dormant legacy code**; it is a live user-facing loop that contradicts the MIC doctrine canonized the same day ("MIC is not earned through arithmetic accumulation"). Reconcile via feature flag, removal of wiring, or **C-370** EPICON.
-2. **Stacked Substrate branches** — #372 schemas and #370 `eve-shard-core` merged to feature branches, not `main`. Agents must not treat these contracts as shipped until merged.
+2. **Stacked Substrate branches** — #372 merged into `cursor/c369-mfs-fountain-canon-0e02`; #370 into `cursor/c369-eve-shard-protocol-0e02`. Main integration is PR #378 (`cursor/c369-stacked-main-integration-0e02`). Agents must not treat these contracts as shipped until #378 merges.
 3. **MFS issuance** — no production MFS mint path in C-369 (deferred).
 4. **Canonical KV manifests** — terminal assembles GI/Fountain when federation KV keys absent.
 
@@ -128,7 +128,7 @@ justification:
   BOUNDARIES: Close record only. Does not authorize MIC minting, MFS transfer, or claiming schemas on main before merge.
   COUNTERFACTUAL: If stacked branches are not on main or earnMIC remains live without EPICON, upgrade from DISPUTED only after reconciliation.
 counterfactuals:
-  - Merge cursor/c369-mfs-fountain-schemas-0e02 and cursor/c369-eve-shard-core-0e02 to main
+  - Merge PR #378 (cursor/c369-stacked-main-integration-0e02) to bring A2/B2 onto main
   - Open C-370 for earnMIC / computeMICReward reconciliation if not fixed in C-369
   - Re-run terminal contract tests after GI/Fountain assembly changes
 ```

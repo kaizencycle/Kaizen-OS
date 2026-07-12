@@ -95,7 +95,7 @@ justification:
     If stacked branches merge to main and earnMIC course-completion wiring is
     removed or flagged off, upgrade close status from DISPUTED to VERIFIED.
 counterfactuals:
-  - Merge cursor/c369-mfs-fountain-schemas-0e02 and cursor/c369-eve-shard-core-0e02 to main
+  - Merge PR #378 (cursor/c369-stacked-main-integration-0e02) to bring A2/B2 onto main
   - Open C-370 EPICON if runtime reconciliation is deferred
 ```
 
