@@ -40,7 +40,15 @@ Configure on **Mobius-Substrate** (for post-merge canon-event):
 4. Review PR — expect EP-3 Guard I4 warning on `canon/**` (expected, non-blocking)
 5. Merge → `reserve-block-canonization.yml` verifies chain on main and posts canon-event
 
-**Acceptance:** `./docs/epicon/cycles/C-368/c368-verify.sh pr7` passes (≥1 `.dat`, MANIFEST with `total_blocks` ≥ 1). **Prime count** = deduplicated unique `block_number` count from export (2026-07-12 prime: **194** blocks / 9,700 MIC), **not** raw `seals_count` from `/api/vault/status` (which counts seal records and may include duplicate sequences). Re-export without resolving KV collisions reproduces the same deduped count.
+**Acceptance (prime):**
+
+1. Run collision audit on terminal (KV creds):  
+   `npx tsx scripts/audit-reserve-block-collisions.ts --json` → record `unique_block_count` and confirm `hash_divergent_collisions === 0`.
+2. Verify Substrate MANIFEST matches audited unique count:  
+   `C368_PRIME_EXPECTED_BLOCKS=<unique_block_count> ./docs/epicon/cycles/C-368/c368-verify.sh pr7`
+3. Chain verify: `node scripts/verify-dat-chain.js canon/reserve-blocks/`
+
+2026-07-12 audited prime: **194** unique blocks / 9,700 MIC (`C368_PRIME_EXPECTED_BLOCKS=194`). **Not** raw `seals_count` from `/api/vault/status`. Re-export without resolving KV collisions reproduces the same deduped count.
 
 ## Phase C — Continuous append (after prime)
 
