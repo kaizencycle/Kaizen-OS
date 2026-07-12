@@ -1,6 +1,6 @@
 {
   "mobius_catalog_version": "1.0.0",
-  "generated_at": "2026-07-12T00:20:35.086Z",
+  "generated_at": "2026-07-12T00:23:44.557Z",
   "repo": {
     "name": "Mobius-Substrate",
     "url": "https://github.com/kaizencycle/Mobius-Substrate",
@@ -7921,7 +7921,7 @@
       "title": "C-369 Cycle Close — Constitutional Clarification + EVE Sharding",
       "category": "epicon",
       "tags": [],
-      "content_hash": "sha256:1c1a0d8b2781032f059053acd3b4ba35aa8bbdffe19c1d692844288df2bbaa97",
+      "content_hash": "sha256:75cc371e4df8a116f1016514510f8662893f9aae4ce145db372c7f108400e484",
       "summary": ""
     },
     {
