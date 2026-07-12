@@ -1,24 +1,24 @@
 {
   "schema": "MNS_AGGREGATE_V1",
-  "updated_at": "2026-07-12T16:46:30.465Z",
+  "updated_at": "2026-07-12T17:51:30.576Z",
   "node_count": 5,
   "live_nodes": 3,
-  "total_entries": 36,
+  "total_entries": 40,
   "nodes": [
     {
       "node_id": "mobius-substrate",
       "tier": "sentinel",
       "node_type": "substrate",
       "entry_count": 0,
-      "fetched_at": "2026-07-12T16:46:30.038Z",
+      "fetched_at": "2026-07-12T17:51:30.167Z",
       "error": null
     },
     {
       "node_id": "mobius-civic-ai-terminal",
       "tier": "contributor",
       "node_type": "app",
-      "entry_count": 9,
-      "fetched_at": "2026-07-12T16:46:30.465Z",
+      "entry_count": 13,
+      "fetched_at": "2026-07-12T17:51:30.576Z",
       "error": null
     },
     {
@@ -26,7 +26,7 @@
       "tier": "contributor",
       "node_type": "service",
       "entry_count": 27,
-      "fetched_at": "2026-07-12T16:46:30.195Z",
+      "fetched_at": "2026-07-12T17:51:30.184Z",
       "error": null
     },
     {
@@ -47,6 +47,91 @@
     }
   ],
   "entries": [
+    {
+      "id": "bd276b3a-merge",
+      "timestamp": "2026-07-12T17:43:40Z",
+      "author": "cursor-agent",
+      "title": "docs(C-370): secrets preflight troubleshooting for item 5 export",
+      "type": "merge",
+      "severity": "info",
+      "tags": [
+        "merge",
+        "pr"
+      ],
+      "source": "github-commit",
+      "verified": false,
+      "sha": "bd276b3abd1b810e987edac61384089fdfa5003f",
+      "_mesh_node": "mobius-civic-ai-terminal",
+      "_mesh_tier": "contributor"
+    },
+    {
+      "id": "5e70e39d-merge",
+      "timestamp": "2026-07-12T17:41:17Z",
+      "author": "cursor-agent",
+      "title": "docs(C-370): fix operator .dat file count expectation (Codex P2)",
+      "type": "merge",
+      "severity": "info",
+      "tags": [
+        "merge",
+        "pr"
+      ],
+      "source": "github-commit",
+      "verified": false,
+      "sha": "5e70e39d2a8a4f7fccb62d4a33d8b3b8941a9412",
+      "_mesh_node": "mobius-civic-ai-terminal",
+      "_mesh_tier": "contributor"
+    },
+    {
+      "id": "641152bc-merge",
+      "timestamp": "2026-07-12T17:36:40Z",
+      "author": "cursor-agent",
+      "title": "docs(C-370): operator runbook for item 5 reserve block backlog export",
+      "type": "merge",
+      "severity": "info",
+      "tags": [
+        "merge",
+        "pr"
+      ],
+      "source": "github-commit",
+      "verified": false,
+      "sha": "641152bc3907309668637237fa08fa56510d3328",
+      "_mesh_node": "mobius-civic-ai-terminal",
+      "_mesh_tier": "contributor"
+    },
+    {
+      "id": "580e391e-merge",
+      "timestamp": "2026-07-12T17:21:03Z",
+      "author": "cursor-agent",
+      "title": "docs(C-370): custodian status update on archived opener",
+      "type": "merge",
+      "severity": "info",
+      "tags": [
+        "merge",
+        "pr"
+      ],
+      "source": "github-commit",
+      "verified": false,
+      "sha": "580e391e64728bc5f9be0b7e2850a6d401a39b35",
+      "_mesh_node": "mobius-civic-ai-terminal",
+      "_mesh_tier": "contributor"
+    },
+    {
+      "id": "6bb9f81a-merge",
+      "timestamp": "2026-07-12T16:51:45Z",
+      "author": "cursor-agent",
+      "title": "docs(C-370): archive Michael custodian opener and index artifacts",
+      "type": "merge",
+      "severity": "info",
+      "tags": [
+        "merge",
+        "pr"
+      ],
+      "source": "github-commit",
+      "verified": false,
+      "sha": "6bb9f81a362810f53b76761f3d8a9f8a3d501d20",
+      "_mesh_node": "mobius-civic-ai-terminal",
+      "_mesh_tier": "contributor"
+    },
     {
       "id": "3600c5e7-merge",
       "timestamp": "2026-07-12T16:45:39Z",
@@ -176,23 +261,6 @@
       "source": "github-commit",
       "verified": false,
       "sha": "5034dd907c91969040e98c6be23af601054a100c",
-      "_mesh_node": "mobius-civic-ai-terminal",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "6b6a3d00-merge",
-      "timestamp": "2026-07-11T16:52:54Z",
-      "author": "kaizencycle",
-      "title": "Merge pull request #594 from kaizencycle/cursor/c369-shard-ledger-quorum-0e02",
-      "type": "merge",
-      "severity": "info",
-      "tags": [
-        "merge",
-        "pr"
-      ],
-      "source": "github-commit",
-      "verified": false,
-      "sha": "6b6a3d0043119c7b1f731a4a2857e9370a6ed729",
       "_mesh_node": "mobius-civic-ai-terminal",
       "_mesh_tier": "contributor"
     },
