@@ -1,15 +1,15 @@
 {
   "mobius_catalog_version": "1.0.0",
-  "generated_at": "2026-07-12T05:33:13.950Z",
+  "generated_at": "2026-07-13T05:42:16.545Z",
   "repo": {
     "name": "Mobius-Substrate",
     "url": "https://github.com/kaizencycle/Mobius-Substrate",
     "default_branch": "main",
-    "commit": "a8db7a874f10cc8b24c2cd007a5bfdc8469f7e42"
+    "commit": "567b75957a7209e8079c68f20c834f5471e7f233"
   },
   "stats": {
     "epiconCount": 0,
-    "docCount": 1026
+    "docCount": 1027
   },
   "epicons": [],
   "docs": [
@@ -7885,11 +7885,19 @@
       "summary": ""
     },
     {
+      "path": "docs/epicon/cycles/C-368/C368-PR7_prime-count-clarification.md",
+      "title": "C-368 PR7 — Prime count clarification (194 vs ~350)",
+      "category": "epicon",
+      "tags": [],
+      "content_hash": "sha256:acb6d38cff2137cbdc1f162442771cbe870b3788ddad8650da6b440264ca55a0",
+      "summary": ""
+    },
+    {
       "path": "docs/epicon/cycles/C-368/C368-PR7_reserve-canon-prime.md",
       "title": "C-368 · PR 7 — Prime the cold canon (349 Reserve Blocks → Substrate)",
       "category": "epicon",
       "tags": [],
-      "content_hash": "sha256:8d316ddc046f3d1aaf9970e9b50356e4e272a5d171c3d7321ec26dcc02347a99",
+      "content_hash": "sha256:b2b20ecbcb5b6cd13e94299a3c39fe60bfbb9720bfb2ee19f18b7a449e7a9231",
       "summary": ""
     },
     {
@@ -7905,7 +7913,7 @@
       "title": "C-368 PR7 — Operator Runbook: Prime Reserve Block Cold Canon",
       "category": "epicon",
       "tags": [],
-      "content_hash": "sha256:bb448ae056a80e5b4c078e619e5311cfdb60a597b872d5fe487a98c5ae78f31b",
+      "content_hash": "sha256:3df8684a447cbb387e0215314136484959c687a5f2ac010e075b802425853ef3",
       "summary": ""
     },
     {
