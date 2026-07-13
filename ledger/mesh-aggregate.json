@@ -1,24 +1,24 @@
 {
   "schema": "MNS_AGGREGATE_V1",
-  "updated_at": "2026-07-13T05:26:48.382Z",
+  "updated_at": "2026-07-13T08:48:34.067Z",
   "node_count": 5,
   "live_nodes": 3,
-  "total_entries": 42,
+  "total_entries": 40,
   "nodes": [
     {
       "node_id": "mobius-substrate",
       "tier": "sentinel",
       "node_type": "substrate",
       "entry_count": 0,
-      "fetched_at": "2026-07-13T05:26:48.063Z",
+      "fetched_at": "2026-07-13T08:48:33.405Z",
       "error": null
     },
     {
       "node_id": "mobius-civic-ai-terminal",
       "tier": "contributor",
       "node_type": "app",
-      "entry_count": 15,
-      "fetched_at": "2026-07-13T05:26:48.382Z",
+      "entry_count": 13,
+      "fetched_at": "2026-07-13T08:48:34.066Z",
       "error": null
     },
     {
@@ -26,7 +26,7 @@
       "tier": "contributor",
       "node_type": "service",
       "entry_count": 27,
-      "fetched_at": "2026-07-13T05:26:48.081Z",
+      "fetched_at": "2026-07-13T08:48:33.507Z",
       "error": null
     },
     {
@@ -47,6 +47,22 @@
     }
   ],
   "entries": [
+    {
+      "id": "573950a5-zeus-verify",
+      "timestamp": "2026-07-13T06:04:15Z",
+      "author": "ZEUS",
+      "title": "zeus: verification disputed · C-371 [skip ci]",
+      "type": "zeus-verify",
+      "severity": "info",
+      "tags": [
+        "zeus"
+      ],
+      "source": "github-commit",
+      "verified": false,
+      "sha": "573950a54312786f15e62fa428a82d97fdd99f5b",
+      "_mesh_node": "mobius-civic-ai-terminal",
+      "_mesh_tier": "contributor"
+    },
     {
       "id": "715b79f4-merge",
       "timestamp": "2026-07-13T01:39:13Z",
@@ -247,59 +263,6 @@
       "source": "github-commit",
       "verified": false,
       "sha": "d51a055f4f41a44775b51fe77f42408b4893b501",
-      "_mesh_node": "mobius-civic-ai-terminal",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "696a4c7f-merge",
-      "timestamp": "2026-07-12T18:09:41Z",
-      "author": "kaizencycle",
-      "title": "fix(ci): trim KV secrets and guard zero-block full prime export",
-      "type": "merge",
-      "severity": "info",
-      "tags": [
-        "merge",
-        "pr"
-      ],
-      "source": "github-commit",
-      "verified": false,
-      "sha": "696a4c7f93296c0c1498b07972ddf48c452d9464",
-      "_mesh_node": "mobius-civic-ai-terminal",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "4dc7e8b5-zeus-verify",
-      "timestamp": "2026-07-12T18:03:07Z",
-      "author": "ZEUS",
-      "title": "ZEUS: Verification confirmed",
-      "type": "zeus-verify",
-      "severity": "nominal",
-      "tags": [
-        "zeus",
-        "verification",
-        "confirmed"
-      ],
-      "source": "github-commit",
-      "verified": true,
-      "sha": "4dc7e8b5c9847b6f9822797197f22ba6463665d5",
-      "verifiedBy": "ZEUS",
-      "_mesh_node": "mobius-civic-ai-terminal",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "04f042c2-merge",
-      "timestamp": "2026-07-12T17:59:53Z",
-      "author": "kaizencycle",
-      "title": "fix(ci): canonize-reserve-blocks top-level await in GitHub Actions",
-      "type": "merge",
-      "severity": "info",
-      "tags": [
-        "merge",
-        "pr"
-      ],
-      "source": "github-commit",
-      "verified": false,
-      "sha": "04f042c20eb800a26dd3cd3cc7f1d0ab4ad5981f",
       "_mesh_node": "mobius-civic-ai-terminal",
       "_mesh_tier": "contributor"
     },
