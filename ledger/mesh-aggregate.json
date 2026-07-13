@@ -1,24 +1,24 @@
 {
   "schema": "MNS_AGGREGATE_V1",
-  "updated_at": "2026-07-13T01:50:44.137Z",
+  "updated_at": "2026-07-13T05:26:48.382Z",
   "node_count": 5,
   "live_nodes": 3,
-  "total_entries": 45,
+  "total_entries": 42,
   "nodes": [
     {
       "node_id": "mobius-substrate",
       "tier": "sentinel",
       "node_type": "substrate",
       "entry_count": 0,
-      "fetched_at": "2026-07-13T01:50:43.411Z",
+      "fetched_at": "2026-07-13T05:26:48.063Z",
       "error": null
     },
     {
       "node_id": "mobius-civic-ai-terminal",
       "tier": "contributor",
       "node_type": "app",
-      "entry_count": 18,
-      "fetched_at": "2026-07-13T01:50:44.136Z",
+      "entry_count": 15,
+      "fetched_at": "2026-07-13T05:26:48.382Z",
       "error": null
     },
     {
@@ -26,7 +26,7 @@
       "tier": "contributor",
       "node_type": "service",
       "entry_count": 27,
-      "fetched_at": "2026-07-13T01:50:43.436Z",
+      "fetched_at": "2026-07-13T05:26:48.081Z",
       "error": null
     },
     {
@@ -300,57 +300,6 @@
       "source": "github-commit",
       "verified": false,
       "sha": "04f042c20eb800a26dd3cd3cc7f1d0ab4ad5981f",
-      "_mesh_node": "mobius-civic-ai-terminal",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "bd276b3a-merge",
-      "timestamp": "2026-07-12T17:43:40Z",
-      "author": "cursor-agent",
-      "title": "docs(C-370): secrets preflight troubleshooting for item 5 export",
-      "type": "merge",
-      "severity": "info",
-      "tags": [
-        "merge",
-        "pr"
-      ],
-      "source": "github-commit",
-      "verified": false,
-      "sha": "bd276b3abd1b810e987edac61384089fdfa5003f",
-      "_mesh_node": "mobius-civic-ai-terminal",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "5e70e39d-merge",
-      "timestamp": "2026-07-12T17:41:17Z",
-      "author": "cursor-agent",
-      "title": "docs(C-370): fix operator .dat file count expectation (Codex P2)",
-      "type": "merge",
-      "severity": "info",
-      "tags": [
-        "merge",
-        "pr"
-      ],
-      "source": "github-commit",
-      "verified": false,
-      "sha": "5e70e39d2a8a4f7fccb62d4a33d8b3b8941a9412",
-      "_mesh_node": "mobius-civic-ai-terminal",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "641152bc-merge",
-      "timestamp": "2026-07-12T17:36:40Z",
-      "author": "cursor-agent",
-      "title": "docs(C-370): operator runbook for item 5 reserve block backlog export",
-      "type": "merge",
-      "severity": "info",
-      "tags": [
-        "merge",
-        "pr"
-      ],
-      "source": "github-commit",
-      "verified": false,
-      "sha": "641152bc3907309668637237fa08fa56510d3328",
       "_mesh_node": "mobius-civic-ai-terminal",
       "_mesh_tier": "contributor"
     },
