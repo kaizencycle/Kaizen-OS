@@ -1,6 +1,6 @@
 {
   "schema": "MNS_AGGREGATE_V1",
-  "updated_at": "2026-07-13T17:06:31.197Z",
+  "updated_at": "2026-07-13T19:11:54.560Z",
   "node_count": 5,
   "live_nodes": 3,
   "total_entries": 39,
@@ -10,7 +10,7 @@
       "tier": "sentinel",
       "node_type": "substrate",
       "entry_count": 0,
-      "fetched_at": "2026-07-13T17:06:30.716Z",
+      "fetched_at": "2026-07-13T19:11:54.169Z",
       "error": null
     },
     {
@@ -18,7 +18,7 @@
       "tier": "contributor",
       "node_type": "app",
       "entry_count": 12,
-      "fetched_at": "2026-07-13T17:06:31.197Z",
+      "fetched_at": "2026-07-13T19:11:54.560Z",
       "error": null
     },
     {
@@ -26,7 +26,7 @@
       "tier": "contributor",
       "node_type": "service",
       "entry_count": 27,
-      "fetched_at": "2026-07-13T17:06:30.718Z",
+      "fetched_at": "2026-07-13T19:11:54.169Z",
       "error": null
     },
     {
@@ -47,6 +47,39 @@
     }
   ],
   "entries": [
+    {
+      "id": "87163c73-zeus-verify",
+      "timestamp": "2026-07-13T18:02:42Z",
+      "author": "ZEUS",
+      "title": "zeus: verification disputed · C-371 [skip ci]",
+      "type": "zeus-verify",
+      "severity": "info",
+      "tags": [
+        "zeus"
+      ],
+      "source": "github-commit",
+      "verified": false,
+      "sha": "87163c73ca50e213d4c0965d4445387002a4617d",
+      "_mesh_node": "mobius-civic-ai-terminal",
+      "_mesh_tier": "contributor"
+    },
+    {
+      "id": "d8ead418-merge",
+      "timestamp": "2026-07-13T17:27:00Z",
+      "author": "kaizencycle",
+      "title": "C-371: Multi-agent reserve lineage verification (ZEUS / ECHO / JADE)",
+      "type": "merge",
+      "severity": "info",
+      "tags": [
+        "merge",
+        "pr"
+      ],
+      "source": "github-commit",
+      "verified": false,
+      "sha": "d8ead418bfc365931f0ae837616a235494b15709",
+      "_mesh_node": "mobius-civic-ai-terminal",
+      "_mesh_tier": "contributor"
+    },
     {
       "id": "558f781a-zeus-verify",
       "timestamp": "2026-07-13T12:04:12Z",
@@ -211,40 +244,6 @@
       "source": "github-commit",
       "verified": false,
       "sha": "79820836114a68acefd190d8fb00b23e2b506639",
-      "_mesh_node": "mobius-civic-ai-terminal",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "070b599c-merge",
-      "timestamp": "2026-07-12T21:10:28Z",
-      "author": "kaizencycle",
-      "title": "fix(c370): production log audit — promote 401, ZEUS sweep, vault log context",
-      "type": "merge",
-      "severity": "info",
-      "tags": [
-        "merge",
-        "pr"
-      ],
-      "source": "github-commit",
-      "verified": false,
-      "sha": "070b599c425979daeb6359667ce8ed2d84751b6a",
-      "_mesh_node": "mobius-civic-ai-terminal",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "0c800d26-merge",
-      "timestamp": "2026-07-12T20:32:22Z",
-      "author": "kaizencycle",
-      "title": "feat(c370): reserve canon integrity cron + collision forensics",
-      "type": "merge",
-      "severity": "info",
-      "tags": [
-        "merge",
-        "pr"
-      ],
-      "source": "github-commit",
-      "verified": false,
-      "sha": "0c800d268da28c9b2615d86a4e0c6386b293e1c7",
       "_mesh_node": "mobius-civic-ai-terminal",
       "_mesh_tier": "contributor"
     },
