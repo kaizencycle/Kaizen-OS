@@ -1,24 +1,24 @@
 {
   "schema": "MNS_AGGREGATE_V1",
-  "updated_at": "2026-07-12T23:43:01.455Z",
+  "updated_at": "2026-07-13T01:50:44.137Z",
   "node_count": 5,
   "live_nodes": 3,
-  "total_entries": 43,
+  "total_entries": 45,
   "nodes": [
     {
       "node_id": "mobius-substrate",
       "tier": "sentinel",
       "node_type": "substrate",
       "entry_count": 0,
-      "fetched_at": "2026-07-12T23:43:00.909Z",
+      "fetched_at": "2026-07-13T01:50:43.411Z",
       "error": null
     },
     {
       "node_id": "mobius-civic-ai-terminal",
       "tier": "contributor",
       "node_type": "app",
-      "entry_count": 16,
-      "fetched_at": "2026-07-12T23:43:01.455Z",
+      "entry_count": 18,
+      "fetched_at": "2026-07-13T01:50:44.136Z",
       "error": null
     },
     {
@@ -26,7 +26,7 @@
       "tier": "contributor",
       "node_type": "service",
       "entry_count": 27,
-      "fetched_at": "2026-07-12T23:43:00.982Z",
+      "fetched_at": "2026-07-13T01:50:43.436Z",
       "error": null
     },
     {
@@ -47,6 +47,124 @@
     }
   ],
   "entries": [
+    {
+      "id": "715b79f4-merge",
+      "timestamp": "2026-07-13T01:39:13Z",
+      "author": "kaizencycle",
+      "title": "docs(C-370): file DISPUTED/PARTIAL closing seal",
+      "type": "merge",
+      "severity": "info",
+      "tags": [
+        "merge",
+        "pr"
+      ],
+      "source": "github-commit",
+      "verified": false,
+      "sha": "715b79f41ef33aad9d44269b68f5b92a1a98be22",
+      "_mesh_node": "mobius-civic-ai-terminal",
+      "_mesh_tier": "contributor"
+    },
+    {
+      "id": "2ae379e7-merge",
+      "timestamp": "2026-07-13T01:16:43Z",
+      "author": "kaizencycle",
+      "title": "feat(C-370): EVE KV watchdog cron (Option B)",
+      "type": "merge",
+      "severity": "info",
+      "tags": [
+        "merge",
+        "pr"
+      ],
+      "source": "github-commit",
+      "verified": false,
+      "sha": "2ae379e7b4345dea2710db732031283a13e119fa",
+      "_mesh_node": "mobius-civic-ai-terminal",
+      "_mesh_tier": "contributor"
+    },
+    {
+      "id": "fc280bc0-merge",
+      "timestamp": "2026-07-13T01:00:12Z",
+      "author": "kaizencycle",
+      "title": "docs(C-370): EVE KV watchdog implementation intent (ready)",
+      "type": "merge",
+      "severity": "info",
+      "tags": [
+        "merge",
+        "pr"
+      ],
+      "source": "github-commit",
+      "verified": false,
+      "sha": "fc280bc0498bf6ea569136f1beb5cefe8e35eaa8",
+      "_mesh_node": "mobius-civic-ai-terminal",
+      "_mesh_tier": "contributor"
+    },
+    {
+      "id": "757504a4-merge",
+      "timestamp": "2026-07-13T00:48:57Z",
+      "author": "kaizencycle",
+      "title": "docs(C-370): governance follow-ups + EVE KV watchdog proposal",
+      "type": "merge",
+      "severity": "info",
+      "tags": [
+        "merge",
+        "pr"
+      ],
+      "source": "github-commit",
+      "verified": false,
+      "sha": "757504a4f17a20bdc0502402367e808f0de642f0",
+      "_mesh_node": "mobius-civic-ai-terminal",
+      "_mesh_tier": "contributor"
+    },
+    {
+      "id": "80d2d16d-merge",
+      "timestamp": "2026-07-13T00:17:54Z",
+      "author": "kaizencycle",
+      "title": "docs(C-370): confirm chain continuity KV audit findings",
+      "type": "merge",
+      "severity": "info",
+      "tags": [
+        "merge",
+        "pr"
+      ],
+      "source": "github-commit",
+      "verified": false,
+      "sha": "80d2d16d846ae979dc719ee711ec55ff8b653a7c",
+      "_mesh_node": "mobius-civic-ai-terminal",
+      "_mesh_tier": "contributor"
+    },
+    {
+      "id": "861b7b49-zeus-verify",
+      "timestamp": "2026-07-13T00:04:03Z",
+      "author": "ZEUS",
+      "title": "zeus: verification disputed · C-370 [skip ci]",
+      "type": "zeus-verify",
+      "severity": "info",
+      "tags": [
+        "zeus"
+      ],
+      "source": "github-commit",
+      "verified": false,
+      "sha": "861b7b490a86480d68dd9e76fe783910ea77dad4",
+      "_mesh_node": "mobius-civic-ai-terminal",
+      "_mesh_tier": "contributor"
+    },
+    {
+      "id": "194cfdb3-merge",
+      "timestamp": "2026-07-12T23:59:38Z",
+      "author": "kaizencycle",
+      "title": "docs(c370): chain continuity handoff + hot KV lineage audit",
+      "type": "merge",
+      "severity": "info",
+      "tags": [
+        "merge",
+        "pr"
+      ],
+      "source": "github-commit",
+      "verified": false,
+      "sha": "194cfdb30298ad143c1fe88d3cd9101968be1ea0",
+      "_mesh_node": "mobius-civic-ai-terminal",
+      "_mesh_tier": "contributor"
+    },
     {
       "id": "79820836-merge",
       "timestamp": "2026-07-12T21:39:08Z",
@@ -233,90 +351,6 @@
       "source": "github-commit",
       "verified": false,
       "sha": "641152bc3907309668637237fa08fa56510d3328",
-      "_mesh_node": "mobius-civic-ai-terminal",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "580e391e-merge",
-      "timestamp": "2026-07-12T17:21:03Z",
-      "author": "cursor-agent",
-      "title": "docs(C-370): custodian status update on archived opener",
-      "type": "merge",
-      "severity": "info",
-      "tags": [
-        "merge",
-        "pr"
-      ],
-      "source": "github-commit",
-      "verified": false,
-      "sha": "580e391e64728bc5f9be0b7e2850a6d401a39b35",
-      "_mesh_node": "mobius-civic-ai-terminal",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "6bb9f81a-merge",
-      "timestamp": "2026-07-12T16:51:45Z",
-      "author": "cursor-agent",
-      "title": "docs(C-370): archive Michael custodian opener and index artifacts",
-      "type": "merge",
-      "severity": "info",
-      "tags": [
-        "merge",
-        "pr"
-      ],
-      "source": "github-commit",
-      "verified": false,
-      "sha": "6bb9f81a362810f53b76761f3d8a9f8a3d501d20",
-      "_mesh_node": "mobius-civic-ai-terminal",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "3600c5e7-merge",
-      "timestamp": "2026-07-12T16:45:39Z",
-      "author": "cursor-agent",
-      "title": "epicon(C-370): handoff to AUREA for remaining 18 items",
-      "type": "merge",
-      "severity": "info",
-      "tags": [
-        "merge",
-        "pr"
-      ],
-      "source": "github-commit",
-      "verified": false,
-      "sha": "3600c5e7f148e8ede511a398f43500b1bb9cfccd",
-      "_mesh_node": "mobius-civic-ai-terminal",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "a18a6719-merge",
-      "timestamp": "2026-07-12T16:37:54Z",
-      "author": "kaizencycle",
-      "title": "epicon(C-370): ratify MIC issuance doctrine, gate earnMIC on Fountain GI threshold",
-      "type": "merge",
-      "severity": "info",
-      "tags": [
-        "merge",
-        "pr"
-      ],
-      "source": "github-commit",
-      "verified": false,
-      "sha": "a18a67198a19b2d428eec361a891d144fc1dcb04",
-      "_mesh_node": "mobius-civic-ai-terminal",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "283de0ea-zeus-verify",
-      "timestamp": "2026-07-12T12:03:02Z",
-      "author": "ZEUS",
-      "title": "zeus: verification disputed · C-370 [skip ci]",
-      "type": "zeus-verify",
-      "severity": "info",
-      "tags": [
-        "zeus"
-      ],
-      "source": "github-commit",
-      "verified": false,
-      "sha": "283de0ea57f7d72b71a3727dc14229ec537102c9",
       "_mesh_node": "mobius-civic-ai-terminal",
       "_mesh_tier": "contributor"
     },
