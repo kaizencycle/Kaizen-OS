@@ -20,7 +20,7 @@ See terminal repo: `docs/epicon/cycles/C-372/EPICON_C-372_INFRA_journal-parcel-f
 ```intent
 epicon_id: EPICON_C-372_INFRA_journal-parcel-flush_v1
 ledger_id: kaizencycle
-scope: ci
+scope: ci,docs,specs
 mode: normal
 issued_at: 2026-07-14T17:00:00Z
 expires_at: 2026-10-12T17:00:00Z
@@ -32,7 +32,7 @@ justification:
     - scripts/verify-parcel-chain.mjs
     - .github/workflows/canon-journal-verify.yml
   BOUNDARIES: Reserve Block .dat lane unchanged. Branch protection for App-only writes is operator ruleset step. Genesis scaffold PRs skip seal attestation when no parcel files present.
-  COUNTERFACTUAL: If Intent Publication Gate rejects this block, use a single allowed scope value (ci) and structured COUNTERFACTUAL before merge.
+  COUNTERFACTUAL: If Intent Publication Gate or PR bot rejects scope, declare ci,docs,specs union to cover workflow, canon scaffold, and EPICON doc paths.
 counterfactuals:
   - Corrupted footer hash rejected by workflow
   - Missing TERMINAL_API_BASE fails closed only when parcel files are in the PR
