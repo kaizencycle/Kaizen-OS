@@ -20,18 +20,23 @@ import {
 } from './lib/parcel-format.mjs';
 
 const rootDir = process.argv[2] ?? 'canon/journal';
+const PARCEL_FILENAME_RE = /^parcel-\d+\.jsonl$/;
 
-function walkParcels(dir, acc = []) {
-  if (!existsSync(dir)) return acc;
+function walkJournalDir(dir, parcels = [], strayJsonl = []) {
+  if (!existsSync(dir)) return { parcels, strayJsonl };
   for (const name of readdirSync(dir)) {
     const full = join(dir, name);
     if (statSync(full).isDirectory()) {
-      walkParcels(full, acc);
+      walkJournalDir(full, parcels, strayJsonl);
     } else if (name.endsWith('.jsonl')) {
-      acc.push(full);
+      if (PARCEL_FILENAME_RE.test(name)) {
+        parcels.push(full);
+      } else {
+        strayJsonl.push(full);
+      }
     }
   }
-  return acc;
+  return { parcels, strayJsonl };
 }
 
 function main() {
@@ -41,7 +46,16 @@ function main() {
     process.exit(0);
   }
 
-  const files = walkParcels(absRoot);
+  const { parcels: files, strayJsonl } = walkJournalDir(absRoot);
+  if (strayJsonl.length > 0) {
+    console.error('✗ Unsealed JSONL files are not allowed in canon/journal/ (use parcel-NNN.jsonl only):');
+    for (const filepath of strayJsonl) {
+      const relPath = filepath.replace(process.cwd() + '/', '').replace(/\\/g, '/');
+      console.error(`  - ${relPath}`);
+    }
+    process.exit(1);
+  }
+
   if (files.length === 0) {
     console.log('No parcel .jsonl files found — genesis state (ok)');
     process.exit(0);

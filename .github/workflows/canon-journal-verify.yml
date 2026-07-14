@@ -34,7 +34,7 @@ jobs:
     timeout-minutes: 10
 
     steps:
-      - name: Checkout
+      - name: Checkout PR head
         uses: actions/checkout@v7
         with:
           fetch-depth: 0
@@ -48,11 +48,30 @@ jobs:
         id: chain
         run: node scripts/verify-parcel-chain.mjs canon/journal/
 
+      - name: Checkout trusted EPICON Guard (base ref)
+        uses: actions/checkout@v7
+        with:
+          ref: ${{ github.event.pull_request.base.sha }}
+          sparse-checkout: |
+            .github/actions/epicon-guard
+          sparse-checkout-cone-mode: true
+          path: trusted-guard
+
       - name: EPICON Guard (intent publication)
-        uses: ./.github/actions/epicon-guard
+        uses: ./trusted-guard/.github/actions/epicon-guard
         with:
           mode: enforce
           policy-ref: base
+
+      - name: Reject unsealed JSONL in canon/journal
+        run: |
+          set -euo pipefail
+          mapfile -t STRAY < <(find canon/journal -name '*.jsonl' ! -name 'parcel-*.jsonl' 2>/dev/null || true)
+          if [ "${#STRAY[@]}" -gt 0 ]; then
+            echo "::error::Unsealed JSONL files in canon/journal/ (only parcel-*.jsonl allowed):"
+            printf '%s\n' "${STRAY[@]}"
+            exit 1
+          fi
 
       - name: Attest seal_hash against Terminal public endpoint
         env:
