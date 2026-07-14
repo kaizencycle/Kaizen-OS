@@ -1,0 +1,135 @@
+# ## Authority Provenance
+# C-372 journal parcel cold canon verification. Authority declared using
+# docs/templates/EPICON_FOUNDER_STANDING.md — @kaizencycle (Custodian, DVA.02).
+#
+# MOBIUS-CLASS: canon-integrity
+# OWNER: @kaizencycle
+# INTRODUCED: C-372
+# STATUS: active
+# PURPOSE: On PR touching canon/journal/**, verify parcel hash chain offline,
+#          confirm seal_hash matches quorum-attested seal (fail closed if endpoint
+#          unreachable), and require EPICON Guard pass (repo-wide on all PRs).
+
+name: Journal Parcel Canon Verify
+
+on:
+  pull_request:
+    paths:
+      - 'canon/journal/**'
+      - 'scripts/verify-parcel-chain.mjs'
+      - 'scripts/lib/parcel-format.mjs'
+      - '.github/workflows/canon-journal-verify.yml'
+
+permissions:
+  contents: read
+  pull-requests: read
+
+concurrency:
+  group: canon-journal-verify-${{ github.head_ref }}
+  cancel-in-progress: true
+
+jobs:
+  verify-parcel-chain:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: '20'
+
+      - name: Verify parcel hash chain
+        id: chain
+        run: node scripts/verify-parcel-chain.mjs canon/journal/
+
+      - name: EPICON Guard (intent publication)
+        uses: ./.github/actions/epicon-guard
+        with:
+          mode: enforce
+          policy-ref: base
+
+      - name: Attest seal_hash against Terminal public endpoint
+        env:
+          TERMINAL_API_BASE: ${{ secrets.TERMINAL_API_BASE }}
+        run: |
+          set -euo pipefail
+          if [ -z "${TERMINAL_API_BASE:-}" ]; then
+            echo "::error::TERMINAL_API_BASE secret not set — fail closed (cannot verify quorum seal)"
+            exit 1
+          fi
+
+          mapfile -t PARCELS < <(find canon/journal -name 'parcel-*.jsonl' 2>/dev/null | sort || true)
+          if [ "${#PARCELS[@]}" -eq 0 ]; then
+            echo "No parcel files in PR diff scope — chain verify only"
+            exit 0
+          fi
+
+          for parcel in "${PARCELS[@]}"; do
+            SEAL_ID=$(node -e "
+              const fs = require('fs');
+              const line = fs.readFileSync('${parcel}', 'utf8').split('\n')[0];
+              const h = JSON.parse(line);
+              process.stdout.write(h.seal_id || '');
+            ")
+            SEAL_HASH=$(node -e "
+              const fs = require('fs');
+              const line = fs.readFileSync('${parcel}', 'utf8').split('\n')[0];
+              const h = JSON.parse(line);
+              process.stdout.write(h.seal_hash || '');
+            ")
+
+            if [ -z "$SEAL_ID" ] || [ -z "$SEAL_HASH" ]; then
+              echo "::error::${parcel}: missing seal_id or seal_hash in header"
+              exit 1
+            fi
+
+            HTTP_STATUS=$(curl -sS -o /tmp/seal.json -w "%{http_code}" \
+              "${TERMINAL_API_BASE}/api/vault/seal/${SEAL_ID}" \
+              --max-time 15 || echo "000")
+
+            if [ "$HTTP_STATUS" != "200" ]; then
+              echo "::error::Seal endpoint unreachable for ${SEAL_ID} (HTTP ${HTTP_STATUS}) — fail closed"
+              exit 1
+            fi
+
+            REMOTE_HASH=$(node -e "
+              const j = require('/tmp/seal.json');
+              const s = j.seal || j.candidate;
+              process.stdout.write((s && s.seal_hash) || '');
+            ")
+            REMOTE_STATUS=$(node -e "
+              const j = require('/tmp/seal.json');
+              const s = j.seal || j.candidate;
+              process.stdout.write((s && s.status) || '');
+            ")
+
+            if [ "$REMOTE_STATUS" != "attested" ]; then
+              echo "::error::Seal ${SEAL_ID} status is '${REMOTE_STATUS}' — expected attested"
+              exit 1
+            fi
+
+            if [ "$REMOTE_HASH" != "$SEAL_HASH" ]; then
+              echo "::error::${parcel}: seal_hash mismatch with quorum-attested seal"
+              echo "  parcel:   ${SEAL_HASH}"
+              echo "  terminal: ${REMOTE_HASH}"
+              exit 1
+            fi
+
+            echo "✓ ${parcel}: seal ${SEAL_ID} attested and hash matches"
+          done
+
+      - name: Job summary
+        if: always()
+        run: |
+          echo "## Journal Parcel Chain Verification" >> "$GITHUB_STEP_SUMMARY"
+          if [ "${{ steps.chain.outcome }}" == "success" ]; then
+            echo "### ✅ Parcel chain valid" >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "### ❌ Parcel chain invalid" >> "$GITHUB_STEP_SUMMARY"
+          fi
