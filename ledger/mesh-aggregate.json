@@ -1,24 +1,24 @@
 {
   "schema": "MNS_AGGREGATE_V1",
-  "updated_at": "2026-07-14T15:16:21.670Z",
+  "updated_at": "2026-07-14T17:03:03.839Z",
   "node_count": 5,
   "live_nodes": 3,
-  "total_entries": 34,
+  "total_entries": 27,
   "nodes": [
     {
       "node_id": "mobius-substrate",
       "tier": "sentinel",
       "node_type": "substrate",
       "entry_count": 0,
-      "fetched_at": "2026-07-14T15:16:21.322Z",
+      "fetched_at": "2026-07-14T17:03:03.594Z",
       "error": null
     },
     {
       "node_id": "mobius-civic-ai-terminal",
       "tier": "contributor",
       "node_type": "app",
-      "entry_count": 7,
-      "fetched_at": "2026-07-14T15:16:21.670Z",
+      "entry_count": 0,
+      "fetched_at": "2026-07-14T17:03:03.839Z",
       "error": null
     },
     {
@@ -26,7 +26,7 @@
       "tier": "contributor",
       "node_type": "service",
       "entry_count": 27,
-      "fetched_at": "2026-07-14T15:16:21.331Z",
+      "fetched_at": "2026-07-14T17:03:03.584Z",
       "error": null
     },
     {
@@ -47,119 +47,6 @@
     }
   ],
   "entries": [
-    {
-      "id": "56858419-zeus-verify",
-      "timestamp": "2026-07-14T12:02:13Z",
-      "author": "ZEUS",
-      "title": "zeus: verification disputed · C-372 [skip ci]",
-      "type": "zeus-verify",
-      "severity": "info",
-      "tags": [
-        "zeus"
-      ],
-      "source": "github-commit",
-      "verified": false,
-      "sha": "56858419cd8a493b76049b4543f6de6e3a7ce0bf",
-      "_mesh_node": "mobius-civic-ai-terminal",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "51ce68d6-zeus-verify",
-      "timestamp": "2026-07-14T06:04:03Z",
-      "author": "ZEUS",
-      "title": "zeus: verification disputed · C-372 [skip ci]",
-      "type": "zeus-verify",
-      "severity": "info",
-      "tags": [
-        "zeus"
-      ],
-      "source": "github-commit",
-      "verified": false,
-      "sha": "51ce68d629d5cd7fdbf236db68e2bcce546468fe",
-      "_mesh_node": "mobius-civic-ai-terminal",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "898dd74d-zeus-verify",
-      "timestamp": "2026-07-14T00:03:44Z",
-      "author": "ZEUS",
-      "title": "zeus: verification disputed · C-371 [skip ci]",
-      "type": "zeus-verify",
-      "severity": "info",
-      "tags": [
-        "zeus"
-      ],
-      "source": "github-commit",
-      "verified": false,
-      "sha": "898dd74de47162dada0586d4c498290f380c1a81",
-      "_mesh_node": "mobius-civic-ai-terminal",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "87163c73-zeus-verify",
-      "timestamp": "2026-07-13T18:02:42Z",
-      "author": "ZEUS",
-      "title": "zeus: verification disputed · C-371 [skip ci]",
-      "type": "zeus-verify",
-      "severity": "info",
-      "tags": [
-        "zeus"
-      ],
-      "source": "github-commit",
-      "verified": false,
-      "sha": "87163c73ca50e213d4c0965d4445387002a4617d",
-      "_mesh_node": "mobius-civic-ai-terminal",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "d8ead418-merge",
-      "timestamp": "2026-07-13T17:27:00Z",
-      "author": "kaizencycle",
-      "title": "C-371: Multi-agent reserve lineage verification (ZEUS / ECHO / JADE)",
-      "type": "merge",
-      "severity": "info",
-      "tags": [
-        "merge",
-        "pr"
-      ],
-      "source": "github-commit",
-      "verified": false,
-      "sha": "d8ead418bfc365931f0ae837616a235494b15709",
-      "_mesh_node": "mobius-civic-ai-terminal",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "558f781a-zeus-verify",
-      "timestamp": "2026-07-13T12:04:12Z",
-      "author": "ZEUS",
-      "title": "zeus: verification disputed · C-371 [skip ci]",
-      "type": "zeus-verify",
-      "severity": "info",
-      "tags": [
-        "zeus"
-      ],
-      "source": "github-commit",
-      "verified": false,
-      "sha": "558f781aaf099de9dbe05273a0d26080cce3172c",
-      "_mesh_node": "mobius-civic-ai-terminal",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "573950a5-zeus-verify",
-      "timestamp": "2026-07-13T06:04:15Z",
-      "author": "ZEUS",
-      "title": "zeus: verification disputed · C-371 [skip ci]",
-      "type": "zeus-verify",
-      "severity": "info",
-      "tags": [
-        "zeus"
-      ],
-      "source": "github-commit",
-      "verified": false,
-      "sha": "573950a54312786f15e62fa428a82d97fdd99f5b",
-      "_mesh_node": "mobius-civic-ai-terminal",
-      "_mesh_tier": "contributor"
-    },
     {
       "id": "EPICON-CPC-a41528a373a9363905c10015d85ac6b7bcc1df98",
       "node_id": "civic-protocol-core",
