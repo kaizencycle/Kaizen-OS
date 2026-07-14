@@ -1,24 +1,24 @@
 {
   "schema": "MNS_AGGREGATE_V1",
-  "updated_at": "2026-07-14T09:46:40.441Z",
+  "updated_at": "2026-07-14T11:17:41.706Z",
   "node_count": 5,
   "live_nodes": 3,
-  "total_entries": 35,
+  "total_entries": 34,
   "nodes": [
     {
       "node_id": "mobius-substrate",
       "tier": "sentinel",
       "node_type": "substrate",
       "entry_count": 0,
-      "fetched_at": "2026-07-14T09:46:39.818Z",
+      "fetched_at": "2026-07-14T11:17:41.323Z",
       "error": null
     },
     {
       "node_id": "mobius-civic-ai-terminal",
       "tier": "contributor",
       "node_type": "app",
-      "entry_count": 8,
-      "fetched_at": "2026-07-14T09:46:40.441Z",
+      "entry_count": 7,
+      "fetched_at": "2026-07-14T11:17:41.705Z",
       "error": null
     },
     {
@@ -26,7 +26,7 @@
       "tier": "contributor",
       "node_type": "service",
       "entry_count": 27,
-      "fetched_at": "2026-07-14T09:46:39.818Z",
+      "fetched_at": "2026-07-14T11:17:41.387Z",
       "error": null
     },
     {
@@ -158,23 +158,6 @@
       "source": "github-commit",
       "verified": false,
       "sha": "715b79f41ef33aad9d44269b68f5b92a1a98be22",
-      "_mesh_node": "mobius-civic-ai-terminal",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "2ae379e7-merge",
-      "timestamp": "2026-07-13T01:16:43Z",
-      "author": "kaizencycle",
-      "title": "feat(C-370): EVE KV watchdog cron (Option B)",
-      "type": "merge",
-      "severity": "info",
-      "tags": [
-        "merge",
-        "pr"
-      ],
-      "source": "github-commit",
-      "verified": false,
-      "sha": "2ae379e7b4345dea2710db732031283a13e119fa",
       "_mesh_node": "mobius-civic-ai-terminal",
       "_mesh_tier": "contributor"
     },
