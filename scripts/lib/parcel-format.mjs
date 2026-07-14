@@ -85,7 +85,7 @@ export function buildAttestationVerdicts(attestations) {
  * @param {number} input.entry_count
  * @param {string} input.prev_parcel_hash
  * @param {string} input.created_at
- * @param {Record<string, { verdict: string, rationale: string }>|undefined} input.attestations
+ * @param {Record<string, { verdict: string, rationale: string }>|undefined} [input.attestations]
  * @param {unknown[]} input.entries
  */
 export function buildParcelFile(input) {
@@ -130,7 +130,7 @@ export function buildParcelFile(input) {
 
 /**
  * Parse a parcel JSONL file and verify internal hash.
- * @returns {{ ok: boolean, error?: string, header?: object, parcelHash?: string, entryCount?: number }}
+ * @returns {{ ok: boolean, error?: string, header?: object, parcelHash?: string, entryCount?: number, prevParcelHash?: string, sealHash?: string, sealId?: string }}
  */
 export function verifyParcelFileContent(content) {
   const trimmed = content.trimEnd();

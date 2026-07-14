@@ -59,15 +59,16 @@ jobs:
           TERMINAL_API_BASE: ${{ secrets.TERMINAL_API_BASE }}
         run: |
           set -euo pipefail
-          if [ -z "${TERMINAL_API_BASE:-}" ]; then
-            echo "::error::TERMINAL_API_BASE secret not set — fail closed (cannot verify quorum seal)"
-            exit 1
-          fi
 
           mapfile -t PARCELS < <(find canon/journal -name 'parcel-*.jsonl' 2>/dev/null | sort || true)
           if [ "${#PARCELS[@]}" -eq 0 ]; then
-            echo "No parcel files in PR diff scope — chain verify only"
+            echo "No parcel files in PR — skipping seal attestation (genesis scaffold ok)"
             exit 0
+          fi
+
+          if [ -z "${TERMINAL_API_BASE:-}" ]; then
+            echo "::error::TERMINAL_API_BASE secret not set — fail closed (cannot verify quorum seal for parcel PR)"
+            exit 1
           fi
 
           for parcel in "${PARCELS[@]}"; do
