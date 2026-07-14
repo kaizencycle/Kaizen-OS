@@ -1,6 +1,8 @@
 # Canon Writer Repair — mobius-bot-state-sync
 
-**Status:** Blocked (P0) · Issues [#339](https://github.com/kaizencycle/Mobius-Substrate/issues/339), [#351](https://github.com/kaizencycle/Mobius-Substrate/issues/351)
+**Status:** Blocked (P0) · Issues [#339](https://github.com/kaizencycle/Mobius-Substrate/issues/339), [#351](https://github.com/kaizencycle/Mobius-Substrate/issues/351), [#371](https://github.com/kaizencycle/Mobius-Substrate/issues/371)
+
+**Verified:** 2026-07-14 — `cycle.json` at **C-360**; arithmetic expected **C-372** (12-cycle lag). `STATE/writer-health.json` last success **2026-06-30** (`C-358`), status `blocked`.
 
 ## Root cause
 
