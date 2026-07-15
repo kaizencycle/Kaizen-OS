@@ -354,6 +354,7 @@ EPICON-02 does **NOT**:
 |----------|----------|
 | EPICON-01 Specification | [`EPICON-01.md`](./EPICON-01.md) |
 | EPICON-02 Formal Invariants | [`EPICON-02-INVARIANTS.md`](./EPICON-02-INVARIANTS.md) |
+| Witness Protocol | [`../WITNESS_PROTOCOL.md`](../WITNESS_PROTOCOL.md) — sibling protocol: gates claims before acceptance (ref verification); EPICON-02 gates intent before authority |
 | Consensus Authority Flow | [`CONSENSUS_AUTH_FLOW.md`](../03-GOVERNANCE-AND-POLICY/governance/CONSENSUS_AUTH_FLOW.md) |
 | AVM Specification | [`AVM.md`](../authority/AVM.md) |
 | Blockchain for Intent Essay | [`mobius_blockchain_for_intent.md`](../public/mobius_blockchain_for_intent.md) |
