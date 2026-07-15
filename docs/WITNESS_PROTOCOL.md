@@ -1,6 +1,6 @@
 # Witness Protocol — Report Discloses; Repo Witnesses
 
-**Version:** 1.0.0  
+**Version:** 1.0.2  
 **Cycle:** C-373  
 **Status:** CANONICAL  
 **Layer:** Epistemic Governance  
@@ -84,13 +84,28 @@ git rev-parse <tag>^{}        # only after force-fetch or ls-remote agrees
 
 ## 4. Provenance — C-373 origin (2026-07-15)
 
-Forced into existence by three witness failures in one afternoon on the **epicon** MVP extraction lane, each caught by a different party:
+Forced into existence by **five** witness failures in one afternoon — three on the **epicon** MVP extraction lane, two on the **Substrate** canonization of this protocol — each caught by a different party:
+
+| # | Failure | Witness | Hole closed |
+| --- | --- | --- | --- |
+| 1 | Agent completion report ran **ahead** of `main` | Human / custodian | Report discloses; ref-verify before acceptance |
+| 2 | External fetch / CDN render ran **behind** `main` | Human / custodian | Check refs, not renders |
+| 3 | Floating `v1` **force-moved** (`c0e5e10` → `1f9090d`) | Tag movement log + `git ls-remote` | Peeled SHAs; logged retags only post-merge |
+| 4 | Canonization PR [#387](https://github.com/kaizencycle/Mobius-Substrate/pull/387) intent block **malformed** (missing `epicon_id`, `COUNTERFACTUAL` inside `justification`) | **EPICON Guard** FAIL_CLOSED (EP-3) | I6 structural keys; authority provenance on binding docs |
+| 5 | Cycle-close canon used `git fetch --tags` without **force** on moved tags | **Codex** automated review (P2) | `git fetch --force --tags` or `git ls-remote` before `rev-parse` |
+
+The protocol was not designed in the abstract; every rule above closes a hole that was actually exploited by accident. Trust it accordingly.
+
+### epicon lane (failures 1–3)
 
 1. **Agent report ahead of main** — a completion report described merged/shipped state before `origin/main` contained the work (Cursor / PR #19 window).
 2. **External fetch behind main** — a rendered or CDN-backed view presented stale content as current (refs had already advanced).
 3. **Distribution tag drift** — floating `v1` was force-updated; prior target `c0e5e10`, post–PR #22 target `1f9090d` (movement logged in epicon release docs).
 
-The protocol was not designed in the abstract; every rule above closes a hole that was actually exploited by accident. Trust it accordingly.
+### Substrate canonization lane (failures 4–5)
+
+4. **Guard FAIL_CLOSED on own amendment** — [PR #387](https://github.com/kaizencycle/Mobius-Substrate/pull/387) first push (`7e6549c`) failed Intent Publication Gate (missing `epicon_id`, `justification.COUNTERFACTUAL`) and Authority Provenance (binding doc without founder standing); Catalog Freshness caught `mobius_catalog.json` drift. Fixed in `ca929fca`.
+5. **Codex P2 on draft canon** — `git fetch origin main --tags` in §3 could reproduce failure #3 locally; fixed in `e50ab859` (document control v1.0.1).
 
 ### Resolvable references (verify by ref)
 
@@ -101,7 +116,11 @@ The protocol was not designed in the abstract; every rule above closes a hole th
 | epicon PR #22 | https://github.com/kaizencycle/epicon/pull/22 |
 | `v1` retag `c0e5e10` → `1f9090d` | https://github.com/kaizencycle/epicon/blob/main/docs/releases/v1.md#movement-log |
 | Tag policy (product copy) | https://github.com/kaizencycle/epicon/blob/main/docs/releases/TAG_POLICY.md |
+| Substrate PR #387 (Witness Protocol canon) | https://github.com/kaizencycle/Mobius-Substrate/pull/387 |
+| Guard fix commit | `ca929fca` on `cursor/witness-protocol-canon-c373-0e02` |
+| Codex P2 fix commit | `e50ab859` on `cursor/witness-protocol-canon-c373-0e02` |
 | EPICON-02 invariant I6 (no narrative without verification) | [`docs/epicon/EPICON-02.md`](./epicon/EPICON-02.md) §2.6 |
+| I7 follow-up (witness-table enforcement) | https://github.com/kaizencycle/Mobius-Substrate/issues/386 |
 
 If any reference above 404s or SHAs disagree at verification time, mark the row **STALE** in your witness table and re-witness — do not assert from memory.
 
@@ -140,6 +159,7 @@ EPICON-02 publishes *why* authority may be exercised. The Witness Protocol verif
 | --- | --- | --- |
 | 1.0.0 | 2026-07-15 | Initial canon — C-373 ATLAS handoff |
 | 1.0.1 | 2026-07-15 | Cycle-close canon: force-fetch / ls-remote for moved floating tags (Codex P2) |
+| 1.0.2 | 2026-07-15 | Provenance: five-failure origin table (epicon lane + Guard + Codex on PR #387) |
 
 **Follow-up (out of scope for canon PR):** Guard invariant **I7: witness-table enforcement** — automate witness-table presence on completion reports; file as issue, do not block this doc.
 

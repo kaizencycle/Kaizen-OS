@@ -1,6 +1,6 @@
 {
   "mobius_catalog_version": "1.0.0",
-  "generated_at": "2026-07-15T21:49:43.137Z",
+  "generated_at": "2026-07-15T21:54:11.413Z",
   "repo": {
     "name": "Mobius-Substrate",
     "url": "https://github.com/kaizencycle/Mobius-Substrate",
@@ -7386,7 +7386,7 @@
       "title": "Witness Protocol — Report Discloses; Repo Witnesses",
       "category": "WITNESS_PROTOCOL.md",
       "tags": [],
-      "content_hash": "sha256:f6cda29cddfbec67b7cd3bfcd931f034d5b79c3bff2f09cb916215aa2ce9b20e",
+      "content_hash": "sha256:e23d932cc484f9a2c042deaa25ac3cdfddd1f67a9c2c46465f9e323b17b60aaf",
       "summary": ""
     },
     {
