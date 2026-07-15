@@ -1,6 +1,6 @@
 {
   "mobius_catalog_version": "1.0.0",
-  "generated_at": "2026-07-15T21:46:58.075Z",
+  "generated_at": "2026-07-15T21:49:43.137Z",
   "repo": {
     "name": "Mobius-Substrate",
     "url": "https://github.com/kaizencycle/Mobius-Substrate",
@@ -7386,7 +7386,7 @@
       "title": "Witness Protocol — Report Discloses; Repo Witnesses",
       "category": "WITNESS_PROTOCOL.md",
       "tags": [],
-      "content_hash": "sha256:1d56bd9aab8dde9537674e7e33ba9d339e31f85d22df7db0d1abfafe18e396eb",
+      "content_hash": "sha256:f6cda29cddfbec67b7cd3bfcd931f034d5b79c3bff2f09cb916215aa2ce9b20e",
       "summary": ""
     },
     {
@@ -8361,7 +8361,7 @@
       "title": "ATLAS Handoff Template",
       "category": "templates",
       "tags": [],
-      "content_hash": "sha256:b669962a04b8b3b37bab85ae0dbf45fad7543cb03734a879d995a264308a22df",
+      "content_hash": "sha256:42374d60e3550c6f6c5e9d0918a805b0461d8bfe7e0884a1934fb8889a301d02",
       "summary": ""
     },
     {

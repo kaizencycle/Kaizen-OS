@@ -60,9 +60,15 @@ Incident window: three witness failures in one afternoon on [`kaizencycle/epicon
 ## 3. Cycle-close verification canon
 
 ```bash
-git fetch origin main --tags
+git fetch origin main
+# Floating/moved tags: plain --tags will NOT overwrite a stale local tag after a force-move.
+# Use --force, or witness remote refs directly (preferred when verifying a retag).
+git fetch origin --force --tags
+# Alternative for implicated distribution tags (no local cache):
+git ls-remote origin refs/tags/<tag>^{}
+
 git rev-parse origin/main^{}
-git rev-parse <tag>^{}        # for every distribution tag implicated by the claim
+git rev-parse <tag>^{}        # only after force-fetch or ls-remote agrees
 <run the repo's test suite>
 # record: UTC timestamp + every SHA verified
 ```
@@ -70,6 +76,7 @@ git rev-parse <tag>^{}        # for every distribution tag implicated by the cla
 ### Rules
 
 - **Always compare peeled (`^{}`) SHAs, never tag-object SHAs.** Annotated tags created at different moments have different tag-object SHAs while pointing at identical code; comparing unpeeled SHAs produces false drift alarms.
+- **Force-moved floating tags require forced fetch or `git ls-remote`.** If you already fetched `v1` at `c0e5e10` and remote moved it to `1f9090d`, `git fetch origin main --tags` rejects the update (*would clobber existing tag*) and `git rev-parse v1^{}` witnesses stale local data. Use `git fetch origin --force --tags`, a per-tag refspec (`git fetch origin +refs/tags/v1:refs/tags/v1`), or `git ls-remote origin refs/tags/v1^{}` before recording the witness table.
 - A one-commit lag between a tag and `main` is expected when the tag-movement log is committed after tagging (causality constraint, not drift).
 - **Floating tags** (e.g., `v1`) move only to commits already on `main` — post-merge, never pre-merge. Every movement is logged in the product repo's release docs (see epicon [`docs/releases/v1.md`](https://github.com/kaizencycle/epicon/blob/main/docs/releases/v1.md) movement log; canon does not duplicate product release files).
 
@@ -132,6 +139,7 @@ EPICON-02 publishes *why* authority may be exercised. The Witness Protocol verif
 | Version | Date | Change |
 | --- | --- | --- |
 | 1.0.0 | 2026-07-15 | Initial canon — C-373 ATLAS handoff |
+| 1.0.1 | 2026-07-15 | Cycle-close canon: force-fetch / ls-remote for moved floating tags (Codex P2) |
 
 **Follow-up (out of scope for canon PR):** Guard invariant **I7: witness-table enforcement** — automate witness-table presence on completion reports; file as issue, do not block this doc.
 

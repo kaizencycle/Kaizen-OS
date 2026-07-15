@@ -83,7 +83,9 @@ Verdicts: `TRUE`, `FALSE`, `STALE`, `TRUE-gap`. Evidence: SHA, ref, command outp
 ### Cycle-close command canon
 
 ```bash
-git fetch origin main --tags
+git fetch origin main
+git fetch origin --force --tags   # required after floating-tag moves; plain --tags may refuse
+# or: git ls-remote origin refs/tags/<tag>^{}
 git rev-parse origin/main^{}
 git rev-parse <tag>^{}    # for each distribution tag cited
 <repo test suite>
