@@ -1,6 +1,6 @@
 {
   "schema": "MOBIUS_PULSE_V1",
-  "updated_at": "2026-07-15T01:24:28.615Z",
+  "updated_at": "2026-07-15T04:40:55.505Z",
   "cycle": "C-360",
   "cycle_date": "2026-07-02",
   "aggregate": {
@@ -11,9 +11,9 @@
   "network_mii": 0.85,
   "terminal_snapshot": {
     "ok": true,
-    "gi": 0.72,
+    "gi": 0.738,
     "mode": "yellow",
-    "cycle": "C-372"
+    "cycle": "C-373"
   },
   "notes": "Pulse is derived from cycle.json + mesh-aggregate + network-mii + optional Terminal snapshot-lite. HIVE and browser-shell should treat this file as read-only input."
 }
