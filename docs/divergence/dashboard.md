@@ -1,14 +1,14 @@
 # Divergence Dashboard
 
 **Repo:** `kaizencycle/Mobius-Substrate`  
-**Generated:** `2026-07-14T19:39:58Z`  
-**Open PRs:** `8`
+**Generated:** `2026-07-15T03:27:20Z`  
+**Open PRs:** `7`
 
 ## Summary
 
 | Severity | Count |
 |----------|-------|
-| 🔴 High | 4 |
+| 🔴 High | 3 |
 | 🟡 Medium | 0 |
 | 🟢 Low | 0 |
 | ⚪ Unknown | 4 |
@@ -20,7 +20,6 @@
 |-----|---:|-------|--------|--------|------|------|---------|
 | 🔴 high | [#381](https://github.com/kaizencycle/Mobius-Substrate/pull/381) | chore(deps): bump actions/checkout from 4 to 7 in ... | @dependabot[bot] | ? | ? | — | 2026-07-13 |
 | 🔴 high | [#382](https://github.com/kaizencycle/Mobius-Substrate/pull/382) | chore(deps): bump the npm-minor-patch group across... | @dependabot[bot] | ? | ? | — | 2026-07-13 |
-| 🔴 high | [#383](https://github.com/kaizencycle/Mobius-Substrate/pull/383) | docs: canon writer repair triage for #351 and #371 | @kaizencycle | ? | ? | — | 2026-07-14 |
 | 🔴 high | [#385](https://github.com/kaizencycle/Mobius-Substrate/pull/385) | fix(labs): replace lab7 workrepo gitlink with trac... | @kaizencycle | ? | ? | — | 2026-07-14 |
 | ⚪ unknown | [#344](https://github.com/kaizencycle/Mobius-Substrate/pull/344) | chore(deps): bump zustand from 4.5.7 to 5.0.14 | @dependabot[bot] | ? | ? | — | 2026-06-30 |
 | ⚪ unknown | [#345](https://github.com/kaizencycle/Mobius-Substrate/pull/345) | chore(deps): bump lucide-react from 0.378.0 to 1.2... | @dependabot[bot] | ? | ? | — | 2026-07-07 |

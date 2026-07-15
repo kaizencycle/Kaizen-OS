@@ -1,9 +1,9 @@
 {
   "repo": "kaizencycle/Mobius-Substrate",
-  "generated_at": "2026-07-14T19:39:58Z",
-  "open_pr_count": 8,
+  "generated_at": "2026-07-15T03:27:20Z",
+  "open_pr_count": 7,
   "by_severity": {
-    "high": 4,
+    "high": 3,
     "medium": 0,
     "low": 0,
     "unknown": 4
@@ -34,23 +34,6 @@
       "author": "dependabot[bot]",
       "updated_at": "2026-07-13T15:55:36Z",
       "created_at": "2026-07-13T15:55:15Z",
-      "labels": [],
-      "mode": "normal",
-      "has_debt": false,
-      "severity": "high",
-      "justification_hash": "",
-      "checks": {
-        "epicon": "unknown",
-        "merge_gate": "unknown"
-      }
-    },
-    {
-      "pr": 383,
-      "title": "docs: canon writer repair triage for #351 and #371",
-      "url": "https://github.com/kaizencycle/Mobius-Substrate/pull/383",
-      "author": "kaizencycle",
-      "updated_at": "2026-07-14T16:06:18Z",
-      "created_at": "2026-07-14T16:06:04Z",
       "labels": [],
       "mode": "normal",
       "has_debt": false,
