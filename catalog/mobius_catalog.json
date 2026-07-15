@@ -1,11 +1,11 @@
 {
   "mobius_catalog_version": "1.0.0",
-  "generated_at": "2026-07-14T17:36:18.739Z",
+  "generated_at": "2026-07-15T04:55:42.774Z",
   "repo": {
     "name": "Mobius-Substrate",
     "url": "https://github.com/kaizencycle/Mobius-Substrate",
     "default_branch": "main",
-    "commit": ""
+    "commit": "086c314bbb7494182791f6fc41c5ac26c979c812"
   },
   "stats": {
     "epiconCount": 0,
@@ -7977,7 +7977,7 @@
       "title": "Journal parcel flush lane — Substrate verifier + workflow",
       "category": "epicon",
       "tags": [],
-      "content_hash": "sha256:e69d22dee6d39d6fe187362aa5a6e47452f05a9c52b649d9898ca0a03b22a6a4",
+      "content_hash": "sha256:0546f1cf94e47d6395fb35ca01ba679deb00f6189eaed9bcb7f5914bb1819f7b",
       "summary": ""
     },
     {
