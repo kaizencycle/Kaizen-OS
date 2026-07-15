@@ -1,16 +1,9 @@
 {
   "schema": "MNS_NETWORK_MII_V1",
-  "computed_at": "2026-07-14T15:16:21.715Z",
+  "computed_at": "2026-07-14T23:42:03.817Z",
   "network_mii": 0.85,
-  "node_count": 2,
+  "node_count": 1,
   "nodes": [
-    {
-      "node_id": "mobius-civic-ai-terminal",
-      "tier": "contributor",
-      "mii_baseline": 0.85,
-      "weight": 0.7,
-      "entry_count": 7
-    },
     {
       "node_id": "civic-protocol-core",
       "tier": "contributor",

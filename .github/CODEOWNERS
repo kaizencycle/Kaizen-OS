@@ -124,6 +124,8 @@
 # =============================================================================
 # Canon State & Protocol Doctrine (C-339)
 # =============================================================================
+# C-372 journal parcel cold canon — DAEDALUS App single writer
+/canon/journal/                   @kaizencycle/atlas @kaizencycle/hermes
 # cycle.json is the authoritative cycle pointer; STATE/ mirrors hot state.
 /cycle.json                      @kaizencycle @kaizencycle/stewards
 /STATE/                          @kaizencycle @kaizencycle/stewards
