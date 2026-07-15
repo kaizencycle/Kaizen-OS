@@ -1,15 +1,15 @@
 {
   "mobius_catalog_version": "1.0.0",
-  "generated_at": "2026-07-15T04:55:42.774Z",
+  "generated_at": "2026-07-15T21:46:58.075Z",
   "repo": {
     "name": "Mobius-Substrate",
     "url": "https://github.com/kaizencycle/Mobius-Substrate",
     "default_branch": "main",
-    "commit": "086c314bbb7494182791f6fc41c5ac26c979c812"
+    "commit": ""
   },
   "stats": {
     "epiconCount": 0,
-    "docCount": 1028
+    "docCount": 1030
   },
   "epicons": [],
   "docs": [
@@ -7382,6 +7382,14 @@
       "summary": ""
     },
     {
+      "path": "docs/WITNESS_PROTOCOL.md",
+      "title": "Witness Protocol — Report Discloses; Repo Witnesses",
+      "category": "WITNESS_PROTOCOL.md",
+      "tags": [],
+      "content_hash": "sha256:1d56bd9aab8dde9537674e7e33ba9d339e31f85d22df7db0d1abfafe18e396eb",
+      "summary": ""
+    },
+    {
       "path": "docs/WORKFLOW_CONSOLIDATION_PLAN.md",
       "title": "Workflow Consolidation Plan — EPICON Era",
       "category": "WORKFLOW_CONSOLIDATION_PLAN.md",
@@ -7482,7 +7490,7 @@
       "title": "EPICON-02: Intent Publication & Divergence Protocol (IPDP)",
       "category": "epicon",
       "tags": [],
-      "content_hash": "sha256:4f6f0cdffc929533006a56d7c83343ac2a04483d7e654e2bf5c6db97d1357dbe",
+      "content_hash": "sha256:4ed97b2fb364fb0d7c5a67d033a9529b2402360f00405441c948269fd3510742",
       "summary": ""
     },
     {
@@ -7604,7 +7612,7 @@
       "title": "EPICON-01 — Epistemic Constraint Layer",
       "category": "epicon",
       "tags": [],
-      "content_hash": "sha256:f6e65e3297e1fb1b93c68ae79a0774a40c8d5a47a9a204d3009be399071627d4",
+      "content_hash": "sha256:528cdf8ae2b0ad0ebc20dca8120cfdfedaec9910c9c571f945da84ecff28d626",
       "summary": ""
     },
     {
@@ -8346,6 +8354,14 @@
       "category": "specs",
       "tags": [],
       "content_hash": "sha256:fcdc47a593a62dfd1577d52015a674b4c3816359feff9d47b40317defd75e8cf",
+      "summary": ""
+    },
+    {
+      "path": "docs/templates/ATLAS_HANDOFF_TEMPLATE.md",
+      "title": "ATLAS Handoff Template",
+      "category": "templates",
+      "tags": [],
+      "content_hash": "sha256:b669962a04b8b3b37bab85ae0dbf45fad7543cb03734a879d995a264308a22df",
       "summary": ""
     },
     {

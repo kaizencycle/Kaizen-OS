@@ -7,6 +7,10 @@
 **Authority:** Custodian handoff (Michael Judan, 2026-07-15)  
 **License:** CC0 / Public Domain
 
+## Authority Provenance
+
+*Authority declared using `docs/templates/EPICON_FOUNDER_STANDING.md` v0.1*
+
 ---
 
 ## 1. Doctrine
