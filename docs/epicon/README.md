@@ -48,6 +48,7 @@ Input → Context Inference → CSS Gate → EJ Builder → CCR Validator → Ou
 | [`EPICON-0001-mobius-substrate-naming.md`](./EPICON-0001-mobius-substrate-naming.md) | Canonical naming document: "Mobius Substrate" |
 | [`EPICON-01.md`](./EPICON-01.md) | Epistemic constraint specification (coherence layer) |
 | [`EPICON-02.md`](./EPICON-02.md) | Intent publication & divergence protocol (visibility layer) |
+| [`../WITNESS_PROTOCOL.md`](../WITNESS_PROTOCOL.md) | Ref-verification for completion reports (claims before acceptance) |
 | [`EPICON-02-INVARIANTS.md`](./EPICON-02-INVARIANTS.md) | Formal invariants for EPICON-02 |
 | [`EPICON-03.md`](./EPICON-03.md) | Multi-agent collective epistemic consensus |
 | [`EXPLAIN_FAILURE.md`](./EXPLAIN_FAILURE.md) | Guide for understanding and fixing EPICON-02 failures |
