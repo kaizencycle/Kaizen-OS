@@ -19,7 +19,7 @@ jobs:
     steps:
       # Required so ./.github/actions/epicon-guard resolves on disk.
       # Policy still loads from base SHA via policy-ref (not from checkout).
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
       - uses: ./.github/actions/epicon-guard
         with:
