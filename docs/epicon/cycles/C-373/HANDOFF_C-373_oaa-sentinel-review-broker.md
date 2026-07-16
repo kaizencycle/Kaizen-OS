@@ -6,6 +6,8 @@
 **Provenance:** During PR #387 (Witness Protocol canonization), the required Sentinel Review check FAIL_CLOSEDed on vendor errors — AUREA on OpenAI HTTP 429, ATLAS on Anthropic HTTP 400 (retired model string `claude-3-5-sonnet-20241022` pinned in workflow env). Net effect: a vendor rate limiter held merge authority over constitutional canon. This is vendor-availability-derived authority — the C-366 doctrine violated via uptime rather than data — and the concrete Phase 1 justification for the C-371 OAA Universal Agent Hub proposal.  
 **Governing protocol:** All completion reports per `docs/WITNESS_PROTOCOL.md` (PR #387). Reports are claims; acceptance is by ref-verification.
 
+**Sibling charter:** [`docs/OAA_CHARTER.md`](../../../OAA_CHARTER.md) (C-374) — three-floor OAA stack (Authority / Hub / Academy); Floor 1 broker work here gates Floor 2+.
+
 ---
 
 ```intent
@@ -80,7 +82,9 @@ Target: `.github/workflows/sentinel-review.yml` in Mobius-Substrate (and any rep
 
 ## Phase 1 — OAA broker (proxy + attestation; no routing intelligence yet)
 
-- **P1-1: Service home.** Locate OAA's canonical service repo per C-371. If none exists, create `kaizencycle/mobius-oaa` (private acceptable for Phase 1) and record the decision. FastAPI, consistent with existing service patterns.
+> **Execution note (C-374 audit, 2026-07-16):** The living OAA backend is already FastAPI at `oaa-api-library.onrender.com` (`OAA-API-Library` v0.4.0 per OpenAPI). Phase 1's `POST /v1/sentinel/review` should land in `app/main.py` (or a router module in that service) — **not** as a TypeScript port to the dormant Next.js hub blueprint. The broker kit's endpoint can ship in the service's own idiom; CI swaps to HMAC-signed requests against the live host. See [`AUDIT_C-374_oaa-reality.md`](../../audits/AUDIT_C-374_oaa-reality.md).
+
+- **P1-1: Service home.** Use the live FastAPI service in `OAA-API-Library` (`app/main.py`, v0.4.0 at `oaa-api-library.onrender.com`). Do not create a new repo unless audit disposition changes. Record decision in PR intent block.
 - **P1-2: Endpoint.** `POST /v1/sentinel/review`:
   - Auth: HMAC-SHA256 over `timestamp.body` with shared secret; `x-oaa-agent` (must carry `mobius-` prefix per agent-plane convention), `x-oaa-timestamp` (reject outside ±300s window), `x-oaa-signature`. No JWT, no Civic ID — this is agent-plane per the C-371 identity split.
   - Request: `{ task, sentinels[], tier, policy_ref, context_hash, context{meta,files,diff}, prompt_version }`

@@ -1,15 +1,15 @@
 {
   "mobius_catalog_version": "1.0.0",
-  "generated_at": "2026-07-16T05:15:16.949Z",
+  "generated_at": "2026-07-16T14:03:37.942Z",
   "repo": {
     "name": "Mobius-Substrate",
     "url": "https://github.com/kaizencycle/Mobius-Substrate",
     "default_branch": "main",
-    "commit": "a93f7d72540e5f8f1e77258c8f813af85e22ccfd"
+    "commit": ""
   },
   "stats": {
     "epiconCount": 0,
-    "docCount": 1031
+    "docCount": 1036
   },
   "epicons": [],
   "docs": [
@@ -7294,6 +7294,14 @@
       "summary": ""
     },
     {
+      "path": "docs/OAA_CHARTER.md",
+      "title": "OAA CHARTER — The Open Attestation Authority & Academy",
+      "category": "OAA_CHARTER.md",
+      "tags": [],
+      "content_hash": "sha256:e61857c04b10ef0b4a0da5944a945a0cec0c34ce38966249b3540af1835a4226",
+      "summary": ""
+    },
+    {
       "path": "docs/README.md",
       "title": "🌀 Mobius Substrate Documentation Portal",
       "category": "README.md",
@@ -7435,6 +7443,14 @@
       "category": "assets",
       "tags": [],
       "content_hash": "sha256:1e5191ae930be93a0a569bf6e04325152431a227bb22794b7f1d6fcf5ee0cbeb",
+      "summary": ""
+    },
+    {
+      "path": "docs/audits/AUDIT_C-374_oaa-reality.md",
+      "title": "AUDIT C-374 — OAA Reality (Read-Only)",
+      "category": "audits",
+      "tags": [],
+      "content_hash": "sha256:7e161c728ac736a4ab12aefe558082fe572b2dd25c33156e26e75d8bd5bfbdbd",
       "summary": ""
     },
     {
@@ -7993,7 +8009,23 @@
       "title": "ATLAS HANDOFF — C-373: OAA Sentinel Review Broker (Phase 0 + Phase 1)",
       "category": "epicon",
       "tags": [],
-      "content_hash": "sha256:10374fddd7f7d528ad511a4cd1548ddc0a08053a8772616fdf4954e8bd715271",
+      "content_hash": "sha256:2861811ae02b5fee2c67b757cdca38f2ccea222b8b60a898144fc8d60aba8706",
+      "summary": ""
+    },
+    {
+      "path": "docs/epicon/cycles/C-374/ATTESTATION_C-374_cycle-opening.md",
+      "title": "EVE Attestation — C-374 Cycle Opening",
+      "category": "epicon",
+      "tags": [],
+      "content_hash": "sha256:ff4277df63c3a8af0989cf6c28017f2bf7d8a603ec44ee61558ee4ea3b69fa75",
+      "summary": ""
+    },
+    {
+      "path": "docs/epicon/cycles/C-374/REVIEW_C-374_goodhart-guards.md",
+      "title": "EVE Review — Charter §3.1 Goodhart Guards (Advisory)",
+      "category": "epicon",
+      "tags": [],
+      "content_hash": "sha256:fc9a6546dd392c68621564aa4307432cf9dc06f66c3f6e93226d02dced2a5623",
       "summary": ""
     },
     {
@@ -8066,6 +8098,14 @@
       "category": "journals",
       "tags": [],
       "content_hash": "sha256:d950d917eae8801e2da7f5ca52dc3230754112ee5759eb52f98b674af4b4ee48",
+      "summary": ""
+    },
+    {
+      "path": "docs/lineage/EVE_LOOP_LINEAGE.md",
+      "title": "EVE Loop Lineage — From Clock-In to Academy Teaching Cycle",
+      "category": "lineage",
+      "tags": [],
+      "content_hash": "sha256:d98e611ccf1bee02f5c7c2d4976fa15b9b43af1a8f30ce57a16d87520f0703cd",
       "summary": ""
     },
     {
