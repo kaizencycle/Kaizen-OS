@@ -3,7 +3,7 @@
   "last_run_at": "2026-06-30T09:00:00Z",
   "last_cycle": "C-358",
   "status": "blocked",
-  "last_failed_attempt_at": "2026-07-16T19:40:15Z",
-  "failure_reason": "mobius-bot-state-sync failed after credential preflight \u2014 inspect run https://github.com/kaizencycle/Mobius-Substrate/actions/runs/29528896624",
+  "last_failed_attempt_at": "2026-07-16T19:43:55Z",
+  "failure_reason": "mobius-bot-state-sync failed after credential preflight \u2014 inspect run https://github.com/kaizencycle/Mobius-Substrate/actions/runs/29529146719",
   "recovery_note": "Owner action: set MOBIUS_BOT_APP_ID (GitHub App client ID) and MOBIUS_BOT_PRIVATE_KEY in Settings \u2192 Secrets \u2192 Actions, then workflow_dispatch mobius-bot-state-sync. Do not manually advance cycle.json \u2014 let the writer catch up deterministically. See docs/CANON_WRITER_REPAIR.md and issues #351 / #371."
 }
