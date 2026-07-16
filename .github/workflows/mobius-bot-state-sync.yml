@@ -153,3 +153,70 @@ jobs:
                      -m "EPICON-INTENT: scheduled deterministic cycle-state write; allowed paths only; no attested values invented." \
                      -m "Actor: mobius-bot (scoped App, C-336 guardrail model)"
           git push
+
+  record-failure:
+    needs: sync
+    if: failure()
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Stamp writer-health failure (C-373)
+        env:
+          APP_ID: ${{ secrets.MOBIUS_BOT_APP_ID }}
+          APP_KEY: ${{ secrets.MOBIUS_BOT_PRIVATE_KEY }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          python3 - << 'PY'
+          import json, datetime, os
+
+          now = datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+          app_id = (os.environ.get("APP_ID") or "").strip()
+          app_key = (os.environ.get("APP_KEY") or "").strip()
+
+          if not app_id:
+              reason = "MOBIUS_BOT_APP_ID secret empty — create-github-app-token fails at mint step"
+          elif not app_key:
+              reason = "MOBIUS_BOT_PRIVATE_KEY secret empty — create-github-app-token fails at mint step"
+          else:
+              reason = f"mobius-bot-state-sync failed after credential preflight — inspect run {os.environ.get('RUN_URL', '')}"
+
+          path = "STATE/writer-health.json"
+          health = {}
+          if os.path.exists(path):
+              with open(path) as f:
+                  health = json.load(f)
+
+          health.update({
+              "writer": "mobius-bot-state-sync",
+              "status": "blocked",
+              "last_failed_attempt_at": now,
+              "failure_reason": reason,
+              "recovery_note": (
+                  "Owner action: set MOBIUS_BOT_APP_ID (GitHub App client ID) and "
+                  "MOBIUS_BOT_PRIVATE_KEY in Settings → Secrets → Actions, then "
+                  "workflow_dispatch mobius-bot-state-sync. Do not manually advance "
+                  "cycle.json — let the writer catch up deterministically. "
+                  "See docs/CANON_WRITER_REPAIR.md and issues #351 / #371."
+              ),
+          })
+          if health.get("status") != "ok":
+              health.setdefault("last_run_at", health.get("last_run_at", "2026-06-30T09:00:00Z"))
+              health.setdefault("last_cycle", health.get("last_cycle", "C-358"))
+
+          with open(path, "w") as f:
+              json.dump(health, f, indent=2)
+              f.write("\n")
+          PY
+
+      - name: Commit failure stamp [skip ci]
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add STATE/writer-health.json
+          git diff --cached --quiet && { echo "writer-health unchanged."; exit 0; }
+          git commit -m "canon: record mobius-bot-state-sync failure [skip ci]" \
+                     -m "EPICON-INTENT: automated writer-health failure stamp; no cycle.json mutation."
+          git push

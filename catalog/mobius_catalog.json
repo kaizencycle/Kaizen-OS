@@ -1,6 +1,6 @@
 {
   "mobius_catalog_version": "1.0.0",
-  "generated_at": "2026-07-15T21:54:11.413Z",
+  "generated_at": "2026-07-16T01:45:58.831Z",
   "repo": {
     "name": "Mobius-Substrate",
     "url": "https://github.com/kaizencycle/Mobius-Substrate",
@@ -7210,7 +7210,7 @@
       "title": "Canon Writer Repair — mobius-bot-state-sync",
       "category": "CANON_WRITER_REPAIR.md",
       "tags": [],
-      "content_hash": "sha256:726309c3ba2841e171c946c5e7a87a48116642672e276c68268b55b39bfc36c1",
+      "content_hash": "sha256:ec39c592479bcef580730e902f5ecde4629633a6e9b0e9ce2c96109b1d895cee",
       "summary": ""
     },
     {
