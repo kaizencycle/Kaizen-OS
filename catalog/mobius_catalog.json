@@ -1,6 +1,6 @@
 {
   "mobius_catalog_version": "1.0.0",
-  "generated_at": "2026-07-16T13:47:40.200Z",
+  "generated_at": "2026-07-16T14:03:37.942Z",
   "repo": {
     "name": "Mobius-Substrate",
     "url": "https://github.com/kaizencycle/Mobius-Substrate",
@@ -7298,7 +7298,7 @@
       "title": "OAA CHARTER — The Open Attestation Authority & Academy",
       "category": "OAA_CHARTER.md",
       "tags": [],
-      "content_hash": "sha256:939b5d9d89e4b989b08d1972e0b055ba21f2e4e1857c2c9627d6ca9788b3e940",
+      "content_hash": "sha256:e61857c04b10ef0b4a0da5944a945a0cec0c34ce38966249b3540af1835a4226",
       "summary": ""
     },
     {
@@ -8009,7 +8009,7 @@
       "title": "ATLAS HANDOFF — C-373: OAA Sentinel Review Broker (Phase 0 + Phase 1)",
       "category": "epicon",
       "tags": [],
-      "content_hash": "sha256:b54f685e8d3b0f8d9e1b5dc42a42d022a966a2822ce002e8fd5872d758ee86d7",
+      "content_hash": "sha256:2861811ae02b5fee2c67b757cdca38f2ccea222b8b60a898144fc8d60aba8706",
       "summary": ""
     },
     {
@@ -8025,7 +8025,7 @@
       "title": "EVE Review — Charter §3.1 Goodhart Guards (Advisory)",
       "category": "epicon",
       "tags": [],
-      "content_hash": "sha256:59728542cb569bff3fa37171b319db70d45c4effec3c96acb1cdb24e3e1fa36c",
+      "content_hash": "sha256:fc9a6546dd392c68621564aa4307432cf9dc06f66c3f6e93226d02dced2a5623",
       "summary": ""
     },
     {
@@ -8105,7 +8105,7 @@
       "title": "EVE Loop Lineage — From Clock-In to Academy Teaching Cycle",
       "category": "lineage",
       "tags": [],
-      "content_hash": "sha256:ce124d9672e028244f8a2f30b40030d4775997995cba5c6244a15b9813e14342",
+      "content_hash": "sha256:d98e611ccf1bee02f5c7c2d4976fa15b9b43af1a8f30ce57a16d87520f0703cd",
       "summary": ""
     },
     {

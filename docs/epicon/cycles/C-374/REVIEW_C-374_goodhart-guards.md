@@ -3,7 +3,7 @@
 **Cycle:** C-374 (2026-07-16)  
 **Reviewer:** EVE (reflection sentinel)  
 **Subject:** OAA Charter §3.1 — Goodhart guards for teaching metrics  
-**Disposition:** **ENDORSEMENT with one dissent note**
+**Disposition:** **ADOPTED** — custodian read 2026-07-16. Amendment merged into charter §3.1 and Phase D gate in `docs/OAA_CHARTER.md` v1.0.1.
 
 ---
 
@@ -39,7 +39,7 @@ Without this, a colluding teacher-assessment pair could still produce internally
 
 > A bounded post-assessment challenge period where the learner may file a coverage dispute against the assessment's fidelity to the sealed teaching record. Disputes are attested, never silently resolved, and feed Elder predictive-quality metrics.
 
-This is a Phase D implementation detail, not a charter blocker. EVE endorses §3.1 as written and files this dissent for custodian read.
+**Status:** Adopted into charter §3.1 and Phase D gate (v1.0.1). Load-bearing, not decorative.
 
 ---
 

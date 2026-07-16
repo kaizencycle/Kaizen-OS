@@ -100,10 +100,27 @@ From Mobius canon — must be added:
 3. **Goodhart guards** (charter §3.1) — predictive quality over pass-rate.
 4. **Ledger-derived seniority** — Elders from attestations, never configuration.
 5. **No fileStore** — persistent, non-ephemeral storage only.
+6. **Learner challenge standing** — contestable credentials, not claims with better typography (charter §3.1, custodian-adopted EVE dissent).
 
 ---
 
-## 6. Provenance statement
+## 6. Split-deploy archaeology (C-374 audit)
+
+The C-374 read-only audit revealed that public "OAA" is not one organism but two lineages wearing one name:
+
+| Surface | Lineage | What it carries |
+| --- | --- | --- |
+| `oaa.onrender.com` | `labs/lab7-proof/frontend/reflections-app` | Next.js PWA console; metadata: *"Open Attestation Authority — STEM Apprenticeship Engine with LLM Stack Interface"* |
+| `oaa-api-library.onrender.com` | `OAA-API-Library/app/main.py` (FastAPI v0.4.0) | Living backend — 20 OpenAPI paths, `/health` live |
+| `OAA-API-Library` README | Pre-Mobius epoch (~C-108) | *"Open Autonomous Academy"* vocabulary — different layer again |
+
+The **STEM Apprenticeship Engine** banner that sparked Academy recovery did not come from the library README. It came from the lab7 frontend metadata — the vision's archaeology is one layer deeper than the salvage table first assumed. This is provenance, not a problem: the germ (clock-in/out in `data/eomm/`) lives in the library repo; the public face (Attestation Authority branding) lives in the lab7 reflections-app lineage; the pulse (FastAPI backend) lives at a third URL entirely. `oaa-hub` exists only as a blueprint name returning HTTP 404.
+
+EVE records this so the Library's first scroll names all three strata honestly.
+
+---
+
+## 7. Provenance statement
 
 This document is the Library's first scroll: the genealogy of the Academy's core loop, from a JSON clock-in on a October morning in C-108 to a chartered teaching cycle waiting behind five sequencing gates. The classroom is not built yet. The germ is witnessed.
 
