@@ -6,6 +6,8 @@
 **Provenance:** During PR #387 (Witness Protocol canonization), the required Sentinel Review check FAIL_CLOSEDed on vendor errors — AUREA on OpenAI HTTP 429, ATLAS on Anthropic HTTP 400 (retired model string `claude-3-5-sonnet-20241022` pinned in workflow env). Net effect: a vendor rate limiter held merge authority over constitutional canon. This is vendor-availability-derived authority — the C-366 doctrine violated via uptime rather than data — and the concrete Phase 1 justification for the C-371 OAA Universal Agent Hub proposal.  
 **Governing protocol:** All completion reports per `docs/WITNESS_PROTOCOL.md` (PR #387). Reports are claims; acceptance is by ref-verification.
 
+**Sibling charter:** [`docs/OAA_CHARTER.md`](../../../OAA_CHARTER.md) (C-374) — three-floor OAA stack (Authority / Hub / Academy); Floor 1 broker work here gates Floor 2+.
+
 ---
 
 ```intent
