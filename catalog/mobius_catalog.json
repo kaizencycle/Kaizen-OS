@@ -1,15 +1,15 @@
 {
   "mobius_catalog_version": "1.0.0",
-  "generated_at": "2026-07-16T01:45:58.831Z",
+  "generated_at": "2026-07-16T05:15:16.949Z",
   "repo": {
     "name": "Mobius-Substrate",
     "url": "https://github.com/kaizencycle/Mobius-Substrate",
     "default_branch": "main",
-    "commit": ""
+    "commit": "a93f7d72540e5f8f1e77258c8f813af85e22ccfd"
   },
   "stats": {
     "epiconCount": 0,
-    "docCount": 1030
+    "docCount": 1031
   },
   "epicons": [],
   "docs": [
@@ -7986,6 +7986,14 @@
       "category": "epicon",
       "tags": [],
       "content_hash": "sha256:0546f1cf94e47d6395fb35ca01ba679deb00f6189eaed9bcb7f5914bb1819f7b",
+      "summary": ""
+    },
+    {
+      "path": "docs/epicon/cycles/C-373/HANDOFF_C-373_oaa-sentinel-review-broker.md",
+      "title": "ATLAS HANDOFF — C-373: OAA Sentinel Review Broker (Phase 0 + Phase 1)",
+      "category": "epicon",
+      "tags": [],
+      "content_hash": "sha256:10374fddd7f7d528ad511a4cd1548ddc0a08053a8772616fdf4954e8bd715271",
       "summary": ""
     },
     {
