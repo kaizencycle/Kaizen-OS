@@ -1,16 +1,23 @@
 # .github/workflows/sentinel-review.yml
 #
-# C-339 GOVERNANCE HARDENING — this check FAILS CLOSED.
-#   - No review label on the PR  -> check FAILS (it does not vacuously pass).
-#   - Required API secret absent -> the requested review FAILS with an explicit
-#     error annotation (it does not silently skip and pass).
-#   - `consensus:approved` is an OUTPUT of this workflow, never a trigger:
-#     review produces approval, approval does not produce review.
+# C-339 GOVERNANCE HARDENING — this check FAILS CLOSED on unrequested review.
+# C-373 PHASE 0 — verdict ontology (see docs/WITNESS_PROTOCOL.md, HANDOFF_C-373_oaa-sentinel-review-broker.md):
+#   - Unrequested review (no label)     -> check FAILS (C-339; never vacuously pass).
+#   - FAIL   = review ran with blocking -> check FAILS.
+#   - SKIPPED = review could not run (missing key, vendor 4xx/5xx, transport error)
+#               -> check does NOT fail; comment shows loud SKIPPED block.
+#   - Invalid model JSON output         -> FAIL (genuine review failure, not SKIPPED).
+#   - consensus:approved                -> output only when ALL requested sentinels PASS
+#                                         (any SKIPPED -> no label).
 #
 # REQUIRED SECRETS (configure in repo settings -> Secrets and variables -> Actions):
 #   OPENAI_API_KEY     — AUREA review (and ATLAS fallback)
 #   ANTHROPIC_API_KEY  — ATLAS review (preferred)
-# Without these, any PR labeled for review will fail this check by design.
+# Without these, a labeled PR gets SKIPPED (not FAIL) for the affected sentinel.
+#
+# REPO VARIABLES (Settings -> Secrets and variables -> Actions -> Variables):
+#   OPENAI_MODEL       — default gpt-4o-mini
+#   ANTHROPIC_MODEL    — default claude-sonnet-4-20250514 (replaces retired claude-3-5-sonnet-20241022)
 #
 # To request review, label the PR: review:aurea, review:atlas, or
 # consensus:requested (runs both).
@@ -36,8 +43,8 @@ jobs:
       OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
       ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
 
-      OPENAI_MODEL: gpt-4o-mini
-      ANTHROPIC_MODEL: claude-3-5-sonnet-20241022
+      OPENAI_MODEL: ${{ vars.OPENAI_MODEL != '' && vars.OPENAI_MODEL || 'gpt-4o-mini' }}
+      ANTHROPIC_MODEL: ${{ vars.ANTHROPIC_MODEL != '' && vars.ANTHROPIC_MODEL || 'claude-sonnet-4-20250514' }}
 
       MAX_DIFF_CHARS: "120000"
       MAX_PROMPT_CHARS: "200000"
@@ -132,6 +139,12 @@ jobs:
           PR_LABELS: ${{ steps.gate.outputs.labels }}
           PR_AUTHOR: ${{ github.event.pull_request.user.login }}
 
+      - name: Resolve sentinel model IDs (C-373 Phase 0)
+        if: steps.gate.outputs.run == 'true'
+        run: |
+          echo "::notice title=Sentinel models::OPENAI_MODEL=${OPENAI_MODEL} ANTHROPIC_MODEL=${ANTHROPIC_MODEL}"
+          echo "::notice::Anthropic default claude-sonnet-4-20250514 replaces retired claude-3-5-sonnet-20241022 (PR #387 vendor HTTP 400). Override via repo vars."
+
       - name: Enforce EPICON/Docs presence (hard rules)
         id: hardrules
         if: steps.gate.outputs.run == 'true'
@@ -189,10 +202,14 @@ jobs:
 
             const apiKey = process.env.OPENAI_API_KEY;
             if (!apiKey) {
-              // C-339: fail closed — a review that cannot run is a failed review.
-              core.error('OPENAI_API_KEY secret is not configured; AUREA review cannot run. See workflow header for required secrets.');
-              core.setOutput('ok', 'false');
-              core.setOutput('json', JSON.stringify({verdict:"fail", blocking:["OPENAI_API_KEY not configured - AUREA review cannot run"], non_blocking:[], summary:"AUREA review failed closed (no API key). Configure OPENAI_API_KEY secret."}));
+              core.warning('OPENAI_API_KEY secret is not configured; AUREA review SKIPPED (C-373 — vendor absence is not a review verdict).');
+              core.setOutput('json', JSON.stringify({
+                verdict: 'skipped',
+                skip_reason: 'OPENAI_API_KEY not configured',
+                blocking: [],
+                non_blocking: [],
+                summary: 'AUREA review skipped — API key absent.',
+              }));
               return;
             }
 
@@ -254,8 +271,15 @@ jobs:
 
             if (!res.ok) {
               const err = await res.text();
-              core.setOutput('ok', 'false');
-              core.setOutput('json', JSON.stringify({verdict:"fail", blocking:[`OpenAI HTTP ${res.status}`], non_blocking:[], summary:"AUREA request failed.", raw: err.slice(0,1200)}));
+              core.warning(`AUREA vendor transport error HTTP ${res.status} — SKIPPED (not FAIL).`);
+              core.setOutput('json', JSON.stringify({
+                verdict: 'skipped',
+                skip_reason: `OpenAI HTTP ${res.status}`,
+                blocking: [],
+                non_blocking: [],
+                summary: 'AUREA request failed at vendor transport layer.',
+                raw: err.slice(0, 1200),
+              }));
               return;
             }
 
@@ -274,11 +298,15 @@ jobs:
                 jsonText = jsonText.slice(0, -3);
               }
               const parsed = JSON.parse(jsonText.trim());
-              core.setOutput('ok', 'true');
               core.setOutput('json', JSON.stringify(parsed));
             } catch (e) {
-              core.setOutput('ok', 'false');
-              core.setOutput('json', JSON.stringify({verdict:"fail", blocking:["AUREA output was not valid JSON"], non_blocking:[], summary:"Parsing failed." , raw: text.slice(0,1200)}));
+              core.setOutput('json', JSON.stringify({
+                verdict: 'fail',
+                blocking: ['AUREA output was not valid JSON'],
+                non_blocking: [],
+                summary: 'Parsing failed — model returned non-JSON (review failure, not SKIPPED).',
+                raw: text.slice(0, 1200),
+              }));
             }
 
       - name: Run ATLAS review (Anthropic preferred) -> JSON verdict
@@ -333,7 +361,7 @@ jobs:
 
             const anthropicKey = process.env.ANTHROPIC_API_KEY;
             if (anthropicKey) {
-              const model = process.env.ANTHROPIC_MODEL || 'claude-3-5-sonnet-20241022';
+              const model = process.env.ANTHROPIC_MODEL || 'claude-sonnet-4-20250514';
               const res = await fetch('https://api.anthropic.com/v1/messages', {
                 method: 'POST',
                 headers: {
@@ -352,8 +380,15 @@ jobs:
 
               if (!res.ok) {
                 const err = await res.text();
-                core.setOutput('ok', 'false');
-                core.setOutput('json', JSON.stringify({verdict:"fail", blocking:[`Anthropic HTTP ${res.status}`], non_blocking:[], summary:"ATLAS request failed.", raw: err.slice(0,1200)}));
+                core.warning(`ATLAS Anthropic transport error HTTP ${res.status} — SKIPPED (not FAIL).`);
+                core.setOutput('json', JSON.stringify({
+                  verdict: 'skipped',
+                  skip_reason: `Anthropic HTTP ${res.status}`,
+                  blocking: [],
+                  non_blocking: [],
+                  summary: 'ATLAS request failed at vendor transport layer.',
+                  raw: err.slice(0, 1200),
+                }));
                 return;
               }
 
@@ -373,11 +408,15 @@ jobs:
                   jsonText = jsonText.slice(0, -3);
                 }
                 const parsed = JSON.parse(jsonText.trim());
-                core.setOutput('ok', 'true');
                 core.setOutput('json', JSON.stringify(parsed));
               } catch (e) {
-                core.setOutput('ok', 'false');
-                core.setOutput('json', JSON.stringify({verdict:"fail", blocking:["ATLAS output was not valid JSON"], non_blocking:[], summary:"Parsing failed.", raw: text.slice(0,1200)}));
+                core.setOutput('json', JSON.stringify({
+                  verdict: 'fail',
+                  blocking: ['ATLAS output was not valid JSON'],
+                  non_blocking: [],
+                  summary: 'Parsing failed — model returned non-JSON (review failure, not SKIPPED).',
+                  raw: text.slice(0, 1200),
+                }));
               }
               return;
             }
@@ -401,8 +440,15 @@ jobs:
 
               if (!res.ok) {
                 const err = await res.text();
-                core.setOutput('ok', 'false');
-                core.setOutput('json', JSON.stringify({verdict:"fail", blocking:[`OpenAI HTTP ${res.status}`], non_blocking:[], summary:"ATLAS request failed (OpenAI fallback).", raw: err.slice(0,1200)}));
+                core.warning(`ATLAS OpenAI fallback transport error HTTP ${res.status} — SKIPPED (not FAIL).`);
+                core.setOutput('json', JSON.stringify({
+                  verdict: 'skipped',
+                  skip_reason: `OpenAI HTTP ${res.status}`,
+                  blocking: [],
+                  non_blocking: [],
+                  summary: 'ATLAS request failed at vendor transport layer (OpenAI fallback).',
+                  raw: err.slice(0, 1200),
+                }));
                 return;
               }
 
@@ -420,19 +466,27 @@ jobs:
                   jsonText = jsonText.slice(0, -3);
                 }
                 const parsed = JSON.parse(jsonText.trim());
-                core.setOutput('ok', 'true');
                 core.setOutput('json', JSON.stringify(parsed));
               } catch (e) {
-                core.setOutput('ok', 'false');
-                core.setOutput('json', JSON.stringify({verdict:"fail", blocking:["ATLAS output was not valid JSON"], non_blocking:[], summary:"Parsing failed.", raw: text.slice(0,1200)}));
+                core.setOutput('json', JSON.stringify({
+                  verdict: 'fail',
+                  blocking: ['ATLAS output was not valid JSON'],
+                  non_blocking: [],
+                  summary: 'Parsing failed — model returned non-JSON (review failure, not SKIPPED).',
+                  raw: text.slice(0, 1200),
+                }));
               }
               return;
             }
 
-            // C-339: fail closed — a review that cannot run is a failed review.
-            core.error('Neither ANTHROPIC_API_KEY nor OPENAI_API_KEY is configured; ATLAS review cannot run. See workflow header for required secrets.');
-            core.setOutput('ok', 'false');
-            core.setOutput('json', JSON.stringify({verdict:"fail", blocking:["No API keys configured - ATLAS review cannot run"], non_blocking:[], summary:"ATLAS review failed closed (no API key). Configure ANTHROPIC_API_KEY or OPENAI_API_KEY."}));
+            core.warning('Neither ANTHROPIC_API_KEY nor OPENAI_API_KEY is configured; ATLAS review SKIPPED (C-373).');
+            core.setOutput('json', JSON.stringify({
+              verdict: 'skipped',
+              skip_reason: 'No API keys configured',
+              blocking: [],
+              non_blocking: [],
+              summary: 'ATLAS review skipped — configure ANTHROPIC_API_KEY or OPENAI_API_KEY.',
+            }));
 
       - name: Render combined sentinel report + decide pass/fail
         id: decide
@@ -446,122 +500,155 @@ jobs:
             const wantsAurea = labels.includes('review:aurea') || labels.includes('consensus:requested');
             const wantsAtlas = labels.includes('review:atlas') || labels.includes('consensus:requested');
 
-            let aurea = {};
-            let atlas = {};
-
-            // Parse AUREA output (via env var to avoid control-char injection in template literal)
-            try {
-              const aureaJson = process.env.AUREA_JSON || '{}';
-              if (aureaJson && aureaJson !== '{}') {
-                aurea = JSON.parse(aureaJson);
-              } else if (wantsAurea) {
-                // C-339: requested but no output -> fail closed, not silent pass
-                aurea = { verdict: 'fail', blocking: ['AUREA review was requested but did not produce output (check API key and workflow logs)'], non_blocking: [], summary: 'Review did not run' };
-              } else {
-                // AUREA not requested by label - not part of this verdict
-                aurea = { verdict: 'pass', blocking: [], non_blocking: [], summary: 'Not requested' };
+            function parseVerdict(raw, sentinel, requested) {
+              if (!requested) {
+                return { state: 'not_requested', verdict: 'pass', summary: 'Not requested', blocking: [], non_blocking: [], skip_reason: null };
               }
-            } catch (e) {
-              aurea = { verdict: 'fail', blocking: ['Failed to parse AUREA output: ' + e.message], non_blocking: [], summary: 'Parse error' };
-            }
-
-            // Parse ATLAS output (via env var to avoid control-char injection in template literal)
-            try {
-              const atlasJson = process.env.ATLAS_JSON || '{}';
-              if (atlasJson && atlasJson !== '{}') {
-                atlas = JSON.parse(atlasJson);
-              } else if (wantsAtlas) {
-                // C-339: requested but no output -> fail closed, not silent pass
-                atlas = { verdict: 'fail', blocking: ['ATLAS review was requested but did not produce output (check API key and workflow logs)'], non_blocking: [], summary: 'Review did not run' };
-              } else {
-                // ATLAS not requested by label - not part of this verdict
-                atlas = { verdict: 'pass', blocking: [], non_blocking: [], summary: 'Not requested' };
+              if (!raw || raw === '{}') {
+                return {
+                  state: 'skipped',
+                  verdict: 'skipped',
+                  summary: `${sentinel} review was requested but produced no output`,
+                  blocking: [],
+                  non_blocking: [],
+                  skip_reason: 'No review output (check workflow logs)',
+                };
               }
-            } catch (e) {
-              atlas = { verdict: 'fail', blocking: ['Failed to parse ATLAS output: ' + e.message], non_blocking: [], summary: 'Parse error' };
-            }
-
-            function normalize(r) {
+              let r;
+              try { r = JSON.parse(raw); } catch (e) {
+                return {
+                  state: 'fail',
+                  verdict: 'fail',
+                  summary: `Failed to parse ${sentinel} output`,
+                  blocking: [e.message],
+                  non_blocking: [],
+                  skip_reason: null,
+                };
+              }
+              const verdict = String(r.verdict || 'fail').toLowerCase();
+              const blocking = Array.isArray(r.blocking) ? r.blocking.filter(Boolean) : [];
+              const non_blocking = Array.isArray(r.non_blocking) ? r.non_blocking : [];
+              if (verdict === 'skipped') {
+                return {
+                  state: 'skipped',
+                  verdict: 'skipped',
+                  summary: r.summary || `${sentinel} review skipped`,
+                  blocking: [],
+                  non_blocking,
+                  skip_reason: r.skip_reason || r.summary || 'Review could not run',
+                };
+              }
+              if (verdict === 'pass' && blocking.length === 0) {
+                return { state: 'pass', verdict: 'pass', summary: r.summary || '', blocking: [], non_blocking, skip_reason: null };
+              }
               return {
-                verdict: r.verdict || "fail",  // C-339: default to fail (fail closed)
-                summary: r.summary || "",
-                blocking: Array.isArray(r.blocking) ? r.blocking : [],
-                non_blocking: Array.isArray(r.non_blocking) ? r.non_blocking : [],
-                epicon_checks: r.epicon_checks || {}
+                state: 'fail',
+                verdict: 'fail',
+                summary: r.summary || '',
+                blocking: blocking.length ? blocking : [`${sentinel} review failed`],
+                non_blocking,
+                skip_reason: null,
+              };
+            }
+
+            const A = parseVerdict(process.env.AUREA_JSON || '{}', 'AUREA', wantsAurea);
+            const T = parseVerdict(process.env.ATLAS_JSON || '{}', 'ATLAS', wantsAtlas);
+
+            const requested = [];
+            if (wantsAurea) requested.push(A);
+            if (wantsAtlas) requested.push(T);
+
+            const failures = requested.filter((r) => r.state === 'fail');
+            const skips = requested.filter((r) => r.state === 'skipped');
+            const passes = requested.filter((r) => r.state === 'pass');
+
+            const checkPass = failures.length === 0;
+            const consensusEligible = requested.length > 0 && passes.length === requested.length;
+
+            function renderSentinel(name, r) {
+              if (r.state === 'not_requested') {
+                return [`### ${name} — NOT REQUESTED`, r.summary ? `**Summary:** ${r.summary}` : '', ''].join('\n');
               }
+              if (r.state === 'skipped') {
+                return [
+                  `### ${name} — ⚠️ SKIPPED`,
+                  `**Reason:** ${r.skip_reason}`,
+                  r.summary ? `**Summary:** ${r.summary}` : '',
+                  '**Blocking:** none (vendor absence is not a review verdict)',
+                  '',
+                ].join('\n');
+              }
+              const icon = r.state === 'pass' ? '✅ PASS' : '❌ FAIL';
+              return [
+                `### ${name} — ${icon}`,
+                r.summary ? `**Summary:** ${r.summary}` : '',
+                r.blocking.length ? `**Blocking:**\n- ${r.blocking.join('\n- ')}` : '**Blocking:** none',
+                r.non_blocking.length ? `**Non-blocking:**\n- ${r.non_blocking.join('\n- ')}` : '**Non-blocking:** none',
+                '',
+              ].join('\n');
             }
-
-            const A = normalize(aurea);
-            const T = normalize(atlas);
-
-            // C-339: at least one review must actually have been requested and run;
-            // two "not requested" verdicts must never combine into a PASS.
-            const anyRequested = wantsAurea || wantsAtlas;
-            const blocking = [...A.blocking, ...T.blocking].filter(Boolean);
-            if (!anyRequested) {
-              blocking.push('No sentinel review was requested (no review:aurea / review:atlas / consensus:requested label)');
-            }
-            const pass = blocking.length === 0 && A.verdict === "pass" && T.verdict === "pass";
 
             const labelsDisplay = labels || '(none - add review:aurea, review:atlas, or consensus:requested)';
-            
-            const body = [
-              `## 🤖 Sentinel Reviews (required check)`,
-              `**Labels:** \`${labelsDisplay}\``,
-              ``,
-              pass ? `**Result:** ✅ PASS` : `**Result:** ❌ FAIL (${blocking.length} blocking item${blocking.length !== 1 ? 's' : ''})`,
-              ``,
-              `---`,
-              ``,
-              `### AUREA — ${A.verdict.toUpperCase()}`,
-              A.summary ? `**Summary:** ${A.summary}` : '',
-              A.blocking.length ? `**Blocking:**\n- ${A.blocking.join('\n- ')}` : `**Blocking:** none`,
-              A.non_blocking.length ? `**Non-blocking:**\n- ${A.non_blocking.join('\n- ')}` : `**Non-blocking:** none`,
-              ``,
-              `---`,
-              ``,
-              `### ATLAS — ${T.verdict.toUpperCase()}`,
-              T.summary ? `**Summary:** ${T.summary}` : '',
-              T.blocking.length ? `**Blocking:**\n- ${T.blocking.join('\n- ')}` : `**Blocking:** none`,
-              T.non_blocking.length ? `**Non-blocking:**\n- ${T.non_blocking.join('\n- ')}` : `**Non-blocking:** none`,
-              ``,
-              `---`,
-              ``,
-              `> To enable AI reviews, add secrets \`OPENAI_API_KEY\` and \`ANTHROPIC_API_KEY\` in repo settings.`,
-            ].filter(x => x !== null && x !== undefined).join('\n');
+            let resultLine;
+            if (!checkPass) {
+              resultLine = `**Result:** ❌ FAIL (${failures.length} sentinel failure${failures.length !== 1 ? 's' : ''})`;
+            } else if (skips.length > 0) {
+              resultLine = `**Result:** ⚠️ CHECK PASSED WITH SKIPPED REVIEWS (${skips.length} skipped — no consensus:approved label)`;
+            } else {
+              resultLine = '**Result:** ✅ PASS';
+            }
 
-            // Upsert a single bot comment
+            const body = [
+              '## 🤖 Sentinel Reviews (required check)',
+              `**Labels:** \`${labelsDisplay}\``,
+              '',
+              resultLine,
+              skips.length ? `> ⚠️ ${skips.length} sentinel review(s) could not run. Vendor uptime is not merge authority (C-373 / WITNESS_PROTOCOL).` : '',
+              '',
+              '---',
+              '',
+              renderSentinel('AUREA', A),
+              '---',
+              '',
+              renderSentinel('ATLAS', T),
+              '---',
+              '',
+              '> Configure secrets `OPENAI_API_KEY` and `ANTHROPIC_API_KEY`, or await OAA broker (Phase 1).',
+            ].filter((x) => x !== null && x !== undefined).join('\n');
+
             const prNumber = context.payload.pull_request.number;
             const { data: comments } = await github.rest.issues.listComments({
               owner: context.repo.owner,
               repo: context.repo.repo,
               issue_number: prNumber,
-              per_page: 100
+              per_page: 100,
             });
             const marker = '## 🤖 Sentinel Reviews (required check)';
-            const existing = comments.find(c => (c.user && c.user.type === 'Bot') && (c.body || '').includes(marker));
+            const existing = comments.find((c) => c.user && c.user.type === 'Bot' && (c.body || '').includes(marker));
 
             if (existing) {
               await github.rest.issues.updateComment({
                 owner: context.repo.owner,
                 repo: context.repo.repo,
                 comment_id: existing.id,
-                body
+                body,
               });
             } else {
               await github.rest.issues.createComment({
                 owner: context.repo.owner,
                 repo: context.repo.repo,
                 issue_number: prNumber,
-                body
+                body,
               });
             }
 
-            core.setOutput('pass', pass ? 'true' : 'false');
-            core.setOutput('blocking_count', String(blocking.length));
+            core.setOutput('pass', checkPass ? 'true' : 'false');
+            core.setOutput('consensus_eligible', consensusEligible ? 'true' : 'false');
+            core.setOutput('blocking_count', String(failures.reduce((n, f) => n + f.blocking.length, 0)));
+            core.setOutput('skipped_count', String(skips.length));
 
       - name: Auto-label consensus:approved on pass
-        if: steps.decide.outputs.pass == 'true' && env.AUTO_LABEL_ON_PASS == 'true'
+        if: steps.decide.outputs.consensus_eligible == 'true' && env.AUTO_LABEL_ON_PASS == 'true'
         uses: actions/github-script@v9
         with:
           script: |
@@ -584,8 +671,8 @@ jobs:
               });
             }
 
-      - name: Fail the check if blocking issues exist
+      - name: Fail the check if a requested sentinel returned FAIL
         if: steps.decide.outputs.pass != 'true'
         run: |
-          echo "Sentinel review failed. Blocking items: ${{ steps.decide.outputs.blocking_count }}"
+          echo "Sentinel review failed. Blocking failures: ${{ steps.decide.outputs.blocking_count }}; skipped: ${{ steps.decide.outputs.skipped_count }}"
           exit 1
