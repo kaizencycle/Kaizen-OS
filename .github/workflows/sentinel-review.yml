@@ -4,16 +4,23 @@
 # C-373 PHASE 0 — verdict ontology (see docs/WITNESS_PROTOCOL.md, HANDOFF_C-373_oaa-sentinel-review-broker.md):
 #   - Unrequested review (no label)     -> check FAILS (C-339; never vacuously pass).
 #   - FAIL   = review ran with blocking -> check FAILS.
-#   - SKIPPED = review could not run (missing key, vendor 4xx/5xx, transport error)
+#   - SKIPPED = review could not run (missing key, vendor 4xx/5xx, OAA broker unreachable)
 #               -> check does NOT fail; comment shows loud SKIPPED block.
 #   - Invalid model JSON output         -> FAIL (genuine review failure, not SKIPPED).
 #   - consensus:approved                -> output only when ALL requested sentinels PASS
 #                                         (any SKIPPED -> no label).
 #
-# REQUIRED SECRETS (configure in repo settings -> Secrets and variables -> Actions):
+# C-373 PHASE 1 — OAA broker path (default):
+#   CI holds MOBIUS_CI_SENTINEL_HMAC_KEY only; vendor keys relocate to broker Render env.
+#   Broker unreachable -> scripts/build_oaa_sentinel_request.py synthesizes SKIPPED, exit 0.
+#   Set SENTINEL_DIRECT_FALLBACK=true to restore direct vendor calls (counterfactual escape hatch).
+#
+# REQUIRED SECRETS (Phase 1 default — broker path):
+#   MOBIUS_CI_SENTINEL_HMAC_KEY — HMAC for x-oaa-agent: mobius-ci-sentinel
+#
+# OPTIONAL (SENTINEL_DIRECT_FALLBACK=true only):
 #   OPENAI_API_KEY     — AUREA review (and ATLAS fallback)
 #   ANTHROPIC_API_KEY  — ATLAS review (preferred)
-# Without these, a labeled PR gets SKIPPED (not FAIL) for the affected sentinel.
 #
 # REPO VARIABLES (Settings -> Secrets and variables -> Actions -> Variables):
 #   OPENAI_MODEL       — default gpt-4o-mini
@@ -40,6 +47,11 @@ jobs:
   sentinel:
     runs-on: ubuntu-latest
     env:
+      MOBIUS_CI_SENTINEL_HMAC_KEY: ${{ secrets.MOBIUS_CI_SENTINEL_HMAC_KEY }}
+      OAA_BROKER_URL: ${{ vars.OAA_BROKER_URL != '' && vars.OAA_BROKER_URL || 'https://oaa-api-library.onrender.com/v1/sentinel/review' }}
+      OAA_AGENT_ID: mobius-ci-sentinel
+      SENTINEL_DIRECT_FALLBACK: ${{ vars.SENTINEL_DIRECT_FALLBACK != '' && vars.SENTINEL_DIRECT_FALLBACK || 'false' }}
+
       OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
       ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
 
@@ -145,6 +157,24 @@ jobs:
           echo "::notice title=Sentinel models::OPENAI_MODEL=${OPENAI_MODEL} ANTHROPIC_MODEL=${ANTHROPIC_MODEL}"
           echo "::notice::Anthropic default claude-sonnet-4-20250514 replaces retired claude-3-5-sonnet-20241022 (PR #387 vendor HTTP 400). Override via repo vars."
 
+      - name: Resolve requested sentinels
+        id: sentinels
+        if: steps.gate.outputs.run == 'true'
+        shell: bash
+        run: |
+          set -euo pipefail
+          labels="${{ steps.gate.outputs.labels }}"
+          list=()
+          if [[ "$labels" == *"review:aurea"* ]] || [[ "$labels" == *"consensus:requested"* ]]; then
+            list+=("aurea")
+          fi
+          if [[ "$labels" == *"review:atlas"* ]] || [[ "$labels" == *"consensus:requested"* ]]; then
+            list+=("atlas")
+          fi
+          joined=$(IFS=,; echo "${list[*]}")
+          echo "list=${joined}" >> "$GITHUB_OUTPUT"
+          echo "Requested sentinels: ${joined}"
+
       - name: Enforce EPICON/Docs presence (hard rules)
         id: hardrules
         if: steps.gate.outputs.run == 'true'
@@ -192,9 +222,30 @@ jobs:
           # We won't hard-fail on checkbox declaration; it's advisory.
           PY
 
+      - name: Run OAA sentinel broker (C-373 Phase 1)
+        id: oaa
+        if: steps.gate.outputs.run == 'true' && env.SENTINEL_DIRECT_FALLBACK != 'true'
+        shell: bash
+        run: |
+          set -euo pipefail
+          export SENTINELS="${{ steps.sentinels.outputs.list }}"
+          python3 scripts/build_oaa_sentinel_request.py
+          python3 - <<'PY'
+          import json, os
+          path = os.environ.get("SENTINEL_VERDICTS_PATH", "/tmp/oaa_verdicts.json")
+          with open(path, "r", encoding="utf-8") as f:
+              data = json.load(f)
+          out = os.environ["GITHUB_OUTPUT"]
+          with open(out, "a", encoding="utf-8") as fh:
+              fh.write(f"aurea_json={json.dumps(data.get('aurea', {}))}\n")
+              fh.write(f"atlas_json={json.dumps(data.get('atlas', {}))}\n")
+          PY
+        env:
+          SENTINEL_VERDICTS_PATH: /tmp/oaa_verdicts.json
+
       - name: Run AUREA review (OpenAI) -> JSON verdict
         id: aurea
-        if: contains(steps.gate.outputs.labels, 'review:aurea') || contains(steps.gate.outputs.labels, 'consensus:requested')
+        if: env.SENTINEL_DIRECT_FALLBACK == 'true' && (contains(steps.gate.outputs.labels, 'review:aurea') || contains(steps.gate.outputs.labels, 'consensus:requested'))
         uses: actions/github-script@v9
         with:
           script: |
@@ -311,7 +362,7 @@ jobs:
 
       - name: Run ATLAS review (Anthropic preferred) -> JSON verdict
         id: atlas
-        if: contains(steps.gate.outputs.labels, 'review:atlas') || contains(steps.gate.outputs.labels, 'consensus:requested')
+        if: env.SENTINEL_DIRECT_FALLBACK == 'true' && (contains(steps.gate.outputs.labels, 'review:atlas') || contains(steps.gate.outputs.labels, 'consensus:requested'))
         uses: actions/github-script@v9
         with:
           script: |
@@ -492,8 +543,8 @@ jobs:
         id: decide
         uses: actions/github-script@v9
         env:
-          AUREA_JSON: ${{ steps.aurea.outputs.json || '{}' }}
-          ATLAS_JSON: ${{ steps.atlas.outputs.json || '{}' }}
+          AUREA_JSON: ${{ steps.oaa.outputs.aurea_json || steps.aurea.outputs.json || '{}' }}
+          ATLAS_JSON: ${{ steps.oaa.outputs.atlas_json || steps.atlas.outputs.json || '{}' }}
         with:
           script: |
             const labels = `${{ steps.gate.outputs.labels }}` || '';
@@ -603,7 +654,7 @@ jobs:
               `**Labels:** \`${labelsDisplay}\``,
               '',
               resultLine,
-              skips.length ? `> ⚠️ ${skips.length} sentinel review(s) could not run. Vendor uptime is not merge authority (C-373 / WITNESS_PROTOCOL).` : '',
+              skips.length ? `> ⚠️ ${skips.length} sentinel review(s) could not run. Broker/vendor uptime is not merge authority (C-373 / WITNESS_PROTOCOL).` : '',
               '',
               '---',
               '',
@@ -613,7 +664,7 @@ jobs:
               renderSentinel('ATLAS', T),
               '---',
               '',
-              '> Configure secrets `OPENAI_API_KEY` and `ANTHROPIC_API_KEY`, or await OAA broker (Phase 1).',
+              '> Phase 1: configure `MOBIUS_CI_SENTINEL_HMAC_KEY` for OAA broker path. Direct vendor fallback: `SENTINEL_DIRECT_FALLBACK=true` + vendor secrets.',
             ].filter((x) => x !== null && x !== undefined).join('\n');
 
             const prNumber = context.payload.pull_request.number;
