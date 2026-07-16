@@ -1,6 +1,6 @@
 {
-  "current_cycle": "C-360",
-  "date": "2026-07-02",
+  "current_cycle": "C-374",
+  "date": "2026-07-16",
   "gi": 0.9,
   "mode": "yellow",
   "canonical_domain": "https://mobius-substrate.com",
@@ -10,7 +10,7 @@
   "snapshot": "https://terminal.mobius-substrate.com/api/terminal/snapshot",
   "vault_status": "https://terminal.mobius-substrate.com/api/vault/status",
   "vault_seals": "https://terminal.mobius-substrate.com/api/vault/seal",
-  "last_updated": "2026-07-02T12:00:00Z",
+  "last_updated": "2026-07-16T19:47:46Z",
   "previous_cycle": "C-358",
   "updated_by": "c360-pr-b-constitutional",
   "vault": {
@@ -60,7 +60,7 @@
     "c360-federation-sweep-in-progress"
   ],
   "doc_version": "2.2.0",
-  "last_state_snapshot": "C-360",
+  "last_state_snapshot": "C-374",
   "next_state_snapshot_expected": "C-361",
-  "notes": "C-360 Federation Optimization Sweep (PR-B): license policy ratified (AGPL code / CC-BY-SA docs / CC0 data); cycle pointer synced; sentinel roster 10 (URIEL truth, ZENITH shadow). mobius-bot-state-sync still blocked on GitHub App secret rotation. Identity service account provisioned; Vercel creds + reattest pending."
+  "notes": "Auto-sync by mobius-bot (deterministic, no LLM). Advanced C-360 -> C-374. Ledger unreachable or GI absent: attested fields carried forward UNVERIFIED."
 }
