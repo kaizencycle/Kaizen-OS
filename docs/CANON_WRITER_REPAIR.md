@@ -32,6 +32,7 @@ Failed runs now stamp `STATE/writer-health.json` via the `record-failure` job (C
    ```
 
    First line of the PEM must be `-----BEGIN RSA PRIVATE KEY-----` or `-----BEGIN PRIVATE KEY-----`.
+   Literal `\n` separators in the secret are also accepted (normalized in workflow).
    Do **not** use **Client secrets** (short hex string) — that is a different credential.
 3. Confirm the App is installed on `Mobius-Substrate` with **Contents: Read and write** on allowed paths
 4. **Actions → mobius-bot-state-sync → Run workflow** (manual dispatch)

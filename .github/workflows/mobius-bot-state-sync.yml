@@ -58,12 +58,15 @@ jobs:
           fi
 
       - name: Diagnose private key shape (no secret contents logged)
+        id: keycheck
         env:
           APP_KEY: ${{ secrets.MOBIUS_BOT_PRIVATE_KEY }}
         run: |
-          lines=$(printf '%s' "$APP_KEY" | wc -l | tr -d ' ')
-          first=$(printf '%s' "$APP_KEY" | head -1)
-          bytes=$(printf '%s' "$APP_KEY" | wc -c | tr -d ' ')
+          # Support literal \n separators (create-github-app-token normalizes these too).
+          normalized="${APP_KEY//\\n/$'\n'}"
+          lines=$(printf '%s' "$normalized" | wc -l | tr -d ' ')
+          first=$(printf '%s' "$normalized" | head -1)
+          bytes=$(printf '%s' "$normalized" | wc -c | tr -d ' ')
           echo "Private key line count: $lines (expect >= 3)"
           echo "Private key first line: $first"
           echo "Private key byte count: $bytes"
@@ -80,7 +83,7 @@ jobs:
             echo "::error::Fix: gh secret set MOBIUS_BOT_PRIVATE_KEY --repo kaizencycle/Mobius-Substrate < path/to.key.pem"
             exit 1
           fi
-          printf '%s\n' "$APP_KEY" > /tmp/mobius-bot.pem
+          printf '%s\n' "$normalized" > /tmp/mobius-bot.pem
           if ! openssl rsa -in /tmp/mobius-bot.pem -check -noout 2>/dev/null; then
             if ! openssl pkey -in /tmp/mobius-bot.pem -check -noout 2>/dev/null; then
               echo "::error::OpenSSL cannot parse MOBIUS_BOT_PRIVATE_KEY — regenerate Private key on the App and re-set via gh secret set < file.pem"
@@ -88,16 +91,8 @@ jobs:
             fi
           fi
           echo "OpenSSL PEM parse: ok"
-
-      - name: Prepare App PEM for token action
-        id: pem
-        env:
-          APP_KEY: ${{ secrets.MOBIUS_BOT_PRIVATE_KEY }}
-        run: |
-          pem_escaped=${APP_KEY//$'\n'/\\n}
-          echo "::add-mask::$pem_escaped"
           echo "pem<<EOF" >> "$GITHUB_OUTPUT"
-          printf '%s\n' "$APP_KEY" >> "$GITHUB_OUTPUT"
+          cat /tmp/mobius-bot.pem >> "$GITHUB_OUTPUT"
           echo "EOF" >> "$GITHUB_OUTPUT"
 
       - name: Mint scoped App token (C-336 identity)
@@ -105,7 +100,7 @@ jobs:
         uses: actions/create-github-app-token@v3
         with:
           client-id: ${{ secrets.MOBIUS_BOT_APP_ID }}
-          private-key: ${{ steps.pem.outputs.pem }}
+          private-key: ${{ steps.keycheck.outputs.pem }}
 
       - uses: actions/checkout@v7
         with:
