@@ -12,7 +12,8 @@
 #
 # C-373 PHASE 1 — OAA broker path (default):
 #   CI holds MOBIUS_CI_SENTINEL_HMAC_KEY only; vendor keys relocate to broker Render env.
-#   Broker unreachable -> scripts/build_oaa_sentinel_request.py synthesizes SKIPPED, exit 0.
+#   Broker script is pinned to pull_request.base.sha (not PR head) before secrets load.
+#   Secrets are step-scoped — never job-level — so PR-controlled steps cannot read them.
 #   Set SENTINEL_DIRECT_FALLBACK=true to restore direct vendor calls (counterfactual escape hatch).
 #
 # REQUIRED SECRETS (Phase 1 default — broker path):
@@ -47,13 +48,9 @@ jobs:
   sentinel:
     runs-on: ubuntu-latest
     env:
-      MOBIUS_CI_SENTINEL_HMAC_KEY: ${{ secrets.MOBIUS_CI_SENTINEL_HMAC_KEY }}
       OAA_BROKER_URL: ${{ vars.OAA_BROKER_URL != '' && vars.OAA_BROKER_URL || 'https://oaa-api-library.onrender.com/v1/sentinel/review' }}
       OAA_AGENT_ID: mobius-ci-sentinel
       SENTINEL_DIRECT_FALLBACK: ${{ vars.SENTINEL_DIRECT_FALLBACK != '' && vars.SENTINEL_DIRECT_FALLBACK || 'false' }}
-
-      OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-      ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
 
       OPENAI_MODEL: ${{ vars.OPENAI_MODEL != '' && vars.OPENAI_MODEL || 'gpt-4o-mini' }}
       ANTHROPIC_MODEL: ${{ vars.ANTHROPIC_MODEL != '' && vars.ANTHROPIC_MODEL || 'claude-sonnet-4-20250514' }}
@@ -226,10 +223,23 @@ jobs:
         id: oaa
         if: steps.gate.outputs.run == 'true' && env.SENTINEL_DIRECT_FALLBACK != 'true'
         shell: bash
+        env:
+          MOBIUS_CI_SENTINEL_HMAC_KEY: ${{ secrets.MOBIUS_CI_SENTINEL_HMAC_KEY }}
+          SENTINELS: ${{ steps.sentinels.outputs.list }}
+          SENTINEL_VERDICTS_PATH: /tmp/oaa_verdicts.json
         run: |
           set -euo pipefail
-          export SENTINELS="${{ steps.sentinels.outputs.list }}"
-          python3 scripts/build_oaa_sentinel_request.py
+          BASE_SHA="${{ github.event.pull_request.base.sha }}"
+          git fetch --no-tags --depth=1 origin "${BASE_SHA}"
+          SCRIPT_PATH="/tmp/build_oaa_sentinel_request_pinned.py"
+          if git cat-file -e "${BASE_SHA}:scripts/build_oaa_sentinel_request.py" 2>/dev/null; then
+            git show "${BASE_SHA}:scripts/build_oaa_sentinel_request.py" > "${SCRIPT_PATH}"
+            echo "::notice::Broker script pinned to base ${BASE_SHA:0:7} (PR head copy not executed with secrets)"
+          else
+            echo "::warning::Broker script absent on base — bootstrap uses workspace copy until merge"
+            cp scripts/build_oaa_sentinel_request.py "${SCRIPT_PATH}"
+          fi
+          python3 "${SCRIPT_PATH}"
           python3 - <<'PY'
           import json, os
           path = os.environ.get("SENTINEL_VERDICTS_PATH", "/tmp/oaa_verdicts.json")
@@ -240,13 +250,14 @@ jobs:
               fh.write(f"aurea_json={json.dumps(data.get('aurea', {}))}\n")
               fh.write(f"atlas_json={json.dumps(data.get('atlas', {}))}\n")
           PY
-        env:
-          SENTINEL_VERDICTS_PATH: /tmp/oaa_verdicts.json
 
       - name: Run AUREA review (OpenAI) -> JSON verdict
         id: aurea
         if: env.SENTINEL_DIRECT_FALLBACK == 'true' && (contains(steps.gate.outputs.labels, 'review:aurea') || contains(steps.gate.outputs.labels, 'consensus:requested'))
         uses: actions/github-script@v9
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         with:
           script: |
             const fs = require('fs');
@@ -364,6 +375,9 @@ jobs:
         id: atlas
         if: env.SENTINEL_DIRECT_FALLBACK == 'true' && (contains(steps.gate.outputs.labels, 'review:atlas') || contains(steps.gate.outputs.labels, 'consensus:requested'))
         uses: actions/github-script@v9
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         with:
           script: |
             const fs = require('fs');
