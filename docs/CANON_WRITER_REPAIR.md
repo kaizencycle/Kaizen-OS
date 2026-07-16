@@ -19,9 +19,20 @@ Failed runs now stamp `STATE/writer-health.json` via the `record-failure` job (C
 ## Owner repair steps
 
 1. Open **GitHub → kaizencycle/Mobius-Substrate → Settings → Secrets and variables → Actions**
-2. Set or rotate:
-   - `MOBIUS_BOT_APP_ID` — the Mobius GitHub App **Client ID** (not the numeric App ID from older docs)
-   - `MOBIUS_BOT_PRIVATE_KEY` — PEM private key for the Mobius GitHub App
+2. Set or rotate (use **repository** secrets on `Mobius-Substrate`, not Client secrets from the App page):
+   - `MOBIUS_BOT_APP_ID` — the Mobius GitHub App **Client ID** (`Iv23...`, not numeric App ID `4317883`)
+   - `MOBIUS_BOT_PRIVATE_KEY` — PEM from **Private keys → Generate** (the downloaded `.pem` file)
+
+   **Critical:** PEM must keep its newlines. Pasting into the GitHub UI often collapses to one line → `Invalid keyData` / `wrong tag`.
+
+   ```bash
+   # Recommended — feeds the file directly, preserves newlines
+   gh secret set MOBIUS_BOT_APP_ID --repo kaizencycle/Mobius-Substrate --body "Iv23lio1uMzL6P0htHOT"
+   gh secret set MOBIUS_BOT_PRIVATE_KEY --repo kaizencycle/Mobius-Substrate < ~/Downloads/mobius-canon-writer.*.private-key.pem
+   ```
+
+   First line of the PEM must be `-----BEGIN RSA PRIVATE KEY-----` or `-----BEGIN PRIVATE KEY-----`.
+   Do **not** use **Client secrets** (short hex string) — that is a different credential.
 3. Confirm the App is installed on `Mobius-Substrate` with **Contents: Read and write** on allowed paths
 4. **Actions → mobius-bot-state-sync → Run workflow** (manual dispatch)
 5. Verify:
