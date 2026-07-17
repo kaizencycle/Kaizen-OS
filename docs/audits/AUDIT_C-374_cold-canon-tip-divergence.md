@@ -116,7 +116,7 @@ When multiple attested seals share a `block_number`, the **newer** seal (by `sea
 
 ## Lane B cross-reference
 
-Gate G3 production collision capture: **BLOCKED** — see [`artifacts/C-374/production-audit/LANE_B_BLOCKED.md`](../../artifacts/C-374/production-audit/LANE_B_BLOCKED.md). G3 remains **UNVERIFIED**.
+Gate G3 production collision capture: **BLOCKED** — see [`docs/epicon/cycles/C-374/production-audit/LANE_B_BLOCKED.md`](../../epicon/cycles/C-374/production-audit/LANE_B_BLOCKED.md). G3 remains **UNVERIFIED**.
 
 ---
 
