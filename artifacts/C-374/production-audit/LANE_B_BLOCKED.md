@@ -1,9 +1,9 @@
 # Lane B — Gate G3 Production Collision Capture
 
-**Status:** BLOCKED  
+**Status:** PARTIAL (post-redeploy 2026-07-17 — see `GATE_G3_POST_REDEPLOY_AUDIT.md`)  
 **Cycle:** C-374  
-**Witnessed at:** 2026-07-16T23:30:00Z (UTC)  
-**Operator:** Custodian (production credentials required — not available to cloud agent)
+**Witnessed at:** 2026-07-17T15:27:00Z (UTC)  
+**Operator:** Custodian redeploy + cloud agent read-only HTTP capture
 
 ---
 
@@ -11,10 +11,12 @@
 
 | Step | Verdict | Evidence |
 | --- | --- | --- |
-| 1. `pnpm watchdog:collision-audit` against production KV | **BLOCKED** | No production KV credentials (`UPSTASH_*`, `AGENT_SERVICE_TOKEN`, etc.) in agent environment. Command not executed. |
-| 2. `vault/status` + snapshot-lite capture | **PARTIAL** | Prior read-only bundle exists: `mobius-civic-ai-terminal/artifacts/C-373/pre-repair/` (2026-07-16T00:31Z) — `seals_count: 360`, `latest_seal_id: null`. **Not re-captured this cycle** (Lane B requires custodian keyboard at same timestamp as collision audit). |
-| 3. Diff vs #626 pre-repair bundle | **UNVERIFIED** | Temporal-growth hypothesis (119 → 125 pair count) not tested without fresh production audit. |
-| 4. Gate G3 row update | **UNCHANGED** | G3 remains **FALSE/UNVERIFIED** until Michael executes Lane B checklist. |
+| 1. KV permission health | **PASS** | Post-redeploy: `kv-permissions-2026-07-17T152700Z.json` — read/write/counter/list all true. |
+| 2. `snapshot-lite` + `quorum/state` | **PASS** | Deploy `4ec90ea`, cycle C-375, KV ok, 360 sealed blocks, block 361 at 100%. |
+| 3. `vault/status` capture | **FAIL** | HTTP 503 `kv_timeout` — aggregate scan times out (2026-07-17T15:27Z). |
+| 4. `pnpm watchdog:collision-audit` | **NOT RUN** | Requires custodian `workflow_dispatch` or local `.env.local` — agent lacks KV creds. |
+| 5. Pair-count audit | **NOT RUN** | Last known: **125** hash-divergent pairs (GH Actions run `29502111885`, 2026-07-16). Stale until re-run. |
+| 6. Gate G3 row | **PARTIAL** | KV rotation verified; collision pair count + vault/status still open. |
 
 ---
 
