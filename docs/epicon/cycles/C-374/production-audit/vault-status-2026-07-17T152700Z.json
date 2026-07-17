@@ -1,0 +1,1 @@
+{"ok":false,"status":"degraded","reason":"kv_timeout","vault_version":2,"balance_reserve":null,"in_progress_balance":null,"seals_count":null,"substrate_ok":null,"blocks":[],"quarantine_cycle_list":[],"seals_needing_reattestation":[]}

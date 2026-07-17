@@ -1,6 +1,6 @@
 {
   "mobius_catalog_version": "1.0.0",
-  "generated_at": "2026-07-17T14:41:06.633Z",
+  "generated_at": "2026-07-17T15:42:15.011Z",
   "repo": {
     "name": "Mobius-Substrate",
     "url": "https://github.com/kaizencycle/Mobius-Substrate",
@@ -9,7 +9,7 @@
   },
   "stats": {
     "epiconCount": 0,
-    "docCount": 1037
+    "docCount": 1041
   },
   "epicons": [],
   "docs": [
@@ -7446,6 +7446,14 @@
       "summary": ""
     },
     {
+      "path": "docs/audits/AUDIT_C-374_cold-canon-tip-divergence.md",
+      "title": "AUDIT C-374 — Cold Canon Tip Divergence (PR #392)",
+      "category": "audits",
+      "tags": [],
+      "content_hash": "sha256:9b962895e273d7c6a57acaf2063832e0eb8e00b7915694dfdac4f6018e63bc8c",
+      "summary": ""
+    },
+    {
       "path": "docs/audits/AUDIT_C-374_oaa-reality.md",
       "title": "AUDIT C-374 — OAA Reality (Read-Only)",
       "category": "audits",
@@ -8034,6 +8042,30 @@
       "category": "epicon",
       "tags": [],
       "content_hash": "sha256:fc9a6546dd392c68621564aa4307432cf9dc06f66c3f6e93226d02dced2a5623",
+      "summary": ""
+    },
+    {
+      "path": "docs/epicon/cycles/C-374/ZEUS_DISPUTE_DISPOSITIONS.md",
+      "title": "ZEUS Dispute Dispositions — C-374",
+      "category": "epicon",
+      "tags": [],
+      "content_hash": "sha256:55d7036ee64f2aa2418f720de0aab3514b71ce9747c3cbaad8ce19271ed3a493",
+      "summary": ""
+    },
+    {
+      "path": "docs/epicon/cycles/C-374/production-audit/GATE_G3_POST_REDEPLOY_AUDIT.md",
+      "title": "Gate G3 — Post-Redeploy Production Audit",
+      "category": "epicon",
+      "tags": [],
+      "content_hash": "sha256:2b051884135a01ff9eea233a3737cb5eb21c7a3bc92505d88599143f27daa6a0",
+      "summary": ""
+    },
+    {
+      "path": "docs/epicon/cycles/C-374/production-audit/LANE_B_BLOCKED.md",
+      "title": "Lane B — Gate G3 Production Collision Capture",
+      "category": "epicon",
+      "tags": [],
+      "content_hash": "sha256:cd7165f77125751d1d2f671c064bc5ac9057b2026f891f6d2ef729bb2314fd37",
       "summary": ""
     },
     {
