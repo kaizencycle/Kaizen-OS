@@ -111,4 +111,17 @@ The following were explicitly **not touched** in Lane B:
 
 ---
 
+## Authority Provenance
+
+Authority declared using EPICON_FOUNDER_STANDING.md
+
+- **Authority basis:** Founder Standing DVA.02 — Infrastructure Recovery
+- **Scope:** Archival of confirmed-dead CI workflow; zero impact on living gates
+- **Custodian:** Michael (kaizencycle)
+- **Auditor:** ATLAS (Principal Engineering Orchestration Sentinel)
+- **Cycle:** C-375 (2026-07-17)
+- **EPICON ref:** `EPICON_C-375_ci_workflow-archaeology-b1_v1`
+
+---
+
 *Audit completed: 2026-07-17 | Cycle C-375 | ATLAS*
