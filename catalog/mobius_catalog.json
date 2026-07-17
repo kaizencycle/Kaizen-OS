@@ -1,6 +1,6 @@
 {
   "mobius_catalog_version": "1.0.0",
-  "generated_at": "2026-07-17T15:42:15.011Z",
+  "generated_at": "2026-07-17T22:16:48.874Z",
   "repo": {
     "name": "Mobius-Substrate",
     "url": "https://github.com/kaizencycle/Mobius-Substrate",
@@ -9,7 +9,7 @@
   },
   "stats": {
     "epiconCount": 0,
-    "docCount": 1041
+    "docCount": 1042
   },
   "epicons": [],
   "docs": [
@@ -8057,7 +8057,7 @@
       "title": "Gate G3 — Post-Redeploy Production Audit",
       "category": "epicon",
       "tags": [],
-      "content_hash": "sha256:2b051884135a01ff9eea233a3737cb5eb21c7a3bc92505d88599143f27daa6a0",
+      "content_hash": "sha256:e658b7031758d9fa727543041681fab69c618d11fe44a22ffb6dc178b85deb1f",
       "summary": ""
     },
     {
@@ -8066,6 +8066,14 @@
       "category": "epicon",
       "tags": [],
       "content_hash": "sha256:cd7165f77125751d1d2f671c064bc5ac9057b2026f891f6d2ef729bb2314fd37",
+      "summary": ""
+    },
+    {
+      "path": "docs/epicon/cycles/C-375/ZEUS_DISPUTE_DISPOSITIONS.md",
+      "title": "ZEUS Dispute Dispositions — C-375",
+      "category": "epicon",
+      "tags": [],
+      "content_hash": "sha256:86c4213a8cdef5345d213c5e5bb8a02f2d403508b1a2b8b6fb8b84fdd1b058b9",
       "summary": ""
     },
     {
