@@ -1,0 +1,161 @@
+schema_version: "0.1"
+shard:
+  id: "SHARD_C-368_EVE_001"
+  cycle: "C-368"
+  status: "proposed"
+  generated_by: "EVE"
+  generated_at: "2026-07-11T00:00:00Z"
+scope:
+  repositories:
+    - "kaizencycle/Mobius-Substrate"
+    - "kaizencycle/mobius-browser-shell"
+    - "kaizencycle/mobius-civic-ai-terminal"
+    - "kaizencycle/epicon"
+    - "kaizencycle/OAA-API-Library"
+  epicon_ids:
+    - "EPICON_C-368_CORE_canon-discovery-close_v1"
+    - "EPICON_C-368_INFRA_canon-machine-layer_v1"
+    - "EPICON_C-368_CORE_guard-app-phase1_v1"
+    - "EPICON_C-368_SPECS_reserve-canon-prime_v1"
+  time_window:
+    opened_at: "2026-07-10T00:00:00Z"
+    closed_at: "2026-07-10T23:59:59Z"
+source_status:
+  declared_count: 7
+  repository_preserved_count: 7
+  ledger_ingested_count: 0
+  sealed_count: 0
+  cold_canon_exported_count: 0
+intent:
+  original: >
+    Make Mobius canon machine-readable and close federation integrity gaps
+    exposed by C-367 Guard rollout.
+  final: >
+    Deliver non-JS canon retrieval, truthful service manifests, operational
+    EPICON enforcement paths, and an automated bridge from hot Reserve Block
+    state toward cold canon.
+  drift_detected: false
+  drift_notes: []
+consequential_actions:
+  - action_id: "c368-canon-prerender"
+    description: "Static prerender for four canon routes"
+    actor: "ATLAS / Cursor agent"
+    authority_ref: "EPICON_C-368_INFRA_canon-machine-layer_v1"
+    source_refs:
+      - "https://github.com/kaizencycle/mobius-browser-shell/pull/94"
+    outcome: "merged"
+    verification: "c368-canon-verify.sh — production verified"
+    status: "verified"
+  - action_id: "c368-canon-json"
+    description: "Six machine-readable canon JSON endpoints"
+    actor: "ATLAS / Cursor agent"
+    authority_ref: "EPICON_C-368_INFRA_canon-machine-layer_v1"
+    source_refs:
+      - "https://mobius-substrate.com/.well-known/mobius-canon.json"
+    outcome: "live"
+    verification: "HTTP 200 valid JSON"
+    status: "verified"
+  - action_id: "c368-guard-wire"
+    description: "Probot I2 enforcement wiring into epicon-api"
+    actor: "Cursor agent"
+    authority_ref: "EPICON_C-368_CORE_guard-app-phase1_v1"
+    source_refs:
+      - "https://github.com/kaizencycle/epicon/pull/17"
+    outcome: "merged"
+    verification: "Render redeploy + probot-i2 mode pending"
+    status: "merged_unverified"
+  - action_id: "c368-reserve-export"
+    description: "Reserve Block export and continuous append lane"
+    actor: "Cursor agent"
+    authority_ref: "EPICON_C-368_SPECS_reserve-canon-prime_v1"
+    source_refs:
+      - "https://github.com/kaizencycle/mobius-civic-ai-terminal/pull/591"
+    outcome: "merged"
+    verification: "operator prime and .dat chain pending"
+    status: "merged_unverified"
+  - action_id: "c368-terminal-main-deprecate"
+    description: "Duplicate terminal repository deprecation README"
+    actor: "Cursor agent"
+    authority_ref: "EPICON_C-368_DOCS_org-dedup-terminal-main_v1"
+    source_refs:
+      - "https://github.com/kaizencycle/mobius-civic-ai-terminal-main/pull/1"
+    outcome: "README merged"
+    verification: "archive remained owner action"
+    status: "provisional"
+ethical_assessment:
+  affected_parties:
+    - "Federation operators"
+    - "Civic participants relying on integrity gates"
+    - "Answer-engine and crawler consumers of canon"
+  rights_or_values:
+    - integrity
+    - transparency
+    - accountability
+    - memory
+  improvements:
+    - "Reduced false authority from crawler-invisible canon"
+    - "Separated implementation claims from live operational proof"
+    - "Improved durable memory and provenance disclosure"
+  risks:
+    - "Generated narratives could be mistaken for seal status"
+    - "ledger_id could be mistaken for ingestion receipt"
+    - "Hot sealed state could be mistaken for cold canon"
+  mitigations:
+    - "Explicit source-status layers in shard schema"
+    - "Post-deploy verification harness"
+    - "Human and quorum requirements before seal"
+  unresolved_concerns:
+    - "Terminal sitemap/llms.txt still 404 — declared, not hidden"
+dissent:
+  present: false
+  records: []
+uncertainties:
+  - claim: "All canon routes are retrievable in production"
+    reason: "Verified at close; may drift on redeploy"
+    required_verification: "run c368-canon-verify.sh"
+  - claim: "EPICON enforcement is live on epicon-api"
+    reason: "Code merged; production still transport-only at last witness"
+    required_verification: "confirm enforcement_mode probot-i2 on /health"
+  - claim: "Reserve Blocks are in cold canon"
+    reason: "350 sealed hot; 0 .dat on Substrate main"
+    required_verification: "verify .dat files and MANIFEST on Substrate main"
+omissions:
+  policy: "routine logs and duplicate operational events omitted"
+  declared_categories:
+    - telemetry
+    - duplicate PR bot comments
+    - non-consequential formatting changes
+    - dependabot-only noise
+cycle_outcome:
+  completed:
+    - "Canon machine-readable layer live on production"
+    - "Federation PR1–PR4 merged"
+    - "Guard scaffold and wire code merged"
+    - "Reserve export automation merged"
+  pending:
+    - "PR7 operator prime (cold .dat)"
+    - "PR5 Render redeploy (probot-i2)"
+    - "PR6 archive terminal-main"
+  failed: []
+  remediated: []
+seal_recommendation:
+  recommendation: "hold_for_evidence"
+  proposed_tier: "EP-2"
+  rationale: >
+    Cycle meaning is stable and canon discoverability is verified live, but
+    several operator proofs (cold canon, Probot live, repo archive) should
+    attach before final sealing.
+  human_review_required: true
+verification:
+  atlas: "pending"
+  zeus: "pending"
+  aurea: "pending"
+  jade: "pending"
+  human: "pending"
+provenance:
+  manifest_hash: ""
+  source_root_hash: "sha256:669abacd6fce1b68c620d68c15aab2b0eda1c301a3ff4fe78f46f1444f67c70d"
+  generator_version: "eve-shard-core/0.1.0"
+pipeline_status:
+  seal_status: "not_requested"
+  ledger_status: "not_ingested"

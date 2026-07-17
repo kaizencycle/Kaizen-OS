@@ -1,7 +1,7 @@
 # C-322 · GitHub-Federated KV Cache
 
 **Substrate PR:** `cursor/c322-github-kv-cache-de6f` on `Mobius-Substrate`  
-**Terminal PR:** apply files from `integrations/mobius-civic-ai-terminal-c322/` to `mobius-civic-ai-terminal` (same branch name).
+**Terminal PR:** apply files from `docs/pr-bundles/mobius-civic-ai-terminal-c322/` to `mobius-civic-ai-terminal` (same branch name).
 
 ## Deploy order
 
@@ -17,7 +17,7 @@
 
 | Path in Terminal repo | Source in this bundle |
 |----------------------|------------------------|
-| `lib/github-cache.ts` | `integrations/mobius-civic-ai-terminal-c322/lib/github-cache.ts` |
+| `lib/github-cache.ts` | `docs/pr-bundles/mobius-civic-ai-terminal-c322/lib/github-cache.ts` |
 | `lib/kv/store.ts` | `integrations/.../lib/kv/store.ts` |
 | `lib/integrity/buildStatus.ts` | `integrations/.../lib/integrity/buildStatus.ts` |
 | `app/api/cron/heartbeat/route.ts` | `integrations/.../app/api/cron/heartbeat/route.ts` |

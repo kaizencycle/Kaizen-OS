@@ -52,13 +52,22 @@ BOT_MARKER = "<!-- MOBIUS_PR_BOT -->"
 
 # Scope definitions: label -> allowed file path prefixes
 SCOPE_MAP = {
-    "docs": ["docs/", "epicon/", "README.md", "CHANGELOG.md", "LICENSE"],
-    "ci": [".github/", "ci/", "scripts/"],
-    "core": ["src/", "packages/", "apps/", "services/"],
+    "docs": [
+        "docs/",
+        "epicon/",
+        "README.md",
+        "CHANGELOG.md",
+        "LICENSE",
+        "mkdocs.yml",
+        "journals/cycles/",
+        "catalog/",
+    ],
+    "ci": [".github/", "ci/", "scripts/", "STATE/"],
+    "core": ["src/", "packages/", "apps/", "services/", "package.json", "package-lock.json"],
     "infra": ["infra/", "deploy/", "docker/", "monitoring/", "grafana/"],
     "sentinels": ["sentinels/"],
     "labs": ["labs/"],
-    "specs": ["specs/", "schemas/", "configs/"],
+    "specs": ["specs/", "schemas/", "configs/", "tests/", "canon/"],
 }
 
 # Scope -> labels to apply
@@ -286,17 +295,31 @@ def changed_files():
 
 
 def scope_allows_files(scope_label, files):
-    """Check if all files are within scope."""
-    allowed = SCOPE_MAP.get(scope_label)
-    if not allowed:
-        return False, [f"Unknown scope '{scope_label}'. Allowed: {', '.join(SCOPE_MAP.keys())}"]
-    
+    """Check if all files are within one or more declared scopes (comma-separated union)."""
+    labels = [part.strip() for part in scope_label.split(",") if part.strip()]
+    if not labels:
+        return False, list(files)
+
+    unknown = [label for label in labels if label not in SCOPE_MAP]
+    if unknown:
+        return False, [
+            f"Unknown scope '{label}'. Allowed: {', '.join(SCOPE_MAP.keys())}"
+            for label in unknown
+        ]
+
     bad = []
     for f in files:
-        if not any(f == p.rstrip("/") or f.startswith(p) for p in allowed):
+        if not any(_file_in_scope(f, SCOPE_MAP[label]) for label in labels):
             bad.append(f)
-    
+
     return len(bad) == 0, bad
+
+
+def _file_in_scope(file_path, allowed_prefixes):
+    return any(
+        file_path == prefix.rstrip("/") or file_path.startswith(prefix)
+        for prefix in allowed_prefixes
+    )
 
 
 # -----------------------------
@@ -533,7 +556,8 @@ def main():
     labels = []
     if emergency:
         labels += ["mode:emergency", "transparency-debt"]
-    labels += SCOPE_LABELS.get(applied_scope_label, [])
+    for scope_label in [part.strip() for part in applied_scope_label.split(",") if part.strip()]:
+        labels += SCOPE_LABELS.get(scope_label, [])
     add_labels(PR_NUMBER, labels)
 
     # Request reviewers

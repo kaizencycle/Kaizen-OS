@@ -1,26 +1,26 @@
 {
   "repo": "kaizencycle/Mobius-Substrate",
-  "generated_at": "2026-06-30T14:39:33Z",
-  "open_pr_count": 8,
+  "generated_at": "2026-07-17T13:59:02Z",
+  "open_pr_count": 9,
   "by_severity": {
-    "high": 0,
-    "medium": 0,
+    "high": 3,
+    "medium": 2,
     "low": 0,
-    "unknown": 8
+    "unknown": 4
   },
   "emergency_count": 0,
   "items": [
     {
-      "pr": 317,
-      "title": "chore(deps-dev): bump hardhat from 2.22.5 to 3.9.0",
-      "url": "https://github.com/kaizencycle/Mobius-Substrate/pull/317",
+      "pr": 382,
+      "title": "chore(deps): bump the npm-minor-patch group across 1 directory with 13 updates",
+      "url": "https://github.com/kaizencycle/Mobius-Substrate/pull/382",
       "author": "dependabot[bot]",
-      "updated_at": "2026-06-28T18:00:12Z",
-      "created_at": "2026-06-11T23:45:46Z",
+      "updated_at": "2026-07-13T15:55:36Z",
+      "created_at": "2026-07-13T15:55:15Z",
       "labels": [],
       "mode": "normal",
       "has_debt": false,
-      "severity": "unknown",
+      "severity": "high",
       "justification_hash": "",
       "checks": {
         "epicon": "unknown",
@@ -28,50 +28,16 @@
       }
     },
     {
-      "pr": 320,
-      "title": "chore(deps): bump lru-cache from 10.2.0 to 11.5.1",
-      "url": "https://github.com/kaizencycle/Mobius-Substrate/pull/320",
-      "author": "dependabot[bot]",
-      "updated_at": "2026-06-28T18:00:15Z",
-      "created_at": "2026-06-11T23:48:14Z",
-      "labels": [],
-      "mode": "normal",
-      "has_debt": false,
-      "severity": "unknown",
-      "justification_hash": "",
-      "checks": {
-        "epicon": "unknown",
-        "merge_gate": "unknown"
-      }
-    },
-    {
-      "pr": 326,
-      "title": "chore(deps): bump nodemailer from 8.0.11 to 9.0.1",
-      "url": "https://github.com/kaizencycle/Mobius-Substrate/pull/326",
-      "author": "dependabot[bot]",
-      "updated_at": "2026-06-27T16:13:51Z",
-      "created_at": "2026-06-22T17:43:03Z",
-      "labels": [],
-      "mode": "normal",
-      "has_debt": false,
-      "severity": "unknown",
-      "justification_hash": "",
-      "checks": {
-        "epicon": "unknown",
-        "merge_gate": "unknown"
-      }
-    },
-    {
-      "pr": 335,
-      "title": "chore(deps): unify nodemailer 9 + lru-cache 11 (supersedes #326, #320)",
-      "url": "https://github.com/kaizencycle/Mobius-Substrate/pull/335",
+      "pr": 385,
+      "title": "fix(labs): replace lab7 workrepo gitlink with tracked scaffold",
+      "url": "https://github.com/kaizencycle/Mobius-Substrate/pull/385",
       "author": "kaizencycle",
-      "updated_at": "2026-06-29T14:28:00Z",
-      "created_at": "2026-06-29T13:34:51Z",
+      "updated_at": "2026-07-14T17:53:09Z",
+      "created_at": "2026-07-14T17:52:55Z",
       "labels": [],
       "mode": "normal",
       "has_debt": false,
-      "severity": "unknown",
+      "severity": "high",
       "justification_hash": "",
       "checks": {
         "epicon": "unknown",
@@ -79,16 +45,16 @@
       }
     },
     {
-      "pr": 336,
-      "title": "chore(deps): bump the actions group with 4 updates",
-      "url": "https://github.com/kaizencycle/Mobius-Substrate/pull/336",
+      "pr": 390,
+      "title": "chore(deps): bump the actions group across 1 directory with 2 updates",
+      "url": "https://github.com/kaizencycle/Mobius-Substrate/pull/390",
       "author": "dependabot[bot]",
-      "updated_at": "2026-06-29T15:38:11Z",
-      "created_at": "2026-06-29T15:37:55Z",
+      "updated_at": "2026-07-16T20:04:00Z",
+      "created_at": "2026-07-16T01:56:32Z",
       "labels": [],
       "mode": "normal",
       "has_debt": false,
-      "severity": "unknown",
+      "severity": "high",
       "justification_hash": "",
       "checks": {
         "epicon": "unknown",
@@ -96,46 +62,101 @@
       }
     },
     {
-      "pr": 337,
-      "title": "chore(deps): bump the npm-minor-patch group with 10 updates",
-      "url": "https://github.com/kaizencycle/Mobius-Substrate/pull/337",
-      "author": "dependabot[bot]",
-      "updated_at": "2026-06-29T15:59:40Z",
-      "created_at": "2026-06-29T15:59:23Z",
-      "labels": [],
-      "mode": "normal",
-      "has_debt": false,
-      "severity": "unknown",
-      "justification_hash": "",
-      "checks": {
-        "epicon": "unknown",
-        "merge_gate": "unknown"
-      }
-    },
-    {
-      "pr": 338,
-      "title": "chore(deps): bump js-yaml from 4.2.0 to 5.2.0",
-      "url": "https://github.com/kaizencycle/Mobius-Substrate/pull/338",
-      "author": "dependabot[bot]",
-      "updated_at": "2026-06-29T16:00:06Z",
-      "created_at": "2026-06-29T15:59:50Z",
-      "labels": [],
-      "mode": "normal",
-      "has_debt": false,
-      "severity": "unknown",
-      "justification_hash": "",
-      "checks": {
-        "epicon": "unknown",
-        "merge_gate": "unknown"
-      }
-    },
-    {
-      "pr": 342,
-      "title": "chore(deps): unified dependency bumps C-358 \u2014 actions, minor/patch, nodemailer 9, lru-cache 11, js-yaml 5",
-      "url": "https://github.com/kaizencycle/Mobius-Substrate/pull/342",
+      "pr": 392,
+      "title": "canon(C-368): prime reserve blocks cold canon (194 blocks)",
+      "url": "https://github.com/kaizencycle/Mobius-Substrate/pull/392",
       "author": "kaizencycle",
-      "updated_at": "2026-06-30T14:38:23Z",
-      "created_at": "2026-06-30T14:37:40Z",
+      "updated_at": "2026-07-16T13:27:45Z",
+      "created_at": "2026-07-16T13:27:29Z",
+      "labels": [
+        "scope:specs"
+      ],
+      "mode": "normal",
+      "has_debt": false,
+      "severity": "medium",
+      "justification_hash": "6278f3908188bbe4665dbac6cde3a6b08eb6d2b6de56d8628359247de6d06bc7",
+      "checks": {
+        "epicon": "unknown",
+        "merge_gate": "unknown"
+      }
+    },
+    {
+      "pr": 396,
+      "title": "C-374: Vault/canon witness track (tip forensics + ZEUS dispositions)",
+      "url": "https://github.com/kaizencycle/Mobius-Substrate/pull/396",
+      "author": "cursor[bot]",
+      "updated_at": "2026-07-16T22:42:29Z",
+      "created_at": "2026-07-16T22:42:14Z",
+      "labels": [
+        "scope:docs"
+      ],
+      "mode": "normal",
+      "has_debt": false,
+      "severity": "medium",
+      "justification_hash": "44e1a4cd1c19578f84850e36539e0e8dbaba1033ab80025b93ab72e677b7b5c9",
+      "checks": {
+        "epicon": "unknown",
+        "merge_gate": "unknown"
+      }
+    },
+    {
+      "pr": 344,
+      "title": "chore(deps): bump zustand from 4.5.7 to 5.0.14",
+      "url": "https://github.com/kaizencycle/Mobius-Substrate/pull/344",
+      "author": "dependabot[bot]",
+      "updated_at": "2026-06-30T15:10:40Z",
+      "created_at": "2026-06-30T15:10:16Z",
+      "labels": [],
+      "mode": "normal",
+      "has_debt": false,
+      "severity": "unknown",
+      "justification_hash": "",
+      "checks": {
+        "epicon": "unknown",
+        "merge_gate": "unknown"
+      }
+    },
+    {
+      "pr": 345,
+      "title": "chore(deps): bump lucide-react from 0.378.0 to 1.23.0",
+      "url": "https://github.com/kaizencycle/Mobius-Substrate/pull/345",
+      "author": "dependabot[bot]",
+      "updated_at": "2026-07-07T17:15:37Z",
+      "created_at": "2026-06-30T15:10:49Z",
+      "labels": [],
+      "mode": "normal",
+      "has_debt": false,
+      "severity": "unknown",
+      "justification_hash": "",
+      "checks": {
+        "epicon": "unknown",
+        "merge_gate": "unknown"
+      }
+    },
+    {
+      "pr": 346,
+      "title": "chore(deps): bump tailwind-merge from 2.6.0 to 3.6.0",
+      "url": "https://github.com/kaizencycle/Mobius-Substrate/pull/346",
+      "author": "dependabot[bot]",
+      "updated_at": "2026-06-30T15:12:31Z",
+      "created_at": "2026-06-30T15:11:18Z",
+      "labels": [],
+      "mode": "normal",
+      "has_debt": false,
+      "severity": "unknown",
+      "justification_hash": "",
+      "checks": {
+        "epicon": "unknown",
+        "merge_gate": "unknown"
+      }
+    },
+    {
+      "pr": 347,
+      "title": "chore(deps): bump zod from 3.25.76 to 4.4.3",
+      "url": "https://github.com/kaizencycle/Mobius-Substrate/pull/347",
+      "author": "dependabot[bot]",
+      "updated_at": "2026-07-07T17:15:45Z",
+      "created_at": "2026-06-30T15:11:47Z",
       "labels": [],
       "mode": "normal",
       "has_debt": false,

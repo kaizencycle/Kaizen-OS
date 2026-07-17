@@ -1,15 +1,13 @@
 # opencode.yaml
-# Mobius Systems — OpenCode Hub Manifest
+# Mobius Substrate — OpenCode Hub Manifest
+# Pair with opencode.config.yaml (agent/runtime config). This file: discovery metadata.
 
 version: 1
-name: "Mobius Systems — Civic Operating System for Integrity and Apprenticeship"
+name: "Mobius Substrate — Civic Operating System for Integrity and Apprenticeship"
 slug: kaizencycle/kaizen-os
 description: >
-  Mobius Systems is a federated Civic Operating System that blends AI, governance,
-  and learning into a self-healing digital civilization.  It unites human and
-  machine apprenticeships through the OAA (Online Apprenticeship Agent),
-  integrating integrity metrics, decentralized ledgers, and autonomous council
-  reviews (AUREA · HERMES · EVE · JADE).
+  Mobius Substrate is a federated Civic Operating System that blends AI, governance,
+  and learning into a self-healing digital civilization.
 
 authors:
   - name: "Michael Judan (Kaizen)"
@@ -74,10 +72,10 @@ integrations:
       write_pr: true
       exec_flows: true
   civic-ledger:
-    url: "https://civic-protocol-core-ledger.onrender.com"
+    url: "https://civic-ledger-api.onrender.com"
     telemetry: true
-  reflections:
-    url: "https://lab4-proof-reflections.onrender.com"
+  terminal:
+    url: "https://terminal.mobius-substrate.com"
     status: "active"
 
 manifest:

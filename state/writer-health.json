@@ -1,7 +1,0 @@
-{
-  "writer": "mobius-bot-state-sync",
-  "last_run_at": "2026-06-30T09:00:00Z",
-  "last_cycle": "C-358",
-  "status": "manual-recovery",
-  "recovery_note": "App credentials broken (MOBIUS_BOT_APP_ID/MOBIUS_BOT_PRIVATE_KEY). Automated runs failing daily since C-356. Manually advanced to C-358. Owner action required: rotate GitHub App credentials in GitHub Settings → Secrets → Actions."
-}

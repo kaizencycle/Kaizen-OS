@@ -1,0 +1,90 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://mobius-substrate.com/schemas/mfs.v0_1.json",
+  "title": "Mobius Fractal Shard (MFS)",
+  "description": "Non-transferable attestation of demonstrated capability, learning, or contribution. Evidence — not currency, collateral, or entitlement.",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "mfs_id",
+    "owner_id",
+    "skill_type",
+    "issuer",
+    "assessment_ref",
+    "evidence_hash",
+    "issued_at",
+    "transferable",
+    "revocable"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "const": "0.1"
+    },
+    "mfs_id": {
+      "type": "string",
+      "pattern": "^MFS-[A-Z0-9_-]+$"
+    },
+    "owner_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "skill_type": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Domain category, e.g. emergency_preparedness, civic_research"
+    },
+    "skill_level": {
+      "type": ["string", "null"],
+      "description": "Optional proficiency tier from assessment rubric"
+    },
+    "issuer": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Issuing authority or assessment program"
+    },
+    "assessment_ref": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Reference to assessment version or rubric"
+    },
+    "assessment_version": {
+      "type": "string"
+    },
+    "source": {
+      "type": "string",
+      "description": "Source class, e.g. verified_seminar, simulation, teaching"
+    },
+    "evidence_hash": {
+      "type": "string",
+      "pattern": "^sha256:[a-f0-9]{64}$"
+    },
+    "issued_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "expires_at": {
+      "type": ["string", "null"],
+      "format": "date-time"
+    },
+    "transferable": {
+      "type": "boolean",
+      "const": false
+    },
+    "revocable": {
+      "type": "boolean",
+      "const": true
+    },
+    "revocation_policy": {
+      "type": "string"
+    },
+    "revoked_at": {
+      "type": ["string", "null"],
+      "format": "date-time"
+    },
+    "revocation_reason": {
+      "type": ["string", "null"]
+    }
+  }
+}

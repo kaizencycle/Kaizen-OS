@@ -1,0 +1,12 @@
+schema_version: "0.1"
+request_id: IGR-C369-DEMO-001
+wallet_id: wallet:demo-citizen-001
+portfolio_id: PORT-DEMO-001
+portfolio_root_hash: sha256:c5f7e0a1b4d3698012cdef3456789012cdef3456789012cdef3456789012cdef
+consent:
+  granted: true
+  scope: portfolio_review
+  recorded_at: "2026-07-10T16:00:00Z"
+requested_at: "2026-07-10T16:00:00Z"
+fountain_state: REVIEW_WINDOW_OPEN
+status: PROPOSED

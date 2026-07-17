@@ -77,7 +77,6 @@ jobs:
     name: 🧭 SR Footer
     runs-on: ubuntu-latest
     needs: epicon-pr-bot
-    if: ${{ vars.KAIZEN_PORTAL_BASE != '' || secrets.KAIZEN_PORTAL_BASE != '' }}
     
     steps:
       - name: Checkout
@@ -86,7 +85,7 @@ jobs:
       - name: Fetch and Post SR Footer
         uses: actions/github-script@v9
         env:
-          KAIZEN_PORTAL_BASE: ${{ secrets.KAIZEN_PORTAL_BASE }}
+          KAIZEN_PORTAL_BASE: ${{ vars.KAIZEN_PORTAL_BASE || secrets.KAIZEN_PORTAL_BASE }}
           SR_KIND: situational_report
           SR_LIMIT: "1"
         with:

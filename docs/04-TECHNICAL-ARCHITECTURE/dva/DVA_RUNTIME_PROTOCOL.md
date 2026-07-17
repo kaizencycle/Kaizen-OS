@@ -354,7 +354,7 @@ DVA_SAFE_STOP_VIRALITY_THRESHOLD=1000
 
 ## Related Documentation
 
-- [DVA_RUNTIME.md](../../../DVA_RUNTIME.md) — Root specification
+- [DVA_RUNTIME.md](../../../06-OPERATIONS/DVA_RUNTIME.md) — Root specification
 - [DVA MEMT Integration](./DVA_MEMT_INTEGRATION.md) — Engine integration
 - [DVA Tier Mapping](../overview/DVA_TIER_MAPPING.md) — Tier definitions
 - [DVA Flows Overview](../overview/DVA_FLOWS_OVERVIEW.md) — Flow diagrams
