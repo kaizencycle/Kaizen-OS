@@ -1,0 +1,221 @@
+{
+  "operator_cycle": "C-375",
+  "audited_at": "2026-07-17T15:28:54.233Z",
+  "attested_count": 319,
+  "hash_valid_count": 319,
+  "hash_invalid_count": 0,
+  "genesis_count": 3,
+  "link_issues": [
+    {
+      "seal_id": "seal-C-308-042",
+      "sequence": 42,
+      "cycle": "C-308",
+      "issue": "orphan_prev",
+      "prev_seal_hash": "2e03823c2d2145596d2a08afe8832ef10b27c19f8337d597c82d7efc1604c758",
+      "detail": "prev_seal_hash not found among attested seals"
+    }
+  ],
+  "components": [
+    {
+      "id": "lineage-seal-C-332-194",
+      "genesis_seals": [],
+      "tip_seals": [
+        "seal-C-332-194"
+      ],
+      "seal_count": 153,
+      "sequence_min": 42,
+      "sequence_max": 194,
+      "cycles": [
+        "C-308",
+        "C-309",
+        "C-310",
+        "C-311",
+        "C-312",
+        "C-313",
+        "C-314",
+        "C-315",
+        "C-316",
+        "C-317",
+        "C-318",
+        "C-319",
+        "C-320",
+        "C-321",
+        "C-322",
+        "C-323",
+        "C-324",
+        "C-325",
+        "C-326",
+        "C-327",
+        "C-328",
+        "C-329",
+        "C-330",
+        "C-331",
+        "C-332"
+      ],
+      "fountain_statuses": [
+        "activating"
+      ]
+    },
+    {
+      "id": "lineage-seal-C-332-001",
+      "genesis_seals": [
+        "seal-C-332-001"
+      ],
+      "tip_seals": [
+        "seal-C-358-131"
+      ],
+      "seal_count": 131,
+      "sequence_min": 1,
+      "sequence_max": 131,
+      "cycles": [
+        "C-332",
+        "C-333",
+        "C-334",
+        "C-335",
+        "C-336",
+        "C-337",
+        "C-338",
+        "C-339",
+        "C-340",
+        "C-341",
+        "C-342",
+        "C-343",
+        "C-344",
+        "C-345",
+        "C-346",
+        "C-347",
+        "C-348",
+        "C-349",
+        "C-350",
+        "C-351",
+        "C-352",
+        "C-353",
+        "C-355",
+        "C-356",
+        "C-357",
+        "C-358"
+      ],
+      "fountain_statuses": [
+        "activating"
+      ]
+    },
+    {
+      "id": "lineage-seal-C-359-001",
+      "genesis_seals": [
+        "seal-C-359-001"
+      ],
+      "tip_seals": [
+        "seal-C-371-033"
+      ],
+      "seal_count": 33,
+      "sequence_min": 1,
+      "sequence_max": 33,
+      "cycles": [
+        "C-359",
+        "C-360",
+        "C-361",
+        "C-362",
+        "C-363",
+        "C-364",
+        "C-365",
+        "C-366",
+        "C-367",
+        "C-368",
+        "C-369",
+        "C-370",
+        "C-371"
+      ],
+      "fountain_statuses": [
+        "pending"
+      ]
+    },
+    {
+      "id": "lineage-seal-C-372-001",
+      "genesis_seals": [
+        "seal-C-372-001"
+      ],
+      "tip_seals": [
+        "seal-C-372-002"
+      ],
+      "seal_count": 2,
+      "sequence_min": 1,
+      "sequence_max": 2,
+      "cycles": [
+        "C-372"
+      ],
+      "fountain_statuses": [
+        "pending"
+      ]
+    }
+  ],
+  "reattest_clusters": [
+    {
+      "attested_at_hour": "2026-06-30T20",
+      "seal_count": 283,
+      "sequence_range": [
+        1,
+        194
+      ],
+      "cycles": [
+        "C-308",
+        "C-309",
+        "C-310",
+        "C-311",
+        "C-312",
+        "C-313",
+        "C-314",
+        "C-315",
+        "C-316",
+        "C-317",
+        "C-318",
+        "C-319",
+        "C-320",
+        "C-321",
+        "C-322",
+        "C-323",
+        "C-324",
+        "C-325",
+        "C-326",
+        "C-327",
+        "C-328",
+        "C-329",
+        "C-330",
+        "C-331",
+        "C-332",
+        "C-333",
+        "C-334",
+        "C-335",
+        "C-336",
+        "C-337",
+        "C-338",
+        "C-339",
+        "C-340",
+        "C-341",
+        "C-342",
+        "C-343",
+        "C-344",
+        "C-345",
+        "C-346",
+        "C-347",
+        "C-348",
+        "C-349",
+        "C-350",
+        "C-351",
+        "C-352",
+        "C-353",
+        "C-355",
+        "C-356",
+        "C-357",
+        "C-358"
+      ],
+      "sample_seal_ids": [
+        "seal-C-358-130",
+        "seal-C-358-129",
+        "seal-C-357-128",
+        "seal-C-357-127",
+        "seal-C-357-126"
+      ]
+    }
+  ],
+  "multiple_lineages": true
+}

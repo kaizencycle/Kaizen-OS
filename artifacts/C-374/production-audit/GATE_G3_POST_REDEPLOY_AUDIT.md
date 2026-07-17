@@ -1,9 +1,9 @@
 # Gate G3 — Post-Redeploy Production Audit
 
-**Status:** PARTIAL — KV credentials verified; collision pair audit not re-run  
+**Status:** CAPTURE COMPLETE — collision pair audit re-run post-redeploy; repair not started  
 **Cycle:** C-374 (carried into C-375)  
-**Witnessed at:** 2026-07-17T15:27:00Z (UTC)  
-**Operator:** Cloud agent (read-only HTTP capture) + custodian redeploy  
+**Witnessed at:** 2026-07-17T15:27:00Z (HTTP) + 2026-07-17T15:28:57Z (collision audit)  
+**Operator:** Cloud agent (read-only HTTP capture) + custodian redeploy + GitHub Actions run `29592258693`  
 **Deployed SHA:** `4ec90eaac24f62b4486daa8e28bf2764774f7c16` (Terminal PR #626 — C-373 collision evidence pack)
 
 ---
@@ -12,10 +12,12 @@
 
 The redeploy **fixed KV credential health** — `/api/health/kv-permissions` now reports full read/write/counter/list capability with zero errors. `snapshot-lite` and `quorum/state` respond normally.
 
-Gate G3 is **not yet closed** because:
+**Gate G3 capture phase is complete.** Fresh collision and lineage audits were executed via GitHub Actions workflow **Audit Reserve Block Lineage** (run `29592258693`) against post-redeploy production KV. Results are **stable at 125 hash-divergent collision pairs** — identical to the pre-redeploy baseline (run `29502111885`, 2026-07-16). KV rotation did not change collision state (expected; no repair applied).
 
-1. **Fresh collision pair audit** was not executed post-redeploy (requires Terminal GitHub Actions `workflow_dispatch` or local `.env.local` with production KV).
-2. **`/api/vault/status` returns HTTP 503 `kv_timeout`** — full vault aggregate scan times out against production KV.
+**Gate G3 is not fully closed** because:
+
+1. **`/api/vault/status` returns HTTP 503 `kv_timeout`** — full vault aggregate scan times out against production KV.
+2. **Production reconciliation/repair** remains a separate custodian track (not started).
 
 ---
 
@@ -27,10 +29,27 @@ Gate G3 is **not yet closed** because:
 | 2. `snapshot-lite` capture | **PASS** | `snapshot-lite-2026-07-17T152700Z.json` — HTTP 200, `kv.ok: true`, latency 15ms, cycle C-375 |
 | 3. `quorum/state` reserve block | **PASS** | `sealed_blocks: 360`, `in_progress_block: 361`, `in_progress_pct: 100`, `latest_seal_id: null` |
 | 4. `vault/status` capture | **FAIL** | `vault-status-2026-07-17T152700Z.json` — HTTP 503, `reason: kv_timeout`, all aggregate fields null |
-| 5. `pnpm watchdog:collision-audit` | **NOT RUN** | No production KV creds in agent env; `workflow_dispatch` returned HTTP 403 |
-| 6. Pair-count audit (`audit-reserve-block-collisions.ts`) | **NOT RUN** | Same credential gap |
-| 7. Diff vs C-373 pre-repair bundle | **PARTIAL** | See comparison table below |
-| 8. Gate G3 row | **PARTIAL** | Improved from BLOCKED (KV health) but collision pair count unverified post-redeploy |
+| 5. Lineage audit (`audit-seal-hash-lineage.ts`) | **PASS** | `lineage-audit-2026-07-17T152854Z.json` — 319 attested, 4 lineages, 1 orphan_prev link issue |
+| 6. Pair-count audit (`audit-reserve-block-collisions.ts`) | **PASS** | `collision-pairs-2026-07-17T152857Z.json` — **125** hash-divergent pairs, stable vs pre-redeploy |
+| 7. Diff vs C-373 pre-repair bundle | **PASS** | Collision count unchanged (125); KV health improved |
+| 8. Gate G3 capture row | **COMPLETE** | All read-only witness steps done; repair/reconciliation deferred |
+
+---
+
+## Fresh collision audit (post-redeploy)
+
+| Field | Pre-redeploy (`29502111885`) | Post-redeploy (`29592258693`) | Delta |
+| --- | --- | --- | --- |
+| `audited_at` | 2026-07-16T13:25:43Z | 2026-07-17T15:28:57Z | +1 day |
+| `operator_cycle` | C-374 | C-375 | Writer advanced |
+| `raw_attested_count` | 319 | 319 | Unchanged |
+| `unique_block_count` | 194 | 194 | Unchanged |
+| `collision_count` | 125 | **125** | **Stable** |
+| `hash_divergent_collisions` | 125 | **125** | **Stable** |
+| `multiple_lineages` | true (4 components) | true (4 components) | Unchanged |
+| `link_issues` | 1 (orphan_prev) | 1 (orphan_prev) | Unchanged |
+
+**Interpretation:** The 125 hash-divergent pairs are a durable production state, not a transient artifact of stale credentials. Reconciliation remains P0 but is out of scope for this capture-only witness.
 
 ---
 
@@ -48,21 +67,7 @@ Gate G3 is **not yet closed** because:
 | KV permissions | not probed | **all ops pass** | Redeploy success |
 | GI (snapshot-lite) | 0.71 yellow | 0.63 yellow | Slightly lower |
 | Integrity freshness | nominal | **0.3 degraded** | Regression signal |
-
----
-
-## Collision count baseline (stale — pre-redeploy)
-
-Last successful **pair-count** audit via GitHub Actions:
-
-| Field | Value |
-| --- | --- |
-| Workflow run | `29502111885` (2026-07-16T13:25:43Z) |
-| `hash_divergent_collisions` | **125** |
-| `multiple_lineages` | true (4 components) |
-| Operator cycle at audit | C-374 |
-
-**This figure must be re-captured post-redeploy** before Gate G3 can close. The 125 count is consistent with temporal KV growth (+6 from C-370's 119); it is not verified against today's KV state.
+| Hash-divergent collisions | 125 (stale) | **125 (verified)** | Confirmed stable |
 
 ---
 
@@ -71,34 +76,23 @@ Last successful **pair-count** audit via GitHub Actions:
 1. **`latest_seal_id: null`** with block 361 at 100% — candidate block ready but no latest seal pointer.
 2. **`vault/status` kv_timeout** — likely full seal scan exceeds serverless timeout; investigate pagination or cached aggregate path.
 3. **Integrity freshness 0.3** — GI suppression driver persists despite KV write health.
-4. **Hash-divergent collisions** — last known 125 pairs; seal integrity gate may still be blocking new seal formation.
+4. **Hash-divergent collisions (125 pairs)** — confirmed stable; seal integrity gate may still be blocking new seal formation until reconciliation.
 
 ---
 
-## Custodian next steps (to close Gate G3)
+## Custodian next steps (post-capture)
 
-### A. Re-run collision audit (5 minutes)
+### A. Production reconciliation (separate track — NOT started)
 
-From GitHub → `mobius-civic-ai-terminal` → Actions → **Audit Reserve Block Lineage** → **Run workflow**.
+Requires receipts, human + ZEUS + EVE approval, dry-run, then apply repair. See C-374 reconciliation playbook.
 
-Download artifacts `collision-audit.json` + `lineage-audit.json`. Commit to:
+### B. Investigate vault/status timeout
 
-```
-artifacts/C-374/production-audit/collision-pairs-<TS>.json
-artifacts/C-374/production-audit/collision-groups-<TS>.json
-```
+Check whether `vault/status` needs a performance fix or can be replaced by `quorum/state` + collision JSON for ongoing witness purposes.
 
-### B. Or run locally
+### C. Resolve block 361 / latest_seal_id
 
-```bash
-# mobius-civic-ai-terminal/.env.local with production KV_REST_*
-pnpm watchdog:collision-audit -- --out ../Mobius-Substrate/artifacts/C-374/production-audit/collision-groups-<TS>.json
-pnpm exec tsx scripts/audit-reserve-block-collisions.ts --json > ../Mobius-Substrate/artifacts/C-374/production-audit/collision-pairs-<TS>.json
-```
-
-### C. Investigate vault/status timeout
-
-After collision audit, check whether `vault/status` needs a performance fix or can be replaced by `quorum/state` + collision JSON for Gate G3 witness purposes.
+Block 361 at 100% with `latest_seal_id: null` — custodian decision on seal formation vs collision gate.
 
 ---
 
@@ -106,7 +100,14 @@ After collision audit, check whether `vault/status` needs a performance fix or c
 
 | File | SHA256 |
 | --- | --- |
-| See `SHA256SUMS-2026-07-17T152700Z.txt` | — |
+| `integrity-status-2026-07-17T152700Z.json` | `8ef71bb94429b376bd88ec991fb6f1e29d560c542880a911d2c3cbe4bc16e5bd` |
+| `kv-permissions-2026-07-17T152700Z.json` | `b03d06b248d9132f3ea7e1935b52df6a1982c1987e64dd9f9198d878fcd1505b` |
+| `snapshot-lite-2026-07-17T152700Z.json` | `8fe76b2715ab11b37b04e7ff8c07fc100ef9f32841e0137d7660e827c0f226cb` |
+| `vault-status-2026-07-17T152700Z.json` | `f5261982ebb5ddc3fb328a22b758bbaf9b5b80b4d8bcd4ab7c3b19c9e24b4352` |
+| `lineage-audit-2026-07-17T152854Z.json` | `260c73b7bf744f4444fb69002245c9bd256b29fdedc9b39edd2a3ae362e7e1b7` |
+| `collision-pairs-2026-07-17T152857Z.json` | `bc03a0ce3dfb849725164201043b50d6e4be6509431e1a707b0e21cd24295fbe` |
+
+Workflow run: `https://github.com/kaizencycle/mobius-civic-ai-terminal/actions/runs/29592258693`
 
 ---
 
@@ -115,4 +116,5 @@ After collision audit, check whether `vault/status` needs a performance fix or c
 - KV writes: NOT PERFORMED  
 - Reconciliation receipt application: NOT PERFORMED  
 - Collision repair: NOT PERFORMED  
-- Gate G3: NOT closed (partial witness only)
+- Gate G3 capture: **COMPLETE**  
+- Gate G3 full close: **BLOCKED** on reconciliation + vault/status
