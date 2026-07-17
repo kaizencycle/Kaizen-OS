@@ -1,6 +1,6 @@
 {
   "mobius_catalog_version": "1.0.0",
-  "generated_at": "2026-06-30T14:36:59.481Z",
+  "generated_at": "2026-07-17T14:40:02.559Z",
   "repo": {
     "name": "Mobius-Substrate",
     "url": "https://github.com/kaizencycle/Mobius-Substrate",
@@ -9,7 +9,7 @@
   },
   "stats": {
     "epiconCount": 0,
-    "docCount": 972
+    "docCount": 973
   },
   "epicons": [],
   "docs": [
@@ -7251,6 +7251,14 @@
       "category": "assets",
       "tags": [],
       "content_hash": "sha256:1e5191ae930be93a0a569bf6e04325152431a227bb22794b7f1d6fcf5ee0cbeb",
+      "summary": ""
+    },
+    {
+      "path": "docs/audits/AUDIT_C-375_workflow-archaeology.md",
+      "title": "Workflow Archaeology Audit — C-375",
+      "category": "audits",
+      "tags": [],
+      "content_hash": "sha256:78c39e8637c3bbec09533c7287696348edf45b09ff65bdb6de4f9c17976c6286",
       "summary": ""
     },
     {
