@@ -1,11 +1,11 @@
 {
   "repo": "kaizencycle/Mobius-Substrate",
-  "generated_at": "2026-07-17T13:59:02Z",
-  "open_pr_count": 9,
+  "generated_at": "2026-07-17T19:23:24Z",
+  "open_pr_count": 8,
   "by_severity": {
     "high": 3,
-    "medium": 2,
-    "low": 0,
+    "medium": 0,
+    "low": 1,
     "unknown": 4
   },
   "emergency_count": 0,
@@ -62,38 +62,19 @@
       }
     },
     {
-      "pr": 392,
-      "title": "canon(C-368): prime reserve blocks cold canon (194 blocks)",
-      "url": "https://github.com/kaizencycle/Mobius-Substrate/pull/392",
+      "pr": 399,
+      "title": "docs(c375-lane-c): ZEUS dispute dispositions for C-375",
+      "url": "https://github.com/kaizencycle/Mobius-Substrate/pull/399",
       "author": "kaizencycle",
-      "updated_at": "2026-07-16T13:27:45Z",
-      "created_at": "2026-07-16T13:27:29Z",
-      "labels": [
-        "scope:specs"
-      ],
-      "mode": "normal",
-      "has_debt": false,
-      "severity": "medium",
-      "justification_hash": "6278f3908188bbe4665dbac6cde3a6b08eb6d2b6de56d8628359247de6d06bc7",
-      "checks": {
-        "epicon": "unknown",
-        "merge_gate": "unknown"
-      }
-    },
-    {
-      "pr": 396,
-      "title": "C-374: Vault/canon witness track (tip forensics + ZEUS dispositions)",
-      "url": "https://github.com/kaizencycle/Mobius-Substrate/pull/396",
-      "author": "cursor[bot]",
-      "updated_at": "2026-07-16T22:42:29Z",
-      "created_at": "2026-07-16T22:42:14Z",
+      "updated_at": "2026-07-17T15:16:29Z",
+      "created_at": "2026-07-17T15:16:13Z",
       "labels": [
         "scope:docs"
       ],
       "mode": "normal",
       "has_debt": false,
-      "severity": "medium",
-      "justification_hash": "44e1a4cd1c19578f84850e36539e0e8dbaba1033ab80025b93ab72e677b7b5c9",
+      "severity": "low",
+      "justification_hash": "a8c1a4cd9a0681d3f2aba170da465d13c24bc2c5dea7ac674e325d9541d2a925",
       "checks": {
         "epicon": "unknown",
         "merge_gate": "unknown"
