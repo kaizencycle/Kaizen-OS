@@ -1,6 +1,6 @@
 {
   "mobius_catalog_version": "1.0.0",
-  "generated_at": "2026-07-17T15:42:15.011Z",
+  "generated_at": "2026-07-17T22:17:12.263Z",
   "repo": {
     "name": "Mobius-Substrate",
     "url": "https://github.com/kaizencycle/Mobius-Substrate",
@@ -9,7 +9,7 @@
   },
   "stats": {
     "epiconCount": 0,
-    "docCount": 1041
+    "docCount": 1044
   },
   "epicons": [],
   "docs": [
@@ -8057,7 +8057,7 @@
       "title": "Gate G3 — Post-Redeploy Production Audit",
       "category": "epicon",
       "tags": [],
-      "content_hash": "sha256:2b051884135a01ff9eea233a3737cb5eb21c7a3bc92505d88599143f27daa6a0",
+      "content_hash": "sha256:e658b7031758d9fa727543041681fab69c618d11fe44a22ffb6dc178b85deb1f",
       "summary": ""
     },
     {
@@ -8066,6 +8066,30 @@
       "category": "epicon",
       "tags": [],
       "content_hash": "sha256:cd7165f77125751d1d2f671c064bc5ac9057b2026f891f6d2ef729bb2314fd37",
+      "summary": ""
+    },
+    {
+      "path": "docs/epicon/cycles/C-374/reconciliation/README.md",
+      "title": "C-374 Reconciliation Playbook (Track R)",
+      "category": "epicon",
+      "tags": [],
+      "content_hash": "sha256:b9e4cccfd20cfebd77da83c6b343180ed328dab316ac2cbff780e64eddc72a54",
+      "summary": ""
+    },
+    {
+      "path": "docs/epicon/cycles/C-374/reconciliation/RECONCILIATION_RECEIPT_BLOCK_001_PROPOSED.md",
+      "title": "Reconciliation Receipt — Reserve Block 1 (PROPOSED)",
+      "category": "epicon",
+      "tags": [],
+      "content_hash": "sha256:427f6014eb7c645f59c9f169131c9dc6ac4e68b3a7779addfc97378497ea6d27",
+      "summary": ""
+    },
+    {
+      "path": "docs/epicon/cycles/C-375/ZEUS_DISPUTE_DISPOSITIONS.md",
+      "title": "ZEUS Dispute Dispositions — C-375",
+      "category": "epicon",
+      "tags": [],
+      "content_hash": "sha256:779656cddcbc597a44177988f8033460b7dd08359cf5ebb5f3a3812026d4735d",
       "summary": ""
     },
     {
