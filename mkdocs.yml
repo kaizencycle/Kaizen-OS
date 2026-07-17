@@ -133,7 +133,7 @@ extra:
   canonical_domain: https://mobius-substrate.com
   terminal_url: https://terminal.mobius-substrate.com
   handbook_url: https://handbook.mobius-substrate.com
-  current_cycle: C-357
+  current_cycle: C-360
   gi_status: recovering
   terminal_repo: https://github.com/kaizencycle/mobius-civic-ai-terminal
   substrate_repo: https://github.com/kaizencycle/Mobius-Substrate
@@ -149,17 +149,20 @@ extra:
       name: Live Terminal
       link: https://terminal.mobius-substrate.com/
   announce: >-
-    <strong>Journal mode (C-357):</strong> current cycle state is the front door.
+    <strong>Journal mode (C-360):</strong> current cycle state is the front door.
     Live GI proof from <code>terminal.mobius-substrate.com</code> when CORS allows.
 
 # Navigation — journal-first: current cycle, then constitution, then depth
 nav:
-  - "↳ Current cycle (C-357)":
+  - "↳ Current cycle (C-360)":
       - "State of the substrate": STATE_OF_THE_SUBSTRATE_LATEST.md
       - "Canon laws": 02-THEORETICAL-FOUNDATIONS/MOBIUS_CANON_LAWS.md
       - "EPICON C-355 IDA": 02-THEORETICAL-FOUNDATIONS/EPICON_C355_IDA.md
       - "MOBIUS.md": MOBIUS.md
   - "Cycle journal":
+      - "C-366": journals/C-366.md
+      - "C-365": journals/C-365.md
+      - "C-360": journals/C-360.md
       - "C-357": journals/C-357.md
       - "C-356": journals/C-356.md
       - "C-355 and earlier": journals/archive.md
@@ -170,6 +173,10 @@ nav:
       - "EPICON-01": epicon/EPICON-01.md
       - "EPICON-02": epicon/EPICON-02.md
       - "EPICON-03": epicon/EPICON-03.md
+      - "EPICON-C365-MEC": epicon/EPICON-C365-MEC-001.md
+      - "EPICON-C366-Tiering": epicon/EPICON-C366-TIERING-001.md
+      - "MEC (C-365)": specs/MEC_SPEC_v0.1.md
+      - "EPICON Tiering (C-366)": specs/EPICON_TIERING_SPEC_v0.1.md
   - "Architecture":
       - "Overview": 04-TECHNICAL-ARCHITECTURE/overview/ARCHITECTURE.md
       - "GI formula": 04-TECHNICAL-ARCHITECTURE/ledger/gi-formula.md
@@ -178,6 +185,11 @@ nav:
       - "DVA flows": 04-TECHNICAL-ARCHITECTURE/overview/DVA_FLOWS_OVERVIEW.md
   - "Handbook":
       - "Public hub": 00-START-HERE/README.md
+      - "What is Mobius?": 00-START-HERE/WHAT_IS_MOBIUS.md
+      - "Five Surfaces": 00-START-HERE/FIVE_SURFACES.md
+      - "School of Chambers": 00-START-HERE/SCHOOL_OF_CHAMBERS.md
+      - "Canonical Definitions": 00-START-HERE/CANONICAL_DEFINITIONS.md
+      - "EPICON Philosophy": 00-START-HERE/EPICON_PHILOSOPHY.md
       - "Handbook hub": 11-SUPPLEMENTARY/handbook/README.md
       - "Full index": INDEX.md
       - "Protocols":

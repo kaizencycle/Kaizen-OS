@@ -1,15 +1,17 @@
 # State of the Substrate — Latest
 
-**Cycle:** C-357  
-**Updated:** 2026-06-28  
-**GI:** ~0.90 · recovering (yellow → preview band)  
+**Cycle:** C-360  
+**Updated:** 2026-07-02  
+**GI:** ~0.90 · recovering (yellow)  
 **Custodian:** Michael (kaizencycle)
+
+> Stable entry point for README and handbook nav. Cycle-stamped snapshots (`STATE_OF_THE_SUBSTRATE_C-*.md`) are historical; this file tracks [`cycle.json`](../cycle.json).
 
 ---
 
 ## Dateline
 
-Domain registered **C-356**. Canonical propagation **C-357**. The handbook is now a **journal** — current cycle first, constitution second, archives last.
+**C-360 Federation Optimization Sweep** — constitutional consistency, integrity-surface repair, and operational hardening across five repos.
 
 | Surface | URL |
 |---------|-----|
@@ -21,27 +23,30 @@ Domain registered **C-356**. Canonical propagation **C-357**. The handbook is no
 
 ## This cycle at a glance
 
-- **319 Reserve Blocks** sealed; live substrate attestation blocked on identity JWT env (see [C-357 journal](./journals/C-357.md))
-- **Fountain:** PREVIEW (GI 0.90, threshold 0.95)
-- **`.dat` cold canon** path active for historical reserve blocks (C-357 EPICON)
-- **MOBIUS.md** constitutional machine interface on main
-- **Canon laws** consolidated (12 sections)
+- **PR-B (Substrate):** License policy (`configs/license-policy.yaml`), cycle pointer CI, sentinel roster 10 (URIEL + ZENITH)
+- **Layer 1 writer:** `mobius-bot-state-sync` still failing — rotate `MOBIUS_BOT_APP_ID` / `MOBIUS_BOT_PRIVATE_KEY`
+- **Substrate attest:** Identity service account live; Terminal Vercel creds + reattest drain pending
+- **323 Reserve Blocks** sealed; Fountain LOCKED (GI below 0.95 sustain)
+
+---
+
+## Sentinel roster (10)
+
+Governance agents: ATLAS, ZEUS, EVE, JADE, AUREA, HERMES, ECHO, DAEDALUS, **URIEL** (truth), **ZENITH** (shadow).
+
+**Seal quorum (5):** ATLAS, ZEUS, EVE, JADE, AUREA — unchanged.
 
 ---
 
 ## Read next
 
-1. [Cycle journal — C-357](./journals/C-357.md) — what happened this cycle
-2. [Canon laws](./02-THEORETICAL-FOUNDATIONS/MOBIUS_CANON_LAWS.md) — ratified law index
-3. [MOBIUS.md](./MOBIUS.md) — constitutional machine interface (handbook mirror)
-4. [State snapshot C-338](./STATE_OF_THE_SUBSTRATE_C-338.md) — detailed technical snapshot (prior)
+1. [Cycle journal — C-360](./journals/C-360.md) — federation sweep (when published)
+2. [Canon laws](./02-THEORETICAL-FOUNDATIONS/MOBIUS_CANON_LAWS.md)
+3. [MOBIUS.md](./MOBIUS.md) — constitutional machine interface
+4. [Prior snapshot C-338](./STATE_OF_THE_SUBSTRATE_C-338.md) — technical baseline
 
 ---
 
 ## Live proof
 
 When CORS allows this origin, handbook pages fetch **snapshot-lite** from the Terminal for GI, mode, and lane freshness. Canonical Terminal: `https://terminal.mobius-substrate.com/api/terminal/snapshot-lite`.
-
----
-
-*"Intelligence moves. Integrity guides."*

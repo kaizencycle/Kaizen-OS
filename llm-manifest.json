@@ -5,8 +5,8 @@
   "cycle": "C-178",
   "lastUpdated": "2025-12-31",
   "entrypoints": {
-    "digest": "REPO_DIGEST.md",
-    "map": "REPO_MAP_TREE.md",
+    "digest": "docs/00-START-HERE/REPO_DIGEST.md",
+    "map": "docs/00-START-HERE/REPO_MAP_TREE.md",
     "start_here": "00-START-HERE/README.md",
     "manifest": "llm-manifest.json",
     "roles": "GOVERNANCE/ROLES.md",
@@ -17,8 +17,8 @@
     "HOT": {
       "purpose": "High-signal, stable, and safe to traverse with agents. Core conceptual + operational entrypoints.",
       "paths": [
-        "REPO_DIGEST.md",
-        "REPO_MAP_TREE.md",
+        "docs/00-START-HERE/REPO_DIGEST.md",
+        "docs/00-START-HERE/REPO_MAP_TREE.md",
         "llm-manifest.json",
         "00-START-HERE/**",
         "FOUNDATION/**",
@@ -88,7 +88,7 @@
   },
   "agent_guidance": {
     "priority_order": [
-      "REPO_DIGEST.md",
+      "docs/00-START-HERE/REPO_DIGEST.md",
       "llm-manifest.json",
       "00-START-HERE/README.md",
       "FOUNDATION/CHARTER.md",

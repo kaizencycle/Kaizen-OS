@@ -1,0 +1,38 @@
+schema_version: "0.1"
+result_id: IG-C369-DEMO-001
+request_id: IGR-C369-DEMO-001
+status: NEEDS_MORE_EVIDENCE
+grade: null
+findings:
+  capability_diversity: strong
+  demonstrated_application: insufficient
+  provenance: verified
+  farming_risk: low
+  time_continuity: insufficient
+  reviewed:
+    - MFS portfolio snapshot (26 shards across 5 domains)
+    - provenance hashes for all listed shards
+    - Fountain state at request time (REVIEW_WINDOW_OPEN)
+  missing:
+    - demonstrated application evidence outside learning context
+    - consequence review for civic_research simulations
+  inferred:
+    - consistent learning progression in emergency_preparedness
+  uncertain:
+    - whether teaching artifacts reflect sustained stewardship
+  rationale: >
+    Portfolio demonstrates breadth of learning but lacks replayable application
+    evidence required for stewardship recognition. No MIC recognition at this stage.
+recognition:
+  mic: 0
+  reserve_block_ref: null
+  seal_ref: null
+  status: none
+review:
+  atlas: pass
+  zeus: pass
+  eve: clarify
+  jade: clarify
+  aurea: pass
+  human: pending
+completed_at: "2026-07-10T18:30:00Z"

@@ -47,7 +47,7 @@ The mobilization mirrors S.H.I.E.L.D.: distributed sentinels, civic legitimacy, 
 - **Virtue tags & charter compliance**: Each action tagged with provenance and virtue taxonomy for audit.  
 - **Drift containment**: Emergent behaviors only learn from high-integrity exemplars; any drift triggers automatic GI downgrade and retraining embargo.  
 - **Public domain licensing**: Prevents corporate enclosure and keeps governance levers pluralistic.  
-- **Transparent attestations**: `.gi/consensus-*.json` artifacts show every validation step.
+- **Transparent attestations**: `docs/10-ARCHIVES/gi-attestations/consensus-*.json` artifacts show every validation step.
 
 ## 7. Current Readiness & Evidence
 | Capability | Status | Notes |

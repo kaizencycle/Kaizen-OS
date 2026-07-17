@@ -8,7 +8,7 @@ This folder is your **navigation hub** for the entire Mobius Substrate knowledge
 
 ## Verify what you read (public)
 
-The handbook can show **live proof** next to protocol text: open **[State of the Substrate (C-288)](../STATE_OF_THE_SUBSTRATE_C-288.md)** or any doc under **Protocols** in the left nav. Green or cyan **Live** tiles pull from the [Mobius Civic AI Terminal](https://mobius-civic-ai-terminal.vercel.app/) (`/api/terminal/snapshot-lite`, `/api/vault/status`, …). Use **Show proof chain** where present to jump from claim → API → archive pattern.
+The handbook can show **live proof** next to protocol text: open **[State of the Substrate (latest)](../STATE_OF_THE_SUBSTRATE_LATEST.md)** or any doc under **Protocols** in the left nav. Green or cyan **Live** tiles pull from the [Mobius Civic AI Terminal](https://mobius-civic-ai-terminal.vercel.app/) (`/api/terminal/snapshot-lite`, `/api/vault/status`, …). Use **Show proof chain** where present to jump from claim → API → archive pattern.
 
 ---
 
@@ -23,9 +23,14 @@ The handbook can show **live proof** next to protocol text: open **[State of the
 
 ## Start Here
 
-- 🧭 **[System Overview](./SYSTEM-OVERVIEW.md)** — Complete system architecture and evidence
+- 🌐 **[What is Mobius?](./WHAT_IS_MOBIUS.md)** — public clarity (C-363): what we are and are not
+- 🗺️ **[Five Surfaces](./FIVE_SURFACES.md)** — Substrate, Terminal, Browser Shell, CPC, HIVE
+- 🏛️ **[School of Chambers](./SCHOOL_OF_CHAMBERS.md)** — Learn, Memory, Pulse, World, Council, Archives, Core
+- 📖 **[Canonical Definitions](./CANONICAL_DEFINITIONS.md)** — GI, MII, MIC, EPICON, Seal, Quorum, …
+- 🧭 **[EPICON Philosophy](./EPICON_PHILOSOPHY.md)** — who, why, what, review, replay
+- 🧭 **[System Overview](./SYSTEM-OVERVIEW.md)** — deeper architecture and evidence
 - 🫀 **[Mobius Pulse](./MOBIUS_PULSE.md)** — Real-time integrity monitoring
-- 📚 **[Glossary](./GLOSSARY.md)** — MII, MIC, DVA, KTT, GI, ECHO, Sentinels, and more
+- 📚 **[Glossary](./GLOSSARY.md)** — extended historical glossary (see Canonical Definitions first)
 - ❓ **[FAQ](./FAQ.md)** — Common questions and high-level answers
 
 ---

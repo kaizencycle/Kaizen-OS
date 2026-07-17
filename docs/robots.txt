@@ -1,0 +1,28 @@
+# Mobius Substrate Handbook — robots.txt
+# C-368: Cross-subdomain discovery parity with root shell.
+
+User-agent: *
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Googlebot
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+Sitemap: https://handbook.mobius-substrate.com/sitemap.xml
+
+# AI-readable site map:
+# https://handbook.mobius-substrate.com/llms.txt

@@ -1,10 +1,14 @@
+# ## Authority Provenance
+# Watchdog copy update for Mobius Bot client-id secret naming. Authority:
+# @kaizencycle (founder standing). See docs/templates/EPICON_FOUNDER_STANDING.md
+#
 # MOBIUS-CLASS: monitoring
 # OWNER: @kaizencycle
 # INTRODUCED: C-356
 # LAST-REVIEWED: 2026-06-28
 # STATUS: active
 # PURPOSE: Layer 1 upstream detector — catches mobius-bot-state-sync failures
-#          before cycle.json drift accumulates. Reads state/writer-health.json
+#          before cycle.json drift accumulates. Reads STATE/writer-health.json
 #          (stamped by the writer on every run). Opens a GitHub issue if writer
 #          has been silent 14+ days. Auto-closes when healthy.
 #          Companion to canon-drift-tripwire (Layer 2).
@@ -33,7 +37,7 @@ jobs:
       - name: Evaluate writer health
         id: health
         run: |
-          HEALTH_FILE="state/writer-health.json"
+          HEALTH_FILE="STATE/writer-health.json"
 
           if [ ! -f "$HEALTH_FILE" ]; then
             echo "writer_status=missing" >> $GITHUB_OUTPUT
@@ -47,11 +51,12 @@ jobs:
           import json, os
           from datetime import datetime, timezone
 
-          with open("state/writer-health.json") as f:
+          with open("STATE/writer-health.json") as f:
               d = json.load(f)
 
           last_run_str = d.get("last_run_at", "")
           last_cycle = d.get("last_cycle", "unknown")
+          health_status = (d.get("status") or "").strip().lower()
 
           if not last_run_str:
               days_since = 999
@@ -60,7 +65,10 @@ jobs:
               now = datetime.now(timezone.utc)
               days_since = (now - last_run).days
 
-          if days_since >= 2:
+          # Non-ok status (blocked, manual-recovery, etc.) must not mask stale writer
+          if health_status and health_status not in ("ok", "healthy"):
+              status = "stale"
+          elif days_since >= 2:
               status = "stale"
           elif days_since >= 1:
               status = "warning"
@@ -120,7 +128,7 @@ jobs:
               `Writer has not run in **${days} days** (threshold: 2 days — before drift tripwire fires).`,
               '',
               status === 'missing'
-                ? '`state/writer-health.json` is missing — writer may never have run or the file was deleted.'
+                ? '`STATE/writer-health.json` is missing — writer may never have run or the file was deleted.'
                 : `Last confirmed run: \`${lastRun}\` (cycle ${lastCycle})`,
               '',
               'The writer (`mobius-bot-state-sync`) updates `cycle.json` daily.',
@@ -130,7 +138,7 @@ jobs:
               '1. Actions → `mobius-bot-state-sync` → Run workflow (manual dispatch)',
               '2. Check run logs for auth failures or commit errors',
               '3. If disabled by GitHub 60-day inactivity rule: re-enable and trigger manually',
-              '4. Verify `MOBIUS_BOT_APP_ID` and `MOBIUS_BOT_PRIVATE_KEY` secrets are valid',
+              '4. Verify `MOBIUS_BOT_APP_ID` (GitHub App client ID) and `MOBIUS_BOT_PRIVATE_KEY` secrets are valid',
               '',
               '**Two-layer detection:**',
               '- Layer 1 (this watchdog): writer silent 2+ days — fires before or concurrent with drift',

@@ -1,0 +1,25 @@
+schema_version: "0.1"
+state: REVIEW_WINDOW_OPEN
+gi_value: 0.952
+gi_confidence: 0.78
+sustained_cycles_required: 3
+sustained_cycles_observed: 3
+provisional_since: "2026-06-20T00:00:00Z"
+review_window:
+  opened_at: "2026-07-01T00:00:00Z"
+  closes_at: "2026-07-31T23:59:59Z"
+audit:
+  status: passed
+  weight_frozen: true
+  adversarial_replay: passed
+  holdout_review: passed
+quarantine:
+  active: false
+  reasons: []
+  since: null
+weight_version: gi-weights-2026-Q2-v3
+observed_at: "2026-07-10T12:00:00Z"
+public_message: >
+  The network's current attested integrity estimate is improving. Fountain eligibility
+  requires sustained verification and independent audit. Integrity Grade requests
+  may be submitted during the review window — recognition is not guaranteed.

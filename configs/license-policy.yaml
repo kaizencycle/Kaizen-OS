@@ -1,0 +1,57 @@
+# C-360 OPT-01 — Ratified license posture (custodian: Michael / kaizencycle)
+# Single source of truth for code vs docs vs data licensing.
+schema: MOBIUS_LICENSE_POLICY_V1
+ratified_cycle: C-360
+ratified_at: "2026-07-02"
+
+posture:
+  code:
+    spdx: AGPL-3.0-or-later
+    artifacts:
+      - LICENSE
+      - ETHICAL_ADDENDUM.md
+    summary: "Source code and executable artifacts — AGPL-3.0 with Ethical Addendum"
+  docs:
+    spdx: CC-BY-SA-4.0
+    artifacts:
+      - mkdocs.yml
+      - docs/
+    summary: "Handbook and documentation — CC-BY-SA 4.0"
+  data_and_citations:
+    spdx: CC0-1.0
+    artifacts:
+      - docs/07-RESEARCH-AND-PUBLICATIONS/
+    summary: "Market-data citations and public research datasets — CC0 1.0 where cited"
+
+allowed_license_markers:
+  - AGPL-3.0
+  - AGPL-3.0-or-later
+  - CC-BY-SA 4.0
+  - CC-BY-SA-4.0
+  - CC0 1.0
+  - CC0-1.0
+  - Ethical Addendum
+  - ETHICAL_ADDENDUM
+
+# SPDX IDs or legacy strings that must not appear as project license claims
+forbidden_project_licenses:
+  - MIT License
+  - Apache License 2.0
+  - Apache-2.0
+  - BSD-3-Clause
+  - Proprietary
+  - All Rights Reserved
+
+scan_paths:
+  - README.md
+  - CONTRIBUTING.md
+  - mkdocs.yml
+  - LICENSE
+  - ETHICAL_ADDENDUM.md
+
+exclude_globs:
+  - "**/archive/**"
+  - "**/10-ARCHIVES/**"
+  - "**/node_modules/**"
+  - "**/packages/**/LICENSE"
+  - "**/apps/**/civic-protocol-core/LICENSE"

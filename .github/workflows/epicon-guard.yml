@@ -1,0 +1,27 @@
+# ## Authority Provenance
+# C-367 EPICON Guard v1.1 workflow. Authority declared using
+# docs/templates/EPICON_FOUNDER_STANDING.md — @kaizencycle (Custodian, DVA.02).
+
+name: EPICON Guard
+
+on:
+  pull_request:
+    types: [opened, edited, synchronize, reopened]
+
+permissions:
+  contents: read
+  pull-requests: read
+
+jobs:
+  epicon:
+    name: Intent Publication Gate
+    runs-on: ubuntu-latest
+    steps:
+      # Required so ./.github/actions/epicon-guard resolves on disk.
+      # Policy still loads from base SHA via policy-ref (not from checkout).
+      - uses: actions/checkout@v4
+
+      - uses: ./.github/actions/epicon-guard
+        with:
+          mode: enforce
+          policy-ref: base

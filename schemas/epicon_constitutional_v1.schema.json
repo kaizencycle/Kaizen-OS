@@ -1,0 +1,115 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://mobius-substrate.com/schemas/epicon_constitutional_v1.schema.json",
+  "title": "Constitutional EPICON",
+  "description": "Fixed-schema ledger commitment derived from an operational EPICON before execution of an EP-2 (elective) or EP-3 (mandatory) action. Contains commitments and attestations only — never raw operational evidence or PII. See specs/EPICON_TIERING_SPEC_v0.1.md.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "tier",
+    "policy_rule_id",
+    "operational_merkle_root",
+    "reconstruction_fingerprint",
+    "actor_commitment",
+    "policy_outcome",
+    "attestations",
+    "timestamp"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "description": "UUIDv7 shared with the originating operational EPICON. Version nibble MUST be 7; variant nibble MUST be 8/9/a/b (RFC 9562)."
+    },
+    "tier": {
+      "type": "string",
+      "enum": ["EP-2", "EP-3"],
+      "description": "EPICON consequence tier. EP-1 actions never produce constitutional EPICONs. Note: EP-* is the EPICON tier namespace, distinct from DVA agent tiers T1/T2/T3."
+    },
+    "policy_rule_id": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Identifier of the policy-registry rule that classified this action. Classification is never performed by the acting agent (Rule 5.1)."
+    },
+    "operational_merkle_root": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$",
+      "description": "SHA-256 Merkle root over the canonical per-field encoding of the operational EPICON, enabling selective field disclosure with inclusion proofs (spec §9.1)."
+    },
+    "reconstruction_fingerprint": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$",
+      "description": "SHA-256 evidence-replay fingerprint per spec §7. Guarantees reconstructability, not bitwise reproducibility."
+    },
+    "actor_commitment": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Hash of actor identity or civic_id shard reference. MUST NOT contain raw PII."
+    },
+    "proposer_model": {
+      "type": "string",
+      "description": "Optional model identifier + version of the AI proposer, when the action was AI-proposed and disclosure is policy-permitted."
+    },
+    "policy_outcome": {
+      "type": "string",
+      "enum": ["PASS", "PASS_WITH_CONDITIONS"],
+      "description": "Gate result. DENY and QUARANTINE outcomes are recorded in the append-only quarantine store (Rule 8.3), not as constitutional EPICONs."
+    },
+    "conditions": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Required when policy_outcome is PASS_WITH_CONDITIONS."
+    },
+    "attestations": {
+      "type": "array",
+      "minItems": 1,
+      "description": "Signatures of the authorized attestor set. For Mobius canon EP-3 operations this is the seal quorum; the set MUST be disjoint from the proposing actor (spec §9.3).",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["attestor", "signature", "signed_at"],
+        "properties": {
+          "attestor": {
+            "type": "string",
+            "description": "Attestor identifier (e.g. ATLAS, ZEUS, EVE, JADE, AUREA, or an external authorized validator id)."
+          },
+          "signature": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Detached signature over id || tier || operational_merkle_root || reconstruction_fingerprint || timestamp."
+          },
+          "signed_at": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      }
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time",
+      "description": "RFC 3339 time of constitutional EPICON creation. MUST precede execution time."
+    },
+    "mec_citation": {
+      "type": "string",
+      "pattern": "^E(\\d+)\\.RB(\\d+)\\.C(\\d+)\\.S(\\d+):Q(\\d+):((?:AT|ZE|EV|JA|AU|HE|EC|DA|UR|ZN)(?:\\+(?:AT|ZE|EV|JA|AU|HE|EC|DA|UR|ZN))*):GI(\\d{3})$",
+      "description": "Optional MEC-grammar citation binding this action to sealed canon (C-365 Option B). Agent codes MUST be members of AGENT_CODES in packages/mec-parser — pattern MUST match MEC_CONSTITUTIONAL_PATTERN. Example: E01.RB341.C365.S016:Q5:AT+ZE+EV+JA+AU:GI064."
+    },
+    "prev_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$",
+      "description": "SHA-256 of the previous constitutional EPICON block in the append-only chain (.dat cold-canon family, magic bytes MOBIUS01)."
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": { "policy_outcome": { "const": "PASS_WITH_CONDITIONS" } }
+      },
+      "then": {
+        "required": ["conditions"]
+      }
+    }
+  ]
+}

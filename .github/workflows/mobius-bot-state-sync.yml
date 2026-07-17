@@ -1,3 +1,8 @@
+# ## Authority Provenance
+# Repairs canon writer workflow (client-id API, credential preflight). Does not
+# advance cycle.json manually. Authority: @kaizencycle (founder standing).
+# See docs/templates/EPICON_FOUNDER_STANDING.md
+#
 # MOBIUS-CLASS: canon-state-writer
 # OWNER: @kaizencycle
 # INTRODUCED: C-338
@@ -35,12 +40,67 @@ jobs:
   sync:
     runs-on: ubuntu-latest
     steps:
+      - name: Verify Mobius Bot credentials
+        env:
+          APP_ID: ${{ secrets.MOBIUS_BOT_APP_ID }}
+          APP_KEY: ${{ secrets.MOBIUS_BOT_PRIVATE_KEY }}
+        run: |
+          if [ -z "$APP_ID" ]; then
+            echo "::error::MOBIUS_BOT_APP_ID is missing or empty."
+            echo "::error::Set the Mobius GitHub App client ID at Settings → Secrets → Actions."
+            echo "::error::See STATE/writer-health.json, issues #339 and #351."
+            exit 1
+          fi
+          if [ -z "$APP_KEY" ]; then
+            echo "::error::MOBIUS_BOT_PRIVATE_KEY is missing or empty."
+            echo "::error::Rotate the Mobius GitHub App private key and update the repo secret."
+            exit 1
+          fi
+
+      - name: Diagnose private key shape (no secret contents logged)
+        id: keycheck
+        env:
+          APP_KEY: ${{ secrets.MOBIUS_BOT_PRIVATE_KEY }}
+        run: |
+          # Support literal \n separators (create-github-app-token normalizes these too).
+          normalized="${APP_KEY//\\n/$'\n'}"
+          lines=$(printf '%s' "$normalized" | wc -l | tr -d ' ')
+          first=$(printf '%s' "$normalized" | head -1)
+          bytes=$(printf '%s' "$normalized" | wc -c | tr -d ' ')
+          echo "Private key line count: $lines (expect >= 3)"
+          echo "Private key first line: $first"
+          echo "Private key byte count: $bytes"
+          case "$first" in
+            "-----BEGIN RSA PRIVATE KEY-----"|"-----BEGIN PRIVATE KEY-----") ;;
+            *)
+              echo "::error::First line must be -----BEGIN RSA PRIVATE KEY----- or -----BEGIN PRIVATE KEY-----"
+              echo "::error::If you see a hex string, you stored the Client secret — use Private keys → Generate instead."
+              exit 1
+              ;;
+          esac
+          if [ "$lines" -lt 3 ]; then
+            echo "::error::Private key is effectively one line — PEM newlines were lost when setting the secret."
+            echo "::error::Fix: gh secret set MOBIUS_BOT_PRIVATE_KEY --repo kaizencycle/Mobius-Substrate < path/to.key.pem"
+            exit 1
+          fi
+          printf '%s\n' "$normalized" > /tmp/mobius-bot.pem
+          if ! openssl rsa -in /tmp/mobius-bot.pem -check -noout 2>/dev/null; then
+            if ! openssl pkey -in /tmp/mobius-bot.pem -check -noout 2>/dev/null; then
+              echo "::error::OpenSSL cannot parse MOBIUS_BOT_PRIVATE_KEY — regenerate Private key on the App and re-set via gh secret set < file.pem"
+              exit 1
+            fi
+          fi
+          echo "OpenSSL PEM parse: ok"
+          echo "pem<<EOF" >> "$GITHUB_OUTPUT"
+          cat /tmp/mobius-bot.pem >> "$GITHUB_OUTPUT"
+          echo "EOF" >> "$GITHUB_OUTPUT"
+
       - name: Mint scoped App token (C-336 identity)
         id: app
         uses: actions/create-github-app-token@v3
         with:
-          app-id: ${{ secrets.MOBIUS_BOT_APP_ID }}
-          private-key: ${{ secrets.MOBIUS_BOT_PRIVATE_KEY }}
+          client-id: ${{ secrets.MOBIUS_BOT_APP_ID }}
+          private-key: ${{ steps.keycheck.outputs.pem }}
 
       - uses: actions/checkout@v7
         with:
@@ -108,14 +168,13 @@ jobs:
 
           # C-356: write writer-health canary so watchdog can detect writer failures
           # before cycle.json drift accumulates (Layer 1 upstream detection).
-          os.makedirs("state", exist_ok=True)
           health = {
               "writer": "mobius-bot-state-sync",
               "last_run_at": datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
               "last_cycle": cycle,
               "status": "ok",
           }
-          with open("state/writer-health.json", "w") as f:
+          with open("STATE/writer-health.json", "w") as f:
               json.dump(health, f, indent=2); f.write("\n")
 
           with open(os.environ["GITHUB_OUTPUT"], "a") as f:
@@ -126,9 +185,76 @@ jobs:
         run: |
           git config user.name "mobius-bot[bot]"
           git config user.email "mobius-bot[bot]@users.noreply.github.com"
-          git add cycle.json STATE/CYCLE.txt journals/cycles/ state/writer-health.json
+          git add cycle.json STATE/CYCLE.txt STATE/writer-health.json journals/cycles/
           git diff --cached --quiet && { echo "No drift — nothing to write."; exit 0; }
           git commit -m "canon: ${{ steps.state.outputs.cycle }} daily state sync [skip ci]" \
                      -m "EPICON-INTENT: scheduled deterministic cycle-state write; allowed paths only; no attested values invented." \
                      -m "Actor: mobius-bot (scoped App, C-336 guardrail model)"
+          git push
+
+  record-failure:
+    needs: sync
+    if: failure()
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Stamp writer-health failure (C-373)
+        env:
+          APP_ID: ${{ secrets.MOBIUS_BOT_APP_ID }}
+          APP_KEY: ${{ secrets.MOBIUS_BOT_PRIVATE_KEY }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          python3 - << 'PY'
+          import json, datetime, os
+
+          now = datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+          app_id = (os.environ.get("APP_ID") or "").strip()
+          app_key = (os.environ.get("APP_KEY") or "").strip()
+
+          if not app_id:
+              reason = "MOBIUS_BOT_APP_ID secret empty — create-github-app-token fails at mint step"
+          elif not app_key:
+              reason = "MOBIUS_BOT_PRIVATE_KEY secret empty — create-github-app-token fails at mint step"
+          else:
+              reason = f"mobius-bot-state-sync failed after credential preflight — inspect run {os.environ.get('RUN_URL', '')}"
+
+          path = "STATE/writer-health.json"
+          health = {}
+          if os.path.exists(path):
+              with open(path) as f:
+                  health = json.load(f)
+
+          health.update({
+              "writer": "mobius-bot-state-sync",
+              "status": "blocked",
+              "last_failed_attempt_at": now,
+              "failure_reason": reason,
+              "recovery_note": (
+                  "Owner action: set MOBIUS_BOT_APP_ID (GitHub App client ID) and "
+                  "MOBIUS_BOT_PRIVATE_KEY in Settings → Secrets → Actions, then "
+                  "workflow_dispatch mobius-bot-state-sync. Do not manually advance "
+                  "cycle.json — let the writer catch up deterministically. "
+                  "See docs/CANON_WRITER_REPAIR.md and issues #351 / #371."
+              ),
+          })
+          if health.get("status") != "ok":
+              health.setdefault("last_run_at", health.get("last_run_at", "2026-06-30T09:00:00Z"))
+              health.setdefault("last_cycle", health.get("last_cycle", "C-358"))
+
+          with open(path, "w") as f:
+              json.dump(health, f, indent=2)
+              f.write("\n")
+          PY
+
+      - name: Commit failure stamp [skip ci]
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add STATE/writer-health.json
+          git diff --cached --quiet && { echo "writer-health unchanged."; exit 0; }
+          git commit -m "canon: record mobius-bot-state-sync failure [skip ci]" \
+                     -m "EPICON-INTENT: automated writer-health failure stamp; no cycle.json mutation."
           git push

@@ -14,13 +14,22 @@ from typing import Optional
 
 # Scope definitions: label -> allowed file path prefixes
 SCOPE_MAP = {
-    "docs": ["docs/", "epicon/", "README.md", "CHANGELOG.md", "LICENSE"],
+    "docs": [
+        "docs/",
+        "epicon/",
+        "README.md",
+        "CHANGELOG.md",
+        "LICENSE",
+        "mkdocs.yml",
+        "journals/cycles/",
+        "catalog/",
+    ],
     "ci": [".github/", "ci/", "scripts/"],
-    "core": ["src/", "packages/", "apps/", "services/"],
+    "core": ["src/", "packages/", "apps/", "services/", "package.json", "package-lock.json"],
     "infra": ["infra/", "deploy/", "docker/", "monitoring/", "grafana/"],
     "sentinels": ["sentinels/"],
     "labs": ["labs/"],
-    "specs": ["specs/", "schemas/", "configs/"],
+    "specs": ["specs/", "schemas/", "configs/", "tests/", "canon/"],
 }
 
 # Governance-sensitive patterns

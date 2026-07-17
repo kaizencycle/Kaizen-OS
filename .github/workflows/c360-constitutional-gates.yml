@@ -1,0 +1,40 @@
+# C-360 OPT-01 / OPT-02 — License harmonization + cycle pointer CI gates
+
+name: C-360 Constitutional Gates
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'README.md'
+      - 'cycle.json'
+      - 'STATE/**'
+      - 'docs/STATE_OF_THE_SUBSTRATE_LATEST.md'
+      - 'mkdocs.yml'
+      - 'LICENSE'
+      - 'configs/license-policy.yaml'
+      - 'scripts/check-license-policy.mjs'
+      - 'scripts/check-cycle-pointer.mjs'
+      - '.github/workflows/c360-constitutional-gates.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'README.md'
+      - 'cycle.json'
+      - 'configs/license-policy.yaml'
+
+permissions:
+  contents: read
+
+jobs:
+  constitutional-gates:
+    name: License + cycle pointer
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: License policy (OPT-01)
+        run: node scripts/check-license-policy.mjs
+
+      - name: Cycle pointer sync (OPT-02)
+        run: node scripts/check-cycle-pointer.mjs

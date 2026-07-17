@@ -1,24 +1,24 @@
 {
   "schema": "MNS_AGGREGATE_V1",
-  "updated_at": "2026-06-30T13:03:57.237Z",
+  "updated_at": "2026-07-17T13:04:33.912Z",
   "node_count": 5,
   "live_nodes": 3,
-  "total_entries": 37,
+  "total_entries": 27,
   "nodes": [
     {
       "node_id": "mobius-substrate",
       "tier": "sentinel",
       "node_type": "substrate",
       "entry_count": 0,
-      "fetched_at": "2026-06-30T13:03:56.838Z",
+      "fetched_at": "2026-07-17T13:04:33.853Z",
       "error": null
     },
     {
       "node_id": "mobius-civic-ai-terminal",
       "tier": "contributor",
       "node_type": "app",
-      "entry_count": 10,
-      "fetched_at": "2026-06-30T13:03:57.236Z",
+      "entry_count": 0,
+      "fetched_at": "2026-07-17T13:04:33.911Z",
       "error": null
     },
     {
@@ -26,7 +26,7 @@
       "tier": "contributor",
       "node_type": "service",
       "entry_count": 27,
-      "fetched_at": "2026-06-30T13:03:56.861Z",
+      "fetched_at": "2026-07-17T13:04:33.911Z",
       "error": null
     },
     {
@@ -47,169 +47,6 @@
     }
   ],
   "entries": [
-    {
-      "id": "cca712a4-zeus-verify",
-      "timestamp": "2026-06-30T12:04:55Z",
-      "author": "ZEUS",
-      "title": "zeus: verification disputed · C-358 [skip ci]",
-      "type": "zeus-verify",
-      "severity": "info",
-      "tags": [
-        "zeus"
-      ],
-      "source": "github-commit",
-      "verified": false,
-      "sha": "cca712a4aa76b4e95f308bc295b2a27758bf5fcf",
-      "_mesh_node": "mobius-civic-ai-terminal",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "e53cade9-zeus-verify",
-      "timestamp": "2026-06-30T06:03:59Z",
-      "author": "ZEUS",
-      "title": "zeus: verification disputed · C-358 [skip ci]",
-      "type": "zeus-verify",
-      "severity": "info",
-      "tags": [
-        "zeus"
-      ],
-      "source": "github-commit",
-      "verified": false,
-      "sha": "e53cade9fdfc9ce4bfe982c7ff4dbcdc71b7edfa",
-      "_mesh_node": "mobius-civic-ai-terminal",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "c1f0333a-zeus-verify",
-      "timestamp": "2026-06-30T00:03:07Z",
-      "author": "ZEUS",
-      "title": "zeus: verification disputed · C-357 [skip ci]",
-      "type": "zeus-verify",
-      "severity": "info",
-      "tags": [
-        "zeus"
-      ],
-      "source": "github-commit",
-      "verified": false,
-      "sha": "c1f0333a564ee3592e6d5ac4ab537600798d1bcb",
-      "_mesh_node": "mobius-civic-ai-terminal",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "9a88a6bc-zeus-verify",
-      "timestamp": "2026-06-29T18:03:26Z",
-      "author": "ZEUS",
-      "title": "zeus: verification disputed · C-357 [skip ci]",
-      "type": "zeus-verify",
-      "severity": "info",
-      "tags": [
-        "zeus"
-      ],
-      "source": "github-commit",
-      "verified": false,
-      "sha": "9a88a6bcd311bde49ca96627b7a8fdac1c0d7c7d",
-      "_mesh_node": "mobius-civic-ai-terminal",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "3ae1e91e-merge",
-      "timestamp": "2026-06-29T13:18:48Z",
-      "author": "kaizencycle",
-      "title": "docs(C-357): canonical URLs + handbook CORS for mobius-substrate.com",
-      "type": "merge",
-      "severity": "info",
-      "tags": [
-        "merge",
-        "pr"
-      ],
-      "source": "github-commit",
-      "verified": false,
-      "sha": "3ae1e91e056d4dfeb808c54f1bd869c6190edb80",
-      "_mesh_node": "mobius-civic-ai-terminal",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "7dd00020-zeus-verify",
-      "timestamp": "2026-06-29T12:04:49Z",
-      "author": "ZEUS",
-      "title": "zeus: verification disputed · C-357 [skip ci]",
-      "type": "zeus-verify",
-      "severity": "info",
-      "tags": [
-        "zeus"
-      ],
-      "source": "github-commit",
-      "verified": false,
-      "sha": "7dd0002068fcbaabacb785751e0a9a2969e813f7",
-      "_mesh_node": "mobius-civic-ai-terminal",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "ccdda4e9-zeus-verify",
-      "timestamp": "2026-06-29T06:02:58Z",
-      "author": "ZEUS",
-      "title": "zeus: verification disputed · C-357 [skip ci]",
-      "type": "zeus-verify",
-      "severity": "info",
-      "tags": [
-        "zeus"
-      ],
-      "source": "github-commit",
-      "verified": false,
-      "sha": "ccdda4e9b8cc33714657e3212580462367ea73e4",
-      "_mesh_node": "mobius-civic-ai-terminal",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "55d172c5-merge",
-      "timestamp": "2026-06-29T00:55:40Z",
-      "author": "kaizencycle",
-      "title": "feat(C-357): Reserve Block .dat canonization + live attest JWT repair",
-      "type": "merge",
-      "severity": "info",
-      "tags": [
-        "merge",
-        "pr"
-      ],
-      "source": "github-commit",
-      "verified": false,
-      "sha": "55d172c5270a5e239a5f9067c13cf9bba80de1cc",
-      "_mesh_node": "mobius-civic-ai-terminal",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "1f51f6ed-zeus-verify",
-      "timestamp": "2026-06-29T00:02:08Z",
-      "author": "ZEUS",
-      "title": "zeus: verification disputed · C-356 [skip ci]",
-      "type": "zeus-verify",
-      "severity": "info",
-      "tags": [
-        "zeus"
-      ],
-      "source": "github-commit",
-      "verified": false,
-      "sha": "1f51f6edb9bf3233e5fd12bbfa6d82502a6c5437",
-      "_mesh_node": "mobius-civic-ai-terminal",
-      "_mesh_tier": "contributor"
-    },
-    {
-      "id": "758702ed-merge",
-      "timestamp": "2026-06-28T23:42:22Z",
-      "author": "kaizencycle",
-      "title": "feat(C-357): Reserve Block .dat canonization pipeline + vault UI",
-      "type": "merge",
-      "severity": "info",
-      "tags": [
-        "merge",
-        "pr"
-      ],
-      "source": "github-commit",
-      "verified": false,
-      "sha": "758702edd3194f990e67b7e1b5a91673f2bd7851",
-      "_mesh_node": "mobius-civic-ai-terminal",
-      "_mesh_tier": "contributor"
-    },
     {
       "id": "EPICON-CPC-a41528a373a9363905c10015d85ac6b7bcc1df98",
       "node_id": "civic-protocol-core",

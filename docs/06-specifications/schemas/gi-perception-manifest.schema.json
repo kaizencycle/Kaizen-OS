@@ -1,0 +1,113 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://mobius-substrate.com/schemas/gi-perception-manifest.v0_1.json",
+  "title": "GI Perception Manifest",
+  "description": "Federation attested estimate of integrity with confidence, blind spots, and instrument health. GI witnesses integrity — it is not objective truth.",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "gi",
+    "observed_at"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "const": "0.1"
+    },
+    "gi": {
+      "type": "object",
+      "required": [
+        "value",
+        "confidence",
+        "measured_domains",
+        "instrument_count",
+        "healthy_instruments",
+        "degraded_instruments",
+        "unavailable_instruments",
+        "source_diversity",
+        "known_blind_spots",
+        "weight_version",
+        "observed_at"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "value": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "confidence": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "confidence_label": {
+          "type": "string",
+          "enum": ["low", "moderate", "high"]
+        },
+        "measured_domains": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "instrument_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "healthy_instruments": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "degraded_instruments": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "unavailable_instruments": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "source_diversity": {
+          "type": "string",
+          "enum": ["low", "moderate", "high"]
+        },
+        "known_blind_spots": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "weight_version": {
+          "type": "string",
+          "minLength": 1
+        },
+        "observed_at": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "canary_signals": {
+      "type": "array",
+      "description": "Non-rewarded parallel signals for divergence detection",
+      "items": {
+        "type": "object",
+        "required": ["domain", "correlation_expected"],
+        "properties": {
+          "domain": { "type": "string" },
+          "correlation_expected": {
+            "type": "string",
+            "enum": ["high", "moderate", "low"]
+          },
+          "correlation_observed": {
+            "type": "number",
+            "minimum": -1,
+            "maximum": 1
+          },
+          "divergence_alert": { "type": "boolean" }
+        }
+      }
+    },
+    "observed_at": {
+      "type": "string",
+      "format": "date-time"
+    }
+  }
+}
