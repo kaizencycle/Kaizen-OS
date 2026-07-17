@@ -6,6 +6,15 @@
 **Operator:** Cloud agent (read-only HTTP capture) + custodian redeploy + GitHub Actions run `29592258693`  
 **Deployed SHA:** `4ec90eaac24f62b4486daa8e28bf2764774f7c16` (Terminal PR #626 — C-373 collision evidence pack)
 
+## Authority Provenance
+
+*Authority declared using `docs/templates/EPICON_FOUNDER_STANDING.md` v0.1*
+
+- **Actor:** Cloud agent / custodian (kaizencycle)
+- **Authority Source:** C-374 Gate G3 capture witness — read-only production audit artifact commit
+- **Scope Limitation:** `docs/epicon/cycles/C-374/production-audit/` witness files and related audit cross-links only; no CODEOWNERS, workflow, governance policy, or KV repair authority exercised
+- **Expiration:** 2026-10-15T15:55:00Z
+
 ---
 
 ## Executive summary
