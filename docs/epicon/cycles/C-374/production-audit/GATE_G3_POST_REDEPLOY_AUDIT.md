@@ -25,7 +25,7 @@ The redeploy **fixed KV credential health** — `/api/health/kv-permissions` now
 
 **Gate G3 is not fully closed** because:
 
-1. **`/api/vault/status` returns HTTP 503 `kv_timeout`** — full vault aggregate scan times out against production KV.
+1. **`/api/vault/status` kv_timeout — RESOLVED post Terminal PR #627** (witness: `vault-status-2026-07-17T221206Z.json`, HTTP 200 @ 3.6s). A healthy read endpoint does not imply a healthy ledger.
 2. **Production reconciliation/repair** remains a separate custodian track (not started).
 
 ---
@@ -37,7 +37,8 @@ The redeploy **fixed KV credential health** — `/api/health/kv-permissions` now
 | 1. KV permission health (post-rotation) | **PASS** | `kv-permissions-2026-07-17T152700Z.json` — `ok: true`, read/write/counter/list all true, `errors: []` |
 | 2. `snapshot-lite` capture | **PASS** | `snapshot-lite-2026-07-17T152700Z.json` — HTTP 200, `kv.ok: true`, latency 15ms, cycle C-375 |
 | 3. `quorum/state` reserve block | **PASS** | `sealed_blocks: 360`, `in_progress_block: 361`, `in_progress_pct: 100`, `latest_seal_id: null` |
-| 4. `vault/status` capture | **FAIL** | `vault-status-2026-07-17T152700Z.json` — HTTP 503, `reason: kv_timeout`, all aggregate fields null |
+| 4. `vault/status` capture (pre-#627) | **FAIL** | `vault-status-2026-07-17T152700Z.json` — HTTP 503, `reason: kv_timeout` |
+| 4b. `vault/status` post-deploy (#627) | **PASS** | `vault-status-2026-07-17T221206Z.json` — HTTP 200, `seals_count: 360`, `attestation examined: 319`, `latest_seal_id: null` |
 | 5. Lineage audit (`audit-seal-hash-lineage.ts`) | **PASS** | `lineage-audit-2026-07-17T152854Z.json` — 319 attested, 4 lineages, 1 orphan_prev link issue |
 | 6. Pair-count audit (`audit-reserve-block-collisions.ts`) | **PASS** | `collision-pairs-2026-07-17T152857Z.json` — **125** hash-divergent pairs, stable vs pre-redeploy |
 | 7. Diff vs C-373 pre-repair bundle | **PASS** | Collision count unchanged (125); KV health improved |
@@ -68,7 +69,7 @@ The redeploy **fixed KV credential health** — `/api/health/kv-permissions` now
 | --- | --- | --- | --- |
 | Deploy SHA | `09f1cab` | `4ec90ea` | PR #626 merged |
 | Operator cycle | C-373 | C-375 | Writer advanced |
-| `seals_count` (vault/status) | 360 | *timeout* | Endpoint degraded |
+| `seals_count` (vault/status) | 360 | 360 (post-#627) | Endpoint restored; index cardinality unchanged |
 | `sealed_blocks` (quorum) | 360 | 360 | Unchanged |
 | `in_progress_block` | 361 @ 73% | 361 @ **100%** | Block full, not sealed |
 | `latest_seal_id` | null | null | Unchanged — still missing |
@@ -82,8 +83,8 @@ The redeploy **fixed KV credential health** — `/api/health/kv-permissions` now
 
 ## Active production signals (not dismissed)
 
-1. **`latest_seal_id: null`** with block 361 at 100% — candidate block ready but no latest seal pointer.
-2. **`vault/status` kv_timeout** — likely full seal scan exceeds serverless timeout; investigate pagination or cached aggregate path.
+1. **`latest_seal_id: null`** with block 361 in progress — candidate block advancing but no latest seal pointer (46% at 2026-07-17T22:12Z witness).
+2. ~~**`vault/status` kv_timeout**~~ — **resolved** by Terminal PR #627; post-deploy HTTP 200 verified.
 3. **Integrity freshness 0.3** — GI suppression driver persists despite KV write health.
 4. **Hash-divergent collisions (125 pairs)** — confirmed stable; seal integrity gate may still be blocking new seal formation until reconciliation.
 
@@ -95,9 +96,9 @@ The redeploy **fixed KV credential health** — `/api/health/kv-permissions` now
 
 Requires receipts, human + ZEUS + EVE approval, dry-run, then apply repair. See C-374 reconciliation playbook.
 
-### B. Investigate vault/status timeout
+### B. ~~Investigate vault/status timeout~~ — RESOLVED (Terminal #627)
 
-Check whether `vault/status` needs a performance fix or can be replaced by `quorum/state` + collision JSON for ongoing witness purposes.
+Post-deploy witness `vault-status-2026-07-17T221206Z.json` confirms HTTP 200. Ongoing witness can use `vault/status` + collision JSON; reconciliation baseline remains run `29592258693`.
 
 ### C. Resolve block 361 / latest_seal_id
 
@@ -115,6 +116,7 @@ Block 361 at 100% with `latest_seal_id: null` — custodian decision on seal for
 | `vault-status-2026-07-17T152700Z.json` | `f5261982ebb5ddc3fb328a22b758bbaf9b5b80b4d8bcd4ab7c3b19c9e24b4352` |
 | `lineage-audit-2026-07-17T152854Z.json` | `260c73b7bf744f4444fb69002245c9bd256b29fdedc9b39edd2a3ae362e7e1b7` |
 | `collision-pairs-2026-07-17T152857Z.json` | `bc03a0ce3dfb849725164201043b50d6e4be6509431e1a707b0e21cd24295fbe` |
+| `vault-status-2026-07-17T221206Z.json` | `13616887e7b162494666519342d2a193d43cebeccf2e6664f97748ccd6556093` |
 
 Workflow run: `https://github.com/kaizencycle/mobius-civic-ai-terminal/actions/runs/29592258693`
 
@@ -126,4 +128,4 @@ Workflow run: `https://github.com/kaizencycle/mobius-civic-ai-terminal/actions/r
 - Reconciliation receipt application: NOT PERFORMED  
 - Collision repair: NOT PERFORMED  
 - Gate G3 capture: **COMPLETE**  
-- Gate G3 full close: **BLOCKED** on reconciliation + vault/status
+- Gate G3 full close: **BLOCKED** on reconciliation (vault/status read path verified post-#627)

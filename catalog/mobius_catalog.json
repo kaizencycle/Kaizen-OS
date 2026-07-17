@@ -1,6 +1,6 @@
 {
   "mobius_catalog_version": "1.0.0",
-  "generated_at": "2026-07-17T15:42:15.011Z",
+  "generated_at": "2026-07-17T22:12:43.662Z",
   "repo": {
     "name": "Mobius-Substrate",
     "url": "https://github.com/kaizencycle/Mobius-Substrate",
@@ -8057,7 +8057,7 @@
       "title": "Gate G3 — Post-Redeploy Production Audit",
       "category": "epicon",
       "tags": [],
-      "content_hash": "sha256:2b051884135a01ff9eea233a3737cb5eb21c7a3bc92505d88599143f27daa6a0",
+      "content_hash": "sha256:c100985be08ab6b7bf9e8526f8719e77f32666d6c1323ef08dfdc3bb69d19183",
       "summary": ""
     },
     {
