@@ -6,9 +6,11 @@
 
 ---
 
-**Cycle:** C-153  
+**Cycle:** C-153 (updated C-375)
 **Status:** ✅ CANONICAL  
 **Last Updated:** December 4, 2025
+
+> **Charter context (C-375):** This map describes the presentation geography of HIVE, the *playable renderer* — see [OAA Charter §7](../../../../../../docs/OAA_CHARTER.md#7-the-three-renderers). City-state spatial layout is the rendering surface; the underlying truth pipeline flows from EPICON through the ledger, never from the game state.
 
 ---
 

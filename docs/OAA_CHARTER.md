@@ -1,10 +1,10 @@
 # OAA CHARTER — The Open Attestation Authority & Academy
 
-**Cycle:** C-374 (2026-07-16)  
-**Custodian:** Michael (kaizencycle)  
-**Status:** CANONICAL  
-**Layer:** Vision / Charter  
-**Authority:** Custodian handoff (C-374 opener)  
+**Cycle:** C-375 (2026-07-17)
+**Custodian:** Michael (kaizencycle)
+**Status:** CANONICAL
+**Layer:** Vision / Charter
+**Authority:** Custodian handoff (C-374 opener)
 **License:** CC0 / Public Domain
 
 ## Authority Provenance
@@ -97,6 +97,7 @@ The Academy is cathedral work and is explicitly gated so it cannot cannibalize i
 | C. Hub floor | Cache, budget breaker, tier routing (broker Phases 2–3) | B complete; EPICON Guard MVP shipped |
 | D. Academy pilot | ONE teaching loop, ONE agent, ONE subject, sealed cycles + generated assessments, learner challenge window operational, dogfooded (Michael as learner) | C complete; canon writer healthy; Q2/Q3 resolved |
 | E. Elders + Library public | Tier extension, corpus indexing, anchoring | D produces ≥20 sealed teaching cycles with assessment follow-ups |
+| F. Renderers | Pulse, HIVE world-state binding, Learn surfaces; MFS rendering pipeline | E complete (Elders + Library public); simulation namespace + calibration clauses implemented as code, not prose |
 
 **Standing rule:** no Academy build item enters any cycle's queue while an earlier gate is FALSE. The charter exists precisely so the vision can wait without being lost.
 
@@ -108,7 +109,85 @@ Every Academy primitive is an existing Mobius primitive wearing education clothe
 
 ---
 
-## 7. Sibling documents
+## 7. The Three Renderers
+
+Mobius's civilian-facing product is one attested world-state experienced three
+ways. The renderers share a single truth pipeline and differ only in register:
+
+```
+Human and AI activity
+        ↓
+EPICON — declared intent and provenance
+        ↓
+Witnesses, challenges, evidence, attestations
+        ↓
+Civic Protocol Core — durable ledger
+        ↓
+Canon and interpreted world state
+        ↓
+┌────────────┬────────────┬────────────┐
+│   PULSE    │    HIVE    │   LEARN    │
+│  readable  │  playable  │ teachable  │
+└────────────┴────────────┴────────────┘
+```
+
+**7.1 Pulse — the readable renderer.** Verified integrity events rendered as
+civilian reporting: risks, failures, interventions, disputes, uncertainty,
+system health. Register: public weather service, not social feed. Pulse never
+says "believe this AI"; it says what was observed, what was claimed, what was
+challenged, what remains uncertain, and where the evidence can be inspected.
+
+*Calibration clause (armed at birth, per §17):* Pulse's success metric is
+calibration — did its uncertainty statements bear out; did its "challenged"
+flags resolve as framed. Engagement is a declared non-goal and a known-gameable
+metric; Pulse may not be funded, staffed, or evaluated on it.
+
+**7.2 HIVE — the playable renderer.** The same attested events rendered as a
+living world where integrity governs visibility, stability, resources, and
+possible futures. HIVE additionally runs counterfactuals — trust collapse,
+education loss, coordination success, unaccountable automation — as a
+sandboxed weight-testing environment for institutional dynamics.
+
+*Simulation namespace rule (constitutional):* every simulation-derived record
+carries attestation type `simulation`, which can never promote to observed
+fact, can never be cited as evidence in Pulse or in any ledger proceeding,
+and renders only inside an explicit sandbox frame. The game is a projection
+of reality, never a source of it.
+
+**7.3 Learn — the teachable renderer.** The Academy (§2) as adaptive tutor:
+the same knowledge approached through story, conversation, visualization,
+repetition, practice, or HIVE quests. *The tutor adapts presentation, never
+truth.* Mastery is attested only through the Academy's evidence standards
+(§3.1) — demonstrated later application, successful teaching, independent
+challenge — never through completion, streaks, or time spent.
+
+**7.4 Renderer law.** No renderer is a source of truth (extends C-366: no
+UI-derived truth; no vendor-derived truth; no renderer-derived truth). Each
+surface submits events back exclusively through the governed attestation
+path. Pulse cannot manufacture a crisis; HIVE cannot convert a game event
+into civic fact; Learn cannot declare mastery by completion.
+
+**7.5 Recognition loop.** MFS remain non-transferable evidence of
+demonstrated capability (C-369), rendered as standing: expressive and
+narrative range in HIVE, lineage and constellation in Learn, inspection
+depth in Pulse, and invitations to teach, mentor, or rebuild. The reward is
+not "number go up." The reward is the world recognizes what you can now
+contribute.
+
+**7.6 Mission.** Mobius orchestrates humans and AI into witnessed experiences
+that can be read, played, and learned from. Publicly: *see the world,
+understand the world, help shape the world.*
+
+> **Restraint row (C-375):** §7 canonizes the renderer architecture and arms
+> the two constitutional clauses (simulation namespace rule, Pulse calibration
+> metric). It does not authorize renderer implementation. Phase F is gated on
+> Phase E (Elders + Library public). No Pulse, HIVE world-state binding, Learn
+> surface, or MFS rendering pipeline code is included in or implied by this
+> amendment. Those begin when the Phase F gate is TRUE.
+
+---
+
+## 8. Sibling documents
 
 | Document | Relationship |
 | --- | --- |
@@ -119,6 +198,9 @@ Every Academy primitive is an existing Mobius primitive wearing education clothe
 | [Goodhart Resistance Doctrine](./04-TECHNICAL-ARCHITECTURE/integrity/GOODHART_RESISTANCE_DOCTRINE.md) | §3.1 guardrails — metric humility and witness principle |
 | [EVE Loop Lineage](./lineage/EVE_LOOP_LINEAGE.md) | Provenance — ancestral clock-in/out loop to Academy teaching cycle |
 | [C-374 OAA Reality Audit](./audits/AUDIT_C-374_oaa-reality.md) | Read-only inventory of what actually runs |
+| [HIVE Implementation README](./05-IMPLEMENTATION/hive/HIVE-City-State-Economic-System-README.md) | §7.2 HIVE renderer — world-state architecture and city-state economic system |
+| [HIVE City-State Map](./03-GOVERNANCE-AND-POLICY/civic-core/architecture/HIVE-City-State-Map.md) | §7.2 presentation geography — spatial layout of the playable world |
+| [C-375 Workflow Archaeology Audit](./audits/AUDIT_C-375_workflow-archaeology.md) | Lane B companion — B1 evidence table, scheduled-workflow verdicts, custodian calls |
 
 ---
 
@@ -128,7 +210,8 @@ Every Academy primitive is an existing Mobius primitive wearing education clothe
 | --- | --- | --- |
 | 1.0.0 | 2026-07-16 | Initial canon — C-374 custodian handoff; salvage table corrected per audit |
 | 1.0.1 | 2026-07-16 | Custodian read: §3.1 learner challenge window adopted (EVE dissent); Phase D gate updated |
+| 1.1.0 | 2026-07-17 | C-375: §7 Three Renderers canonized; Phase F gate row added to §5; restraint row added to §7; sibling document table extended; §8 renumbered from §7 |
 
 ---
 
-*The Authority witnesses. The Hub routes. The Academy teaches. The Library remembers.*
+*The Authority witnesses. The Hub routes. The Academy teaches. The Library remembers. The renderers show the world what is real.*

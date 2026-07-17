@@ -1,11 +1,11 @@
 {
   "mobius_catalog_version": "1.0.0",
-  "generated_at": "2026-07-17T05:18:01.524Z",
+  "generated_at": "2026-07-17T14:40:47.821Z",
   "repo": {
     "name": "Mobius-Substrate",
     "url": "https://github.com/kaizencycle/Mobius-Substrate",
     "default_branch": "main",
-    "commit": "bc07a7e10ebbbcc08c8e1a498a3f6caf1d5554a9"
+    "commit": ""
   },
   "stats": {
     "epiconCount": 0,
@@ -434,7 +434,7 @@
       "title": "🌐 THE HIVE CITY-STATE MAP",
       "category": "03-GOVERNANCE-AND-POLICY",
       "tags": [],
-      "content_hash": "sha256:b2ee2b679555eb42380866c71d53a63631f0850faac9ca9b311bbebc0450e3c4",
+      "content_hash": "sha256:f54d7b0a016d15be9666e78dca99bec3bdd7f011b09b723d7e662e6a71879839",
       "summary": ""
     },
     {
@@ -1778,7 +1778,7 @@
       "title": "🌐 HIVE City-State Economic System",
       "category": "05-IMPLEMENTATION",
       "tags": [],
-      "content_hash": "sha256:06b11bc920b3617eafa49da957655d0afc254f2295d697cbc9cb3bc92159308f",
+      "content_hash": "sha256:ed5f485425850482a189076402c622497465eb986ef0eca46351f3b82f86ee4e",
       "summary": ""
     },
     {
@@ -7298,7 +7298,7 @@
       "title": "OAA CHARTER — The Open Attestation Authority & Academy",
       "category": "OAA_CHARTER.md",
       "tags": [],
-      "content_hash": "sha256:e61857c04b10ef0b4a0da5944a945a0cec0c34ce38966249b3540af1835a4226",
+      "content_hash": "sha256:11c7c2425f7317ac8b58dc00a11e2328ef952c95768c20bfdacebd013b4e6027",
       "summary": ""
     },
     {
