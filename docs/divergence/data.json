@@ -1,11 +1,11 @@
 {
   "repo": "kaizencycle/Mobius-Substrate",
-  "generated_at": "2026-07-17T19:23:24Z",
-  "open_pr_count": 8,
+  "generated_at": "2026-07-18T03:25:09Z",
+  "open_pr_count": 7,
   "by_severity": {
     "high": 3,
     "medium": 0,
-    "low": 1,
+    "low": 0,
     "unknown": 4
   },
   "emergency_count": 0,
@@ -56,25 +56,6 @@
       "has_debt": false,
       "severity": "high",
       "justification_hash": "",
-      "checks": {
-        "epicon": "unknown",
-        "merge_gate": "unknown"
-      }
-    },
-    {
-      "pr": 399,
-      "title": "docs(c375-lane-c): ZEUS dispute dispositions for C-375",
-      "url": "https://github.com/kaizencycle/Mobius-Substrate/pull/399",
-      "author": "kaizencycle",
-      "updated_at": "2026-07-17T15:16:29Z",
-      "created_at": "2026-07-17T15:16:13Z",
-      "labels": [
-        "scope:docs"
-      ],
-      "mode": "normal",
-      "has_debt": false,
-      "severity": "low",
-      "justification_hash": "a8c1a4cd9a0681d3f2aba170da465d13c24bc2c5dea7ac674e325d9541d2a925",
       "checks": {
         "epicon": "unknown",
         "merge_gate": "unknown"
