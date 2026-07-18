@@ -6,7 +6,7 @@ The root route (`/`) is a **server-rendered journey landing** (Pulse · Chambers
 
 ## Vercel
 
-Set the project **Root Directory** to `apps/mobius-landing`. The app pins **Node 22.x** (see `.nvmrc`) because `@builder.io/react` depends on `isolated-vm`, which does not ship prebuilt binaries for Node 24+.
+Set the project **Root Directory** to `apps/mobius-landing`. The app uses **Node 22** via `.nvmrc` because `@builder.io/react` depends on `isolated-vm`, which does not ship prebuilt binaries for Node 24 on Vercel. CI continues to run on Node 20 at the monorepo root.
 
 ## Setup
 
