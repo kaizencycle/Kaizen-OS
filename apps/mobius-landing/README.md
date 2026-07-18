@@ -1,6 +1,8 @@
 # Mobius Landing Page
 
-Builder.io-powered landing page for Mobius Systems with visual editing capabilities.
+Public front door for [mobius-substrate.com](https://mobius-substrate.com).
+
+The root route (`/`) is a **server-rendered journey landing** (Pulse · Chambers · HIVE) that works without JavaScript. Builder.io visual editing remains available for other paths via `app/[...page]/page.tsx`.
 
 ## Setup
 
