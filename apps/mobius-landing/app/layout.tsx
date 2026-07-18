@@ -2,12 +2,14 @@ import type { Metadata } from 'next';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: "Mobius Systems — Integrity OS",
-  description: "The first OS architected to pass the Kaizen Turing Test (KTT).",
+  title: 'Mobius — See, understand, and help shape the world',
+  description:
+    'A shared AI-native world where humans and machines learn, witness, simulate, and build together. Read the Pulse, enter the Chambers, explore HIVE.',
   openGraph: {
-    title: "Mobius Systems — Integrity OS",
-    description: "MII, MIC, and integrity-gated autonomy.",
-    images: ["/og.jpg"]
+    title: 'Mobius — See, understand, and help shape the world',
+    description:
+      'Read the Pulse. Enter the Chambers. Explore HIVE. A journey-first front door to the Mobius ecosystem.',
+    images: ['/og.jpg'],
   },
   twitter: { 
     card: "summary_large_image" 
