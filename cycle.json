@@ -10,7 +10,7 @@
   "snapshot": "https://terminal.mobius-substrate.com/api/terminal/snapshot",
   "vault_status": "https://terminal.mobius-substrate.com/api/vault/status",
   "vault_seals": "https://terminal.mobius-substrate.com/api/vault/seal",
-  "last_updated": "2026-07-18T06:15:05Z",
+  "last_updated": "2026-07-18T18:11:13Z",
   "previous_cycle": "C-358",
   "updated_by": "c360-pr-b-constitutional",
   "vault": {
