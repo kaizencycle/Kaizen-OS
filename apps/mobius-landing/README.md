@@ -6,7 +6,11 @@ The root route (`/`) is a **server-rendered journey landing** (Pulse · Chambers
 
 ## Vercel
 
-Set the project **Root Directory** to `apps/mobius-landing`. The app uses **Node 22** via `.nvmrc` because `@builder.io/react` depends on `isolated-vm`, which does not ship prebuilt binaries for Node 24 on Vercel. CI continues to run on Node 20 at the monorepo root.
+Set the project **Root Directory** to `apps/mobius-landing`.
+
+Vercel currently builds on **Node 24** by default. `@builder.io/react` pulls in `isolated-vm@5`, which does not compile on Node 24. The Vercel install command uses `--ignore-scripts` to skip that native build; the Next.js landing build does not require it at compile time.
+
+For a native-module install instead, set **Node.js Version** to **22.x** in the Vercel project settings (`.nvmrc` is also present as a hint).
 
 ## Setup
 

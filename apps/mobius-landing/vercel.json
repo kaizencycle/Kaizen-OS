@@ -1,6 +1,6 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "installCommand": "cd ../.. && npm install --legacy-peer-deps --workspace=mobius-landing",
+  "installCommand": "cd ../.. && npm install --legacy-peer-deps --workspace=mobius-landing --ignore-scripts",
   "buildCommand": "cd ../.. && npm run build --workspace=apps/mobius-landing",
   "devCommand": "npm run dev",
   "framework": "nextjs",
