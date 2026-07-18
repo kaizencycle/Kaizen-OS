@@ -2,6 +2,9 @@
   "name": "mobius-landing",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": "22.x"
+  },
   "scripts": {
     "dev": "next dev -p 3009",
     "build": "next build",
@@ -11,8 +14,6 @@
   "dependencies": {
     "@builder.io/react": "^3.0.0",
     "@builder.io/sdk": "^6.3.0",
-    "@modelcontextprotocol/sdk": "1.29.0",
-    "ethers": "6.17.0",
     "next": "14.2.35",
     "react": "18.3.1",
     "react-dom": "18.3.1"
