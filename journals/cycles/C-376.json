@@ -1,8 +1,49 @@
 {
   "cycle": "C-376",
   "date": "2026-07-18",
-  "writer": "mobius-bot/state-sync",
+  "writer": "cursor-cloud-agent",
   "ledger_verified": false,
   "ledger_snapshot": null,
-  "narrative": null
+  "narrative": "C-376 closed. Journey-first public root (#402) merged to origin/main and witnessed live on mobius-substrate.com apex/www. Vercel deploy fixes (#403, #404) followed on main.",
+  "merge": {
+    "pr": 402,
+    "title": "feat(landing): C-376 journey-first public root reframe",
+    "merged_at": "2026-07-18T22:26:49Z",
+    "merge_commit": "6c1f987928aa984be484b30c7eb876faf9593aee",
+    "feature_tip": "3ed9fc72",
+    "production_main_head": "13229f6f"
+  },
+  "witness": {
+    "verified_at": "2026-07-18T23:00:39Z",
+    "surface": "production render (not PR report)",
+    "verdicts": {
+      "journey_first_hero": "PASS",
+      "ssr_without_js": "PASS",
+      "architecture_progressive": "PASS",
+      "hive_sandbox_framing": "PASS",
+      "mfs_non_currency_framing": "PASS",
+      "chambers_dns": "PASS — chambers.mobius-substrate.com live"
+    }
+  },
+  "follow_ups": [
+    {
+      "id": "hive-playable-cta",
+      "priority": "P2",
+      "note": "Explore HIVE / Play the world still route to handbook operator doc; point to playable surface when public HIVE domain is canonical."
+    },
+    {
+      "id": "chambers-canonical-aeo",
+      "priority": "P1",
+      "note": "chambers.mobius-substrate.com declared canonical/og:url to root; fix in mobius-browser-shell so crawlers index chambers as distinct surface."
+    },
+    {
+      "id": "landing-og-image",
+      "priority": "P1",
+      "note": "Root layout referenced missing /og.jpg; add generated opengraph-image and metadataBase for social previews."
+    }
+  ],
+  "seal": {
+    "compiled_at": "2026-07-18T23:05:00Z",
+    "statement": "Root remembers why. PR #402 is on main; render matches intent. Residual AEO items tracked for next cycle."
+  }
 }
