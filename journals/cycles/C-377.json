@@ -1,8 +1,49 @@
 {
   "cycle": "C-377",
   "date": "2026-07-19",
-  "writer": "mobius-bot/state-sync",
+  "writer": "cursor-cloud-agent",
   "ledger_verified": false,
   "ledger_snapshot": null,
-  "narrative": null
+  "narrative": "C-377 closed. Ledger Folio UI/UX upgrade (#406) merged and deployed; Codex a11y contrast fixes landed on main post-merge.",
+  "merge": {
+    "pr": 406,
+    "title": "feat(landing): C-377 UI/UX layout upgrade",
+    "merged_at": "2026-07-19T14:55:07Z",
+    "merge_commit": "064d81388930bc664959bec6e99a2ad8f114b9ba",
+    "feature_tip": "c149955ac2c3eff72bea4a67db2b9fe6807e0810",
+    "a11y_fix": "fea540c5",
+    "production_main_head": "cad787e7701167c044c6e0191502338ed837b928"
+  },
+  "witness": {
+    "verified_at": "2026-07-19T16:13:00Z",
+    "surface": "production render + origin/main",
+    "verdicts": {
+      "ledger_folio_deploy": "PASS — IBM Plex, FIG. 1, dark vestibule → paper folio live",
+      "ssr_without_js": "PASS",
+      "constitutional_lines": "PASS",
+      "mfs_non_currency": "PASS",
+      "codex_a11y_fixes": "PASS — selection, focus, utility contrast on main"
+    }
+  },
+  "epicon_guard": {
+    "pr": 406,
+    "green_on_first_open": false,
+    "note": "Intent Publication Gate failed on open (fourth in #402/#405/#406 arc). PR merged with Guard red; §6 verbatim-block mitigation is patch not engine — carried to C-378 Lane E.4."
+  },
+  "follow_ups_carried": [
+    {
+      "id": "intent-publication-engine-p2",
+      "cycle": "C-378",
+      "lane": "E.4"
+    },
+    {
+      "id": "hive-playable-surface",
+      "cycle": "C-378+",
+      "note": "Footer tile aligned to handbook-honest copy in C-378 Lane E.2"
+    }
+  ],
+  "seal": {
+    "compiled_at": "2026-07-19T16:13:00Z",
+    "statement": "The front door looks like it remembers why. Design shipped; Guard arc continues."
+  }
 }

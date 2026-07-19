@@ -1,0 +1,34 @@
+{
+  "cycle": "C-378",
+  "date": "2026-07-20",
+  "writer": "cursor-cloud-agent",
+  "ledger_verified": false,
+  "ledger_snapshot": null,
+  "narrative": "C-378 trunk cycle opened. ATLAS handoff filed; sequencing B → 0.2 → A → C. Lane E residue in progress.",
+  "handoff": {
+    "id": "ATLAS→FEDERATION_C-378_trunk_v1",
+    "doc": "docs/epicon/cycles/C-378/ATLAS_HANDOFF_C-378_trunk-cycle.md",
+    "issued": "2026-07-19",
+    "execution_start": "2026-07-20"
+  },
+  "sequencing": ["B", "0.2", "A", "C"],
+  "lanes_parallel": ["D"],
+  "lanes_blocked": {
+    "C": "until B ruling + A deploy-persistence witness + custodian trigger"
+  },
+  "lane_e_progress": {
+    "e1_browser_shell_97": "MERGED (pre-cycle)",
+    "e1_atlas_peer_ref": "pending — mobius-browser-shell",
+    "e2_hive_footer": "in_progress",
+    "e3_c377_close": "complete",
+    "e4_intent_engine": "carried",
+    "e5_pr598_disposition": "carried"
+  },
+  "forbidden_this_cycle": [
+    "KV write pre-clearance",
+    "#392 agent action",
+    "cold-canon .dat exports",
+    "GI-by-fiat",
+    "MIC issuance changes"
+  ]
+}

@@ -327,7 +327,7 @@ export default function JourneyLandingPage() {
                 rel="noopener noreferrer"
               >
                 <p className="m-card-label">HIVE</p>
-                <p className="mt-2 text-sm m-folio-muted">Play the world</p>
+                <p className="mt-2 text-sm m-folio-muted">Read how HIVE works</p>
               </a>
             </div>
             <nav
