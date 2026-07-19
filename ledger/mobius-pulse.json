@@ -1,8 +1,8 @@
 {
   "schema": "MOBIUS_PULSE_V1",
-  "updated_at": "2026-07-19T05:11:40.879Z",
-  "cycle": "C-376",
-  "cycle_date": "2026-07-18",
+  "updated_at": "2026-07-19T07:58:57.671Z",
+  "cycle": "C-377",
+  "cycle_date": "2026-07-19",
   "aggregate": {
     "node_count": 5,
     "live_nodes": 3,
