@@ -1,15 +1,15 @@
 {
   "mobius_catalog_version": "1.0.0",
-  "generated_at": "2026-07-19T05:26:25.432Z",
+  "generated_at": "2026-07-19T16:35:03.675Z",
   "repo": {
     "name": "Mobius-Substrate",
     "url": "https://github.com/kaizencycle/Mobius-Substrate",
     "default_branch": "main",
-    "commit": "676116c8e3c460a4f182e05e166fe81e04ebfae6"
+    "commit": ""
   },
   "stats": {
     "epiconCount": 0,
-    "docCount": 1044
+    "docCount": 1045
   },
   "epicons": [],
   "docs": [
@@ -8090,6 +8090,14 @@
       "category": "epicon",
       "tags": [],
       "content_hash": "sha256:779656cddcbc597a44177988f8033460b7dd08359cf5ebb5f3a3812026d4735d",
+      "summary": ""
+    },
+    {
+      "path": "docs/epicon/cycles/C-378/ATLAS_HANDOFF_C-378_trunk-cycle.md",
+      "title": "ATLAS HANDOFF — C-378: The Trunk Cycle",
+      "category": "epicon",
+      "tags": [],
+      "content_hash": "sha256:f7d14864e46fcf865cd12d0691584f599b465f8f05fadaeb3ff9bdba32ac1318",
       "summary": ""
     },
     {

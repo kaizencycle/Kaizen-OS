@@ -1,8 +1,66 @@
 {
-  "cycle": "C-377",
-  "date": "2026-07-19",
-  "writer": "mobius-bot/state-sync",
-  "ledger_verified": false,
-  "ledger_snapshot": null,
-  "narrative": null
+  "meta": {
+    "cycle_id": "C-377",
+    "date": "2026-07-19",
+    "timezone": "UTC",
+    "chamber": "Cycle Journal",
+    "tags": ["c377", "landing", "ledger-folio", "design"],
+    "mood_vector": "Focused"
+  },
+  "sweep": {
+    "statement": "C-377 closed. Ledger Folio UI/UX upgrade shipped on mobius-substrate.com apex — IBM Plex token system, FIG. 1 constitutional architecture figure, dark vestibule into lit paper folio.",
+    "style": "mobius"
+  },
+  "signals": [
+    {
+      "timestamp": "2026-07-19T14:55:07Z",
+      "domain": "tech",
+      "statement": "PR #406 merged: feat(landing) C-377 UI/UX layout upgrade at 064d8138; Codex a11y contrast fixes at fea540c5 on main.",
+      "sources": ["apps/mobius-landing/DESIGN.md", "apps/mobius-landing/app/globals.css"],
+      "confidence": 0.95,
+      "attribution": "cursor-cloud-agent"
+    },
+    {
+      "timestamp": "2026-07-19T16:13:00Z",
+      "domain": "governance",
+      "statement": "EPICON Guard did not pass on first open for #406 (Intent Publication Gate); fourth in #402/#405/#406 arc. Carried to C-378 Lane E.4.",
+      "sources": ["https://github.com/kaizencycle/Mobius-Substrate/pull/406"],
+      "confidence": 0.95,
+      "attribution": "cursor-cloud-agent"
+    }
+  ],
+  "integrity": {
+    "status": "normal",
+    "domains_touched": ["apps", "docs"],
+    "mii_current": 0.9,
+    "mii_trend": "flat",
+    "watch_items": [
+      {
+        "indicator": "epicon-guard-intent-format",
+        "direction": "flat",
+        "note": "Verbatim intent header + scope union still failing automated gate on open.",
+        "evidence": ["docs/epicon/EXPLAIN_FAILURE.md"]
+      }
+    ]
+  },
+  "decisions": [
+    {
+      "decision": "Ship Ledger Folio design without altering C-376 copy canon or routing",
+      "rationale": "Visual identity upgrade only; constitutional lines and public-journey.ts URL map preserved.",
+      "owner": "kaizencycle",
+      "risk": "low"
+    }
+  ],
+  "actions": [
+    {
+      "task": "Intent Publication Engine phase 2 for Cursor-agent PR flows",
+      "priority": "P2",
+      "owner": "kaizencycle"
+    }
+  ],
+  "seal": {
+    "compiled_at": "2026-07-19T16:13:00Z",
+    "contributors": ["cursor-cloud-agent", "kaizencycle (Custodian)"],
+    "statement": "C-377 closed. The front door looks like it remembers why."
+  }
 }
