@@ -1,49 +1,66 @@
 {
-  "cycle": "C-376",
-  "date": "2026-07-18",
-  "writer": "cursor-cloud-agent",
-  "ledger_verified": false,
-  "ledger_snapshot": null,
-  "narrative": "C-376 closed. Journey-first public root (#402) merged to origin/main and witnessed live on mobius-substrate.com apex/www. Vercel deploy fixes (#403, #404) followed on main.",
-  "merge": {
-    "pr": 402,
-    "title": "feat(landing): C-376 journey-first public root reframe",
-    "merged_at": "2026-07-18T22:26:49Z",
-    "merge_commit": "6c1f987928aa984be484b30c7eb876faf9593aee",
-    "feature_tip": "3ed9fc72",
-    "production_main_head": "13229f6f"
+  "meta": {
+    "cycle_id": "C-376",
+    "date": "2026-07-18",
+    "timezone": "UTC",
+    "chamber": "Cycle Journal",
+    "tags": ["c376", "landing", "journey-first"],
+    "mood_vector": "Focused"
   },
-  "witness": {
-    "verified_at": "2026-07-18T23:00:39Z",
-    "surface": "production render (not PR report)",
-    "verdicts": {
-      "journey_first_hero": "PASS",
-      "ssr_without_js": "PASS",
-      "architecture_progressive": "PASS",
-      "hive_sandbox_framing": "PASS",
-      "mfs_non_currency_framing": "PASS",
-      "chambers_dns": "PASS — chambers.mobius-substrate.com live"
+  "sweep": {
+    "statement": "C-376 closed. Journey-first public root (#402) merged to origin/main and witnessed live on mobius-substrate.com apex/www. Vercel deploy fixes (#403, #404) followed on main.",
+    "style": "mobius"
+  },
+  "signals": [
+    {
+      "timestamp": "2026-07-18T22:26:49Z",
+      "domain": "tech",
+      "statement": "PR #402 merged: journey-first public root reframe at 6c1f9879.",
+      "sources": ["apps/mobius-landing/components/journey/JourneyLandingPage.tsx"],
+      "confidence": 0.95,
+      "attribution": "cursor-cloud-agent"
+    },
+    {
+      "timestamp": "2026-07-18T23:00:39Z",
+      "domain": "governance",
+      "statement": "Production witness: hero, SSR, constitutional lines, HIVE sandbox framing, MFS non-currency — all PASS.",
+      "sources": ["https://www.mobius-substrate.com/"],
+      "confidence": 0.95,
+      "attribution": "kaizencycle (Custodian)"
     }
+  ],
+  "integrity": {
+    "status": "normal",
+    "domains_touched": ["apps"],
+    "mii_current": 0.9,
+    "mii_trend": "flat",
+    "watch_items": [
+      {
+        "indicator": "hive-playable-cta",
+        "direction": "flat",
+        "note": "HIVE CTAs route to handbook operator doc — P2 follow-up.",
+        "evidence": ["apps/mobius-landing/lib/public-journey.ts"]
+      }
+    ]
   },
-  "follow_ups": [
+  "decisions": [
     {
-      "id": "hive-playable-cta",
-      "priority": "P2",
-      "note": "Explore HIVE / Play the world still route to handbook operator doc; point to playable surface when public HIVE domain is canonical."
-    },
+      "decision": "Reframe mobius-substrate.com root as journey-first SSR landing",
+      "rationale": "Civilians arrive at three doors — Read, Learn, Play — with protocol below the fold.",
+      "owner": "kaizencycle",
+      "risk": "low"
+    }
+  ],
+  "actions": [
     {
-      "id": "chambers-canonical-aeo",
+      "task": "Fix chambers canonical URLs and landing OG image",
       "priority": "P1",
-      "note": "chambers.mobius-substrate.com declared canonical/og:url to root; fix in mobius-browser-shell so crawlers index chambers as distinct surface."
-    },
-    {
-      "id": "landing-og-image",
-      "priority": "P1",
-      "note": "Root layout referenced missing /og.jpg; add generated opengraph-image and metadataBase for social previews."
+      "owner": "kaizencycle"
     }
   ],
   "seal": {
     "compiled_at": "2026-07-18T23:05:00Z",
-    "statement": "Root remembers why. PR #402 is on main; render matches intent. Residual AEO items tracked for next cycle."
+    "contributors": ["cursor-cloud-agent", "kaizencycle (Custodian)"],
+    "statement": "C-376 closed. Root remembers why."
   }
 }

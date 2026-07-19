@@ -1,8 +1,44 @@
 {
-  "cycle": "C-375",
-  "date": "2026-07-17",
-  "writer": "mobius-bot/state-sync",
-  "ledger_verified": false,
-  "ledger_snapshot": null,
-  "narrative": null
+  "meta": {
+    "cycle_id": "C-375",
+    "date": "2026-07-17",
+    "timezone": "UTC",
+    "chamber": "Cycle Journal",
+    "tags": ["c375"],
+    "mood_vector": "Focused"
+  },
+  "sweep": {
+    "statement": "C-375 cycle journal placeholder.",
+    "style": "mobius"
+  },
+  "signals": [
+    {
+      "timestamp": "2026-07-17T00:00:00Z",
+      "domain": "governance",
+      "statement": "C-375 cycle journal placeholder.",
+      "sources": ["cycle.json"],
+      "confidence": 0.9,
+      "attribution": "mobius-bot/state-sync"
+    }
+  ],
+  "integrity": {
+    "status": "normal",
+    "domains_touched": [],
+    "mii_current": 0.9,
+    "mii_trend": "flat",
+    "watch_items": []
+  },
+  "decisions": [],
+  "actions": [
+    {
+      "task": "Advance C-375 charter lanes",
+      "priority": "P2",
+      "owner": "kaizencycle"
+    }
+  ],
+  "seal": {
+    "compiled_at": "2026-07-17T00:00:00Z",
+    "contributors": ["mobius-bot/state-sync"],
+    "statement": "C-375 journal stub migrated to schema v1."
+  }
 }

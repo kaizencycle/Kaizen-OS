@@ -1,4 +1,6 @@
 #!/usr/bin/env node
+// ## Authority Provenance
+// Scope envelope alignment: journals/ under docs scope per mobius_pr_bot SCOPE_MAP.
 /**
  * EPICON Guard — v0 (GitHub Action validator)
  *
@@ -57,7 +59,7 @@ const VALID_MODES = ['normal', 'emergency', 'standard']; // 'standard' accepted 
 // Divergence is flagged, never blocked (EPICON-02 §3.2: "Actions outside the
 // envelope are not blocked — they are flagged as divergent.")
 const SCOPE_ENVELOPES = {
-  docs: ['docs/', 'catalog/', 'README', 'DOCS.md', 'CONTRIBUTING.md', 'LICENSE', 'FOR-'],
+  docs: ['docs/', 'catalog/', 'journals/', 'README', 'DOCS.md', 'CONTRIBUTING.md', 'LICENSE', 'FOR-'],
   ci: ['.github/'],
   core: ['apps/', 'packages/', 'src/', 'lib/'],
   infra: ['infra/', 'render.yaml', 'vercel.json', 'Dockerfile', 'docker-compose', 'netlify.toml'],

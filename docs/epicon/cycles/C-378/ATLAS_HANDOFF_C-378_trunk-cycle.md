@@ -8,6 +8,10 @@
 **Provenance:** Five-cycle audit (C-373→C-377). Forensic cycles closed the crisis into a witnessed, stable, gated state; build cycles shipped the public surface. The trunk — Q3, identity durability, canonical GI — has not moved since C-370. This cycle moves the trunk and only the trunk.
 **Governing protocol:** `docs/WITNESS_PROTOCOL.md` (C-373 canon). Reports are claims; verify against refs; STALE is a verdict.
 
+## Authority Provenance
+
+Authority declared using `docs/templates/EPICON_FOUNDER_STANDING.md` v0.1. Custodian-issued ATLAS handoff; federation agents file documentation and residue only under Lane E constraints.
+
 ---
 
 ## Fresh witness inputs (2026-07-19, live probes by ATLAS)
