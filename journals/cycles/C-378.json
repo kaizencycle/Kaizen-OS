@@ -1,34 +1,68 @@
 {
-  "cycle": "C-378",
-  "date": "2026-07-20",
-  "writer": "cursor-cloud-agent",
-  "ledger_verified": false,
-  "ledger_snapshot": null,
-  "narrative": "C-378 trunk cycle opened. ATLAS handoff filed; sequencing B → 0.2 → A → C. Lane E residue in progress.",
-  "handoff": {
-    "id": "ATLAS→FEDERATION_C-378_trunk_v1",
-    "doc": "docs/epicon/cycles/C-378/ATLAS_HANDOFF_C-378_trunk-cycle.md",
-    "issued": "2026-07-19",
-    "execution_start": "2026-07-20"
+  "meta": {
+    "cycle_id": "C-378",
+    "date": "2026-07-20",
+    "timezone": "UTC",
+    "chamber": "Cycle Journal",
+    "tags": ["c378", "trunk", "quorum", "identity", "gi"],
+    "mood_vector": "Focused"
   },
-  "sequencing": ["B", "0.2", "A", "C"],
-  "lanes_parallel": ["D"],
-  "lanes_blocked": {
-    "C": "until B ruling + A deploy-persistence witness + custodian trigger"
+  "sweep": {
+    "statement": "C-378 trunk cycle opened. Five-cycle audit (C-373→C-377) pinned the crisis; this cycle moves Q3 reconciliation prep, identity durability, quorum ruling, and canonical GI — sequencing B → 0.2 → A → C.",
+    "style": "mobius"
   },
-  "lane_e_progress": {
-    "e1_browser_shell_97": "MERGED (pre-cycle)",
-    "e1_atlas_peer_ref": "pending — mobius-browser-shell",
-    "e2_hive_footer": "in_progress",
-    "e3_c377_close": "complete",
-    "e4_intent_engine": "carried",
-    "e5_pr598_disposition": "carried"
+  "signals": [
+    {
+      "timestamp": "2026-07-19T16:20:00Z",
+      "domain": "governance",
+      "statement": "ATLAS handoff ATLAS→FEDERATION_C-378_trunk_v1 filed; 125 hash-divergent pairs stable per C-374 Gate G3; GI witnessed 0.71 below written circuit-breaker line.",
+      "sources": ["docs/epicon/cycles/C-378/ATLAS_HANDOFF_C-378_trunk-cycle.md"],
+      "confidence": 0.95,
+      "attribution": "ATLAS"
+    }
+  ],
+  "integrity": {
+    "status": "normal",
+    "domains_touched": ["governance", "infra", "docs"],
+    "mii_current": 0.9,
+    "mii_trend": "flat",
+    "watch_items": [
+      {
+        "indicator": "gi-circuit-breaker-contradiction",
+        "direction": "down",
+        "note": "Witnessed GI 0.71 with deposits flowing below written breaker thresholds — Lane D owns reconciliation.",
+        "evidence": ["docs/epicon/cycles/C-378/ATLAS_HANDOFF_C-378_trunk-cycle.md"]
+      }
+    ]
   },
-  "forbidden_this_cycle": [
-    "KV write pre-clearance",
-    "#392 agent action",
-    "cold-canon .dat exports",
-    "GI-by-fiat",
-    "MIC issuance changes"
-  ]
+  "decisions": [
+    {
+      "decision": "Sequence trunk work B → 0.2 → A → C; Lane D parallel; Lane E fill only",
+      "rationale": "Quorum ruling must precede Q3 repair; identity Postgres must precede attest path.",
+      "owner": "kaizencycle",
+      "risk": "low"
+    }
+  ],
+  "actions": [
+    {
+      "task": "Lane B: QUORUM_MECHANISM_RULING.md (AUREA lead)",
+      "priority": "P1",
+      "owner": "kaizencycle"
+    },
+    {
+      "task": "Lane 0.2: Render Postgres for identity service (custodian)",
+      "priority": "P1",
+      "owner": "kaizencycle"
+    },
+    {
+      "task": "Lane D: GI_CANONICALIZATION.md (ZEUS lead)",
+      "priority": "P1",
+      "owner": "kaizencycle"
+    }
+  ],
+  "seal": {
+    "compiled_at": "2026-07-19T16:28:00Z",
+    "contributors": ["ATLAS (handoff)", "cursor-cloud-agent (opener)"],
+    "statement": "C-378 opened. The trunk moves — in order, signed, witnessed."
+  }
 }

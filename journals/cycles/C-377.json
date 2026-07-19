@@ -1,49 +1,66 @@
 {
-  "cycle": "C-377",
-  "date": "2026-07-19",
-  "writer": "cursor-cloud-agent",
-  "ledger_verified": false,
-  "ledger_snapshot": null,
-  "narrative": "C-377 closed. Ledger Folio UI/UX upgrade (#406) merged and deployed; Codex a11y contrast fixes landed on main post-merge.",
-  "merge": {
-    "pr": 406,
-    "title": "feat(landing): C-377 UI/UX layout upgrade",
-    "merged_at": "2026-07-19T14:55:07Z",
-    "merge_commit": "064d81388930bc664959bec6e99a2ad8f114b9ba",
-    "feature_tip": "c149955ac2c3eff72bea4a67db2b9fe6807e0810",
-    "a11y_fix": "fea540c5",
-    "production_main_head": "cad787e7701167c044c6e0191502338ed837b928"
+  "meta": {
+    "cycle_id": "C-377",
+    "date": "2026-07-19",
+    "timezone": "UTC",
+    "chamber": "Cycle Journal",
+    "tags": ["c377", "landing", "ledger-folio", "design"],
+    "mood_vector": "Focused"
   },
-  "witness": {
-    "verified_at": "2026-07-19T16:13:00Z",
-    "surface": "production render + origin/main",
-    "verdicts": {
-      "ledger_folio_deploy": "PASS — IBM Plex, FIG. 1, dark vestibule → paper folio live",
-      "ssr_without_js": "PASS",
-      "constitutional_lines": "PASS",
-      "mfs_non_currency": "PASS",
-      "codex_a11y_fixes": "PASS — selection, focus, utility contrast on main"
-    }
+  "sweep": {
+    "statement": "C-377 closed. Ledger Folio UI/UX upgrade shipped on mobius-substrate.com apex — IBM Plex token system, FIG. 1 constitutional architecture figure, dark vestibule into lit paper folio.",
+    "style": "mobius"
   },
-  "epicon_guard": {
-    "pr": 406,
-    "green_on_first_open": false,
-    "note": "Intent Publication Gate failed on open (fourth in #402/#405/#406 arc). PR merged with Guard red; §6 verbatim-block mitigation is patch not engine — carried to C-378 Lane E.4."
-  },
-  "follow_ups_carried": [
+  "signals": [
     {
-      "id": "intent-publication-engine-p2",
-      "cycle": "C-378",
-      "lane": "E.4"
+      "timestamp": "2026-07-19T14:55:07Z",
+      "domain": "tech",
+      "statement": "PR #406 merged: feat(landing) C-377 UI/UX layout upgrade at 064d8138; Codex a11y contrast fixes at fea540c5 on main.",
+      "sources": ["apps/mobius-landing/DESIGN.md", "apps/mobius-landing/app/globals.css"],
+      "confidence": 0.95,
+      "attribution": "cursor-cloud-agent"
     },
     {
-      "id": "hive-playable-surface",
-      "cycle": "C-378+",
-      "note": "Footer tile aligned to handbook-honest copy in C-378 Lane E.2"
+      "timestamp": "2026-07-19T16:13:00Z",
+      "domain": "governance",
+      "statement": "EPICON Guard did not pass on first open for #406 (Intent Publication Gate); fourth in #402/#405/#406 arc. Carried to C-378 Lane E.4.",
+      "sources": ["https://github.com/kaizencycle/Mobius-Substrate/pull/406"],
+      "confidence": 0.95,
+      "attribution": "cursor-cloud-agent"
+    }
+  ],
+  "integrity": {
+    "status": "normal",
+    "domains_touched": ["apps", "docs"],
+    "mii_current": 0.9,
+    "mii_trend": "flat",
+    "watch_items": [
+      {
+        "indicator": "epicon-guard-intent-format",
+        "direction": "flat",
+        "note": "Verbatim intent header + scope union still failing automated gate on open.",
+        "evidence": ["docs/epicon/EXPLAIN_FAILURE.md"]
+      }
+    ]
+  },
+  "decisions": [
+    {
+      "decision": "Ship Ledger Folio design without altering C-376 copy canon or routing",
+      "rationale": "Visual identity upgrade only; constitutional lines and public-journey.ts URL map preserved.",
+      "owner": "kaizencycle",
+      "risk": "low"
+    }
+  ],
+  "actions": [
+    {
+      "task": "Intent Publication Engine phase 2 for Cursor-agent PR flows",
+      "priority": "P2",
+      "owner": "kaizencycle"
     }
   ],
   "seal": {
     "compiled_at": "2026-07-19T16:13:00Z",
-    "statement": "The front door looks like it remembers why. Design shipped; Guard arc continues."
+    "contributors": ["cursor-cloud-agent", "kaizencycle (Custodian)"],
+    "statement": "C-377 closed. The front door looks like it remembers why."
   }
 }
