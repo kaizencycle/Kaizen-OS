@@ -1,6 +1,6 @@
 {
-  "current_cycle": "C-377",
-  "date": "2026-07-19",
+  "current_cycle": "C-378",
+  "date": "2026-07-20",
   "gi": 0.9,
   "mode": "yellow",
   "canonical_domain": "https://mobius-substrate.com",
@@ -10,7 +10,7 @@
   "snapshot": "https://terminal.mobius-substrate.com/api/terminal/snapshot",
   "vault_status": "https://terminal.mobius-substrate.com/api/vault/status",
   "vault_seals": "https://terminal.mobius-substrate.com/api/vault/seal",
-  "last_updated": "2026-07-19T06:40:23Z",
+  "last_updated": "2026-07-20T07:23:36Z",
   "previous_cycle": "C-358",
   "updated_by": "c360-pr-b-constitutional",
   "vault": {
@@ -60,7 +60,7 @@
     "c360-federation-sweep-in-progress"
   ],
   "doc_version": "2.2.0",
-  "last_state_snapshot": "C-377",
+  "last_state_snapshot": "C-378",
   "next_state_snapshot_expected": "C-361",
-  "notes": "Auto-sync by mobius-bot (deterministic, no LLM). Advanced C-376 -> C-377. Ledger unreachable or GI absent: attested fields carried forward UNVERIFIED."
+  "notes": "Auto-sync by mobius-bot (deterministic, no LLM). Advanced C-377 -> C-378. Ledger unreachable or GI absent: attested fields carried forward UNVERIFIED."
 }
