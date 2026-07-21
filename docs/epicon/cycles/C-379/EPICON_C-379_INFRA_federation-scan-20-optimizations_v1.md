@@ -1,7 +1,7 @@
 # EPICON_C-379_INFRA_federation-scan-20-optimizations_v1
 
 **Cycle:** C-379  
-**Scope:** specs (docs PR)  
+**Scope:** docs  
 **Status:** published
 
 ## Intent publication

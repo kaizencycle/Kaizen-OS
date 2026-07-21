@@ -5,7 +5,7 @@
     "timezone": "UTC",
     "chamber": "Cycle Journal",
     "tags": ["c379", "federation", "scan", "infra", "witness"],
-    "mood_vector": "Calibrated"
+    "mood_vector": "Clear"
   },
   "sweep": {
     "statement": "C-379 opened with a live federation scan across five repos, four domains, and four service health endpoints. Publishes 20 optimization items — closeouts for STALE incidents (identity login, cron frequency) plus new drift (canon lag, PR templates, wallet DB misconfiguration).",
@@ -14,7 +14,7 @@
   "signals": [
     {
       "timestamp": "2026-07-21T15:00:00Z",
-      "domain": "infra",
+      "domain": "tech",
       "statement": "Identity service live: db_ok true, db_write_ok true at mobius-identity-service.onrender.com/health — C-358 disk fix holding.",
       "sources": ["docs/epicon/cycles/C-379/FEDERATION_SCAN_WITNESS_TABLE.md"],
       "confidence": 0.98,
@@ -22,7 +22,7 @@
     },
     {
       "timestamp": "2026-07-21T15:00:00Z",
-      "domain": "infra",
+      "domain": "tech",
       "statement": "Wallet service degraded: Postgres hostname resolution failure (not cold-start). Escalates optimization item 6 to Tier 2.",
       "sources": ["docs/epicon/cycles/C-379/FEDERATION_SCAN_WITNESS_TABLE.md"],
       "confidence": 0.95,
