@@ -18,8 +18,8 @@ justification:
   REASONING: A report is a claim, not a verification (Witness Table doctrine, C-373).
     Standing memory listed identity-login and cron-frequency as active incidents;
     live evidence shows both resolved. Continuing to treat them as open wastes cycle
-    attention. Reserve-block canon lag, PR template sprawl, and wallet DB
-    misconfiguration were under-tracked or misclassified during this scan.
+    attention. Reserve-block canon lag (must use deduplicated count, not seals_count),
+    PR template sprawl, and wallet DB misconfiguration were under-tracked or misclassified.
     This PR publishes the witnessed scan and 20-item optimization backlog as the
     canonical C-379 opening record; implementation follows in scoped follow-up PRs.
   ANCHORS:

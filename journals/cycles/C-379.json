@@ -31,7 +31,7 @@
     {
       "timestamp": "2026-07-21T15:00:00Z",
       "domain": "governance",
-      "statement": "Reserve Block canon lane running but lagging: MANIFEST 194 blocks vs live seals_count 360 (~166 block lag).",
+      "statement": "Reserve Block canon lane running (MANIFEST 194 blocks, 2026-07-12). Raw seals_count 360 with 125 collision pairs — canonical count unresolved; do not compare seals_count to MANIFEST (C368-PR7).",
       "sources": ["canon/reserve-blocks/MANIFEST.json", "terminal.mobius-substrate.com/api/vault/status"],
       "confidence": 0.92,
       "attribution": "ATLAS"
@@ -52,7 +52,7 @@
       {
         "indicator": "reserve-block-canon-lag",
         "direction": "flat",
-        "note": "194 canonized vs 360 sealed — continuous alert needed (item 7).",
+        "note": "Canon lane active; lag unverified until deduplicated unique_block_count audited — item 7 must not use seals_count.",
         "evidence": ["canon/reserve-blocks/MANIFEST.json"]
       }
     ]

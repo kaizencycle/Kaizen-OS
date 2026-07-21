@@ -8,11 +8,11 @@
 |---|------|------|--------|-------------|-------|
 | 1 | Close identity-login incident | 1 | closeout | Substrate + CPC | STALE — live `db_ok:true`; remove from `cycle.json` `open_flags` on next bot sync |
 | 2 | Close cron-frequency incident | 1 | **partial closeout** | Terminal | **PARTIALLY STALE** — promote/heartbeat/sweep/swarm at `*/30`; `kv-watchdog` still `*/10` (144 runs/day). Item 12 must close the loop. |
-| 3 | Re-baseline Reserve Block canon status | 1 | open | Substrate | 194/360, ~166 lag — not dormant |
+| 3 | Re-baseline Reserve Block canon status | 1 | open | Substrate | Canon lane running (194 cold blocks, 2026-07-12). **Do not** compare raw `seals_count` to MANIFEST — see C-368 PR7 counting model. |
 | 4 | Consolidate PR templates | 1 | open | Substrate | Archive C151 + c150 to `docs/archive/pr-templates/` |
 | 5 | Sync per-app PR templates | 1 | open | Substrate | `apps/eomm-api`, `labs/lab4-proof` |
 | 6 | Wallet service DB reconciliation | **2** | open | Civic-Protocol-Core | **Diagnostic ticket:** [CPC `TICKET_item-6_wallet-db-dns-mismatch.md`](https://github.com/kaizencycle/Civic-Protocol-Core/blob/main/docs/epicon/cycles/C-379/TICKET_item-6_wallet-db-dns-mismatch.md) — Postgres DNS fail; dashboard-vs-YAML theory unconfirmed |
-| 7 | Reserve-block canon-lag alert | 1 | open | Terminal | Warn when `seals_count - MANIFEST.total_blocks` > 50 |
+| 7 | Reserve-block canon-lag alert | 1 | open | Terminal | Warn when **deduplicated unique `block_number` count** (from collision audit / `reserve_block_truth`) minus `MANIFEST.total_blocks` > threshold. **Not** `seals_count` — raw index includes collision duplicates per [C368-PR7](../C-368/C368-PR7_prime-count-clarification.md). |
 | 8 | CI pre-check for parseable intent block | 1 | open | epicon + all repos | Fast-fail before Guard |
 | 9 | Scaffold intent block generator | 1 | open | epicon | Addresses PR #597 class failures |
 | 10 | Document intent schema in epicon-guard README | 1 | open | epicon | Valid/invalid examples |
