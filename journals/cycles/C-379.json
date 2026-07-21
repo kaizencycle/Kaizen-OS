@@ -1,8 +1,91 @@
 {
-  "cycle": "C-379",
-  "date": "2026-07-21",
-  "writer": "mobius-bot/state-sync",
-  "ledger_verified": false,
-  "ledger_snapshot": null,
-  "narrative": null
+  "meta": {
+    "cycle_id": "C-379",
+    "date": "2026-07-21",
+    "timezone": "UTC",
+    "chamber": "Cycle Journal",
+    "tags": ["c379", "federation", "scan", "infra", "witness"],
+    "mood_vector": "Clear"
+  },
+  "sweep": {
+    "statement": "C-379 opened with a live federation scan across five repos, four domains, and four service health endpoints. Publishes 20 optimization items — closeouts for STALE incidents (identity login, cron frequency) plus new drift (canon lag, PR templates, wallet DB misconfiguration).",
+    "style": "mobius"
+  },
+  "signals": [
+    {
+      "timestamp": "2026-07-21T15:00:00Z",
+      "domain": "tech",
+      "statement": "Identity service live: db_ok true, db_write_ok true at mobius-identity-service.onrender.com/health — C-358 disk fix holding.",
+      "sources": ["docs/epicon/cycles/C-379/FEDERATION_SCAN_WITNESS_TABLE.md"],
+      "confidence": 0.98,
+      "attribution": "ATLAS"
+    },
+    {
+      "timestamp": "2026-07-21T15:00:00Z",
+      "domain": "tech",
+      "statement": "Wallet service degraded: Postgres hostname resolution failure (not cold-start). Escalates optimization item 6 to Tier 2.",
+      "sources": ["docs/epicon/cycles/C-379/FEDERATION_SCAN_WITNESS_TABLE.md"],
+      "confidence": 0.95,
+      "attribution": "ATLAS"
+    },
+    {
+      "timestamp": "2026-07-21T15:00:00Z",
+      "domain": "governance",
+      "statement": "Reserve Block canon lane running but lagging: MANIFEST 194 blocks vs live seals_count 360 (~166 block lag).",
+      "sources": ["canon/reserve-blocks/MANIFEST.json", "terminal.mobius-substrate.com/api/vault/status"],
+      "confidence": 0.92,
+      "attribution": "ATLAS"
+    }
+  ],
+  "integrity": {
+    "status": "normal",
+    "domains_touched": ["infra", "docs", "governance"],
+    "mii_current": 0.97,
+    "mii_trend": "up",
+    "watch_items": [
+      {
+        "indicator": "mic-wallet-db-misconfiguration",
+        "direction": "down",
+        "note": "mobius-mic-wallet-service returns degraded with Postgres DNS error — reconcile DATABASE_URL vs sqlite disk intent.",
+        "evidence": ["docs/epicon/cycles/C-379/OPTIMIZATIONS_C-379_20-items.md"]
+      },
+      {
+        "indicator": "reserve-block-canon-lag",
+        "direction": "flat",
+        "note": "194 canonized vs 360 sealed — continuous alert needed (item 7).",
+        "evidence": ["canon/reserve-blocks/MANIFEST.json"]
+      }
+    ]
+  },
+  "decisions": [
+    {
+      "decision": "Close identity-login and cron-frequency incidents as STALE; publish scan as canonical C-379 opener",
+      "rationale": "Live evidence contradicts standing open_flags; Witness Table doctrine requires closing the loop.",
+      "owner": "kaizencycle",
+      "risk": "low"
+    },
+    {
+      "decision": "Escalate wallet item from warm-ping hypothesis to Tier 2 DB reconciliation",
+      "rationale": "Live /health returned immediate degraded response with DNS failure, not spin-down timeout.",
+      "owner": "kaizencycle",
+      "risk": "medium"
+    }
+  ],
+  "actions": [
+    {
+      "task": "Implement optimization items 4-20 in scoped follow-up PRs per OPTIMIZATIONS_C-379_20-items.md",
+      "priority": "P1",
+      "owner": "kaizencycle"
+    },
+    {
+      "task": "Civic-Protocol-Core: fix wallet DATABASE_URL (item 6)",
+      "priority": "P0",
+      "owner": "kaizencycle"
+    }
+  ],
+  "seal": {
+    "compiled_at": "2026-07-21T15:00:00Z",
+    "contributors": ["ATLAS", "cursor-cloud-agent"],
+    "statement": "C-379 opened. The federation was scanned; stale incidents named; new drift tracked."
+  }
 }

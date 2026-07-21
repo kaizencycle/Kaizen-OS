@@ -1,15 +1,15 @@
 {
   "mobius_catalog_version": "1.0.0",
-  "generated_at": "2026-07-21T05:24:54.819Z",
+  "generated_at": "2026-07-21T15:08:17.741Z",
   "repo": {
     "name": "Mobius-Substrate",
     "url": "https://github.com/kaizencycle/Mobius-Substrate",
     "default_branch": "main",
-    "commit": "4204ebe54ddb625b3bf3aed8a88ef3cc71e431ed"
+    "commit": ""
   },
   "stats": {
     "epiconCount": 0,
-    "docCount": 1045
+    "docCount": 1049
   },
   "epicons": [],
   "docs": [
@@ -8098,6 +8098,38 @@
       "category": "epicon",
       "tags": [],
       "content_hash": "sha256:f7d14864e46fcf865cd12d0691584f599b465f8f05fadaeb3ff9bdba32ac1318",
+      "summary": ""
+    },
+    {
+      "path": "docs/epicon/cycles/C-379/EPICON_C-379_INFRA_federation-scan-20-optimizations_v1.md",
+      "title": "EPICON_C-379_INFRA_federation-scan-20-optimizations_v1",
+      "category": "epicon",
+      "tags": [],
+      "content_hash": "sha256:46db7f72688187afdab67978369ab2e174ed5a1e9c40a096cff14026eb906a65",
+      "summary": ""
+    },
+    {
+      "path": "docs/epicon/cycles/C-379/FEDERATION_SCAN_WITNESS_TABLE.md",
+      "title": "Federation Scan — Witness Table",
+      "category": "epicon",
+      "tags": [],
+      "content_hash": "sha256:4e116efa674096a2a80a070efafbfba22c69659a77957df730795132db435949",
+      "summary": ""
+    },
+    {
+      "path": "docs/epicon/cycles/C-379/OPTIMIZATIONS_C-379_20-items.md",
+      "title": "C-379 — 20 Optimizations Backlog",
+      "category": "epicon",
+      "tags": [],
+      "content_hash": "sha256:27dfd9722ee56cf46ca5d7c59de3ba8a2d8dedc8953b951cb2ad98f0a13bd1c8",
+      "summary": ""
+    },
+    {
+      "path": "docs/epicon/cycles/C-379/README.md",
+      "title": "C-379 — Federation scan & 20 optimizations",
+      "category": "epicon",
+      "tags": [],
+      "content_hash": "sha256:04607c3a88db0caa694c456e2cca926ba3242ed2acd0e6653503a6ec129ede31",
       "summary": ""
     },
     {
