@@ -9,7 +9,7 @@
 ```intent
 epicon_id: EPICON_C-379_INFRA_federation-scan-20-optimizations_v1
 ledger_id: kaizencycle
-scope: specs
+scope: docs
 mode: normal
 issued_at: 2026-07-21T15:00:00Z
 expires_at: 2026-10-19T15:00:00Z

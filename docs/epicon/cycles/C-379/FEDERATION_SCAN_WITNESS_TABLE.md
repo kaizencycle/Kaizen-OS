@@ -5,6 +5,10 @@
 **Agent:** ATLAS (cloud agent, live curl + git HEAD + config read)  
 **Doctrine:** C-373 Witness Table — report discloses, repo witnesses; STALE is a first-class verdict.
 
+## Authority Provenance
+
+Authority declared using `docs/templates/EPICON_FOUNDER_STANDING.md` v0.1 — custodian-issued ATLAS federation scan; documentation and journal opener only.
+
 ---
 
 ## Repo sync (git HEAD @ origin/main)
