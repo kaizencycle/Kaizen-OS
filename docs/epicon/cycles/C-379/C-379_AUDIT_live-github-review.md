@@ -1,8 +1,8 @@
 # C-379 Audit — Live GitHub Review
 
-**Captured:** 2026-07-21T18:56Z (UTC)  
-**Verdict:** **OPEN — ACTIVE / FEDERATION DRIFT RECOVERY IN PROGRESS**  
-**Banner:** `C-379 OPEN — FEDERATION DRIFT RECOVERY / ZEUS DISPUTED`
+**Captured:** 2026-07-21T18:56Z (UTC) — **partially superseded** by [C-379_REAUDIT_infrastructure-recovery-advanced.md](./C-379_REAUDIT_infrastructure-recovery-advanced.md) (2026-07-21T23:17Z)  
+**Verdict:** **OPEN — ACTIVE / FEDERATION DRIFT RECOVERY IN PROGRESS** *(banner superseded)*  
+**Banner:** `C-379 OPEN — FEDERATION DRIFT RECOVERY / ZEUS DISPUTED` → see re-audit: `INFRASTRUCTURE RECOVERY ADVANCED / DURABILITY + ZEUS VERIFICATION PENDING`
 
 C-379 is not a Reserve Block reconciliation cycle first. It is a **federation-wide witness and infrastructure drift cycle**: scan five surfaces, close stale incidents, identify live mismatches, correct reproducible ones.
 
@@ -52,10 +52,14 @@ Do not subtract raw `seals_count` from `MANIFEST.total_blocks`. See [C368-PR7](.
 | Diagnostic ([#94](https://github.com/kaizencycle/Civic-Protocol-Core/pull/94)) | ✅ Merged |
 | Config ([#95](https://github.com/kaizencycle/Civic-Protocol-Core/pull/95), [#96](https://github.com/kaizencycle/Civic-Protocol-Core/pull/96)) | ✅ Merged |
 | Connectivity `/health` witness | ✅ `db_ok:true` @ 2026-07-21T22:29:11Z |
-| Fail-closed disk policy ([#98](https://github.com/kaizencycle/Civic-Protocol-Core/pull/98)) | ⏳ Merge pending |
+| Fail-closed disk policy ([#98](https://github.com/kaizencycle/Civic-Protocol-Core/pull/98)) | ✅ merged |
+| Disk blueprint ([#99](https://github.com/kaizencycle/Civic-Protocol-Core/pull/99)) | ✅ merged |
+| Starter + `ismount` ([#100](https://github.com/kaizencycle/Civic-Protocol-Core/pull/100)) | ✅ merged |
+| Federation disk plans ([#101](https://github.com/kaizencycle/Civic-Protocol-Core/pull/101)) | ✅ merged |
+| Disk + mount witness | ✅ `disk_mounted:true` @ 2026-07-21T23:09:47Z |
 | **Durability: write survives redeploy** | ⏳ **BLOCKING** |
 
-**Codex P1:** `/health` cannot alone certify persistent storage. Full item 6 closeout requires redeploy-survival test + #98 merged.
+**Codex P1:** `/health` cannot alone certify persistent storage. Full item 6 closeout requires redeploy-survival test. See [re-audit](./C-379_REAUDIT_infrastructure-recovery-advanced.md).
 
 ---
 
@@ -131,7 +135,8 @@ Historic EPICON-02 FAIL comment during PR evolution (intent header missing on ea
 | Witness table | MERGED |
 | 20-item backlog | ACTIVE (+ extensions 21–23) |
 | Identity service | HEALTHY (C-379 witness) |
-| MIC wallet connectivity | GREEN (`db_ok:true` @ 22:29Z) |
+| MIC wallet connectivity | GREEN (`db_ok:true` @ 22:29Z; `disk_mounted:true` @ 23:09Z) |
+| MIC wallet code/blueprint recovery | GREEN (#98–#101 merged) |
 | MIC wallet durability (redeploy-survival) | **BLOCKING** — item 6 partial closeout |
 | Reserve Block raw/canon semantics | CORRECTED |
 | Canonical RB count | UNRESOLVED |
@@ -148,13 +153,12 @@ Historic EPICON-02 FAIL comment during PR evolution (intent header missing on ea
 ## 10. Priority order
 
 ```
-P1  Micro cycle C-306 → restore C-379 temporal alignment (item 21)
-P1  kv_keys.ok vs kv_keys_ok → unify resolver (item 22)
-P1  ZEUS dispute disposition → classify persistent/transient/resolved (item 23)
+P0/P1  Wallet durability — write → redeploy → read same value (item 6 blocking)
+P1     Micro cycle C-306 → restore C-379 temporal alignment (item 21)
+P1     kv_keys.ok vs kv_keys_ok → unify resolver (item 22)
+P1     ZEUS dispute disposition → classify persistent/transient/resolved (item 23)
 
-    Track R / Reserve Block reconciliation — continues independently
-
-~~P0 wallet~~ — **CLOSED** 2026-07-21T22:29Z production /health witness
+       Track R / Reserve Block reconciliation — continues independently
 ```
 
 ---

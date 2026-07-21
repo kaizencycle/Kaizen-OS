@@ -1,6 +1,6 @@
 {
   "mobius_catalog_version": "1.0.0",
-  "generated_at": "2026-07-21T15:08:17.741Z",
+  "generated_at": "2026-07-21T23:43:07.553Z",
   "repo": {
     "name": "Mobius-Substrate",
     "url": "https://github.com/kaizencycle/Mobius-Substrate",
@@ -9,7 +9,7 @@
   },
   "stats": {
     "epiconCount": 0,
-    "docCount": 1049
+    "docCount": 1051
   },
   "epicons": [],
   "docs": [
@@ -8101,11 +8101,27 @@
       "summary": ""
     },
     {
+      "path": "docs/epicon/cycles/C-379/C-379_AUDIT_live-github-review.md",
+      "title": "C-379 Audit — Live GitHub Review",
+      "category": "epicon",
+      "tags": [],
+      "content_hash": "sha256:d579cd1e42c116de5c25454b124068ba36b851bcf51b07d523cf91008e3dd67a",
+      "summary": ""
+    },
+    {
+      "path": "docs/epicon/cycles/C-379/C-379_REAUDIT_infrastructure-recovery-advanced.md",
+      "title": "C-379 Re-Audit — Infrastructure Recovery Advanced",
+      "category": "epicon",
+      "tags": [],
+      "content_hash": "sha256:4f780e17ffc43850fb421ed1bc8d20d5bf5bd32f015f1a7bab282be0bd0afd18",
+      "summary": ""
+    },
+    {
       "path": "docs/epicon/cycles/C-379/EPICON_C-379_INFRA_federation-scan-20-optimizations_v1.md",
       "title": "EPICON_C-379_INFRA_federation-scan-20-optimizations_v1",
       "category": "epicon",
       "tags": [],
-      "content_hash": "sha256:46db7f72688187afdab67978369ab2e174ed5a1e9c40a096cff14026eb906a65",
+      "content_hash": "sha256:ac9e218127f755a0bf3c57bb71da83dab97bc34d6e0e0a3ea161f4273a606d50",
       "summary": ""
     },
     {
@@ -8113,7 +8129,7 @@
       "title": "Federation Scan — Witness Table",
       "category": "epicon",
       "tags": [],
-      "content_hash": "sha256:4e116efa674096a2a80a070efafbfba22c69659a77957df730795132db435949",
+      "content_hash": "sha256:1af03647ed03f7fa4c7459a4c438b74b6a8db494e399f227c0a6eb60d6b5ff1d",
       "summary": ""
     },
     {
@@ -8121,7 +8137,7 @@
       "title": "C-379 — 20 Optimizations Backlog",
       "category": "epicon",
       "tags": [],
-      "content_hash": "sha256:27dfd9722ee56cf46ca5d7c59de3ba8a2d8dedc8953b951cb2ad98f0a13bd1c8",
+      "content_hash": "sha256:6049757ef944d611b3543d5939fc58a9ef1f9913fda42aa360f65037497e0253",
       "summary": ""
     },
     {
@@ -8129,7 +8145,7 @@
       "title": "C-379 — Federation scan & 20 optimizations",
       "category": "epicon",
       "tags": [],
-      "content_hash": "sha256:04607c3a88db0caa694c456e2cca926ba3242ed2acd0e6653503a6ec129ede31",
+      "content_hash": "sha256:57a1a0008ea5df9f8c2ec0066ddccb01cbbbff4df5f37827849a0a82c0481f6d",
       "summary": ""
     },
     {

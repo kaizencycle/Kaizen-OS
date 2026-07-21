@@ -4,11 +4,11 @@
     "date": "2026-07-21",
     "timezone": "UTC",
     "chamber": "Cycle Journal",
-    "tags": ["c379", "federation", "scan", "infra", "witness", "zeus-disputed"],
+    "tags": ["c379", "federation", "scan", "infra", "witness", "zeus-disputed", "wallet-recovery"],
     "mood_vector": "Clear"
   },
   "sweep": {
-    "statement": "C-379 OPEN — federation drift recovery. Item 6 wallet CLOSED (production /health green @ 22:29Z). ZEUS disputed; micro C-306 stale; kv_keys_ok contradiction remains P1.",
+    "statement": "C-379 OPEN — infrastructure recovery advanced. Wallet #98–#101 merged; disk_mounted:true @ 23:09Z. Durability redeploy-survival BLOCKING. ZEUS disputed; micro C-306 stale; kv_keys_ok contradiction P1.",
     "style": "mobius"
   },
   "signals": [
@@ -23,8 +23,19 @@
     {
       "timestamp": "2026-07-21T22:29:11Z",
       "domain": "tech",
-      "statement": "Wallet connectivity witness: /health ok db_ok true @ 2026-07-21T22:29:11Z. Durability redeploy-survival test BLOCKING for full item 6 closeout.",
+      "statement": "Wallet connectivity witness: /health ok db_ok true @ 2026-07-21T22:29:11Z. Not sufficient for full closeout — Codex P1 ephemeral false-green risk.",
       "sources": ["mobius-mic-wallet-service.onrender.com/health"],
+      "confidence": 0.99,
+      "attribution": "custodian"
+    },
+    {
+      "timestamp": "2026-07-21T23:09:47Z",
+      "domain": "tech",
+      "statement": "Wallet infrastructure witness: db_ok true, db_write_ok true, disk_mounted true @ /var/lib/mic-wallet. CPC #98–#101 merged (fail-closed, disk blueprint, ismount, federation starter plans). Durability redeploy-survival still BLOCKING.",
+      "sources": [
+        "mobius-mic-wallet-service.onrender.com/health",
+        "docs/epicon/cycles/C-379/C-379_REAUDIT_infrastructure-recovery-advanced.md"
+      ],
       "confidence": 0.99,
       "attribution": "custodian"
     },
@@ -54,8 +65,11 @@
       {
         "indicator": "mic-wallet-durability-redeploy",
         "direction": "flat",
-        "note": "Connectivity green; test wallet write must survive redeploy before item 6 full closeout (Codex P1).",
-        "evidence": ["docs/epicon/cycles/C-379/C-379_AUDIT_live-github-review.md"]
+        "note": "Connectivity and disk_mounted green; write must survive redeploy before item 6 full closeout.",
+        "evidence": [
+          "docs/epicon/cycles/C-379/C-379_REAUDIT_infrastructure-recovery-advanced.md",
+          "mobius-mic-wallet-service.onrender.com/health"
+        ]
       },
       {
         "indicator": "reserve-block-canon-lag",
@@ -79,21 +93,21 @@
   },
   "decisions": [
     {
-      "decision": "C-379 remains OPEN — federation drift recovery; item 6 wallet closed",
-      "rationale": "Wallet production /health green; ZEUS disputed and micro staleness remain.",
+      "decision": "C-379 remains OPEN — infrastructure recovery advanced; durability + ZEUS pending",
+      "rationale": "Wallet code/blueprint recovery complete (#98–#101); redeploy-survival unverified; ZEUS disputed and micro staleness remain.",
       "owner": "kaizencycle",
       "risk": "low"
     },
     {
-      "decision": "Item 6 partial closeout — connectivity only; durability blocking",
-      "rationale": "Codex P1: /health cannot certify persistent disk; redeploy-survival required before full closure.",
+      "decision": "Item 6 partial closeout — connectivity + mount verified; durability blocking",
+      "rationale": "23:09Z witness shows disk_mounted:true; scientific closeout requires write → redeploy → read.",
       "owner": "kaizencycle",
       "risk": "medium"
     }
   ],
   "actions": [
     {
-      "task": "P0: Wallet durability — test write survives redeploy; merge CPC #98 fail-closed",
+      "task": "P0/P1: Wallet durability — write → redeploy → read same value (item 6 blocking)",
       "priority": "P0",
       "owner": "kaizencycle"
     },
@@ -109,8 +123,8 @@
     }
   ],
   "seal": {
-    "compiled_at": "2026-07-21T22:29:11Z",
+    "compiled_at": "2026-07-21T23:17:00Z",
     "contributors": ["ATLAS", "cursor-cloud-agent", "custodian"],
-    "statement": "C-379 open. Wallet connectivity green; durability redeploy test blocking. Micro/ZEUS P1 remains."
+    "statement": "C-379 open. Wallet infra recovery advanced; durability redeploy test blocking. Micro/ZEUS P1 remains."
   }
 }
