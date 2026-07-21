@@ -39,7 +39,7 @@ Authority declared using `docs/templates/EPICON_FOUNDER_STANDING.md` v0.1 — cu
 | Service | URL | Response | Verdict |
 |---------|-----|----------|---------|
 | Identity | `GET mobius-identity-service.onrender.com/health` | `status:ok`, `db_ok:true`, `db_write_ok:true` @ 2026-07-21T15:00:54Z | **TRUE — fix holding** |
-| Wallet | `GET mobius-mic-wallet-service.onrender.com/health` | `status:degraded`, `db_ok:false`, DNS error on Postgres host `dpg-d7deg2f41pts73a0djvg-a` | **TRUE — degraded (not spin-down)** |
+| Wallet | `GET mobius-mic-wallet-service.onrender.com/health` | `status:ok`, `db_ok:true`, `db_write_ok:true` @ 2026-07-21T22:29Z | **TRUE — fix holding** (item 6 closeout) |
 | Ledger API | `GET civic-ledger-api.onrender.com/health` | HTTP 404 `Not Found` | **TRUE — no public /health** |
 | Terminal vault | `GET terminal.mobius-substrate.com/api/vault/status` | `ok:true`, `seals_count:360` @ 2026-07-21T15:00Z | TRUE |
 

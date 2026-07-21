@@ -45,17 +45,19 @@ Do not subtract raw `seals_count` from `MANIFEST.total_blocks`. See [C368-PR7](.
 
 ---
 
-## 4. MIC wallet (item 6) — P0, NOT CLOSED
+## 4. MIC wallet (item 6) — **CLOSED** ✅
 
 | Phase | Status |
 |-------|--------|
 | Diagnostic ([#94](https://github.com/kaizencycle/Civic-Protocol-Core/pull/94)) | ✅ Merged |
 | Dashboard witness (stale Postgres `dpg-d7deg2f41pts73a0djvg-a`) | ✅ Confirmed |
-| Config hardening ([#95](https://github.com/kaizencycle/Civic-Protocol-Core/pull/95)) | ✅ Merged (`2026-07-21T18:00:32Z`) |
-| Dashboard clear + redeploy | ⏳ **Operator pending** |
-| Production `/health` witness | ⏌ **Still degraded** (`db_ok:false` @ 2026-07-21T18:56Z) |
+| Config hardening ([#95](https://github.com/kaizencycle/Civic-Protocol-Core/pull/95)) | ✅ Merged |
+| SQLite disk detection ([#96](https://github.com/kaizencycle/Civic-Protocol-Core/pull/96)) | ✅ Merged (`2026-07-21T22:17:30Z`) |
+| Production `/health` witness | ✅ **`db_ok:true`, `db_write_ok:true`** @ 2026-07-21T22:29:11Z |
 
-**Item 6 stays OPEN** until `/health` proves `db_ok:true` and write survives redeploy.
+**Witness Protocol arc (item 6):** cold-start hypothesis → Postgres DNS → dashboard override confirmed → SQLite path failure → disk detection fix → **production green**.
+
+**Item 6 closeout.** Redeploy write-survival check remains recommended but P0 gate is satisfied.
 
 ---
 
@@ -131,8 +133,8 @@ Historic EPICON-02 FAIL comment during PR evolution (intent header missing on ea
 | Witness table | MERGED |
 | 20-item backlog | ACTIVE (+ extensions 21–23) |
 | Identity service | HEALTHY (C-379 witness) |
-| MIC wallet code fix | MERGED (#95) |
-| MIC wallet production health | **PENDING REDEPLOY WITNESS** |
+| MIC wallet code fix | MERGED (#95, #96) |
+| MIC wallet production health | **GREEN** (`db_ok:true` @ 2026-07-21T22:29Z) |
 | Reserve Block raw/canon semantics | CORRECTED |
 | Canonical RB count | UNRESOLVED |
 | Track R | STILL OPEN |
@@ -148,13 +150,13 @@ Historic EPICON-02 FAIL comment during PR evolution (intent header missing on ea
 ## 10. Priority order
 
 ```
-P0  MIC wallet dashboard override → redeploy → /health db_ok:true witness
-
 P1  Micro cycle C-306 → restore C-379 temporal alignment (item 21)
 P1  kv_keys.ok vs kv_keys_ok → unify resolver (item 22)
 P1  ZEUS dispute disposition → classify persistent/transient/resolved (item 23)
 
     Track R / Reserve Block reconciliation — continues independently
+
+~~P0 wallet~~ — **CLOSED** 2026-07-21T22:29Z production /health witness
 ```
 
 ---

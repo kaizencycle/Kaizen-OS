@@ -15,10 +15,10 @@
 | [OPTIMIZATIONS_C-379_20-items.md](./OPTIMIZATIONS_C-379_20-items.md) | Backlog items 1–20 + post-audit extensions 21–23 |
 | [EPICON_C-379_INFRA_federation-scan-20-optimizations_v1.md](./EPICON_C-379_INFRA_federation-scan-20-optimizations_v1.md) | EPICON intent record |
 
-## P0 (open)
+## P0
 
-MIC wallet: dashboard `DATABASE_URL` clear → redeploy → `/health` `db_ok:true` witness (item 6). CPC #95 merged; operator step pending.
+~~MIC wallet item 6~~ — **CLOSED** (production `/health` green @ 2026-07-21T22:29Z).
 
-## Execution model
+## Open P1
 
 Items 4–20 land in follow-up PRs per repo. Items 1–2, 20 are closeouts (partial for item 2). Track R continues independently.

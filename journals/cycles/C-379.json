@@ -8,7 +8,7 @@
     "mood_vector": "Clear"
   },
   "sweep": {
-    "statement": "C-379 OPEN — federation drift recovery in progress. Scan merged (#410); wallet config hardened (#95) but production /health pending; ZEUS disputed (micro C-306 vs operator C-379; kv_keys_ok contradiction). Canon lag retracted per C368-PR7.",
+    "statement": "C-379 OPEN — federation drift recovery. Item 6 wallet CLOSED (production /health green @ 22:29Z). ZEUS disputed; micro C-306 stale; kv_keys_ok contradiction remains P1.",
     "style": "mobius"
   },
   "signals": [
@@ -21,12 +21,12 @@
       "attribution": "ATLAS"
     },
     {
-      "timestamp": "2026-07-21T18:00:00Z",
+      "timestamp": "2026-07-21T22:29:11Z",
       "domain": "tech",
-      "statement": "Wallet CPC #95 merged (render.yaml sync:false). Dashboard Postgres override still active; /health degraded db_ok false pending operator redeploy witness.",
-      "sources": ["docs/epicon/cycles/C-379/C-379_AUDIT_live-github-review.md"],
-      "confidence": 0.97,
-      "attribution": "ATLAS"
+      "statement": "Wallet production witness: mobius-mic-wallet-service /health status ok, db_ok true, db_write_ok true — item 6 closeout after CPC #96.",
+      "sources": ["mobius-mic-wallet-service.onrender.com/health"],
+      "confidence": 0.99,
+      "attribution": "custodian"
     },
     {
       "timestamp": "2026-07-21T15:00:00Z",
@@ -49,14 +49,8 @@
     "status": "watch",
     "domains_touched": ["infra", "docs", "governance", "tech"],
     "mii_current": 0.97,
-    "mii_trend": "flat",
+    "mii_trend": "up",
     "watch_items": [
-      {
-        "indicator": "mic-wallet-production-health",
-        "direction": "down",
-        "note": "CPC #95 merged; dashboard DATABASE_URL clear + redeploy pending. Item 6 OPEN until db_ok true.",
-        "evidence": ["docs/epicon/cycles/C-379/C-379_AUDIT_live-github-review.md"]
-      },
       {
         "indicator": "reserve-block-canon-lag",
         "direction": "flat",
@@ -79,44 +73,33 @@
   },
   "decisions": [
     {
-      "decision": "C-379 remains OPEN — federation drift recovery, not RB reconciliation cycle",
-      "rationale": "Wallet production witness pending; ZEUS disputed; micro layer stale.",
+      "decision": "C-379 remains OPEN — federation drift recovery; item 6 wallet closed",
+      "rationale": "Wallet production /health green; ZEUS disputed and micro staleness remain.",
       "owner": "kaizencycle",
       "risk": "low"
     },
     {
-      "decision": "Retract canon lag 360-194; classify as FALSE per Witness Protocol",
-      "rationale": "seals_count and MANIFEST.total_blocks measure different dimensions (C368-PR7).",
+      "decision": "Close item 6 — wallet DB reconciliation",
+      "rationale": "Production witness db_ok true db_write_ok true @ 2026-07-21T22:29:11Z after CPC #94-96 arc.",
       "owner": "kaizencycle",
       "risk": "low"
-    },
-    {
-      "decision": "Item 6 stays OPEN until post-redeploy /health db_ok true",
-      "rationale": "Code fix merged; production acceptance requires explicit health witness.",
-      "owner": "kaizencycle",
-      "risk": "medium"
     }
   ],
   "actions": [
-    {
-      "task": "P0: Clear wallet dashboard DATABASE_URL, redeploy, witness /health",
-      "priority": "P0",
-      "owner": "kaizencycle"
-    },
     {
       "task": "P1: Micro cycle alignment (item 21), KV keys resolver (item 22), ZEUS disposition (item 23)",
       "priority": "P1",
       "owner": "kaizencycle"
     },
     {
-      "task": "Continue optimization items 4-20 per OPTIMIZATIONS_C-379_20-items.md",
+      "task": "Continue optimization items 4-5, 7-20 per OPTIMIZATIONS_C-379_20-items.md",
       "priority": "P1",
       "owner": "kaizencycle"
     }
   ],
   "seal": {
-    "compiled_at": "2026-07-21T18:56:00Z",
-    "contributors": ["ATLAS", "cursor-cloud-agent", "live-github-review"],
-    "statement": "C-379 open. Federation scanned; wallet patched pending redeploy; ZEUS disputed; micro stale."
+    "compiled_at": "2026-07-21T22:29:11Z",
+    "contributors": ["ATLAS", "cursor-cloud-agent", "custodian"],
+    "statement": "C-379 open. Wallet item 6 closed on production health witness. Micro/ZEUS P1 remains."
   }
 }
