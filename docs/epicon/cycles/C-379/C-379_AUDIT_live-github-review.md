@@ -45,19 +45,17 @@ Do not subtract raw `seals_count` from `MANIFEST.total_blocks`. See [C368-PR7](.
 
 ---
 
-## 4. MIC wallet (item 6) — **CLOSED** ✅
+## 4. MIC wallet (item 6) — **PARTIAL CLOSEOUT**
 
 | Phase | Status |
 |-------|--------|
 | Diagnostic ([#94](https://github.com/kaizencycle/Civic-Protocol-Core/pull/94)) | ✅ Merged |
-| Dashboard witness (stale Postgres `dpg-d7deg2f41pts73a0djvg-a`) | ✅ Confirmed |
-| Config hardening ([#95](https://github.com/kaizencycle/Civic-Protocol-Core/pull/95)) | ✅ Merged |
-| SQLite disk detection ([#96](https://github.com/kaizencycle/Civic-Protocol-Core/pull/96)) | ✅ Merged (`2026-07-21T22:17:30Z`) |
-| Production `/health` witness | ✅ **`db_ok:true`, `db_write_ok:true`** @ 2026-07-21T22:29:11Z |
+| Config ([#95](https://github.com/kaizencycle/Civic-Protocol-Core/pull/95), [#96](https://github.com/kaizencycle/Civic-Protocol-Core/pull/96)) | ✅ Merged |
+| Connectivity `/health` witness | ✅ `db_ok:true` @ 2026-07-21T22:29:11Z |
+| Fail-closed disk policy ([#98](https://github.com/kaizencycle/Civic-Protocol-Core/pull/98)) | ⏳ Merge pending |
+| **Durability: write survives redeploy** | ⏳ **BLOCKING** |
 
-**Witness Protocol arc (item 6):** cold-start hypothesis → Postgres DNS → dashboard override confirmed → SQLite path failure → disk detection fix → **production green**.
-
-**Item 6 closeout.** Redeploy write-survival check remains recommended but P0 gate is satisfied.
+**Codex P1:** `/health` cannot alone certify persistent storage. Full item 6 closeout requires redeploy-survival test + #98 merged.
 
 ---
 
@@ -133,8 +131,8 @@ Historic EPICON-02 FAIL comment during PR evolution (intent header missing on ea
 | Witness table | MERGED |
 | 20-item backlog | ACTIVE (+ extensions 21–23) |
 | Identity service | HEALTHY (C-379 witness) |
-| MIC wallet code fix | MERGED (#95, #96) |
-| MIC wallet production health | **GREEN** (`db_ok:true` @ 2026-07-21T22:29Z) |
+| MIC wallet connectivity | GREEN (`db_ok:true` @ 22:29Z) |
+| MIC wallet durability (redeploy-survival) | **BLOCKING** — item 6 partial closeout |
 | Reserve Block raw/canon semantics | CORRECTED |
 | Canonical RB count | UNRESOLVED |
 | Track R | STILL OPEN |

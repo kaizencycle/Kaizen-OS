@@ -15,9 +15,9 @@
 | [OPTIMIZATIONS_C-379_20-items.md](./OPTIMIZATIONS_C-379_20-items.md) | Backlog items 1–20 + post-audit extensions 21–23 |
 | [EPICON_C-379_INFRA_federation-scan-20-optimizations_v1.md](./EPICON_C-379_INFRA_federation-scan-20-optimizations_v1.md) | EPICON intent record |
 
-## P0
+## Item 6 (partial)
 
-~~MIC wallet item 6~~ — **CLOSED** (production `/health` green @ 2026-07-21T22:29Z).
+Connectivity `/health` green @ 2026-07-21T22:29Z. **Durability redeploy-survival test BLOCKING** before full closeout.
 
 ## Open P1
 

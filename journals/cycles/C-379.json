@@ -23,7 +23,7 @@
     {
       "timestamp": "2026-07-21T22:29:11Z",
       "domain": "tech",
-      "statement": "Wallet production witness: mobius-mic-wallet-service /health status ok, db_ok true, db_write_ok true — item 6 closeout after CPC #96.",
+      "statement": "Wallet connectivity witness: /health ok db_ok true @ 2026-07-21T22:29:11Z. Durability redeploy-survival test BLOCKING for full item 6 closeout.",
       "sources": ["mobius-mic-wallet-service.onrender.com/health"],
       "confidence": 0.99,
       "attribution": "custodian"
@@ -52,6 +52,12 @@
     "mii_trend": "up",
     "watch_items": [
       {
+        "indicator": "mic-wallet-durability-redeploy",
+        "direction": "flat",
+        "note": "Connectivity green; test wallet write must survive redeploy before item 6 full closeout (Codex P1).",
+        "evidence": ["docs/epicon/cycles/C-379/C-379_AUDIT_live-github-review.md"]
+      },
+      {
         "indicator": "reserve-block-canon-lag",
         "direction": "flat",
         "note": "Canon lag UNVERIFIED — deduplicated unique_block_count required; 360-194 retracted.",
@@ -79,13 +85,18 @@
       "risk": "low"
     },
     {
-      "decision": "Close item 6 — wallet DB reconciliation",
-      "rationale": "Production witness db_ok true db_write_ok true @ 2026-07-21T22:29:11Z after CPC #94-96 arc.",
+      "decision": "Item 6 partial closeout — connectivity only; durability blocking",
+      "rationale": "Codex P1: /health cannot certify persistent disk; redeploy-survival required before full closure.",
       "owner": "kaizencycle",
-      "risk": "low"
+      "risk": "medium"
     }
   ],
   "actions": [
+    {
+      "task": "P0: Wallet durability — test write survives redeploy; merge CPC #98 fail-closed",
+      "priority": "P0",
+      "owner": "kaizencycle"
+    },
     {
       "task": "P1: Micro cycle alignment (item 21), KV keys resolver (item 22), ZEUS disposition (item 23)",
       "priority": "P1",
@@ -100,6 +111,6 @@
   "seal": {
     "compiled_at": "2026-07-21T22:29:11Z",
     "contributors": ["ATLAS", "cursor-cloud-agent", "custodian"],
-    "statement": "C-379 open. Wallet item 6 closed on production health witness. Micro/ZEUS P1 remains."
+    "statement": "C-379 open. Wallet connectivity green; durability redeploy test blocking. Micro/ZEUS P1 remains."
   }
 }
