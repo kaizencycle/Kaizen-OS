@@ -11,9 +11,9 @@
 | 3 | Re-baseline Reserve Block canon status | 1 | open | Substrate | Canon lane running (194 cold blocks, 2026-07-12). **Do not** compare raw `seals_count` to MANIFEST — see C-368 PR7 counting model. |
 | 4 | Consolidate PR templates | 1 | open | Substrate | Archive C151 + c150 to `docs/archive/pr-templates/` |
 | 5 | Sync per-app PR templates | 1 | open | Substrate | `apps/eomm-api`, `labs/lab4-proof` |
-| 6 | Wallet service DB reconciliation | **2** | open | Civic-Protocol-Core | **Diagnostic ticket:** [CPC `TICKET_item-6_wallet-db-dns-mismatch.md`](https://github.com/kaizencycle/Civic-Protocol-Core/blob/main/docs/epicon/cycles/C-379/TICKET_item-6_wallet-db-dns-mismatch.md) — Postgres DNS fail; dashboard-vs-YAML theory unconfirmed |
+| 6 | Wallet service DB reconciliation | **2** | **diagnostic merged** | Civic-Protocol-Core | Diagnostic merged ([CPC #94](https://github.com/kaizencycle/Civic-Protocol-Core/pull/94) → `9e51f26`). **Blocked:** Render dashboard `DATABASE_URL` check for `mobius-mic-wallet` (stale `dpg-d7deg2f41pts73a0djvg-a`?). Code hardcoding ruled out. |
 | 7 | Reserve-block canon-lag alert | 1 | open | Terminal | Warn when **deduplicated unique `block_number` count** (from collision audit / `reserve_block_truth`) minus `MANIFEST.total_blocks` > threshold. **Not** `seals_count` — raw index includes collision duplicates per [C368-PR7](../C-368/C368-PR7_prime-count-clarification.md). |
-| 8 | CI pre-check for parseable intent block | 1 | open | epicon + all repos | Fast-fail before Guard |
+| 8 | CI pre-check for parseable intent block | 1 | open | epicon + all repos | Fast-fail before Guard. Include **YAML parse** of fenced `intent` blocks (I1 checks presence only; CPC #94 Codex P2 caught dedented folded scalar breaking parse). |
 | 9 | Scaffold intent block generator | 1 | open | epicon | Addresses PR #597 class failures |
 | 10 | Document intent schema in epicon-guard README | 1 | open | epicon | Valid/invalid examples |
 | 11 | `infra/RENDER_DISK_CONVENTIONS.md` | 1 | open | Substrate + CPC | Extract render.yaml disk comments |
@@ -25,7 +25,7 @@
 | 17 | De-duplicate Vercel build config patterns | 1 | deferred | Substrate | Low urgency |
 | 18 | Witness Table fields in EPICON PR template | 1 | open | Substrate | Structural C-373 enforcement |
 | 19 | Cycle ID in mesh-sync commit bodies | 1 | open | all repos | Cross-repo correlation |
-| 20 | Publish this scan as C-379 opening record | 1 | **in_progress** | Substrate | This PR |
+| 20 | Publish this scan as C-379 opening record | 1 | **closeout** | Substrate | Merged [#410](https://github.com/kaizencycle/Mobius-Substrate/pull/410) + post-merge follow-ups on `main` |
 
 ---
 
