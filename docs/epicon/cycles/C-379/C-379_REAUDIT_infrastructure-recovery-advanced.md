@@ -136,7 +136,7 @@ Reserve Block: raw vault 360, cold MANIFEST 194, collision pairs 125, canonical 
 |------|---------|
 | Cycle writer | GREEN |
 | Federation scan | PASS / MERGED |
-| C-379 journal | GREEN (refresh pending) |
+| C-379 journal | GREEN (refreshed @ 23:17Z) |
 | Wallet DNS drift | RESOLVED |
 | Wallet DB connectivity | VERIFIED |
 | Wallet fail-closed policy | MERGED |

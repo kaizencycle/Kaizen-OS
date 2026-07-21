@@ -1,6 +1,6 @@
 {
   "mobius_catalog_version": "1.0.0",
-  "generated_at": "2026-07-21T23:21:36.446Z",
+  "generated_at": "2026-07-21T23:43:07.553Z",
   "repo": {
     "name": "Mobius-Substrate",
     "url": "https://github.com/kaizencycle/Mobius-Substrate",
@@ -8113,7 +8113,7 @@
       "title": "C-379 Re-Audit — Infrastructure Recovery Advanced",
       "category": "epicon",
       "tags": [],
-      "content_hash": "sha256:c046a735f38b53dcb79a756961eba06920410d6337060641ff8ee76c9ccc2152",
+      "content_hash": "sha256:4f780e17ffc43850fb421ed1bc8d20d5bf5bd32f015f1a7bab282be0bd0afd18",
       "summary": ""
     },
     {
