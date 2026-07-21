@@ -1,17 +1,24 @@
 # C-379 — Federation scan & 20 optimizations
 
-**Status:** OPEN — planning / tracking cycle  
+**Status:** **OPEN — FEDERATION DRIFT RECOVERY / ZEUS DISPUTED**  
 **Scan:** 2026-07-21T15:00Z (ATLAS cloud agent, live probes)  
-**Primary PR:** federation scan witness + optimization backlog (docs-only)
+**Audit:** [C-379_AUDIT_live-github-review.md](./C-379_AUDIT_live-github-review.md) (2026-07-21T18:56Z)
+
+> Federation Witness Sweep: stale incidents closed, wallet drift identified and patched, production acceptance pending; micro/operator cycle divergence remains active.
 
 ## Artifacts
 
 | Document | Description |
 |----------|-------------|
-| [FEDERATION_SCAN_WITNESS_TABLE.md](./FEDERATION_SCAN_WITNESS_TABLE.md) | Live Claim / Verdict / Evidence table (C-373 doctrine) |
-| [OPTIMIZATIONS_C-379_20-items.md](./OPTIMIZATIONS_C-379_20-items.md) | Numbered backlog with tier, owner, status |
+| [C-379_AUDIT_live-github-review.md](./C-379_AUDIT_live-github-review.md) | Live GitHub review — status board, priority order, ZEUS dispute |
+| [FEDERATION_SCAN_WITNESS_TABLE.md](./FEDERATION_SCAN_WITNESS_TABLE.md) | Claim / Verdict / Evidence table (C-373 doctrine) |
+| [OPTIMIZATIONS_C-379_20-items.md](./OPTIMIZATIONS_C-379_20-items.md) | Backlog items 1–20 + post-audit extensions 21–23 |
 | [EPICON_C-379_INFRA_federation-scan-20-optimizations_v1.md](./EPICON_C-379_INFRA_federation-scan-20-optimizations_v1.md) | EPICON intent record |
+
+## P0 (open)
+
+MIC wallet: dashboard `DATABASE_URL` clear → redeploy → `/health` `db_ok:true` witness (item 6). CPC #95 merged; operator step pending.
 
 ## Execution model
 
-This cycle opens with a **witnessed scan PR** (docs only). Items 4–20 land in follow-up PRs per repo. Items 1–3 are **closeouts** — evidence-backed STALE verdicts, not new fixes.
+Items 4–20 land in follow-up PRs per repo. Items 1–2, 20 are closeouts (partial for item 2). Track R continues independently.

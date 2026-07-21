@@ -11,7 +11,7 @@
 | 3 | Re-baseline Reserve Block canon status | 1 | open | Substrate | Canon lane running (194 cold blocks, 2026-07-12). **Do not** compare raw `seals_count` to MANIFEST — see C-368 PR7 counting model. |
 | 4 | Consolidate PR templates | 1 | open | Substrate | Archive C151 + c150 to `docs/archive/pr-templates/` |
 | 5 | Sync per-app PR templates | 1 | open | Substrate | `apps/eomm-api`, `labs/lab4-proof` |
-| 6 | Wallet service DB reconciliation | **2** | **fix in progress** | Civic-Protocol-Core | Hypothesis 1 **confirmed** (dashboard Postgres `dpg-d7deg2f41pts73a0djvg-a`). Implementation PR + [runbook](https://github.com/kaizencycle/Civic-Protocol-Core/blob/main/docs/epicon/cycles/C-379/WALLET_DB_FIX_RUNBOOK.md); operator must clear dashboard `DATABASE_URL` + redeploy. |
+| 6 | Wallet service DB reconciliation | **2** | **open** (P0) | Civic-Protocol-Core | #94 diagnostic + #95 config merged. Dashboard clear + redeploy **pending**. `/health` still `db_ok:false` @ 2026-07-21. [Runbook](https://github.com/kaizencycle/Civic-Protocol-Core/blob/main/docs/epicon/cycles/C-379/WALLET_DB_FIX_RUNBOOK.md) |
 | 7 | Reserve-block canon-lag alert | 1 | open | Terminal | Warn when **deduplicated unique `block_number` count** (from collision audit / `reserve_block_truth`) minus `MANIFEST.total_blocks` > threshold. **Not** `seals_count` — raw index includes collision duplicates per [C368-PR7](../C-368/C368-PR7_prime-count-clarification.md). |
 | 8 | CI pre-check for parseable intent block | 1 | open | epicon + all repos | Fast-fail before Guard. Include **YAML parse** of fenced `intent` blocks (I1 checks presence only; CPC #94 Codex P2 caught dedented folded scalar breaking parse). |
 | 9 | Scaffold intent block generator | 1 | open | epicon | Addresses PR #597 class failures |
@@ -27,6 +27,16 @@
 | 19 | Cycle ID in mesh-sync commit bodies | 1 | open | all repos | Cross-repo correlation |
 | 20 | Publish this scan as C-379 opening record | 1 | **closeout** | Substrate | Merged [#410](https://github.com/kaizencycle/Mobius-Substrate/pull/410) + post-merge follow-ups on `main` |
 
+### Post-audit extensions (2026-07-21 live GitHub review)
+
+| # | Item | Tier | Status | Target repo | Notes |
+|---|------|------|--------|-------------|-------|
+| 21 | Micro signal layer cycle alignment | 1 | **P1** | Terminal | `/api/signals/micro` at C-306 while operator at C-379; composite GI non-authoritative until aligned |
+| 22 | Unify `kv_keys.ok` vs `kv_keys_ok` resolver | 1 | **P1** | Terminal | ZEUS: probe true, derived flag false — single authoritative KV-health verdict |
+| 23 | ZEUS dispute disposition workflow | 2 | open | Terminal + Substrate | Classify persistent/transient/resolved; record superseded CI comments (e.g. #410 EPICON bot FAIL) |
+
+See [C-379_AUDIT_live-github-review.md](./C-379_AUDIT_live-github-review.md).
+
 ---
 
 ## Tier 2 gate
@@ -41,5 +51,6 @@ Items **6, 15, 16** require steward + benchmarks before code changes affecting l
 | CPC infra | 6, 13–14 |
 | Terminal cron hygiene | 12 (kv-watchdog `*/10` → `*/30` or documented exception) |
 | Substrate templates/docs | 4–5, 11, 15, 18 |
-| Terminal monitoring | 7, 16 |
+| Terminal monitoring | 7, 16, 21–22 |
+| ZEUS / governance | 23 |
 | epicon tooling | 8–10 |
