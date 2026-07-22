@@ -1,6 +1,6 @@
 {
   "mobius_catalog_version": "1.0.0",
-  "generated_at": "2026-07-21T23:43:07.553Z",
+  "generated_at": "2026-07-22T02:09:09.246Z",
   "repo": {
     "name": "Mobius-Substrate",
     "url": "https://github.com/kaizencycle/Mobius-Substrate",
@@ -9,7 +9,7 @@
   },
   "stats": {
     "epiconCount": 0,
-    "docCount": 1051
+    "docCount": 1058
   },
   "epicons": [],
   "docs": [
@@ -7494,6 +7494,14 @@
       "summary": ""
     },
     {
+      "path": "docs/epicon/EPICON-000-external-reality-boundary.md",
+      "title": "EPICON-000 — External Reality Boundary",
+      "category": "epicon",
+      "tags": [],
+      "content_hash": "sha256:2a20ce42d97cd77fdbcf0e2b953fb0683da38965ff0446ad49faa3030e6340a0",
+      "summary": ""
+    },
+    {
       "path": "docs/epicon/EPICON-0001-mobius-substrate-naming.md",
       "title": "EPICON-0001 — Mobius Substrate Naming Canon",
       "category": "epicon",
@@ -7644,7 +7652,7 @@
       "title": "EPICON-01 — Epistemic Constraint Layer",
       "category": "epicon",
       "tags": [],
-      "content_hash": "sha256:528cdf8ae2b0ad0ebc20dca8120cfdfedaec9910c9c571f945da84ecff28d626",
+      "content_hash": "sha256:8a03e7e37a0b117d2842aed88bf7fc3f057eb59499014a2a4b39243ca48d8d4d",
       "summary": ""
     },
     {
@@ -8146,6 +8154,59 @@
       "category": "epicon",
       "tags": [],
       "content_hash": "sha256:57a1a0008ea5df9f8c2ec0066ddccb01cbbbff4df5f37827849a0a82c0481f6d",
+      "summary": ""
+    },
+    {
+      "path": "docs/epicon/cycles/C-380/ATLAS_ARCHITECTURE_external-observation.md",
+      "title": "ATLAS — External Observation Architecture (EPICON-000)",
+      "category": "epicon",
+      "tags": [],
+      "content_hash": "sha256:e50df850c3c8ec8bb7c39d6821180567d9f57688cf183f2975f46c52a908130b",
+      "summary": ""
+    },
+    {
+      "path": "docs/epicon/cycles/C-380/ATLAS_JADE_HANDOFF_EPICON-000.md",
+      "title": "ATLAS × JADE Handoff — EPICON-000 External Reality Boundary",
+      "category": "epicon",
+      "tags": [],
+      "content_hash": "sha256:349f61dae31f3d37d6e2b476862203f6bb03d2eaf04cee12e4e22e08e163166c",
+      "summary": ""
+    },
+    {
+      "path": "docs/epicon/cycles/C-380/C-380-opener.md",
+      "title": "C-380 Opener — External Reality Boundary",
+      "category": "epicon",
+      "tags": [],
+      "content_hash": "sha256:c965e27b94271f40ebb94276f26a0d0af7e17c6a473bc120b79c735678184a7f",
+      "summary": ""
+    },
+    {
+      "path": "docs/epicon/cycles/C-380/EPICON_C-380_CONSTITUTION_external-reality-boundary_v1.md",
+      "title": "C-380: External Reality Boundary — constitutional opener",
+      "category": "epicon",
+      "tags": [
+        "c380",
+        "external-observation",
+        "witness-pool",
+        "quarantine"
+      ],
+      "content_hash": "sha256:1bec2478ea3782e0863eeeb7e218a296c57abb7c063fa61f77e60fc1826fe5bc",
+      "summary": "Cycle-bound operational EPICON to file EPICON-000 external reality boundary doctrine."
+    },
+    {
+      "path": "docs/epicon/cycles/C-380/JADE_CIVILIAN_RENDERER_external-claim.md",
+      "title": "JADE — Civilian Renderer: External Claim Signal",
+      "category": "epicon",
+      "tags": [],
+      "content_hash": "sha256:45a8575e95f623f1e744c2792146f1855e6fef5291cd5cd1f152fea2077a5f82",
+      "summary": ""
+    },
+    {
+      "path": "docs/epicon/cycles/C-380/README.md",
+      "title": "C-380 — External Reality Boundary (EPICON-000)",
+      "category": "epicon",
+      "tags": [],
+      "content_hash": "sha256:ff2c695262369e6e8298147ede2743198288f89972ab060c07f89396858ad028",
       "summary": ""
     },
     {

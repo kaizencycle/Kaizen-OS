@@ -1,0 +1,91 @@
+{
+  "meta": {
+    "cycle_id": "C-380",
+    "date": "2026-07-22",
+    "timezone": "UTC",
+    "chamber": "Cycle Journal",
+    "tags": ["c380", "epicon-000", "external-observation", "atlas", "jade", "constitutional-draft"],
+    "mood_vector": "Clear"
+  },
+  "sweep": {
+    "statement": "C-380 OPEN — External Reality Boundary (EPICON-000). Mobius did not begin by declaring what the world was; it began by declaring the limits of its own observation.",
+    "style": "mobius"
+  },
+  "signals": [
+    {
+      "timestamp": "2026-07-22T02:06:00Z",
+      "domain": "governance",
+      "statement": "EPICON-000 drafted: public internet quarantined as evidence domain until provenance, corroboration, counterfactual, and human review paths are satisfied.",
+      "sources": [
+        "docs/epicon/EPICON-000-external-reality-boundary.md",
+        "schemas/epicon_external_observation_v1.schema.json"
+      ],
+      "confidence": 0.95,
+      "attribution": "ATLAS"
+    },
+    {
+      "timestamp": "2026-07-22T02:06:00Z",
+      "domain": "governance",
+      "statement": "Civilian renderer drafted: EXTERNAL CLAIM — NOT YET CANONICAL. Terminal remains renderer not truth source.",
+      "sources": ["docs/epicon/cycles/C-380/JADE_CIVILIAN_RENDERER_external-claim.md"],
+      "confidence": 0.94,
+      "attribution": "JADE"
+    }
+  ],
+  "integrity": {
+    "status": "watch",
+    "domains_touched": ["governance", "docs", "specs"],
+    "mii_current": 0.96,
+    "mii_trend": "up",
+    "watch_items": [
+      {
+        "indicator": "external-observation-boundary",
+        "direction": "up",
+        "note": "EPICON-000 draft filed; EVE + ZEUS review pending before canonical merge.",
+        "evidence": ["docs/epicon/cycles/C-380/README.md"]
+      },
+      {
+        "indicator": "no-ui-derived-truth",
+        "direction": "flat",
+        "note": "Renderer wiring not yet implemented — doctrine only.",
+        "evidence": ["docs/epicon/cycles/C-380/ATLAS_ARCHITECTURE_external-observation.md"]
+      }
+    ]
+  },
+  "decisions": [
+    {
+      "decision": "C-380 opens as constitutional draft — EPICON-000 external reality boundary",
+      "rationale": "First internet-facing observation requires quarantine doctrine before event-level EPICONs.",
+      "owner": "kaizencycle",
+      "risk": "medium"
+    },
+    {
+      "decision": "Retain title External Reality Boundary",
+      "rationale": "JADE naming review — precise constitutional fit vs poetic alternatives.",
+      "owner": "kaizencycle",
+      "risk": "low"
+    }
+  ],
+  "actions": [
+    {
+      "task": "EVE ethical review of EPICON-000 privacy boundary",
+      "priority": "P1",
+      "owner": "kaizencycle"
+    },
+    {
+      "task": "ZEUS adversarial review of circular citation and independence model",
+      "priority": "P1",
+      "owner": "kaizencycle"
+    },
+    {
+      "task": "Wire civilian renderer in Terminal (non-canonical display only)",
+      "priority": "P2",
+      "owner": "kaizencycle"
+    }
+  ],
+  "seal": {
+    "compiled_at": "2026-07-22T02:06:00Z",
+    "contributors": ["ATLAS", "JADE", "Michael Judan", "cursor-cloud-agent"],
+    "statement": "C-380 open. EPICON-000 drafted. Witness pool doctrine established; implementation and sentinel review pending."
+  }
+}
