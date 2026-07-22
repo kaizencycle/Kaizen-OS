@@ -1,74 +1,139 @@
-# Welcome to Mobius Substrate Documentation
+# Mobius Substrate Handbook
 
-> **"Intelligence moves. Integrity guides."**
+> **Intelligence moves. Integrity guides.**
 
-This folder is your **navigation hub** for the entire Mobius Substrate knowledge base.
+Mobius is easier to understand from the problem outward than from the architecture inward.
 
----
-
-## Verify what you read (public)
-
-The handbook can show **live proof** next to protocol text: open **[State of the Substrate (latest)](../STATE_OF_THE_SUBSTRATE_LATEST.md)** or any doc under **Protocols** in the left nav. Green or cyan **Live** tiles pull from the [Mobius Civic AI Terminal](https://mobius-civic-ai-terminal.vercel.app/) (`/api/terminal/snapshot-lite`, `/api/vault/status`, …). Use **Show proof chain** where present to jump from claim → API → archive pattern.
+If this is your first visit, begin with **[AI Simple in Life](./AI_SIMPLE_IN_LIFE.md)**. It explains the core loop without requiring knowledge of GI, MIC, quorum mechanics, sentinels, or the deeper runtime.
 
 ---
 
-## Choose Your Path
+## Start in 5 minutes
 
-| 🎓 **Researcher** | 💰 **Economist** | 🧠 **Philosopher** | 🏛️ **Government** |
-|---|---|---|---|
-| Papers, data, frameworks | Models, policy tools, ROI | Ethics, safety, governance | Policy briefs, legislation |
-| [Enter →](../07-RESEARCH-AND-PUBLICATIONS/for-academics/) | [Enter →](../07-RESEARCH-AND-PUBLICATIONS/for-economists/) | [Enter →](../07-RESEARCH-AND-PUBLICATIONS/for-philosophers/) | [Enter →](../07-RESEARCH-AND-PUBLICATIONS/for-governments/) |
+<div class="mobius-path-grid" markdown>
 
----
+<div class="mobius-path-card" markdown>
 
-## Start Here
+### 1 · Understand the idea
 
-- 🌐 **[What is Mobius?](./WHAT_IS_MOBIUS.md)** — public clarity (C-363): what we are and are not
-- 🗺️ **[Five Surfaces](./FIVE_SURFACES.md)** — Substrate, Terminal, Browser Shell, CPC, HIVE
-- 🏛️ **[School of Chambers](./SCHOOL_OF_CHAMBERS.md)** — Learn, Memory, Pulse, World, Council, Archives, Core
-- 📖 **[Canonical Definitions](./CANONICAL_DEFINITIONS.md)** — GI, MII, MIC, EPICON, Seal, Quorum, …
-- 🧭 **[EPICON Philosophy](./EPICON_PHILOSOPHY.md)** — who, why, what, review, replay
-- 🧭 **[System Overview](./SYSTEM-OVERVIEW.md)** — deeper architecture and evidence
-- 🫀 **[Mobius Pulse](./MOBIUS_PULSE.md)** — Real-time integrity monitoring
-- 📚 **[Glossary](./GLOSSARY.md)** — extended historical glossary (see Canonical Definitions first)
-- ❓ **[FAQ](./FAQ.md)** — Common questions and high-level answers
+**[AI Simple in Life →](./AI_SIMPLE_IN_LIFE.md)**
 
----
+See → Ask → Measure → Test → Compare → Act → Remember.
 
-## I Want To…
+</div>
 
-- **Understand the vision** → [`02-THEORETICAL-FOUNDATIONS`](../02-THEORETICAL-FOUNDATIONS/)  
-- **See the system architecture** → [`04-TECHNICAL-ARCHITECTURE`](../04-TECHNICAL-ARCHITECTURE/)  
-- **Implement or integrate** → [`05-IMPLEMENTATION`](../05-IMPLEMENTATION/)  
-- **Follow practical guides** → [`05-IMPLEMENTATION/guides`](../05-IMPLEMENTATION/guides/)  
-- **Check security & operations** → [`06-OPERATIONS`](../06-OPERATIONS/)  
-- **Learn governance rules** → [`03-GOVERNANCE-AND-POLICY`](../03-GOVERNANCE-AND-POLICY/)  
-- **Read research outputs** → [`07-RESEARCH-AND-PUBLICATIONS`](../07-RESEARCH-AND-PUBLICATIONS/)  
-- **See reference materials** → [`08-REFERENCE`](../08-REFERENCE/)  
-- **Browse history & legacy docs** → [`10-ARCHIVES`](../10-ARCHIVES/)
-- **Join the MNS mesh** → [`09-MESH/MNS_PROTOCOL.md`](../09-MESH/MNS_PROTOCOL.md) — add your repo as an MNS node via `mobius.yaml`
+<div class="mobius-path-card" markdown>
 
----
+### 2 · Understand Mobius
 
-## Documentation Philosophy
+**[What is Mobius? →](./WHAT_IS_MOBIUS.md)**
 
-This structure follows three core Mobius principles:
+What the project is, what it is not, and why the architecture exists.
 
-- **Kaizen (改善)** — Continuous improvement, clear pathways, small steps.
-- **Kintsugi (金繕い)** — We keep the cracks visible; legacy docs move to `10-ARCHIVES/`.
-- **Custodianship** — Docs must outlive any single contributor or model.
+</div>
 
-If you're unsure where something belongs, start here and link outward.
+<div class="mobius-path-card" markdown>
+
+### 3 · Understand the record
+
+**[EPICON Philosophy →](./EPICON_PHILOSOPHY.md)**
+
+Intent, reasoning, scope, evidence, review, and replay.
+
+</div>
+
+<div class="mobius-path-card" markdown>
+
+### 4 · See the system
+
+**[Five Surfaces →](./FIVE_SURFACES.md)**
+
+Substrate → Terminal → Browser Shell → Civic Protocol Core → HIVE.
+
+</div>
+
+</div>
 
 ---
 
-## Quick Links
+## Choose your depth
 
-- **[Documentation Index](../INDEX.md)** — Complete documentation catalog
-- **[Main README](../../README.md)** — Repository overview
-- **[Contributing Guide](../../CONTRIBUTING.md)** — How to contribute
+| I want to… | Start here | Then go deeper |
+|---|---|---|
+| **Understand the philosophy** | [AI Simple in Life](./AI_SIMPLE_IN_LIFE.md) | [Theoretical Foundations](../02-THEORETICAL-FOUNDATIONS/) |
+| **Understand the architecture** | [Five Surfaces](./FIVE_SURFACES.md) | [Technical Architecture](../04-TECHNICAL-ARCHITECTURE/) |
+| **Understand EPICON** | [EPICON Philosophy](./EPICON_PHILOSOPHY.md) | [EPICON protocol](../epicon/EPICON-01.md) |
+| **Build with Mobius** | [System Overview](./SYSTEM-OVERVIEW.md) | [Implementation](../05-IMPLEMENTATION/) |
+| **Operate Mobius** | [Mobius Pulse](./MOBIUS_PULSE.md) | [Operations](../06-OPERATIONS/) |
+| **Study the research** | [Canonical Definitions](./CANONICAL_DEFINITIONS.md) | [Research & Publications](../07-RESEARCH-AND-PUBLICATIONS/) |
+| **Follow the project over time** | [State of the Substrate](../STATE_OF_THE_SUBSTRATE_LATEST.md) | Cycle Journal in the navigation |
+| **Find an old document** | [Full Index](../INDEX.md) | [Archives](../10-ARCHIVES/) |
 
 ---
 
-*Cycle C-288 • 2026-04-21*
-*"We heal as we walk."*
+## The Mobius reading map
+
+```text
+AI SIMPLE IN LIFE
+How humans + AI solve problems
+        ↓
+EPICON
+How intent and reasoning are recorded
+        ↓
+WITNESS PROTOCOL
+How evidence and claims are checked
+        ↓
+OAA
+How experience becomes memory
+        ↓
+HIVE
+How counterfactuals are explored
+        ↓
+CIVIC PROTOCOL CORE
+How durable records are preserved
+```
+
+The handbook is a **renderer of the canon**, not a second source of truth. When a handbook page conflicts with current machine state or ratified canon, follow the explicit canonical pointer and preserve the disagreement for correction.
+
+---
+
+## Verify what you read
+
+The handbook can show live proof beside protocol text. For current runtime state, use **[State of the Substrate](../STATE_OF_THE_SUBSTRATE_LATEST.md)** and the canonical Terminal endpoints linked there.
+
+Keep the boundary simple:
+
+```text
+CANON → LEDGER → UI
+```
+
+No UI-derived truth.
+
+---
+
+## Reference shelf
+
+Use these after you have the basic mental model:
+
+- **[Canonical Definitions](./CANONICAL_DEFINITIONS.md)** — GI, MII, MIC, EPICON, Seal, Quorum, and current terminology.
+- **[School of Chambers](./SCHOOL_OF_CHAMBERS.md)** — Learn, Memory, Pulse, World, Council, Archives, Core.
+- **[Glossary](./GLOSSARY.md)** — extended and historical terminology; prefer Canonical Definitions when they disagree.
+- **[FAQ](./FAQ.md)** — common high-level questions.
+- **[Full Documentation Index](../INDEX.md)** — exhaustive repository map.
+
+---
+
+## Documentation philosophy
+
+The handbook follows three principles:
+
+- **Kaizen (改善)** — small steps, clear pathways, continuous improvement.
+- **Kintsugi (金繕い)** — keep the cracks visible; superseded material moves to archives rather than disappearing.
+- **Custodianship** — documentation should outlive any single contributor, model, UI, or deployment.
+
+The goal of the front door is clarity. The goal of the archive is completeness. They do not need to be the same page.
+
+---
+
+*Reorganized C-380 · 2026-07-22*  
+*“We heal as we walk.”*
