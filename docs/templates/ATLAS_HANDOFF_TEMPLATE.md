@@ -60,11 +60,11 @@ Tier 2+ PRs and all completion reports must include this block **literally** (EP
 
 | Claim | Verdict | Evidence |
 |---|---|---|
-| <claim text> | VERIFIED | <SHA, git command, or URL> |
+| <claim text> | TRUE | <SHA, git command, or URL> |
 ```
 
 - Header line must be exactly `## Witness Table` (case-sensitive).
-- Verdict: `VERIFIED`, `DISPUTED`, `STALE`, or `FAIL_CLOSED` only.
+- Verdict: `TRUE`, `FALSE`, `STALE`, or `TRUE-gap` only (per `docs/WITNESS_PROTOCOL.md`).
 - Evidence: SHA fragment, `git …` command, or URL — not prose restatement.
 
 ## Authority provenance (when exercising custodial authority)
@@ -79,7 +79,7 @@ Completion reports are **claims**. Acceptance requires ref-verification per [`do
 
 Every report-back MUST include:
 
-1. **Witness table** — use the literal `## Witness Table` header and column names per I7 (see section above). Verdicts: `VERIFIED`, `DISPUTED`, `STALE`, `FAIL_CLOSED`. Evidence: SHA, ref, command output, or resolvable link — never a restatement of the claim.
+1. **Witness table** — use the literal `## Witness Table` header and column names per I7 (see section above). Verdicts: `TRUE`, `FALSE`, `STALE`, `TRUE-gap`. Evidence: SHA, ref, command output, or resolvable link — never a restatement of the claim.
 
 2. **Verification timestamp** (UTC)
 

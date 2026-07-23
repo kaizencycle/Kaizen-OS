@@ -19,10 +19,12 @@
 
 | Claim | Verdict | Evidence |
 |---|---|---|
-| <claim> | VERIFIED | <SHA / git command / URL> |
+| <claim> | TRUE | <SHA / git command / URL> |
 ```
 
-Verdicts: `VERIFIED`, `DISPUTED`, `STALE`, `FAIL_CLOSED`.
+Verdicts: `TRUE`, `FALSE`, `STALE`, `TRUE-gap` (canonical per `docs/WITNESS_PROTOCOL.md` §verdicts).
+
+Fenced code blocks are stripped before validation — an illustrative skeleton inside ` ```markdown ` cannot satisfy I7.
 
 ## Rollout
 
@@ -35,9 +37,9 @@ Verdicts: `VERIFIED`, `DISPUTED`, `STALE`, `FAIL_CLOSED`.
 
 | Claim | Verdict | Evidence |
 |---|---|---|
-| I7 validator parses literal `## Witness Table` header | VERIFIED | tests/epicon-guard-witness-table.test.mjs |
-| Tier 1 PRs exempt from I7 | VERIFIED | validate.mjs TIER_ORDER gate |
-| All-STALE tables pass format with warning | VERIFIED | witness-table.mjs checkWitnessTable |
+| I7 validator parses literal `## Witness Table` header | TRUE | tests/epicon-guard-witness-table.test.mjs |
+| Tier 1 PRs exempt from I7 | TRUE | validate.mjs TIER_ORDER gate |
+| All-STALE tables pass format with warning | TRUE | witness-table.mjs checkWitnessTable |
 
 ---
 

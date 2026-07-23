@@ -3,10 +3,31 @@
  * Doctrine: docs/WITNESS_PROTOCOL.md (C-373)
  *
  * Literal format only — no semantic inference from prose.
+ * Evidence detection is a heuristic format gate, not fact verification.
  */
 
 export const WITNESS_HEADER = '## Witness Table';
-export const ALLOWED_VERDICTS = new Set(['VERIFIED', 'DISPUTED', 'STALE', 'FAIL_CLOSED']);
+export const ALLOWED_VERDICTS = new Set(['TRUE', 'FALSE', 'STALE', 'TRUE-gap']);
+
+/**
+ * Remove fenced code blocks (```...```, ~~~...~~~, any language tag) so that
+ * illustrative examples cannot be mistaken for a real, rendered Witness Table.
+ * @param {string} body
+ * @returns {string}
+ */
+export function stripFencedBlocks(body) {
+  return body.replace(/^(```|~~~)[^\n]*\n[\s\S]*?^\1[ \t]*$/gm, '');
+}
+
+/**
+ * @param {string} verdict
+ * @returns {string}
+ */
+function normalizeVerdict(verdict) {
+  const v = verdict.trim();
+  if (/^true-gap$/i.test(v)) return 'TRUE-gap';
+  return v.toUpperCase();
+}
 
 /**
  * @param {string} body
@@ -76,13 +97,19 @@ export function parseMarkdownTable(block) {
 }
 
 /**
+ * Heuristic format gate — does not verify that SHAs, commands, or URLs resolve.
  * @param {string} ev
  * @returns {boolean}
  */
 export function looksLikeEvidence(ev) {
   const t = ev.trim();
   if (!t) return false;
-  return /[0-9a-f]{7,40}/i.test(t) || /^git\s/i.test(t) || /https?:\/\//i.test(t);
+
+  const hasShaToken = /(?:^|[\s`(])[0-9a-f]{7,40}(?:$|[\s`).,;:])/i.test(t);
+  const isGitCommand = /^git\s+\S/i.test(t);
+  const isUrl = /https?:\/\/\S+/i.test(t);
+
+  return hasShaToken || isGitCommand || isUrl;
 }
 
 /**
@@ -90,12 +117,17 @@ export function looksLikeEvidence(ev) {
  * @returns {{ ok: true, allStale: boolean } | { ok: false, message: string }}
  */
 export function checkWitnessTable(body) {
+  const stripped = stripFencedBlocks(body);
+
   const headerRe = /^## Witness Table\s*$/m;
-  if (!headerRe.test(body)) {
-    return { ok: false, message: "Missing literal '## Witness Table' header." };
+  if (!headerRe.test(stripped)) {
+    return {
+      ok: false,
+      message: "Missing literal '## Witness Table' header (outside of fenced code blocks).",
+    };
   }
 
-  const tableBlock = extractTableAfterHeader(body);
+  const tableBlock = extractTableAfterHeader(stripped);
   if (!tableBlock) {
     return { ok: false, message: 'Witness Table header found but no markdown table follows it.' };
   }
@@ -116,11 +148,11 @@ export function checkWitnessTable(body) {
 
   let allStale = true;
   for (const row of rows.data) {
-    const verdict = (row.verdict || '').trim().toUpperCase();
+    const verdict = normalizeVerdict(row.verdict || '');
     if (!ALLOWED_VERDICTS.has(verdict)) {
       return {
         ok: false,
-        message: `Invalid verdict "${row.verdict || ''}". Must be one of VERIFIED/DISPUTED/STALE/FAIL_CLOSED.`,
+        message: `Invalid verdict "${row.verdict || ''}". Must be one of TRUE/FALSE/STALE/TRUE-gap.`,
       };
     }
     if (verdict !== 'STALE') allStale = false;
@@ -150,12 +182,12 @@ export function witnessTableFailureMessage() {
     '',
     '| Claim | Verdict | Evidence |',
     '|---|---|---|',
-    '| <what you claim is true> | VERIFIED | <SHA, git command, or URL> |',
+    '| <what you claim is true> | TRUE | <SHA, git command, or URL> |',
     '```',
     '',
     'Rules:',
-    '- Header must be exactly `## Witness Table`',
-    '- Verdict must be one of VERIFIED / DISPUTED / STALE / FAIL_CLOSED',
+    '- Header must be exactly `## Witness Table` (outside fenced code blocks)',
+    '- Verdict must be one of TRUE / FALSE / STALE / TRUE-gap',
     '- Evidence must be a real ref (SHA / git command / link) — not prose',
     '',
     'Doctrine: docs/WITNESS_PROTOCOL.md — "an agent\'s completion report is a claim, not a verification."',
