@@ -1,6 +1,6 @@
 {
   "mobius_catalog_version": "1.0.0",
-  "generated_at": "2026-07-23T16:31:10.682Z",
+  "generated_at": "2026-07-23T17:41:24.954Z",
   "repo": {
     "name": "Mobius-Substrate",
     "url": "https://github.com/kaizencycle/Mobius-Substrate",
@@ -9,7 +9,7 @@
   },
   "stats": {
     "epiconCount": 0,
-    "docCount": 1067
+    "docCount": 1068
   },
   "epicons": [],
   "docs": [
@@ -7250,7 +7250,7 @@
       "title": "Mobius Handbook — Generated Index",
       "category": "INDEX.md",
       "tags": [],
-      "content_hash": "sha256:ffc57c7e8ccdd520d24b68275c6225a3b0757b3a2d8a1b4dc05da1ded9f3a83e",
+      "content_hash": "sha256:19c975453eaa10c5c23c434a44d63a48a507e0841694662f027588955d6cdfe4",
       "summary": ""
     },
     {
@@ -7538,7 +7538,7 @@
       "title": "EPICON-02: Intent Publication & Divergence Protocol (IPDP)",
       "category": "epicon",
       "tags": [],
-      "content_hash": "sha256:4ed97b2fb364fb0d7c5a67d033a9529b2402360f00405441c948269fd3510742",
+      "content_hash": "sha256:bbdc4377d7c4c6cd2965362e79937a100ca6ee8d7d7fb68bf8bf2be0f20fa25d",
       "summary": ""
     },
     {
@@ -8234,6 +8234,14 @@
       "summary": ""
     },
     {
+      "path": "docs/epicon/cycles/C-381/I7_WITNESS_TABLE_ENFORCEMENT.md",
+      "title": "C-381 — I7 Witness Table Enforcement",
+      "category": "epicon",
+      "tags": [],
+      "content_hash": "sha256:9f749c7a00a30d79160eb966ea0a054e5b291ddf11908167db0aca60fdd2edd9",
+      "summary": ""
+    },
+    {
       "path": "docs/epicon/cycles/C-381/README.md",
       "title": "C-381 — Handbook CI / Codex Remediation",
       "category": "epicon",
@@ -8662,7 +8670,7 @@
       "title": "ATLAS Handoff Template",
       "category": "templates",
       "tags": [],
-      "content_hash": "sha256:42374d60e3550c6f6c5e9d0918a805b0461d8bfe7e0884a1934fb8889a301d02",
+      "content_hash": "sha256:497ac2522c9ee8a989c3f9d6e46672c9709b438de419013a7c7fe57c3e1467bd",
       "summary": ""
     },
     {
