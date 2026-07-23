@@ -1,5 +1,7 @@
 # Mobius Substrate Handbook
 
+<div class="c380-handbook-home" markdown>
+
 > **Intelligence moves. Integrity guides.**
 
 Mobius is easier to understand from the problem outward than from the architecture inward.
@@ -137,3 +139,5 @@ The goal of the front door is clarity. The goal of the archive is completeness. 
 
 *Reorganized C-380 · CI remediation C-381 · 2026-07-23*  
 *“We heal as we walk.”*
+
+</div>

@@ -141,7 +141,7 @@ extra:
       link: https://terminal.mobius-substrate.com/
   announce: >-
     <strong>C-381:</strong> Handbook CI remediation for C-380 progressive disclosure.
-    Begin with <a href="00-START-HERE/AI_SIMPLE_IN_LIFE/">AI Simple in Life</a>, then descend into canon and protocols.
+    Begin with <a href="/00-START-HERE/AI_SIMPLE_IN_LIFE/">AI Simple in Life</a>, then descend into canon and protocols.
 
 # C-380: progressive disclosure. Plain language first; canonical depth remains intact.
 nav:

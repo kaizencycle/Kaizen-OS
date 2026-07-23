@@ -35,9 +35,8 @@
   font-weight: 700;
 }
 
-/* Give the first handbook page a little more room for comparison tables
- * without changing the reader's global wide/compact preferences. */
-.md-typeset table:not([class]) {
+/* Handbook home only: comparison table sizing without touching protocol pages. */
+.c380-handbook-home .md-typeset table:not([class]) {
   font-size: 0.86rem;
 }
 
