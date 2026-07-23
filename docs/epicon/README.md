@@ -45,6 +45,7 @@ Input → Context Inference → CSS Gate → EJ Builder → CCR Validator → Ou
 
 | File | Purpose |
 |------|---------|
+| [`EPICON-000-external-reality-boundary.md`](./EPICON-000-external-reality-boundary.md) | **External observation genesis** — witness pool doctrine, quarantine boundary (C-380) |
 | [`EPICON-0001-mobius-substrate-naming.md`](./EPICON-0001-mobius-substrate-naming.md) | Canonical naming document: "Mobius Substrate" |
 | [`EPICON-01.md`](./EPICON-01.md) | Epistemic constraint specification (coherence layer) |
 | [`EPICON-02.md`](./EPICON-02.md) | Intent publication & divergence protocol (visibility layer) |
