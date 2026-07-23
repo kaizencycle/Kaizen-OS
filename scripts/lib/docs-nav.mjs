@@ -5,8 +5,6 @@
 import fs from 'node:fs';
 import path from 'node:path';
 
-const NAV_PATH_RE = /:\s+([\w./-]+\.md)\s*$/;
-
 /**
  * @param {string} mkdocsYaml
  * @returns {{ title: string, path: string }[]}
@@ -15,7 +13,6 @@ export function parseMkdocsNav(mkdocsYaml) {
   const lines = mkdocsYaml.split('\n');
   const entries = [];
   let inNav = false;
-  let depth = 0;
 
   for (const line of lines) {
     if (/^nav:\s*$/.test(line)) {
