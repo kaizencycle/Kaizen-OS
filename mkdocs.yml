@@ -124,7 +124,7 @@ extra:
   canonical_domain: https://mobius-substrate.com
   terminal_url: https://terminal.mobius-substrate.com
   handbook_url: https://handbook.mobius-substrate.com
-  current_cycle: C-380
+  current_cycle: C-381
   gi_status: yellow
   terminal_repo: https://github.com/kaizencycle/mobius-civic-ai-terminal
   substrate_repo: https://github.com/kaizencycle/Mobius-Substrate
@@ -140,7 +140,8 @@ extra:
       name: Live Terminal
       link: https://terminal.mobius-substrate.com/
   announce: >-
-    <strong>C-380:</strong> Handbook clarity pass — begin with AI Simple in Life, then descend into canon, protocols, architecture, and history.
+    <strong>C-381:</strong> Handbook CI remediation for C-380 progressive disclosure.
+    Begin with <a href="00-START-HERE/AI_SIMPLE_IN_LIFE/">AI Simple in Life</a>, then descend into canon and protocols.
 
 # C-380: progressive disclosure. Plain language first; canonical depth remains intact.
 nav:
@@ -158,6 +159,7 @@ nav:
       - "Canon laws": 02-THEORETICAL-FOUNDATIONS/MOBIUS_CANON_LAWS.md
       - "MOBIUS.md": MOBIUS.md
   - "EPICON & Protocols":
+      - "EPICON-000 — External Reality Boundary": epicon/EPICON-000-external-reality-boundary.md
       - "EPICON-01": epicon/EPICON-01.md
       - "EPICON-02": epicon/EPICON-02.md
       - "EPICON-03": epicon/EPICON-03.md

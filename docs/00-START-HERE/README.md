@@ -135,5 +135,5 @@ The goal of the front door is clarity. The goal of the archive is completeness. 
 
 ---
 
-*Reorganized C-380 · 2026-07-22*  
+*Reorganized C-380 · CI remediation C-381 · 2026-07-23*  
 *“We heal as we walk.”*

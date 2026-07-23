@@ -1,8 +1,8 @@
 # State of the Substrate — Latest
 
-**Cycle:** C-360  
-**Updated:** 2026-07-02  
-**GI:** ~0.90 · recovering (yellow)  
+**Cycle:** C-381  
+**Updated:** 2026-07-23  
+**GI:** ~0.90 · yellow  
 **Custodian:** Michael (kaizencycle)
 
 > Stable entry point for README and handbook nav. Cycle-stamped snapshots (`STATE_OF_THE_SUBSTRATE_C-*.md`) are historical; this file tracks [`cycle.json`](../cycle.json).
@@ -11,7 +11,8 @@
 
 ## Dateline
 
-**C-360 Federation Optimization Sweep** — constitutional consistency, integrity-surface repair, and operational hardening across five repos.
+**C-381** — handbook CI remediation and Codex alignment for the C-380 progressive-disclosure pass.  
+**C-380** — external reality boundary (EPICON-000) and handbook progressive disclosure (AI Simple in Life).
 
 | Surface | URL |
 |---------|-----|
@@ -23,10 +24,10 @@
 
 ## This cycle at a glance
 
-- **PR-B (Substrate):** License policy (`configs/license-policy.yaml`), cycle pointer CI, sentinel roster 10 (URIEL + ZENITH)
-- **Layer 1 writer:** `mobius-bot-state-sync` still failing — rotate `MOBIUS_BOT_APP_ID` / `MOBIUS_BOT_PRIVATE_KEY`
-- **Substrate attest:** Identity service account live; Terminal Vercel creds + reattest drain pending
-- **323 Reserve Blocks** sealed; Fountain LOCKED (GI below 0.95 sustain)
+- **Handbook (C-380 / PR #413):** plain-language entry (`AI Simple in Life`), progressive-disclosure nav, reading-path cards — renderer only; `CANON → LEDGER → UI`
+- **EPICON-000 (C-380):** external reality boundary — public internet quarantined as witness pool, not truth source
+- **C-381:** Codex/CI remediation — cycle pointer sync, EPICON-02 intent, authority provenance, catalog freshness
+- **C-379:** wallet infrastructure recovery advanced; durability redeploy witness still blocking (Civic-Protocol-Core)
 
 ---
 
@@ -40,13 +41,14 @@ Governance agents: ATLAS, ZEUS, EVE, JADE, AUREA, HERMES, ECHO, DAEDALUS, **URIE
 
 ## Read next
 
-1. [Cycle journal — C-360](./journals/C-360.md) — federation sweep (when published)
-2. [Canon laws](./02-THEORETICAL-FOUNDATIONS/MOBIUS_CANON_LAWS.md)
-3. [MOBIUS.md](./MOBIUS.md) — constitutional machine interface
-4. [Prior snapshot C-338](./STATE_OF_THE_SUBSTRATE_C-338.md) — technical baseline
+1. [AI Simple in Life](./00-START-HERE/AI_SIMPLE_IN_LIFE.md) — handbook plain-language entry (C-380)
+2. [EPICON-000 — External Reality Boundary](./epicon/EPICON-000-external-reality-boundary.md) — witness pool doctrine
+3. [EPICON-C380-HANDBOOK-001](./epicon/EPICON-C380-HANDBOOK-001.md) — handbook progressive disclosure intent
+4. [Cycle journal — C-380](./epicon/cycles/C-380/README.md) · [C-381 remediation](./epicon/cycles/C-381/README.md)
+5. [Canon laws](./02-THEORETICAL-FOUNDATIONS/MOBIUS_CANON_LAWS.md)
 
 ---
 
 ## Live proof
 
-When CORS allows this origin, handbook pages fetch **snapshot-lite** from the Terminal for GI, mode, and lane freshness. Canonical Terminal: `https://terminal.mobius-substrate.com/api/terminal/snapshot-lite`.
+See [Terminal snapshot-lite](https://terminal.mobius-substrate.com/api/terminal/snapshot-lite) and [vault status](https://terminal.mobius-substrate.com/api/vault/status). Renderer output is not canonical truth.

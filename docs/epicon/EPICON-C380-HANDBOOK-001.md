@@ -1,9 +1,40 @@
 # EPICON-C380-HANDBOOK-001 — Handbook Progressive Disclosure
 
-**Cycle:** C-380  
+**Cycle:** C-380 (implementation) · **C-381** (CI / Codex remediation)  
 **Date:** 2026-07-22  
 **Surface:** Handbook / documentation renderer  
 **Status:** Proposed  
+
+## Authority Provenance
+
+*Authority declared using `docs/templates/EPICON_FOUNDER_STANDING.md` v0.1*
+
+**Custodian:** Michael Judan (kaizencycle)  
+**Scope:** Handbook documentation rendering and navigation only — no runtime authority, ledger, or protocol semantics.  
+**Sunset:** When this EPICON is marked `active` after sentinel review, or superseded by a ratified handbook editorial policy.
+
+## Intent publication
+
+```intent
+epicon_id: EPICON_C-380_HANDBOOK_progressive-disclosure_v1
+ledger_id: kaizencycle
+scope: docs
+mode: normal
+issued_at: 2026-07-22T16:50:00Z
+expires_at: 2026-10-20T16:50:00Z
+justification:
+  VALUES INVOKED: integrity, transparency, accessibility
+  REASONING: Handbook front door exposed constitutional depth before newcomers had a simple mental model. Progressive disclosure preserves canon while improving readability. Renderer remains non-canonical.
+  ANCHORS:
+    - docs/00-START-HERE/AI_SIMPLE_IN_LIFE.md
+    - docs/epicon/EPICON-C380-HANDBOOK-001.md
+    - mkdocs.yml
+  BOUNDARIES: Docs and MkDocs navigation only; no GI, ledger, or protocol behavior change
+  COUNTERFACTUAL: If simplification flattens critical distinctions or implies UI-derived truth, revert front-door commits
+counterfactuals:
+  - If mkdocs strict build fails, do not merge
+  - If readers mistake handbook prose for canonical truth, strengthen CANON → LEDGER → UI banners
+```
 
 ## Intent
 
@@ -102,7 +133,7 @@ Revert the C-380 handbook commits. Existing documentation files and protocol str
 
 - [x] Plain-language first entry exists.
 - [x] Handbook home routes by reader intent and depth.
-- [x] Current-cycle display updated to C-380.
+- [x] Current-cycle display updated (C-381 pointer sync via C-381 remediation).
 - [x] Navigation separates Start Here, Live State, Protocols, Architecture, Research, Journal, and Archives.
 - [x] Existing deep documents remain intact.
 - [x] Responsive UI addition is additive.

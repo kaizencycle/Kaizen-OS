@@ -1,15 +1,15 @@
 {
   "mobius_catalog_version": "1.0.0",
-  "generated_at": "2026-07-23T05:29:49.465Z",
+  "generated_at": "2026-07-23T15:54:05.473Z",
   "repo": {
     "name": "Mobius-Substrate",
     "url": "https://github.com/kaizencycle/Mobius-Substrate",
     "default_branch": "main",
-    "commit": "f0121b2abb1192b1a1892e4fa52f51e131bbcb28"
+    "commit": ""
   },
   "stats": {
     "epiconCount": 0,
-    "docCount": 1058
+    "docCount": 1061
   },
   "epicons": [],
   "docs": [
@@ -59,6 +59,14 @@
       "category": "00-META",
       "tags": [],
       "content_hash": "sha256:5563d950e31ecc75fe2580531fddedd2f22dfd60fc6390b7d0d5ab9d1869c844",
+      "summary": ""
+    },
+    {
+      "path": "docs/00-START-HERE/AI_SIMPLE_IN_LIFE.md",
+      "title": "Mobius — AI Simple in Life",
+      "category": "00-START-HERE",
+      "tags": [],
+      "content_hash": "sha256:e4e56492b14ca78c3666fbd61a7efe217238390b4c0dd4a707c538eb86033d96",
       "summary": ""
     },
     {
@@ -119,10 +127,10 @@
     },
     {
       "path": "docs/00-START-HERE/README.md",
-      "title": "Welcome to Mobius Substrate Documentation",
+      "title": "Mobius Substrate Handbook",
       "category": "00-START-HERE",
       "tags": [],
-      "content_hash": "sha256:50e86ecb978170e0bdfd5365c9fb5a8d3ccb43108251215a611a34d2979b27b5",
+      "content_hash": "sha256:0e5498193af43da977ff66b752cec3081f2fa7fc560897f96eb68a2d6f7ae433",
       "summary": ""
     },
     {
@@ -7370,7 +7378,7 @@
       "title": "State of the Substrate — Latest",
       "category": "STATE_OF_THE_SUBSTRATE_LATEST.md",
       "tags": [],
-      "content_hash": "sha256:75733baabba1348f4b6a8f1797e7577fa87ce706f29aa66a7c6e6685c8f8f807",
+      "content_hash": "sha256:8a974822e4e7f0674221905499c8142230417e2c6a2bbc0d540b6a4779448848",
       "summary": ""
     },
     {
@@ -7601,6 +7609,14 @@
       "category": "epicon",
       "tags": [],
       "content_hash": "sha256:d271291025606a0fdb4000aa02e6c42ab21721cecf4776a6fc54dce4ef447958",
+      "summary": ""
+    },
+    {
+      "path": "docs/epicon/EPICON-C380-HANDBOOK-001.md",
+      "title": "EPICON-C380-HANDBOOK-001 — Handbook Progressive Disclosure",
+      "category": "epicon",
+      "tags": [],
+      "content_hash": "sha256:7f75d43a6a7ce782802899c23f31d5031b031841450716804dac7bf0000d4f6c",
       "summary": ""
     },
     {
@@ -8207,6 +8223,14 @@
       "category": "epicon",
       "tags": [],
       "content_hash": "sha256:ff2c695262369e6e8298147ede2743198288f89972ab060c07f89396858ad028",
+      "summary": ""
+    },
+    {
+      "path": "docs/epicon/cycles/C-381/README.md",
+      "title": "C-381 — Handbook CI / Codex Remediation",
+      "category": "epicon",
+      "tags": [],
+      "content_hash": "sha256:bef0ca6502cbbb8e81b283e996ea7b31687ab25bd6b9c30ec3987e4f13459939",
       "summary": ""
     },
     {
