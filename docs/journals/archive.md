@@ -4,6 +4,14 @@ Prior cycle journals live here as the handbook grows. Each entry is a **dateline
 
 | Cycle | Status | Entry |
 |-------|--------|-------|
+| C-381 | **Current** | [C-381](./C-381.md) |
+| C-380 | Open | [C-380](./C-380.md) |
+| C-379 | Open | [C-379](./C-379.md) |
+| C-378 | Open | [C-378](./C-378.md) |
+| C-377 | Closed | [C-377](./C-377.md) |
+| C-366 | Active (proposed) | [C-366](./C-366.md) |
+| C-365 | Closed | [C-365](./C-365.md) |
+| C-360 | Closed | [C-360](./C-360.md) |
 | C-357 | Active | [C-357](./C-357.md) |
 | C-356 | Closed | [C-356](./C-356.md) |
 | C-355 | Closed | [IDA ratification](../02-THEORETICAL-FOUNDATIONS/EPICON_C355_IDA.md) |
@@ -20,7 +28,7 @@ At cycle close, create `journals/C-NNN.md` with:
 3. **Canon ratifications** — laws and EPICONs ratified this cycle
 4. **Open issues** — honest carry-forward
 
-Update `mkdocs.yml` nav under **Cycle journal** and set `extra.current_cycle` in `mkdocs.yml`.
+Update `mkdocs.yml` nav under **Cycle Journal** and set `extra.current_cycle` in `mkdocs.yml`.
 
 ---
 

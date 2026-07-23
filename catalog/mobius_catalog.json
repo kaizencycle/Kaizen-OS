@@ -1,6 +1,6 @@
 {
   "mobius_catalog_version": "1.0.0",
-  "generated_at": "2026-07-23T15:54:05.473Z",
+  "generated_at": "2026-07-23T16:31:10.682Z",
   "repo": {
     "name": "Mobius-Substrate",
     "url": "https://github.com/kaizencycle/Mobius-Substrate",
@@ -9,7 +9,7 @@
   },
   "stats": {
     "epiconCount": 0,
-    "docCount": 1061
+    "docCount": 1067
   },
   "epicons": [],
   "docs": [
@@ -130,7 +130,7 @@
       "title": "Mobius Substrate Handbook",
       "category": "00-START-HERE",
       "tags": [],
-      "content_hash": "sha256:0e5498193af43da977ff66b752cec3081f2fa7fc560897f96eb68a2d6f7ae433",
+      "content_hash": "sha256:bdcd29a571eb210925320b3a6c7464c0c5fdba88713aebdd087b381195b41246",
       "summary": ""
     },
     {
@@ -7247,10 +7247,10 @@
     },
     {
       "path": "docs/INDEX.md",
-      "title": "Mobius Systems Documentation Index",
+      "title": "Mobius Handbook — Generated Index",
       "category": "INDEX.md",
       "tags": [],
-      "content_hash": "sha256:d03163e75292e38f03d9277fb74a33a42ecb95db2a55d960381cadbae80cef6d",
+      "content_hash": "sha256:ffc57c7e8ccdd520d24b68275c6225a3b0757b3a2d8a1b4dc05da1ded9f3a83e",
       "summary": ""
     },
     {
@@ -7311,10 +7311,10 @@
     },
     {
       "path": "docs/README.md",
-      "title": "🌀 Mobius Substrate Documentation Portal",
+      "title": "Mobius Substrate — Documentation Portal",
       "category": "README.md",
       "tags": [],
-      "content_hash": "sha256:0556725d4a40dc15be29f41692dc19e588f59ec7699a3eca8ede9a6116f2a1e5",
+      "content_hash": "sha256:e49cd7fb3bc52f9063c75fa4e8507fda2e418c94b8295aea8f7de51a3f93df2a",
       "summary": ""
     },
     {
@@ -7378,7 +7378,7 @@
       "title": "State of the Substrate — Latest",
       "category": "STATE_OF_THE_SUBSTRATE_LATEST.md",
       "tags": [],
-      "content_hash": "sha256:8a974822e4e7f0674221905499c8142230417e2c6a2bbc0d540b6a4779448848",
+      "content_hash": "sha256:1d0e3d1eb807ef9c717807acf5f107d2e82763cc60e0e8cad25acb945f9ada17",
       "summary": ""
     },
     {
@@ -7617,6 +7617,14 @@
       "category": "epicon",
       "tags": [],
       "content_hash": "sha256:7f75d43a6a7ce782802899c23f31d5031b031841450716804dac7bf0000d4f6c",
+      "summary": ""
+    },
+    {
+      "path": "docs/epicon/EPICON-C381-HANDBOOK-REORG-001.md",
+      "title": "EPICON-C381-HANDBOOK-REORG-001 — Handbook Canon/Archive Reorganization",
+      "category": "epicon",
+      "tags": [],
+      "content_hash": "sha256:6c7a3a8e841a0d81864d529ac5c58465f6967dc505e307e7fb8bfbabe7bd3d5a",
       "summary": ""
     },
     {
@@ -8298,11 +8306,51 @@
       "summary": ""
     },
     {
+      "path": "docs/journals/C-377.md",
+      "title": "Cycle Journal — C-377",
+      "category": "journals",
+      "tags": [],
+      "content_hash": "sha256:c64c650db766d61c155cb31d4968ad85b17d42a7952592108bc15778ad9995f7",
+      "summary": ""
+    },
+    {
+      "path": "docs/journals/C-378.md",
+      "title": "Cycle Journal — C-378",
+      "category": "journals",
+      "tags": [],
+      "content_hash": "sha256:5788687dea08cb0025c578150d95a8e1b4da36a93aaa72a3e0adc1b8f8800906",
+      "summary": ""
+    },
+    {
+      "path": "docs/journals/C-379.md",
+      "title": "Cycle Journal — C-379",
+      "category": "journals",
+      "tags": [],
+      "content_hash": "sha256:c40c5e87c0e8b012d68966a99fb24f2aa6f0d402441c70c1a8961f46046b4c23",
+      "summary": ""
+    },
+    {
+      "path": "docs/journals/C-380.md",
+      "title": "Cycle Journal — C-380",
+      "category": "journals",
+      "tags": [],
+      "content_hash": "sha256:2af41988115f20162361424735d00fac69baf0cd1c0bedc9727da1fb6f4faf43",
+      "summary": ""
+    },
+    {
+      "path": "docs/journals/C-381.md",
+      "title": "Cycle Journal — C-381",
+      "category": "journals",
+      "tags": [],
+      "content_hash": "sha256:48b8a6ee91ad264867e66f4b6f2ddb6f37037048302cc08cd1aa08ebed84d409",
+      "summary": ""
+    },
+    {
       "path": "docs/journals/archive.md",
       "title": "Cycle Journal — Archive",
       "category": "journals",
       "tags": [],
-      "content_hash": "sha256:d950d917eae8801e2da7f5ca52dc3230754112ee5759eb52f98b674af4b4ee48",
+      "content_hash": "sha256:3a68e4b4703f1f6eda1714e9b4575a142d6541ca49590088e317e337f1c80676",
       "summary": ""
     },
     {

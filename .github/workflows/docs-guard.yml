@@ -1,0 +1,43 @@
+name: C-381 Docs Guard
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'docs/**'
+      - 'mkdocs.yml'
+      - 'cycle.json'
+      - 'scripts/docs-guard.mjs'
+      - 'scripts/generate-handbook-index.mjs'
+      - 'scripts/sync-journal-nav.mjs'
+      - 'scripts/lib/docs-nav.mjs'
+      - '.github/workflows/docs-guard.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'docs/**'
+      - 'mkdocs.yml'
+      - 'cycle.json'
+
+permissions:
+  contents: read
+
+jobs:
+  docs-guard:
+    name: Docs Guard (warn-only)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Cycle pointer
+        run: node scripts/check-cycle-pointer.mjs
+
+      - name: Generated index freshness
+        run: node scripts/generate-handbook-index.mjs --check
+
+      - name: Journal nav sync
+        run: node scripts/sync-journal-nav.mjs --check
+
+      - name: Docs Guard
+        run: node scripts/docs-guard.mjs
+        continue-on-error: true
