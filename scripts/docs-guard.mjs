@@ -91,10 +91,9 @@ for (const rel of navPaths) {
   }
 }
 
-// 3. Index proliferation
+// 3. Index proliferation (path-specific allowlist only — not basename)
 for (const rel of allDocs) {
-  const base = path.basename(rel);
-  if (INDEX_ALLOWLIST.has(rel) || INDEX_ALLOWLIST.has(base)) continue;
+  if (INDEX_ALLOWLIST.has(rel)) continue;
   if (INDEX_PATTERN.test(rel)) {
     const level = STRICT ? fail : warn;
     level(`Hand-maintained index surface: ${rel} (collapse to generated docs/INDEX.md)`);

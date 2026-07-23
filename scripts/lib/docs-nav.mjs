@@ -6,6 +6,22 @@ import fs from 'node:fs';
 import path from 'node:path';
 
 /**
+ * Strip YAML quotes from a nav path scalar (e.g. `"foo.md"` → `foo.md`).
+ * @param {string} value
+ * @returns {string}
+ */
+export function normalizeNavPathScalar(value) {
+  let v = value.trim();
+  if (
+    (v.startsWith('"') && v.endsWith('"')) ||
+    (v.startsWith("'") && v.endsWith("'"))
+  ) {
+    v = v.slice(1, -1);
+  }
+  return v.trim();
+}
+
+/**
  * @param {string} mkdocsYaml
  * @returns {{ title: string, path: string }[]}
  */
@@ -24,7 +40,7 @@ export function parseMkdocsNav(mkdocsYaml) {
 
     const itemMatch = line.match(/^\s+-\s+"([^"]+)":\s+(.+)$/);
     if (itemMatch) {
-      const pathValue = itemMatch[2].trim();
+      const pathValue = normalizeNavPathScalar(itemMatch[2]);
       if (pathValue.endsWith('.md')) {
         entries.push({ title: itemMatch[1], path: pathValue });
       }
@@ -33,7 +49,7 @@ export function parseMkdocsNav(mkdocsYaml) {
 
     const bareMatch = line.match(/^\s+-\s+([^:]+):\s+(.+)$/);
     if (bareMatch) {
-      const pathValue = bareMatch[2].trim();
+      const pathValue = normalizeNavPathScalar(bareMatch[2]);
       if (pathValue.endsWith('.md')) {
         entries.push({ title: bareMatch[1].trim(), path: pathValue });
       }

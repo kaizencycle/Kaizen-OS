@@ -96,7 +96,7 @@
 - [C-360](./journals/C-360.md) — `journals/C-360.md`
 - [C-357](./journals/C-357.md) — `journals/C-357.md`
 - [C-356](./journals/C-356.md) — `journals/C-356.md`
-- [C-355 and earlier](./journals/archive.md) — `journals/archive.md`
+- [C-356 and earlier](./journals/archive.md) — `journals/archive.md`
 ### 10-ARCHIVES
 
 - [Archive index](./10-ARCHIVES/archive/README.md) — `10-ARCHIVES/archive/README.md`

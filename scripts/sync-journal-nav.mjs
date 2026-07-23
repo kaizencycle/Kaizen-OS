@@ -23,12 +23,14 @@ const recent = journals.slice(0, MAX_RECENT);
 const cycle = JSON.parse(fs.readFileSync(path.join(ROOT, 'cycle.json'), 'utf8'));
 const current = cycle.current_cycle;
 
-const navLines = recent.map((j, i) => {
+const navLines = recent.map((j) => {
   const label = j.cycle === current ? `${j.cycle} (current)` : j.cycle;
   const indent = '      ';
   return `${indent}- "${label}": ${j.file}`;
 });
-navLines.push('      - "C-355 and earlier": journals/archive.md');
+const oldest = recent[recent.length - 1];
+const archiveLabel = oldest ? `${oldest.cycle} and earlier` : 'Archive';
+navLines.push(`      - "${archiveLabel}": journals/archive.md`);
 
 const block = navLines.join('\n');
 const mkdocs = fs.readFileSync(MKDOCS, 'utf8');
