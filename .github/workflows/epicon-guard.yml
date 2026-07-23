@@ -25,3 +25,4 @@ jobs:
         with:
           mode: enforce
           policy-ref: base
+          i7-mode: warn

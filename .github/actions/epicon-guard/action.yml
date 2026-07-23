@@ -29,6 +29,11 @@ inputs:
     description: "Repository path to the tier policy JSON file."
     required: false
     default: ".github/epicon-policy.json"
+  i7-mode:
+    description: >-
+      I7 Witness Table enforcement for Tier EP-2+: warn (default, dry-run) or enforce (FAIL_CLOSED).
+    required: false
+    default: "warn"
 
 outputs:
   tier:
@@ -58,4 +63,5 @@ runs:
         INPUT_MODE: ${{ inputs.mode }}
         INPUT_POLICY_REF: ${{ inputs.policy-ref }}
         INPUT_POLICY_PATH: ${{ inputs.policy-path }}
+        INPUT_I7_MODE: ${{ inputs.i7-mode }}
       run: node "${{ github.action_path }}/src/validate.mjs"
