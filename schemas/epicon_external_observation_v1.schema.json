@@ -1,0 +1,401 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://mobius-substrate.com/schemas/epicon_external_observation_v1.schema.json",
+  "title": "External Observation EPICON",
+  "description": "Machine-readable record for internet-facing agent observation before canonical promotion. EPICON-000 doctrine. Distinct from constitutional EPICON (epicon_constitutional_v1) — this schema holds observation state, not ledger commitments.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "epicon_id",
+    "title",
+    "event_type",
+    "observer",
+    "environment",
+    "intent",
+    "claims",
+    "artifacts",
+    "sources",
+    "provenance",
+    "corroboration",
+    "conflicts",
+    "missing_evidence",
+    "inferences",
+    "counterfactuals",
+    "privacy_review",
+    "risk",
+    "verdict",
+    "reviewers",
+    "replay"
+  ],
+  "properties": {
+    "epicon_id": {
+      "type": "string",
+      "pattern": "^EPICON-[0-9]{3,4}$",
+      "description": "Foundational EPICON series (e.g. EPICON-000) or cycle-bound EPICON_C-XXX_* operational ids in separate records."
+    },
+    "title": { "type": "string", "minLength": 1 },
+    "event_type": {
+      "type": "string",
+      "enum": [
+        "external_environment_initialization",
+        "high_velocity_claim_cluster",
+        "artifact_validation",
+        "provenance_audit",
+        "conflict_preservation",
+        "custom"
+      ]
+    },
+    "observer": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["agent_id", "agent_role", "runtime"],
+      "properties": {
+        "agent_id": { "type": "string", "minLength": 1 },
+        "agent_role": { "type": "string", "minLength": 1 },
+        "runtime": { "type": "string", "minLength": 1 }
+      }
+    },
+    "environment": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["type", "trust_state", "adversarial_risk", "observation_started_at"],
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": ["public_internet", "syndicated_feed", "search_index", "social_platform", "government_portal", "unknown"]
+        },
+        "trust_state": {
+          "$ref": "#/$defs/external_trust_state"
+        },
+        "adversarial_risk": {
+          "type": "string",
+          "enum": ["low", "medium", "high", "critical"]
+        },
+        "observation_started_at": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "intent": { "type": "string", "minLength": 1 },
+    "claims": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/claim_record" }
+    },
+    "artifacts": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/artifact_record" }
+    },
+    "sources": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/source_record" }
+    },
+    "provenance": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/provenance_edge" }
+    },
+    "corroboration": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/corroboration_record" }
+    },
+    "conflicts": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/conflict_record" }
+    },
+    "missing_evidence": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/absence_record" }
+    },
+    "inferences": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/inference_record" }
+    },
+    "counterfactuals": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/counterfactual_record" }
+    },
+    "privacy_review": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["pii_collected", "surveillance_risk", "minimization_applied"],
+      "properties": {
+        "pii_collected": { "type": "boolean" },
+        "surveillance_risk": { "type": "string", "enum": ["none", "low", "medium", "high"] },
+        "minimization_applied": { "type": "boolean" },
+        "notes": { "type": "string" }
+      }
+    },
+    "risk": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["operational", "reputational", "privacy", "canonical_promotion"],
+      "properties": {
+        "operational": { "type": "string", "enum": ["low", "medium", "high", "critical"] },
+        "reputational": { "type": "string", "enum": ["low", "medium", "high", "critical"] },
+        "privacy": { "type": "string", "enum": ["low", "medium", "high", "critical"] },
+        "canonical_promotion": { "type": "string", "enum": ["blocked", "requires_human", "eligible_for_review"] }
+      }
+    },
+    "verdict": {
+      "$ref": "#/$defs/observation_verdict"
+    },
+    "reviewers": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["attestor", "role", "decision", "signed_at"],
+        "properties": {
+          "attestor": { "type": "string" },
+          "role": { "type": "string" },
+          "decision": { "type": "string", "enum": ["pending", "approve", "reject", "clarify"] },
+          "signed_at": { "type": "string", "format": "date-time" }
+        }
+      }
+    },
+    "ledger_anchor": {
+      "type": ["object", "null"],
+      "additionalProperties": false,
+      "properties": {
+        "ledger_id": { "type": "string" },
+        "commitment_hash": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+        "anchored_at": { "type": "string", "format": "date-time" }
+      }
+    },
+    "replay": {
+      "$ref": "#/$defs/replay_record"
+    }
+  },
+  "$defs": {
+    "external_trust_state": {
+      "type": "string",
+      "enum": [
+        "UNOBSERVED",
+        "UNTRUSTED",
+        "PARTIALLY_ATTESTED",
+        "CORROBORATED",
+        "CONFLICTED",
+        "QUARANTINED",
+        "AUDIT_REQUIRED",
+        "CANON_ELIGIBLE"
+      ],
+      "description": "CANON_ELIGIBLE means eligible for human-reviewed promotion — not automatically canonical."
+    },
+    "observation_verdict": {
+      "type": "string",
+      "enum": ["PASS", "CLARIFY", "QUARANTINE", "AUDIT_REQUIRED"]
+    },
+    "source_kind": {
+      "type": "string",
+      "enum": [
+        "ORIGINAL_SOURCE",
+        "MIRROR",
+        "SYNDICATED_COPY",
+        "COMMENTARY",
+        "SECONDARY_REPORTING",
+        "CIRCULAR_CITATION",
+        "DERIVATIVE_ARTIFACT",
+        "UNKNOWN_ORIGIN"
+      ]
+    },
+    "claim_record": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "text", "asserted_by", "observed_at"],
+      "properties": {
+        "id": { "type": "string" },
+        "text": { "type": "string" },
+        "asserted_by": { "type": "string" },
+        "observed_at": { "type": "string", "format": "date-time" },
+        "is_established_fact": { "type": "boolean", "const": false }
+      }
+    },
+    "artifact_record": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "kind", "content_hash"],
+      "properties": {
+        "id": { "type": "string" },
+        "kind": { "type": "string" },
+        "content_hash": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+        "retention_status": {
+          "type": "string",
+          "enum": ["retained", "hash_only", "unavailable", "restricted"]
+        },
+        "authenticity": {
+          "type": "string",
+          "enum": ["unverified", "authentic", "altered", "misdated", "misattributed"]
+        }
+      }
+    },
+    "source_record": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "uri", "retrieved_at", "kind"],
+      "properties": {
+        "id": { "type": "string" },
+        "uri": { "type": "string" },
+        "retrieved_at": { "type": "string", "format": "date-time" },
+        "kind": { "$ref": "#/$defs/source_kind" },
+        "independence_group": {
+          "type": "string",
+          "description": "Collapse key for duplicate-origin detection."
+        }
+      }
+    },
+    "provenance_edge": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["from_id", "to_id", "relation"],
+      "properties": {
+        "from_id": { "type": "string" },
+        "to_id": { "type": "string" },
+        "relation": {
+          "type": "string",
+          "enum": ["published", "mirrored", "syndicated", "cited", "derived", "archived", "unknown"]
+        }
+      }
+    },
+    "corroboration_record": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["claim_id", "supporting_source_ids", "independent"],
+      "properties": {
+        "claim_id": { "type": "string" },
+        "supporting_source_ids": {
+          "type": "array",
+          "items": { "type": "string" },
+          "minItems": 1
+        },
+        "independent": { "type": "boolean" }
+      }
+    },
+    "conflict_record": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["topic", "positions"],
+      "properties": {
+        "topic": { "type": "string" },
+        "positions": {
+          "type": "array",
+          "minItems": 2,
+          "items": {
+            "type": "object",
+            "required": ["source_id", "position"],
+            "properties": {
+              "source_id": { "type": "string" },
+              "position": { "type": "string" }
+            }
+          }
+        },
+        "preserved": { "type": "boolean", "const": true }
+      }
+    },
+    "absence_record": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["description", "expected"],
+      "properties": {
+        "description": { "type": "string" },
+        "expected": { "type": "boolean" },
+        "implies_concealment": { "type": "boolean", "const": false }
+      }
+    },
+    "inference_record": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "conclusion", "basis_claim_ids", "confidence"],
+      "properties": {
+        "id": { "type": "string" },
+        "conclusion": { "type": "string" },
+        "basis_claim_ids": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": ["speculative", "low", "medium", "high"]
+        }
+      }
+    },
+    "counterfactual_record": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["question", "answer"],
+      "properties": {
+        "question": { "type": "string" },
+        "answer": { "type": "string", "enum": ["yes", "no", "unknown"] },
+        "notes": { "type": "string" }
+      }
+    },
+    "replay_record": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "retrieval_times",
+        "source_identifiers",
+        "content_hashes",
+        "extraction_method",
+        "transformations",
+        "agent_version",
+        "tool_calls",
+        "evidence_accepted",
+        "evidence_rejected"
+      ],
+      "properties": {
+        "retrieval_times": {
+          "type": "array",
+          "items": { "type": "string", "format": "date-time" }
+        },
+        "source_identifiers": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "content_hashes": {
+          "type": "array",
+          "items": { "type": "string", "pattern": "^[a-f0-9]{64}$" }
+        },
+        "extraction_method": { "type": "string" },
+        "transformations": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "agent_version": { "type": "string" },
+        "tool_calls": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "evidence_accepted": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "evidence_rejected": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "reviewer_decisions": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "degraded_states": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "source_disappeared",
+              "page_changed",
+              "timestamp_conflict",
+              "artifact_not_retained",
+              "robots_txt_blocked",
+              "rate_limited",
+              "media_unauthenticated",
+              "paywalled",
+              "retrieval_incomplete"
+            ]
+          }
+        }
+      }
+    }
+  }
+}

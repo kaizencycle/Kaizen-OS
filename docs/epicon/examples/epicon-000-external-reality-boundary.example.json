@@ -1,0 +1,73 @@
+{
+  "epicon_id": "EPICON-000",
+  "title": "External Reality Boundary",
+  "event_type": "external_environment_initialization",
+  "observer": {
+    "agent_id": "mobius-agent:atlas-jade-handoff",
+    "agent_role": "constitutional_draft",
+    "runtime": "cursor-cloud-agent"
+  },
+  "environment": {
+    "type": "public_internet",
+    "trust_state": "QUARANTINED",
+    "adversarial_risk": "high",
+    "observation_started_at": "2026-07-22T02:06:00Z"
+  },
+  "intent": "Establish the first constitutional record when a Mobius Agent leaves the controlled sandbox and begins observing the public internet.",
+  "claims": [],
+  "artifacts": [],
+  "sources": [],
+  "provenance": [],
+  "corroboration": [],
+  "conflicts": [],
+  "missing_evidence": [],
+  "inferences": [],
+  "counterfactuals": [
+    {
+      "question": "Could widespread repetition of a claim establish its truth without independent corroboration?",
+      "answer": "yes",
+      "notes": "Repetition may imitate consensus; popularity may imitate evidence."
+    }
+  ],
+  "privacy_review": {
+    "pii_collected": false,
+    "surveillance_risk": "low",
+    "minimization_applied": true,
+    "notes": "Boundary record only; no citizen profiling at initialization."
+  },
+  "risk": {
+    "operational": "medium",
+    "reputational": "medium",
+    "privacy": "low",
+    "canonical_promotion": "blocked"
+  },
+  "verdict": "QUARANTINE",
+  "reviewers": [
+    {
+      "attestor": "ATLAS",
+      "role": "architecture",
+      "decision": "pending",
+      "signed_at": "2026-07-22T02:06:00Z"
+    },
+    {
+      "attestor": "JADE",
+      "role": "narrative",
+      "decision": "pending",
+      "signed_at": "2026-07-22T02:06:00Z"
+    }
+  ],
+  "ledger_anchor": null,
+  "replay": {
+    "retrieval_times": [],
+    "source_identifiers": [],
+    "content_hashes": [],
+    "extraction_method": "none — constitutional initialization",
+    "transformations": [],
+    "agent_version": "handoff-draft",
+    "tool_calls": [],
+    "evidence_accepted": [],
+    "evidence_rejected": [],
+    "reviewer_decisions": [],
+    "degraded_states": []
+  }
+}
