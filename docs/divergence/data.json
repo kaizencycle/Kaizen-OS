@@ -1,11 +1,11 @@
 {
   "repo": "kaizencycle/Mobius-Substrate",
-  "generated_at": "2026-07-23T14:26:48Z",
-  "open_pr_count": 9,
+  "generated_at": "2026-07-23T19:41:20Z",
+  "open_pr_count": 7,
   "by_severity": {
-    "high": 4,
+    "high": 3,
     "medium": 0,
-    "low": 1,
+    "low": 0,
     "unknown": 4
   },
   "emergency_count": 0,
@@ -32,7 +32,7 @@
       "title": "chore(deps): bump the actions group across 1 directory with 3 updates",
       "url": "https://github.com/kaizencycle/Mobius-Substrate/pull/408",
       "author": "dependabot[bot]",
-      "updated_at": "2026-07-20T15:40:06Z",
+      "updated_at": "2026-07-23T17:46:06Z",
       "created_at": "2026-07-20T15:38:34Z",
       "labels": [],
       "mode": "normal",
@@ -45,54 +45,17 @@
       }
     },
     {
-      "pr": 409,
-      "title": "chore(deps): bump the npm-minor-patch group across 1 directory with 18 updates",
-      "url": "https://github.com/kaizencycle/Mobius-Substrate/pull/409",
+      "pr": 418,
+      "title": "chore(deps): bump the npm-minor-patch group across 1 directory with 19 updates",
+      "url": "https://github.com/kaizencycle/Mobius-Substrate/pull/418",
       "author": "dependabot[bot]",
-      "updated_at": "2026-07-20T16:06:19Z",
-      "created_at": "2026-07-20T16:04:22Z",
+      "updated_at": "2026-07-23T18:11:30Z",
+      "created_at": "2026-07-23T18:09:48Z",
       "labels": [],
       "mode": "normal",
       "has_debt": false,
       "severity": "high",
       "justification_hash": "",
-      "checks": {
-        "epicon": "unknown",
-        "merge_gate": "unknown"
-      }
-    },
-    {
-      "pr": 413,
-      "title": "C-380: reorganize Handbook around AI Simple in Life",
-      "url": "https://github.com/kaizencycle/Mobius-Substrate/pull/413",
-      "author": "kaizencycle",
-      "updated_at": "2026-07-22T16:53:22Z",
-      "created_at": "2026-07-22T16:51:46Z",
-      "labels": [],
-      "mode": "normal",
-      "has_debt": false,
-      "severity": "high",
-      "justification_hash": "",
-      "checks": {
-        "epicon": "unknown",
-        "merge_gate": "unknown"
-      }
-    },
-    {
-      "pr": 412,
-      "title": "docs(C-380): EPICON-000 External Reality Boundary \u2014 ATLAS \u00d7 JADE handoff",
-      "url": "https://github.com/kaizencycle/Mobius-Substrate/pull/412",
-      "author": "kaizencycle",
-      "updated_at": "2026-07-22T02:11:28Z",
-      "created_at": "2026-07-22T02:09:22Z",
-      "labels": [
-        "scope:docs",
-        "scope:specs"
-      ],
-      "mode": "normal",
-      "has_debt": false,
-      "severity": "low",
-      "justification_hash": "6b028d1d016ea713184fb50eb981a6fb1d8fbcbd1407c603473dbd1cf933a9a5",
       "checks": {
         "epicon": "unknown",
         "merge_gate": "unknown"
