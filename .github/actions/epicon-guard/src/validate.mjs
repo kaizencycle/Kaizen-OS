@@ -20,6 +20,7 @@
  *   I4 Divergence observable, no blocking -> scope-vs-changed-paths flagged as warnings
  *   I5 Expiration is mandatory            -> expires_at required; expired intent fails
  *   I6 No narrative substitutes           -> structural validation only; prose never passes the gate
+ *   I7 Witness table on Tier 2+           -> literal ## Witness Table block; Claim/Verdict/Evidence rows
  *
  * Tiering (EPICON_TIERING_SPEC_v0.1):
  *   Rule 5.1 -> tier is computed here from the policy registry, never read from
@@ -37,6 +38,7 @@
 import { readFileSync, existsSync, appendFileSync } from 'node:fs';
 import { createHash } from 'node:crypto';
 import { join } from 'node:path';
+import { checkWitnessTable, witnessTableFailureMessage } from './witness-table.mjs';
 
 // ---------------------------------------------------------------------------
 // Canonical patterns — keep in sync with Mobius-Substrate sources noted below.
@@ -496,6 +498,28 @@ if (changed && changed.length > 0) {
   }
 } else if (changed && changed.length === 0) {
   note('No changed files reported for this PR.');
+}
+
+// ---------------------------------------------------------------------------
+// 5b. I7 — Witness Table (Tier EP-2+ only; warn-only until custodian flips enforce)
+// ---------------------------------------------------------------------------
+
+const i7Mode = (process.env.INPUT_I7_MODE || 'warn').toLowerCase();
+
+if (TIER_ORDER[prTier] >= TIER_ORDER['EP-2']) {
+  const i7 = checkWitnessTable(prBody);
+  if (!i7.ok) {
+    const detail = `I7 — ${i7.message}\n\n${witnessTableFailureMessage()}`;
+    if (i7Mode === 'enforce') {
+      fail(detail);
+    } else {
+      warn(`${detail}\n\n_(I7 is warn-only until custodian enables enforce mode.)_`);
+    }
+  } else if (i7.allStale) {
+    warn(
+      'I7 — All witness rows are STALE — table passes format check but nothing has been actively re-verified.'
+    );
+  }
 }
 
 // ---------------------------------------------------------------------------

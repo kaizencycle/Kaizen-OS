@@ -30,6 +30,7 @@ EPICON-02 enforces the following invariants:
 4. **Divergence must be observable without accusation**
 5. **Expiration is mandatory**
 6. **No narrative claims may substitute verification**
+7. **Witness tables on Tier 2+** — literal `## Witness Table` with Claim / Verdict / Evidence rows (I7; enforced by EPICON Guard)
 
 ---
 

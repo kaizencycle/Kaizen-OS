@@ -51,6 +51,22 @@ counterfactuals:
 4. **Explicitly forbidden** — scope fence  
 5. **Open items owned by custodian** — decisions not delegated to ATLAS  
 
+## Witness Table (required — copy header verbatim)
+
+Tier 2+ PRs and all completion reports must include this block **literally** (EPICON-02 invariant I7):
+
+```markdown
+## Witness Table
+
+| Claim | Verdict | Evidence |
+|---|---|---|
+| <claim text> | VERIFIED | <SHA, git command, or URL> |
+```
+
+- Header line must be exactly `## Witness Table` (case-sensitive).
+- Verdict: `VERIFIED`, `DISPUTED`, `STALE`, or `FAIL_CLOSED` only.
+- Evidence: SHA fragment, `git …` command, or URL — not prose restatement.
+
 ## Authority provenance (when exercising custodial authority)
 
 *Authority declared using [`docs/templates/EPICON_FOUNDER_STANDING.md`](./EPICON_FOUNDER_STANDING.md) v0.1*
@@ -63,12 +79,7 @@ Completion reports are **claims**. Acceptance requires ref-verification per [`do
 
 Every report-back MUST include:
 
-1. **Witness table**
-
-| Claim | Verdict | Evidence |
-| --- | --- | --- |
-
-Verdicts: `TRUE`, `FALSE`, `STALE`, `TRUE-gap`. Evidence: SHA, ref, command output, or resolvable link — never a restatement of the claim.
+1. **Witness table** — use the literal `## Witness Table` header and column names per I7 (see section above). Verdicts: `VERIFIED`, `DISPUTED`, `STALE`, `FAIL_CLOSED`. Evidence: SHA, ref, command output, or resolvable link — never a restatement of the claim.
 
 2. **Verification timestamp** (UTC)
 
