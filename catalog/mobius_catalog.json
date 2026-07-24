@@ -1,11 +1,11 @@
 {
   "mobius_catalog_version": "1.0.0",
-  "generated_at": "2026-07-23T17:41:24.954Z",
+  "generated_at": "2026-07-24T05:24:50.852Z",
   "repo": {
     "name": "Mobius-Substrate",
     "url": "https://github.com/kaizencycle/Mobius-Substrate",
     "default_branch": "main",
-    "commit": ""
+    "commit": "ce1ab29982e0c19029f28bac71de2ea5b3b46a72"
   },
   "stats": {
     "epiconCount": 0,
@@ -8238,7 +8238,7 @@
       "title": "C-381 — I7 Witness Table Enforcement",
       "category": "epicon",
       "tags": [],
-      "content_hash": "sha256:9f749c7a00a30d79160eb966ea0a054e5b291ddf11908167db0aca60fdd2edd9",
+      "content_hash": "sha256:5738bb23fd14a43df02dbc1a6ba55f267ccebb9750a8ea470fc696bb5ae01b5e",
       "summary": ""
     },
     {
@@ -8670,7 +8670,7 @@
       "title": "ATLAS Handoff Template",
       "category": "templates",
       "tags": [],
-      "content_hash": "sha256:497ac2522c9ee8a989c3f9d6e46672c9709b438de419013a7c7fe57c3e1467bd",
+      "content_hash": "sha256:51cda855df6da746ba747a7da4cc83b7bfd0d68424846e6dfd05d227da228ca5",
       "summary": ""
     },
     {
