@@ -1,8 +1,8 @@
 # Divergence Dashboard
 
 **Repo:** `kaizencycle/Mobius-Substrate`  
-**Generated:** `2026-07-24T14:06:59Z`  
-**Open PRs:** `8`
+**Generated:** `2026-07-24T19:43:03Z`  
+**Open PRs:** `9`
 
 ## Summary
 
@@ -10,7 +10,7 @@
 |----------|-------|
 | 🔴 High | 4 |
 | 🟡 Medium | 0 |
-| 🟢 Low | 0 |
+| 🟢 Low | 1 |
 | ⚪ Unknown | 4 |
 | 🚨 Emergency | 0 |
 
@@ -22,6 +22,7 @@
 | 🔴 high | [#408](https://github.com/kaizencycle/Mobius-Substrate/pull/408) | chore(deps): bump the actions group across 1 direc... | @dependabot[bot] | ? | ? | — | 2026-07-23 |
 | 🔴 high | [#418](https://github.com/kaizencycle/Mobius-Substrate/pull/418) | chore(deps): bump the npm-minor-patch group across... | @dependabot[bot] | ? | ? | — | 2026-07-23 |
 | 🔴 high | [#419](https://github.com/kaizencycle/Mobius-Substrate/pull/419) | canon(C-368): prime reserve blocks cold canon (194... | @kaizencycle | ? | ? | — | 2026-07-23 |
+| 🟢 low | [#421](https://github.com/kaizencycle/Mobius-Substrate/pull/421) | docs(C-382): version federation scan 20 optimizati... | @kaizencycle | ? | ? | — | 2026-07-24 |
 | ⚪ unknown | [#344](https://github.com/kaizencycle/Mobius-Substrate/pull/344) | chore(deps): bump zustand from 4.5.7 to 5.0.14 | @dependabot[bot] | ? | ? | — | 2026-06-30 |
 | ⚪ unknown | [#345](https://github.com/kaizencycle/Mobius-Substrate/pull/345) | chore(deps): bump lucide-react from 0.378.0 to 1.2... | @dependabot[bot] | ? | ? | — | 2026-07-07 |
 | ⚪ unknown | [#346](https://github.com/kaizencycle/Mobius-Substrate/pull/346) | chore(deps): bump tailwind-merge from 2.6.0 to 3.6... | @dependabot[bot] | ? | ? | — | 2026-06-30 |
