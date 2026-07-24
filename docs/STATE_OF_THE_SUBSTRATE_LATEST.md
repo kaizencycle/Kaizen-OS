@@ -1,7 +1,7 @@
 # State of the Substrate — Latest
 
-**Cycle:** C-381  
-**Updated:** 2026-07-23  
+**Cycle:** C-382  
+**Updated:** 2026-07-24  
 **GI:** ~0.90 · yellow *(editorial; use Live strip below for Terminal snapshot)*  
 **Custodian:** Michael (kaizencycle)
 
@@ -18,7 +18,8 @@
 
 ## Dateline
 
-**C-381** — handbook CI remediation, MkDocs cycle journal through C-381, live proof on this page.  
+**C-382** — federation scan (20 optimizations), CPC identity durability follow-through, verification preference on `main`.  
+**C-381** — handbook CI remediation, I7 witness table (warn), Docs Guard Phase 1.  
 **C-380** — external reality boundary (EPICON-000) and handbook progressive disclosure (AI Simple in Life).
 
 | Surface | URL |
@@ -33,7 +34,8 @@
 
 - **Handbook (C-380):** plain-language entry (`AI Simple in Life`), progressive-disclosure nav, reading-path cards — renderer only; `CANON → LEDGER → UI`
 - **EPICON-000 (C-380):** external reality boundary — public internet quarantined as witness pool, not truth source
-- **C-381:** Codex/CI remediation — cycle pointer sync, EPICON-02 intent, MkDocs journal nav, live proof tiles
+- **C-382:** Federation scan codified; CPC identity `ismount` port queued; security tooling backlog on four repos
+- **C-381:** Codex/CI remediation — cycle pointer sync, EPICON-02 intent, MkDocs journal nav, I7 warn mode
 - **C-379:** wallet infrastructure recovery advanced; durability redeploy witness still blocking (Civic-Protocol-Core)
 
 ---
@@ -49,7 +51,7 @@ Governance agents: ATLAS, ZEUS, EVE, JADE, AUREA, HERMES, ECHO, DAEDALUS, **URIE
 ## Read next
 
 1. [AI Simple in Life](./00-START-HERE/AI_SIMPLE_IN_LIFE.md) — handbook plain-language entry (C-380)
-2. [Cycle journal — C-381](./journals/C-381.md) — current cycle dateline
+2. [Cycle journal — C-382](./journals/C-382.md) — current cycle dateline
 3. [EPICON-000 — External Reality Boundary](./epicon/EPICON-000-external-reality-boundary.md) — witness pool doctrine
 4. [EPICON-C380-HANDBOOK-001](./epicon/EPICON-C380-HANDBOOK-001.md) — handbook progressive disclosure intent
 5. [Canon laws](./02-THEORETICAL-FOUNDATIONS/MOBIUS_CANON_LAWS.md)

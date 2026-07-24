@@ -1,15 +1,15 @@
 {
   "mobius_catalog_version": "1.0.0",
-  "generated_at": "2026-07-24T05:24:50.852Z",
+  "generated_at": "2026-07-24T17:42:47.324Z",
   "repo": {
     "name": "Mobius-Substrate",
     "url": "https://github.com/kaizencycle/Mobius-Substrate",
     "default_branch": "main",
-    "commit": "ce1ab29982e0c19029f28bac71de2ea5b3b46a72"
+    "commit": ""
   },
   "stats": {
     "epiconCount": 0,
-    "docCount": 1068
+    "docCount": 1071
   },
   "epicons": [],
   "docs": [
@@ -7250,7 +7250,7 @@
       "title": "Mobius Handbook — Generated Index",
       "category": "INDEX.md",
       "tags": [],
-      "content_hash": "sha256:19c975453eaa10c5c23c434a44d63a48a507e0841694662f027588955d6cdfe4",
+      "content_hash": "sha256:5229664c290058c11704f2af420e0a4847771ecc3b1568a2d92f9f52d82a6307",
       "summary": ""
     },
     {
@@ -7378,7 +7378,7 @@
       "title": "State of the Substrate — Latest",
       "category": "STATE_OF_THE_SUBSTRATE_LATEST.md",
       "tags": [],
-      "content_hash": "sha256:1d0e3d1eb807ef9c717807acf5f107d2e82763cc60e0e8cad25acb945f9ada17",
+      "content_hash": "sha256:1d2f752202962067f43170777ec54c8524a16c176e01bfc62aaca084282fd697",
       "summary": ""
     },
     {
@@ -8250,6 +8250,22 @@
       "summary": ""
     },
     {
+      "path": "docs/epicon/cycles/C-382/FEDERATION_SCAN_20_OPTIMIZATIONS.md",
+      "title": "C-382 — Federation Scan: 20 Optimizations",
+      "category": "epicon",
+      "tags": [],
+      "content_hash": "sha256:d10fdbcac182ba175eb9e185d2dbd197b8fba96f3b8be7fe8a005ede154a025c",
+      "summary": ""
+    },
+    {
+      "path": "docs/epicon/cycles/C-382/README.md",
+      "title": "C-382 — Federation scan & durability follow-through",
+      "category": "epicon",
+      "tags": [],
+      "content_hash": "sha256:a8e96165f10dc8f78c177c7e7a13ed0a3ae9407311afdfb938e1445b1a285855",
+      "summary": ""
+    },
+    {
       "path": "docs/epicon/cycles/C-ATLAS/EPICON_C-ATLAS_INFRA_mobiusatlas-agent-launch_v1.md",
       "title": "MobiusATLAS Agent Infrastructure Launch",
       "category": "epicon",
@@ -8351,6 +8367,14 @@
       "category": "journals",
       "tags": [],
       "content_hash": "sha256:48b8a6ee91ad264867e66f4b6f2ddb6f37037048302cc08cd1aa08ebed84d409",
+      "summary": ""
+    },
+    {
+      "path": "docs/journals/C-382.md",
+      "title": "Cycle Journal — C-382",
+      "category": "journals",
+      "tags": [],
+      "content_hash": "sha256:eb3a6a8d9bcdcf552d4369140341ebe562f5f86f09b17631b9390f4588182ac9",
       "summary": ""
     },
     {
