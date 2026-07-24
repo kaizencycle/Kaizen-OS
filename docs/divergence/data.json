@@ -1,9 +1,9 @@
 {
   "repo": "kaizencycle/Mobius-Substrate",
-  "generated_at": "2026-07-23T19:41:20Z",
-  "open_pr_count": 7,
+  "generated_at": "2026-07-24T03:37:17Z",
+  "open_pr_count": 8,
   "by_severity": {
-    "high": 3,
+    "high": 4,
     "medium": 0,
     "low": 0,
     "unknown": 4
@@ -56,6 +56,25 @@
       "has_debt": false,
       "severity": "high",
       "justification_hash": "",
+      "checks": {
+        "epicon": "unknown",
+        "merge_gate": "unknown"
+      }
+    },
+    {
+      "pr": 419,
+      "title": "canon(C-368): prime reserve blocks cold canon (194 blocks)",
+      "url": "https://github.com/kaizencycle/Mobius-Substrate/pull/419",
+      "author": "kaizencycle",
+      "updated_at": "2026-07-23T23:45:06Z",
+      "created_at": "2026-07-23T23:41:37Z",
+      "labels": [
+        "scope:specs"
+      ],
+      "mode": "normal",
+      "has_debt": false,
+      "severity": "high",
+      "justification_hash": "6278f3908188bbe4665dbac6cde3a6b08eb6d2b6de56d8628359247de6d06bc7",
       "checks": {
         "epicon": "unknown",
         "merge_gate": "unknown"
