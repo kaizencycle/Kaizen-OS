@@ -1,15 +1,15 @@
 {
   "mobius_catalog_version": "1.0.0",
-  "generated_at": "2026-07-24T05:24:50.852Z",
+  "generated_at": "2026-07-24T16:23:16.067Z",
   "repo": {
     "name": "Mobius-Substrate",
     "url": "https://github.com/kaizencycle/Mobius-Substrate",
     "default_branch": "main",
-    "commit": "ce1ab29982e0c19029f28bac71de2ea5b3b46a72"
+    "commit": "48d32042d3ad46f53ff4287f078dc443e76fecdc"
   },
   "stats": {
     "epiconCount": 0,
-    "docCount": 1068
+    "docCount": 1070
   },
   "epicons": [],
   "docs": [
@@ -8247,6 +8247,22 @@
       "category": "epicon",
       "tags": [],
       "content_hash": "sha256:bef0ca6502cbbb8e81b283e996ea7b31687ab25bd6b9c30ec3987e4f13459939",
+      "summary": ""
+    },
+    {
+      "path": "docs/epicon/cycles/C-382/FEDERATION_SCAN_20_OPTIMIZATIONS.md",
+      "title": "C-382 — Federation Scan: 20 Optimizations",
+      "category": "epicon",
+      "tags": [],
+      "content_hash": "sha256:cc93732e842b8c637ff47d53b73c29c6a20e574c2d2907ca77653bce2d036e9b",
+      "summary": ""
+    },
+    {
+      "path": "docs/epicon/cycles/C-382/README.md",
+      "title": "C-382 — Federation scan & durability follow-through",
+      "category": "epicon",
+      "tags": [],
+      "content_hash": "sha256:a8e96165f10dc8f78c177c7e7a13ed0a3ae9407311afdfb938e1445b1a285855",
       "summary": ""
     },
     {
