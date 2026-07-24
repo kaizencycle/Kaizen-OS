@@ -2,8 +2,8 @@
 
 # Mobius Handbook — Generated Index
 
-**Cycle:** C-381  
-**Generated:** 2026-07-23  
+**Cycle:** C-382  
+**Generated:** 2026-07-24  
 **Source of truth:** [`mkdocs.yml`](../mkdocs.yml) navigation
 
 > This file is a build artifact. Edit navigation in `mkdocs.yml`, then run `npm run docs:generate-index`.
@@ -37,7 +37,7 @@
 - [State of the Substrate](./STATE_OF_THE_SUBSTRATE_LATEST.md) — `STATE_OF_THE_SUBSTRATE_LATEST.md`
 ### journals
 
-- [Cycle journal — C-381](./journals/C-381.md) — `journals/C-381.md`
+- [Cycle journal — C-382](./journals/C-382.md) — `journals/C-382.md`
 ### 02-THEORETICAL-FOUNDATIONS
 
 - [Canon laws](./02-THEORETICAL-FOUNDATIONS/MOBIUS_CANON_LAWS.md) — `02-THEORETICAL-FOUNDATIONS/MOBIUS_CANON_LAWS.md`
@@ -86,7 +86,8 @@
 - [Full documentation index](./INDEX.md) — `INDEX.md`
 ### journals
 
-- [C-381 (current)](./journals/C-381.md) — `journals/C-381.md`
+- [C-382 (current)](./journals/C-382.md) — `journals/C-382.md`
+- [C-381](./journals/C-381.md) — `journals/C-381.md`
 - [C-380](./journals/C-380.md) — `journals/C-380.md`
 - [C-379](./journals/C-379.md) — `journals/C-379.md`
 - [C-378](./journals/C-378.md) — `journals/C-378.md`
@@ -95,8 +96,7 @@
 - [C-365](./journals/C-365.md) — `journals/C-365.md`
 - [C-360](./journals/C-360.md) — `journals/C-360.md`
 - [C-357](./journals/C-357.md) — `journals/C-357.md`
-- [C-356](./journals/C-356.md) — `journals/C-356.md`
-- [C-356 and earlier](./journals/archive.md) — `journals/archive.md`
+- [C-357 and earlier](./journals/archive.md) — `journals/archive.md`
 ### 10-ARCHIVES
 
 - [Archive index](./10-ARCHIVES/archive/README.md) — `10-ARCHIVES/archive/README.md`
@@ -112,5 +112,5 @@
 
 ---
 
-*Generated for cycle C-381. "We heal as we walk."*
+*Generated for cycle C-382. "We heal as we walk."*
 

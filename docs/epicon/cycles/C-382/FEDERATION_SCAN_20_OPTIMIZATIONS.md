@@ -4,6 +4,17 @@
 **Status:** Planning artifact — scan complete, implementation not started  
 **Method:** Live `git clone` of all five federation repos (not `web_fetch` on rendered GitHub pages), per [verification preference](../C-381/I7_WITNESS_TABLE_ENFORCEMENT.md) codified in C-381.
 
+## Authority Provenance
+
+| Field | Value |
+|-------|-------|
+| **Custodian** | Michael Judan (kaizencycle) |
+| **Standing** | Founder / substrate custodian |
+| **Cycle** | C-382 |
+| **Status** | Planning artifact — federation scan, not doctrine amendment |
+
+*Authority declared using [`docs/templates/EPICON_FOUNDER_STANDING.md`](../../../templates/EPICON_FOUNDER_STANDING.md) v0.1*
+
 ## Provenance
 
 The initial scan was produced in a custodian orchestration session (Claude) with direct bash clones of `Mobius-Substrate`, `mobius-civic-ai-terminal`, `Civic-Protocol-Core`, `mobius-browser-shell`, and `mobius-hive`.
