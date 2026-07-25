@@ -1,11 +1,11 @@
 {
   "repo": "kaizencycle/Mobius-Substrate",
-  "generated_at": "2026-07-25T13:57:57Z",
+  "generated_at": "2026-07-25T19:30:27Z",
   "open_pr_count": 9,
   "by_severity": {
-    "high": 5,
+    "high": 4,
     "medium": 0,
-    "low": 0,
+    "low": 1,
     "unknown": 4
   },
   "emergency_count": 0,
@@ -81,17 +81,24 @@
       }
     },
     {
-      "pr": 422,
-      "title": "fix(canon): C-383 cycle ledger verification (#11)",
-      "url": "https://github.com/kaizencycle/Mobius-Substrate/pull/422",
+      "pr": 423,
+      "title": "feat(c383): reconciliation report generator (#20)",
+      "url": "https://github.com/kaizencycle/Mobius-Substrate/pull/423",
       "author": "kaizencycle",
-      "updated_at": "2026-07-25T13:21:53Z",
-      "created_at": "2026-07-25T13:20:14Z",
-      "labels": [],
+      "updated_at": "2026-07-25T18:17:37Z",
+      "created_at": "2026-07-25T17:04:07Z",
+      "labels": [
+        "scope:docs",
+        "consensus:requested",
+        "scope:specs",
+        "scope:ci",
+        "review:atlas",
+        "needs-custodian-review"
+      ],
       "mode": "normal",
       "has_debt": false,
-      "severity": "high",
-      "justification_hash": "",
+      "severity": "low",
+      "justification_hash": "3babb8cb21edbcfc614308ac78f2156e11b9af1b5f19f5ed2d6e694520f43b7b",
       "checks": {
         "epicon": "unknown",
         "merge_gate": "unknown"
