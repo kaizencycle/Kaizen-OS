@@ -101,6 +101,11 @@ def fetch_ledger_pulse(base_url: str, timeout: float = 15.0) -> LedgerFetchResul
     )
 
 
+def is_atlas_cycle_journal(data: dict[str, Any] | None) -> bool:
+    """Full ATLAS/issue-compiled journal (meta/signals/seal) — not Layer-1 writer stub."""
+    return bool(data and isinstance(data.get("meta"), dict))
+
+
 def gi_attestation_status(snapshot: dict[str, Any] | None) -> tuple[bool, str | None]:
     if not snapshot:
         return False, "NO_LEDGER_SNAPSHOT"
@@ -129,7 +134,9 @@ def build_ledger_journal_fields(
     if fetch.error:
         fields["ledger_fetch_error"] = fetch.error
     if fetch.health:
-        fields["ledger_health_ephemeral"] = fetch.health.get("ephemeral_storage")
+        ephemeral = fetch.health.get("ephemeral_storage")
+        if isinstance(ephemeral, bool):
+            fields["ledger_health_ephemeral"] = ephemeral
     return fields
 
 
@@ -157,6 +164,8 @@ def merge_journal_record(
 
 def should_refresh_ledger_fields(existing: dict[str, Any] | None) -> bool:
     """Re-fetch when pulse unverified, or verified but GI not yet attested in journal."""
+    if is_atlas_cycle_journal(existing):
+        return False
     if not existing:
         return True
     if existing.get("ledger_verified") is not True:

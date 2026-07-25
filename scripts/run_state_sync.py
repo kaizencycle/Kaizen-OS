@@ -16,6 +16,7 @@ from state_sync_cycle import (  # noqa: E402
     build_ledger_journal_fields,
     compute_cycle_id,
     fetch_ledger_pulse,
+    is_atlas_cycle_journal,
     merge_journal_record,
     should_refresh_ledger_fields,
 )
@@ -73,7 +74,12 @@ def main() -> int:
         with journal_path.open() as f:
             existing = json.load(f)
 
-    if not journal_path.exists() or should_refresh_ledger_fields(existing):
+    if existing is not None and is_atlas_cycle_journal(existing):
+        print(
+            "::warning::skipping ledger witness write — ATLAS cycle journal present "
+            f"({journal_path.name}); Layer-1 fields must not overwrite meta/signals journal"
+        )
+    elif not journal_path.exists() or should_refresh_ledger_fields(existing):
         record = merge_journal_record(existing, cycle, today, ledger_fields)
         with journal_path.open("w") as f:
             json.dump(record, f, indent=2)

@@ -41,6 +41,7 @@ Evidence at parent of fix branch (`git show origin/main:.github/workflows/mobius
 - Resolve ledger base: `LEDGER_BASE_URL` → `LEDGER_BASE_URL_FALLBACK` (workflow) → `DEFAULT_LEDGER_BASE_URL` (public Render ledger).
 - When `ledger_verified` is false, **re-fetch** on subsequent runs (`should_refresh_ledger_fields`).
 - While `ledger_verified` is true but `ledger_gi_attested` is false, **keep re-fetching** so a later non-null `gi` in pulse upgrades the journal with `cycle.json`.
+- **ATLAS journals** (`meta` present) are never overwritten by Layer-1 ledger fields.
 - Emit explicit enums: `ledger_withheld_reason` (`LEDGER_URL_UNCONFIGURED`, `LEDGER_PULSE_UNREACHABLE`), `ledger_gi_withheld_reason` (`GI_NULL_IN_PULSE`).
 
 ## Live ledger witness (2026-07-25)

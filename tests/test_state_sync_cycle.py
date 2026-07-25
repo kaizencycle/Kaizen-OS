@@ -13,6 +13,7 @@ from scripts.state_sync_cycle import (
     compute_cycle_id,
     fetch_ledger_pulse,
     gi_attestation_status,
+    is_atlas_cycle_journal,
     merge_journal_record,
     should_refresh_ledger_fields,
 )
@@ -80,8 +81,25 @@ class TestJournalFields(unittest.TestCase):
         self.assertFalse(fields["ledger_gi_attested"])
         self.assertEqual(fields["ledger_gi_withheld_reason"], "GI_NULL_IN_PULSE")
 
+    def test_health_omits_null_ephemeral(self):
+        fetch = LedgerFetchResult(
+            verified=True,
+            withheld_reason=None,
+            snapshot={"gi": None},
+            health={},
+            witness_url="https://x/pulse/state",
+            error=None,
+        )
+        fields = build_ledger_journal_fields(fetch, "2026-07-25T12:00:00Z")
+        self.assertNotIn("ledger_health_ephemeral", fields)
+
 
 class TestRefreshPolicy(unittest.TestCase):
+    def test_atlas_journal_never_refreshed(self):
+        atlas = {"meta": {"cycle_id": "C-100", "date": "2026-01-01", "timezone": "UTC", "chamber": "x"}}
+        self.assertTrue(is_atlas_cycle_journal(atlas))
+        self.assertFalse(should_refresh_ledger_fields(atlas))
+
     def test_refresh_when_false(self):
         self.assertTrue(should_refresh_ledger_fields({"ledger_verified": False}))
 
