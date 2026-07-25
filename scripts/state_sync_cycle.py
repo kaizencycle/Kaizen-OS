@@ -8,7 +8,6 @@ Civic Ledger /pulse/state (and optional /health) for journals/cycles/*.json.
 from __future__ import annotations
 
 import json
-import os
 import urllib.error
 import urllib.request
 from dataclasses import dataclass

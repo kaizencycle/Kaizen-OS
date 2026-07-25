@@ -1,7 +1,7 @@
 # State of the Substrate — Latest
 
-**Cycle:** C-382  
-**Updated:** 2026-07-24  
+**Cycle:** C-383  
+**Updated:** 2026-07-25  
 **GI:** ~0.90 · yellow *(editorial; use Live strip below for Terminal snapshot)*  
 **Custodian:** Michael (kaizencycle)
 
@@ -18,6 +18,7 @@
 
 ## Dateline
 
+**C-383** — cycle journal ledger verification (#11): trace `ledger_verified` to `/pulse/state` witness.  
 **C-382** — federation scan (20 optimizations), CPC identity durability follow-through, verification preference on `main`.  
 **C-381** — handbook CI remediation, I7 witness table (warn), Docs Guard Phase 1.  
 **C-380** — external reality boundary (EPICON-000) and handbook progressive disclosure (AI Simple in Life).

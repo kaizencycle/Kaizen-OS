@@ -1,15 +1,15 @@
 {
   "mobius_catalog_version": "1.0.0",
-  "generated_at": "2026-07-25T05:18:56.111Z",
+  "generated_at": "2026-07-25T15:33:26.859Z",
   "repo": {
     "name": "Mobius-Substrate",
     "url": "https://github.com/kaizencycle/Mobius-Substrate",
     "default_branch": "main",
-    "commit": "6b99238698582031d44a99b3ede16990bab5bfb8"
+    "commit": ""
   },
   "stats": {
     "epiconCount": 0,
-    "docCount": 1071
+    "docCount": 1072
   },
   "epicons": [],
   "docs": [
@@ -8263,6 +8263,14 @@
       "category": "epicon",
       "tags": [],
       "content_hash": "sha256:a8e96165f10dc8f78c177c7e7a13ed0a3ae9407311afdfb938e1445b1a285855",
+      "summary": ""
+    },
+    {
+      "path": "docs/epicon/cycles/C-383/CYCLE_LEDGER_VERIFICATION.md",
+      "title": "C-383 — Cycle journal ledger verification (#11)",
+      "category": "epicon",
+      "tags": [],
+      "content_hash": "sha256:818d73702b518927243515651d161fc781d197ff7785e1d7a0e12d8b50889576",
       "summary": ""
     },
     {

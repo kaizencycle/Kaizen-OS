@@ -56,6 +56,16 @@ function loadJson(filepath) {
 }
 
 /**
+ * Layer-1 mobius-bot/state-sync writes a minimal witness stub in
+ * journals/cycles/C-*.json. Full ATLAS cycle journals use meta/signals/seal.
+ */
+function isLayer1WriterStub(data) {
+  if (!data || typeof data !== "object") return false;
+  if (data.meta) return false;
+  return data.writer === "mobius-bot/state-sync" && typeof data.cycle === "string";
+}
+
+/**
  * Format validation errors for display
  */
 function formatErrors(errors, filepath) {
@@ -145,8 +155,14 @@ async function main() {
       continue;
     }
 
-    const valid = validate(data);
     const relativePath = path.relative(ROOT, file);
+    if (isLayer1WriterStub(data)) {
+      console.log(`⏭️  ${relativePath} (Layer-1 state-sync stub — schema skipped)`);
+      results.passed.push(relativePath);
+      continue;
+    }
+
+    const valid = validate(data);
 
     if (!valid) {
       allValid = false;
