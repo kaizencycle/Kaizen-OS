@@ -1,15 +1,15 @@
 {
   "mobius_catalog_version": "1.0.0",
-  "generated_at": "2026-07-25T15:49:41.083Z",
+  "generated_at": "2026-07-25T17:03:57.560Z",
   "repo": {
     "name": "Mobius-Substrate",
     "url": "https://github.com/kaizencycle/Mobius-Substrate",
     "default_branch": "main",
-    "commit": "ce60be4a6d538b391d3ec5bf634d8dcf6869d578"
+    "commit": "349691decce930366eb7dea22d17d1d510566d82"
   },
   "stats": {
     "epiconCount": 0,
-    "docCount": 1073
+    "docCount": 1075
   },
   "epicons": [],
   "docs": [
@@ -8271,6 +8271,22 @@
       "category": "epicon",
       "tags": [],
       "content_hash": "sha256:e1035d0faaaa51a2f06be52d48fa981cee6969bb0a6cebd188cdce09398de421",
+      "summary": ""
+    },
+    {
+      "path": "docs/epicon/cycles/C-383/LEDGER_GI_SOURCE_TRACE.md",
+      "title": "C-383 — Ledger GI source trace (`gi_source_unwired`)",
+      "category": "epicon",
+      "tags": [],
+      "content_hash": "sha256:6598b1842b0915f7529e3a647dc14035276cadd3ddfeee300d6e687b0f7fa8e6",
+      "summary": ""
+    },
+    {
+      "path": "docs/epicon/cycles/C-383/RECONCILIATION_REPORT.md",
+      "title": "C-383 — Reconciliation report generator (#20)",
+      "category": "epicon",
+      "tags": [],
+      "content_hash": "sha256:5e29981a1fa4756ceec938d5bf7732a895255c90cc0c0f7d3990c1bcfd5b0075",
       "summary": ""
     },
     {
