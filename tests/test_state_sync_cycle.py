@@ -8,6 +8,7 @@ from datetime import date
 from unittest.mock import patch
 
 from scripts.state_sync_cycle import (
+    LedgerFetchResult,
     build_ledger_journal_fields,
     compute_cycle_id,
     fetch_ledger_pulse,
@@ -66,8 +67,6 @@ class TestGiAttestation(unittest.TestCase):
 
 class TestJournalFields(unittest.TestCase):
     def test_verified_with_gi_null_sets_gi_withheld(self):
-        from scripts.state_sync_cycle import LedgerFetchResult
-
         fetch = LedgerFetchResult(
             verified=True,
             withheld_reason=None,
@@ -86,8 +85,42 @@ class TestRefreshPolicy(unittest.TestCase):
     def test_refresh_when_false(self):
         self.assertTrue(should_refresh_ledger_fields({"ledger_verified": False}))
 
-    def test_skip_when_true(self):
-        self.assertFalse(should_refresh_ledger_fields({"ledger_verified": True}))
+    def test_refresh_when_verified_but_gi_not_attested(self):
+        self.assertTrue(
+            should_refresh_ledger_fields(
+                {"ledger_verified": True, "ledger_gi_attested": False}
+            )
+        )
+
+    def test_skip_when_verified_and_gi_attested(self):
+        self.assertFalse(
+            should_refresh_ledger_fields(
+                {"ledger_verified": True, "ledger_gi_attested": True}
+            )
+        )
+
+    def test_merge_clears_stale_failure_fields(self):
+        existing = {
+            "ledger_verified": False,
+            "ledger_withheld_reason": "LEDGER_PULSE_UNREACHABLE",
+            "ledger_fetch_error": "timeout",
+        }
+        fields = build_ledger_journal_fields(
+            LedgerFetchResult(
+                verified=True,
+                withheld_reason=None,
+                snapshot={"gi": 0.91},
+                health=None,
+                witness_url="https://x/pulse/state",
+                error=None,
+            ),
+            "2026-07-25T12:00:00Z",
+        )
+        out = merge_journal_record(existing, "C-383", date(2026, 7, 25), fields)
+        self.assertTrue(out["ledger_verified"])
+        self.assertNotIn("ledger_withheld_reason", out)
+        self.assertNotIn("ledger_fetch_error", out)
+        self.assertTrue(out["ledger_gi_attested"])
 
     def test_merge_preserves_narrative(self):
         existing = {"narrative": "ATLAS note", "ledger_verified": False}

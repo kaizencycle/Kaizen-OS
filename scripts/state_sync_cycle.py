@@ -19,6 +19,19 @@ DEFAULT_LEDGER_BASE_URL = "https://civic-protocol-core-ledger.onrender.com"
 ANCHOR_CYCLE = 288
 ANCHOR_DATE = date(2026, 4, 21)
 
+# Replaced wholesale on each ledger refresh (avoids stale failure fields after retry).
+LEDGER_JOURNAL_KEYS = (
+    "ledger_verified",
+    "ledger_snapshot",
+    "ledger_snapshot_at",
+    "ledger_witness_url",
+    "ledger_gi_attested",
+    "ledger_withheld_reason",
+    "ledger_gi_withheld_reason",
+    "ledger_fetch_error",
+    "ledger_health_ephemeral",
+)
+
 
 @dataclass
 class LedgerFetchResult:
@@ -136,14 +149,18 @@ def merge_journal_record(
     base["date"] = today.isoformat()
     base.setdefault("writer", "mobius-bot/state-sync")
     base.setdefault("narrative", None)
+    for key in LEDGER_JOURNAL_KEYS:
+        base.pop(key, None)
     base.update(ledger_fields)
     return base
 
 
 def should_refresh_ledger_fields(existing: dict[str, Any] | None) -> bool:
-    """Re-fetch ledger when never verified or prior fetch failed."""
+    """Re-fetch when pulse unverified, or verified but GI not yet attested in journal."""
     if not existing:
         return True
-    if existing.get("ledger_verified") is True:
-        return False
-    return True
+    if existing.get("ledger_verified") is not True:
+        return True
+    if existing.get("ledger_gi_attested") is not True:
+        return True
+    return False
