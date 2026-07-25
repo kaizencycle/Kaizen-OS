@@ -1,15 +1,15 @@
 {
   "mobius_catalog_version": "1.0.0",
-  "generated_at": "2026-07-25T15:49:41.083Z",
+  "generated_at": "2026-07-25T16:23:20.022Z",
   "repo": {
     "name": "Mobius-Substrate",
     "url": "https://github.com/kaizencycle/Mobius-Substrate",
     "default_branch": "main",
-    "commit": "ce60be4a6d538b391d3ec5bf634d8dcf6869d578"
+    "commit": "b9d25f72cc085489ac3e99248965127c74dd89ab"
   },
   "stats": {
     "epiconCount": 0,
-    "docCount": 1073
+    "docCount": 1074
   },
   "epicons": [],
   "docs": [
@@ -8270,7 +8270,15 @@
       "title": "C-383 — Cycle journal ledger verification (#11)",
       "category": "epicon",
       "tags": [],
-      "content_hash": "sha256:e1035d0faaaa51a2f06be52d48fa981cee6969bb0a6cebd188cdce09398de421",
+      "content_hash": "sha256:a0cbddd946cbcf7729a7f9bebf86d4be70e5d2cd67c47a67f2f5c107802a2641",
+      "summary": ""
+    },
+    {
+      "path": "docs/epicon/cycles/C-383/LEDGER_GI_SOURCE_TRACE.md",
+      "title": "C-383 — Ledger GI source trace (`gi_source_unwired`)",
+      "category": "epicon",
+      "tags": [],
+      "content_hash": "sha256:7bcd739651fa4c1a9633146b4c23594fb5fc3bb0b4c8a657622dae5518148910",
       "summary": ""
     },
     {
@@ -8390,7 +8398,7 @@
       "title": "Cycle Journal — C-383",
       "category": "journals",
       "tags": [],
-      "content_hash": "sha256:bd79f36d9a257328b252bdda71adce093777eb9958dd9081dcfabef5bb2b8488",
+      "content_hash": "sha256:8132703298f660b3cee69678aecd7709cc8bc403a73a49f842d5ad4d9398ad5b",
       "summary": ""
     },
     {

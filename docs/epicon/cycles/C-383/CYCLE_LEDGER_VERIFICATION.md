@@ -21,7 +21,7 @@ As of the trace that motivated this doc (2026-07-25 UTC), `C-383.json` on `main`
 |--------|--------|---------|
 | ZEUS / sentinel quorum | EPICON consensus paths | Whether required sentinels attested the **PR / intent** |
 | `ledger_verified` | `GET {ledger}/pulse/state` HTTP success | Whether Layer-1 captured a **ledger pulse witness** for the cycle journal |
-| `ledger_gi_attested` | `gi` non-null in that pulse | Whether GI in the pulse is present (separate from HTTP reachability) |
+| `ledger_gi_attested` | `gi` non-null in that pulse | Whether GI in the pulse is present (separate from HTTP reachability). When null, see **[LEDGER_GI_SOURCE_TRACE.md](./LEDGER_GI_SOURCE_TRACE.md)** — reconciliation code **`gi_source_unwired`** (no writer feeds `GI_STATE_JSON` / `gi_state.json`), not “ledger failed to attest.” |
 
 Quorum closing does **not** set `ledger_verified`; only the state-sync writer does.
 
@@ -51,7 +51,11 @@ curl -sS https://civic-protocol-core-ledger.onrender.com/pulse/state
 # {"cycle":"unknown","gi":null,"attested_at":"..."}
 ```
 
-HTTP **200** → after fix, expect `ledger_verified: true` with snapshot preserved and `ledger_gi_attested: false` until the ledger publishes non-null `gi`.
+HTTP **200** → after fix, expect `ledger_verified: true` with snapshot preserved and `ledger_gi_attested: false` until something wires GI into the ledger (see [LEDGER_GI_SOURCE_TRACE.md](./LEDGER_GI_SOURCE_TRACE.md)).
+
+## Related
+
+- [LEDGER_GI_SOURCE_TRACE.md](./LEDGER_GI_SOURCE_TRACE.md) — live `/docs` API map, `gi_source_unwired`, vault witness divergence
 
 ## Witness Table
 
