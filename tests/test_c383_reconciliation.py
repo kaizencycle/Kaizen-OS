@@ -218,6 +218,28 @@ def test_git_show_timeout_returns_ok_false():
     assert "timed out" in (err or "")
 
 
+def test_coerce_witness_object_rejects_non_dict():
+    ok, data, err = recon._coerce_witness_object(True, None, None)
+    assert not ok
+    assert data is None
+    assert "object" in (err or "")
+
+
+def test_find_cycle_disagreements_ignores_non_dict_ok_witness():
+    witnesses = [make_witness("substrate_cycle_json", ok=True, value=[])]
+    assert recon.find_cycle_disagreements(witnesses) == []
+
+
+def test_build_report_with_non_dict_witness_does_not_crash(monkeypatch):
+    def fake_collect(_git_ref):
+        return [make_witness("substrate_cycle_json", ok=True, value="not-a-dict")]
+
+    monkeypatch.setattr(recon, "collect_witnesses", fake_collect)
+    report = recon.build_report()
+    assert report.verdict in ("CLARIFY", "QUARANTINE", "PASS")
+    assert any(d["type"] == "witness_unavailable" for d in report.disagreements)
+
+
 def test_report_never_averages_gi():
     src = (SCRIPTS / "c383_reconciliation.py").read_text()
     assert "mean(" not in src

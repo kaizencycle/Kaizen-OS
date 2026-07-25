@@ -76,10 +76,26 @@ def _now() -> str:
     return datetime.now(timezone.utc).isoformat()
 
 
+def _coerce_witness_object(
+    ok: bool, data: Any, err: str | None
+) -> tuple[bool, Any, str | None]:
+    if not ok:
+        return ok, data, err
+    if isinstance(data, dict):
+        return True, data, None
+    return False, None, f"expected JSON object, got {type(data).__name__}"
+
+
+def witness_payload(w: Witness | None) -> dict[str, Any] | None:
+    if not w or not w.ok or not isinstance(w.value, dict):
+        return None
+    return w.value
+
+
 def fetch_json(url: str, timeout: float = 15.0) -> tuple[bool, Any, str | None]:
     try:
         with urllib.request.urlopen(url, timeout=timeout) as r:
-            return True, json.load(r), None
+            return _coerce_witness_object(True, json.load(r), None)
     except (
         urllib.error.URLError,
         urllib.error.HTTPError,
@@ -99,7 +115,7 @@ def git_show(ref: str, path: str) -> tuple[bool, Any, str | None]:
             timeout=15,
             check=True,
         )
-        return True, json.loads(out.stdout), None
+        return _coerce_witness_object(True, json.loads(out.stdout), None)
     except subprocess.TimeoutExpired:
         return False, None, "git show timed out after 15s"
     except subprocess.CalledProcessError as e:
@@ -248,8 +264,14 @@ def find_gi_disagreements(observations: list[dict]) -> list[dict]:
     return disagreements
 
 
+def witness_effective_ok(w: Witness) -> bool:
+    return w.ok and isinstance(w.value, dict)
+
+
 def find_witness_unavailable(witnesses: list[Witness]) -> list[dict]:
-    failed = [w for w in witnesses if w.name in REQUIRED_WITNESS_NAMES and not w.ok]
+    failed = [
+        w for w in witnesses if w.name in REQUIRED_WITNESS_NAMES and not witness_effective_ok(w)
+    ]
     if not failed:
         return []
     return [
@@ -257,7 +279,17 @@ def find_witness_unavailable(witnesses: list[Witness]) -> list[dict]:
             "type": "witness_unavailable",
             "note": "required witness fetch failed — reconciliation incomplete; not PASS",
             "failures": [
-                {"name": w.name, "source": w.source, "error": w.error} for w in failed
+                {
+                    "name": w.name,
+                    "source": w.source,
+                    "error": w.error
+                    or (
+                        f"expected JSON object, got {type(w.value).__name__}"
+                        if w.ok
+                        else "witness not ok"
+                    ),
+                }
+                for w in failed
             ],
         }
     ]
@@ -266,9 +298,10 @@ def find_witness_unavailable(witnesses: list[Witness]) -> list[dict]:
 def find_gi_source_unwired(witnesses: list[Witness]) -> list[dict]:
     by_name = {w.name: w for w in witnesses}
     ledger = by_name.get("ledger_pulse")
-    if not (ledger and ledger.ok and isinstance(ledger.value, dict)):
+    payload = witness_payload(ledger)
+    if payload is None:
         return []
-    if ledger.value.get("gi") is not None:
+    if payload.get("gi") is not None:
         return []
     return [
         {
@@ -291,21 +324,25 @@ def find_cycle_disagreements(witnesses: list[Witness]) -> list[dict]:
     cycles: dict[str, str | None] = {}
 
     cyc = by_name.get("substrate_cycle_json")
-    if cyc and cyc.ok:
-        cycles["substrate_cycle_json"] = cyc.value.get("current_cycle")
+    cyc_p = witness_payload(cyc)
+    if cyc_p is not None:
+        cycles["substrate_cycle_json"] = cyc_p.get("current_cycle")
 
     wh = by_name.get("substrate_writer_health")
-    if wh and wh.ok:
-        cycles["substrate_writer_health"] = wh.value.get("last_cycle")
+    wh_p = witness_payload(wh)
+    if wh_p is not None:
+        cycles["substrate_writer_health"] = wh_p.get("last_cycle")
 
     snap = by_name.get("terminal_snapshot_lite")
-    if snap and snap.ok:
-        cycles["terminal_snapshot_lite.cycle"] = snap.value.get("cycle")
-        cycles["terminal_snapshot_lite.scan_cycle"] = snap.value.get("scan_cycle")
+    snap_p = witness_payload(snap)
+    if snap_p is not None:
+        cycles["terminal_snapshot_lite.cycle"] = snap_p.get("cycle")
+        cycles["terminal_snapshot_lite.scan_cycle"] = snap_p.get("scan_cycle")
 
     ledger = by_name.get("ledger_pulse")
-    if ledger and ledger.ok:
-        cycles["ledger_pulse"] = ledger.value.get("cycle")
+    ledger_p = witness_payload(ledger)
+    if ledger_p is not None:
+        cycles["ledger_pulse"] = ledger_p.get("cycle")
 
     resolved = {v for v in cycles.values() if v not in UNRESOLVED_CYCLE_MARKERS}
     disagreements = []
@@ -338,8 +375,8 @@ def find_vault_divergence(witnesses: list[Witness]) -> list[dict]:
     if not (ledger_vault and ledger_vault.ok and terminal_vault and terminal_vault.ok):
         return []
 
-    lv = ledger_vault.value or {}
-    tv = terminal_vault.value or {}
+    lv = witness_payload(ledger_vault) or {}
+    tv = witness_payload(terminal_vault) or {}
 
     ledger_id = lv.get("vault_id")
     terminal_id = tv.get("vault_id")
@@ -395,20 +432,21 @@ def find_gate_status(witnesses: list[Witness]) -> list[dict]:
     gates = []
 
     cyc = by_name.get("substrate_cycle_json")
-    if cyc and cyc.ok:
-        vault = cyc.value.get("vault", {}) or {}
-        if vault.get("fountain_status") == "locked":
+    cyc_p = witness_payload(cyc)
+    if cyc_p is not None:
+        vault = cyc_p.get("vault", {}) or {}
+        if isinstance(vault, dict) and vault.get("fountain_status") == "locked":
             gates.append(
                 {"gate": "fountain_gi_below_threshold", "source": "substrate_cycle_json", "status": "open"}
             )
 
     vault_status = by_name.get("terminal_vault_status")
-    if vault_status and vault_status.ok:
-        v = vault_status.value
+    v = witness_payload(vault_status)
+    if v is not None:
         if not v.get("sustain_cycles_met", True):
             gates.append({"gate": "sustain_not_wired", "source": "terminal_vault_status", "status": "open"})
         gate_info = v.get("integrity_gate") or v.get("seal_integrity_gate") or {}
-        if gate_info.get("sealing_suspended"):
+        if isinstance(gate_info, dict) and gate_info.get("sealing_suspended"):
             gates.append(
                 {
                     "gate": "cold_canon_append_pending",
@@ -445,7 +483,8 @@ def build_report(git_ref: str = "origin/main") -> Report:
 
     by_name = {w.name: w for w in witnesses}
     cyc = by_name.get("substrate_cycle_json")
-    cycle = cyc.value.get("current_cycle") if (cyc and cyc.ok) else None
+    cyc_p = witness_payload(cyc)
+    cycle = cyc_p.get("current_cycle") if cyc_p else None
 
     report = Report(cycle=cycle)
     report.canon = {"source": "git:cycle.json", "ok": cyc.ok if cyc else False}
