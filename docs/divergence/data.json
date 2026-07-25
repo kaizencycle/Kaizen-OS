@@ -1,11 +1,11 @@
 {
   "repo": "kaizencycle/Mobius-Substrate",
-  "generated_at": "2026-07-24T19:43:03Z",
-  "open_pr_count": 9,
+  "generated_at": "2026-07-25T03:33:15Z",
+  "open_pr_count": 8,
   "by_severity": {
     "high": 4,
     "medium": 0,
-    "low": 1,
+    "low": 0,
     "unknown": 4
   },
   "emergency_count": 0,
@@ -75,27 +75,6 @@
       "has_debt": false,
       "severity": "high",
       "justification_hash": "6278f3908188bbe4665dbac6cde3a6b08eb6d2b6de56d8628359247de6d06bc7",
-      "checks": {
-        "epicon": "unknown",
-        "merge_gate": "unknown"
-      }
-    },
-    {
-      "pr": 421,
-      "title": "docs(C-382): version federation scan 20 optimizations",
-      "url": "https://github.com/kaizencycle/Mobius-Substrate/pull/421",
-      "author": "kaizencycle",
-      "updated_at": "2026-07-24T17:45:43Z",
-      "created_at": "2026-07-24T16:23:44Z",
-      "labels": [
-        "scope:docs",
-        "consensus:approved",
-        "needs-custodian-review"
-      ],
-      "mode": "normal",
-      "has_debt": false,
-      "severity": "low",
-      "justification_hash": "c785e4ce704ff7df1b786d1618720890fe2a11d90b2e978838968765902db99d",
       "checks": {
         "epicon": "unknown",
         "merge_gate": "unknown"
