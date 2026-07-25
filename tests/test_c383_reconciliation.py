@@ -260,6 +260,22 @@ def test_build_report_with_non_dict_witness_does_not_crash(monkeypatch):
     assert any(d["type"] == "witness_unavailable" for d in report.disagreements)
 
 
+def test_bool_gi_not_treated_as_numeric():
+    obs = [{"source": "a", "value": True}, {"source": "b", "value": 0.79}]
+    disagreements = recon.find_gi_disagreements(obs)
+    assert not any(d["type"] == "gi_spread" for d in disagreements)
+    assert not any(d["type"] == "null_vs_numeric_gi" for d in disagreements)
+
+
+def test_canon_source_includes_git_ref(monkeypatch):
+    def fake_collect(git_ref):
+        return [make_witness("substrate_cycle_json", value={"current_cycle": "C-383", "gi": 0.9})]
+
+    monkeypatch.setattr(recon, "collect_witnesses", fake_collect)
+    report = recon.build_report("origin/feature-x")
+    assert report.canon["source"] == "git:origin/feature-x:cycle.json"
+
+
 def test_report_never_averages_gi():
     src = (SCRIPTS / "c383_reconciliation.py").read_text()
     assert "mean(" not in src

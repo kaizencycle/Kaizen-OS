@@ -37,6 +37,11 @@ LEDGER_VAULT_GLOBAL = "https://civic-protocol-core-ledger.onrender.com/api/vault
 
 GI_AGREEMENT_TOLERANCE = 0.02
 
+
+def _gi_numeric_value(value: Any) -> bool:
+    """True for int/float GI only — bool is a subclass of int in Python."""
+    return type(value) in (int, float)
+
 REQUIRED_WITNESS_NAMES = (
     "substrate_cycle_json",
     "substrate_writer_health",
@@ -240,7 +245,7 @@ def extract_gi_observations(witnesses: list[Witness]) -> list[dict]:
 
 
 def find_gi_disagreements(observations: list[dict]) -> list[dict]:
-    numeric = [o for o in observations if isinstance(o.get("value"), (int, float))]
+    numeric = [o for o in observations if _gi_numeric_value(o.get("value"))]
     disagreements = []
 
     if len(numeric) >= 2:
@@ -495,7 +500,10 @@ def build_report(git_ref: str = "origin/main") -> Report:
     cycle = cyc_p.get("current_cycle") if cyc_p else None
 
     report = Report(cycle=cycle)
-    report.canon = {"source": "git:cycle.json", "ok": cyc.ok if cyc else False}
+    report.canon = {
+        "source": f"git:{git_ref}:cycle.json",
+        "ok": witness_effective_ok(cyc) if cyc else False,
+    }
     report.ledger = {
         w.name: {"ok": w.ok, "value": w.value, "error": w.error, "source": w.source}
         for w in witnesses
