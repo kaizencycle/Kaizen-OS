@@ -1,0 +1,54 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://mobius.local/schemas/cycle_journal_layer1_stub.schema.json",
+  "title": "Mobius Layer-1 Cycle Ledger Witness Stub",
+  "description": "mobius-bot/state-sync journals/cycles/C-*.json witness record (not ATLAS meta/signals journal)",
+  "type": "object",
+  "required": ["cycle", "date", "writer", "ledger_verified", "narrative"],
+  "properties": {
+    "cycle": {
+      "type": "string",
+      "pattern": "^C-[0-9]{1,5}$"
+    },
+    "date": {
+      "type": "string",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+    },
+    "writer": {
+      "const": "mobius-bot/state-sync"
+    },
+    "narrative": {
+      "type": ["string", "null"]
+    },
+    "ledger_verified": {
+      "type": "boolean"
+    },
+    "ledger_snapshot": {
+      "type": ["object", "null"]
+    },
+    "ledger_snapshot_at": {
+      "type": ["string", "null"]
+    },
+    "ledger_witness_url": {
+      "type": ["string", "null"]
+    },
+    "ledger_gi_attested": {
+      "type": "boolean"
+    },
+    "ledger_withheld_reason": {
+      "type": "string",
+      "enum": ["LEDGER_URL_UNCONFIGURED", "LEDGER_PULSE_UNREACHABLE"]
+    },
+    "ledger_gi_withheld_reason": {
+      "type": "string",
+      "enum": ["NO_LEDGER_SNAPSHOT", "GI_NULL_IN_PULSE"]
+    },
+    "ledger_fetch_error": {
+      "type": "string"
+    },
+    "ledger_health_ephemeral": {
+      "type": "boolean"
+    }
+  },
+  "additionalProperties": false
+}

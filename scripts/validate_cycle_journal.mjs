@@ -27,6 +27,7 @@ const loadAjv = async () => {
 
 const ROOT = process.cwd();
 const SCHEMA_PATH = path.join(ROOT, "schemas", "cycle_journal.schema.json");
+const LAYER1_SCHEMA_PATH = path.join(ROOT, "schemas", "cycle_journal_layer1_stub.schema.json");
 const CYCLES_DIR = path.join(ROOT, "journals", "cycles");
 
 /**
@@ -53,6 +54,21 @@ function loadJson(filepath) {
     console.error(`Error reading ${filepath}: ${e.message}`);
     return null;
   }
+}
+
+/**
+ * Layer-1 mobius-bot/state-sync writes a minimal witness stub in
+ * journals/cycles/C-*.json. Full ATLAS cycle journals use meta/signals/seal.
+ */
+function isLayer1WriterStub(data) {
+  if (!data || typeof data !== "object") return false;
+  if (data.meta) return false;
+  return data.writer === "mobius-bot/state-sync" && typeof data.cycle === "string";
+}
+
+function expectedCycleFromFilename(filepath) {
+  const base = path.basename(filepath, ".json");
+  return /^C-\d+$/.test(base) ? base : null;
 }
 
 /**
@@ -118,6 +134,19 @@ async function main() {
     process.exit(1);
   }
 
+  const layer1Schema = loadJson(LAYER1_SCHEMA_PATH);
+  if (!layer1Schema) {
+    console.error(`Failed to load schema: ${LAYER1_SCHEMA_PATH}`);
+    process.exit(1);
+  }
+  let validateLayer1;
+  try {
+    validateLayer1 = ajv.compile(layer1Schema);
+  } catch (e) {
+    console.error(`Layer-1 schema compilation error: ${e.message}`);
+    process.exit(1);
+  }
+
   // Find cycle journal files
   const files = listCycleJsonFiles(CYCLES_DIR);
 
@@ -145,8 +174,31 @@ async function main() {
       continue;
     }
 
-    const valid = validate(data);
     const relativePath = path.relative(ROOT, file);
+    if (isLayer1WriterStub(data)) {
+      const expectedCycle = expectedCycleFromFilename(file);
+      if (!expectedCycle || data.cycle !== expectedCycle) {
+        allValid = false;
+        console.error(
+          `\n❌ Layer-1 stub cycle mismatch: ${relativePath} ` +
+            `(file ${expectedCycle ?? "?"} vs body ${data.cycle})`
+        );
+        results.failed.push({ file: relativePath, error: "cycle/filename mismatch" });
+        continue;
+      }
+      const layer1Valid = validateLayer1(data);
+      if (!layer1Valid) {
+        allValid = false;
+        console.error(formatErrors(validateLayer1.errors, file));
+        results.failed.push({ file: relativePath, errors: validateLayer1.errors });
+        continue;
+      }
+      console.log(`✅ ${relativePath} (Layer-1 state-sync stub)`);
+      results.passed.push(relativePath);
+      continue;
+    }
+
+    const valid = validate(data);
 
     if (!valid) {
       allValid = false;

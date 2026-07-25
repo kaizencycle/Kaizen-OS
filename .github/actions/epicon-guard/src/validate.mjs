@@ -58,16 +58,24 @@ const VALID_SCOPES = ['docs', 'ci', 'core', 'infra', 'sentinels', 'labs', 'specs
 const VALID_MODES = ['normal', 'emergency', 'standard']; // 'standard' accepted with warning
 
 // Scope -> path-prefix envelope used for divergence detection (I4).
-// Divergence is flagged, never blocked (EPICON-02 §3.2: "Actions outside the
-// envelope are not blocked — they are flagged as divergent.")
+// Keep aligned with .github/scripts/mobius_pr_bot.py SCOPE_MAP.
 const SCOPE_ENVELOPES = {
-  docs: ['docs/', 'catalog/', 'journals/', 'README', 'DOCS.md', 'CONTRIBUTING.md', 'LICENSE', 'FOR-'],
-  ci: ['.github/'],
-  core: ['apps/', 'packages/', 'src/', 'lib/'],
-  infra: ['infra/', 'render.yaml', 'vercel.json', 'Dockerfile', 'docker-compose', 'netlify.toml'],
+  docs: [
+    'docs/',
+    'epicon/',
+    'catalog/',
+    'journals/',
+    'README.md',
+    'CHANGELOG.md',
+    'LICENSE',
+    'mkdocs.yml',
+  ],
+  ci: ['.github/', 'ci/', 'scripts/', 'STATE/'],
+  core: ['apps/', 'packages/', 'src/', 'lib/', 'services/'],
+  infra: ['infra/', 'deploy/', 'docker/', 'monitoring/', 'grafana/', 'render.yaml', 'vercel.json', 'Dockerfile', 'docker-compose', 'netlify.toml'],
   sentinels: ['sentinels/', 'agents/'],
   labs: ['labs/', 'experiments/'],
-  specs: ['docs/specs/', 'schemas/', 'docs/epicon/', 'canon/'],
+  specs: ['docs/specs/', 'schemas/', 'docs/epicon/', 'canon/', 'specs/', 'configs/', 'tests/'],
 };
 
 // Default tier policy registry (Rule 5.1: declarative, independent of proposer).

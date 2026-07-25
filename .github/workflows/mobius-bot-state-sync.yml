@@ -14,9 +14,10 @@
 #   1. DEPLOYMENT-DECOUPLED: commits carry [skip ci] and touch only state
 #      paths, so Vercel/Render never build on a state write. This coupling
 #      is what killed the last pipeline.
-#   2. DETERMINISTIC: no LLM. Cycle number is arithmetic; ledger values are
-#      fetched, never invented. If the ledger is unreachable, attested
-#      fields are carried forward and marked unverified.
+#   2. DETERMINISTIC: no LLM. Cycle number is arithmetic; ledger pulse is
+#      fetched (secret, fallback URL, or default), never invented. Journal
+#      records withheld_reason when pulse fails; GI in cycle.json updates only
+#      when pulse returns non-null gi.
 #   3. SCOPED IDENTITY (C-336): commits via the Mobius GitHub App, allowed
 #      paths only (cycle.json, STATE/, journals/cycles/). Tier-3 protected
 #      paths stay untouchable.
@@ -109,77 +110,9 @@ jobs:
       - name: Compute cycle + fetch ledger state
         id: state
         env:
-          LEDGER_BASE_URL: ${{ secrets.LEDGER_BASE_URL }}  # Civic-Protocol-Core on Render
-        run: |
-          python3 - << 'PY'
-          import json, os, urllib.request, datetime
-
-          # C-288 = 2026-04-21: the attested freeze point this sync corrects (see PR #298).
-          ANCHOR_CYCLE = 288
-          ANCHOR_DATE = datetime.date(2026, 4, 21)
-          today = datetime.datetime.now(datetime.timezone.utc).date()
-          cycle_n = ANCHOR_CYCLE + (today - ANCHOR_DATE).days
-          cycle = f"C-{cycle_n}"
-
-          ledger, verified = {}, False
-          base = os.environ.get("LEDGER_BASE_URL", "").rstrip("/")
-          if base:
-              try:
-                  with urllib.request.urlopen(f"{base}/pulse/state", timeout=15) as r:
-                      ledger = json.load(r)
-                      verified = True
-              except Exception as e:
-                  print(f"::warning::ledger unreachable, carrying forward: {e}")
-
-          with open("cycle.json") as f:
-              c = json.load(f)
-
-          prev = c.get("current_cycle")
-          c["current_cycle"] = cycle
-          c["date"] = today.isoformat()
-          c["last_updated"] = datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
-          c["last_state_snapshot"] = cycle
-          if verified and "gi" in ledger:
-              c["gi"] = ledger["gi"]
-              c["gi_attested_at"] = cycle
-          note = (f"Auto-sync by mobius-bot (deterministic, no LLM). "
-                  f"Advanced {prev} -> {cycle}. "
-                  + ("GI refreshed from ledger." if verified and "gi" in ledger
-                     else "Ledger unreachable or GI absent: attested fields carried forward UNVERIFIED."))
-          c["notes"] = note
-
-          with open("cycle.json", "w") as f:
-              json.dump(c, f, indent=2); f.write("\n")
-          with open("STATE/CYCLE.txt", "w") as f:
-              f.write(cycle + "\n")
-
-          os.makedirs("journals/cycles", exist_ok=True)
-          stub = {
-              "cycle": cycle, "date": today.isoformat(),
-              "writer": "mobius-bot/state-sync",
-              "ledger_verified": verified,
-              "ledger_snapshot": ledger if verified else None,
-              "narrative": None,  # Layer 3: ATLAS routine fills this, never the counters
-          }
-          p = f"journals/cycles/{cycle}.json"
-          if not os.path.exists(p):           # idempotent: never overwrite a day
-              with open(p, "w") as f:
-                  json.dump(stub, f, indent=2); f.write("\n")
-
-          # C-356: write writer-health canary so watchdog can detect writer failures
-          # before cycle.json drift accumulates (Layer 1 upstream detection).
-          health = {
-              "writer": "mobius-bot-state-sync",
-              "last_run_at": datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
-              "last_cycle": cycle,
-              "status": "ok",
-          }
-          with open("STATE/writer-health.json", "w") as f:
-              json.dump(health, f, indent=2); f.write("\n")
-
-          with open(os.environ["GITHUB_OUTPUT"], "a") as f:
-              f.write(f"cycle={cycle}\n")
-          PY
+          LEDGER_BASE_URL: ${{ secrets.LEDGER_BASE_URL }}
+          LEDGER_BASE_URL_FALLBACK: https://civic-protocol-core-ledger.onrender.com
+        run: python3 scripts/run_state_sync.py
 
       - name: Commit (deployment-decoupled, EPICON trailer)
         run: |
