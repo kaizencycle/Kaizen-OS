@@ -4,6 +4,15 @@
 **Live API:** https://civic-protocol-core-ledger.onrender.com/docs  
 **Status:** Finding doc (design/integration), not a Substrate writer bug
 
+## Authority Provenance
+
+| Field | Value |
+|-------|-------|
+| **Custodian** | Michael Judan (kaizencycle) |
+| **Standing** | Founder / substrate custodian |
+| **Cycle** | C-383 |
+| **Status** | Reconciliation finding — witness taxonomy and live API trace; not doctrine amendment |
+
 ## Stale-read disclaimer
 
 Confirm live responses with `curl` at review time; do not treat an earlier sandbox session or PR narrative as ground truth.
