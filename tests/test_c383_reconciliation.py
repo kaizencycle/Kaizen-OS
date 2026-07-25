@@ -43,13 +43,14 @@ def test_all_null_gi_does_not_spuriously_flag_null_vs_numeric():
     assert not any(d["type"] == "null_vs_numeric_gi" for d in disagreements)
 
 
-def test_cycle_mismatch_detected():
+def test_cycle_unresolved_when_ledger_unknown_no_mismatch():
     witnesses = [
         make_witness("substrate_cycle_json", value={"current_cycle": "C-383"}),
         make_witness("ledger_pulse", value={"cycle": "unknown"}),
     ]
     disagreements = recon.find_cycle_disagreements(witnesses)
     assert any(d["type"] == "cycle_unresolved" for d in disagreements)
+    assert not any(d["type"] == "cycle_mismatch" for d in disagreements)
 
 
 def test_no_disagreement_when_cycles_agree():
@@ -93,11 +94,30 @@ def test_extract_gi_flags_internal_snapshot_disagreement():
     assert "terminal_snapshot_lite.lanes.integrity.gi" in sources
 
 
+def test_cycle_mismatch_when_two_resolved_values_differ():
+    witnesses = [
+        make_witness("substrate_cycle_json", value={"current_cycle": "C-383"}),
+        make_witness("terminal_snapshot_lite", value={"cycle": "C-382"}),
+    ]
+    disagreements = recon.find_cycle_disagreements(witnesses)
+    assert any(d["type"] == "cycle_mismatch" for d in disagreements)
+
+
+def test_verdict_clarify_when_witness_unavailable():
+    verdict = recon.determine_verdict([{"type": "witness_unavailable"}], [])
+    assert verdict == "CLARIFY"
+
+
+def test_verdict_not_pass_when_witness_unavailable_only():
+    assert recon.determine_verdict([{"type": "witness_unavailable"}], []) != "PASS"
+
+
 def test_gi_source_unwired_detected_when_ledger_gi_null():
     witnesses = [make_witness("ledger_pulse", value={"cycle": "unknown", "gi": None})]
     disagreements = recon.find_gi_source_unwired(witnesses)
     assert len(disagreements) == 1
     assert disagreements[0]["type"] == "gi_source_unwired"
+    assert disagreements[0].get("classification") == "hypothesis_pulse_only"
 
 
 def test_gi_source_unwired_not_flagged_when_ledger_gi_present():
@@ -161,8 +181,41 @@ def test_vault_witness_divergence_not_flagged_when_both_zero():
     assert recon.find_vault_divergence(witnesses) == []
 
 
+def test_vault_witness_divergence_when_unequal_nonzero_sealed():
+    witnesses = [
+        make_witness(
+            "ledger_vault_global",
+            value={"vault_id": "vault-global", "sealed_blocks": 1, "total_balance": 1.0},
+        ),
+        make_witness(
+            "terminal_vault_status",
+            value={"vault_id": "vault-global", "reserve_blocks_sealed": 360, "sealed_reserve_total": 18000},
+        ),
+    ]
+    assert len(recon.find_vault_divergence(witnesses)) == 1
+
+
 def test_vault_witness_divergence_is_a_hard_blocker():
     assert recon.determine_verdict([{"type": "vault_witness_divergence"}], []) == "QUARANTINE"
+
+
+def test_git_show_timeout_returns_ok_false():
+    import subprocess
+
+    def raise_timeout(*args, **kwargs):
+        raise subprocess.TimeoutExpired(cmd="git show", timeout=15)
+
+    import c383_reconciliation as mod
+
+    orig = subprocess.run
+    subprocess.run = raise_timeout  # type: ignore[misc]
+    try:
+        ok, data, err = mod.git_show("origin/main", "cycle.json")
+    finally:
+        subprocess.run = orig
+    assert ok is False
+    assert data is None
+    assert "timed out" in (err or "")
 
 
 def test_report_never_averages_gi():

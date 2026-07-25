@@ -1,11 +1,11 @@
 {
   "mobius_catalog_version": "1.0.0",
-  "generated_at": "2026-07-25T17:03:57.560Z",
+  "generated_at": "2026-07-25T18:04:30.122Z",
   "repo": {
     "name": "Mobius-Substrate",
     "url": "https://github.com/kaizencycle/Mobius-Substrate",
     "default_branch": "main",
-    "commit": "349691decce930366eb7dea22d17d1d510566d82"
+    "commit": "05198d331e9aa78e22d60e3b30cbd55d51595c09"
   },
   "stats": {
     "epiconCount": 0,
@@ -8278,7 +8278,7 @@
       "title": "C-383 — Ledger GI source trace (`gi_source_unwired`)",
       "category": "epicon",
       "tags": [],
-      "content_hash": "sha256:6598b1842b0915f7529e3a647dc14035276cadd3ddfeee300d6e687b0f7fa8e6",
+      "content_hash": "sha256:ab72b41061b5f8a72f85b80b618d9803e8f7498e6be6eba1cebadedc9e5d0a3d",
       "summary": ""
     },
     {

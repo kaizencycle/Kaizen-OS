@@ -37,6 +37,17 @@ LEDGER_VAULT_GLOBAL = "https://civic-protocol-core-ledger.onrender.com/api/vault
 
 GI_AGREEMENT_TOLERANCE = 0.02
 
+REQUIRED_WITNESS_NAMES = (
+    "substrate_cycle_json",
+    "substrate_writer_health",
+    "terminal_snapshot_lite",
+    "terminal_vault_status",
+    "ledger_pulse",
+    "ledger_vault_global",
+)
+
+UNRESOLVED_CYCLE_MARKERS = frozenset({None, "unknown"})
+
 
 @dataclass
 class Witness:
@@ -89,6 +100,8 @@ def git_show(ref: str, path: str) -> tuple[bool, Any, str | None]:
             check=True,
         )
         return True, json.loads(out.stdout), None
+    except subprocess.TimeoutExpired:
+        return False, None, "git show timed out after 15s"
     except subprocess.CalledProcessError as e:
         return False, None, f"git show failed: {e.stderr.strip()[:300]}"
     except json.JSONDecodeError as e:
@@ -235,6 +248,21 @@ def find_gi_disagreements(observations: list[dict]) -> list[dict]:
     return disagreements
 
 
+def find_witness_unavailable(witnesses: list[Witness]) -> list[dict]:
+    failed = [w for w in witnesses if w.name in REQUIRED_WITNESS_NAMES and not w.ok]
+    if not failed:
+        return []
+    return [
+        {
+            "type": "witness_unavailable",
+            "note": "required witness fetch failed — reconciliation incomplete; not PASS",
+            "failures": [
+                {"name": w.name, "source": w.source, "error": w.error} for w in failed
+            ],
+        }
+    ]
+
+
 def find_gi_source_unwired(witnesses: list[Witness]) -> list[dict]:
     by_name = {w.name: w for w in witnesses}
     ledger = by_name.get("ledger_pulse")
@@ -245,9 +273,12 @@ def find_gi_source_unwired(witnesses: list[Witness]) -> list[dict]:
     return [
         {
             "type": "gi_source_unwired",
+            "classification": "hypothesis_pulse_only",
             "note": (
-                "ledger /pulse/state is reachable and gi is null — no GI_STATE_JSON/"
-                "gi_state.json input wired; design decision needed, not a bugfix."
+                "ledger /pulse/state is reachable and gi is null. Pulse alone cannot "
+                "distinguish unwired GI input (GI_STATE_JSON / gi_state.json) from "
+                "malformed config or a state file missing global_integrity/gi — see "
+                "LEDGER_GI_SOURCE_TRACE.md for the integration hypothesis."
             ),
             "source": ledger.source,
             "see": "docs/epicon/cycles/C-383/LEDGER_GI_SOURCE_TRACE.md",
@@ -276,17 +307,18 @@ def find_cycle_disagreements(witnesses: list[Witness]) -> list[dict]:
     if ledger and ledger.ok:
         cycles["ledger_pulse"] = ledger.value.get("cycle")
 
-    distinct = {v for v in cycles.values() if v is not None}
+    resolved = {v for v in cycles.values() if v not in UNRESOLVED_CYCLE_MARKERS}
     disagreements = []
-    if len(distinct) > 1:
+    if len(resolved) > 1:
         disagreements.append(
             {
                 "type": "cycle_mismatch",
-                "note": "witnesses do not agree on the current cycle",
+                "note": "witnesses with resolved cycle ids do not agree",
                 "by_source": cycles,
+                "resolved_values": sorted(resolved),
             }
         )
-    unknowns = [k for k, v in cycles.items() if v in (None, "unknown")]
+    unknowns = [k for k, v in cycles.items() if v in UNRESOLVED_CYCLE_MARKERS]
     if unknowns:
         disagreements.append(
             {
@@ -316,22 +348,27 @@ def find_vault_divergence(witnesses: list[Witness]) -> list[dict]:
     ledger_balance = lv.get("total_balance")
     terminal_balance = tv.get("sealed_reserve_total")
 
-    same_id_contradictory_state = (
-        ledger_id is not None
-        and ledger_id == terminal_id
-        and isinstance(ledger_sealed, (int, float))
+    if ledger_id is None or ledger_id != terminal_id:
+        return []
+
+    sealed_mismatch = (
+        isinstance(ledger_sealed, (int, float))
         and isinstance(terminal_sealed, (int, float))
-        and terminal_sealed > 0
-        and ledger_sealed == 0
+        and ledger_sealed != terminal_sealed
+    )
+    balance_mismatch = (
+        isinstance(ledger_balance, (int, float))
+        and isinstance(terminal_balance, (int, float))
+        and ledger_balance != terminal_balance
     )
 
-    if same_id_contradictory_state:
+    if sealed_mismatch or balance_mismatch:
         return [
             {
                 "type": "vault_witness_divergence",
                 "note": (
                     f"ledger_vault_global and terminal_vault_status both report "
-                    f"vault_id={ledger_id!r} but disagree on sealed state — "
+                    f"vault_id={ledger_id!r} but sealed counts and/or balances disagree — "
                     "same declared identity, contradictory truths."
                 ),
                 "ledger": {
@@ -346,6 +383,8 @@ def find_vault_divergence(witnesses: list[Witness]) -> list[dict]:
                     "sealed_reserve_total": terminal_balance,
                     "source": terminal_vault.source,
                 },
+                "sealed_mismatch": sealed_mismatch,
+                "balance_mismatch": balance_mismatch,
             }
         ]
     return []
@@ -383,20 +422,20 @@ def find_gate_status(witnesses: list[Witness]) -> list[dict]:
 
 
 def determine_verdict(disagreements: list[dict], gates: list[dict]) -> str:
-    if not disagreements and not gates:
-        return "PASS"
-    hard_blockers = [
-        d
-        for d in disagreements
-        if d["type"] in ("gi_spread", "cycle_mismatch", "vault_witness_divergence")
-    ]
+    hard_blocker_types = ("gi_spread", "cycle_mismatch", "vault_witness_divergence")
+    hard_blockers = [d for d in disagreements if d["type"] in hard_blocker_types]
     if hard_blockers:
         return "QUARANTINE"
+    if any(d["type"] == "witness_unavailable" for d in disagreements):
+        return "CLARIFY"
+    if not disagreements and not gates:
+        return "PASS"
     return "CLARIFY"
 
 
 def build_report(git_ref: str = "origin/main") -> Report:
     witnesses = collect_witnesses(git_ref)
+    witness_gaps = find_witness_unavailable(witnesses)
     gi_obs = extract_gi_observations(witnesses)
     gi_disagreements = find_gi_disagreements(gi_obs)
     gi_source_disagreements = find_gi_source_unwired(witnesses)
@@ -432,7 +471,11 @@ def build_report(git_ref: str = "origin/main") -> Report:
     ]
     report.gates = gates
     report.disagreements = (
-        gi_disagreements + gi_source_disagreements + cycle_disagreements + vault_disagreements
+        witness_gaps
+        + gi_disagreements
+        + gi_source_disagreements
+        + cycle_disagreements
+        + vault_disagreements
     )
     report.verdict = determine_verdict(report.disagreements, gates)
     return report
