@@ -1,6 +1,6 @@
 {
   "mobius_catalog_version": "1.0.0",
-  "generated_at": "2026-07-25T15:33:26.859Z",
+  "generated_at": "2026-07-25T15:38:07.249Z",
   "repo": {
     "name": "Mobius-Substrate",
     "url": "https://github.com/kaizencycle/Mobius-Substrate",
@@ -9,7 +9,7 @@
   },
   "stats": {
     "epiconCount": 0,
-    "docCount": 1072
+    "docCount": 1073
   },
   "epicons": [],
   "docs": [
@@ -7250,7 +7250,7 @@
       "title": "Mobius Handbook — Generated Index",
       "category": "INDEX.md",
       "tags": [],
-      "content_hash": "sha256:5229664c290058c11704f2af420e0a4847771ecc3b1568a2d92f9f52d82a6307",
+      "content_hash": "sha256:694398c58e5ca41547282a78479e3ea1f5213482cdff73233b158c15e1a7d5f9",
       "summary": ""
     },
     {
@@ -7378,7 +7378,7 @@
       "title": "State of the Substrate — Latest",
       "category": "STATE_OF_THE_SUBSTRATE_LATEST.md",
       "tags": [],
-      "content_hash": "sha256:1d2f752202962067f43170777ec54c8524a16c176e01bfc62aaca084282fd697",
+      "content_hash": "sha256:9d514a9ee09821f574e36c1fcb16e0680f650cbf52693ce290d513e759f04fe6",
       "summary": ""
     },
     {
@@ -8383,6 +8383,14 @@
       "category": "journals",
       "tags": [],
       "content_hash": "sha256:eb3a6a8d9bcdcf552d4369140341ebe562f5f86f09b17631b9390f4588182ac9",
+      "summary": ""
+    },
+    {
+      "path": "docs/journals/C-383.md",
+      "title": "Cycle Journal — C-383",
+      "category": "journals",
+      "tags": [],
+      "content_hash": "sha256:bd79f36d9a257328b252bdda71adce093777eb9958dd9081dcfabef5bb2b8488",
       "summary": ""
     },
     {
