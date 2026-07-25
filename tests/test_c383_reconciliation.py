@@ -94,6 +94,26 @@ def test_extract_gi_flags_internal_snapshot_disagreement():
     assert "terminal_snapshot_lite.lanes.integrity.gi" in sources
 
 
+def test_terminal_gi_only_in_lanes_not_synthetic_top_level_null():
+    witnesses = [
+        make_witness(
+            "terminal_snapshot_lite",
+            value={
+                "cycle": "C-383",
+                "timestamp": "t",
+                "lanes": {"integrity": {"gi": 0.81, "verified": True}},
+            },
+        ),
+        make_witness("substrate_cycle_json", value={"current_cycle": "C-383", "gi": 0.9}),
+    ]
+    obs = recon.extract_gi_observations(witnesses)
+    sources = {o["source"] for o in obs}
+    assert "terminal_snapshot_lite.gi" not in sources
+    assert "terminal_snapshot_lite.lanes.integrity.gi" in sources
+    disagreements = recon.find_gi_disagreements(obs)
+    assert not any(d["type"] == "null_vs_numeric_gi" for d in disagreements)
+
+
 def test_cycle_mismatch_when_two_resolved_values_differ():
     witnesses = [
         make_witness("substrate_cycle_json", value={"current_cycle": "C-383"}),

@@ -172,59 +172,67 @@ def extract_gi_observations(witnesses: list[Witness]) -> list[dict]:
     by_name = {w.name: w for w in witnesses}
 
     cyc = by_name.get("substrate_cycle_json")
-    if cyc and cyc.ok and isinstance(cyc.value, dict) and "gi" in cyc.value:
+    cyc_p = witness_payload(cyc)
+    if cyc_p is not None and "gi" in cyc_p:
         observations.append(
             {
                 "source": cyc.name,
-                "value": cyc.value.get("gi"),
-                "cycle": cyc.value.get("current_cycle"),
-                "as_of": cyc.value.get("last_updated"),
+                "value": cyc_p.get("gi"),
+                "cycle": cyc_p.get("current_cycle"),
+                "as_of": cyc_p.get("last_updated"),
             }
         )
 
     snap = by_name.get("terminal_snapshot_lite")
-    if snap and snap.ok and isinstance(snap.value, dict):
-        observations.append(
-            {
-                "source": "terminal_snapshot_lite.gi",
-                "value": snap.value.get("gi"),
-                "cycle": snap.value.get("cycle"),
-                "as_of": snap.value.get("timestamp"),
-                "verified": snap.value.get("gi_verified"),
-            }
-        )
-        lanes = snap.value.get("lanes", {}) or {}
-        integrity = lanes.get("integrity", {}) or {}
-        if "gi" in integrity:
+    snap_p = witness_payload(snap)
+    if snap_p is not None:
+        if "gi" in snap_p:
+            observations.append(
+                {
+                    "source": "terminal_snapshot_lite.gi",
+                    "value": snap_p.get("gi"),
+                    "cycle": snap_p.get("cycle"),
+                    "as_of": snap_p.get("timestamp"),
+                    "verified": snap_p.get("gi_verified"),
+                }
+            )
+        lanes = snap_p.get("lanes", {}) or {}
+        integrity = lanes.get("integrity", {}) if isinstance(lanes, dict) else {}
+        if isinstance(integrity, dict) and "gi" in integrity:
             observations.append(
                 {
                     "source": "terminal_snapshot_lite.lanes.integrity.gi",
                     "value": integrity.get("gi"),
-                    "cycle": snap.value.get("cycle"),
-                    "as_of": snap.value.get("timestamp"),
+                    "cycle": snap_p.get("cycle"),
+                    "as_of": snap_p.get("timestamp"),
                     "verified": integrity.get("verified"),
-                    "note": "same payload as terminal_snapshot_lite.gi — check for internal disagreement",
+                    "note": (
+                        "lanes.integrity.gi"
+                        + ("; compare to top-level gi when both present" if "gi" in snap_p else "")
+                    ),
                 }
             )
 
     vault = by_name.get("terminal_vault_status")
-    if vault and vault.ok and isinstance(vault.value, dict) and "gi_current" in vault.value:
+    vault_p = witness_payload(vault)
+    if vault_p is not None and "gi_current" in vault_p:
         observations.append(
             {
                 "source": "terminal_vault_status.gi_current",
-                "value": vault.value.get("gi_current"),
-                "as_of": vault.value.get("timestamp"),
+                "value": vault_p.get("gi_current"),
+                "as_of": vault_p.get("timestamp"),
             }
         )
 
     ledger = by_name.get("ledger_pulse")
-    if ledger and ledger.ok and isinstance(ledger.value, dict):
+    ledger_p = witness_payload(ledger)
+    if ledger_p is not None:
         observations.append(
             {
                 "source": "ledger_pulse.gi",
-                "value": ledger.value.get("gi"),
-                "cycle": ledger.value.get("cycle"),
-                "as_of": ledger.value.get("attested_at"),
+                "value": ledger_p.get("gi"),
+                "cycle": ledger_p.get("cycle"),
+                "as_of": ledger_p.get("attested_at"),
             }
         )
 
