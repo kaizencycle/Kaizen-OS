@@ -15,7 +15,7 @@
     "crypto": "^1.0.1",
     "eslint-config-next": "14.2.35",
     "ethers": "6.17.0",
-    "js-yaml": "^5.2.0",
+    "js-yaml": "^5.2.2",
     "next": "14.2.35",
     "tweetnacl": "^1.0.3",
     "zod": "^3.22.0"
