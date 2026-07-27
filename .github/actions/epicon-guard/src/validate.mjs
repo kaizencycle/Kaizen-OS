@@ -71,7 +71,7 @@ const SCOPE_ENVELOPES = {
     'mkdocs.yml',
   ],
   ci: ['.github/', 'ci/', 'scripts/', 'STATE/'],
-  core: ['apps/', 'packages/', 'src/', 'lib/', 'services/'],
+  core: ['apps/', 'packages/', 'src/', 'lib/', 'services/', 'package.json', 'package-lock.json'],
   infra: ['infra/', 'deploy/', 'docker/', 'monitoring/', 'grafana/', 'render.yaml', 'vercel.json', 'Dockerfile', 'docker-compose', 'netlify.toml'],
   sentinels: ['sentinels/', 'agents/'],
   labs: ['labs/', 'experiments/'],
