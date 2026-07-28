@@ -1,0 +1,83 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://mobius.systems/schemas/agent_memory_record_v1.schema.json",
+  "title": "AgentMemoryRecordV1",
+  "description": "C-386 KV/agent memory record with epistemic class and evidentiary roots",
+  "type": "object",
+  "required": ["id", "class", "claim"],
+  "additionalProperties": false,
+  "properties": {
+    "id": { "type": "string", "minLength": 1 },
+    "class": {
+      "type": "string",
+      "enum": [
+        "REPORTED",
+        "INFERRED",
+        "VERIFIED",
+        "STALE",
+        "QUARANTINED",
+        "SUPERSEDED",
+        "REJECTED"
+      ]
+    },
+    "claim": { "type": "string" },
+    "provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "previous_memory_ids": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "author_agent": { "type": "string" }
+      }
+    },
+    "freshness": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "expires_at": { "type": "string", "format": "date-time" },
+        "reverify_strategy": {
+          "type": "string",
+          "enum": [
+            "locate_primary_source",
+            "replay_reasoning_against_current_evidence"
+          ]
+        }
+      }
+    },
+    "evidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "independent_sources": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["type", "root_id"],
+            "additionalProperties": false,
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": [
+                  "primary_instrument",
+                  "canonical_repository_state",
+                  "CPC_attested_state",
+                  "primary_external_source",
+                  "human_authorized_evidence",
+                  "agent_memory",
+                  "repeated_agent_claim"
+                ]
+              },
+              "root_id": { "type": "string", "minLength": 1 },
+              "expires_at": { "type": "string", "format": "date-time" },
+              "observed_at": { "type": "string", "format": "date-time" }
+            }
+          }
+        }
+      }
+    },
+    "verification_conflict": { "type": "boolean" },
+    "zeus_hold": { "type": "boolean" }
+  }
+}
