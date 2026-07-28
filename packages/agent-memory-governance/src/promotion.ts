@@ -1,5 +1,6 @@
 import { countIndependentSources, isSelfReferentialChain, quorumSatisfied } from './countIndependentSources.js';
 import { evidentiaryRootsFresh } from './freshness.js';
+import { resolveRequiredSources } from './quorumPolicy.js';
 import type { AgentMemoryRecord, PromotionBlockReason } from './types.js';
 
 export interface PromotionDecision {
@@ -14,7 +15,7 @@ export function canPromoteToVerified(
   record: AgentMemoryRecord,
   options: { requiredSources?: number; now?: Date } = {}
 ): PromotionDecision {
-  const requiredSources = options.requiredSources ?? 2;
+  const requiredSources = resolveRequiredSources(options.requiredSources);
   const now = options.now ?? new Date();
   const reasons: PromotionBlockReason[] = [];
 
@@ -47,11 +48,12 @@ export function canPromoteToVerified(
 /** Runtime consequence bar: provenance, no conflict, evidentiary quorum (§13). */
 export function meetsConsequenceEvidenceBar(
   record: AgentMemoryRecord,
-  requiredSources = 2
+  requiredSources?: number
 ): boolean {
   if (!record.provenance) return false;
   if (record.verification_conflict) return false;
-  return quorumSatisfied(record, requiredSources);
+  if (isSelfReferentialChain(record)) return false;
+  return quorumSatisfied(record, resolveRequiredSources(requiredSources));
 }
 
 /** INFERRED + 1 root → not promotable; exposed for tests */

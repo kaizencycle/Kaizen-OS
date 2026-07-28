@@ -123,18 +123,16 @@ export function canonicalizeGitHubRepositoryRoot(root_id: string): string {
     return `${tail.ownerRepo.toLowerCase()}@${tail.sha.toLowerCase()}`;
   }
 
-  const fullSha = extractFullSha(raw);
-  if (fullSha) {
-    return commitShaKey(fullSha)!;
+  const urlLabel = raw.match(/^url-([0-9a-f]{40})$/i);
+  if (urlLabel) {
+    return commitShaKey(urlLabel[1].toLowerCase())!;
+  }
+  const commitLabel = raw.match(/^commit-([0-9a-f]{40})$/i);
+  if (commitLabel) {
+    return commitShaKey(commitLabel[1].toLowerCase())!;
   }
 
   return raw.toLowerCase();
-}
-
-function extractFullSha(raw: string): string | null {
-  const idx = raw.search(/[0-9a-f]{40}/i);
-  if (idx < 0) return null;
-  return raw.slice(idx, idx + 40).toLowerCase();
 }
 
 /** Single dedup bucket per commit when a 40-char SHA is known (Z-002). */

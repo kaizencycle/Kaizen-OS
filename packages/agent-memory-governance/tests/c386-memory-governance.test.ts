@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import {
   applyZeusAdjudication,
+  applyZeusAdjudicationTransition,
   canPromoteToVerified,
   canTransition,
   canonicalRootKey,
@@ -146,6 +147,22 @@ describe('C-386 evidentiary quorum', () => {
     });
     expect(a).toBe(b);
   });
+
+  it('arbitrary embedded hex without structured root does not qualify for quorum', () => {
+    const crafted = `noise-prefix-${FULL_SHA}-suffix-not-a-repo`;
+    expect(
+      countIndependentSources(
+        base({
+          evidence: {
+            independent_sources: [
+              { type: 'canonical_repository_state', root_id: crafted },
+              { type: 'CPC_attested_state', root_id: 'cpc:1' },
+            ],
+          },
+        })
+      )
+    ).toBe(1);
+  });
 });
 
 describe('C-386 transition gates', () => {
@@ -154,6 +171,26 @@ describe('C-386 transition gates', () => {
     const out = transitionMemoryClass(r, 'VERIFIED');
     expect(out.ok).toBe(false);
     if (!out.ok) expect(out.error).toContain('quorum_not_met');
+  });
+
+  it('requiredSources 0 cannot bypass default quorum of 2', () => {
+    const r = base({
+      class: 'INFERRED',
+      evidence: {
+        independent_sources: [{ type: 'CPC_attested_state', root_id: 'cpc:only-one' }],
+      },
+    });
+    const out = transitionMemoryClass(r, 'VERIFIED', { requiredSources: 0 });
+    expect(out.ok).toBe(false);
+  });
+
+  it('ZEUS CLEAR transition enforces gates', () => {
+    const r = base({
+      class: 'QUARANTINED',
+      evidence: { independent_sources: [] },
+    });
+    const out = applyZeusAdjudicationTransition(r, 'CLEAR');
+    expect(out.ok).toBe(false);
   });
 
   it('expired agent_memory does not block evidentiaryRootsFresh', () => {

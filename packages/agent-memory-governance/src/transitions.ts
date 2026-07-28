@@ -1,5 +1,6 @@
 import { evidentiaryRootsFresh } from './freshness.js';
 import { canPromoteToVerified, meetsConsequenceEvidenceBar } from './promotion.js';
+import { resolveRequiredSources } from './quorumPolicy.js';
 import type { AgentMemoryRecord, MemoryClass, ZeusAdjudication } from './types.js';
 
 const ALLOWED_TRANSITIONS: Record<MemoryClass, MemoryClass[]> = {
@@ -18,11 +19,11 @@ export function canTransition(from: MemoryClass, to: MemoryClass): boolean {
   return (ALLOWED_TRANSITIONS[from] ?? []).includes(to);
 }
 
-export function applyZeusAdjudication(
-  current: MemoryClass,
-  verdict: ZeusAdjudication
-): MemoryClass | null {
-  if (current !== 'QUARANTINED') return null;
+/**
+ * Verdict → target class mapping only. Never assign `record.class` from this —
+ * use `applyZeusAdjudicationTransition()` so gates run.
+ */
+export function zeusAdjudicationTargetClass(verdict: ZeusAdjudication): MemoryClass | null {
   switch (verdict) {
     case 'CLEAR':
       return 'VERIFIED';
@@ -35,6 +36,15 @@ export function applyZeusAdjudication(
     default:
       return null;
   }
+}
+
+/** @deprecated Use zeusAdjudicationTargetClass — mapping only, no gates */
+export function applyZeusAdjudication(
+  current: MemoryClass,
+  verdict: ZeusAdjudication
+): MemoryClass | null {
+  if (current !== 'QUARANTINED') return null;
+  return zeusAdjudicationTargetClass(verdict);
 }
 
 export type TransitionContext = {
@@ -50,10 +60,11 @@ function gateVerifiedTransition(
   context: TransitionContext
 ): { ok: true } | { ok: false; error: string } {
   const now = context.now ?? new Date();
+  const requiredSources = resolveRequiredSources(context.requiredSources);
   if (from === 'INFERRED') {
     const promo = canPromoteToVerified(record, {
       now,
-      requiredSources: context.requiredSources,
+      requiredSources,
     });
     if (!promo.allowed) {
       return {
@@ -67,19 +78,22 @@ function gateVerifiedTransition(
     if (!evidentiaryRootsFresh(record, now)) {
       return { ok: false, error: 'STALE → VERIFIED requires fresh qualifying evidentiary roots' };
     }
-    if (!meetsConsequenceEvidenceBar(record, context.requiredSources)) {
+    if (!meetsConsequenceEvidenceBar(record, requiredSources)) {
       return { ok: false, error: 'STALE → VERIFIED requires provenance, quorum, and no conflict' };
     }
     return { ok: true };
   }
   if (from === 'QUARANTINED') {
     if (!context.zeusAdjudicationClear) {
-      return { ok: false, error: 'QUARANTINED → VERIFIED requires ZEUS CLEAR (use applyZeusAdjudication)' };
+      return {
+        ok: false,
+        error: 'QUARANTINED → VERIFIED requires ZEUS CLEAR via applyZeusAdjudicationTransition',
+      };
     }
     if (!evidentiaryRootsFresh(record, now)) {
       return { ok: false, error: 'QUARANTINED → VERIFIED requires fresh qualifying evidentiary roots' };
     }
-    if (!meetsConsequenceEvidenceBar(record, context.requiredSources)) {
+    if (!meetsConsequenceEvidenceBar(record, requiredSources)) {
       return { ok: false, error: 'QUARANTINED → VERIFIED requires provenance, quorum, and no conflict' };
     }
     return { ok: true };
@@ -107,4 +121,23 @@ export function transitionMemoryClass(
     return { ok: false, error: `disallowed transition ${from} → ${to}` };
   }
   return { ok: true, record: { ...record, class: to } };
+}
+
+/** Integrator API for ZEUS CLEAR / SUPERSEDE / REJECT / HOLD — runs full transition gates. */
+export function applyZeusAdjudicationTransition(
+  record: AgentMemoryRecord,
+  verdict: ZeusAdjudication,
+  context: TransitionContext = {}
+): { ok: true; record: AgentMemoryRecord } | { ok: false; error: string } {
+  if (record.class !== 'QUARANTINED') {
+    return { ok: false, error: 'ZEUS adjudication applies only to QUARANTINED records' };
+  }
+  const target = zeusAdjudicationTargetClass(verdict);
+  if (!target) {
+    return { ok: false, error: `unknown ZEUS verdict: ${verdict}` };
+  }
+  return transitionMemoryClass(record, target, {
+    ...context,
+    zeusAdjudicationClear: verdict === 'CLEAR',
+  });
 }
