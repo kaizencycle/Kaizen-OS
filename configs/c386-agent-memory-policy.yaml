@@ -1,0 +1,30 @@
+# C-386 default TTL hints (seconds). Expiration means "do not assume current" — not "false".
+schema: MOBIUS_AGENT_MEMORY_POLICY_V1
+cycle: C-386
+
+default_ttl_seconds:
+  VERIFIED: 86400
+  INFERRED: 21600
+  REPORTED: 10800
+  STALE: 0
+  QUARANTINED: 0
+  SUPERSEDED: 0
+  REJECTED: 0
+
+domain_overrides_seconds:
+  pr_state: 900
+  ci_state: 900
+  deployment_state: 1800
+  cycle_state: 21600
+  canon_definition: 604800
+  constitutional_rule: 2592000
+
+quorum:
+  independent_sources_required: 2
+
+reverify_strategy:
+  REPORTED: locate_primary_source
+  INFERRED: replay_reasoning_against_current_evidence
+
+implementation_package: packages/agent-memory-governance
+schema: schemas/agent_memory_record_v1.schema.json
