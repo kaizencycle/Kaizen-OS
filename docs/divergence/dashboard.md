@@ -1,14 +1,14 @@
 # Divergence Dashboard
 
 **Repo:** `kaizencycle/Mobius-Substrate`  
-**Generated:** `2026-07-28T14:30:40Z`  
-**Open PRs:** `9`
+**Generated:** `2026-07-28T19:48:16Z`  
+**Open PRs:** `8`
 
 ## Summary
 
 | Severity | Count |
 |----------|-------|
-| 🔴 High | 5 |
+| 🔴 High | 4 |
 | 🟡 Medium | 0 |
 | 🟢 Low | 0 |
 | ⚪ Unknown | 4 |
@@ -21,8 +21,7 @@
 | 🔴 high | [#385](https://github.com/kaizencycle/Mobius-Substrate/pull/385) | fix(labs): replace lab7 workrepo gitlink with trac... | @kaizencycle | ? | ? | — | 2026-07-14 |
 | 🔴 high | [#408](https://github.com/kaizencycle/Mobius-Substrate/pull/408) | chore(deps): bump the actions group across 1 direc... | @dependabot[bot] | ? | ? | — | 2026-07-27 |
 | 🔴 high | [#419](https://github.com/kaizencycle/Mobius-Substrate/pull/419) | canon(C-368): prime reserve blocks cold canon (194... | @kaizencycle | ? | ? | — | 2026-07-23 |
-| 🔴 high | [#425](https://github.com/kaizencycle/Mobius-Substrate/pull/425) | chore(deps): bump the npm-minor-patch group across... | @dependabot[bot] | ? | ? | — | 2026-07-27 |
-| 🔴 high | [#426](https://github.com/kaizencycle/Mobius-Substrate/pull/426) | feat(c386): ATLAS×ZEUS handoff + agent memory gove... | @kaizencycle | ? | ? | — | 2026-07-28 |
+| 🔴 high | [#427](https://github.com/kaizencycle/Mobius-Substrate/pull/427) | chore(deps): bump the npm-minor-patch group across... | @dependabot[bot] | ? | ? | — | 2026-07-28 |
 | ⚪ unknown | [#344](https://github.com/kaizencycle/Mobius-Substrate/pull/344) | chore(deps): bump zustand from 4.5.7 to 5.0.14 | @dependabot[bot] | ? | ? | — | 2026-06-30 |
 | ⚪ unknown | [#345](https://github.com/kaizencycle/Mobius-Substrate/pull/345) | chore(deps): bump lucide-react from 0.378.0 to 1.2... | @dependabot[bot] | ? | ? | — | 2026-07-07 |
 | ⚪ unknown | [#346](https://github.com/kaizencycle/Mobius-Substrate/pull/346) | chore(deps): bump tailwind-merge from 2.6.0 to 3.6... | @dependabot[bot] | ? | ? | — | 2026-06-30 |

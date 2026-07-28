@@ -1,9 +1,9 @@
 {
   "repo": "kaizencycle/Mobius-Substrate",
-  "generated_at": "2026-07-28T14:30:40Z",
-  "open_pr_count": 9,
+  "generated_at": "2026-07-28T19:48:16Z",
+  "open_pr_count": 8,
   "by_severity": {
-    "high": 5,
+    "high": 4,
     "medium": 0,
     "low": 0,
     "unknown": 4
@@ -64,36 +64,17 @@
       }
     },
     {
-      "pr": 425,
-      "title": "chore(deps): bump the npm-minor-patch group across 1 directory with 20 updates",
-      "url": "https://github.com/kaizencycle/Mobius-Substrate/pull/425",
+      "pr": 427,
+      "title": "chore(deps): bump the npm-minor-patch group across 1 directory with 21 updates",
+      "url": "https://github.com/kaizencycle/Mobius-Substrate/pull/427",
       "author": "dependabot[bot]",
-      "updated_at": "2026-07-27T15:59:13Z",
-      "created_at": "2026-07-27T15:57:43Z",
+      "updated_at": "2026-07-28T16:59:07Z",
+      "created_at": "2026-07-28T16:57:29Z",
       "labels": [],
       "mode": "normal",
       "has_debt": false,
       "severity": "high",
       "justification_hash": "",
-      "checks": {
-        "epicon": "unknown",
-        "merge_gate": "unknown"
-      }
-    },
-    {
-      "pr": 426,
-      "title": "feat(c386): ATLAS\u00d7ZEUS handoff + agent memory governance reference",
-      "url": "https://github.com/kaizencycle/Mobius-Substrate/pull/426",
-      "author": "kaizencycle",
-      "updated_at": "2026-07-28T14:19:22Z",
-      "created_at": "2026-07-28T14:17:12Z",
-      "labels": [
-        "scope:specs"
-      ],
-      "mode": "normal",
-      "has_debt": false,
-      "severity": "high",
-      "justification_hash": "403ae977ed6cfb1af511153e7ac3a4df19b992e3c4a134d381faf3f5a5e6d646",
       "checks": {
         "epicon": "unknown",
         "merge_gate": "unknown"
