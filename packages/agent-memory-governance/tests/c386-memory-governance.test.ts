@@ -5,6 +5,7 @@ import {
   canTransition,
   canonicalRootKey,
   countIndependentSources,
+  evidentiaryRootsFresh,
   isSelfReferentialChain,
   transitionMemoryClass,
   validateMemory,
@@ -98,6 +99,49 @@ describe('C-386 evidentiary quorum', () => {
       evidence: { independent_sources: roots },
     });
     expect(countIndependentSources(r)).toBe(1);
+  });
+
+  it('Z-002 url-only and owner/repo labels share sha bucket', () => {
+    const sha = 'df4ac36ddeadbeefdf4ac36ddeadbeefdf4ac36d';
+    const a = canonicalRootKey({
+      type: 'canonical_repository_state',
+      root_id: `github:url-${sha}`,
+    });
+    const b = canonicalRootKey({
+      type: 'canonical_repository_state',
+      root_id: `github:kaizencycle/Mobius-Substrate@${sha}`,
+    });
+    expect(a).toBe(b);
+  });
+});
+
+describe('C-386 transition gates', () => {
+  it('INFERRED → VERIFIED requires promotion gate', () => {
+    const r = base({ class: 'INFERRED', evidence: { independent_sources: [] } });
+    const out = transitionMemoryClass(r, 'VERIFIED');
+    expect(out.ok).toBe(false);
+    if (!out.ok) expect(out.error).toContain('quorum_not_met');
+  });
+
+  it('expired agent_memory does not block evidentiaryRootsFresh', () => {
+    const r = base({
+      class: 'VERIFIED',
+      evidence: {
+        independent_sources: [
+          {
+            type: 'agent_memory',
+            root_id: 'atlas:1',
+            expires_at: '2020-01-01T00:00:00Z',
+          },
+          {
+            type: 'canonical_repository_state',
+            root_id: 'github:kaizencycle/Mobius-Substrate@abc1234567890123456789012345678901234',
+            expires_at: '2099-01-01T00:00:00Z',
+          },
+        ],
+      },
+    });
+    expect(evidentiaryRootsFresh(r, new Date('2026-07-28T00:00:00Z'))).toBe(true);
   });
 });
 

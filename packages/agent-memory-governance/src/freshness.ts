@@ -1,3 +1,4 @@
+import { QUALIFYING_EVIDENTIARY_TYPES } from './canonicalizeRoot.js';
 import type { AgentMemoryRecord } from './types.js';
 
 /** True when every qualifying root with expires_at is still valid at `now`. */
@@ -8,6 +9,7 @@ export function evidentiaryRootsFresh(
   const nowMs = now.getTime();
   const sources = record.evidence?.independent_sources ?? [];
   for (const source of sources) {
+    if (!QUALIFYING_EVIDENTIARY_TYPES.has(source.type)) continue;
     if (source.expires_at) {
       const exp = Date.parse(source.expires_at);
       if (!Number.isNaN(exp) && exp <= nowMs) return false;

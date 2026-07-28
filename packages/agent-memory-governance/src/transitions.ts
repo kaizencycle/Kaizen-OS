@@ -1,3 +1,5 @@
+import { evidentiaryRootsFresh } from './freshness.js';
+import { canPromoteToVerified } from './promotion.js';
 import type { AgentMemoryRecord, MemoryClass, ZeusAdjudication } from './types.js';
 
 const ALLOWED_TRANSITIONS: Record<MemoryClass, MemoryClass[]> = {
@@ -35,10 +37,51 @@ export function applyZeusAdjudication(
   }
 }
 
+export type TransitionContext = {
+  reopenEvidence?: boolean;
+  zeusAdjudicationClear?: boolean;
+  now?: Date;
+  requiredSources?: number;
+};
+
+function gateVerifiedTransition(
+  record: AgentMemoryRecord,
+  from: MemoryClass,
+  context: TransitionContext
+): { ok: true } | { ok: false; error: string } {
+  const now = context.now ?? new Date();
+  if (from === 'INFERRED') {
+    const promo = canPromoteToVerified(record, {
+      now,
+      requiredSources: context.requiredSources,
+    });
+    if (!promo.allowed) {
+      return {
+        ok: false,
+        error: `INFERRED → VERIFIED blocked: ${promo.reasons.join(', ')}`,
+      };
+    }
+    return { ok: true };
+  }
+  if (from === 'STALE') {
+    if (!evidentiaryRootsFresh(record, now)) {
+      return { ok: false, error: 'STALE → VERIFIED requires fresh qualifying evidentiary roots' };
+    }
+    return { ok: true };
+  }
+  if (from === 'QUARANTINED') {
+    if (!context.zeusAdjudicationClear) {
+      return { ok: false, error: 'QUARANTINED → VERIFIED requires ZEUS CLEAR (use applyZeusAdjudication)' };
+    }
+    return { ok: true };
+  }
+  return { ok: false, error: `VERIFIED transition not allowed from ${from}` };
+}
+
 export function transitionMemoryClass(
   record: AgentMemoryRecord,
   to: MemoryClass,
-  context: { reopenEvidence?: boolean } = {}
+  context: TransitionContext = {}
 ): { ok: true; record: AgentMemoryRecord } | { ok: false; error: string } {
   const from = record.class;
   if (from === 'REJECTED' && to === 'INFERRED') {
@@ -46,6 +89,10 @@ export function transitionMemoryClass(
       return { ok: false, error: 'REJECTED → INFERRED requires NEW_EVIDENCE_REOPEN' };
     }
     return { ok: true, record: { ...record, class: 'INFERRED' } };
+  }
+  if (to === 'VERIFIED') {
+    const gate = gateVerifiedTransition(record, from, context);
+    if (!gate.ok) return gate;
   }
   if (!canTransition(from, to)) {
     return { ok: false, error: `disallowed transition ${from} → ${to}` };

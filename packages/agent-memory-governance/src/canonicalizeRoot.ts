@@ -87,26 +87,50 @@ export function canonicalizeGitHubRepositoryRoot(root_id: string): string {
   }
 
   const fromUrl = parseGitHubCommitUrl(raw);
-  if (fromUrl) return fromUrl;
+  if (fromUrl) {
+    const sha = fromUrl.split('@')[1];
+    if (sha && commitShaKey(sha)) return commitShaKey(sha)!;
+    return fromUrl;
+  }
 
   if (/^artifact:/i.test(raw)) {
     const sub = raw.replace(/^artifact:/i, '');
     const parsed = parseOwnerRepoAtSha(sub);
-    if (parsed) return parsed;
+    if (parsed) {
+      const sha = parsed.split('@')[1];
+      if (sha && commitShaKey(sha)) return commitShaKey(sha)!;
+      return parsed;
+    }
   }
 
   const direct = parseOwnerRepoAtSha(raw);
-  if (direct) return direct;
+  if (direct) {
+    const sha = direct.split('@')[1];
+    if (sha && commitShaKey(sha)) return commitShaKey(sha)!;
+    return direct;
+  }
 
   const tail = findOwnerRepoBeforeAt(raw);
   if (tail) {
-    return `${tail.ownerRepo.toLowerCase()}@${tail.sha.toLowerCase()}`;
+    return commitShaKey(tail.sha) ?? `${tail.ownerRepo.toLowerCase()}@${tail.sha.toLowerCase()}`;
   }
 
-  const embedded40 = raw.match(/[0-9a-f]{40}/i);
-  if (embedded40) {
-    return `*@${embedded40[0].toLowerCase()}`;
+  const fullSha = extractFullSha(raw);
+  if (fullSha) {
+    return commitShaKey(fullSha)!;
   }
 
   return raw.toLowerCase();
+}
+
+function extractFullSha(raw: string): string | null {
+  const idx = raw.search(/[0-9a-f]{40}/i);
+  if (idx < 0) return null;
+  return raw.slice(idx, idx + 40).toLowerCase();
+}
+
+/** Single dedup bucket per commit when a 40-char SHA is known (Z-002). */
+function commitShaKey(sha: string): string | null {
+  if (!/^[0-9a-f]{40}$/.test(sha)) return null;
+  return `sha:${sha}`;
 }
