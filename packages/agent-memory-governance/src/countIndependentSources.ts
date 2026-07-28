@@ -1,4 +1,4 @@
-import { canonicalRootKey, QUALIFYING_EVIDENTIARY_TYPES } from './canonicalizeRoot.js';
+import { canonicalRootKey, canonicalRepositoryRootQualifiesForQuorum, QUALIFYING_EVIDENTIARY_TYPES } from './canonicalizeRoot.js';
 import type { AgentMemoryRecord } from './types.js';
 
 /** Single authority for independent evidentiary root counting (C-386 A-005 / §9). */
@@ -7,6 +7,12 @@ export function countIndependentSources(record: AgentMemoryRecord): number {
   const keys = new Set<string>();
   for (const source of sources) {
     if (!QUALIFYING_EVIDENTIARY_TYPES.has(source.type)) continue;
+    if (
+      source.type === 'canonical_repository_state' &&
+      !canonicalRepositoryRootQualifiesForQuorum(source.root_id)
+    ) {
+      continue;
+    }
     keys.add(canonicalRootKey(source));
   }
   return keys.size;

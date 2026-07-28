@@ -1,4 +1,5 @@
 import { isRecordStaleForConsequence } from './freshness.js';
+import { meetsConsequenceEvidenceBar } from './promotion.js';
 import type { AgentMemoryRecord, MemoryClass } from './types.js';
 
 const KNOWN_CLASSES = new Set<MemoryClass>([
@@ -9,6 +10,13 @@ const KNOWN_CLASSES = new Set<MemoryClass>([
   'QUARANTINED',
   'SUPERSEDED',
   'REJECTED',
+]);
+
+const PLANNING_CONTEXT_CLASSES = new Set<MemoryClass>([
+  'REPORTED',
+  'INFERRED',
+  'VERIFIED',
+  'STALE',
 ]);
 
 export interface MemoryValidationResult {
@@ -41,20 +49,38 @@ export function validateMemory(record: AgentMemoryRecord): MemoryValidationResul
 
   if (record.class === 'QUARANTINED' || record.class === 'REJECTED') {
     quarantine_recommended = true;
+    issues.push(`${record.class} — not safe for planning or consequence`);
   }
 
-  const safe_for_consequence =
-    !quarantine_recommended &&
-    !isRecordStaleForConsequence(record) &&
-    record.class === 'VERIFIED' &&
-    !record.zeus_hold;
+  if (record.verification_conflict) {
+    issues.push('verification_conflict — unresolved dispute');
+    quarantine_recommended = true;
+  }
+
+  if (record.class === 'VERIFIED' && !record.provenance) {
+    issues.push('VERIFIED record missing provenance');
+  }
 
   if (record.class === 'STALE') {
     issues.push('STALE — reverify required before consequence');
   }
 
+  const safe_for_context =
+    !quarantine_recommended &&
+    PLANNING_CONTEXT_CLASSES.has(record.class) &&
+    record.class !== 'QUARANTINED' &&
+    record.class !== 'REJECTED';
+
+  const safe_for_consequence =
+    safe_for_context &&
+    record.class === 'VERIFIED' &&
+    !record.zeus_hold &&
+    !future_agent_instruction_detected &&
+    !isRecordStaleForConsequence(record) &&
+    meetsConsequenceEvidenceBar(record);
+
   return {
-    safe_for_context: issues.length === 0 || record.class === 'INFERRED' || record.class === 'REPORTED',
+    safe_for_context,
     safe_for_consequence,
     quarantine_recommended,
     issues,

@@ -10,7 +10,8 @@ export const QUALIFYING_EVIDENTIARY_TYPES = new Set([
 ]);
 
 const MAX_ROOT_ID_LEN = 4096;
-const HEX_SHA = /^[0-9a-f]{7,40}$/i;
+/** Quorum counting requires a full 40-character commit SHA (no abbreviated prefixes). */
+const FULL_SHA = /^[0-9a-f]{40}$/i;
 const IDENT = /^[a-z0-9_.-]+$/i;
 
 /**
@@ -26,11 +27,16 @@ export function canonicalRootKey(source: Pick<EvidentiaryRoot, 'type' | 'root_id
   return `${type}:${id}`;
 }
 
+/** Repository roots with abbreviated SHAs do not count toward quorum. */
+export function canonicalRepositoryRootQualifiesForQuorum(root_id: string): boolean {
+  return canonicalizeGitHubRepositoryRoot(root_id).startsWith('sha:');
+}
+
 function parseOwnerRepoAtSha(segment: string): string | null {
   const at = segment.lastIndexOf('@');
   if (at <= 0 || at >= segment.length - 1) return null;
   const sha = segment.slice(at + 1);
-  if (!HEX_SHA.test(sha)) return null;
+  if (!FULL_SHA.test(sha)) return null;
   const repoPath = segment.slice(0, at);
   const slash = repoPath.lastIndexOf('/');
   if (slash <= 0) return null;
@@ -50,7 +56,7 @@ function parseGitHubCommitUrl(raw: string): string | null {
   if (cIdx < 0) return null;
   const repoPart = tail.slice(0, cIdx);
   const shaPart = tail.slice(cIdx + commitMarker.length).split(/[/?#]/)[0] ?? '';
-  if (!HEX_SHA.test(shaPart)) return null;
+  if (!FULL_SHA.test(shaPart)) return null;
   const slash = repoPart.indexOf('/');
   if (slash <= 0) return null;
   const owner = repoPart.slice(0, slash);
@@ -63,7 +69,7 @@ function findOwnerRepoBeforeAt(raw: string): { ownerRepo: string; sha: string } 
   const at = raw.lastIndexOf('@');
   if (at < 0) return null;
   const sha = raw.slice(at + 1);
-  if (!HEX_SHA.test(sha)) return null;
+  if (!FULL_SHA.test(sha)) return null;
   const before = raw.slice(0, at);
   const slash = before.lastIndexOf('/');
   if (slash <= 0) return null;
@@ -112,7 +118,9 @@ export function canonicalizeGitHubRepositoryRoot(root_id: string): string {
 
   const tail = findOwnerRepoBeforeAt(raw);
   if (tail) {
-    return commitShaKey(tail.sha) ?? `${tail.ownerRepo.toLowerCase()}@${tail.sha.toLowerCase()}`;
+    const keyed = commitShaKey(tail.sha);
+    if (keyed) return keyed;
+    return `${tail.ownerRepo.toLowerCase()}@${tail.sha.toLowerCase()}`;
   }
 
   const fullSha = extractFullSha(raw);
@@ -131,6 +139,6 @@ function extractFullSha(raw: string): string | null {
 
 /** Single dedup bucket per commit when a 40-char SHA is known (Z-002). */
 function commitShaKey(sha: string): string | null {
-  if (!/^[0-9a-f]{40}$/.test(sha)) return null;
+  if (!FULL_SHA.test(sha)) return null;
   return `sha:${sha}`;
 }

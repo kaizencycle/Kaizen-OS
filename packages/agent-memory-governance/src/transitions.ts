@@ -1,5 +1,5 @@
 import { evidentiaryRootsFresh } from './freshness.js';
-import { canPromoteToVerified } from './promotion.js';
+import { canPromoteToVerified, meetsConsequenceEvidenceBar } from './promotion.js';
 import type { AgentMemoryRecord, MemoryClass, ZeusAdjudication } from './types.js';
 
 const ALLOWED_TRANSITIONS: Record<MemoryClass, MemoryClass[]> = {
@@ -67,11 +67,20 @@ function gateVerifiedTransition(
     if (!evidentiaryRootsFresh(record, now)) {
       return { ok: false, error: 'STALE → VERIFIED requires fresh qualifying evidentiary roots' };
     }
+    if (!meetsConsequenceEvidenceBar(record, context.requiredSources)) {
+      return { ok: false, error: 'STALE → VERIFIED requires provenance, quorum, and no conflict' };
+    }
     return { ok: true };
   }
   if (from === 'QUARANTINED') {
     if (!context.zeusAdjudicationClear) {
       return { ok: false, error: 'QUARANTINED → VERIFIED requires ZEUS CLEAR (use applyZeusAdjudication)' };
+    }
+    if (!evidentiaryRootsFresh(record, now)) {
+      return { ok: false, error: 'QUARANTINED → VERIFIED requires fresh qualifying evidentiary roots' };
+    }
+    if (!meetsConsequenceEvidenceBar(record, context.requiredSources)) {
+      return { ok: false, error: 'QUARANTINED → VERIFIED requires provenance, quorum, and no conflict' };
     }
     return { ok: true };
   }

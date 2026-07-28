@@ -27,4 +27,4 @@ reverify_strategy:
   INFERRED: replay_reasoning_against_current_evidence
 
 implementation_package: packages/agent-memory-governance
-schema: schemas/agent_memory_record_v1.schema.json
+record_schema_path: schemas/agent_memory_record_v1.schema.json

@@ -1,7 +1,14 @@
 import { QUALIFYING_EVIDENTIARY_TYPES } from './canonicalizeRoot.js';
 import type { AgentMemoryRecord } from './types.js';
 
-/** True when every qualifying root with expires_at is still valid at `now`. */
+function parseExpiryMs(iso: string | undefined): number | 'missing' | 'invalid' {
+  if (!iso) return 'missing';
+  const exp = Date.parse(iso);
+  if (Number.isNaN(exp)) return 'invalid';
+  return exp;
+}
+
+/** True when every qualifying root with expires_at is still valid at `now`. Fail-closed on invalid timestamps. */
 export function evidentiaryRootsFresh(
   record: AgentMemoryRecord,
   now: Date = new Date()
@@ -10,15 +17,13 @@ export function evidentiaryRootsFresh(
   const sources = record.evidence?.independent_sources ?? [];
   for (const source of sources) {
     if (!QUALIFYING_EVIDENTIARY_TYPES.has(source.type)) continue;
-    if (source.expires_at) {
-      const exp = Date.parse(source.expires_at);
-      if (!Number.isNaN(exp) && exp <= nowMs) return false;
-    }
+    const parsed = parseExpiryMs(source.expires_at);
+    if (parsed === 'invalid') return false;
+    if (parsed !== 'missing' && parsed <= nowMs) return false;
   }
-  if (record.freshness?.expires_at) {
-    const exp = Date.parse(record.freshness.expires_at);
-    if (!Number.isNaN(exp) && exp <= nowMs) return false;
-  }
+  const recordExpiry = parseExpiryMs(record.freshness?.expires_at);
+  if (recordExpiry === 'invalid') return false;
+  if (recordExpiry !== 'missing' && recordExpiry <= nowMs) return false;
   return true;
 }
 

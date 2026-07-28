@@ -44,6 +44,16 @@ export function canPromoteToVerified(
   return { allowed: reasons.length === 0, reasons };
 }
 
+/** Runtime consequence bar: provenance, no conflict, evidentiary quorum (§13). */
+export function meetsConsequenceEvidenceBar(
+  record: AgentMemoryRecord,
+  requiredSources = 2
+): boolean {
+  if (!record.provenance) return false;
+  if (record.verification_conflict) return false;
+  return quorumSatisfied(record, requiredSources);
+}
+
 /** INFERRED + 1 root → not promotable; exposed for tests */
 export function promotionEligibilitySummary(record: AgentMemoryRecord): {
   independent_sources: number;
