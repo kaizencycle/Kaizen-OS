@@ -1,15 +1,15 @@
 {
   "mobius_catalog_version": "1.0.0",
-  "generated_at": "2026-07-28T05:19:33.869Z",
+  "generated_at": "2026-07-29T05:26:38.499Z",
   "repo": {
     "name": "Mobius-Substrate",
     "url": "https://github.com/kaizencycle/Mobius-Substrate",
     "default_branch": "main",
-    "commit": "00c60d45b2a10557331d3c8fd64f2569ba61b04a"
+    "commit": "ea5793217df35ef4bbce2c13f57298e73f58bed6"
   },
   "stats": {
     "epiconCount": 0,
-    "docCount": 1075
+    "docCount": 1079
   },
   "epicons": [],
   "docs": [
@@ -8287,6 +8287,38 @@
       "category": "epicon",
       "tags": [],
       "content_hash": "sha256:5e29981a1fa4756ceec938d5bf7732a895255c90cc0c0f7d3990c1bcfd5b0075",
+      "summary": ""
+    },
+    {
+      "path": "docs/epicon/cycles/C-386/CHAMBER_ATLAS.md",
+      "title": "ATLAS C-386 — Implementation chamber",
+      "category": "epicon",
+      "tags": [],
+      "content_hash": "sha256:1d70f8e2e5d7938062cccdd18433b49ce43c73bb59efc636c071e9db610a6b5a",
+      "summary": ""
+    },
+    {
+      "path": "docs/epicon/cycles/C-386/CHAMBER_ZEUS.md",
+      "title": "ZEUS C-386 — Adversarial chamber",
+      "category": "epicon",
+      "tags": [],
+      "content_hash": "sha256:683208f05c2738703061372c424f50b2fe5466264536cdf0843336ad45bc34c2",
+      "summary": ""
+    },
+    {
+      "path": "docs/epicon/cycles/C-386/HANDOFF_C-386_ATLAS_ZEUS_agent-memory-kv-drift_v1.md",
+      "title": "C-386 — Persistent Agent Memory, Evidentiary Independence, and KV Drift Control",
+      "category": "epicon",
+      "tags": [],
+      "content_hash": "sha256:5c96d279150c25eaef5887e2097a21aeeea5edd2dcd1f22f69cb8d56c31bf3f4",
+      "summary": ""
+    },
+    {
+      "path": "docs/epicon/cycles/C-386/README.md",
+      "title": "C-386 — Agent memory / KV drift control",
+      "category": "epicon",
+      "tags": [],
+      "content_hash": "sha256:c9a038bf404156ca621455c02fa40592ad97279c678d0f917f019eb72552aca2",
       "summary": ""
     },
     {
