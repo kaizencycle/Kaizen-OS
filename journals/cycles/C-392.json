@@ -1,0 +1,13 @@
+{
+  "cycle": "C-392",
+  "date": "2026-08-03",
+  "writer": "mobius-bot/state-sync",
+  "narrative": null,
+  "ledger_verified": false,
+  "ledger_snapshot": null,
+  "ledger_snapshot_at": null,
+  "ledger_witness_url": "https://civic-protocol-core-ledger.onrender.com/pulse/state",
+  "ledger_gi_attested": false,
+  "ledger_withheld_reason": "LEDGER_PULSE_UNREACHABLE",
+  "ledger_fetch_error": "HTTP Error 503: Service Unavailable"
+}
