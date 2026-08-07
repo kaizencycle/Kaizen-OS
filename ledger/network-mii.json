@@ -1,8 +1,16 @@
 {
   "schema": "MNS_NETWORK_MII_V1",
-  "computed_at": "2026-08-07T15:43:54.155Z",
-  "network_mii": 0,
-  "node_count": 0,
-  "nodes": [],
+  "computed_at": "2026-08-07T16:41:15.969Z",
+  "network_mii": 0.85,
+  "node_count": 1,
+  "nodes": [
+    {
+      "node_id": "civic-protocol-core",
+      "tier": "contributor",
+      "mii_baseline": 0.85,
+      "weight": 0.7,
+      "entry_count": 50
+    }
+  ],
   "note": "Network MII is a weighted average of registered node baselines for nodes with at least one aggregated entry. Live per-node MII is a follow-up."
 }
