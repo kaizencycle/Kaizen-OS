@@ -1,7 +1,7 @@
 # State of the Substrate — Latest
 
-**Cycle:** C-383  
-**Updated:** 2026-07-25  
+**Cycle:** C-397  
+**Updated:** 2026-08-08  
 **GI:** ~0.90 · yellow *(editorial; use Live strip below for Terminal snapshot)*  
 **Custodian:** Michael (kaizencycle)
 
@@ -18,6 +18,7 @@
 
 ## Dateline
 
+**C-397** — Reserve Block collision reconciliation: preserve C-377 pair witness (125 hash-divergent / 123 contested); cold 194-block snapshot draft pending Track R + gate adjudication (#429).  
 **C-383** — cycle journal ledger verification (#11): trace `ledger_verified` to `/pulse/state` witness.  
 **C-382** — federation scan (20 optimizations), CPC identity durability follow-through, verification preference on `main`.  
 **C-381** — handbook CI remediation, I7 witness table (warn), Docs Guard Phase 1.  
