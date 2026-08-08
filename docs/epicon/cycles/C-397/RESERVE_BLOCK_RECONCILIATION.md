@@ -12,12 +12,14 @@ The Reserve Block incident is a **lineage collision**, not corruption of the pre
 
 | Metric | C-397 witness |
 |---|---:|
-| Attested seal records | 319 |
-| Unique `block_number` positions | 194 |
+| Attested seal records examined (C-377 audit) | 319 |
+| Unique `block_number` **candidate** positions (deduped from examined set) | 194 |
 | Hash-divergent collision pairs | 125 |
 | Contested positions | 123 |
 | Clean positions | 71 |
 | Three-way positions | 1, 2 |
+
+**Do not read 194 as `canonical_reserve_blocks`.** It is the verified C-377/C-397 **reconciliation candidate** count from the examined attested corpus only. Constitutional canon remains **`canonical_reserve_blocks = unresolved`** until Track R completes (see below).
 
 The 125 pair count is explained exactly:
 
@@ -31,30 +33,64 @@ The 125 pair count is explained exactly:
 The complete 125 pair witness (kept/dropped seal IDs, cycles, quorum, timestamps, divergence flag) is preserved in
 [`C397_RESERVE_BLOCK_COLLISION_WITNESS.json`](./C397_RESERVE_BLOCK_COLLISION_WITNESS.json).
 
-## What the C-368/C-397 cold snapshot proves
+## Index cardinality vs examination vs constitutional canon (live, 2026-08-08)
 
-The 194-line cold snapshot is internally cryptographically valid:
+Production vault status exposes **three different lenses** — confusing them caused this incident:
 
-- 194 contiguous positions
+```
+360 indexed seal IDs          ← vault:seals:index:attested cardinality (accumulator index)
+│
+├─ 319 examined in lineage    ← attested bodies in C-377 audit / collision witness scope
+│   ├─ 194 candidate positions ← deduped unique block_number (NOT constitutional canon)
+│   └─ 125 collision pairs / 123 contested
+│
+└─ 41 IDs                   ← NOT YET CLASSIFIED (index − examination gap)
+```
+
+| Lens | Live value (approx.) | Constitutional? |
+|------|----------------------|-----------------|
+| Indexed seal IDs | 360 | **No** — operator accumulator index |
+| Examined attested bodies | 319 | **No** — audit/witness scope |
+| Candidate unique positions | 194 | **No** — reconciliation candidate only |
+| `canonical_reserve_blocks` | `null` / unresolved | **Yes** — unset until Track R completes |
+
+Until the **41-ID gap** is classified, do not publish `canonical_reserve_blocks = 194` or any other fixed count. The API field must remain unresolved.
+
+**Future Terminal UI (deferred):** surface `360 INDEXED · 319 EXAMINED · 194 CANDIDATE POSITIONS · CANON UNRESOLVED` so operators cannot confuse index cardinality with constitutional canon.
+
+## What the C-368/C-397 cold snapshot candidate proves
+
+The 194-position **candidate** chain (e.g. PR #419 replay) is internally cryptographically valid when re-verified:
+
+- 194 contiguous candidate positions
 - 9,700 MIC at 50 MIC per position
 - both `.dat` SHA-256 digests match `MANIFEST.json`
 - every `prev_hash` link and per-block hash verifies
 - chain tip matches the manifest
 
-That proves **artifact integrity**. It does not, by itself, adjudicate which competing historical seal belongs in each of the 123 contested positions.
+That proves **artifact integrity of a candidate export**. It does not adjudicate which competing historical seal belongs in each of the 123 contested positions, and it does not resolve the 41-ID index/examination gap.
 
-## Track R recovery gate
+## Track R recovery gate (ordered)
 
-C-397 does **not** ship a regenerated `.dat` candidate in this tree—the canon rollback left checked-in `canon/reserve-blocks/` unchanged from `main`. What is preserved here is **verification evidence only**: the 125-pair witness JSON, the C-377 audit provenance, and the witness-table row recording that PR #419's 194-position candidate replayed as internally valid (`chain_tip_hash` `sha256:aefebc6cf87df587f601c55d9b269214d35d6a1621c333177b8bd39455d140d8` at commit `97607a52` documentation time—not retrievable as a Substrate artifact after rollback). Track R operators must re-export or re-verify from KV before any promotion; nothing in this PR substitutes for that artifact.
+C-397 does **not** ship a regenerated `.dat` candidate in this tree—the canon rollback left checked-in `canon/reserve-blocks/` unchanged from `main`. What is preserved here is **verification evidence only**: the 125-pair witness JSON, the C-377 audit provenance, and witness-table rows for #419 candidate replay hashes (not retrievable as Substrate artifacts after rollback).
+
+**Merge-ready sequence** — do not skip or reorder without recording why:
+
+1. **Fresh collision audit** — production KV; confirm pair count still matches witness (or regenerate evidence).
+2. **Classify the 41 index/examination-gap IDs** — why 360 indexed vs 319 examined; no constitutional inference until classified.
+3. **Confirm live unique-position candidate count** — verify whether deduped candidate positions remain 194 after step 1–2 (may change).
+4. **Adjudicate the 123 known contested positions** — Track R receipts per position; no silent dedupe winners.
+5. **Human + ZEUS + EVE approval** — recorded on PR / consensus gate.
+6. **Apply guarded Track R repair** — C-373 collision-repair transaction only; no KV rewrite outside guard.
+7. **Post-repair audit** — zero unresolved hash-divergent divergence; `SEAL_INTEGRITY_GATE` may lift only after this.
+8. **Determine canonical RB count and regenerate `.dat`** — only after steps 1–7; then `canonical_reserve_blocks` resolves from Track R evidence, not from index cardinality or candidate dedupe alone.
+
+Invariant constraints (all steps):
 
 1. Preserve all original seal bodies.
 2. Do not renumber or delete competing seals.
-3. Generate reconciliation receipts for the 123 contested `block_number` positions.
-4. Require ZEUS + EVE + human/custodian approval for hash-divergent repair.
-5. Apply only through the existing guarded C-373 collision-repair transaction.
-6. Re-run the pair-count audit against production KV.
-7. Do not disengage `SEAL_INTEGRITY_GATE` until the live audit and canonical-count evidence resolve.
-8. Only after reconciliation should `canonical_reserve_blocks` resolve from Track R evidence.
+3. Do not disengage `SEAL_INTEGRITY_GATE` until live audit and canonical-count evidence resolve.
+4. `canonical_reserve_blocks` stays **unresolved** until step 8 — never preset to 194.
 
 ## Authority Provenance & Standing
 
@@ -67,7 +103,7 @@ C-397 invokes **founder–custodian standing** only to preserve reconciliation e
 This authority is narrowly scoped to:
 
 - preserving the C-377 pair-count witness,
-- preserving the verification facts for the cold-snapshot candidate without publishing it as canon,
+- preserving the verification facts for the #419 candidate replay (hashes recorded in Witness Table—not a checked-in artifact),
 - requiring Track R evidence before canonical promotion,
 - requesting independent sentinel and human review.
 
@@ -101,9 +137,11 @@ The separate intent timebox in PR #429 remains an outer bound.
 | 125 collisions are real pair-count findings | **TRUE** | Terminal run 29710940106; 125/125 hash-divergent |
 | The 125 occupy 125 different blocks | **FALSE** | 123 positions; blocks 1–2 are three-way |
 | Preserved seal bodies are hash-corrupt | **FALSE** | lineage audit: 319/319 hashes valid |
-| The regenerated 194-line snapshot candidate is internally valid | **TRUE** | C-397 independent verifier replay of #419 candidate |
-| All 194 positions are adjudicated canon | **FALSE** | 123 positions remain contested |
+| #419 candidate replay was internally valid (not in tree) | **TRUE** | Independent verifier at PR #419; tip `sha256:aefebc6c…40d8`; see superseded PR diff |
+| 194 candidate positions (not constitutional canon) | **TRUE-gap** | C-377 witness dedupe; 41-ID gap unclassified; `canonical_reserve_blocks` unresolved |
+| All 194 positions are adjudicated canon | **FALSE** | 123 contested; 41 IDs unclassified; canon count unset |
 | Safe clean positions exist | **TRUE** | 34–41 and 132–194 = 71 positions |
+| Index/examination gap (41 IDs) classified | **FALSE / PENDING** | 360 indexed vs 319 examined — classify before fixing canonical count |
 | Production Track R repair has been applied | **UNVERIFIED / NO CLAIM** | Requires approved operator execution |
 
 ## Restraint row
@@ -113,6 +151,7 @@ The separate intent timebox in PR #429 remains an outer bound.
 - No `SEAL_INTEGRITY_GATE` disable.
 - No historical seal deletion, rewrite, or renumber.
 - No MIC issuance or conversion change.
+- No preset `canonical_reserve_blocks = 194` (or any fixed count) before Track R step 8.
 - No UI-derived canonical count.
 - No claim that cryptographic chain validity substitutes for lineage adjudication.
 
