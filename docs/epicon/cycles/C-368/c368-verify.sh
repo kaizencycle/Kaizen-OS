@@ -108,12 +108,24 @@ pr6(){
 }
 
 pr7(){
-  hdr "PR 7 — Reserve Block cold canon prime (Mobius-Substrate@main)"
-  d=$(mktemp -d); git clone -q --depth 1 https://github.com/kaizencycle/Mobius-Substrate.git "$d" || { bad "clone failed"; return; }
+  hdr "PR 7 — Reserve Block cold canon prime (Mobius-Substrate@${SUBSTRATE_BRANCH:-main})"
+  SUBSTRATE_BRANCH="${SUBSTRATE_BRANCH:-main}"
+  local_mode=0
+  if [ -f "canon/reserve-blocks/MANIFEST.json" ] && [ -f "scripts/verify-dat-chain.js" ]; then
+    d="$(pwd)"
+    local_mode=1
+    ok "using local Mobius-Substrate checkout"
+  else
+    d=$(mktemp -d)
+    git clone -q --depth 1 --branch "$SUBSTRATE_BRANCH" \
+      "https://github.com/kaizencycle/Mobius-Substrate.git" "$d" \
+      || { bad "clone failed for branch ${SUBSTRATE_BRANCH}"; rm -rf "$d"; return; }
+    ok "cloned kaizencycle/Mobius-Substrate@${SUBSTRATE_BRANCH}"
+  fi
   n=$(find "$d/canon/reserve-blocks" -name '*.dat' 2>/dev/null | wc -l)
   [ "$n" -ge 1 ] && ok "$n .dat file(s) in canon/reserve-blocks/" || bad "no .dat files in canon/reserve-blocks/ (only .gitkeep?)"
   [ -f "$d/canon/reserve-blocks/MANIFEST.json" ] && ok "MANIFEST.json present" || bad "MANIFEST.json missing"
-  [ -f "$d/scripts/verify-dat-chain.js" ] && ok "verify-dat-chain.js on main" || bad "verify-dat-chain.js missing"
+  [ -f "$d/scripts/verify-dat-chain.js" ] && ok "verify-dat-chain.js present" || bad "verify-dat-chain.js missing"
   [ -f "$d/.github/workflows/reserve-block-canonization.yml" ] && ok "canonization workflow present" || bad "reserve-block-canonization.yml missing"
   if [ -f "$d/canon/reserve-blocks/MANIFEST.json" ]; then
     blocks=$(python3 -c "import json;print(json.load(open('$d/canon/reserve-blocks/MANIFEST.json')).get('total_blocks',0))" 2>/dev/null)
@@ -126,8 +138,14 @@ pr7(){
         || bad "MANIFEST total_blocks invalid: $blocks"
     fi
   fi
-  rm -rf "$d"
-  echo "  NOTE  full chain verify: node scripts/verify-dat-chain.js canon/reserve-blocks/"
+  if [ -f "$d/scripts/verify-dat-chain.js" ]; then
+    if (cd "$d" && node scripts/verify-dat-chain.js canon/reserve-blocks/); then
+      ok "verify-dat-chain.js passed on ${SUBSTRATE_BRANCH}"
+    else
+      bad "verify-dat-chain.js failed on ${SUBSTRATE_BRANCH}"
+    fi
+  fi
+  if [ "$local_mode" = 0 ]; then rm -rf "$d"; fi
 }
 
 case "$TARGET" in

@@ -44,9 +44,10 @@ Configure on **Mobius-Substrate** (for post-merge canon-event):
 
 1. Run collision audit on terminal (KV creds):  
    `npx tsx scripts/audit-reserve-block-collisions.ts --json` → record `unique_block_count` and confirm `hash_divergent_collisions === 0`.
-2. Verify Substrate MANIFEST matches audited unique count:  
-   `C368_PRIME_EXPECTED_BLOCKS=<unique_block_count> ./docs/epicon/cycles/C-368/c368-verify.sh pr7`
-3. Chain verify: `node scripts/verify-dat-chain.js canon/reserve-blocks/`
+2. Verify Substrate MANIFEST on the **PR branch** (not main):  
+   `SUBSTRATE_BRANCH=canon/reserve-blocks-prime-c368 C368_PRIME_EXPECTED_BLOCKS=<unique_block_count> ./docs/epicon/cycles/C-368/c368-verify.sh pr7`  
+   (post-merge: omit `SUBSTRATE_BRANCH` or set `main`). Harness runs `verify-dat-chain.js` on the same ref.
+3. Optional local chain verify: `node scripts/verify-dat-chain.js canon/reserve-blocks/`
 
 2026-07-12 audited prime: **194** unique blocks / 9,700 MIC (`C368_PRIME_EXPECTED_BLOCKS=194`). **Not** raw `seals_count` from `/api/vault/status`. Re-export without resolving KV collisions reproduces the same deduped count.
 
