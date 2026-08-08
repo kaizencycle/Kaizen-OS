@@ -92,7 +92,44 @@ Invariant constraints (all steps):
 3. Do not disengage `SEAL_INTEGRITY_GATE` until live audit and canonical-count evidence resolve.
 4. `canonical_reserve_blocks` stays **unresolved** until step 8 — never preset to 194.
 
-## Authority Provenance & Standing
+### Track R step 1 — fresh production audit (2026-08-08) ✅
+
+Manual workflow **Audit Reserve Block Lineage #6** on `mobius-civic-ai-terminal@main`:
+
+| Field | Fresh (run [31267379043](https://github.com/kaizencycle/mobius-civic-ai-terminal/actions/runs/31267379043)) | C-377 witness (run 29710940106) | Match? |
+|-------|------|------|:---:|
+| `raw_attested_count` / `attested_count` | **319** | 319 | ✅ |
+| `unique_block_count` (candidate) | **194** | 194 | ✅ |
+| `collision_count` / pairs | **125** | 125 | ✅ |
+| `hash_divergent_collisions` | **125** | 125 | ✅ |
+| `operator_cycle` | C-397 | C-377 | — |
+| `audited_at` | 2026-08-08T16:38Z | 2026-07-20T01:28Z | — |
+
+**Step 1 verdict:** collision witness **still valid** — no regeneration of `C397_RESERVE_BLOCK_COLLISION_WITNESS.json` required for pair counts.
+
+**Lineage audit adds structure** (artifact `lineage-audit.json`, same run):
+
+| Finding | Value | Implication |
+|---------|-------|-------------|
+| `multiple_lineages` | `true` | Collisions are **parallel lineage forks**, not hash corruption |
+| `lineage_components` | **4** | Four disconnected `prev_seal_hash` chains among attested seals |
+| `genesis_count` | **3** | Three competing genesis seals (blocks 1–2 three-way) |
+| `link_issues` | **1** | `seal-C-308-042` seq 42 — `orphan_prev` (prev hash not in attested set) |
+| `reattest_clusters` | **1** | 283 seals re-attested in `2026-06-30T20` hour, seq 1–194 |
+
+The four lineage components (by tip):
+
+1. **C-332-001 → C-358-131** — seq 1–131 (131 seals)
+2. **C-359-001 → C-371-033** — seq 1–33 (33 seals)
+3. **C-372-001 → C-372-002** — seq 1–2 (2 seals)
+4. **C-308-042 → C-332-194** — seq 42–194 (153 seals; orphan link at genesis of this fork)
+
+**Still open after step 1:**
+
+- **Step 2:** 360 indexed vs 319 examined — **41 IDs unclassified** (audit scripts do not enumerate index-only IDs; separate KV index walk required).
+- **Step 3:** candidate count still **194** among examined set — unchanged, still **not** constitutional canon.
+- **Steps 4–8:** unchanged.
+
 
 *Authority declared using `docs/templates/EPICON_FOUNDER_STANDING.md` v0.1*
 
@@ -134,6 +171,7 @@ The separate intent timebox in PR #429 remains an outer bound.
 
 | Claim | Verdict | Evidence |
 |---|---|---|
+| Fresh collision audit matches C-377 witness (step 1) | **TRUE** | Terminal run 31267379043 — 319 / 194 candidate / 125 pairs |
 | 125 collisions are real pair-count findings | **TRUE** | Terminal run 29710940106; 125/125 hash-divergent |
 | The 125 occupy 125 different blocks | **FALSE** | 123 positions; blocks 1–2 are three-way |
 | Preserved seal bodies are hash-corrupt | **FALSE** | lineage audit: 319/319 hashes valid |
