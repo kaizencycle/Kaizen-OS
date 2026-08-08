@@ -1,15 +1,15 @@
 {
   "mobius_catalog_version": "1.0.0",
-  "generated_at": "2026-08-08T03:37:01.760Z",
+  "generated_at": "2026-08-08T15:41:05.267Z",
   "repo": {
     "name": "Mobius-Substrate",
     "url": "https://github.com/kaizencycle/Mobius-Substrate",
     "default_branch": "main",
-    "commit": "0c1820ad72faf0673005c6005b627df9e0e567fd"
+    "commit": "97607a52c0cd12c90cb0a9564a5eaa39ab705077"
   },
   "stats": {
     "epiconCount": 0,
-    "docCount": 1079
+    "docCount": 1081
   },
   "epicons": [],
   "docs": [
@@ -7250,7 +7250,7 @@
       "title": "Mobius Handbook — Generated Index",
       "category": "INDEX.md",
       "tags": [],
-      "content_hash": "sha256:694398c58e5ca41547282a78479e3ea1f5213482cdff73233b158c15e1a7d5f9",
+      "content_hash": "sha256:9b6068b2e5af1049ca5370c70044955f38bec8aa3997c6cd0ace449e5bda1bee",
       "summary": ""
     },
     {
@@ -7378,7 +7378,7 @@
       "title": "State of the Substrate — Latest",
       "category": "STATE_OF_THE_SUBSTRATE_LATEST.md",
       "tags": [],
-      "content_hash": "sha256:9d514a9ee09821f574e36c1fcb16e0680f650cbf52693ce290d513e759f04fe6",
+      "content_hash": "sha256:a761d7071558cd50c22761045fe4a6ce12b69cd328e855f61cc6f4b05d58463a",
       "summary": ""
     },
     {
@@ -8322,6 +8322,14 @@
       "summary": ""
     },
     {
+      "path": "docs/epicon/cycles/C-397/RESERVE_BLOCK_RECONCILIATION.md",
+      "title": "C-397 — Reserve Block collision reconciliation witness",
+      "category": "epicon",
+      "tags": [],
+      "content_hash": "sha256:44b3e79e71d713d7eb84db1efde9f60e84d733c36926fd9342a8f6bfaf9ac778",
+      "summary": ""
+    },
+    {
       "path": "docs/epicon/cycles/C-ATLAS/EPICON_C-ATLAS_INFRA_mobiusatlas-agent-launch_v1.md",
       "title": "MobiusATLAS Agent Infrastructure Launch",
       "category": "epicon",
@@ -8439,6 +8447,14 @@
       "category": "journals",
       "tags": [],
       "content_hash": "sha256:bd79f36d9a257328b252bdda71adce093777eb9958dd9081dcfabef5bb2b8488",
+      "summary": ""
+    },
+    {
+      "path": "docs/journals/C-397.md",
+      "title": "Cycle Journal — C-397",
+      "category": "journals",
+      "tags": [],
+      "content_hash": "sha256:f1ce08ac7c0883cab8009fb06e7da5da9e879bd29d00ea3cbce0bd94dc8ea5b1",
       "summary": ""
     },
     {

@@ -45,7 +45,7 @@ That proves **artifact integrity**. It does not, by itself, adjudicate which com
 
 ## Track R recovery gate
 
-C-397 therefore preserves the verified regenerated snapshot as a **candidate witness only** and deliberately leaves the checked-in canonical `.dat` files unchanged. The candidate must not be promoted until Track R adjudication is complete.
+C-397 does **not** ship a regenerated `.dat` candidate in this tree—the canon rollback left checked-in `canon/reserve-blocks/` unchanged from `main`. What is preserved here is **verification evidence only**: the 125-pair witness JSON, the C-377 audit provenance, and the witness-table row recording that PR #419's 194-position candidate replayed as internally valid (`chain_tip_hash` `sha256:aefebc6cf87df587f601c55d9b269214d35d6a1621c333177b8bd39455d140d8` at commit `97607a52` documentation time—not retrievable as a Substrate artifact after rollback). Track R operators must re-export or re-verify from KV before any promotion; nothing in this PR substitutes for that artifact.
 
 1. Preserve all original seal bodies.
 2. Do not renumber or delete competing seals.
