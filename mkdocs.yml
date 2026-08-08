@@ -124,7 +124,7 @@ extra:
   canonical_domain: https://mobius-substrate.com
   terminal_url: https://terminal.mobius-substrate.com
   handbook_url: https://handbook.mobius-substrate.com
-  current_cycle: C-383
+  current_cycle: C-397
   gi_status: yellow
   terminal_repo: https://github.com/kaizencycle/mobius-civic-ai-terminal
   substrate_repo: https://github.com/kaizencycle/Mobius-Substrate
@@ -140,7 +140,7 @@ extra:
       name: Live Terminal
       link: https://terminal.mobius-substrate.com/
   announce: >-
-    <strong>C-383:</strong> Cycle ledger verification and reconciliation follow-through.
+    <strong>C-397:</strong> Reserve Block collision reconciliation — preserve C-377 witness; cold canon draft pending Track R adjudication.
     Begin with <a href="https://handbook.mobius-substrate.com/00-START-HERE/AI_SIMPLE_IN_LIFE/">AI Simple in Life</a>, then descend into canon and protocols.
 
 # C-380: progressive disclosure. Plain language first; canonical depth remains intact.
@@ -156,7 +156,7 @@ nav:
       - "Glossary": 00-START-HERE/GLOSSARY.md
   - "Live State":
       - "State of the Substrate": STATE_OF_THE_SUBSTRATE_LATEST.md
-      - "Cycle journal — C-383": journals/C-383.md
+      - "Cycle journal — C-397": journals/C-397.md
       - "Canon laws": 02-THEORETICAL-FOUNDATIONS/MOBIUS_CANON_LAWS.md
       - "MOBIUS.md": MOBIUS.md
   - "EPICON & Protocols":
@@ -188,7 +188,8 @@ nav:
   - "Cycle Journal":
       # docs-guard:journal-nav:start
 
-      - "C-383 (current)": journals/C-383.md
+      - "C-397 (current)": journals/C-397.md
+      - "C-383": journals/C-383.md
       - "C-382": journals/C-382.md
       - "C-381": journals/C-381.md
       - "C-380": journals/C-380.md
@@ -197,8 +198,7 @@ nav:
       - "C-377": journals/C-377.md
       - "C-366": journals/C-366.md
       - "C-365": journals/C-365.md
-      - "C-360": journals/C-360.md
-      - "C-360 and earlier": journals/archive.md
+      - "C-365 and earlier": journals/archive.md
       # docs-guard:journal-nav:end
   - "Archives":
       - "Archive index": 10-ARCHIVES/archive/README.md
