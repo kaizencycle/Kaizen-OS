@@ -45,7 +45,7 @@ That proves **artifact integrity**. It does not, by itself, adjudicate which com
 
 ## Track R recovery gate
 
-C-397 therefore carries the snapshot forward without pretending dedupe equals adjudication.
+C-397 therefore preserves the verified regenerated snapshot as a **candidate witness only** and deliberately leaves the checked-in canonical `.dat` files unchanged. The candidate must not be promoted until Track R adjudication is complete.
 
 1. Preserve all original seal bodies.
 2. Do not renumber or delete competing seals.
@@ -67,7 +67,7 @@ C-397 invokes **founder–custodian standing** only to preserve reconciliation e
 This authority is narrowly scoped to:
 
 - preserving the C-377 pair-count witness,
-- carrying the verified cold-snapshot candidate on a review branch,
+- preserving the verification facts for the cold-snapshot candidate without publishing it as canon,
 - requiring Track R evidence before canonical promotion,
 - requesting independent sentinel and human review.
 
@@ -101,7 +101,7 @@ The separate intent timebox in PR #429 remains an outer bound.
 | 125 collisions are real pair-count findings | **TRUE** | Terminal run 29710940106; 125/125 hash-divergent |
 | The 125 occupy 125 different blocks | **FALSE** | 123 positions; blocks 1–2 are three-way |
 | Preserved seal bodies are hash-corrupt | **FALSE** | lineage audit: 319/319 hashes valid |
-| The 194-line cold snapshot is internally valid | **TRUE** | C-397 independent verifier replay |
+| The regenerated 194-line snapshot candidate is internally valid | **TRUE** | C-397 independent verifier replay of #419 candidate |
 | All 194 positions are adjudicated canon | **FALSE** | 123 positions remain contested |
 | Safe clean positions exist | **TRUE** | 34–41 and 132–194 = 71 positions |
 | Production Track R repair has been applied | **UNVERIFIED / NO CLAIM** | Requires approved operator execution |
@@ -109,6 +109,7 @@ The separate intent timebox in PR #429 remains an outer bound.
 ## Restraint row
 
 - No production KV mutation in this PR.
+- No canonical `.dat` or manifest change before Track R adjudication.
 - No `SEAL_INTEGRITY_GATE` disable.
 - No historical seal deletion, rewrite, or renumber.
 - No MIC issuance or conversion change.
