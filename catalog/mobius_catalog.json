@@ -1,11 +1,11 @@
 {
   "mobius_catalog_version": "1.0.0",
-  "generated_at": "2026-08-08T15:41:05.267Z",
+  "generated_at": "2026-08-08T15:41:29.023Z",
   "repo": {
     "name": "Mobius-Substrate",
     "url": "https://github.com/kaizencycle/Mobius-Substrate",
     "default_branch": "main",
-    "commit": "97607a52c0cd12c90cb0a9564a5eaa39ab705077"
+    "commit": "8c4e1a66387fb7469f0d95be5443cb16d2ef0797"
   },
   "stats": {
     "epiconCount": 0,
@@ -8326,7 +8326,7 @@
       "title": "C-397 — Reserve Block collision reconciliation witness",
       "category": "epicon",
       "tags": [],
-      "content_hash": "sha256:44b3e79e71d713d7eb84db1efde9f60e84d733c36926fd9342a8f6bfaf9ac778",
+      "content_hash": "sha256:a521b2f24b7d3755b34658c26f0cfd983164fe4c23de57510a10e0a692402d9d",
       "summary": ""
     },
     {
