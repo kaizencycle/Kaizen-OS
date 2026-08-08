@@ -40,11 +40,11 @@ Production vault status exposes **three different lenses** — confusing them ca
 ```
 360 indexed seal IDs          ← vault:seals:index:attested cardinality (accumulator index)
 │
-├─ 319 examined in lineage    ← attested bodies in C-377 audit / collision witness scope
-│   ├─ 194 candidate positions ← deduped unique block_number (NOT constitutional canon)
-│   └─ 125 collision pairs / 123 contested
+├─ 41 legacy MIC tranche      ← C-299–C-307 (indexed, outside collision audit scope) ✅ classified step 2
 │
-└─ 41 IDs                   ← NOT YET CLASSIFIED (index − examination gap)
+└─ 319 modern Reserve Block   ← C-308+ attested bodies in C-377 audit / collision witness scope
+    ├─ 194 candidate positions ← deduped unique block_number (NOT constitutional canon)
+    └─ 125 collision pairs / 123 contested
 ```
 
 | Lens | Live value (approx.) | Constitutional? |
@@ -77,7 +77,7 @@ C-397 does **not** ship a regenerated `.dat` candidate in this tree—the canon 
 **Merge-ready sequence** — do not skip or reorder without recording why:
 
 1. **Fresh collision audit** — production KV; confirm pair count still matches witness (or regenerate evidence).
-2. **Classify the 41 index/examination-gap IDs** — why 360 indexed vs 319 examined; no constitutional inference until classified.
+2. **Classify the 41 index/examination-gap IDs** — ✅ **done (2026-08-08):** legacy MIC tranche C-299–C-307; see gap witness JSON.
 3. **Confirm live unique-position candidate count** — verify whether deduped candidate positions remain 194 after step 1–2 (may change).
 4. **Adjudicate the 123 known contested positions** — Track R receipts per position; no silent dedupe winners.
 5. **Human + ZEUS + EVE approval** — recorded on PR / consensus gate.
@@ -126,9 +126,30 @@ The four lineage components (by tip):
 
 **Still open after step 1:**
 
-- **Step 2:** 360 indexed vs 319 examined — **41 IDs unclassified** (audit scripts do not enumerate index-only IDs; separate KV index walk required).
 - **Step 3:** candidate count still **194** among examined set — unchanged, still **not** constitutional canon.
 - **Steps 4–8:** unchanged.
+
+### Track R step 2 — index/examination gap classified (2026-08-08) ✅
+
+Operator KV export (`vault:seals:index`, `:attested`, `:all`, `vault:seal:latest`) proves the **41-ID gap is not a mystery subset** — it is exactly the **legacy MIC tranche era**:
+
+| Segment | Count | Cycle range | First → last seal ID | In collision audit? |
+|---------|------:|-------------|----------------------|:---:|
+| Legacy MIC tranche | **41** | C-299–C-307 | `seal-C-299-001` → `seal-C-307-041` | No |
+| Modern Reserve Block era | **319** | C-308–C-372 | `seal-C-308-042` → `seal-C-372-002` | Yes |
+| **Vault index total** | **360** | C-299–C-372 | (accumulator index) | — |
+
+**Arithmetic:** `360 indexed − 41 legacy = 319 examined` — the gap closes without orphan or missing-body IDs.
+
+Evidence artifact: [`C397_INDEX_EXAMINATION_GAP_WITNESS.json`](./C397_INDEX_EXAMINATION_GAP_WITNESS.json)
+
+**KV observations (same export):**
+
+- `vault:seals:index`, `:attested`, and `:all` are **byte-identical** (360 IDs, no quarantine delta).
+- `vault:seal:latest` points to **`seal-C-372-002`** (C-372 fork tip) — an accumulator/migration pointer from C-305 v1 migrate, **not** `canonical_reserve_blocks` tip while `SEAL_INTEGRITY_GATE` is active.
+- **Zero** legacy-tranche IDs appear in `C397_RESERVE_BLOCK_COLLISION_WITNESS.json` collision pairs — they are not collision candidates.
+
+**Step 2 verdict:** classify as **`legacy_mic_tranche_outside_audit_scope`**. Do not adjudicate these 41 as contested Reserve Block positions; Track R steps 4–8 apply only to the **319 modern-era** seals (125 pairs / 123 contested positions among them).
 
 
 *Authority declared using `docs/templates/EPICON_FOUNDER_STANDING.md` v0.1*
@@ -176,10 +197,11 @@ The separate intent timebox in PR #429 remains an outer bound.
 | The 125 occupy 125 different blocks | **FALSE** | 123 positions; blocks 1–2 are three-way |
 | Preserved seal bodies are hash-corrupt | **FALSE** | lineage audit: 319/319 hashes valid |
 | #419 candidate replay was internally valid (not in tree) | **TRUE** | Independent verifier at PR #419; tip `sha256:aefebc6c…40d8`; see superseded PR diff |
-| 194 candidate positions (not constitutional canon) | **TRUE-gap** | C-377 witness dedupe; 41-ID gap unclassified; `canonical_reserve_blocks` unresolved |
-| All 194 positions are adjudicated canon | **FALSE** | 123 contested; 41 IDs unclassified; canon count unset |
+| 194 candidate positions (not constitutional canon) | **TRUE-gap** | C-377 witness dedupe among 319 modern-era seals; `canonical_reserve_blocks` unresolved |
+| All 194 positions are adjudicated canon | **FALSE** | 123 contested among modern era; canon count unset |
 | Safe clean positions exist | **TRUE** | 34–41 and 132–194 = 71 positions |
-| Index/examination gap (41 IDs) classified | **FALSE / PENDING** | 360 indexed vs 319 examined — classify before fixing canonical count |
+| Index/examination gap (41 IDs) classified | **TRUE** | KV export 2026-08-08 — 41 = legacy C-299–C-307 tranche; see gap witness JSON |
+| 41 gap IDs are collision/adjudication candidates | **FALSE** | 0 overlap with collision witness; outside modern RB audit scope |
 | Production Track R repair has been applied | **UNVERIFIED / NO CLAIM** | Requires approved operator execution |
 
 ## Restraint row
