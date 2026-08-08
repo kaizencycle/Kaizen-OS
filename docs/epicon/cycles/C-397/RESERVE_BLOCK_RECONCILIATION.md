@@ -56,6 +56,44 @@ C-397 therefore carries the snapshot forward without pretending dedupe equals ad
 7. Do not disengage `SEAL_INTEGRITY_GATE` until the live audit and canonical-count evidence resolve.
 8. Only after reconciliation should `canonical_reserve_blocks` resolve from Track R evidence.
 
+## Authority Provenance & Standing
+
+*Authority declared using `docs/templates/EPICON_FOUNDER_STANDING.md` v0.1*
+
+C-397 invokes **founder–custodian standing** only to preserve reconciliation evidence and hold the Reserve Block canon gate fail-closed while lineage is contested.
+
+### Scope Constraints
+
+This authority is narrowly scoped to:
+
+- preserving the C-377 pair-count witness,
+- carrying the verified cold-snapshot candidate on a review branch,
+- requiring Track R evidence before canonical promotion,
+- requesting independent sentinel and human review.
+
+It does **not** authorize production KV mutation, seal deletion/rewrite/renumbering, gate disablement, MIC issuance changes, or unilateral selection of canonical winners.
+
+### Temporality & Revocation
+
+This authority is transitional, contestable, and non-transferable. It may be superseded or revoked by a successor EPICON, ratified governance process, or contrary reconciliation evidence.
+
+### Legitimacy Rationale
+
+The integrity hold affects consequential ledger state. Making the custodian action explicit is preferable to allowing an implicit operator choice to decide which historical lineage becomes canon.
+
+### Acknowledgement of Risk
+
+The proposer acknowledges that founder authority is asymmetric and that the deterministic export winner is not automatically the legitimate historical winner. Future governance may revise this decision while preserving the evidence trail.
+
+### Sunset Condition
+
+This C-397 authority expires for this incident when either:
+
+1. Track R reconciliation is approved and canonical-count evidence is published, or
+2. a successor governance/EPICON decision supersedes C-397.
+
+The separate intent timebox in PR #429 remains an outer bound.
+
 ## Witness Table
 
 | Claim | Verdict | Evidence |
