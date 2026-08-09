@@ -1,15 +1,15 @@
 {
   "mobius_catalog_version": "1.0.0",
-  "generated_at": "2026-08-08T16:41:14.514Z",
+  "generated_at": "2026-08-09T17:09:43.521Z",
   "repo": {
     "name": "Mobius-Substrate",
     "url": "https://github.com/kaizencycle/Mobius-Substrate",
     "default_branch": "main",
-    "commit": "0272ffe505dd1da58a9450948a32adcee0b5614d"
+    "commit": "1dc81ccbb4bb6687e69b3757a207220a2b379ce1"
   },
   "stats": {
     "epiconCount": 0,
-    "docCount": 1081
+    "docCount": 1088
   },
   "epicons": [],
   "docs": [
@@ -7250,7 +7250,7 @@
       "title": "Mobius Handbook — Generated Index",
       "category": "INDEX.md",
       "tags": [],
-      "content_hash": "sha256:9b6068b2e5af1049ca5370c70044955f38bec8aa3997c6cd0ace449e5bda1bee",
+      "content_hash": "sha256:152aa31fbda1059131a410122347b797f141d605b20d134fbae1d47ab90911c7",
       "summary": ""
     },
     {
@@ -7378,7 +7378,7 @@
       "title": "State of the Substrate — Latest",
       "category": "STATE_OF_THE_SUBSTRATE_LATEST.md",
       "tags": [],
-      "content_hash": "sha256:a761d7071558cd50c22761045fe4a6ce12b69cd328e855f61cc6f4b05d58463a",
+      "content_hash": "sha256:a87ff6da1bba1513f3d79c48fe6059ea5990fa244f084d135e8624ccf46272b1",
       "summary": ""
     },
     {
@@ -7411,6 +7411,46 @@
       "category": "WORKFLOW_CONSOLIDATION_PLAN.md",
       "tags": [],
       "content_hash": "sha256:0d856dddf6737fb3335b99f7d55142b6a7a6ac33f800b98b73fecbe4143d586c",
+      "summary": ""
+    },
+    {
+      "path": "docs/academy/ACADEMY_PROTOCOL.md",
+      "title": "Academy Protocol v0.1",
+      "category": "academy",
+      "tags": [],
+      "content_hash": "sha256:e85a02b2e5d4a121e673ff9da0aae2e0ad51aceb153207175b64bc3ba72d03f5",
+      "summary": ""
+    },
+    {
+      "path": "docs/academy/AGENT_TEACHER_CONTRACT.md",
+      "title": "Agent Teacher Contract v0.1",
+      "category": "academy",
+      "tags": [],
+      "content_hash": "sha256:2677532a04b01aaf27747b459d36609c2a36d6bc355f2af54b305a6f2cd18f57",
+      "summary": ""
+    },
+    {
+      "path": "docs/academy/ASSESSMENT_PROTOCOL.md",
+      "title": "Assessment Protocol v0.1",
+      "category": "academy",
+      "tags": [],
+      "content_hash": "sha256:d3611b6036b5a04a8693a2cb72a1e5e192c128a1237c62c65d964502b1210f3d",
+      "summary": ""
+    },
+    {
+      "path": "docs/academy/OAA-HIST-001-exemplar.md",
+      "title": "OAA-HIST-001: When the Record and Reality Disagree",
+      "category": "academy",
+      "tags": [],
+      "content_hash": "sha256:ce9fc982761d43faa36becd670700dc4f8a6871f674291a2f240557a3eab7847",
+      "summary": ""
+    },
+    {
+      "path": "docs/academy/README.md",
+      "title": "Academy Protocol (OAA Floor 3)",
+      "category": "academy",
+      "tags": [],
+      "content_hash": "sha256:884d2fceae9024dce8daad62a783dcb9e4b5427415a1040ddbdcd37ee4f959e0",
       "summary": ""
     },
     {
@@ -8326,8 +8366,30 @@
       "title": "C-397 — Reserve Block collision reconciliation witness",
       "category": "epicon",
       "tags": [],
-      "content_hash": "sha256:32eea2a4fb46a026d8fe3f3424ec424e678b06a8d50651a8dac98314aa554328",
+      "content_hash": "sha256:a1cf34b4ebe17c0209e3449252aea1474f0cdd6ee68eb8ef1cabcff4107dd3fb",
       "summary": ""
+    },
+    {
+      "path": "docs/epicon/cycles/C-399/ATLAS_HANDOFF_SUMMARY.md",
+      "title": "ATLAS Handoff: Academy Protocol v0.1",
+      "category": "epicon",
+      "tags": [],
+      "content_hash": "sha256:b03e96acf39e815d233c5c1f8f874bccc65a7cb99c5a5816c3096c2d8a3a9569",
+      "summary": ""
+    },
+    {
+      "path": "docs/epicon/cycles/C-399/EPICON_C-399_ACADEMY_PROTOCOL_v1.md",
+      "title": "C-399: Academy Protocol v0.1 — OAA Floor 3 specification",
+      "category": "epicon",
+      "tags": [
+        "c399",
+        "academy",
+        "oaa",
+        "floor-3",
+        "assessment"
+      ],
+      "content_hash": "sha256:0be164b417d8797ab2251e90c10fba9c5b99030f5abf7767db7b86873c0c5415",
+      "summary": "Specification-only package formalizing OAA Floor 3 (Academy) teaching, assessment, and agent teacher obligations."
     },
     {
       "path": "docs/epicon/cycles/C-ATLAS/EPICON_C-ATLAS_INFRA_mobiusatlas-agent-launch_v1.md",

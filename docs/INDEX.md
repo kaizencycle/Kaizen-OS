@@ -2,8 +2,8 @@
 
 # Mobius Handbook — Generated Index
 
-**Cycle:** C-397  
-**Generated:** 2026-08-08  
+**Cycle:** C-398  
+**Generated:** 2026-08-09  
 **Source of truth:** [`mkdocs.yml`](../mkdocs.yml) navigation
 
 > This file is a build artifact. Edit navigation in `mkdocs.yml`, then run `npm run docs:generate-index`.
@@ -86,7 +86,7 @@
 - [Full documentation index](./INDEX.md) — `INDEX.md`
 ### journals
 
-- [C-397 (current)](./journals/C-397.md) — `journals/C-397.md`
+- [C-397](./journals/C-397.md) — `journals/C-397.md`
 - [C-383](./journals/C-383.md) — `journals/C-383.md`
 - [C-382](./journals/C-382.md) — `journals/C-382.md`
 - [C-381](./journals/C-381.md) — `journals/C-381.md`
@@ -112,5 +112,5 @@
 
 ---
 
-*Generated for cycle C-397. "We heal as we walk."*
+*Generated for cycle C-398. "We heal as we walk."*
 

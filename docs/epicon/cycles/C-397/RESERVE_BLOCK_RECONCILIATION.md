@@ -54,7 +54,7 @@ Production vault status exposes **three different lenses** — confusing them ca
 | Candidate unique positions | 194 | **No** — reconciliation candidate only |
 | `canonical_reserve_blocks` | `null` / unresolved | **Yes** — unset until Track R completes |
 
-Until the **41-ID gap** is classified, do not publish `canonical_reserve_blocks = 194` or any other fixed count. The API field must remain unresolved.
+The **41-ID gap is classified** (Track R step 2, 2026-08-08). Do not publish `canonical_reserve_blocks = 194` or any other fixed count until step 8. The API field must remain unresolved.
 
 **Future Terminal UI (deferred):** surface `360 INDEXED · 319 EXAMINED · 194 CANDIDATE POSITIONS · CANON UNRESOLVED` so operators cannot confuse index cardinality with constitutional canon.
 

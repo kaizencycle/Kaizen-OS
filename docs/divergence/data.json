@@ -1,9 +1,9 @@
 {
   "repo": "kaizencycle/Mobius-Substrate",
-  "generated_at": "2026-08-08T13:08:34Z",
-  "open_pr_count": 8,
+  "generated_at": "2026-08-09T13:11:29Z",
+  "open_pr_count": 9,
   "by_severity": {
-    "high": 4,
+    "high": 5,
     "medium": 0,
     "low": 0,
     "unknown": 4
@@ -49,10 +49,11 @@
       "title": "canon(C-368): prime reserve blocks cold canon (194 blocks)",
       "url": "https://github.com/kaizencycle/Mobius-Substrate/pull/419",
       "author": "kaizencycle",
-      "updated_at": "2026-07-23T23:45:06Z",
+      "updated_at": "2026-08-08T14:55:17Z",
       "created_at": "2026-07-23T23:41:37Z",
       "labels": [
-        "scope:specs"
+        "scope:specs",
+        "needs-custodian-review"
       ],
       "mode": "normal",
       "has_debt": false,
@@ -70,6 +71,23 @@
       "author": "dependabot[bot]",
       "updated_at": "2026-08-03T16:11:36Z",
       "created_at": "2026-08-03T16:07:36Z",
+      "labels": [],
+      "mode": "normal",
+      "has_debt": false,
+      "severity": "high",
+      "justification_hash": "",
+      "checks": {
+        "epicon": "unknown",
+        "merge_gate": "unknown"
+      }
+    },
+    {
+      "pr": 430,
+      "title": "docs(C-397): classify 41-ID vault index gap as legacy MIC tranche (Track R step 2)",
+      "url": "https://github.com/kaizencycle/Mobius-Substrate/pull/430",
+      "author": "kaizencycle",
+      "updated_at": "2026-08-08T17:22:26Z",
+      "created_at": "2026-08-08T17:19:19Z",
       "labels": [],
       "mode": "normal",
       "has_debt": false,
