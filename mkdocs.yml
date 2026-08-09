@@ -124,7 +124,7 @@ extra:
   canonical_domain: https://mobius-substrate.com
   terminal_url: https://terminal.mobius-substrate.com
   handbook_url: https://handbook.mobius-substrate.com
-  current_cycle: C-397
+  current_cycle: C-398
   gi_status: yellow
   terminal_repo: https://github.com/kaizencycle/mobius-civic-ai-terminal
   substrate_repo: https://github.com/kaizencycle/Mobius-Substrate
@@ -188,7 +188,7 @@ nav:
   - "Cycle Journal":
       # docs-guard:journal-nav:start
 
-      - "C-397 (current)": journals/C-397.md
+      - "C-397": journals/C-397.md
       - "C-383": journals/C-383.md
       - "C-382": journals/C-382.md
       - "C-381": journals/C-381.md

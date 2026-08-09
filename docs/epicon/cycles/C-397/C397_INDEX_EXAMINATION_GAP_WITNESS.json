@@ -1,0 +1,111 @@
+{
+  "schema_version": "C397_INDEX_EXAMINATION_GAP_WITNESS_1",
+  "cycle": "C-397",
+  "purpose": "Classify the 360-index vs 319-examined gap from operator KV export (Track R step 2). No KV mutation.",
+  "source": {
+    "kv_export_at": "2026-08-08T17:00:00Z",
+    "keys": [
+      "vault:seals:index",
+      "vault:seals:index:attested",
+      "vault:seals:index:all",
+      "vault:seal:latest"
+    ],
+    "note": "Operator-provided Upstash KV snapshot during C-397 reconciliation. All three index keys are byte-identical (360 IDs)."
+  },
+  "counts": {
+    "vault_index_total": 360,
+    "examination_scope_modern": 319,
+    "index_examination_gap": 41,
+    "gap_equals_legacy_tranche": true
+  },
+  "classification": {
+    "verdict": "legacy_mic_tranche_outside_audit_scope",
+    "summary": "The 41 index-only IDs are the verified historical MIC tranche era (cycles C-299 through C-307). They are indexed in vault:seals:index:attested but excluded from the C-377/C-397 reserve-block collision and lineage audit, which scopes to the modern Reserve Block era (C-308+).",
+    "era": "legacy_tranche",
+    "cycle_range": "C-299–C-307",
+    "first_seal_id": "seal-C-299-001",
+    "last_seal_id": "seal-C-307-041",
+    "collision_witness_overlap": 0,
+    "constitutional_implication": "These 41 seals are not alternate-lineage collision candidates. They must not be merged into the 194-position candidate count or adjudicated as contested Reserve Block positions."
+  },
+  "index_structure": {
+    "segments": [
+      {
+        "label": "legacy_mic_tranche",
+        "position_range": "[0:41]",
+        "count": 41,
+        "cycle_range": "C-299–C-307",
+        "first_seal_id": "seal-C-299-001",
+        "last_seal_id": "seal-C-307-041",
+        "in_collision_audit_scope": false
+      },
+      {
+        "label": "modern_reserve_block_era",
+        "position_range": "[41:360]",
+        "count": 319,
+        "cycle_range": "C-308–C-372",
+        "first_seal_id": "seal-C-308-042",
+        "last_seal_id": "seal-C-372-002",
+        "in_collision_audit_scope": true
+      }
+    ],
+    "vault_seal_latest": {
+      "seal_id": "seal-C-372-002",
+      "note": "Accumulator/migration pointer (C-305 v1 migrate). Not constitutional canon tip while SEAL_INTEGRITY_GATE active and canonical_reserve_blocks unresolved."
+    }
+  },
+  "legacy_tranche_seal_ids": [
+    "seal-C-299-001",
+    "seal-C-300-002",
+    "seal-C-300-003",
+    "seal-C-300-004",
+    "seal-C-301-005",
+    "seal-C-301-006",
+    "seal-C-301-007",
+    "seal-C-302-008",
+    "seal-C-302-009",
+    "seal-C-302-010",
+    "seal-C-302-011",
+    "seal-C-303-012",
+    "seal-C-303-013",
+    "seal-C-303-014",
+    "seal-C-303-015",
+    "seal-C-303-016",
+    "seal-C-304-017",
+    "seal-C-304-018",
+    "seal-C-304-019",
+    "seal-C-304-020",
+    "seal-C-304-021",
+    "seal-C-304-022",
+    "seal-C-304-023",
+    "seal-C-305-024",
+    "seal-C-305-025",
+    "seal-C-305-026",
+    "seal-C-305-027",
+    "seal-C-305-028",
+    "seal-C-306-029",
+    "seal-C-306-030",
+    "seal-C-306-031",
+    "seal-C-306-032",
+    "seal-C-306-033",
+    "seal-C-306-034",
+    "seal-C-306-035",
+    "seal-C-307-036",
+    "seal-C-307-037",
+    "seal-C-307-038",
+    "seal-C-307-039",
+    "seal-C-307-040",
+    "seal-C-307-041"
+  ],
+  "legacy_tranche_by_cycle": {
+    "C-299": 1,
+    "C-300": 3,
+    "C-301": 3,
+    "C-302": 4,
+    "C-303": 5,
+    "C-304": 7,
+    "C-305": 5,
+    "C-306": 7,
+    "C-307": 6
+  }
+}
