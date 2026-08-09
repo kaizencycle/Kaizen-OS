@@ -1,6 +1,6 @@
 {
-  "current_cycle": "C-397",
-  "date": "2026-08-08",
+  "current_cycle": "C-398",
+  "date": "2026-08-09",
   "gi": 0.9,
   "mode": "yellow",
   "canonical_domain": "https://mobius-substrate.com",
@@ -10,7 +10,7 @@
   "snapshot": "https://terminal.mobius-substrate.com/api/terminal/snapshot",
   "vault_status": "https://terminal.mobius-substrate.com/api/vault/status",
   "vault_seals": "https://terminal.mobius-substrate.com/api/vault/seal",
-  "last_updated": "2026-08-08T05:07:03Z",
+  "last_updated": "2026-08-09T05:15:06Z",
   "previous_cycle": "C-358",
   "updated_by": "c360-pr-b-constitutional",
   "vault": {
@@ -60,7 +60,7 @@
     "c360-federation-sweep-in-progress"
   ],
   "doc_version": "2.2.0",
-  "last_state_snapshot": "C-397",
+  "last_state_snapshot": "C-398",
   "next_state_snapshot_expected": "C-361",
-  "notes": "Auto-sync by mobius-bot (deterministic, no LLM). Advanced C-396 -> C-397. Ledger pulse fetched; GI not updated (unreachable, absent, or null in pulse)."
+  "notes": "Auto-sync by mobius-bot (deterministic, no LLM). Advanced C-397 -> C-398. Ledger pulse fetched; GI not updated (unreachable, absent, or null in pulse)."
 }
