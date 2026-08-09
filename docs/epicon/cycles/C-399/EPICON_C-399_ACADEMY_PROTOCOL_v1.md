@@ -107,7 +107,7 @@ Formalize OAA Floor 3 (Academy) as a constitutional specification with:
 
 ### I2: Authority
 
-- OAA Charter ([docs/OAA_CHARTER.md](../../OAA_CHARTER.md)) names Academy as Floor 3
+- OAA Charter ([docs/OAA_CHARTER.md](../../../OAA_CHARTER.md)) names Academy as Floor 3
 - Witness Protocol (C-373) requires intent before consequential action
 - This specification *enables* future Academy runtime but does not run anything
 

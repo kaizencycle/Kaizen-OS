@@ -28,35 +28,45 @@ We'll explore this question through three paths:
 
 ## HISTORY: THE PROBLEM (4 minutes)
 
+> **Pedagogical note:** Historical examples below use **FACT / INFERENCE / INTERPRETATION** labels per [AGENT_TEACHER_CONTRACT.md](./AGENT_TEACHER_CONTRACT.md). Pre-modern and corporate history is summarized from published scholarship — verify via the linked sources, not Mobius attestations.
+
 ### Medieval Margin Corrections
 
-Monks copied manuscripts by hand. When they noticed an error, they had three choices:
+**FACT:** Monks copied manuscripts by hand. When they noticed an error, they had three common options:
 
-- Erase the error (expensive vellum; leaves traces)
-- Cross it out and write above (messy; hard to read)
-- Write a correction in the margin (preserves the original; shows the thinking)
+- Erase the error (expensive vellum; often leaves physical traces)
+- Cross it out and write above (creates a visibly layered page)
+- Write a correction in the margin (preserves the original reading alongside the fix)
 
-**Most used:** Margin corrections. They kept the original visible and added the correction alongside it.
+**INTERPRETATION (History Agent):** Margin corrections were a widespread practice because they kept the original visible while documenting the fix — the pattern this lesson later generalizes.
+
+**Source:** Clemens & Graham, *Introduction to Manuscript Studies* (2007), corrections chapter; [British Library medieval manuscripts collection](https://www.bl.uk/medieval-manuscripts)
 
 ### Double-Entry Bookkeeping
 
-In Renaissance Florence, merchants discovered a corruption problem: if one ledger was falsified, the other ledger could expose it.
+**FACT:** Luca Pacioli's *Summa de arithmetica, geometria, proportioni et proportionalità* (Venice, 1494) codifies double-entry bookkeeping: every transaction appears as matching debit and credit entries.
 
-By 1494, Luca Pacioli codified the principle: every transaction appears twice (debit and credit). If the two sides don't balance, something is wrong.
+**INFERENCE:** When two ledgers must balance, one-sided falsification becomes easier to detect than in a single ledger.
 
-**Why this worked:** The system didn't hide corruption. It made corruption *visible*.
+**INTERPRETATION (History Agent):** Renaissance merchants treated redundant records as an anti-corruption device — corruption becomes visible when entries fail to reconcile.
+
+**Source:** Pacioli (1494); Gleeson-White, *Double Entry: How the Merchants of Venice Created Modern Accounting* (2011)
 
 ### The Enron Case
 
-In 2001, Enron shredded financial records to hide accounting fraud. The company's records showed one reality; the actual business showed another.
+**FACT:** Enron filed for bankruptcy in December 2001. U.S. Senate and SEC investigations documented off-balance-sheet partnerships, earnings manipulation, and destruction of documents relevant to the fraud.
 
-**Why this failed:** The institution erased the original record. Investigators had to reconstruct the truth from fragments, emails, and whistleblower testimony.
+**INFERENCE:** When original records are destroyed, investigators must reconstruct events from fragments, testimony, and secondary artifacts — at enormous cost and with higher dispute risk.
 
-**Key insight:** When an institution silently changes records, it becomes impossible to know what was originally believed vs. what was later discovered to be true.
+**INTERPRETATION (History Agent):** Enron illustrates erasure: the institution's published records diverged from operational reality, and document destruction made reconciliation harder, not easier.
+
+**Source:** U.S. Senate PSI, *The Role of the Board of Directors in Enron's Collapse* (2002); [SEC litigation release archive — Enron](https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001024401)
 
 ### The Pattern
 
-- Medieval monasteries learned: **preserve the original, annotate the correction**
+**INTERPRETATION (History Agent):**
+
+- Medieval scribes learned: **preserve the original, annotate the correction**
 - Renaissance merchants learned: **redundant records expose corruption**
 - Modern audits learned: **trail the decision-making, not just the outcome**
 
@@ -81,8 +91,9 @@ In July 2026, reconciliation work under cycle C-397 discovered they did not alwa
 
 An audit of production KV showed:
 
-- **360** seal IDs in the attested index
-- **319** seal records examined in the collision audit
+- **360** seal IDs in the attested index (**FACT:** `C397_INDEX_EXAMINATION_GAP_WITNESS.json` → `counts.vault_index_total`)
+- **319** seal records examined in the collision audit (**FACT:** same witness → `counts.examination_scope_modern`)
+- **41** index-only IDs classified as legacy MIC tranche C-299–C-307, outside collision audit scope (**FACT:** gap witness → `counts.index_examination_gap`)
 - **194** unique `block_number` positions among those examined
 - **125** hash-divergent collision pairs — two different seal bodies claiming the same position with different hashes
 
@@ -123,7 +134,7 @@ You can verify this case yourself:
 - **C-397 Reconciliation doc:** [`docs/epicon/cycles/C-397/RESERVE_BLOCK_RECONCILIATION.md`](../epicon/cycles/C-397/RESERVE_BLOCK_RECONCILIATION.md)
 - **125-pair witness JSON:** [`docs/epicon/cycles/C-397/C397_RESERVE_BLOCK_COLLISION_WITNESS.json`](../epicon/cycles/C-397/C397_RESERVE_BLOCK_COLLISION_WITNESS.json)
 - **Index/examination gap witness (41 legacy IDs):** [`docs/epicon/cycles/C-397/C397_INDEX_EXAMINATION_GAP_WITNESS.json`](../epicon/cycles/C-397/C397_INDEX_EXAMINATION_GAP_WITNESS.json)
-- **Vault pointer guard (related):** [mobius-civic-ai-terminal#648](https://github.com/kaizencycle/mobius-civic-ai-terminal/pull/648), runbook at `docs/runbooks/vault-seal-latest-pointer-repair.md`
+- **Vault pointer guard (related):** [mobius-civic-ai-terminal#648](https://github.com/kaizencycle/mobius-civic-ai-terminal/pull/648), runbook at [vault-seal-latest-pointer-repair.md](https://github.com/kaizencycle/mobius-civic-ai-terminal/blob/main/docs/runbooks/vault-seal-latest-pointer-repair.md)
 
 ---
 
@@ -245,6 +256,9 @@ cat docs/epicon/cycles/C-397/C397_RESERVE_BLOCK_COLLISION_WITNESS.json | jq '.pa
 # Expected: 125
 
 grep -A5 "125" docs/epicon/cycles/C-397/RESERVE_BLOCK_RECONCILIATION.md
+
+# Index/examination gap (41 legacy IDs)
+cat docs/epicon/cycles/C-397/C397_INDEX_EXAMINATION_GAP_WITNESS.json | jq '.counts'
 ```
 
 **The vault pointer guard (related case):**
@@ -265,9 +279,9 @@ git show f38ff697 --stat
 This lesson satisfies the Academy Protocol by:
 
 - ✅ **Teaches problem before solution** — Historical corruption before EPICON operationalization
-- ✅ **Distinguishes evidence from interpretation** — FACT / INFERENCE / INTERPRETATION labels throughout
+- ✅ **Distinguishes evidence from interpretation** — FACT / INFERENCE / INTERPRETATION labels in historical and Mobius sections
 - ✅ **Invites disagreement** — Gate 5 asks for coherent alternatives
-- ✅ **Traces all claims** — Witness JSON, reconciliation doc, PR #648
+- ✅ **Traces all claims** — Witness JSON, gap witness, reconciliation doc, PR #648, and external historical sources
 - ✅ **Acknowledges perspective** — History Agent states vantage point
 - ✅ **Preserves original error** — Competing seals not erased; gate held fail-closed
 - ✅ **Follows assessment protocol** — 5 comprehension gates, not ideological agreement

@@ -1,11 +1,11 @@
 {
   "mobius_catalog_version": "1.0.0",
-  "generated_at": "2026-08-09T16:03:23.621Z",
+  "generated_at": "2026-08-09T16:52:01.844Z",
   "repo": {
     "name": "Mobius-Substrate",
     "url": "https://github.com/kaizencycle/Mobius-Substrate",
     "default_branch": "main",
-    "commit": "9ca2cf9985434eb0fe28b518557a8ee432ef7609"
+    "commit": "e6ed0d46d4388062a9a781c930caf0d02fc17979"
   },
   "stats": {
     "epiconCount": 0,
@@ -7250,7 +7250,7 @@
       "title": "Mobius Handbook — Generated Index",
       "category": "INDEX.md",
       "tags": [],
-      "content_hash": "sha256:9b6068b2e5af1049ca5370c70044955f38bec8aa3997c6cd0ace449e5bda1bee",
+      "content_hash": "sha256:152aa31fbda1059131a410122347b797f141d605b20d134fbae1d47ab90911c7",
       "summary": ""
     },
     {
@@ -7378,7 +7378,7 @@
       "title": "State of the Substrate — Latest",
       "category": "STATE_OF_THE_SUBSTRATE_LATEST.md",
       "tags": [],
-      "content_hash": "sha256:a761d7071558cd50c22761045fe4a6ce12b69cd328e855f61cc6f4b05d58463a",
+      "content_hash": "sha256:a87ff6da1bba1513f3d79c48fe6059ea5990fa244f084d135e8624ccf46272b1",
       "summary": ""
     },
     {
@@ -7442,7 +7442,7 @@
       "title": "OAA-HIST-001: When the Record and Reality Disagree",
       "category": "academy",
       "tags": [],
-      "content_hash": "sha256:81eee414509fd8f2c5310563ae103130e3f35674f7ad91aff3c927bf7c8fd92d",
+      "content_hash": "sha256:ce9fc982761d43faa36becd670700dc4f8a6871f674291a2f240557a3eab7847",
       "summary": ""
     },
     {
@@ -8388,7 +8388,7 @@
         "floor-3",
         "assessment"
       ],
-      "content_hash": "sha256:be681272939f6c8efc38d1a89d568d3b226a20b6c683226f8ac8479da9d3a934",
+      "content_hash": "sha256:0be164b417d8797ab2251e90c10fba9c5b99030f5abf7767db7b86873c0c5415",
       "summary": "Specification-only package formalizing OAA Floor 3 (Academy) teaching, assessment, and agent teacher obligations."
     },
     {

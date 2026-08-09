@@ -86,7 +86,7 @@
 - [Full documentation index](./INDEX.md) — `INDEX.md`
 ### journals
 
-- [C-397 (current)](./journals/C-397.md) — `journals/C-397.md`
+- [C-397](./journals/C-397.md) — `journals/C-397.md`
 - [C-383](./journals/C-383.md) — `journals/C-383.md`
 - [C-382](./journals/C-382.md) — `journals/C-382.md`
 - [C-381](./journals/C-381.md) — `journals/C-381.md`
