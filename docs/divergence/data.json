@@ -1,11 +1,11 @@
 {
   "repo": "kaizencycle/Mobius-Substrate",
-  "generated_at": "2026-08-09T13:11:29Z",
+  "generated_at": "2026-08-09T18:56:25Z",
   "open_pr_count": 9,
   "by_severity": {
-    "high": 5,
+    "high": 4,
     "medium": 0,
-    "low": 0,
+    "low": 1,
     "unknown": 4
   },
   "emergency_count": 0,
@@ -86,13 +86,15 @@
       "title": "docs(C-397): classify 41-ID vault index gap as legacy MIC tranche (Track R step 2)",
       "url": "https://github.com/kaizencycle/Mobius-Substrate/pull/430",
       "author": "kaizencycle",
-      "updated_at": "2026-08-08T17:22:26Z",
+      "updated_at": "2026-08-09T17:11:28Z",
       "created_at": "2026-08-08T17:19:19Z",
-      "labels": [],
+      "labels": [
+        "scope:docs"
+      ],
       "mode": "normal",
       "has_debt": false,
-      "severity": "high",
-      "justification_hash": "",
+      "severity": "low",
+      "justification_hash": "5dc9649ff8b0ef5d81e30d3a7345a05297160a8b4f86bd33b2751174dc067be1",
       "checks": {
         "epicon": "unknown",
         "merge_gate": "unknown"
