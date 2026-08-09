@@ -1,5 +1,5 @@
 ---
-epicon_id: EPICON_C-399_ACADEMY_PROTOCOL_v1
+epicon_id: EPICON_C-399_DOCS_academy-protocol-v1_v1
 title: "C-399: Academy Protocol v0.1 — OAA Floor 3 specification"
 author_name: "Michael Judan"
 cycle: "C-399"
@@ -69,7 +69,7 @@ This C-399 authority expires for this specification when either:
 ## Intent publication
 
 ```intent
-epicon_id: EPICON_C-399_ACADEMY_PROTOCOL_v1
+epicon_id: EPICON_C-399_DOCS_academy-protocol-v1_v1
 ledger_id: kaizencycle
 scope: docs
 mode: normal
