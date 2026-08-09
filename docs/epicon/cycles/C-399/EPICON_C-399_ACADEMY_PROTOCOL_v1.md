@@ -37,12 +37,41 @@ Formalize OAA Floor 3 (Academy) as a constitutional specification with three pro
 
 ---
 
+## Authority Provenance & Standing
+
+*Authority declared using `docs/templates/EPICON_FOUNDER_STANDING.md` v0.1*
+
+This EPICON invokes **founder–custodian standing** only to publish Academy specification documentation under OAA Floor 3. No production KV mutation, ledger repair, seal canon promotion, or runtime deployment authority is exercised.
+
+### Scope Constraints
+
+This authority is narrowly scoped to:
+
+- publishing Academy protocol specifications (`docs/academy/`)
+- filing EPICON C-399 intent and witness artifacts
+- establishing pre-runtime pedagogical boundary conditions
+
+It does **not** authorize production system changes, learner record creation, Academy service deployment, or bypass of OAA Phase D gates.
+
+### Temporality & Revocation
+
+This authority is transitional, contestable, and non-transferable. It may be superseded by ratified governance or a successor EPICON.
+
+### Sunset Condition
+
+This C-399 authority expires for this specification when either:
+
+1. the Academy Protocol v0.1 package is merged and canonized, or
+2. a successor EPICON supersedes C-399.
+
+---
+
 ## Intent publication
 
 ```intent
 epicon_id: EPICON_C-399_ACADEMY_PROTOCOL_v1
 ledger_id: kaizencycle
-scope: specs
+scope: docs
 mode: normal
 issued_at: 2026-08-09T16:00:00Z
 expires_at: 2026-11-07T16:00:00Z
