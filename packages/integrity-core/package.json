@@ -11,11 +11,11 @@
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
-    "@modelcontextprotocol/sdk": "1.29.0",
+    "@modelcontextprotocol/sdk": "1.30.0",
     "crypto": "^1.0.1",
     "eslint-config-next": "14.2.35",
     "ethers": "6.17.0",
-    "js-yaml": "^5.2.0",
+    "js-yaml": "^5.2.3",
     "next": "14.2.35",
     "tweetnacl": "^1.0.3",
     "zod": "^3.22.0"

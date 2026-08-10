@@ -12,11 +12,11 @@
     "clean": "rm -rf frontend/.next"
   },
   "dependencies": {
-    "@modelcontextprotocol/sdk": "1.29.0",
+    "@modelcontextprotocol/sdk": "1.30.0",
     "eslint-config-next": "14.2.35",
     "ethers": "6.17.0",
     "fastify": "4.27.0",
-    "lru-cache": "11.5.1",
+    "lru-cache": "11.5.2",
     "next": "14.2.35"
   }
 }
