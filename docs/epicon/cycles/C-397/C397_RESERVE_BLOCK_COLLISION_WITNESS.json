@@ -13,6 +13,7 @@
   "counts": {
     "raw_attested_count": 319,
     "unique_block_count": 194,
+    "unique_block_count_note": "Reconciliation candidate positions from examined attested set only — not canonical_reserve_blocks until Track R step 8.",
     "collision_pair_count": 125,
     "hash_divergent_pair_count": 125,
     "contested_block_count": 123,

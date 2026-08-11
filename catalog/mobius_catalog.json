@@ -1,15 +1,15 @@
 {
   "mobius_catalog_version": "1.0.0",
-  "generated_at": "2026-08-11T03:48:57.587Z",
+  "generated_at": "2026-08-11T22:33:01.858Z",
   "repo": {
     "name": "Mobius-Substrate",
     "url": "https://github.com/kaizencycle/Mobius-Substrate",
     "default_branch": "main",
-    "commit": "5f0eb6a7576a1dc28373e4cb0ab35f00bafe6360"
+    "commit": "4a0ce6d02a2487ff07922e3b2763a804b4073549"
   },
   "stats": {
     "epiconCount": 0,
-    "docCount": 1088
+    "docCount": 1092
   },
   "epicons": [],
   "docs": [
@@ -8366,7 +8366,7 @@
       "title": "C-397 — Reserve Block collision reconciliation witness",
       "category": "epicon",
       "tags": [],
-      "content_hash": "sha256:a06ab7a6e31991fdf2d683ccbea467c06ac4259f5a66f212f4f00ee5bdd3afc3",
+      "content_hash": "sha256:f6ff8fb527fd14efa04651a42a8be80af3678dfc539a7bdf1740bca2fa22e70d",
       "summary": ""
     },
     {
@@ -8390,6 +8390,38 @@
       ],
       "content_hash": "sha256:0be164b417d8797ab2251e90c10fba9c5b99030f5abf7767db7b86873c0c5415",
       "summary": "Specification-only package formalizing OAA Floor 3 (Academy) teaching, assessment, and agent teacher obligations."
+    },
+    {
+      "path": "docs/epicon/cycles/C-400/C400_ACTION_PACKAGE.md",
+      "title": "C-400 Action Package",
+      "category": "epicon",
+      "tags": [],
+      "content_hash": "sha256:09fc3b6d9504980ebf71d42ce8174b7f9075f9072b7208625d827f1aaca3a5a4",
+      "summary": ""
+    },
+    {
+      "path": "docs/epicon/cycles/C-400/C400_FEDERATION_SCAN_REPORT.md",
+      "title": "C-400 Federation Scan Report",
+      "category": "epicon",
+      "tags": [],
+      "content_hash": "sha256:e43e7da99734be3dd5104150150efae331cf11d568b8c24098f55fbc3ab91a19",
+      "summary": ""
+    },
+    {
+      "path": "docs/epicon/cycles/C-400/C400_ZEUS_DISPUTE_RESOLUTION.md",
+      "title": "C-400 ZEUS Dispute Resolution",
+      "category": "epicon",
+      "tags": [],
+      "content_hash": "sha256:e409264a5aab2965687396cad5aa01896c27920e4d1db9f44a4449435cd36b3d",
+      "summary": ""
+    },
+    {
+      "path": "docs/epicon/cycles/C-400/EPICON_C-400_FEDERATION_SCAN_v1.md",
+      "title": "C-400: Federation scan, ZEUS dispute resolution, Track R doc completion",
+      "category": "epicon",
+      "tags": [],
+      "content_hash": "sha256:da642ccb9319ccd482660908728a06597ffeb9088262c91a8e6c878170be22a7",
+      "summary": ""
     },
     {
       "path": "docs/epicon/cycles/C-ATLAS/EPICON_C-ATLAS_INFRA_mobiusatlas-agent-launch_v1.md",
