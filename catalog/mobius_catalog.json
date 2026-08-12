@@ -1,15 +1,15 @@
 {
   "mobius_catalog_version": "1.0.0",
-  "generated_at": "2026-08-11T22:33:01.858Z",
+  "generated_at": "2026-08-12T02:22:10.667Z",
   "repo": {
     "name": "Mobius-Substrate",
     "url": "https://github.com/kaizencycle/Mobius-Substrate",
     "default_branch": "main",
-    "commit": "4a0ce6d02a2487ff07922e3b2763a804b4073549"
+    "commit": "b8822efc3cf1625efe6f22609e38ad937451ba59"
   },
   "stats": {
     "epiconCount": 0,
-    "docCount": 1092
+    "docCount": 1097
   },
   "epicons": [],
   "docs": [
@@ -8421,6 +8421,46 @@
       "category": "epicon",
       "tags": [],
       "content_hash": "sha256:da642ccb9319ccd482660908728a06597ffeb9088262c91a8e6c878170be22a7",
+      "summary": ""
+    },
+    {
+      "path": "docs/epicon/cycles/C-401/C401_COLLISION_RESOLUTION_TABLE.md",
+      "title": "C-401 Collision Pair Resolution Table",
+      "category": "epicon",
+      "tags": [],
+      "content_hash": "sha256:8166d19a188c0c3aafc80488d08459ce00f68681918c551f756092520d8776c9",
+      "summary": ""
+    },
+    {
+      "path": "docs/epicon/cycles/C-401/C401_OPENING_BRIEF.md",
+      "title": "C-401 Opening Brief",
+      "category": "epicon",
+      "tags": [],
+      "content_hash": "sha256:41d1c3fc7c2350d52d49e44bc25734740299906a615c4c7191e184f71f11e603",
+      "summary": ""
+    },
+    {
+      "path": "docs/epicon/cycles/C-401/C401_TRACK_R_PROMOTION_SOP.md",
+      "title": "C-401 Track R Promotion SOP",
+      "category": "epicon",
+      "tags": [],
+      "content_hash": "sha256:30c8b294c8f1296c537655a01eae7224bf598e31f69663557063274e3b624903",
+      "summary": ""
+    },
+    {
+      "path": "docs/epicon/cycles/C-401/C401_ZEUS_ATTESTATION_REQUEST.md",
+      "title": "C-401 ZEUS Attestation Request — Track R Collision Resolution",
+      "category": "epicon",
+      "tags": [],
+      "content_hash": "sha256:4c63b6528152d82f23dc50c32f0494a643d8da62bf12c56c6f126924b20d875a",
+      "summary": ""
+    },
+    {
+      "path": "docs/epicon/cycles/C-401/EPICON_C-401_TRACK_R_LINEAGE_v1.md",
+      "title": "C-401: Track R collision resolution — promote originals to canonical",
+      "category": "epicon",
+      "tags": [],
+      "content_hash": "sha256:7727215d942282ec4eea2635b59ff08e10d0ff38c0fe59ab6b1ac4f52af3342b",
       "summary": ""
     },
     {

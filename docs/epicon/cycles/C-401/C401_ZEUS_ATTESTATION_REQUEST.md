@@ -2,67 +2,66 @@
 
 **Cycle:** C-401  
 **Request seal:** C-401–ZEUS–REQ–001  
-**Requested from:** ZEUS sentinel  
-**Filed by:** ATLAS (on custodian Option A approval)  
+**Requested from:** ZEUS sentinel + **EVE**  
+**Filed by:** ATLAS (custodian Option A revised approval)  
 **Date:** 2026-08-12
 
 ---
 
 ## Request
 
-ZEUS is asked to attest the **soundness** of the collision resolution strategy in:
+ZEUS and **EVE** are asked to attest the **soundness** of the revised collision resolution strategy in:
 
 - `C401_COLLISION_RESOLUTION_TABLE.json`
 - `C401_COLLISION_RESOLUTION_TABLE.md`
 
-This is **step 5** of Track R (`RESERVE_BLOCK_RECONCILIATION.md`). No KV mutation until ZEUS + custodian gates pass.
+Track R step 5 requires **human + ZEUS + EVE** approval before guarded repair (`RESERVE_BLOCK_RECONCILIATION.md` steps 4–6).
 
 ---
 
 ## Strategy under review
 
-**Name:** `promote_original_seals` (Custodian Option A)
+**Name:** `component_coherent_hybrid` (Option A revised after Codex P1)
 
-**Rule:** For all 123 contested block positions, promote the earliest original live attestation seal to canonical; demote re-attestation recovery seals (C-359–C-372 tranche) to witness-only. Preserve all seal bodies.
+| Segment | Blocks | Canonical pick | Rationale |
+|---------|--------|----------------|-----------|
+| A | 1–33 | Promote **dropped** (original) | Demote C-359–C-371 recovery fork |
+| B | 42–131 | Promote **kept** (C-339–C-358) | Component-1 continuity; avoid C-308 orphan at 42 |
 
 ---
 
 ## ZEUS checklist
 
-- [ ] All 125 collision pairs present and match C-397 witness source
-- [ ] Re-attestation pattern confirmed (kept cycle later than dropped for 100% of pairs)
-- [ ] Block-level canonical choices are internally consistent (one canonical per block)
-- [ ] Three-way blocks 1–2: `seal-C-332-001` and `seal-C-333-002` are defensible earliest originals
-- [ ] No seal body corruption claimed — preservation-only promotion
-- [ ] Lineage logic aligns with Track R invariants (no silent dedupe, no renumbering)
-- [ ] Promotion SOP references C-373 guarded repair (no ad-hoc KV writes)
+- [ ] 125 pairs match C-397 witness source
+- [ ] Segment A: originals earlier than kept for all 35 pairs (blocks 1–33 incl. three-way)
+- [ ] Segment B: kept fork selected for continuity (not naive earliest-dropped)
+- [ ] Block 42 canonical is **not** `seal-C-308-042` (orphan_prev documented)
+- [ ] Block 1 → `seal-C-332-001`; block 2 → `seal-C-333-002`
+- [ ] Clean blocks 34–41, 132–194 excluded from `block_canonical`
+- [ ] No seal body deletion claimed — witness-only demotion
+- [ ] Post-promotion audit criteria defined in SOP
+
+## EVE checklist
+
+- [ ] Segment boundary (33/42) does not violate MIC / reserve invariants
+- [ ] Hybrid strategy preserves evidentiary record for both forks
+- [ ] Fountain gate remains fail-closed until step 7 audit passes
 
 ---
 
-## Expected ZEUS outcomes
+## Expected outcomes
 
 | Verdict | Action |
 |---------|--------|
-| **ADOPT** | Proceed to operator SOP staging; label PR `consensus:approved` path |
-| **PARTIAL** | File block-specific revisions; update resolution table |
-| **OVERTURN** | Halt promotion; custodian selects alternate strategy (Option B/C) |
-
----
-
-## Evidence anchors
-
-| Claim | Evidence |
-|-------|----------|
-| 125 pairs | `C397_RESERVE_BLOCK_COLLISION_WITNESS.json` → `counts.collision_pair_count` |
-| Contested ranges 1–33, 42–131 | Same witness → `contested_block_numbers` |
-| Vault pointer repaired | `mobius-civic-ai-terminal` PR #650 witness |
-| Track R step 4 complete | This PR |
+| **ADOPT** | Proceed to operator SOP staging |
+| **PARTIAL** | Revise segment rules; regenerate JSON |
+| **OVERTURN** | Halt; custodian selects alternate strategy |
 
 ---
 
 ## Custodian attestation (record)
 
-> **Decision:** APPROVE Option A — promote originals to canonical.  
+> **Decision:** APPROVE Option A revised (`component_coherent_hybrid`).  
 > **Date:** 2026-08-12  
 > **Authority:** Mobius Custodian (kaizencycle)
 

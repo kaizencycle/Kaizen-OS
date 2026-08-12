@@ -18,7 +18,7 @@ issued_at: 2026-08-12T02:11:00Z
 expires_at: 2026-11-10T02:11:00Z
 justification:
   VALUES INVOKED: integrity, witness-fidelity, lineage-fidelity, fail-closed canon
-  REASONING: C-401 opens Track R step 4 after C-400 vault pointer repair. Custodian approved Option A — promote earliest original live seals for 123 contested positions. Artifacts enable ZEUS review and staged C-373 guarded promotion without KV mutation in this PR.
+  REASONING: C-401 opens Track R step 4 after C-400 vault pointer repair. Custodian approved Option A revised (component_coherent_hybrid) — Segment A promotes originals blocks 1-33; Segment B promotes kept fork blocks 42-131 for chain continuity (Codex P1 orphan_prev at C-308-042). Artifacts enable ZEUS + EVE review without KV mutation in this PR.
   ANCHORS:
     - docs/epicon/cycles/C-401/C401_COLLISION_RESOLUTION_TABLE.json
     - docs/epicon/cycles/C-397/C397_RESERVE_BLOCK_COLLISION_WITNESS.json
@@ -27,9 +27,9 @@ justification:
   BOUNDARIES: Documentation and resolution table only. No production KV mutation. Promotion requires ZEUS ADOPT + operator SOP execution.
   COUNTERFACTUAL: If fresh audit shows pair count ≠ 125, regenerate table before ZEUS review.
 counterfactuals:
-  - If ZEUS OVERTURNs strategy, quarantine table and reopen custodian Option B/C
-  - If block_canonical choices contradict witness timestamps, fail merge
-  - If scope expands to KV writes in this PR, republish intent with scope core
+  - If ZEUS or EVE OVERTURNs strategy, quarantine table and reopen custodian Option B/C
+  - If block 41→42 continuity dry-run fails after revision, halt before step 6
+  - If scope expands to KV writes or cycle.json in this PR, republish intent with wider scope
 ```
 
 ## Authority Provenance & Standing

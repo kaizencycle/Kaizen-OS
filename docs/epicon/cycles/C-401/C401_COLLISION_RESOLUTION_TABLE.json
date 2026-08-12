@@ -2,14 +2,19 @@
   "cycle": "C-401",
   "phase": "track_r_lineage_reconciliation",
   "document_seal": "C-401-COLLISION-RES-001",
-  "prepared_date": "2026-08-12T02:11:00Z",
+  "prepared_date": "2026-08-12T02:21:00Z",
   "prepared_by": "ATLAS",
-  "custodian_decision": "APPROVE_OPTION_A",
-  "custodian_decision_date": "2026-08-12T02:11:00Z",
-  "strategy": "promote_original_seals",
-  "strategy_description": "Promote earliest dropped (original live) seal per contested block; demote kept re-attestation seals to witness-only.",
-  "approval_status": "pending_zeus_attestation",
+  "custodian_decision": "APPROVE_OPTION_A_REVISED",
+  "custodian_decision_note": "Option A revised after Codex P1: component-coherent hybrid \u2014 promote originals blocks 1-33; promote kept fork blocks 42-131 for chain continuity",
+  "strategy": "component_coherent_hybrid",
+  "strategy_description": "Segment A (1-33): promote earliest original dropped seal. Segment B (42-131): promote kept component-1 fork (C-339-C-358) to preserve continuity with clean blocks 34-41; do not promote C-308 orphan fork at block 42.",
+  "approval_status": "pending_zeus_and_eve_attestation",
   "source_witness": "docs/epicon/cycles/C-397/C397_RESERVE_BLOCK_COLLISION_WITNESS.json",
+  "lineage_anchors": {
+    "component_1": "C-332-001 -> C-358-131 (blocks 1-131)",
+    "component_4": "C-308-042 -> C-332-194 (blocks 42-194; orphan_prev at 42)",
+    "boundary_risk": "41->42: C-308-042 orphan_prev \u2014 excluded from Segment B canonical picks"
+  },
   "block_canonical": {
     "1": {
       "seal_id": "seal-C-332-001",
@@ -177,454 +182,454 @@
       "sealed_at": "2026-06-10T13:11:14.293Z"
     },
     "42": {
-      "seal_id": "seal-C-308-042",
-      "cycle": "C-308",
-      "sealed_at": "2026-05-11T07:51:02.451Z"
+      "seal_id": "seal-C-339-042",
+      "cycle": "C-339",
+      "sealed_at": "2026-06-12T00:55:34.653Z"
     },
     "43": {
-      "seal_id": "seal-C-308-043",
-      "cycle": "C-308",
-      "sealed_at": "2026-05-11T14:51:15.853Z"
+      "seal_id": "seal-C-340-043",
+      "cycle": "C-340",
+      "sealed_at": "2026-06-12T07:41:02.617Z"
     },
     "44": {
-      "seal_id": "seal-C-308-044",
-      "cycle": "C-308",
-      "sealed_at": "2026-05-11T14:55:46.437Z"
+      "seal_id": "seal-C-340-044",
+      "cycle": "C-340",
+      "sealed_at": "2026-06-12T07:45:34.646Z"
     },
     "45": {
-      "seal_id": "seal-C-308-045",
-      "cycle": "C-308",
-      "sealed_at": "2026-05-11T22:01:03.397Z"
+      "seal_id": "seal-C-340-045",
+      "cycle": "C-340",
+      "sealed_at": "2026-06-12T14:11:02.352Z"
     },
     "46": {
-      "seal_id": "seal-C-309-046",
-      "cycle": "C-309",
-      "sealed_at": "2026-05-12T05:01:17.290Z"
+      "seal_id": "seal-C-340-046",
+      "cycle": "C-340",
+      "sealed_at": "2026-06-12T20:51:01.803Z"
     },
     "47": {
-      "seal_id": "seal-C-309-047",
-      "cycle": "C-309",
-      "sealed_at": "2026-05-12T12:01:20.484Z"
+      "seal_id": "seal-C-340-047",
+      "cycle": "C-340",
+      "sealed_at": "2026-06-13T03:20:45.921Z"
     },
     "48": {
-      "seal_id": "seal-C-309-048",
-      "cycle": "C-309",
-      "sealed_at": "2026-05-12T19:11:20.197Z"
+      "seal_id": "seal-C-340-048",
+      "cycle": "C-340",
+      "sealed_at": "2026-06-13T03:25:17.736Z"
     },
     "49": {
-      "seal_id": "seal-C-309-049",
-      "cycle": "C-309",
-      "sealed_at": "2026-05-12T19:15:46.521Z"
+      "seal_id": "seal-C-341-049",
+      "cycle": "C-341",
+      "sealed_at": "2026-06-13T09:50:46.565Z"
     },
     "50": {
-      "seal_id": "seal-C-309-050",
-      "cycle": "C-309",
-      "sealed_at": "2026-05-13T02:01:09.506Z"
+      "seal_id": "seal-C-341-050",
+      "cycle": "C-341",
+      "sealed_at": "2026-06-13T16:40:46.379Z"
     },
     "51": {
-      "seal_id": "seal-C-310-051",
-      "cycle": "C-310",
-      "sealed_at": "2026-05-13T09:01:06.971Z"
+      "seal_id": "seal-C-341-051",
+      "cycle": "C-341",
+      "sealed_at": "2026-06-13T16:45:17.691Z"
     },
     "52": {
-      "seal_id": "seal-C-310-052",
-      "cycle": "C-310",
-      "sealed_at": "2026-05-13T09:05:46.633Z"
+      "seal_id": "seal-C-341-052",
+      "cycle": "C-341",
+      "sealed_at": "2026-06-13T23:10:46.250Z"
     },
     "53": {
-      "seal_id": "seal-C-310-053",
-      "cycle": "C-310",
-      "sealed_at": "2026-05-13T16:01:31.032Z"
+      "seal_id": "seal-C-341-053",
+      "cycle": "C-341",
+      "sealed_at": "2026-06-14T05:50:46.048Z"
     },
     "54": {
-      "seal_id": "seal-C-310-054",
-      "cycle": "C-310",
-      "sealed_at": "2026-05-13T16:05:04.825Z"
+      "seal_id": "seal-C-342-054",
+      "cycle": "C-342",
+      "sealed_at": "2026-06-14T12:20:46.034Z"
     },
     "55": {
-      "seal_id": "seal-C-310-055",
-      "cycle": "C-310",
-      "sealed_at": "2026-05-13T23:01:21.613Z"
+      "seal_id": "seal-C-342-055",
+      "cycle": "C-342",
+      "sealed_at": "2026-06-14T19:10:45.867Z"
     },
     "56": {
-      "seal_id": "seal-C-310-056",
-      "cycle": "C-310",
-      "sealed_at": "2026-05-13T23:05:05.088Z"
+      "seal_id": "seal-C-342-056",
+      "cycle": "C-342",
+      "sealed_at": "2026-06-14T19:15:17.716Z"
     },
     "57": {
-      "seal_id": "seal-C-310-057",
-      "cycle": "C-310",
-      "sealed_at": "2026-05-14T05:51:06.069Z"
+      "seal_id": "seal-C-342-057",
+      "cycle": "C-342",
+      "sealed_at": "2026-06-15T01:40:46.162Z"
     },
     "58": {
-      "seal_id": "seal-C-311-058",
-      "cycle": "C-311",
-      "sealed_at": "2026-05-14T12:51:17.885Z"
+      "seal_id": "seal-C-342-058",
+      "cycle": "C-342",
+      "sealed_at": "2026-06-15T01:45:17.638Z"
     },
     "59": {
-      "seal_id": "seal-C-311-059",
-      "cycle": "C-311",
-      "sealed_at": "2026-05-14T19:51:26.798Z"
+      "seal_id": "seal-C-343-059",
+      "cycle": "C-343",
+      "sealed_at": "2026-06-15T08:20:46.425Z"
     },
     "60": {
-      "seal_id": "seal-C-311-060",
-      "cycle": "C-311",
-      "sealed_at": "2026-05-14T19:55:04.615Z"
+      "seal_id": "seal-C-343-060",
+      "cycle": "C-343",
+      "sealed_at": "2026-06-15T08:25:17.850Z"
     },
     "61": {
-      "seal_id": "seal-C-311-061",
-      "cycle": "C-311",
-      "sealed_at": "2026-05-15T02:41:29.565Z"
+      "seal_id": "seal-C-343-061",
+      "cycle": "C-343",
+      "sealed_at": "2026-06-15T15:00:46.325Z"
     },
     "62": {
-      "seal_id": "seal-C-311-062",
-      "cycle": "C-311",
-      "sealed_at": "2026-05-15T02:45:04.987Z"
+      "seal_id": "seal-C-343-062",
+      "cycle": "C-343",
+      "sealed_at": "2026-06-15T15:05:18.047Z"
     },
     "63": {
-      "seal_id": "seal-C-312-063",
-      "cycle": "C-312",
-      "sealed_at": "2026-05-15T09:41:04.169Z"
+      "seal_id": "seal-C-343-063",
+      "cycle": "C-343",
+      "sealed_at": "2026-06-15T21:01:36.768Z"
     },
     "64": {
-      "seal_id": "seal-C-312-064",
-      "cycle": "C-312",
-      "sealed_at": "2026-05-15T09:45:04.722Z"
+      "seal_id": "seal-C-343-064",
+      "cycle": "C-343",
+      "sealed_at": "2026-06-16T03:00:53.611Z"
     },
     "65": {
-      "seal_id": "seal-C-312-065",
-      "cycle": "C-312",
-      "sealed_at": "2026-05-15T16:41:37.138Z"
+      "seal_id": "seal-C-343-065",
+      "cycle": "C-343",
+      "sealed_at": "2026-06-16T03:05:19.327Z"
     },
     "66": {
-      "seal_id": "seal-C-312-066",
-      "cycle": "C-312",
-      "sealed_at": "2026-05-15T22:31:15.206Z"
+      "seal_id": "seal-C-344-066",
+      "cycle": "C-344",
+      "sealed_at": "2026-06-16T08:50:52.236Z"
     },
     "67": {
-      "seal_id": "seal-C-312-067",
-      "cycle": "C-312",
-      "sealed_at": "2026-05-15T22:35:05.821Z"
+      "seal_id": "seal-C-344-067",
+      "cycle": "C-344",
+      "sealed_at": "2026-06-16T14:30:53.008Z"
     },
     "68": {
-      "seal_id": "seal-C-312-068",
-      "cycle": "C-312",
-      "sealed_at": "2026-05-16T04:21:18.128Z"
+      "seal_id": "seal-C-344-068",
+      "cycle": "C-344",
+      "sealed_at": "2026-06-16T14:35:19.694Z"
     },
     "69": {
-      "seal_id": "seal-C-312-069",
-      "cycle": "C-312",
-      "sealed_at": "2026-05-16T04:25:05.859Z"
+      "seal_id": "seal-C-344-069",
+      "cycle": "C-344",
+      "sealed_at": "2026-06-16T20:30:52.458Z"
     },
     "70": {
-      "seal_id": "seal-C-313-070",
-      "cycle": "C-313",
-      "sealed_at": "2026-05-16T10:20:43.402Z"
+      "seal_id": "seal-C-344-070",
+      "cycle": "C-344",
+      "sealed_at": "2026-06-16T20:35:19.578Z"
     },
     "71": {
-      "seal_id": "seal-C-313-071",
-      "cycle": "C-313",
-      "sealed_at": "2026-05-16T16:21:34.472Z"
+      "seal_id": "seal-C-344-071",
+      "cycle": "C-344",
+      "sealed_at": "2026-06-17T02:04:36.914Z"
     },
     "72": {
-      "seal_id": "seal-C-313-072",
-      "cycle": "C-313",
-      "sealed_at": "2026-05-16T22:31:12.987Z"
+      "seal_id": "seal-C-345-072",
+      "cycle": "C-345",
+      "sealed_at": "2026-06-17T07:50:54.008Z"
     },
     "73": {
-      "seal_id": "seal-C-314-073",
-      "cycle": "C-314",
-      "sealed_at": "2026-05-17T04:41:23.751Z"
+      "seal_id": "seal-C-345-073",
+      "cycle": "C-345",
+      "sealed_at": "2026-06-17T13:30:53.341Z"
     },
     "74": {
-      "seal_id": "seal-C-314-074",
-      "cycle": "C-314",
-      "sealed_at": "2026-05-17T04:45:05.647Z"
+      "seal_id": "seal-C-345-074",
+      "cycle": "C-345",
+      "sealed_at": "2026-06-17T19:20:53.889Z"
     },
     "75": {
-      "seal_id": "seal-C-314-075",
-      "cycle": "C-314",
-      "sealed_at": "2026-05-17T10:40:54.767Z"
+      "seal_id": "seal-C-345-075",
+      "cycle": "C-345",
+      "sealed_at": "2026-06-17T19:25:08.701Z"
     },
     "76": {
-      "seal_id": "seal-C-314-076",
-      "cycle": "C-314",
-      "sealed_at": "2026-05-17T16:41:24.313Z"
+      "seal_id": "seal-C-345-076",
+      "cycle": "C-345",
+      "sealed_at": "2026-06-18T00:50:53.947Z"
     },
     "77": {
-      "seal_id": "seal-C-314-077",
-      "cycle": "C-314",
-      "sealed_at": "2026-05-17T16:45:16.368Z"
+      "seal_id": "seal-C-346-077",
+      "cycle": "C-346",
+      "sealed_at": "2026-06-18T06:40:53.413Z"
     },
     "78": {
-      "seal_id": "seal-C-314-078",
-      "cycle": "C-314",
-      "sealed_at": "2026-05-17T22:21:06.996Z"
+      "seal_id": "seal-C-346-078",
+      "cycle": "C-346",
+      "sealed_at": "2026-06-18T12:30:52.589Z"
     },
     "79": {
-      "seal_id": "seal-C-314-079",
-      "cycle": "C-314",
-      "sealed_at": "2026-05-17T22:25:30.563Z"
+      "seal_id": "seal-C-346-079",
+      "cycle": "C-346",
+      "sealed_at": "2026-06-18T18:20:53.372Z"
     },
     "80": {
-      "seal_id": "seal-C-314-080",
-      "cycle": "C-314",
-      "sealed_at": "2026-05-18T03:31:07.887Z"
+      "seal_id": "seal-C-346-080",
+      "cycle": "C-346",
+      "sealed_at": "2026-06-19T00:10:53.367Z"
     },
     "81": {
-      "seal_id": "seal-C-315-081",
-      "cycle": "C-315",
-      "sealed_at": "2026-05-18T09:11:07.405Z"
+      "seal_id": "seal-C-346-081",
+      "cycle": "C-346",
+      "sealed_at": "2026-06-19T00:15:09.086Z"
     },
     "82": {
-      "seal_id": "seal-C-315-082",
-      "cycle": "C-315",
-      "sealed_at": "2026-05-18T09:15:30.684Z"
+      "seal_id": "seal-C-347-082",
+      "cycle": "C-347",
+      "sealed_at": "2026-06-19T06:03:51.210Z"
     },
     "83": {
-      "seal_id": "seal-C-315-083",
-      "cycle": "C-315",
-      "sealed_at": "2026-05-18T15:01:06.767Z"
+      "seal_id": "seal-C-347-083",
+      "cycle": "C-347",
+      "sealed_at": "2026-06-19T12:03:17.532Z"
     },
     "84": {
-      "seal_id": "seal-C-315-084",
-      "cycle": "C-315",
-      "sealed_at": "2026-05-18T20:20:59.810Z"
+      "seal_id": "seal-C-347-084",
+      "cycle": "C-347",
+      "sealed_at": "2026-06-19T18:03:17.560Z"
     },
     "85": {
-      "seal_id": "seal-C-315-085",
-      "cycle": "C-315",
-      "sealed_at": "2026-05-18T20:25:23.753Z"
+      "seal_id": "seal-C-347-085",
+      "cycle": "C-347",
+      "sealed_at": "2026-06-20T00:00:53.663Z"
     },
     "86": {
-      "seal_id": "seal-C-315-086",
-      "cycle": "C-315",
-      "sealed_at": "2026-05-19T02:11:00.420Z"
+      "seal_id": "seal-C-347-086",
+      "cycle": "C-347",
+      "sealed_at": "2026-06-20T00:05:08.729Z"
     },
     "87": {
-      "seal_id": "seal-C-315-087",
-      "cycle": "C-315",
-      "sealed_at": "2026-05-19T02:15:23.457Z"
+      "seal_id": "seal-C-348-087",
+      "cycle": "C-348",
+      "sealed_at": "2026-06-20T05:40:53.153Z"
     },
     "88": {
-      "seal_id": "seal-C-316-088",
-      "cycle": "C-316",
-      "sealed_at": "2026-05-19T08:02:41.703Z"
+      "seal_id": "seal-C-348-088",
+      "cycle": "C-348",
+      "sealed_at": "2026-06-20T05:45:08.597Z"
     },
     "89": {
-      "seal_id": "seal-C-316-089",
-      "cycle": "C-316",
-      "sealed_at": "2026-05-19T13:50:59.752Z"
+      "seal_id": "seal-C-348-089",
+      "cycle": "C-348",
+      "sealed_at": "2026-06-20T11:20:53.021Z"
     },
     "90": {
-      "seal_id": "seal-C-316-090",
-      "cycle": "C-316",
-      "sealed_at": "2026-05-19T19:31:00.142Z"
+      "seal_id": "seal-C-348-090",
+      "cycle": "C-348",
+      "sealed_at": "2026-06-20T11:25:08.816Z"
     },
     "91": {
-      "seal_id": "seal-C-316-091",
-      "cycle": "C-316",
-      "sealed_at": "2026-05-19T19:35:23.864Z"
+      "seal_id": "seal-C-348-091",
+      "cycle": "C-348",
+      "sealed_at": "2026-06-20T17:00:53.533Z"
     },
     "92": {
-      "seal_id": "seal-C-316-092",
-      "cycle": "C-316",
-      "sealed_at": "2026-05-20T01:02:58.354Z"
+      "seal_id": "seal-C-348-092",
+      "cycle": "C-348",
+      "sealed_at": "2026-06-20T22:50:52.653Z"
     },
     "93": {
-      "seal_id": "seal-C-316-093",
-      "cycle": "C-316",
-      "sealed_at": "2026-05-20T01:05:23.369Z"
+      "seal_id": "seal-C-349-093",
+      "cycle": "C-349",
+      "sealed_at": "2026-06-21T04:20:53.177Z"
     },
     "94": {
-      "seal_id": "seal-C-317-094",
-      "cycle": "C-317",
-      "sealed_at": "2026-05-20T06:20:59.949Z"
+      "seal_id": "seal-C-349-094",
+      "cycle": "C-349",
+      "sealed_at": "2026-06-21T10:03:02.681Z"
     },
     "95": {
-      "seal_id": "seal-C-317-095",
-      "cycle": "C-317",
-      "sealed_at": "2026-05-20T12:02:57.103Z"
+      "seal_id": "seal-C-349-095",
+      "cycle": "C-349",
+      "sealed_at": "2026-06-21T15:40:52.961Z"
     },
     "96": {
-      "seal_id": "seal-C-317-096",
-      "cycle": "C-317",
-      "sealed_at": "2026-05-20T12:05:23.603Z"
+      "seal_id": "seal-C-349-096",
+      "cycle": "C-349",
+      "sealed_at": "2026-06-21T15:45:08.823Z"
     },
     "97": {
-      "seal_id": "seal-C-317-097",
-      "cycle": "C-317",
-      "sealed_at": "2026-05-20T12:10:23.810Z"
+      "seal_id": "seal-C-349-097",
+      "cycle": "C-349",
+      "sealed_at": "2026-06-21T21:20:53.644Z"
     },
     "98": {
-      "seal_id": "seal-C-317-098",
-      "cycle": "C-317",
-      "sealed_at": "2026-05-20T17:41:06.467Z"
+      "seal_id": "seal-C-349-098",
+      "cycle": "C-349",
+      "sealed_at": "2026-06-21T21:25:08.633Z"
     },
     "99": {
-      "seal_id": "seal-C-317-099",
-      "cycle": "C-317",
-      "sealed_at": "2026-05-20T17:45:08.544Z"
+      "seal_id": "seal-C-349-099",
+      "cycle": "C-349",
+      "sealed_at": "2026-06-22T03:02:20.930Z"
     },
     "100": {
-      "seal_id": "seal-C-317-100",
-      "cycle": "C-317",
-      "sealed_at": "2026-05-20T23:21:07.125Z"
+      "seal_id": "seal-C-350-100",
+      "cycle": "C-350",
+      "sealed_at": "2026-06-22T08:50:53.171Z"
     },
     "101": {
-      "seal_id": "seal-C-317-101",
-      "cycle": "C-317",
-      "sealed_at": "2026-05-20T23:25:08.482Z"
+      "seal_id": "seal-C-350-101",
+      "cycle": "C-350",
+      "sealed_at": "2026-06-22T08:55:08.583Z"
     },
     "102": {
-      "seal_id": "seal-C-317-102",
-      "cycle": "C-317",
-      "sealed_at": "2026-05-21T04:51:05.537Z"
+      "seal_id": "seal-C-350-102",
+      "cycle": "C-350",
+      "sealed_at": "2026-06-22T14:20:53.233Z"
     },
     "103": {
-      "seal_id": "seal-C-318-103",
-      "cycle": "C-318",
-      "sealed_at": "2026-05-21T04:55:08.334Z"
+      "seal_id": "seal-C-350-103",
+      "cycle": "C-350",
+      "sealed_at": "2026-06-22T20:02:12.405Z"
     },
     "104": {
-      "seal_id": "seal-C-318-104",
-      "cycle": "C-318",
-      "sealed_at": "2026-05-21T10:21:05.922Z"
+      "seal_id": "seal-C-350-104",
+      "cycle": "C-350",
+      "sealed_at": "2026-06-22T20:05:08.590Z"
     },
     "105": {
-      "seal_id": "seal-C-318-105",
-      "cycle": "C-318",
-      "sealed_at": "2026-05-21T16:02:38.317Z"
+      "seal_id": "seal-C-350-105",
+      "cycle": "C-350",
+      "sealed_at": "2026-06-23T01:40:53.453Z"
     },
     "106": {
-      "seal_id": "seal-C-318-106",
-      "cycle": "C-318",
-      "sealed_at": "2026-05-21T21:50:37.224Z"
+      "seal_id": "seal-C-351-106",
+      "cycle": "C-351",
+      "sealed_at": "2026-06-23T07:30:52.942Z"
     },
     "107": {
-      "seal_id": "seal-C-318-107",
-      "cycle": "C-318",
-      "sealed_at": "2026-05-21T21:50:39.100Z"
+      "seal_id": "seal-C-351-107",
+      "cycle": "C-351",
+      "sealed_at": "2026-06-23T07:35:08.639Z"
     },
     "108": {
-      "seal_id": "seal-C-318-108",
-      "cycle": "C-318",
-      "sealed_at": "2026-05-22T03:21:20.147Z"
+      "seal_id": "seal-C-351-108",
+      "cycle": "C-351",
+      "sealed_at": "2026-06-23T13:10:53.140Z"
     },
     "109": {
-      "seal_id": "seal-C-318-109",
-      "cycle": "C-318",
-      "sealed_at": "2026-05-22T03:25:49.484Z"
+      "seal_id": "seal-C-351-109",
+      "cycle": "C-351",
+      "sealed_at": "2026-06-23T13:15:08.771Z"
     },
     "110": {
-      "seal_id": "seal-C-319-110",
-      "cycle": "C-319",
-      "sealed_at": "2026-05-22T09:01:20.462Z"
+      "seal_id": "seal-C-351-110",
+      "cycle": "C-351",
+      "sealed_at": "2026-06-23T19:00:53.576Z"
     },
     "111": {
-      "seal_id": "seal-C-319-111",
-      "cycle": "C-319",
-      "sealed_at": "2026-05-22T09:05:49.646Z"
+      "seal_id": "seal-C-351-111",
+      "cycle": "C-351",
+      "sealed_at": "2026-06-24T00:50:52.863Z"
     },
     "112": {
-      "seal_id": "seal-C-319-112",
-      "cycle": "C-319",
-      "sealed_at": "2026-05-22T14:41:19.687Z"
+      "seal_id": "seal-C-351-112",
+      "cycle": "C-351",
+      "sealed_at": "2026-06-24T00:55:08.738Z"
     },
     "113": {
-      "seal_id": "seal-C-319-113",
-      "cycle": "C-319",
-      "sealed_at": "2026-05-22T14:45:49.429Z"
+      "seal_id": "seal-C-352-113",
+      "cycle": "C-352",
+      "sealed_at": "2026-06-24T06:40:53.743Z"
     },
     "114": {
-      "seal_id": "seal-C-319-114",
-      "cycle": "C-319",
-      "sealed_at": "2026-05-22T20:21:22.275Z"
+      "seal_id": "seal-C-352-114",
+      "cycle": "C-352",
+      "sealed_at": "2026-06-24T12:20:53.502Z"
     },
     "115": {
-      "seal_id": "seal-C-319-115",
-      "cycle": "C-319",
-      "sealed_at": "2026-05-22T20:25:07.503Z"
+      "seal_id": "seal-C-352-115",
+      "cycle": "C-352",
+      "sealed_at": "2026-06-24T18:01:51.429Z"
     },
     "116": {
-      "seal_id": "seal-C-319-116",
-      "cycle": "C-319",
-      "sealed_at": "2026-05-23T01:41:22.304Z"
+      "seal_id": "seal-C-352-116",
+      "cycle": "C-352",
+      "sealed_at": "2026-06-24T18:05:08.629Z"
     },
     "117": {
-      "seal_id": "seal-C-320-117",
-      "cycle": "C-320",
-      "sealed_at": "2026-05-23T07:31:21.560Z"
+      "seal_id": "seal-C-352-117",
+      "cycle": "C-352",
+      "sealed_at": "2026-06-24T23:50:48.657Z"
     },
     "118": {
-      "seal_id": "seal-C-320-118",
-      "cycle": "C-320",
-      "sealed_at": "2026-05-23T13:21:21.941Z"
+      "seal_id": "seal-C-352-118",
+      "cycle": "C-352",
+      "sealed_at": "2026-06-25T05:50:48.581Z"
     },
     "119": {
-      "seal_id": "seal-C-320-119",
-      "cycle": "C-320",
-      "sealed_at": "2026-05-23T13:25:07.679Z"
+      "seal_id": "seal-C-352-119",
+      "cycle": "C-352",
+      "sealed_at": "2026-06-25T05:55:19.594Z"
     },
     "120": {
-      "seal_id": "seal-C-320-120",
-      "cycle": "C-320",
-      "sealed_at": "2026-05-23T19:01:22.244Z"
+      "seal_id": "seal-C-353-120",
+      "cycle": "C-353",
+      "sealed_at": "2026-06-25T11:50:48.649Z"
     },
     "121": {
-      "seal_id": "seal-C-320-121",
-      "cycle": "C-320",
-      "sealed_at": "2026-05-23T19:05:40.474Z"
+      "seal_id": "seal-C-353-121",
+      "cycle": "C-353",
+      "sealed_at": "2026-06-25T17:20:48.962Z"
     },
     "122": {
-      "seal_id": "seal-C-320-122",
-      "cycle": "C-320",
-      "sealed_at": "2026-05-24T00:40:50.403Z"
+      "seal_id": "seal-C-355-122",
+      "cycle": "C-355",
+      "sealed_at": "2026-06-28T01:31:06.671Z"
     },
     "123": {
-      "seal_id": "seal-C-321-123",
-      "cycle": "C-321",
-      "sealed_at": "2026-05-24T06:20:49.977Z"
+      "seal_id": "seal-C-355-123",
+      "cycle": "C-355",
+      "sealed_at": "2026-06-28T02:00:50.430Z"
     },
     "124": {
-      "seal_id": "seal-C-321-124",
-      "cycle": "C-321",
-      "sealed_at": "2026-05-24T12:03:34.829Z"
+      "seal_id": "seal-C-356-124",
+      "cycle": "C-356",
+      "sealed_at": "2026-06-28T15:01:06.441Z"
     },
     "125": {
-      "seal_id": "seal-C-321-125",
-      "cycle": "C-321",
-      "sealed_at": "2026-05-24T12:05:40.628Z"
+      "seal_id": "seal-C-356-125",
+      "cycle": "C-356",
+      "sealed_at": "2026-06-28T15:30:50.408Z"
     },
     "126": {
-      "seal_id": "seal-C-321-126",
-      "cycle": "C-321",
-      "sealed_at": "2026-05-24T17:51:18.751Z"
+      "seal_id": "seal-C-357-126",
+      "cycle": "C-357",
+      "sealed_at": "2026-06-29T04:02:32.623Z"
     },
     "127": {
-      "seal_id": "seal-C-321-127",
-      "cycle": "C-321",
-      "sealed_at": "2026-05-24T17:55:11.668Z"
+      "seal_id": "seal-C-357-127",
+      "cycle": "C-357",
+      "sealed_at": "2026-06-29T18:00:16.481Z"
     },
     "128": {
-      "seal_id": "seal-C-321-128",
-      "cycle": "C-321",
-      "sealed_at": "2026-05-24T23:31:19.205Z"
+      "seal_id": "seal-C-357-128",
+      "cycle": "C-357",
+      "sealed_at": "2026-06-29T18:30:22.927Z"
     },
     "129": {
-      "seal_id": "seal-C-322-129",
-      "cycle": "C-322",
-      "sealed_at": "2026-05-25T05:11:19.876Z"
+      "seal_id": "seal-C-358-129",
+      "cycle": "C-358",
+      "sealed_at": "2026-06-30T07:01:33.138Z"
     },
     "130": {
-      "seal_id": "seal-C-322-130",
-      "cycle": "C-322",
-      "sealed_at": "2026-05-25T14:02:19.283Z"
+      "seal_id": "seal-C-358-130",
+      "cycle": "C-358",
+      "sealed_at": "2026-06-30T20:01:28.988Z"
     },
     "131": {
-      "seal_id": "seal-C-322-131",
-      "cycle": "C-322",
-      "sealed_at": "2026-05-25T19:50:35.856Z"
+      "seal_id": "seal-C-358-131",
+      "cycle": "C-358",
+      "sealed_at": "2026-06-30T20:30:08.388Z"
     }
   },
   "collisions": [
@@ -637,8 +642,9 @@
       "current_kept_cycle": "C-372",
       "canonical_sealed_at": "2026-06-05T04:51:24.579Z",
       "re_attest_sealed_at": "2026-07-14T04:01:41.168Z",
-      "reasoning": "Custodian Option A: promote earliest original live attestation over re-attestation recovery chain",
-      "decision_status": "approved_pending_zeus"
+      "resolution_role": "promote_dropped",
+      "reasoning": "Segment A (blocks 1-33): promote original live attestation over C-359-C-371 recovery fork",
+      "decision_status": "approved_pending_zeus_and_eve"
     },
     {
       "block_number": 1,
@@ -649,8 +655,9 @@
       "current_kept_cycle": "C-372",
       "canonical_sealed_at": "2026-06-05T04:51:24.579Z",
       "re_attest_sealed_at": "2026-07-14T04:01:41.168Z",
-      "reasoning": "Custodian Option A: promote earliest original live attestation over re-attestation recovery chain",
-      "decision_status": "approved_pending_zeus"
+      "resolution_role": "promote_dropped",
+      "reasoning": "Segment A (blocks 1-33): promote original live attestation over C-359-C-371 recovery fork",
+      "decision_status": "approved_pending_zeus_and_eve"
     },
     {
       "block_number": 2,
@@ -661,8 +668,9 @@
       "current_kept_cycle": "C-372",
       "canonical_sealed_at": "2026-06-05T10:04:35.629Z",
       "re_attest_sealed_at": "2026-07-14T15:01:20.476Z",
-      "reasoning": "Custodian Option A: promote earliest original live attestation over re-attestation recovery chain",
-      "decision_status": "approved_pending_zeus"
+      "resolution_role": "promote_dropped",
+      "reasoning": "Segment A (blocks 1-33): promote original live attestation over C-359-C-371 recovery fork",
+      "decision_status": "approved_pending_zeus_and_eve"
     },
     {
       "block_number": 2,
@@ -673,8 +681,9 @@
       "current_kept_cycle": "C-372",
       "canonical_sealed_at": "2026-06-05T10:04:35.629Z",
       "re_attest_sealed_at": "2026-07-14T15:01:20.476Z",
-      "reasoning": "Custodian Option A: promote earliest original live attestation over re-attestation recovery chain",
-      "decision_status": "approved_pending_zeus"
+      "resolution_role": "promote_dropped",
+      "reasoning": "Segment A (blocks 1-33): promote original live attestation over C-359-C-371 recovery fork",
+      "decision_status": "approved_pending_zeus_and_eve"
     },
     {
       "block_number": 3,
@@ -685,8 +694,9 @@
       "current_kept_cycle": "C-359",
       "canonical_sealed_at": "2026-06-05T15:50:53.934Z",
       "re_attest_sealed_at": "2026-07-01T22:31:12.647Z",
-      "reasoning": "Custodian Option A: promote earliest original live attestation over re-attestation recovery chain",
-      "decision_status": "approved_pending_zeus"
+      "resolution_role": "promote_dropped",
+      "reasoning": "Segment A (blocks 1-33): promote original live attestation over C-359-C-371 recovery fork",
+      "decision_status": "approved_pending_zeus_and_eve"
     },
     {
       "block_number": 4,
@@ -697,8 +707,9 @@
       "current_kept_cycle": "C-360",
       "canonical_sealed_at": "2026-06-05T21:40:54.262Z",
       "re_attest_sealed_at": "2026-07-02T12:01:49.776Z",
-      "reasoning": "Custodian Option A: promote earliest original live attestation over re-attestation recovery chain",
-      "decision_status": "approved_pending_zeus"
+      "resolution_role": "promote_dropped",
+      "reasoning": "Segment A (blocks 1-33): promote original live attestation over C-359-C-371 recovery fork",
+      "decision_status": "approved_pending_zeus_and_eve"
     },
     {
       "block_number": 5,
@@ -709,8 +720,9 @@
       "current_kept_cycle": "C-360",
       "canonical_sealed_at": "2026-06-05T21:45:30.855Z",
       "re_attest_sealed_at": "2026-07-02T12:30:45.247Z",
-      "reasoning": "Custodian Option A: promote earliest original live attestation over re-attestation recovery chain",
-      "decision_status": "approved_pending_zeus"
+      "resolution_role": "promote_dropped",
+      "reasoning": "Segment A (blocks 1-33): promote original live attestation over C-359-C-371 recovery fork",
+      "decision_status": "approved_pending_zeus_and_eve"
     },
     {
       "block_number": 6,
@@ -721,8 +733,9 @@
       "current_kept_cycle": "C-360",
       "canonical_sealed_at": "2026-06-06T03:10:53.867Z",
       "re_attest_sealed_at": "2026-07-03T01:31:13.274Z",
-      "reasoning": "Custodian Option A: promote earliest original live attestation over re-attestation recovery chain",
-      "decision_status": "approved_pending_zeus"
+      "resolution_role": "promote_dropped",
+      "reasoning": "Segment A (blocks 1-33): promote original live attestation over C-359-C-371 recovery fork",
+      "decision_status": "approved_pending_zeus_and_eve"
     },
     {
       "block_number": 7,
@@ -733,8 +746,9 @@
       "current_kept_cycle": "C-361",
       "canonical_sealed_at": "2026-06-06T09:00:54.279Z",
       "re_attest_sealed_at": "2026-07-03T15:01:12.809Z",
-      "reasoning": "Custodian Option A: promote earliest original live attestation over re-attestation recovery chain",
-      "decision_status": "approved_pending_zeus"
+      "resolution_role": "promote_dropped",
+      "reasoning": "Segment A (blocks 1-33): promote original live attestation over C-359-C-371 recovery fork",
+      "decision_status": "approved_pending_zeus_and_eve"
     },
     {
       "block_number": 8,
@@ -745,8 +759,9 @@
       "current_kept_cycle": "C-361",
       "canonical_sealed_at": "2026-06-06T14:50:54.490Z",
       "re_attest_sealed_at": "2026-07-03T15:30:45.040Z",
-      "reasoning": "Custodian Option A: promote earliest original live attestation over re-attestation recovery chain",
-      "decision_status": "approved_pending_zeus"
+      "resolution_role": "promote_dropped",
+      "reasoning": "Segment A (blocks 1-33): promote original live attestation over C-359-C-371 recovery fork",
+      "decision_status": "approved_pending_zeus_and_eve"
     },
     {
       "block_number": 9,
@@ -757,8 +772,9 @@
       "current_kept_cycle": "C-362",
       "canonical_sealed_at": "2026-06-06T14:55:30.771Z",
       "re_attest_sealed_at": "2026-07-04T04:30:46.963Z",
-      "reasoning": "Custodian Option A: promote earliest original live attestation over re-attestation recovery chain",
-      "decision_status": "approved_pending_zeus"
+      "resolution_role": "promote_dropped",
+      "reasoning": "Segment A (blocks 1-33): promote original live attestation over C-359-C-371 recovery fork",
+      "decision_status": "approved_pending_zeus_and_eve"
     },
     {
       "block_number": 10,
@@ -769,8 +785,9 @@
       "current_kept_cycle": "C-362",
       "canonical_sealed_at": "2026-06-06T20:20:53.990Z",
       "re_attest_sealed_at": "2026-07-04T05:01:13.426Z",
-      "reasoning": "Custodian Option A: promote earliest original live attestation over re-attestation recovery chain",
-      "decision_status": "approved_pending_zeus"
+      "resolution_role": "promote_dropped",
+      "reasoning": "Segment A (blocks 1-33): promote original live attestation over C-359-C-371 recovery fork",
+      "decision_status": "approved_pending_zeus_and_eve"
     },
     {
       "block_number": 11,
@@ -781,8 +798,9 @@
       "current_kept_cycle": "C-362",
       "canonical_sealed_at": "2026-06-07T02:10:46.942Z",
       "re_attest_sealed_at": "2026-07-04T18:00:46.977Z",
-      "reasoning": "Custodian Option A: promote earliest original live attestation over re-attestation recovery chain",
-      "decision_status": "approved_pending_zeus"
+      "resolution_role": "promote_dropped",
+      "reasoning": "Segment A (blocks 1-33): promote original live attestation over C-359-C-371 recovery fork",
+      "decision_status": "approved_pending_zeus_and_eve"
     },
     {
       "block_number": 12,
@@ -793,8 +811,9 @@
       "current_kept_cycle": "C-363",
       "canonical_sealed_at": "2026-06-07T08:10:49.468Z",
       "re_attest_sealed_at": "2026-07-05T07:01:36.512Z",
-      "reasoning": "Custodian Option A: promote earliest original live attestation over re-attestation recovery chain",
-      "decision_status": "approved_pending_zeus"
+      "resolution_role": "promote_dropped",
+      "reasoning": "Segment A (blocks 1-33): promote original live attestation over C-359-C-371 recovery fork",
+      "decision_status": "approved_pending_zeus_and_eve"
     },
     {
       "block_number": 13,
@@ -805,8 +824,9 @@
       "current_kept_cycle": "C-363",
       "canonical_sealed_at": "2026-06-07T08:15:30.664Z",
       "re_attest_sealed_at": "2026-07-05T20:31:42.778Z",
-      "reasoning": "Custodian Option A: promote earliest original live attestation over re-attestation recovery chain",
-      "decision_status": "approved_pending_zeus"
+      "resolution_role": "promote_dropped",
+      "reasoning": "Segment A (blocks 1-33): promote original live attestation over C-359-C-371 recovery fork",
+      "decision_status": "approved_pending_zeus_and_eve"
     },
     {
       "block_number": 14,
@@ -817,8 +837,9 @@
       "current_kept_cycle": "C-363",
       "canonical_sealed_at": "2026-06-07T14:02:30.455Z",
       "re_attest_sealed_at": "2026-07-05T21:01:16.657Z",
-      "reasoning": "Custodian Option A: promote earliest original live attestation over re-attestation recovery chain",
-      "decision_status": "approved_pending_zeus"
+      "resolution_role": "promote_dropped",
+      "reasoning": "Segment A (blocks 1-33): promote original live attestation over C-359-C-371 recovery fork",
+      "decision_status": "approved_pending_zeus_and_eve"
     },
     {
       "block_number": 15,
@@ -829,8 +850,9 @@
       "current_kept_cycle": "C-364",
       "canonical_sealed_at": "2026-06-07T20:02:05.542Z",
       "re_attest_sealed_at": "2026-07-06T10:00:46.803Z",
-      "reasoning": "Custodian Option A: promote earliest original live attestation over re-attestation recovery chain",
-      "decision_status": "approved_pending_zeus"
+      "resolution_role": "promote_dropped",
+      "reasoning": "Segment A (blocks 1-33): promote original live attestation over C-359-C-371 recovery fork",
+      "decision_status": "approved_pending_zeus_and_eve"
     },
     {
       "block_number": 16,
@@ -841,8 +863,9 @@
       "current_kept_cycle": "C-364",
       "canonical_sealed_at": "2026-06-08T01:50:53.790Z",
       "re_attest_sealed_at": "2026-07-07T00:03:28.737Z",
-      "reasoning": "Custodian Option A: promote earliest original live attestation over re-attestation recovery chain",
-      "decision_status": "approved_pending_zeus"
+      "resolution_role": "promote_dropped",
+      "reasoning": "Segment A (blocks 1-33): promote original live attestation over C-359-C-371 recovery fork",
+      "decision_status": "approved_pending_zeus_and_eve"
     },
     {
       "block_number": 17,
@@ -853,8 +876,9 @@
       "current_kept_cycle": "C-365",
       "canonical_sealed_at": "2026-06-08T08:01:30.547Z",
       "re_attest_sealed_at": "2026-07-07T14:01:39.616Z",
-      "reasoning": "Custodian Option A: promote earliest original live attestation over re-attestation recovery chain",
-      "decision_status": "approved_pending_zeus"
+      "resolution_role": "promote_dropped",
+      "reasoning": "Segment A (blocks 1-33): promote original live attestation over C-359-C-371 recovery fork",
+      "decision_status": "approved_pending_zeus_and_eve"
     },
     {
       "block_number": 18,
@@ -865,8 +889,9 @@
       "current_kept_cycle": "C-365",
       "canonical_sealed_at": "2026-06-08T08:05:30.581Z",
       "re_attest_sealed_at": "2026-07-07T14:30:23.689Z",
-      "reasoning": "Custodian Option A: promote earliest original live attestation over re-attestation recovery chain",
-      "decision_status": "approved_pending_zeus"
+      "resolution_role": "promote_dropped",
+      "reasoning": "Segment A (blocks 1-33): promote original live attestation over C-359-C-371 recovery fork",
+      "decision_status": "approved_pending_zeus_and_eve"
     },
     {
       "block_number": 19,
@@ -877,8 +902,9 @@
       "current_kept_cycle": "C-365",
       "canonical_sealed_at": "2026-06-08T14:01:51.686Z",
       "re_attest_sealed_at": "2026-07-08T03:03:04.966Z",
-      "reasoning": "Custodian Option A: promote earliest original live attestation over re-attestation recovery chain",
-      "decision_status": "approved_pending_zeus"
+      "resolution_role": "promote_dropped",
+      "reasoning": "Segment A (blocks 1-33): promote original live attestation over C-359-C-371 recovery fork",
+      "decision_status": "approved_pending_zeus_and_eve"
     },
     {
       "block_number": 20,
@@ -889,8 +915,9 @@
       "current_kept_cycle": "C-366",
       "canonical_sealed_at": "2026-06-08T14:05:30.869Z",
       "re_attest_sealed_at": "2026-07-08T16:31:41.426Z",
-      "reasoning": "Custodian Option A: promote earliest original live attestation over re-attestation recovery chain",
-      "decision_status": "approved_pending_zeus"
+      "resolution_role": "promote_dropped",
+      "reasoning": "Segment A (blocks 1-33): promote original live attestation over C-359-C-371 recovery fork",
+      "decision_status": "approved_pending_zeus_and_eve"
     },
     {
       "block_number": 21,
@@ -901,8 +928,9 @@
       "current_kept_cycle": "C-366",
       "canonical_sealed_at": "2026-06-08T20:04:15.848Z",
       "re_attest_sealed_at": "2026-07-08T17:01:14.257Z",
-      "reasoning": "Custodian Option A: promote earliest original live attestation over re-attestation recovery chain",
-      "decision_status": "approved_pending_zeus"
+      "resolution_role": "promote_dropped",
+      "reasoning": "Segment A (blocks 1-33): promote original live attestation over C-359-C-371 recovery fork",
+      "decision_status": "approved_pending_zeus_and_eve"
     },
     {
       "block_number": 22,
@@ -913,8 +941,9 @@
       "current_kept_cycle": "C-367",
       "canonical_sealed_at": "2026-06-08T20:10:17.791Z",
       "re_attest_sealed_at": "2026-07-09T06:01:55.258Z",
-      "reasoning": "Custodian Option A: promote earliest original live attestation over re-attestation recovery chain",
-      "decision_status": "approved_pending_zeus"
+      "resolution_role": "promote_dropped",
+      "reasoning": "Segment A (blocks 1-33): promote original live attestation over C-359-C-371 recovery fork",
+      "decision_status": "approved_pending_zeus_and_eve"
     },
     {
       "block_number": 23,
@@ -925,8 +954,9 @@
       "current_kept_cycle": "C-367",
       "canonical_sealed_at": "2026-06-09T02:03:55.998Z",
       "re_attest_sealed_at": "2026-07-09T19:02:32.275Z",
-      "reasoning": "Custodian Option A: promote earliest original live attestation over re-attestation recovery chain",
-      "decision_status": "approved_pending_zeus"
+      "resolution_role": "promote_dropped",
+      "reasoning": "Segment A (blocks 1-33): promote original live attestation over C-359-C-371 recovery fork",
+      "decision_status": "approved_pending_zeus_and_eve"
     },
     {
       "block_number": 24,
@@ -937,8 +967,9 @@
       "current_kept_cycle": "C-368",
       "canonical_sealed_at": "2026-06-09T02:05:17.391Z",
       "re_attest_sealed_at": "2026-07-10T08:03:18.571Z",
-      "reasoning": "Custodian Option A: promote earliest original live attestation over re-attestation recovery chain",
-      "decision_status": "approved_pending_zeus"
+      "resolution_role": "promote_dropped",
+      "reasoning": "Segment A (blocks 1-33): promote original live attestation over C-359-C-371 recovery fork",
+      "decision_status": "approved_pending_zeus_and_eve"
     },
     {
       "block_number": 25,
@@ -949,8 +980,9 @@
       "current_kept_cycle": "C-368",
       "canonical_sealed_at": "2026-06-09T08:01:02.626Z",
       "re_attest_sealed_at": "2026-07-10T22:01:12.672Z",
-      "reasoning": "Custodian Option A: promote earliest original live attestation over re-attestation recovery chain",
-      "decision_status": "approved_pending_zeus"
+      "resolution_role": "promote_dropped",
+      "reasoning": "Segment A (blocks 1-33): promote original live attestation over C-359-C-371 recovery fork",
+      "decision_status": "approved_pending_zeus_and_eve"
     },
     {
       "block_number": 26,
@@ -961,8 +993,9 @@
       "current_kept_cycle": "C-369",
       "canonical_sealed_at": "2026-06-09T08:05:17.420Z",
       "re_attest_sealed_at": "2026-07-11T11:30:46.996Z",
-      "reasoning": "Custodian Option A: promote earliest original live attestation over re-attestation recovery chain",
-      "decision_status": "approved_pending_zeus"
+      "resolution_role": "promote_dropped",
+      "reasoning": "Segment A (blocks 1-33): promote original live attestation over C-359-C-371 recovery fork",
+      "decision_status": "approved_pending_zeus_and_eve"
     },
     {
       "block_number": 27,
@@ -973,8 +1006,9 @@
       "current_kept_cycle": "C-369",
       "canonical_sealed_at": "2026-06-09T14:01:01.677Z",
       "re_attest_sealed_at": "2026-07-11T12:00:23.706Z",
-      "reasoning": "Custodian Option A: promote earliest original live attestation over re-attestation recovery chain",
-      "decision_status": "approved_pending_zeus"
+      "resolution_role": "promote_dropped",
+      "reasoning": "Segment A (blocks 1-33): promote original live attestation over C-359-C-371 recovery fork",
+      "decision_status": "approved_pending_zeus_and_eve"
     },
     {
       "block_number": 28,
@@ -985,8 +1019,9 @@
       "current_kept_cycle": "C-369",
       "canonical_sealed_at": "2026-06-09T19:51:14.427Z",
       "re_attest_sealed_at": "2026-07-12T01:31:27.569Z",
-      "reasoning": "Custodian Option A: promote earliest original live attestation over re-attestation recovery chain",
-      "decision_status": "approved_pending_zeus"
+      "resolution_role": "promote_dropped",
+      "reasoning": "Segment A (blocks 1-33): promote original live attestation over C-359-C-371 recovery fork",
+      "decision_status": "approved_pending_zeus_and_eve"
     },
     {
       "block_number": 29,
@@ -997,8 +1032,9 @@
       "current_kept_cycle": "C-370",
       "canonical_sealed_at": "2026-06-10T01:31:14.172Z",
       "re_attest_sealed_at": "2026-07-12T15:01:20.143Z",
-      "reasoning": "Custodian Option A: promote earliest original live attestation over re-attestation recovery chain",
-      "decision_status": "approved_pending_zeus"
+      "resolution_role": "promote_dropped",
+      "reasoning": "Segment A (blocks 1-33): promote original live attestation over C-359-C-371 recovery fork",
+      "decision_status": "approved_pending_zeus_and_eve"
     },
     {
       "block_number": 30,
@@ -1009,8 +1045,9 @@
       "current_kept_cycle": "C-370",
       "canonical_sealed_at": "2026-06-10T01:35:10.630Z",
       "re_attest_sealed_at": "2026-07-13T04:30:37.415Z",
-      "reasoning": "Custodian Option A: promote earliest original live attestation over re-attestation recovery chain",
-      "decision_status": "approved_pending_zeus"
+      "resolution_role": "promote_dropped",
+      "reasoning": "Segment A (blocks 1-33): promote original live attestation over C-359-C-371 recovery fork",
+      "decision_status": "approved_pending_zeus_and_eve"
     },
     {
       "block_number": 31,
@@ -1021,8 +1058,9 @@
       "current_kept_cycle": "C-371",
       "canonical_sealed_at": "2026-06-10T07:11:14.099Z",
       "re_attest_sealed_at": "2026-07-13T05:00:28.049Z",
-      "reasoning": "Custodian Option A: promote earliest original live attestation over re-attestation recovery chain",
-      "decision_status": "approved_pending_zeus"
+      "resolution_role": "promote_dropped",
+      "reasoning": "Segment A (blocks 1-33): promote original live attestation over C-359-C-371 recovery fork",
+      "decision_status": "approved_pending_zeus_and_eve"
     },
     {
       "block_number": 32,
@@ -1033,8 +1071,9 @@
       "current_kept_cycle": "C-371",
       "canonical_sealed_at": "2026-06-10T07:15:10.847Z",
       "re_attest_sealed_at": "2026-07-13T16:02:04.391Z",
-      "reasoning": "Custodian Option A: promote earliest original live attestation over re-attestation recovery chain",
-      "decision_status": "approved_pending_zeus"
+      "resolution_role": "promote_dropped",
+      "reasoning": "Segment A (blocks 1-33): promote original live attestation over C-359-C-371 recovery fork",
+      "decision_status": "approved_pending_zeus_and_eve"
     },
     {
       "block_number": 33,
@@ -1045,1088 +1084,1179 @@
       "current_kept_cycle": "C-371",
       "canonical_sealed_at": "2026-06-10T13:11:14.293Z",
       "re_attest_sealed_at": "2026-07-13T16:30:27.892Z",
-      "reasoning": "Custodian Option A: promote earliest original live attestation over re-attestation recovery chain",
-      "decision_status": "approved_pending_zeus"
+      "resolution_role": "promote_dropped",
+      "reasoning": "Segment A (blocks 1-33): promote original live attestation over C-359-C-371 recovery fork",
+      "decision_status": "approved_pending_zeus_and_eve"
     },
     {
       "block_number": 42,
       "current_kept_seal": "seal-C-339-042",
       "current_dropped_seal": "seal-C-308-042",
-      "candidate_canonical_seal": "seal-C-308-042",
-      "candidate_canonical_cycle": "C-308",
+      "candidate_canonical_seal": "seal-C-339-042",
+      "candidate_canonical_cycle": "C-339",
       "current_kept_cycle": "C-339",
-      "canonical_sealed_at": "2026-05-11T07:51:02.451Z",
+      "canonical_sealed_at": "2026-06-12T00:55:34.653Z",
       "re_attest_sealed_at": "2026-06-12T00:55:34.653Z",
-      "reasoning": "Custodian Option A: promote earliest original live attestation over re-attestation recovery chain",
-      "decision_status": "approved_pending_zeus"
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity; C-308 fork has orphan_prev at block 42",
+      "decision_status": "approved_pending_zeus_and_eve"
     },
     {
       "block_number": 43,
       "current_kept_seal": "seal-C-340-043",
       "current_dropped_seal": "seal-C-308-043",
-      "candidate_canonical_seal": "seal-C-308-043",
-      "candidate_canonical_cycle": "C-308",
+      "candidate_canonical_seal": "seal-C-340-043",
+      "candidate_canonical_cycle": "C-340",
       "current_kept_cycle": "C-340",
-      "canonical_sealed_at": "2026-05-11T14:51:15.853Z",
+      "canonical_sealed_at": "2026-06-12T07:41:02.617Z",
       "re_attest_sealed_at": "2026-06-12T07:41:02.617Z",
-      "reasoning": "Custodian Option A: promote earliest original live attestation over re-attestation recovery chain",
-      "decision_status": "approved_pending_zeus"
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity; C-308 fork has orphan_prev at block 42",
+      "decision_status": "approved_pending_zeus_and_eve"
     },
     {
       "block_number": 44,
       "current_kept_seal": "seal-C-340-044",
       "current_dropped_seal": "seal-C-308-044",
-      "candidate_canonical_seal": "seal-C-308-044",
-      "candidate_canonical_cycle": "C-308",
+      "candidate_canonical_seal": "seal-C-340-044",
+      "candidate_canonical_cycle": "C-340",
       "current_kept_cycle": "C-340",
-      "canonical_sealed_at": "2026-05-11T14:55:46.437Z",
+      "canonical_sealed_at": "2026-06-12T07:45:34.646Z",
       "re_attest_sealed_at": "2026-06-12T07:45:34.646Z",
-      "reasoning": "Custodian Option A: promote earliest original live attestation over re-attestation recovery chain",
-      "decision_status": "approved_pending_zeus"
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity; C-308 fork has orphan_prev at block 42",
+      "decision_status": "approved_pending_zeus_and_eve"
     },
     {
       "block_number": 45,
       "current_kept_seal": "seal-C-340-045",
       "current_dropped_seal": "seal-C-308-045",
-      "candidate_canonical_seal": "seal-C-308-045",
-      "candidate_canonical_cycle": "C-308",
+      "candidate_canonical_seal": "seal-C-340-045",
+      "candidate_canonical_cycle": "C-340",
       "current_kept_cycle": "C-340",
-      "canonical_sealed_at": "2026-05-11T22:01:03.397Z",
+      "canonical_sealed_at": "2026-06-12T14:11:02.352Z",
       "re_attest_sealed_at": "2026-06-12T14:11:02.352Z",
-      "reasoning": "Custodian Option A: promote earliest original live attestation over re-attestation recovery chain",
-      "decision_status": "approved_pending_zeus"
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity; C-308 fork has orphan_prev at block 42",
+      "decision_status": "approved_pending_zeus_and_eve"
     },
     {
       "block_number": 46,
       "current_kept_seal": "seal-C-340-046",
       "current_dropped_seal": "seal-C-309-046",
-      "candidate_canonical_seal": "seal-C-309-046",
-      "candidate_canonical_cycle": "C-309",
+      "candidate_canonical_seal": "seal-C-340-046",
+      "candidate_canonical_cycle": "C-340",
       "current_kept_cycle": "C-340",
-      "canonical_sealed_at": "2026-05-12T05:01:17.290Z",
+      "canonical_sealed_at": "2026-06-12T20:51:01.803Z",
       "re_attest_sealed_at": "2026-06-12T20:51:01.803Z",
-      "reasoning": "Custodian Option A: promote earliest original live attestation over re-attestation recovery chain",
-      "decision_status": "approved_pending_zeus"
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity; C-308 fork has orphan_prev at block 42",
+      "decision_status": "approved_pending_zeus_and_eve"
     },
     {
       "block_number": 47,
       "current_kept_seal": "seal-C-340-047",
       "current_dropped_seal": "seal-C-309-047",
-      "candidate_canonical_seal": "seal-C-309-047",
-      "candidate_canonical_cycle": "C-309",
+      "candidate_canonical_seal": "seal-C-340-047",
+      "candidate_canonical_cycle": "C-340",
       "current_kept_cycle": "C-340",
-      "canonical_sealed_at": "2026-05-12T12:01:20.484Z",
+      "canonical_sealed_at": "2026-06-13T03:20:45.921Z",
       "re_attest_sealed_at": "2026-06-13T03:20:45.921Z",
-      "reasoning": "Custodian Option A: promote earliest original live attestation over re-attestation recovery chain",
-      "decision_status": "approved_pending_zeus"
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity; C-308 fork has orphan_prev at block 42",
+      "decision_status": "approved_pending_zeus_and_eve"
     },
     {
       "block_number": 48,
       "current_kept_seal": "seal-C-340-048",
       "current_dropped_seal": "seal-C-309-048",
-      "candidate_canonical_seal": "seal-C-309-048",
-      "candidate_canonical_cycle": "C-309",
+      "candidate_canonical_seal": "seal-C-340-048",
+      "candidate_canonical_cycle": "C-340",
       "current_kept_cycle": "C-340",
-      "canonical_sealed_at": "2026-05-12T19:11:20.197Z",
+      "canonical_sealed_at": "2026-06-13T03:25:17.736Z",
       "re_attest_sealed_at": "2026-06-13T03:25:17.736Z",
-      "reasoning": "Custodian Option A: promote earliest original live attestation over re-attestation recovery chain",
-      "decision_status": "approved_pending_zeus"
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity; C-308 fork has orphan_prev at block 42",
+      "decision_status": "approved_pending_zeus_and_eve"
     },
     {
       "block_number": 49,
       "current_kept_seal": "seal-C-341-049",
       "current_dropped_seal": "seal-C-309-049",
-      "candidate_canonical_seal": "seal-C-309-049",
-      "candidate_canonical_cycle": "C-309",
+      "candidate_canonical_seal": "seal-C-341-049",
+      "candidate_canonical_cycle": "C-341",
       "current_kept_cycle": "C-341",
-      "canonical_sealed_at": "2026-05-12T19:15:46.521Z",
+      "canonical_sealed_at": "2026-06-13T09:50:46.565Z",
       "re_attest_sealed_at": "2026-06-13T09:50:46.565Z",
-      "reasoning": "Custodian Option A: promote earliest original live attestation over re-attestation recovery chain",
-      "decision_status": "approved_pending_zeus"
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity; C-308 fork has orphan_prev at block 42",
+      "decision_status": "approved_pending_zeus_and_eve"
     },
     {
       "block_number": 50,
       "current_kept_seal": "seal-C-341-050",
       "current_dropped_seal": "seal-C-309-050",
-      "candidate_canonical_seal": "seal-C-309-050",
-      "candidate_canonical_cycle": "C-309",
+      "candidate_canonical_seal": "seal-C-341-050",
+      "candidate_canonical_cycle": "C-341",
       "current_kept_cycle": "C-341",
-      "canonical_sealed_at": "2026-05-13T02:01:09.506Z",
+      "canonical_sealed_at": "2026-06-13T16:40:46.379Z",
       "re_attest_sealed_at": "2026-06-13T16:40:46.379Z",
-      "reasoning": "Custodian Option A: promote earliest original live attestation over re-attestation recovery chain",
-      "decision_status": "approved_pending_zeus"
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity; C-308 fork has orphan_prev at block 42",
+      "decision_status": "approved_pending_zeus_and_eve"
     },
     {
       "block_number": 51,
       "current_kept_seal": "seal-C-341-051",
       "current_dropped_seal": "seal-C-310-051",
-      "candidate_canonical_seal": "seal-C-310-051",
-      "candidate_canonical_cycle": "C-310",
+      "candidate_canonical_seal": "seal-C-341-051",
+      "candidate_canonical_cycle": "C-341",
       "current_kept_cycle": "C-341",
-      "canonical_sealed_at": "2026-05-13T09:01:06.971Z",
+      "canonical_sealed_at": "2026-06-13T16:45:17.691Z",
       "re_attest_sealed_at": "2026-06-13T16:45:17.691Z",
-      "reasoning": "Custodian Option A: promote earliest original live attestation over re-attestation recovery chain",
-      "decision_status": "approved_pending_zeus"
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity; C-308 fork has orphan_prev at block 42",
+      "decision_status": "approved_pending_zeus_and_eve"
     },
     {
       "block_number": 52,
       "current_kept_seal": "seal-C-341-052",
       "current_dropped_seal": "seal-C-310-052",
-      "candidate_canonical_seal": "seal-C-310-052",
-      "candidate_canonical_cycle": "C-310",
+      "candidate_canonical_seal": "seal-C-341-052",
+      "candidate_canonical_cycle": "C-341",
       "current_kept_cycle": "C-341",
-      "canonical_sealed_at": "2026-05-13T09:05:46.633Z",
+      "canonical_sealed_at": "2026-06-13T23:10:46.250Z",
       "re_attest_sealed_at": "2026-06-13T23:10:46.250Z",
-      "reasoning": "Custodian Option A: promote earliest original live attestation over re-attestation recovery chain",
-      "decision_status": "approved_pending_zeus"
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity; C-308 fork has orphan_prev at block 42",
+      "decision_status": "approved_pending_zeus_and_eve"
     },
     {
       "block_number": 53,
       "current_kept_seal": "seal-C-341-053",
       "current_dropped_seal": "seal-C-310-053",
-      "candidate_canonical_seal": "seal-C-310-053",
-      "candidate_canonical_cycle": "C-310",
+      "candidate_canonical_seal": "seal-C-341-053",
+      "candidate_canonical_cycle": "C-341",
       "current_kept_cycle": "C-341",
-      "canonical_sealed_at": "2026-05-13T16:01:31.032Z",
+      "canonical_sealed_at": "2026-06-14T05:50:46.048Z",
       "re_attest_sealed_at": "2026-06-14T05:50:46.048Z",
-      "reasoning": "Custodian Option A: promote earliest original live attestation over re-attestation recovery chain",
-      "decision_status": "approved_pending_zeus"
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity; C-308 fork has orphan_prev at block 42",
+      "decision_status": "approved_pending_zeus_and_eve"
     },
     {
       "block_number": 54,
       "current_kept_seal": "seal-C-342-054",
       "current_dropped_seal": "seal-C-310-054",
-      "candidate_canonical_seal": "seal-C-310-054",
-      "candidate_canonical_cycle": "C-310",
+      "candidate_canonical_seal": "seal-C-342-054",
+      "candidate_canonical_cycle": "C-342",
       "current_kept_cycle": "C-342",
-      "canonical_sealed_at": "2026-05-13T16:05:04.825Z",
+      "canonical_sealed_at": "2026-06-14T12:20:46.034Z",
       "re_attest_sealed_at": "2026-06-14T12:20:46.034Z",
-      "reasoning": "Custodian Option A: promote earliest original live attestation over re-attestation recovery chain",
-      "decision_status": "approved_pending_zeus"
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity; C-308 fork has orphan_prev at block 42",
+      "decision_status": "approved_pending_zeus_and_eve"
     },
     {
       "block_number": 55,
       "current_kept_seal": "seal-C-342-055",
       "current_dropped_seal": "seal-C-310-055",
-      "candidate_canonical_seal": "seal-C-310-055",
-      "candidate_canonical_cycle": "C-310",
+      "candidate_canonical_seal": "seal-C-342-055",
+      "candidate_canonical_cycle": "C-342",
       "current_kept_cycle": "C-342",
-      "canonical_sealed_at": "2026-05-13T23:01:21.613Z",
+      "canonical_sealed_at": "2026-06-14T19:10:45.867Z",
       "re_attest_sealed_at": "2026-06-14T19:10:45.867Z",
-      "reasoning": "Custodian Option A: promote earliest original live attestation over re-attestation recovery chain",
-      "decision_status": "approved_pending_zeus"
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity; C-308 fork has orphan_prev at block 42",
+      "decision_status": "approved_pending_zeus_and_eve"
     },
     {
       "block_number": 56,
       "current_kept_seal": "seal-C-342-056",
       "current_dropped_seal": "seal-C-310-056",
-      "candidate_canonical_seal": "seal-C-310-056",
-      "candidate_canonical_cycle": "C-310",
+      "candidate_canonical_seal": "seal-C-342-056",
+      "candidate_canonical_cycle": "C-342",
       "current_kept_cycle": "C-342",
-      "canonical_sealed_at": "2026-05-13T23:05:05.088Z",
+      "canonical_sealed_at": "2026-06-14T19:15:17.716Z",
       "re_attest_sealed_at": "2026-06-14T19:15:17.716Z",
-      "reasoning": "Custodian Option A: promote earliest original live attestation over re-attestation recovery chain",
-      "decision_status": "approved_pending_zeus"
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity; C-308 fork has orphan_prev at block 42",
+      "decision_status": "approved_pending_zeus_and_eve"
     },
     {
       "block_number": 57,
       "current_kept_seal": "seal-C-342-057",
       "current_dropped_seal": "seal-C-310-057",
-      "candidate_canonical_seal": "seal-C-310-057",
-      "candidate_canonical_cycle": "C-310",
+      "candidate_canonical_seal": "seal-C-342-057",
+      "candidate_canonical_cycle": "C-342",
       "current_kept_cycle": "C-342",
-      "canonical_sealed_at": "2026-05-14T05:51:06.069Z",
+      "canonical_sealed_at": "2026-06-15T01:40:46.162Z",
       "re_attest_sealed_at": "2026-06-15T01:40:46.162Z",
-      "reasoning": "Custodian Option A: promote earliest original live attestation over re-attestation recovery chain",
-      "decision_status": "approved_pending_zeus"
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity; C-308 fork has orphan_prev at block 42",
+      "decision_status": "approved_pending_zeus_and_eve"
     },
     {
       "block_number": 58,
       "current_kept_seal": "seal-C-342-058",
       "current_dropped_seal": "seal-C-311-058",
-      "candidate_canonical_seal": "seal-C-311-058",
-      "candidate_canonical_cycle": "C-311",
+      "candidate_canonical_seal": "seal-C-342-058",
+      "candidate_canonical_cycle": "C-342",
       "current_kept_cycle": "C-342",
-      "canonical_sealed_at": "2026-05-14T12:51:17.885Z",
+      "canonical_sealed_at": "2026-06-15T01:45:17.638Z",
       "re_attest_sealed_at": "2026-06-15T01:45:17.638Z",
-      "reasoning": "Custodian Option A: promote earliest original live attestation over re-attestation recovery chain",
-      "decision_status": "approved_pending_zeus"
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity; C-308 fork has orphan_prev at block 42",
+      "decision_status": "approved_pending_zeus_and_eve"
     },
     {
       "block_number": 59,
       "current_kept_seal": "seal-C-343-059",
       "current_dropped_seal": "seal-C-311-059",
-      "candidate_canonical_seal": "seal-C-311-059",
-      "candidate_canonical_cycle": "C-311",
+      "candidate_canonical_seal": "seal-C-343-059",
+      "candidate_canonical_cycle": "C-343",
       "current_kept_cycle": "C-343",
-      "canonical_sealed_at": "2026-05-14T19:51:26.798Z",
+      "canonical_sealed_at": "2026-06-15T08:20:46.425Z",
       "re_attest_sealed_at": "2026-06-15T08:20:46.425Z",
-      "reasoning": "Custodian Option A: promote earliest original live attestation over re-attestation recovery chain",
-      "decision_status": "approved_pending_zeus"
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity; C-308 fork has orphan_prev at block 42",
+      "decision_status": "approved_pending_zeus_and_eve"
     },
     {
       "block_number": 60,
       "current_kept_seal": "seal-C-343-060",
       "current_dropped_seal": "seal-C-311-060",
-      "candidate_canonical_seal": "seal-C-311-060",
-      "candidate_canonical_cycle": "C-311",
+      "candidate_canonical_seal": "seal-C-343-060",
+      "candidate_canonical_cycle": "C-343",
       "current_kept_cycle": "C-343",
-      "canonical_sealed_at": "2026-05-14T19:55:04.615Z",
+      "canonical_sealed_at": "2026-06-15T08:25:17.850Z",
       "re_attest_sealed_at": "2026-06-15T08:25:17.850Z",
-      "reasoning": "Custodian Option A: promote earliest original live attestation over re-attestation recovery chain",
-      "decision_status": "approved_pending_zeus"
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity; C-308 fork has orphan_prev at block 42",
+      "decision_status": "approved_pending_zeus_and_eve"
     },
     {
       "block_number": 61,
       "current_kept_seal": "seal-C-343-061",
       "current_dropped_seal": "seal-C-311-061",
-      "candidate_canonical_seal": "seal-C-311-061",
-      "candidate_canonical_cycle": "C-311",
+      "candidate_canonical_seal": "seal-C-343-061",
+      "candidate_canonical_cycle": "C-343",
       "current_kept_cycle": "C-343",
-      "canonical_sealed_at": "2026-05-15T02:41:29.565Z",
+      "canonical_sealed_at": "2026-06-15T15:00:46.325Z",
       "re_attest_sealed_at": "2026-06-15T15:00:46.325Z",
-      "reasoning": "Custodian Option A: promote earliest original live attestation over re-attestation recovery chain",
-      "decision_status": "approved_pending_zeus"
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity; C-308 fork has orphan_prev at block 42",
+      "decision_status": "approved_pending_zeus_and_eve"
     },
     {
       "block_number": 62,
       "current_kept_seal": "seal-C-343-062",
       "current_dropped_seal": "seal-C-311-062",
-      "candidate_canonical_seal": "seal-C-311-062",
-      "candidate_canonical_cycle": "C-311",
+      "candidate_canonical_seal": "seal-C-343-062",
+      "candidate_canonical_cycle": "C-343",
       "current_kept_cycle": "C-343",
-      "canonical_sealed_at": "2026-05-15T02:45:04.987Z",
+      "canonical_sealed_at": "2026-06-15T15:05:18.047Z",
       "re_attest_sealed_at": "2026-06-15T15:05:18.047Z",
-      "reasoning": "Custodian Option A: promote earliest original live attestation over re-attestation recovery chain",
-      "decision_status": "approved_pending_zeus"
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity; C-308 fork has orphan_prev at block 42",
+      "decision_status": "approved_pending_zeus_and_eve"
     },
     {
       "block_number": 63,
       "current_kept_seal": "seal-C-343-063",
       "current_dropped_seal": "seal-C-312-063",
-      "candidate_canonical_seal": "seal-C-312-063",
-      "candidate_canonical_cycle": "C-312",
+      "candidate_canonical_seal": "seal-C-343-063",
+      "candidate_canonical_cycle": "C-343",
       "current_kept_cycle": "C-343",
-      "canonical_sealed_at": "2026-05-15T09:41:04.169Z",
+      "canonical_sealed_at": "2026-06-15T21:01:36.768Z",
       "re_attest_sealed_at": "2026-06-15T21:01:36.768Z",
-      "reasoning": "Custodian Option A: promote earliest original live attestation over re-attestation recovery chain",
-      "decision_status": "approved_pending_zeus"
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity; C-308 fork has orphan_prev at block 42",
+      "decision_status": "approved_pending_zeus_and_eve"
     },
     {
       "block_number": 64,
       "current_kept_seal": "seal-C-343-064",
       "current_dropped_seal": "seal-C-312-064",
-      "candidate_canonical_seal": "seal-C-312-064",
-      "candidate_canonical_cycle": "C-312",
+      "candidate_canonical_seal": "seal-C-343-064",
+      "candidate_canonical_cycle": "C-343",
       "current_kept_cycle": "C-343",
-      "canonical_sealed_at": "2026-05-15T09:45:04.722Z",
+      "canonical_sealed_at": "2026-06-16T03:00:53.611Z",
       "re_attest_sealed_at": "2026-06-16T03:00:53.611Z",
-      "reasoning": "Custodian Option A: promote earliest original live attestation over re-attestation recovery chain",
-      "decision_status": "approved_pending_zeus"
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity; C-308 fork has orphan_prev at block 42",
+      "decision_status": "approved_pending_zeus_and_eve"
     },
     {
       "block_number": 65,
       "current_kept_seal": "seal-C-343-065",
       "current_dropped_seal": "seal-C-312-065",
-      "candidate_canonical_seal": "seal-C-312-065",
-      "candidate_canonical_cycle": "C-312",
+      "candidate_canonical_seal": "seal-C-343-065",
+      "candidate_canonical_cycle": "C-343",
       "current_kept_cycle": "C-343",
-      "canonical_sealed_at": "2026-05-15T16:41:37.138Z",
+      "canonical_sealed_at": "2026-06-16T03:05:19.327Z",
       "re_attest_sealed_at": "2026-06-16T03:05:19.327Z",
-      "reasoning": "Custodian Option A: promote earliest original live attestation over re-attestation recovery chain",
-      "decision_status": "approved_pending_zeus"
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity; C-308 fork has orphan_prev at block 42",
+      "decision_status": "approved_pending_zeus_and_eve"
     },
     {
       "block_number": 66,
       "current_kept_seal": "seal-C-344-066",
       "current_dropped_seal": "seal-C-312-066",
-      "candidate_canonical_seal": "seal-C-312-066",
-      "candidate_canonical_cycle": "C-312",
+      "candidate_canonical_seal": "seal-C-344-066",
+      "candidate_canonical_cycle": "C-344",
       "current_kept_cycle": "C-344",
-      "canonical_sealed_at": "2026-05-15T22:31:15.206Z",
+      "canonical_sealed_at": "2026-06-16T08:50:52.236Z",
       "re_attest_sealed_at": "2026-06-16T08:50:52.236Z",
-      "reasoning": "Custodian Option A: promote earliest original live attestation over re-attestation recovery chain",
-      "decision_status": "approved_pending_zeus"
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity; C-308 fork has orphan_prev at block 42",
+      "decision_status": "approved_pending_zeus_and_eve"
     },
     {
       "block_number": 67,
       "current_kept_seal": "seal-C-344-067",
       "current_dropped_seal": "seal-C-312-067",
-      "candidate_canonical_seal": "seal-C-312-067",
-      "candidate_canonical_cycle": "C-312",
+      "candidate_canonical_seal": "seal-C-344-067",
+      "candidate_canonical_cycle": "C-344",
       "current_kept_cycle": "C-344",
-      "canonical_sealed_at": "2026-05-15T22:35:05.821Z",
+      "canonical_sealed_at": "2026-06-16T14:30:53.008Z",
       "re_attest_sealed_at": "2026-06-16T14:30:53.008Z",
-      "reasoning": "Custodian Option A: promote earliest original live attestation over re-attestation recovery chain",
-      "decision_status": "approved_pending_zeus"
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity; C-308 fork has orphan_prev at block 42",
+      "decision_status": "approved_pending_zeus_and_eve"
     },
     {
       "block_number": 68,
       "current_kept_seal": "seal-C-344-068",
       "current_dropped_seal": "seal-C-312-068",
-      "candidate_canonical_seal": "seal-C-312-068",
-      "candidate_canonical_cycle": "C-312",
+      "candidate_canonical_seal": "seal-C-344-068",
+      "candidate_canonical_cycle": "C-344",
       "current_kept_cycle": "C-344",
-      "canonical_sealed_at": "2026-05-16T04:21:18.128Z",
+      "canonical_sealed_at": "2026-06-16T14:35:19.694Z",
       "re_attest_sealed_at": "2026-06-16T14:35:19.694Z",
-      "reasoning": "Custodian Option A: promote earliest original live attestation over re-attestation recovery chain",
-      "decision_status": "approved_pending_zeus"
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity; C-308 fork has orphan_prev at block 42",
+      "decision_status": "approved_pending_zeus_and_eve"
     },
     {
       "block_number": 69,
       "current_kept_seal": "seal-C-344-069",
       "current_dropped_seal": "seal-C-312-069",
-      "candidate_canonical_seal": "seal-C-312-069",
-      "candidate_canonical_cycle": "C-312",
+      "candidate_canonical_seal": "seal-C-344-069",
+      "candidate_canonical_cycle": "C-344",
       "current_kept_cycle": "C-344",
-      "canonical_sealed_at": "2026-05-16T04:25:05.859Z",
+      "canonical_sealed_at": "2026-06-16T20:30:52.458Z",
       "re_attest_sealed_at": "2026-06-16T20:30:52.458Z",
-      "reasoning": "Custodian Option A: promote earliest original live attestation over re-attestation recovery chain",
-      "decision_status": "approved_pending_zeus"
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity; C-308 fork has orphan_prev at block 42",
+      "decision_status": "approved_pending_zeus_and_eve"
     },
     {
       "block_number": 70,
       "current_kept_seal": "seal-C-344-070",
       "current_dropped_seal": "seal-C-313-070",
-      "candidate_canonical_seal": "seal-C-313-070",
-      "candidate_canonical_cycle": "C-313",
+      "candidate_canonical_seal": "seal-C-344-070",
+      "candidate_canonical_cycle": "C-344",
       "current_kept_cycle": "C-344",
-      "canonical_sealed_at": "2026-05-16T10:20:43.402Z",
+      "canonical_sealed_at": "2026-06-16T20:35:19.578Z",
       "re_attest_sealed_at": "2026-06-16T20:35:19.578Z",
-      "reasoning": "Custodian Option A: promote earliest original live attestation over re-attestation recovery chain",
-      "decision_status": "approved_pending_zeus"
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity; C-308 fork has orphan_prev at block 42",
+      "decision_status": "approved_pending_zeus_and_eve"
     },
     {
       "block_number": 71,
       "current_kept_seal": "seal-C-344-071",
       "current_dropped_seal": "seal-C-313-071",
-      "candidate_canonical_seal": "seal-C-313-071",
-      "candidate_canonical_cycle": "C-313",
+      "candidate_canonical_seal": "seal-C-344-071",
+      "candidate_canonical_cycle": "C-344",
       "current_kept_cycle": "C-344",
-      "canonical_sealed_at": "2026-05-16T16:21:34.472Z",
+      "canonical_sealed_at": "2026-06-17T02:04:36.914Z",
       "re_attest_sealed_at": "2026-06-17T02:04:36.914Z",
-      "reasoning": "Custodian Option A: promote earliest original live attestation over re-attestation recovery chain",
-      "decision_status": "approved_pending_zeus"
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity; C-308 fork has orphan_prev at block 42",
+      "decision_status": "approved_pending_zeus_and_eve"
     },
     {
       "block_number": 72,
       "current_kept_seal": "seal-C-345-072",
       "current_dropped_seal": "seal-C-313-072",
-      "candidate_canonical_seal": "seal-C-313-072",
-      "candidate_canonical_cycle": "C-313",
+      "candidate_canonical_seal": "seal-C-345-072",
+      "candidate_canonical_cycle": "C-345",
       "current_kept_cycle": "C-345",
-      "canonical_sealed_at": "2026-05-16T22:31:12.987Z",
+      "canonical_sealed_at": "2026-06-17T07:50:54.008Z",
       "re_attest_sealed_at": "2026-06-17T07:50:54.008Z",
-      "reasoning": "Custodian Option A: promote earliest original live attestation over re-attestation recovery chain",
-      "decision_status": "approved_pending_zeus"
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity; C-308 fork has orphan_prev at block 42",
+      "decision_status": "approved_pending_zeus_and_eve"
     },
     {
       "block_number": 73,
       "current_kept_seal": "seal-C-345-073",
       "current_dropped_seal": "seal-C-314-073",
-      "candidate_canonical_seal": "seal-C-314-073",
-      "candidate_canonical_cycle": "C-314",
+      "candidate_canonical_seal": "seal-C-345-073",
+      "candidate_canonical_cycle": "C-345",
       "current_kept_cycle": "C-345",
-      "canonical_sealed_at": "2026-05-17T04:41:23.751Z",
+      "canonical_sealed_at": "2026-06-17T13:30:53.341Z",
       "re_attest_sealed_at": "2026-06-17T13:30:53.341Z",
-      "reasoning": "Custodian Option A: promote earliest original live attestation over re-attestation recovery chain",
-      "decision_status": "approved_pending_zeus"
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity; C-308 fork has orphan_prev at block 42",
+      "decision_status": "approved_pending_zeus_and_eve"
     },
     {
       "block_number": 74,
       "current_kept_seal": "seal-C-345-074",
       "current_dropped_seal": "seal-C-314-074",
-      "candidate_canonical_seal": "seal-C-314-074",
-      "candidate_canonical_cycle": "C-314",
+      "candidate_canonical_seal": "seal-C-345-074",
+      "candidate_canonical_cycle": "C-345",
       "current_kept_cycle": "C-345",
-      "canonical_sealed_at": "2026-05-17T04:45:05.647Z",
+      "canonical_sealed_at": "2026-06-17T19:20:53.889Z",
       "re_attest_sealed_at": "2026-06-17T19:20:53.889Z",
-      "reasoning": "Custodian Option A: promote earliest original live attestation over re-attestation recovery chain",
-      "decision_status": "approved_pending_zeus"
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity; C-308 fork has orphan_prev at block 42",
+      "decision_status": "approved_pending_zeus_and_eve"
     },
     {
       "block_number": 75,
       "current_kept_seal": "seal-C-345-075",
       "current_dropped_seal": "seal-C-314-075",
-      "candidate_canonical_seal": "seal-C-314-075",
-      "candidate_canonical_cycle": "C-314",
+      "candidate_canonical_seal": "seal-C-345-075",
+      "candidate_canonical_cycle": "C-345",
       "current_kept_cycle": "C-345",
-      "canonical_sealed_at": "2026-05-17T10:40:54.767Z",
+      "canonical_sealed_at": "2026-06-17T19:25:08.701Z",
       "re_attest_sealed_at": "2026-06-17T19:25:08.701Z",
-      "reasoning": "Custodian Option A: promote earliest original live attestation over re-attestation recovery chain",
-      "decision_status": "approved_pending_zeus"
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity; C-308 fork has orphan_prev at block 42",
+      "decision_status": "approved_pending_zeus_and_eve"
     },
     {
       "block_number": 76,
       "current_kept_seal": "seal-C-345-076",
       "current_dropped_seal": "seal-C-314-076",
-      "candidate_canonical_seal": "seal-C-314-076",
-      "candidate_canonical_cycle": "C-314",
+      "candidate_canonical_seal": "seal-C-345-076",
+      "candidate_canonical_cycle": "C-345",
       "current_kept_cycle": "C-345",
-      "canonical_sealed_at": "2026-05-17T16:41:24.313Z",
+      "canonical_sealed_at": "2026-06-18T00:50:53.947Z",
       "re_attest_sealed_at": "2026-06-18T00:50:53.947Z",
-      "reasoning": "Custodian Option A: promote earliest original live attestation over re-attestation recovery chain",
-      "decision_status": "approved_pending_zeus"
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity; C-308 fork has orphan_prev at block 42",
+      "decision_status": "approved_pending_zeus_and_eve"
     },
     {
       "block_number": 77,
       "current_kept_seal": "seal-C-346-077",
       "current_dropped_seal": "seal-C-314-077",
-      "candidate_canonical_seal": "seal-C-314-077",
-      "candidate_canonical_cycle": "C-314",
+      "candidate_canonical_seal": "seal-C-346-077",
+      "candidate_canonical_cycle": "C-346",
       "current_kept_cycle": "C-346",
-      "canonical_sealed_at": "2026-05-17T16:45:16.368Z",
+      "canonical_sealed_at": "2026-06-18T06:40:53.413Z",
       "re_attest_sealed_at": "2026-06-18T06:40:53.413Z",
-      "reasoning": "Custodian Option A: promote earliest original live attestation over re-attestation recovery chain",
-      "decision_status": "approved_pending_zeus"
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity; C-308 fork has orphan_prev at block 42",
+      "decision_status": "approved_pending_zeus_and_eve"
     },
     {
       "block_number": 78,
       "current_kept_seal": "seal-C-346-078",
       "current_dropped_seal": "seal-C-314-078",
-      "candidate_canonical_seal": "seal-C-314-078",
-      "candidate_canonical_cycle": "C-314",
+      "candidate_canonical_seal": "seal-C-346-078",
+      "candidate_canonical_cycle": "C-346",
       "current_kept_cycle": "C-346",
-      "canonical_sealed_at": "2026-05-17T22:21:06.996Z",
+      "canonical_sealed_at": "2026-06-18T12:30:52.589Z",
       "re_attest_sealed_at": "2026-06-18T12:30:52.589Z",
-      "reasoning": "Custodian Option A: promote earliest original live attestation over re-attestation recovery chain",
-      "decision_status": "approved_pending_zeus"
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity; C-308 fork has orphan_prev at block 42",
+      "decision_status": "approved_pending_zeus_and_eve"
     },
     {
       "block_number": 79,
       "current_kept_seal": "seal-C-346-079",
       "current_dropped_seal": "seal-C-314-079",
-      "candidate_canonical_seal": "seal-C-314-079",
-      "candidate_canonical_cycle": "C-314",
+      "candidate_canonical_seal": "seal-C-346-079",
+      "candidate_canonical_cycle": "C-346",
       "current_kept_cycle": "C-346",
-      "canonical_sealed_at": "2026-05-17T22:25:30.563Z",
+      "canonical_sealed_at": "2026-06-18T18:20:53.372Z",
       "re_attest_sealed_at": "2026-06-18T18:20:53.372Z",
-      "reasoning": "Custodian Option A: promote earliest original live attestation over re-attestation recovery chain",
-      "decision_status": "approved_pending_zeus"
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity; C-308 fork has orphan_prev at block 42",
+      "decision_status": "approved_pending_zeus_and_eve"
     },
     {
       "block_number": 80,
       "current_kept_seal": "seal-C-346-080",
       "current_dropped_seal": "seal-C-314-080",
-      "candidate_canonical_seal": "seal-C-314-080",
-      "candidate_canonical_cycle": "C-314",
+      "candidate_canonical_seal": "seal-C-346-080",
+      "candidate_canonical_cycle": "C-346",
       "current_kept_cycle": "C-346",
-      "canonical_sealed_at": "2026-05-18T03:31:07.887Z",
+      "canonical_sealed_at": "2026-06-19T00:10:53.367Z",
       "re_attest_sealed_at": "2026-06-19T00:10:53.367Z",
-      "reasoning": "Custodian Option A: promote earliest original live attestation over re-attestation recovery chain",
-      "decision_status": "approved_pending_zeus"
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity; C-308 fork has orphan_prev at block 42",
+      "decision_status": "approved_pending_zeus_and_eve"
     },
     {
       "block_number": 81,
       "current_kept_seal": "seal-C-346-081",
       "current_dropped_seal": "seal-C-315-081",
-      "candidate_canonical_seal": "seal-C-315-081",
-      "candidate_canonical_cycle": "C-315",
+      "candidate_canonical_seal": "seal-C-346-081",
+      "candidate_canonical_cycle": "C-346",
       "current_kept_cycle": "C-346",
-      "canonical_sealed_at": "2026-05-18T09:11:07.405Z",
+      "canonical_sealed_at": "2026-06-19T00:15:09.086Z",
       "re_attest_sealed_at": "2026-06-19T00:15:09.086Z",
-      "reasoning": "Custodian Option A: promote earliest original live attestation over re-attestation recovery chain",
-      "decision_status": "approved_pending_zeus"
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity; C-308 fork has orphan_prev at block 42",
+      "decision_status": "approved_pending_zeus_and_eve"
     },
     {
       "block_number": 82,
       "current_kept_seal": "seal-C-347-082",
       "current_dropped_seal": "seal-C-315-082",
-      "candidate_canonical_seal": "seal-C-315-082",
-      "candidate_canonical_cycle": "C-315",
+      "candidate_canonical_seal": "seal-C-347-082",
+      "candidate_canonical_cycle": "C-347",
       "current_kept_cycle": "C-347",
-      "canonical_sealed_at": "2026-05-18T09:15:30.684Z",
+      "canonical_sealed_at": "2026-06-19T06:03:51.210Z",
       "re_attest_sealed_at": "2026-06-19T06:03:51.210Z",
-      "reasoning": "Custodian Option A: promote earliest original live attestation over re-attestation recovery chain",
-      "decision_status": "approved_pending_zeus"
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity; C-308 fork has orphan_prev at block 42",
+      "decision_status": "approved_pending_zeus_and_eve"
     },
     {
       "block_number": 83,
       "current_kept_seal": "seal-C-347-083",
       "current_dropped_seal": "seal-C-315-083",
-      "candidate_canonical_seal": "seal-C-315-083",
-      "candidate_canonical_cycle": "C-315",
+      "candidate_canonical_seal": "seal-C-347-083",
+      "candidate_canonical_cycle": "C-347",
       "current_kept_cycle": "C-347",
-      "canonical_sealed_at": "2026-05-18T15:01:06.767Z",
+      "canonical_sealed_at": "2026-06-19T12:03:17.532Z",
       "re_attest_sealed_at": "2026-06-19T12:03:17.532Z",
-      "reasoning": "Custodian Option A: promote earliest original live attestation over re-attestation recovery chain",
-      "decision_status": "approved_pending_zeus"
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity; C-308 fork has orphan_prev at block 42",
+      "decision_status": "approved_pending_zeus_and_eve"
     },
     {
       "block_number": 84,
       "current_kept_seal": "seal-C-347-084",
       "current_dropped_seal": "seal-C-315-084",
-      "candidate_canonical_seal": "seal-C-315-084",
-      "candidate_canonical_cycle": "C-315",
+      "candidate_canonical_seal": "seal-C-347-084",
+      "candidate_canonical_cycle": "C-347",
       "current_kept_cycle": "C-347",
-      "canonical_sealed_at": "2026-05-18T20:20:59.810Z",
+      "canonical_sealed_at": "2026-06-19T18:03:17.560Z",
       "re_attest_sealed_at": "2026-06-19T18:03:17.560Z",
-      "reasoning": "Custodian Option A: promote earliest original live attestation over re-attestation recovery chain",
-      "decision_status": "approved_pending_zeus"
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity; C-308 fork has orphan_prev at block 42",
+      "decision_status": "approved_pending_zeus_and_eve"
     },
     {
       "block_number": 85,
       "current_kept_seal": "seal-C-347-085",
       "current_dropped_seal": "seal-C-315-085",
-      "candidate_canonical_seal": "seal-C-315-085",
-      "candidate_canonical_cycle": "C-315",
+      "candidate_canonical_seal": "seal-C-347-085",
+      "candidate_canonical_cycle": "C-347",
       "current_kept_cycle": "C-347",
-      "canonical_sealed_at": "2026-05-18T20:25:23.753Z",
+      "canonical_sealed_at": "2026-06-20T00:00:53.663Z",
       "re_attest_sealed_at": "2026-06-20T00:00:53.663Z",
-      "reasoning": "Custodian Option A: promote earliest original live attestation over re-attestation recovery chain",
-      "decision_status": "approved_pending_zeus"
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity; C-308 fork has orphan_prev at block 42",
+      "decision_status": "approved_pending_zeus_and_eve"
     },
     {
       "block_number": 86,
       "current_kept_seal": "seal-C-347-086",
       "current_dropped_seal": "seal-C-315-086",
-      "candidate_canonical_seal": "seal-C-315-086",
-      "candidate_canonical_cycle": "C-315",
+      "candidate_canonical_seal": "seal-C-347-086",
+      "candidate_canonical_cycle": "C-347",
       "current_kept_cycle": "C-347",
-      "canonical_sealed_at": "2026-05-19T02:11:00.420Z",
+      "canonical_sealed_at": "2026-06-20T00:05:08.729Z",
       "re_attest_sealed_at": "2026-06-20T00:05:08.729Z",
-      "reasoning": "Custodian Option A: promote earliest original live attestation over re-attestation recovery chain",
-      "decision_status": "approved_pending_zeus"
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity; C-308 fork has orphan_prev at block 42",
+      "decision_status": "approved_pending_zeus_and_eve"
     },
     {
       "block_number": 87,
       "current_kept_seal": "seal-C-348-087",
       "current_dropped_seal": "seal-C-315-087",
-      "candidate_canonical_seal": "seal-C-315-087",
-      "candidate_canonical_cycle": "C-315",
+      "candidate_canonical_seal": "seal-C-348-087",
+      "candidate_canonical_cycle": "C-348",
       "current_kept_cycle": "C-348",
-      "canonical_sealed_at": "2026-05-19T02:15:23.457Z",
+      "canonical_sealed_at": "2026-06-20T05:40:53.153Z",
       "re_attest_sealed_at": "2026-06-20T05:40:53.153Z",
-      "reasoning": "Custodian Option A: promote earliest original live attestation over re-attestation recovery chain",
-      "decision_status": "approved_pending_zeus"
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity; C-308 fork has orphan_prev at block 42",
+      "decision_status": "approved_pending_zeus_and_eve"
     },
     {
       "block_number": 88,
       "current_kept_seal": "seal-C-348-088",
       "current_dropped_seal": "seal-C-316-088",
-      "candidate_canonical_seal": "seal-C-316-088",
-      "candidate_canonical_cycle": "C-316",
+      "candidate_canonical_seal": "seal-C-348-088",
+      "candidate_canonical_cycle": "C-348",
       "current_kept_cycle": "C-348",
-      "canonical_sealed_at": "2026-05-19T08:02:41.703Z",
+      "canonical_sealed_at": "2026-06-20T05:45:08.597Z",
       "re_attest_sealed_at": "2026-06-20T05:45:08.597Z",
-      "reasoning": "Custodian Option A: promote earliest original live attestation over re-attestation recovery chain",
-      "decision_status": "approved_pending_zeus"
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity; C-308 fork has orphan_prev at block 42",
+      "decision_status": "approved_pending_zeus_and_eve"
     },
     {
       "block_number": 89,
       "current_kept_seal": "seal-C-348-089",
       "current_dropped_seal": "seal-C-316-089",
-      "candidate_canonical_seal": "seal-C-316-089",
-      "candidate_canonical_cycle": "C-316",
+      "candidate_canonical_seal": "seal-C-348-089",
+      "candidate_canonical_cycle": "C-348",
       "current_kept_cycle": "C-348",
-      "canonical_sealed_at": "2026-05-19T13:50:59.752Z",
+      "canonical_sealed_at": "2026-06-20T11:20:53.021Z",
       "re_attest_sealed_at": "2026-06-20T11:20:53.021Z",
-      "reasoning": "Custodian Option A: promote earliest original live attestation over re-attestation recovery chain",
-      "decision_status": "approved_pending_zeus"
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity; C-308 fork has orphan_prev at block 42",
+      "decision_status": "approved_pending_zeus_and_eve"
     },
     {
       "block_number": 90,
       "current_kept_seal": "seal-C-348-090",
       "current_dropped_seal": "seal-C-316-090",
-      "candidate_canonical_seal": "seal-C-316-090",
-      "candidate_canonical_cycle": "C-316",
+      "candidate_canonical_seal": "seal-C-348-090",
+      "candidate_canonical_cycle": "C-348",
       "current_kept_cycle": "C-348",
-      "canonical_sealed_at": "2026-05-19T19:31:00.142Z",
+      "canonical_sealed_at": "2026-06-20T11:25:08.816Z",
       "re_attest_sealed_at": "2026-06-20T11:25:08.816Z",
-      "reasoning": "Custodian Option A: promote earliest original live attestation over re-attestation recovery chain",
-      "decision_status": "approved_pending_zeus"
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity; C-308 fork has orphan_prev at block 42",
+      "decision_status": "approved_pending_zeus_and_eve"
     },
     {
       "block_number": 91,
       "current_kept_seal": "seal-C-348-091",
       "current_dropped_seal": "seal-C-316-091",
-      "candidate_canonical_seal": "seal-C-316-091",
-      "candidate_canonical_cycle": "C-316",
+      "candidate_canonical_seal": "seal-C-348-091",
+      "candidate_canonical_cycle": "C-348",
       "current_kept_cycle": "C-348",
-      "canonical_sealed_at": "2026-05-19T19:35:23.864Z",
+      "canonical_sealed_at": "2026-06-20T17:00:53.533Z",
       "re_attest_sealed_at": "2026-06-20T17:00:53.533Z",
-      "reasoning": "Custodian Option A: promote earliest original live attestation over re-attestation recovery chain",
-      "decision_status": "approved_pending_zeus"
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity; C-308 fork has orphan_prev at block 42",
+      "decision_status": "approved_pending_zeus_and_eve"
     },
     {
       "block_number": 92,
       "current_kept_seal": "seal-C-348-092",
       "current_dropped_seal": "seal-C-316-092",
-      "candidate_canonical_seal": "seal-C-316-092",
-      "candidate_canonical_cycle": "C-316",
+      "candidate_canonical_seal": "seal-C-348-092",
+      "candidate_canonical_cycle": "C-348",
       "current_kept_cycle": "C-348",
-      "canonical_sealed_at": "2026-05-20T01:02:58.354Z",
+      "canonical_sealed_at": "2026-06-20T22:50:52.653Z",
       "re_attest_sealed_at": "2026-06-20T22:50:52.653Z",
-      "reasoning": "Custodian Option A: promote earliest original live attestation over re-attestation recovery chain",
-      "decision_status": "approved_pending_zeus"
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity; C-308 fork has orphan_prev at block 42",
+      "decision_status": "approved_pending_zeus_and_eve"
     },
     {
       "block_number": 93,
       "current_kept_seal": "seal-C-349-093",
       "current_dropped_seal": "seal-C-316-093",
-      "candidate_canonical_seal": "seal-C-316-093",
-      "candidate_canonical_cycle": "C-316",
+      "candidate_canonical_seal": "seal-C-349-093",
+      "candidate_canonical_cycle": "C-349",
       "current_kept_cycle": "C-349",
-      "canonical_sealed_at": "2026-05-20T01:05:23.369Z",
+      "canonical_sealed_at": "2026-06-21T04:20:53.177Z",
       "re_attest_sealed_at": "2026-06-21T04:20:53.177Z",
-      "reasoning": "Custodian Option A: promote earliest original live attestation over re-attestation recovery chain",
-      "decision_status": "approved_pending_zeus"
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity; C-308 fork has orphan_prev at block 42",
+      "decision_status": "approved_pending_zeus_and_eve"
     },
     {
       "block_number": 94,
       "current_kept_seal": "seal-C-349-094",
       "current_dropped_seal": "seal-C-317-094",
-      "candidate_canonical_seal": "seal-C-317-094",
-      "candidate_canonical_cycle": "C-317",
+      "candidate_canonical_seal": "seal-C-349-094",
+      "candidate_canonical_cycle": "C-349",
       "current_kept_cycle": "C-349",
-      "canonical_sealed_at": "2026-05-20T06:20:59.949Z",
+      "canonical_sealed_at": "2026-06-21T10:03:02.681Z",
       "re_attest_sealed_at": "2026-06-21T10:03:02.681Z",
-      "reasoning": "Custodian Option A: promote earliest original live attestation over re-attestation recovery chain",
-      "decision_status": "approved_pending_zeus"
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity; C-308 fork has orphan_prev at block 42",
+      "decision_status": "approved_pending_zeus_and_eve"
     },
     {
       "block_number": 95,
       "current_kept_seal": "seal-C-349-095",
       "current_dropped_seal": "seal-C-317-095",
-      "candidate_canonical_seal": "seal-C-317-095",
-      "candidate_canonical_cycle": "C-317",
+      "candidate_canonical_seal": "seal-C-349-095",
+      "candidate_canonical_cycle": "C-349",
       "current_kept_cycle": "C-349",
-      "canonical_sealed_at": "2026-05-20T12:02:57.103Z",
+      "canonical_sealed_at": "2026-06-21T15:40:52.961Z",
       "re_attest_sealed_at": "2026-06-21T15:40:52.961Z",
-      "reasoning": "Custodian Option A: promote earliest original live attestation over re-attestation recovery chain",
-      "decision_status": "approved_pending_zeus"
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity; C-308 fork has orphan_prev at block 42",
+      "decision_status": "approved_pending_zeus_and_eve"
     },
     {
       "block_number": 96,
       "current_kept_seal": "seal-C-349-096",
       "current_dropped_seal": "seal-C-317-096",
-      "candidate_canonical_seal": "seal-C-317-096",
-      "candidate_canonical_cycle": "C-317",
+      "candidate_canonical_seal": "seal-C-349-096",
+      "candidate_canonical_cycle": "C-349",
       "current_kept_cycle": "C-349",
-      "canonical_sealed_at": "2026-05-20T12:05:23.603Z",
+      "canonical_sealed_at": "2026-06-21T15:45:08.823Z",
       "re_attest_sealed_at": "2026-06-21T15:45:08.823Z",
-      "reasoning": "Custodian Option A: promote earliest original live attestation over re-attestation recovery chain",
-      "decision_status": "approved_pending_zeus"
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity; C-308 fork has orphan_prev at block 42",
+      "decision_status": "approved_pending_zeus_and_eve"
     },
     {
       "block_number": 97,
       "current_kept_seal": "seal-C-349-097",
       "current_dropped_seal": "seal-C-317-097",
-      "candidate_canonical_seal": "seal-C-317-097",
-      "candidate_canonical_cycle": "C-317",
+      "candidate_canonical_seal": "seal-C-349-097",
+      "candidate_canonical_cycle": "C-349",
       "current_kept_cycle": "C-349",
-      "canonical_sealed_at": "2026-05-20T12:10:23.810Z",
+      "canonical_sealed_at": "2026-06-21T21:20:53.644Z",
       "re_attest_sealed_at": "2026-06-21T21:20:53.644Z",
-      "reasoning": "Custodian Option A: promote earliest original live attestation over re-attestation recovery chain",
-      "decision_status": "approved_pending_zeus"
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity; C-308 fork has orphan_prev at block 42",
+      "decision_status": "approved_pending_zeus_and_eve"
     },
     {
       "block_number": 98,
       "current_kept_seal": "seal-C-349-098",
       "current_dropped_seal": "seal-C-317-098",
-      "candidate_canonical_seal": "seal-C-317-098",
-      "candidate_canonical_cycle": "C-317",
+      "candidate_canonical_seal": "seal-C-349-098",
+      "candidate_canonical_cycle": "C-349",
       "current_kept_cycle": "C-349",
-      "canonical_sealed_at": "2026-05-20T17:41:06.467Z",
+      "canonical_sealed_at": "2026-06-21T21:25:08.633Z",
       "re_attest_sealed_at": "2026-06-21T21:25:08.633Z",
-      "reasoning": "Custodian Option A: promote earliest original live attestation over re-attestation recovery chain",
-      "decision_status": "approved_pending_zeus"
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity; C-308 fork has orphan_prev at block 42",
+      "decision_status": "approved_pending_zeus_and_eve"
     },
     {
       "block_number": 99,
       "current_kept_seal": "seal-C-349-099",
       "current_dropped_seal": "seal-C-317-099",
-      "candidate_canonical_seal": "seal-C-317-099",
-      "candidate_canonical_cycle": "C-317",
+      "candidate_canonical_seal": "seal-C-349-099",
+      "candidate_canonical_cycle": "C-349",
       "current_kept_cycle": "C-349",
-      "canonical_sealed_at": "2026-05-20T17:45:08.544Z",
+      "canonical_sealed_at": "2026-06-22T03:02:20.930Z",
       "re_attest_sealed_at": "2026-06-22T03:02:20.930Z",
-      "reasoning": "Custodian Option A: promote earliest original live attestation over re-attestation recovery chain",
-      "decision_status": "approved_pending_zeus"
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity; C-308 fork has orphan_prev at block 42",
+      "decision_status": "approved_pending_zeus_and_eve"
     },
     {
       "block_number": 100,
       "current_kept_seal": "seal-C-350-100",
       "current_dropped_seal": "seal-C-317-100",
-      "candidate_canonical_seal": "seal-C-317-100",
-      "candidate_canonical_cycle": "C-317",
+      "candidate_canonical_seal": "seal-C-350-100",
+      "candidate_canonical_cycle": "C-350",
       "current_kept_cycle": "C-350",
-      "canonical_sealed_at": "2026-05-20T23:21:07.125Z",
+      "canonical_sealed_at": "2026-06-22T08:50:53.171Z",
       "re_attest_sealed_at": "2026-06-22T08:50:53.171Z",
-      "reasoning": "Custodian Option A: promote earliest original live attestation over re-attestation recovery chain",
-      "decision_status": "approved_pending_zeus"
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity; C-308 fork has orphan_prev at block 42",
+      "decision_status": "approved_pending_zeus_and_eve"
     },
     {
       "block_number": 101,
       "current_kept_seal": "seal-C-350-101",
       "current_dropped_seal": "seal-C-317-101",
-      "candidate_canonical_seal": "seal-C-317-101",
-      "candidate_canonical_cycle": "C-317",
+      "candidate_canonical_seal": "seal-C-350-101",
+      "candidate_canonical_cycle": "C-350",
       "current_kept_cycle": "C-350",
-      "canonical_sealed_at": "2026-05-20T23:25:08.482Z",
+      "canonical_sealed_at": "2026-06-22T08:55:08.583Z",
       "re_attest_sealed_at": "2026-06-22T08:55:08.583Z",
-      "reasoning": "Custodian Option A: promote earliest original live attestation over re-attestation recovery chain",
-      "decision_status": "approved_pending_zeus"
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity; C-308 fork has orphan_prev at block 42",
+      "decision_status": "approved_pending_zeus_and_eve"
     },
     {
       "block_number": 102,
       "current_kept_seal": "seal-C-350-102",
       "current_dropped_seal": "seal-C-317-102",
-      "candidate_canonical_seal": "seal-C-317-102",
-      "candidate_canonical_cycle": "C-317",
+      "candidate_canonical_seal": "seal-C-350-102",
+      "candidate_canonical_cycle": "C-350",
       "current_kept_cycle": "C-350",
-      "canonical_sealed_at": "2026-05-21T04:51:05.537Z",
+      "canonical_sealed_at": "2026-06-22T14:20:53.233Z",
       "re_attest_sealed_at": "2026-06-22T14:20:53.233Z",
-      "reasoning": "Custodian Option A: promote earliest original live attestation over re-attestation recovery chain",
-      "decision_status": "approved_pending_zeus"
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity; C-308 fork has orphan_prev at block 42",
+      "decision_status": "approved_pending_zeus_and_eve"
     },
     {
       "block_number": 103,
       "current_kept_seal": "seal-C-350-103",
       "current_dropped_seal": "seal-C-318-103",
-      "candidate_canonical_seal": "seal-C-318-103",
-      "candidate_canonical_cycle": "C-318",
+      "candidate_canonical_seal": "seal-C-350-103",
+      "candidate_canonical_cycle": "C-350",
       "current_kept_cycle": "C-350",
-      "canonical_sealed_at": "2026-05-21T04:55:08.334Z",
+      "canonical_sealed_at": "2026-06-22T20:02:12.405Z",
       "re_attest_sealed_at": "2026-06-22T20:02:12.405Z",
-      "reasoning": "Custodian Option A: promote earliest original live attestation over re-attestation recovery chain",
-      "decision_status": "approved_pending_zeus"
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity; C-308 fork has orphan_prev at block 42",
+      "decision_status": "approved_pending_zeus_and_eve"
     },
     {
       "block_number": 104,
       "current_kept_seal": "seal-C-350-104",
       "current_dropped_seal": "seal-C-318-104",
-      "candidate_canonical_seal": "seal-C-318-104",
-      "candidate_canonical_cycle": "C-318",
+      "candidate_canonical_seal": "seal-C-350-104",
+      "candidate_canonical_cycle": "C-350",
       "current_kept_cycle": "C-350",
-      "canonical_sealed_at": "2026-05-21T10:21:05.922Z",
+      "canonical_sealed_at": "2026-06-22T20:05:08.590Z",
       "re_attest_sealed_at": "2026-06-22T20:05:08.590Z",
-      "reasoning": "Custodian Option A: promote earliest original live attestation over re-attestation recovery chain",
-      "decision_status": "approved_pending_zeus"
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity; C-308 fork has orphan_prev at block 42",
+      "decision_status": "approved_pending_zeus_and_eve"
     },
     {
       "block_number": 105,
       "current_kept_seal": "seal-C-350-105",
       "current_dropped_seal": "seal-C-318-105",
-      "candidate_canonical_seal": "seal-C-318-105",
-      "candidate_canonical_cycle": "C-318",
+      "candidate_canonical_seal": "seal-C-350-105",
+      "candidate_canonical_cycle": "C-350",
       "current_kept_cycle": "C-350",
-      "canonical_sealed_at": "2026-05-21T16:02:38.317Z",
+      "canonical_sealed_at": "2026-06-23T01:40:53.453Z",
       "re_attest_sealed_at": "2026-06-23T01:40:53.453Z",
-      "reasoning": "Custodian Option A: promote earliest original live attestation over re-attestation recovery chain",
-      "decision_status": "approved_pending_zeus"
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity; C-308 fork has orphan_prev at block 42",
+      "decision_status": "approved_pending_zeus_and_eve"
     },
     {
       "block_number": 106,
       "current_kept_seal": "seal-C-351-106",
       "current_dropped_seal": "seal-C-318-106",
-      "candidate_canonical_seal": "seal-C-318-106",
-      "candidate_canonical_cycle": "C-318",
+      "candidate_canonical_seal": "seal-C-351-106",
+      "candidate_canonical_cycle": "C-351",
       "current_kept_cycle": "C-351",
-      "canonical_sealed_at": "2026-05-21T21:50:37.224Z",
+      "canonical_sealed_at": "2026-06-23T07:30:52.942Z",
       "re_attest_sealed_at": "2026-06-23T07:30:52.942Z",
-      "reasoning": "Custodian Option A: promote earliest original live attestation over re-attestation recovery chain",
-      "decision_status": "approved_pending_zeus"
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity; C-308 fork has orphan_prev at block 42",
+      "decision_status": "approved_pending_zeus_and_eve"
     },
     {
       "block_number": 107,
       "current_kept_seal": "seal-C-351-107",
       "current_dropped_seal": "seal-C-318-107",
-      "candidate_canonical_seal": "seal-C-318-107",
-      "candidate_canonical_cycle": "C-318",
+      "candidate_canonical_seal": "seal-C-351-107",
+      "candidate_canonical_cycle": "C-351",
       "current_kept_cycle": "C-351",
-      "canonical_sealed_at": "2026-05-21T21:50:39.100Z",
+      "canonical_sealed_at": "2026-06-23T07:35:08.639Z",
       "re_attest_sealed_at": "2026-06-23T07:35:08.639Z",
-      "reasoning": "Custodian Option A: promote earliest original live attestation over re-attestation recovery chain",
-      "decision_status": "approved_pending_zeus"
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity; C-308 fork has orphan_prev at block 42",
+      "decision_status": "approved_pending_zeus_and_eve"
     },
     {
       "block_number": 108,
       "current_kept_seal": "seal-C-351-108",
       "current_dropped_seal": "seal-C-318-108",
-      "candidate_canonical_seal": "seal-C-318-108",
-      "candidate_canonical_cycle": "C-318",
+      "candidate_canonical_seal": "seal-C-351-108",
+      "candidate_canonical_cycle": "C-351",
       "current_kept_cycle": "C-351",
-      "canonical_sealed_at": "2026-05-22T03:21:20.147Z",
+      "canonical_sealed_at": "2026-06-23T13:10:53.140Z",
       "re_attest_sealed_at": "2026-06-23T13:10:53.140Z",
-      "reasoning": "Custodian Option A: promote earliest original live attestation over re-attestation recovery chain",
-      "decision_status": "approved_pending_zeus"
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity; C-308 fork has orphan_prev at block 42",
+      "decision_status": "approved_pending_zeus_and_eve"
     },
     {
       "block_number": 109,
       "current_kept_seal": "seal-C-351-109",
       "current_dropped_seal": "seal-C-318-109",
-      "candidate_canonical_seal": "seal-C-318-109",
-      "candidate_canonical_cycle": "C-318",
+      "candidate_canonical_seal": "seal-C-351-109",
+      "candidate_canonical_cycle": "C-351",
       "current_kept_cycle": "C-351",
-      "canonical_sealed_at": "2026-05-22T03:25:49.484Z",
+      "canonical_sealed_at": "2026-06-23T13:15:08.771Z",
       "re_attest_sealed_at": "2026-06-23T13:15:08.771Z",
-      "reasoning": "Custodian Option A: promote earliest original live attestation over re-attestation recovery chain",
-      "decision_status": "approved_pending_zeus"
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity; C-308 fork has orphan_prev at block 42",
+      "decision_status": "approved_pending_zeus_and_eve"
     },
     {
       "block_number": 110,
       "current_kept_seal": "seal-C-351-110",
       "current_dropped_seal": "seal-C-319-110",
-      "candidate_canonical_seal": "seal-C-319-110",
-      "candidate_canonical_cycle": "C-319",
+      "candidate_canonical_seal": "seal-C-351-110",
+      "candidate_canonical_cycle": "C-351",
       "current_kept_cycle": "C-351",
-      "canonical_sealed_at": "2026-05-22T09:01:20.462Z",
+      "canonical_sealed_at": "2026-06-23T19:00:53.576Z",
       "re_attest_sealed_at": "2026-06-23T19:00:53.576Z",
-      "reasoning": "Custodian Option A: promote earliest original live attestation over re-attestation recovery chain",
-      "decision_status": "approved_pending_zeus"
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity; C-308 fork has orphan_prev at block 42",
+      "decision_status": "approved_pending_zeus_and_eve"
     },
     {
       "block_number": 111,
       "current_kept_seal": "seal-C-351-111",
       "current_dropped_seal": "seal-C-319-111",
-      "candidate_canonical_seal": "seal-C-319-111",
-      "candidate_canonical_cycle": "C-319",
+      "candidate_canonical_seal": "seal-C-351-111",
+      "candidate_canonical_cycle": "C-351",
       "current_kept_cycle": "C-351",
-      "canonical_sealed_at": "2026-05-22T09:05:49.646Z",
+      "canonical_sealed_at": "2026-06-24T00:50:52.863Z",
       "re_attest_sealed_at": "2026-06-24T00:50:52.863Z",
-      "reasoning": "Custodian Option A: promote earliest original live attestation over re-attestation recovery chain",
-      "decision_status": "approved_pending_zeus"
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity; C-308 fork has orphan_prev at block 42",
+      "decision_status": "approved_pending_zeus_and_eve"
     },
     {
       "block_number": 112,
       "current_kept_seal": "seal-C-351-112",
       "current_dropped_seal": "seal-C-319-112",
-      "candidate_canonical_seal": "seal-C-319-112",
-      "candidate_canonical_cycle": "C-319",
+      "candidate_canonical_seal": "seal-C-351-112",
+      "candidate_canonical_cycle": "C-351",
       "current_kept_cycle": "C-351",
-      "canonical_sealed_at": "2026-05-22T14:41:19.687Z",
+      "canonical_sealed_at": "2026-06-24T00:55:08.738Z",
       "re_attest_sealed_at": "2026-06-24T00:55:08.738Z",
-      "reasoning": "Custodian Option A: promote earliest original live attestation over re-attestation recovery chain",
-      "decision_status": "approved_pending_zeus"
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity; C-308 fork has orphan_prev at block 42",
+      "decision_status": "approved_pending_zeus_and_eve"
     },
     {
       "block_number": 113,
       "current_kept_seal": "seal-C-352-113",
       "current_dropped_seal": "seal-C-319-113",
-      "candidate_canonical_seal": "seal-C-319-113",
-      "candidate_canonical_cycle": "C-319",
+      "candidate_canonical_seal": "seal-C-352-113",
+      "candidate_canonical_cycle": "C-352",
       "current_kept_cycle": "C-352",
-      "canonical_sealed_at": "2026-05-22T14:45:49.429Z",
+      "canonical_sealed_at": "2026-06-24T06:40:53.743Z",
       "re_attest_sealed_at": "2026-06-24T06:40:53.743Z",
-      "reasoning": "Custodian Option A: promote earliest original live attestation over re-attestation recovery chain",
-      "decision_status": "approved_pending_zeus"
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity; C-308 fork has orphan_prev at block 42",
+      "decision_status": "approved_pending_zeus_and_eve"
     },
     {
       "block_number": 114,
       "current_kept_seal": "seal-C-352-114",
       "current_dropped_seal": "seal-C-319-114",
-      "candidate_canonical_seal": "seal-C-319-114",
-      "candidate_canonical_cycle": "C-319",
+      "candidate_canonical_seal": "seal-C-352-114",
+      "candidate_canonical_cycle": "C-352",
       "current_kept_cycle": "C-352",
-      "canonical_sealed_at": "2026-05-22T20:21:22.275Z",
+      "canonical_sealed_at": "2026-06-24T12:20:53.502Z",
       "re_attest_sealed_at": "2026-06-24T12:20:53.502Z",
-      "reasoning": "Custodian Option A: promote earliest original live attestation over re-attestation recovery chain",
-      "decision_status": "approved_pending_zeus"
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity; C-308 fork has orphan_prev at block 42",
+      "decision_status": "approved_pending_zeus_and_eve"
     },
     {
       "block_number": 115,
       "current_kept_seal": "seal-C-352-115",
       "current_dropped_seal": "seal-C-319-115",
-      "candidate_canonical_seal": "seal-C-319-115",
-      "candidate_canonical_cycle": "C-319",
+      "candidate_canonical_seal": "seal-C-352-115",
+      "candidate_canonical_cycle": "C-352",
       "current_kept_cycle": "C-352",
-      "canonical_sealed_at": "2026-05-22T20:25:07.503Z",
+      "canonical_sealed_at": "2026-06-24T18:01:51.429Z",
       "re_attest_sealed_at": "2026-06-24T18:01:51.429Z",
-      "reasoning": "Custodian Option A: promote earliest original live attestation over re-attestation recovery chain",
-      "decision_status": "approved_pending_zeus"
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity; C-308 fork has orphan_prev at block 42",
+      "decision_status": "approved_pending_zeus_and_eve"
     },
     {
       "block_number": 116,
       "current_kept_seal": "seal-C-352-116",
       "current_dropped_seal": "seal-C-319-116",
-      "candidate_canonical_seal": "seal-C-319-116",
-      "candidate_canonical_cycle": "C-319",
+      "candidate_canonical_seal": "seal-C-352-116",
+      "candidate_canonical_cycle": "C-352",
       "current_kept_cycle": "C-352",
-      "canonical_sealed_at": "2026-05-23T01:41:22.304Z",
+      "canonical_sealed_at": "2026-06-24T18:05:08.629Z",
       "re_attest_sealed_at": "2026-06-24T18:05:08.629Z",
-      "reasoning": "Custodian Option A: promote earliest original live attestation over re-attestation recovery chain",
-      "decision_status": "approved_pending_zeus"
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity; C-308 fork has orphan_prev at block 42",
+      "decision_status": "approved_pending_zeus_and_eve"
     },
     {
       "block_number": 117,
       "current_kept_seal": "seal-C-352-117",
       "current_dropped_seal": "seal-C-320-117",
-      "candidate_canonical_seal": "seal-C-320-117",
-      "candidate_canonical_cycle": "C-320",
+      "candidate_canonical_seal": "seal-C-352-117",
+      "candidate_canonical_cycle": "C-352",
       "current_kept_cycle": "C-352",
-      "canonical_sealed_at": "2026-05-23T07:31:21.560Z",
+      "canonical_sealed_at": "2026-06-24T23:50:48.657Z",
       "re_attest_sealed_at": "2026-06-24T23:50:48.657Z",
-      "reasoning": "Custodian Option A: promote earliest original live attestation over re-attestation recovery chain",
-      "decision_status": "approved_pending_zeus"
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity; C-308 fork has orphan_prev at block 42",
+      "decision_status": "approved_pending_zeus_and_eve"
     },
     {
       "block_number": 118,
       "current_kept_seal": "seal-C-352-118",
       "current_dropped_seal": "seal-C-320-118",
-      "candidate_canonical_seal": "seal-C-320-118",
-      "candidate_canonical_cycle": "C-320",
+      "candidate_canonical_seal": "seal-C-352-118",
+      "candidate_canonical_cycle": "C-352",
       "current_kept_cycle": "C-352",
-      "canonical_sealed_at": "2026-05-23T13:21:21.941Z",
+      "canonical_sealed_at": "2026-06-25T05:50:48.581Z",
       "re_attest_sealed_at": "2026-06-25T05:50:48.581Z",
-      "reasoning": "Custodian Option A: promote earliest original live attestation over re-attestation recovery chain",
-      "decision_status": "approved_pending_zeus"
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity; C-308 fork has orphan_prev at block 42",
+      "decision_status": "approved_pending_zeus_and_eve"
     },
     {
       "block_number": 119,
       "current_kept_seal": "seal-C-352-119",
       "current_dropped_seal": "seal-C-320-119",
-      "candidate_canonical_seal": "seal-C-320-119",
-      "candidate_canonical_cycle": "C-320",
+      "candidate_canonical_seal": "seal-C-352-119",
+      "candidate_canonical_cycle": "C-352",
       "current_kept_cycle": "C-352",
-      "canonical_sealed_at": "2026-05-23T13:25:07.679Z",
+      "canonical_sealed_at": "2026-06-25T05:55:19.594Z",
       "re_attest_sealed_at": "2026-06-25T05:55:19.594Z",
-      "reasoning": "Custodian Option A: promote earliest original live attestation over re-attestation recovery chain",
-      "decision_status": "approved_pending_zeus"
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity; C-308 fork has orphan_prev at block 42",
+      "decision_status": "approved_pending_zeus_and_eve"
     },
     {
       "block_number": 120,
       "current_kept_seal": "seal-C-353-120",
       "current_dropped_seal": "seal-C-320-120",
-      "candidate_canonical_seal": "seal-C-320-120",
-      "candidate_canonical_cycle": "C-320",
+      "candidate_canonical_seal": "seal-C-353-120",
+      "candidate_canonical_cycle": "C-353",
       "current_kept_cycle": "C-353",
-      "canonical_sealed_at": "2026-05-23T19:01:22.244Z",
+      "canonical_sealed_at": "2026-06-25T11:50:48.649Z",
       "re_attest_sealed_at": "2026-06-25T11:50:48.649Z",
-      "reasoning": "Custodian Option A: promote earliest original live attestation over re-attestation recovery chain",
-      "decision_status": "approved_pending_zeus"
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity; C-308 fork has orphan_prev at block 42",
+      "decision_status": "approved_pending_zeus_and_eve"
     },
     {
       "block_number": 121,
       "current_kept_seal": "seal-C-353-121",
       "current_dropped_seal": "seal-C-320-121",
-      "candidate_canonical_seal": "seal-C-320-121",
-      "candidate_canonical_cycle": "C-320",
+      "candidate_canonical_seal": "seal-C-353-121",
+      "candidate_canonical_cycle": "C-353",
       "current_kept_cycle": "C-353",
-      "canonical_sealed_at": "2026-05-23T19:05:40.474Z",
+      "canonical_sealed_at": "2026-06-25T17:20:48.962Z",
       "re_attest_sealed_at": "2026-06-25T17:20:48.962Z",
-      "reasoning": "Custodian Option A: promote earliest original live attestation over re-attestation recovery chain",
-      "decision_status": "approved_pending_zeus"
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity; C-308 fork has orphan_prev at block 42",
+      "decision_status": "approved_pending_zeus_and_eve"
     },
     {
       "block_number": 122,
       "current_kept_seal": "seal-C-355-122",
       "current_dropped_seal": "seal-C-320-122",
-      "candidate_canonical_seal": "seal-C-320-122",
-      "candidate_canonical_cycle": "C-320",
+      "candidate_canonical_seal": "seal-C-355-122",
+      "candidate_canonical_cycle": "C-355",
       "current_kept_cycle": "C-355",
-      "canonical_sealed_at": "2026-05-24T00:40:50.403Z",
+      "canonical_sealed_at": "2026-06-28T01:31:06.671Z",
       "re_attest_sealed_at": "2026-06-28T01:31:06.671Z",
-      "reasoning": "Custodian Option A: promote earliest original live attestation over re-attestation recovery chain",
-      "decision_status": "approved_pending_zeus"
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity; C-308 fork has orphan_prev at block 42",
+      "decision_status": "approved_pending_zeus_and_eve"
     },
     {
       "block_number": 123,
       "current_kept_seal": "seal-C-355-123",
       "current_dropped_seal": "seal-C-321-123",
-      "candidate_canonical_seal": "seal-C-321-123",
-      "candidate_canonical_cycle": "C-321",
+      "candidate_canonical_seal": "seal-C-355-123",
+      "candidate_canonical_cycle": "C-355",
       "current_kept_cycle": "C-355",
-      "canonical_sealed_at": "2026-05-24T06:20:49.977Z",
+      "canonical_sealed_at": "2026-06-28T02:00:50.430Z",
       "re_attest_sealed_at": "2026-06-28T02:00:50.430Z",
-      "reasoning": "Custodian Option A: promote earliest original live attestation over re-attestation recovery chain",
-      "decision_status": "approved_pending_zeus"
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity; C-308 fork has orphan_prev at block 42",
+      "decision_status": "approved_pending_zeus_and_eve"
     },
     {
       "block_number": 124,
       "current_kept_seal": "seal-C-356-124",
       "current_dropped_seal": "seal-C-321-124",
-      "candidate_canonical_seal": "seal-C-321-124",
-      "candidate_canonical_cycle": "C-321",
+      "candidate_canonical_seal": "seal-C-356-124",
+      "candidate_canonical_cycle": "C-356",
       "current_kept_cycle": "C-356",
-      "canonical_sealed_at": "2026-05-24T12:03:34.829Z",
+      "canonical_sealed_at": "2026-06-28T15:01:06.441Z",
       "re_attest_sealed_at": "2026-06-28T15:01:06.441Z",
-      "reasoning": "Custodian Option A: promote earliest original live attestation over re-attestation recovery chain",
-      "decision_status": "approved_pending_zeus"
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity; C-308 fork has orphan_prev at block 42",
+      "decision_status": "approved_pending_zeus_and_eve"
     },
     {
       "block_number": 125,
       "current_kept_seal": "seal-C-356-125",
       "current_dropped_seal": "seal-C-321-125",
-      "candidate_canonical_seal": "seal-C-321-125",
-      "candidate_canonical_cycle": "C-321",
+      "candidate_canonical_seal": "seal-C-356-125",
+      "candidate_canonical_cycle": "C-356",
       "current_kept_cycle": "C-356",
-      "canonical_sealed_at": "2026-05-24T12:05:40.628Z",
+      "canonical_sealed_at": "2026-06-28T15:30:50.408Z",
       "re_attest_sealed_at": "2026-06-28T15:30:50.408Z",
-      "reasoning": "Custodian Option A: promote earliest original live attestation over re-attestation recovery chain",
-      "decision_status": "approved_pending_zeus"
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity; C-308 fork has orphan_prev at block 42",
+      "decision_status": "approved_pending_zeus_and_eve"
     },
     {
       "block_number": 126,
       "current_kept_seal": "seal-C-357-126",
       "current_dropped_seal": "seal-C-321-126",
-      "candidate_canonical_seal": "seal-C-321-126",
-      "candidate_canonical_cycle": "C-321",
+      "candidate_canonical_seal": "seal-C-357-126",
+      "candidate_canonical_cycle": "C-357",
       "current_kept_cycle": "C-357",
-      "canonical_sealed_at": "2026-05-24T17:51:18.751Z",
+      "canonical_sealed_at": "2026-06-29T04:02:32.623Z",
       "re_attest_sealed_at": "2026-06-29T04:02:32.623Z",
-      "reasoning": "Custodian Option A: promote earliest original live attestation over re-attestation recovery chain",
-      "decision_status": "approved_pending_zeus"
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity; C-308 fork has orphan_prev at block 42",
+      "decision_status": "approved_pending_zeus_and_eve"
     },
     {
       "block_number": 127,
       "current_kept_seal": "seal-C-357-127",
       "current_dropped_seal": "seal-C-321-127",
-      "candidate_canonical_seal": "seal-C-321-127",
-      "candidate_canonical_cycle": "C-321",
+      "candidate_canonical_seal": "seal-C-357-127",
+      "candidate_canonical_cycle": "C-357",
       "current_kept_cycle": "C-357",
-      "canonical_sealed_at": "2026-05-24T17:55:11.668Z",
+      "canonical_sealed_at": "2026-06-29T18:00:16.481Z",
       "re_attest_sealed_at": "2026-06-29T18:00:16.481Z",
-      "reasoning": "Custodian Option A: promote earliest original live attestation over re-attestation recovery chain",
-      "decision_status": "approved_pending_zeus"
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity; C-308 fork has orphan_prev at block 42",
+      "decision_status": "approved_pending_zeus_and_eve"
     },
     {
       "block_number": 128,
       "current_kept_seal": "seal-C-357-128",
       "current_dropped_seal": "seal-C-321-128",
-      "candidate_canonical_seal": "seal-C-321-128",
-      "candidate_canonical_cycle": "C-321",
+      "candidate_canonical_seal": "seal-C-357-128",
+      "candidate_canonical_cycle": "C-357",
       "current_kept_cycle": "C-357",
-      "canonical_sealed_at": "2026-05-24T23:31:19.205Z",
+      "canonical_sealed_at": "2026-06-29T18:30:22.927Z",
       "re_attest_sealed_at": "2026-06-29T18:30:22.927Z",
-      "reasoning": "Custodian Option A: promote earliest original live attestation over re-attestation recovery chain",
-      "decision_status": "approved_pending_zeus"
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity; C-308 fork has orphan_prev at block 42",
+      "decision_status": "approved_pending_zeus_and_eve"
     },
     {
       "block_number": 129,
       "current_kept_seal": "seal-C-358-129",
       "current_dropped_seal": "seal-C-322-129",
-      "candidate_canonical_seal": "seal-C-322-129",
-      "candidate_canonical_cycle": "C-322",
+      "candidate_canonical_seal": "seal-C-358-129",
+      "candidate_canonical_cycle": "C-358",
       "current_kept_cycle": "C-358",
-      "canonical_sealed_at": "2026-05-25T05:11:19.876Z",
+      "canonical_sealed_at": "2026-06-30T07:01:33.138Z",
       "re_attest_sealed_at": "2026-06-30T07:01:33.138Z",
-      "reasoning": "Custodian Option A: promote earliest original live attestation over re-attestation recovery chain",
-      "decision_status": "approved_pending_zeus"
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity; C-308 fork has orphan_prev at block 42",
+      "decision_status": "approved_pending_zeus_and_eve"
     },
     {
       "block_number": 130,
       "current_kept_seal": "seal-C-358-130",
       "current_dropped_seal": "seal-C-322-130",
-      "candidate_canonical_seal": "seal-C-322-130",
-      "candidate_canonical_cycle": "C-322",
+      "candidate_canonical_seal": "seal-C-358-130",
+      "candidate_canonical_cycle": "C-358",
       "current_kept_cycle": "C-358",
-      "canonical_sealed_at": "2026-05-25T14:02:19.283Z",
+      "canonical_sealed_at": "2026-06-30T20:01:28.988Z",
       "re_attest_sealed_at": "2026-06-30T20:01:28.988Z",
-      "reasoning": "Custodian Option A: promote earliest original live attestation over re-attestation recovery chain",
-      "decision_status": "approved_pending_zeus"
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity; C-308 fork has orphan_prev at block 42",
+      "decision_status": "approved_pending_zeus_and_eve"
     },
     {
       "block_number": 131,
       "current_kept_seal": "seal-C-358-131",
       "current_dropped_seal": "seal-C-322-131",
-      "candidate_canonical_seal": "seal-C-322-131",
-      "candidate_canonical_cycle": "C-322",
+      "candidate_canonical_seal": "seal-C-358-131",
+      "candidate_canonical_cycle": "C-358",
       "current_kept_cycle": "C-358",
-      "canonical_sealed_at": "2026-05-25T19:50:35.856Z",
+      "canonical_sealed_at": "2026-06-30T20:30:08.388Z",
       "re_attest_sealed_at": "2026-06-30T20:30:08.388Z",
-      "reasoning": "Custodian Option A: promote earliest original live attestation over re-attestation recovery chain",
-      "decision_status": "approved_pending_zeus"
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity; C-308 fork has orphan_prev at block 42",
+      "decision_status": "approved_pending_zeus_and_eve"
     }
   ],
   "summary": {
@@ -2137,7 +2267,11 @@
       2
     ],
     "clean_blocks": 71,
-    "re_attestation_pattern_match": 125,
-    "kept_cycle_later_than_dropped": 125
+    "segment_a_blocks": "1-33",
+    "segment_b_blocks": "42-131",
+    "segment_a_promote_dropped": 33,
+    "segment_b_promote_kept": 90,
+    "segment_a_later_kept_cycle_pairs": 35,
+    "segment_b_later_kept_cycle_pairs": 90
   }
 }
