@@ -1,7 +1,7 @@
 {
   "current_cycle": "C-401",
   "date": "2026-08-12",
-  "gi": 0.75,
+  "gi": 0.9,
   "mode": "yellow",
   "canonical_domain": "https://mobius-substrate.com",
   "handbook": "https://handbook.mobius-substrate.com",
@@ -10,11 +10,11 @@
   "snapshot": "https://terminal.mobius-substrate.com/api/terminal/snapshot",
   "vault_status": "https://terminal.mobius-substrate.com/api/vault/status",
   "vault_seals": "https://terminal.mobius-substrate.com/api/vault/seal",
-  "last_updated": "2026-08-12T11:28:00Z",
-  "previous_cycle": "C-400",
-  "updated_by": "c401-federation-scan-sync",
+  "last_updated": "2026-08-12T05:43:13Z",
+  "previous_cycle": "C-358",
+  "updated_by": "c360-pr-b-constitutional",
   "vault": {
-    "in_progress_balance": 23.02,
+    "in_progress_balance": 32.13,
     "tranche_target": 50,
     "hash_coverage_pct": 100,
     "seals_count": 319,
@@ -62,5 +62,5 @@
   "doc_version": "2.2.0",
   "last_state_snapshot": "C-401",
   "next_state_snapshot_expected": "C-361",
-  "notes": "C-401 federation scan sync. seals_count=319 examined; indexed_seal_count=360. GI=0.75 live primary. Track R promotion unauthorized pending ZEUS+EVE. open_flags require custodian revalidation."
+  "notes": "Auto-sync by mobius-bot (deterministic, no LLM). Advanced C-400 -> C-401. Ledger pulse fetched; GI not updated (unreachable, absent, or null in pulse)."
 }
