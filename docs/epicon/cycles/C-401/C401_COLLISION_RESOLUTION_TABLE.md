@@ -77,6 +77,16 @@ No promotion entries in `block_canonical`. Existing sole attestations stand.
 - [ ] Custodian sign-off (Option A revised — **recorded 2026-08-12**)
 - [ ] EPICON ledger attestation
 - [ ] Operator executes `C401_TRACK_R_PROMOTION_SOP.md`
-- [ ] Post-repair audit: chain continuity + zero hash-divergent pairs
+- [ ] Post-repair audit: **segment-local** continuity + zero hash-divergent pairs (full 1–194 canon = step 8)
+
+## Witness timestamp fields (JSON)
+
+Each collision row preserves both C-397 witness timestamps:
+
+- `witness_kept_sealed_at` — kept seal time (always from witness)
+- `witness_dropped_sealed_at` — dropped seal time (always from witness)
+- `canonical_sealed_at` — promoted seal only (Segment A = dropped; Segment B = kept)
+
+The deprecated `re_attest_sealed_at` field was removed to avoid Segment B collisions.
 
 **No KV mutation from this document alone.**
