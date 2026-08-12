@@ -1,10 +1,10 @@
 {
   "repo": "kaizencycle/Mobius-Substrate",
-  "generated_at": "2026-08-12T13:39:21Z",
-  "open_pr_count": 9,
+  "generated_at": "2026-08-12T19:15:45Z",
+  "open_pr_count": 8,
   "by_severity": {
     "high": 4,
-    "medium": 1,
+    "medium": 0,
     "low": 0,
     "unknown": 4
   },
@@ -76,25 +76,6 @@
       "has_debt": false,
       "severity": "high",
       "justification_hash": "",
-      "checks": {
-        "epicon": "unknown",
-        "merge_gate": "unknown"
-      }
-    },
-    {
-      "pr": 435,
-      "title": "docs(C-401): federation scan report + cycle.json canon sync",
-      "url": "https://github.com/kaizencycle/Mobius-Substrate/pull/435",
-      "author": "kaizencycle",
-      "updated_at": "2026-08-12T11:31:17Z",
-      "created_at": "2026-08-12T11:29:57Z",
-      "labels": [
-        "scope:docs"
-      ],
-      "mode": "normal",
-      "has_debt": false,
-      "severity": "medium",
-      "justification_hash": "7c812756c0ffee449cc854c22c033d14af9b111a65947784c2e07fe0ca7c1f77",
       "checks": {
         "epicon": "unknown",
         "merge_gate": "unknown"
