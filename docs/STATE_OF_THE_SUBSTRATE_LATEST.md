@@ -1,6 +1,6 @@
 # State of the Substrate — Latest
 
-**Cycle:** C-398  
+**Cycle:** C-400  
 **Updated:** 2026-08-09  
 **GI:** ~0.90 · yellow *(editorial; use Live strip below for Terminal snapshot)*  
 **Custodian:** Michael (kaizencycle)
