@@ -1,0 +1,2553 @@
+{
+  "cycle": "C-401",
+  "phase": "track_r_lineage_reconciliation",
+  "document_seal": "C-401-COLLISION-RES-001",
+  "prepared_date": "2026-08-12T02:30:00Z",
+  "prepared_by": "ATLAS",
+  "custodian_decision": "APPROVE_OPTION_A_REVISED",
+  "custodian_decision_note": "component_coherent_hybrid with documented segment boundaries at 41->42 and 131->132",
+  "strategy": "component_coherent_hybrid",
+  "strategy_description": "Segment A (1-33): promote dropped originals. Segment B (42-131): promote kept component-1 fork. Clean 34-41 and 132-194 unchanged. Full single-chain continuity 1-194 is NOT claimed until Track R step 8.",
+  "approval_status": "pending_zeus_and_eve_attestation",
+  "source_witness": "docs/epicon/cycles/C-397/C397_RESERVE_BLOCK_COLLISION_WITNESS.json",
+  "lineage_anchors": {
+    "component_1": "C-332-001 -> C-358-131 (blocks 1-131)",
+    "component_4": "C-308-042 -> C-332-194 (blocks 42-194; orphan_prev at 42)",
+    "clean_blocks_component_4_only": "132-194 (no collision; sole attestations on component-4 fork)",
+    "promoted_spine_segment_a": "blocks 1-33 (component-1 originals)",
+    "promoted_spine_segment_b": "blocks 42-131 (component-1 kept fork; tip seal-C-358-131)",
+    "boundary_risks": [
+      {
+        "edge": "41->42",
+        "issue": "C-308-042 orphan_prev if component-4 dropped promoted at 42",
+        "mitigation": "Segment B promotes kept fork at block 42 (seal-C-339-042)"
+      },
+      {
+        "edge": "131->132",
+        "issue": "Segment B tip (C-358-131, component-1) may not prev-link to clean block 132 (component-4 only, C-332-194 chain)",
+        "mitigation": "Document open boundary; step 7 audit verifies segment-local continuity only; step 8 resolves canonical_reserve_blocks and .dat regeneration"
+      }
+    ]
+  },
+  "continuity_claim": {
+    "single_chain_1_194": false,
+    "segment_local_continuity_required": [
+      "1-33",
+      "34-41",
+      "42-131",
+      "132-194"
+    ],
+    "open_boundaries": [
+      "41->42",
+      "131->132"
+    ],
+    "step_8_required_for_full_canon": true
+  },
+  "block_canonical": {
+    "1": {
+      "seal_id": "seal-C-332-001",
+      "cycle": "C-332",
+      "sealed_at": "2026-06-05T04:51:24.579Z"
+    },
+    "2": {
+      "seal_id": "seal-C-333-002",
+      "cycle": "C-333",
+      "sealed_at": "2026-06-05T10:04:35.629Z"
+    },
+    "3": {
+      "seal_id": "seal-C-333-003",
+      "cycle": "C-333",
+      "sealed_at": "2026-06-05T15:50:53.934Z"
+    },
+    "4": {
+      "seal_id": "seal-C-333-004",
+      "cycle": "C-333",
+      "sealed_at": "2026-06-05T21:40:54.262Z"
+    },
+    "5": {
+      "seal_id": "seal-C-333-005",
+      "cycle": "C-333",
+      "sealed_at": "2026-06-05T21:45:30.855Z"
+    },
+    "6": {
+      "seal_id": "seal-C-333-006",
+      "cycle": "C-333",
+      "sealed_at": "2026-06-06T03:10:53.867Z"
+    },
+    "7": {
+      "seal_id": "seal-C-334-007",
+      "cycle": "C-334",
+      "sealed_at": "2026-06-06T09:00:54.279Z"
+    },
+    "8": {
+      "seal_id": "seal-C-334-008",
+      "cycle": "C-334",
+      "sealed_at": "2026-06-06T14:50:54.490Z"
+    },
+    "9": {
+      "seal_id": "seal-C-334-009",
+      "cycle": "C-334",
+      "sealed_at": "2026-06-06T14:55:30.771Z"
+    },
+    "10": {
+      "seal_id": "seal-C-334-010",
+      "cycle": "C-334",
+      "sealed_at": "2026-06-06T20:20:53.990Z"
+    },
+    "11": {
+      "seal_id": "seal-C-334-011",
+      "cycle": "C-334",
+      "sealed_at": "2026-06-07T02:10:46.942Z"
+    },
+    "12": {
+      "seal_id": "seal-C-335-012",
+      "cycle": "C-335",
+      "sealed_at": "2026-06-07T08:10:49.468Z"
+    },
+    "13": {
+      "seal_id": "seal-C-335-013",
+      "cycle": "C-335",
+      "sealed_at": "2026-06-07T08:15:30.664Z"
+    },
+    "14": {
+      "seal_id": "seal-C-335-014",
+      "cycle": "C-335",
+      "sealed_at": "2026-06-07T14:02:30.455Z"
+    },
+    "15": {
+      "seal_id": "seal-C-335-015",
+      "cycle": "C-335",
+      "sealed_at": "2026-06-07T20:02:05.542Z"
+    },
+    "16": {
+      "seal_id": "seal-C-335-016",
+      "cycle": "C-335",
+      "sealed_at": "2026-06-08T01:50:53.790Z"
+    },
+    "17": {
+      "seal_id": "seal-C-336-017",
+      "cycle": "C-336",
+      "sealed_at": "2026-06-08T08:01:30.547Z"
+    },
+    "18": {
+      "seal_id": "seal-C-336-018",
+      "cycle": "C-336",
+      "sealed_at": "2026-06-08T08:05:30.581Z"
+    },
+    "19": {
+      "seal_id": "seal-C-336-019",
+      "cycle": "C-336",
+      "sealed_at": "2026-06-08T14:01:51.686Z"
+    },
+    "20": {
+      "seal_id": "seal-C-336-020",
+      "cycle": "C-336",
+      "sealed_at": "2026-06-08T14:05:30.869Z"
+    },
+    "21": {
+      "seal_id": "seal-C-336-021",
+      "cycle": "C-336",
+      "sealed_at": "2026-06-08T20:04:15.848Z"
+    },
+    "22": {
+      "seal_id": "seal-C-336-022",
+      "cycle": "C-336",
+      "sealed_at": "2026-06-08T20:10:17.791Z"
+    },
+    "23": {
+      "seal_id": "seal-C-336-023",
+      "cycle": "C-336",
+      "sealed_at": "2026-06-09T02:03:55.998Z"
+    },
+    "24": {
+      "seal_id": "seal-C-336-024",
+      "cycle": "C-336",
+      "sealed_at": "2026-06-09T02:05:17.391Z"
+    },
+    "25": {
+      "seal_id": "seal-C-337-025",
+      "cycle": "C-337",
+      "sealed_at": "2026-06-09T08:01:02.626Z"
+    },
+    "26": {
+      "seal_id": "seal-C-337-026",
+      "cycle": "C-337",
+      "sealed_at": "2026-06-09T08:05:17.420Z"
+    },
+    "27": {
+      "seal_id": "seal-C-337-027",
+      "cycle": "C-337",
+      "sealed_at": "2026-06-09T14:01:01.677Z"
+    },
+    "28": {
+      "seal_id": "seal-C-337-028",
+      "cycle": "C-337",
+      "sealed_at": "2026-06-09T19:51:14.427Z"
+    },
+    "29": {
+      "seal_id": "seal-C-337-029",
+      "cycle": "C-337",
+      "sealed_at": "2026-06-10T01:31:14.172Z"
+    },
+    "30": {
+      "seal_id": "seal-C-337-030",
+      "cycle": "C-337",
+      "sealed_at": "2026-06-10T01:35:10.630Z"
+    },
+    "31": {
+      "seal_id": "seal-C-338-031",
+      "cycle": "C-338",
+      "sealed_at": "2026-06-10T07:11:14.099Z"
+    },
+    "32": {
+      "seal_id": "seal-C-338-032",
+      "cycle": "C-338",
+      "sealed_at": "2026-06-10T07:15:10.847Z"
+    },
+    "33": {
+      "seal_id": "seal-C-338-033",
+      "cycle": "C-338",
+      "sealed_at": "2026-06-10T13:11:14.293Z"
+    },
+    "42": {
+      "seal_id": "seal-C-339-042",
+      "cycle": "C-339",
+      "sealed_at": "2026-06-12T00:55:34.653Z"
+    },
+    "43": {
+      "seal_id": "seal-C-340-043",
+      "cycle": "C-340",
+      "sealed_at": "2026-06-12T07:41:02.617Z"
+    },
+    "44": {
+      "seal_id": "seal-C-340-044",
+      "cycle": "C-340",
+      "sealed_at": "2026-06-12T07:45:34.646Z"
+    },
+    "45": {
+      "seal_id": "seal-C-340-045",
+      "cycle": "C-340",
+      "sealed_at": "2026-06-12T14:11:02.352Z"
+    },
+    "46": {
+      "seal_id": "seal-C-340-046",
+      "cycle": "C-340",
+      "sealed_at": "2026-06-12T20:51:01.803Z"
+    },
+    "47": {
+      "seal_id": "seal-C-340-047",
+      "cycle": "C-340",
+      "sealed_at": "2026-06-13T03:20:45.921Z"
+    },
+    "48": {
+      "seal_id": "seal-C-340-048",
+      "cycle": "C-340",
+      "sealed_at": "2026-06-13T03:25:17.736Z"
+    },
+    "49": {
+      "seal_id": "seal-C-341-049",
+      "cycle": "C-341",
+      "sealed_at": "2026-06-13T09:50:46.565Z"
+    },
+    "50": {
+      "seal_id": "seal-C-341-050",
+      "cycle": "C-341",
+      "sealed_at": "2026-06-13T16:40:46.379Z"
+    },
+    "51": {
+      "seal_id": "seal-C-341-051",
+      "cycle": "C-341",
+      "sealed_at": "2026-06-13T16:45:17.691Z"
+    },
+    "52": {
+      "seal_id": "seal-C-341-052",
+      "cycle": "C-341",
+      "sealed_at": "2026-06-13T23:10:46.250Z"
+    },
+    "53": {
+      "seal_id": "seal-C-341-053",
+      "cycle": "C-341",
+      "sealed_at": "2026-06-14T05:50:46.048Z"
+    },
+    "54": {
+      "seal_id": "seal-C-342-054",
+      "cycle": "C-342",
+      "sealed_at": "2026-06-14T12:20:46.034Z"
+    },
+    "55": {
+      "seal_id": "seal-C-342-055",
+      "cycle": "C-342",
+      "sealed_at": "2026-06-14T19:10:45.867Z"
+    },
+    "56": {
+      "seal_id": "seal-C-342-056",
+      "cycle": "C-342",
+      "sealed_at": "2026-06-14T19:15:17.716Z"
+    },
+    "57": {
+      "seal_id": "seal-C-342-057",
+      "cycle": "C-342",
+      "sealed_at": "2026-06-15T01:40:46.162Z"
+    },
+    "58": {
+      "seal_id": "seal-C-342-058",
+      "cycle": "C-342",
+      "sealed_at": "2026-06-15T01:45:17.638Z"
+    },
+    "59": {
+      "seal_id": "seal-C-343-059",
+      "cycle": "C-343",
+      "sealed_at": "2026-06-15T08:20:46.425Z"
+    },
+    "60": {
+      "seal_id": "seal-C-343-060",
+      "cycle": "C-343",
+      "sealed_at": "2026-06-15T08:25:17.850Z"
+    },
+    "61": {
+      "seal_id": "seal-C-343-061",
+      "cycle": "C-343",
+      "sealed_at": "2026-06-15T15:00:46.325Z"
+    },
+    "62": {
+      "seal_id": "seal-C-343-062",
+      "cycle": "C-343",
+      "sealed_at": "2026-06-15T15:05:18.047Z"
+    },
+    "63": {
+      "seal_id": "seal-C-343-063",
+      "cycle": "C-343",
+      "sealed_at": "2026-06-15T21:01:36.768Z"
+    },
+    "64": {
+      "seal_id": "seal-C-343-064",
+      "cycle": "C-343",
+      "sealed_at": "2026-06-16T03:00:53.611Z"
+    },
+    "65": {
+      "seal_id": "seal-C-343-065",
+      "cycle": "C-343",
+      "sealed_at": "2026-06-16T03:05:19.327Z"
+    },
+    "66": {
+      "seal_id": "seal-C-344-066",
+      "cycle": "C-344",
+      "sealed_at": "2026-06-16T08:50:52.236Z"
+    },
+    "67": {
+      "seal_id": "seal-C-344-067",
+      "cycle": "C-344",
+      "sealed_at": "2026-06-16T14:30:53.008Z"
+    },
+    "68": {
+      "seal_id": "seal-C-344-068",
+      "cycle": "C-344",
+      "sealed_at": "2026-06-16T14:35:19.694Z"
+    },
+    "69": {
+      "seal_id": "seal-C-344-069",
+      "cycle": "C-344",
+      "sealed_at": "2026-06-16T20:30:52.458Z"
+    },
+    "70": {
+      "seal_id": "seal-C-344-070",
+      "cycle": "C-344",
+      "sealed_at": "2026-06-16T20:35:19.578Z"
+    },
+    "71": {
+      "seal_id": "seal-C-344-071",
+      "cycle": "C-344",
+      "sealed_at": "2026-06-17T02:04:36.914Z"
+    },
+    "72": {
+      "seal_id": "seal-C-345-072",
+      "cycle": "C-345",
+      "sealed_at": "2026-06-17T07:50:54.008Z"
+    },
+    "73": {
+      "seal_id": "seal-C-345-073",
+      "cycle": "C-345",
+      "sealed_at": "2026-06-17T13:30:53.341Z"
+    },
+    "74": {
+      "seal_id": "seal-C-345-074",
+      "cycle": "C-345",
+      "sealed_at": "2026-06-17T19:20:53.889Z"
+    },
+    "75": {
+      "seal_id": "seal-C-345-075",
+      "cycle": "C-345",
+      "sealed_at": "2026-06-17T19:25:08.701Z"
+    },
+    "76": {
+      "seal_id": "seal-C-345-076",
+      "cycle": "C-345",
+      "sealed_at": "2026-06-18T00:50:53.947Z"
+    },
+    "77": {
+      "seal_id": "seal-C-346-077",
+      "cycle": "C-346",
+      "sealed_at": "2026-06-18T06:40:53.413Z"
+    },
+    "78": {
+      "seal_id": "seal-C-346-078",
+      "cycle": "C-346",
+      "sealed_at": "2026-06-18T12:30:52.589Z"
+    },
+    "79": {
+      "seal_id": "seal-C-346-079",
+      "cycle": "C-346",
+      "sealed_at": "2026-06-18T18:20:53.372Z"
+    },
+    "80": {
+      "seal_id": "seal-C-346-080",
+      "cycle": "C-346",
+      "sealed_at": "2026-06-19T00:10:53.367Z"
+    },
+    "81": {
+      "seal_id": "seal-C-346-081",
+      "cycle": "C-346",
+      "sealed_at": "2026-06-19T00:15:09.086Z"
+    },
+    "82": {
+      "seal_id": "seal-C-347-082",
+      "cycle": "C-347",
+      "sealed_at": "2026-06-19T06:03:51.210Z"
+    },
+    "83": {
+      "seal_id": "seal-C-347-083",
+      "cycle": "C-347",
+      "sealed_at": "2026-06-19T12:03:17.532Z"
+    },
+    "84": {
+      "seal_id": "seal-C-347-084",
+      "cycle": "C-347",
+      "sealed_at": "2026-06-19T18:03:17.560Z"
+    },
+    "85": {
+      "seal_id": "seal-C-347-085",
+      "cycle": "C-347",
+      "sealed_at": "2026-06-20T00:00:53.663Z"
+    },
+    "86": {
+      "seal_id": "seal-C-347-086",
+      "cycle": "C-347",
+      "sealed_at": "2026-06-20T00:05:08.729Z"
+    },
+    "87": {
+      "seal_id": "seal-C-348-087",
+      "cycle": "C-348",
+      "sealed_at": "2026-06-20T05:40:53.153Z"
+    },
+    "88": {
+      "seal_id": "seal-C-348-088",
+      "cycle": "C-348",
+      "sealed_at": "2026-06-20T05:45:08.597Z"
+    },
+    "89": {
+      "seal_id": "seal-C-348-089",
+      "cycle": "C-348",
+      "sealed_at": "2026-06-20T11:20:53.021Z"
+    },
+    "90": {
+      "seal_id": "seal-C-348-090",
+      "cycle": "C-348",
+      "sealed_at": "2026-06-20T11:25:08.816Z"
+    },
+    "91": {
+      "seal_id": "seal-C-348-091",
+      "cycle": "C-348",
+      "sealed_at": "2026-06-20T17:00:53.533Z"
+    },
+    "92": {
+      "seal_id": "seal-C-348-092",
+      "cycle": "C-348",
+      "sealed_at": "2026-06-20T22:50:52.653Z"
+    },
+    "93": {
+      "seal_id": "seal-C-349-093",
+      "cycle": "C-349",
+      "sealed_at": "2026-06-21T04:20:53.177Z"
+    },
+    "94": {
+      "seal_id": "seal-C-349-094",
+      "cycle": "C-349",
+      "sealed_at": "2026-06-21T10:03:02.681Z"
+    },
+    "95": {
+      "seal_id": "seal-C-349-095",
+      "cycle": "C-349",
+      "sealed_at": "2026-06-21T15:40:52.961Z"
+    },
+    "96": {
+      "seal_id": "seal-C-349-096",
+      "cycle": "C-349",
+      "sealed_at": "2026-06-21T15:45:08.823Z"
+    },
+    "97": {
+      "seal_id": "seal-C-349-097",
+      "cycle": "C-349",
+      "sealed_at": "2026-06-21T21:20:53.644Z"
+    },
+    "98": {
+      "seal_id": "seal-C-349-098",
+      "cycle": "C-349",
+      "sealed_at": "2026-06-21T21:25:08.633Z"
+    },
+    "99": {
+      "seal_id": "seal-C-349-099",
+      "cycle": "C-349",
+      "sealed_at": "2026-06-22T03:02:20.930Z"
+    },
+    "100": {
+      "seal_id": "seal-C-350-100",
+      "cycle": "C-350",
+      "sealed_at": "2026-06-22T08:50:53.171Z"
+    },
+    "101": {
+      "seal_id": "seal-C-350-101",
+      "cycle": "C-350",
+      "sealed_at": "2026-06-22T08:55:08.583Z"
+    },
+    "102": {
+      "seal_id": "seal-C-350-102",
+      "cycle": "C-350",
+      "sealed_at": "2026-06-22T14:20:53.233Z"
+    },
+    "103": {
+      "seal_id": "seal-C-350-103",
+      "cycle": "C-350",
+      "sealed_at": "2026-06-22T20:02:12.405Z"
+    },
+    "104": {
+      "seal_id": "seal-C-350-104",
+      "cycle": "C-350",
+      "sealed_at": "2026-06-22T20:05:08.590Z"
+    },
+    "105": {
+      "seal_id": "seal-C-350-105",
+      "cycle": "C-350",
+      "sealed_at": "2026-06-23T01:40:53.453Z"
+    },
+    "106": {
+      "seal_id": "seal-C-351-106",
+      "cycle": "C-351",
+      "sealed_at": "2026-06-23T07:30:52.942Z"
+    },
+    "107": {
+      "seal_id": "seal-C-351-107",
+      "cycle": "C-351",
+      "sealed_at": "2026-06-23T07:35:08.639Z"
+    },
+    "108": {
+      "seal_id": "seal-C-351-108",
+      "cycle": "C-351",
+      "sealed_at": "2026-06-23T13:10:53.140Z"
+    },
+    "109": {
+      "seal_id": "seal-C-351-109",
+      "cycle": "C-351",
+      "sealed_at": "2026-06-23T13:15:08.771Z"
+    },
+    "110": {
+      "seal_id": "seal-C-351-110",
+      "cycle": "C-351",
+      "sealed_at": "2026-06-23T19:00:53.576Z"
+    },
+    "111": {
+      "seal_id": "seal-C-351-111",
+      "cycle": "C-351",
+      "sealed_at": "2026-06-24T00:50:52.863Z"
+    },
+    "112": {
+      "seal_id": "seal-C-351-112",
+      "cycle": "C-351",
+      "sealed_at": "2026-06-24T00:55:08.738Z"
+    },
+    "113": {
+      "seal_id": "seal-C-352-113",
+      "cycle": "C-352",
+      "sealed_at": "2026-06-24T06:40:53.743Z"
+    },
+    "114": {
+      "seal_id": "seal-C-352-114",
+      "cycle": "C-352",
+      "sealed_at": "2026-06-24T12:20:53.502Z"
+    },
+    "115": {
+      "seal_id": "seal-C-352-115",
+      "cycle": "C-352",
+      "sealed_at": "2026-06-24T18:01:51.429Z"
+    },
+    "116": {
+      "seal_id": "seal-C-352-116",
+      "cycle": "C-352",
+      "sealed_at": "2026-06-24T18:05:08.629Z"
+    },
+    "117": {
+      "seal_id": "seal-C-352-117",
+      "cycle": "C-352",
+      "sealed_at": "2026-06-24T23:50:48.657Z"
+    },
+    "118": {
+      "seal_id": "seal-C-352-118",
+      "cycle": "C-352",
+      "sealed_at": "2026-06-25T05:50:48.581Z"
+    },
+    "119": {
+      "seal_id": "seal-C-352-119",
+      "cycle": "C-352",
+      "sealed_at": "2026-06-25T05:55:19.594Z"
+    },
+    "120": {
+      "seal_id": "seal-C-353-120",
+      "cycle": "C-353",
+      "sealed_at": "2026-06-25T11:50:48.649Z"
+    },
+    "121": {
+      "seal_id": "seal-C-353-121",
+      "cycle": "C-353",
+      "sealed_at": "2026-06-25T17:20:48.962Z"
+    },
+    "122": {
+      "seal_id": "seal-C-355-122",
+      "cycle": "C-355",
+      "sealed_at": "2026-06-28T01:31:06.671Z"
+    },
+    "123": {
+      "seal_id": "seal-C-355-123",
+      "cycle": "C-355",
+      "sealed_at": "2026-06-28T02:00:50.430Z"
+    },
+    "124": {
+      "seal_id": "seal-C-356-124",
+      "cycle": "C-356",
+      "sealed_at": "2026-06-28T15:01:06.441Z"
+    },
+    "125": {
+      "seal_id": "seal-C-356-125",
+      "cycle": "C-356",
+      "sealed_at": "2026-06-28T15:30:50.408Z"
+    },
+    "126": {
+      "seal_id": "seal-C-357-126",
+      "cycle": "C-357",
+      "sealed_at": "2026-06-29T04:02:32.623Z"
+    },
+    "127": {
+      "seal_id": "seal-C-357-127",
+      "cycle": "C-357",
+      "sealed_at": "2026-06-29T18:00:16.481Z"
+    },
+    "128": {
+      "seal_id": "seal-C-357-128",
+      "cycle": "C-357",
+      "sealed_at": "2026-06-29T18:30:22.927Z"
+    },
+    "129": {
+      "seal_id": "seal-C-358-129",
+      "cycle": "C-358",
+      "sealed_at": "2026-06-30T07:01:33.138Z"
+    },
+    "130": {
+      "seal_id": "seal-C-358-130",
+      "cycle": "C-358",
+      "sealed_at": "2026-06-30T20:01:28.988Z"
+    },
+    "131": {
+      "seal_id": "seal-C-358-131",
+      "cycle": "C-358",
+      "sealed_at": "2026-06-30T20:30:08.388Z"
+    }
+  },
+  "collisions": [
+    {
+      "block_number": 1,
+      "current_kept_seal": "seal-C-372-001",
+      "current_dropped_seal": "seal-C-332-001",
+      "candidate_canonical_seal": "seal-C-332-001",
+      "candidate_canonical_cycle": "C-332",
+      "current_kept_cycle": "C-372",
+      "current_dropped_cycle": "C-332",
+      "witness_kept_sealed_at": "2026-07-14T04:01:41.168Z",
+      "witness_dropped_sealed_at": "2026-06-05T04:51:24.579Z",
+      "canonical_sealed_at": "2026-06-05T04:51:24.579Z",
+      "resolution_role": "promote_dropped",
+      "reasoning": "Segment A (blocks 1-33): promote original live attestation over C-359-C-371 recovery fork",
+      "decision_status": "approved_pending_zeus_and_eve"
+    },
+    {
+      "block_number": 1,
+      "current_kept_seal": "seal-C-372-001",
+      "current_dropped_seal": "seal-C-359-001",
+      "candidate_canonical_seal": "seal-C-332-001",
+      "candidate_canonical_cycle": "C-332",
+      "current_kept_cycle": "C-372",
+      "current_dropped_cycle": "C-359",
+      "witness_kept_sealed_at": "2026-07-14T04:01:41.168Z",
+      "witness_dropped_sealed_at": "2026-07-01T09:02:18.052Z",
+      "canonical_sealed_at": "2026-06-05T04:51:24.579Z",
+      "resolution_role": "promote_dropped",
+      "reasoning": "Segment A (blocks 1-33): promote original live attestation over C-359-C-371 recovery fork",
+      "decision_status": "approved_pending_zeus_and_eve"
+    },
+    {
+      "block_number": 2,
+      "current_kept_seal": "seal-C-372-002",
+      "current_dropped_seal": "seal-C-333-002",
+      "candidate_canonical_seal": "seal-C-333-002",
+      "candidate_canonical_cycle": "C-333",
+      "current_kept_cycle": "C-372",
+      "current_dropped_cycle": "C-333",
+      "witness_kept_sealed_at": "2026-07-14T15:01:20.476Z",
+      "witness_dropped_sealed_at": "2026-06-05T10:04:35.629Z",
+      "canonical_sealed_at": "2026-06-05T10:04:35.629Z",
+      "resolution_role": "promote_dropped",
+      "reasoning": "Segment A (blocks 1-33): promote original live attestation over C-359-C-371 recovery fork",
+      "decision_status": "approved_pending_zeus_and_eve"
+    },
+    {
+      "block_number": 2,
+      "current_kept_seal": "seal-C-372-002",
+      "current_dropped_seal": "seal-C-359-002",
+      "candidate_canonical_seal": "seal-C-333-002",
+      "candidate_canonical_cycle": "C-333",
+      "current_kept_cycle": "C-372",
+      "current_dropped_cycle": "C-359",
+      "witness_kept_sealed_at": "2026-07-14T15:01:20.476Z",
+      "witness_dropped_sealed_at": "2026-07-01T09:30:45.299Z",
+      "canonical_sealed_at": "2026-06-05T10:04:35.629Z",
+      "resolution_role": "promote_dropped",
+      "reasoning": "Segment A (blocks 1-33): promote original live attestation over C-359-C-371 recovery fork",
+      "decision_status": "approved_pending_zeus_and_eve"
+    },
+    {
+      "block_number": 3,
+      "current_kept_seal": "seal-C-359-003",
+      "current_dropped_seal": "seal-C-333-003",
+      "candidate_canonical_seal": "seal-C-333-003",
+      "candidate_canonical_cycle": "C-333",
+      "current_kept_cycle": "C-359",
+      "current_dropped_cycle": "C-333",
+      "witness_kept_sealed_at": "2026-07-01T22:31:12.647Z",
+      "witness_dropped_sealed_at": "2026-06-05T15:50:53.934Z",
+      "canonical_sealed_at": "2026-06-05T15:50:53.934Z",
+      "resolution_role": "promote_dropped",
+      "reasoning": "Segment A (blocks 1-33): promote original live attestation over C-359-C-371 recovery fork",
+      "decision_status": "approved_pending_zeus_and_eve"
+    },
+    {
+      "block_number": 4,
+      "current_kept_seal": "seal-C-360-004",
+      "current_dropped_seal": "seal-C-333-004",
+      "candidate_canonical_seal": "seal-C-333-004",
+      "candidate_canonical_cycle": "C-333",
+      "current_kept_cycle": "C-360",
+      "current_dropped_cycle": "C-333",
+      "witness_kept_sealed_at": "2026-07-02T12:01:49.776Z",
+      "witness_dropped_sealed_at": "2026-06-05T21:40:54.262Z",
+      "canonical_sealed_at": "2026-06-05T21:40:54.262Z",
+      "resolution_role": "promote_dropped",
+      "reasoning": "Segment A (blocks 1-33): promote original live attestation over C-359-C-371 recovery fork",
+      "decision_status": "approved_pending_zeus_and_eve"
+    },
+    {
+      "block_number": 5,
+      "current_kept_seal": "seal-C-360-005",
+      "current_dropped_seal": "seal-C-333-005",
+      "candidate_canonical_seal": "seal-C-333-005",
+      "candidate_canonical_cycle": "C-333",
+      "current_kept_cycle": "C-360",
+      "current_dropped_cycle": "C-333",
+      "witness_kept_sealed_at": "2026-07-02T12:30:45.247Z",
+      "witness_dropped_sealed_at": "2026-06-05T21:45:30.855Z",
+      "canonical_sealed_at": "2026-06-05T21:45:30.855Z",
+      "resolution_role": "promote_dropped",
+      "reasoning": "Segment A (blocks 1-33): promote original live attestation over C-359-C-371 recovery fork",
+      "decision_status": "approved_pending_zeus_and_eve"
+    },
+    {
+      "block_number": 6,
+      "current_kept_seal": "seal-C-360-006",
+      "current_dropped_seal": "seal-C-333-006",
+      "candidate_canonical_seal": "seal-C-333-006",
+      "candidate_canonical_cycle": "C-333",
+      "current_kept_cycle": "C-360",
+      "current_dropped_cycle": "C-333",
+      "witness_kept_sealed_at": "2026-07-03T01:31:13.274Z",
+      "witness_dropped_sealed_at": "2026-06-06T03:10:53.867Z",
+      "canonical_sealed_at": "2026-06-06T03:10:53.867Z",
+      "resolution_role": "promote_dropped",
+      "reasoning": "Segment A (blocks 1-33): promote original live attestation over C-359-C-371 recovery fork",
+      "decision_status": "approved_pending_zeus_and_eve"
+    },
+    {
+      "block_number": 7,
+      "current_kept_seal": "seal-C-361-007",
+      "current_dropped_seal": "seal-C-334-007",
+      "candidate_canonical_seal": "seal-C-334-007",
+      "candidate_canonical_cycle": "C-334",
+      "current_kept_cycle": "C-361",
+      "current_dropped_cycle": "C-334",
+      "witness_kept_sealed_at": "2026-07-03T15:01:12.809Z",
+      "witness_dropped_sealed_at": "2026-06-06T09:00:54.279Z",
+      "canonical_sealed_at": "2026-06-06T09:00:54.279Z",
+      "resolution_role": "promote_dropped",
+      "reasoning": "Segment A (blocks 1-33): promote original live attestation over C-359-C-371 recovery fork",
+      "decision_status": "approved_pending_zeus_and_eve"
+    },
+    {
+      "block_number": 8,
+      "current_kept_seal": "seal-C-361-008",
+      "current_dropped_seal": "seal-C-334-008",
+      "candidate_canonical_seal": "seal-C-334-008",
+      "candidate_canonical_cycle": "C-334",
+      "current_kept_cycle": "C-361",
+      "current_dropped_cycle": "C-334",
+      "witness_kept_sealed_at": "2026-07-03T15:30:45.040Z",
+      "witness_dropped_sealed_at": "2026-06-06T14:50:54.490Z",
+      "canonical_sealed_at": "2026-06-06T14:50:54.490Z",
+      "resolution_role": "promote_dropped",
+      "reasoning": "Segment A (blocks 1-33): promote original live attestation over C-359-C-371 recovery fork",
+      "decision_status": "approved_pending_zeus_and_eve"
+    },
+    {
+      "block_number": 9,
+      "current_kept_seal": "seal-C-362-009",
+      "current_dropped_seal": "seal-C-334-009",
+      "candidate_canonical_seal": "seal-C-334-009",
+      "candidate_canonical_cycle": "C-334",
+      "current_kept_cycle": "C-362",
+      "current_dropped_cycle": "C-334",
+      "witness_kept_sealed_at": "2026-07-04T04:30:46.963Z",
+      "witness_dropped_sealed_at": "2026-06-06T14:55:30.771Z",
+      "canonical_sealed_at": "2026-06-06T14:55:30.771Z",
+      "resolution_role": "promote_dropped",
+      "reasoning": "Segment A (blocks 1-33): promote original live attestation over C-359-C-371 recovery fork",
+      "decision_status": "approved_pending_zeus_and_eve"
+    },
+    {
+      "block_number": 10,
+      "current_kept_seal": "seal-C-362-010",
+      "current_dropped_seal": "seal-C-334-010",
+      "candidate_canonical_seal": "seal-C-334-010",
+      "candidate_canonical_cycle": "C-334",
+      "current_kept_cycle": "C-362",
+      "current_dropped_cycle": "C-334",
+      "witness_kept_sealed_at": "2026-07-04T05:01:13.426Z",
+      "witness_dropped_sealed_at": "2026-06-06T20:20:53.990Z",
+      "canonical_sealed_at": "2026-06-06T20:20:53.990Z",
+      "resolution_role": "promote_dropped",
+      "reasoning": "Segment A (blocks 1-33): promote original live attestation over C-359-C-371 recovery fork",
+      "decision_status": "approved_pending_zeus_and_eve"
+    },
+    {
+      "block_number": 11,
+      "current_kept_seal": "seal-C-362-011",
+      "current_dropped_seal": "seal-C-334-011",
+      "candidate_canonical_seal": "seal-C-334-011",
+      "candidate_canonical_cycle": "C-334",
+      "current_kept_cycle": "C-362",
+      "current_dropped_cycle": "C-334",
+      "witness_kept_sealed_at": "2026-07-04T18:00:46.977Z",
+      "witness_dropped_sealed_at": "2026-06-07T02:10:46.942Z",
+      "canonical_sealed_at": "2026-06-07T02:10:46.942Z",
+      "resolution_role": "promote_dropped",
+      "reasoning": "Segment A (blocks 1-33): promote original live attestation over C-359-C-371 recovery fork",
+      "decision_status": "approved_pending_zeus_and_eve"
+    },
+    {
+      "block_number": 12,
+      "current_kept_seal": "seal-C-363-012",
+      "current_dropped_seal": "seal-C-335-012",
+      "candidate_canonical_seal": "seal-C-335-012",
+      "candidate_canonical_cycle": "C-335",
+      "current_kept_cycle": "C-363",
+      "current_dropped_cycle": "C-335",
+      "witness_kept_sealed_at": "2026-07-05T07:01:36.512Z",
+      "witness_dropped_sealed_at": "2026-06-07T08:10:49.468Z",
+      "canonical_sealed_at": "2026-06-07T08:10:49.468Z",
+      "resolution_role": "promote_dropped",
+      "reasoning": "Segment A (blocks 1-33): promote original live attestation over C-359-C-371 recovery fork",
+      "decision_status": "approved_pending_zeus_and_eve"
+    },
+    {
+      "block_number": 13,
+      "current_kept_seal": "seal-C-363-013",
+      "current_dropped_seal": "seal-C-335-013",
+      "candidate_canonical_seal": "seal-C-335-013",
+      "candidate_canonical_cycle": "C-335",
+      "current_kept_cycle": "C-363",
+      "current_dropped_cycle": "C-335",
+      "witness_kept_sealed_at": "2026-07-05T20:31:42.778Z",
+      "witness_dropped_sealed_at": "2026-06-07T08:15:30.664Z",
+      "canonical_sealed_at": "2026-06-07T08:15:30.664Z",
+      "resolution_role": "promote_dropped",
+      "reasoning": "Segment A (blocks 1-33): promote original live attestation over C-359-C-371 recovery fork",
+      "decision_status": "approved_pending_zeus_and_eve"
+    },
+    {
+      "block_number": 14,
+      "current_kept_seal": "seal-C-363-014",
+      "current_dropped_seal": "seal-C-335-014",
+      "candidate_canonical_seal": "seal-C-335-014",
+      "candidate_canonical_cycle": "C-335",
+      "current_kept_cycle": "C-363",
+      "current_dropped_cycle": "C-335",
+      "witness_kept_sealed_at": "2026-07-05T21:01:16.657Z",
+      "witness_dropped_sealed_at": "2026-06-07T14:02:30.455Z",
+      "canonical_sealed_at": "2026-06-07T14:02:30.455Z",
+      "resolution_role": "promote_dropped",
+      "reasoning": "Segment A (blocks 1-33): promote original live attestation over C-359-C-371 recovery fork",
+      "decision_status": "approved_pending_zeus_and_eve"
+    },
+    {
+      "block_number": 15,
+      "current_kept_seal": "seal-C-364-015",
+      "current_dropped_seal": "seal-C-335-015",
+      "candidate_canonical_seal": "seal-C-335-015",
+      "candidate_canonical_cycle": "C-335",
+      "current_kept_cycle": "C-364",
+      "current_dropped_cycle": "C-335",
+      "witness_kept_sealed_at": "2026-07-06T10:00:46.803Z",
+      "witness_dropped_sealed_at": "2026-06-07T20:02:05.542Z",
+      "canonical_sealed_at": "2026-06-07T20:02:05.542Z",
+      "resolution_role": "promote_dropped",
+      "reasoning": "Segment A (blocks 1-33): promote original live attestation over C-359-C-371 recovery fork",
+      "decision_status": "approved_pending_zeus_and_eve"
+    },
+    {
+      "block_number": 16,
+      "current_kept_seal": "seal-C-364-016",
+      "current_dropped_seal": "seal-C-335-016",
+      "candidate_canonical_seal": "seal-C-335-016",
+      "candidate_canonical_cycle": "C-335",
+      "current_kept_cycle": "C-364",
+      "current_dropped_cycle": "C-335",
+      "witness_kept_sealed_at": "2026-07-07T00:03:28.737Z",
+      "witness_dropped_sealed_at": "2026-06-08T01:50:53.790Z",
+      "canonical_sealed_at": "2026-06-08T01:50:53.790Z",
+      "resolution_role": "promote_dropped",
+      "reasoning": "Segment A (blocks 1-33): promote original live attestation over C-359-C-371 recovery fork",
+      "decision_status": "approved_pending_zeus_and_eve"
+    },
+    {
+      "block_number": 17,
+      "current_kept_seal": "seal-C-365-017",
+      "current_dropped_seal": "seal-C-336-017",
+      "candidate_canonical_seal": "seal-C-336-017",
+      "candidate_canonical_cycle": "C-336",
+      "current_kept_cycle": "C-365",
+      "current_dropped_cycle": "C-336",
+      "witness_kept_sealed_at": "2026-07-07T14:01:39.616Z",
+      "witness_dropped_sealed_at": "2026-06-08T08:01:30.547Z",
+      "canonical_sealed_at": "2026-06-08T08:01:30.547Z",
+      "resolution_role": "promote_dropped",
+      "reasoning": "Segment A (blocks 1-33): promote original live attestation over C-359-C-371 recovery fork",
+      "decision_status": "approved_pending_zeus_and_eve"
+    },
+    {
+      "block_number": 18,
+      "current_kept_seal": "seal-C-365-018",
+      "current_dropped_seal": "seal-C-336-018",
+      "candidate_canonical_seal": "seal-C-336-018",
+      "candidate_canonical_cycle": "C-336",
+      "current_kept_cycle": "C-365",
+      "current_dropped_cycle": "C-336",
+      "witness_kept_sealed_at": "2026-07-07T14:30:23.689Z",
+      "witness_dropped_sealed_at": "2026-06-08T08:05:30.581Z",
+      "canonical_sealed_at": "2026-06-08T08:05:30.581Z",
+      "resolution_role": "promote_dropped",
+      "reasoning": "Segment A (blocks 1-33): promote original live attestation over C-359-C-371 recovery fork",
+      "decision_status": "approved_pending_zeus_and_eve"
+    },
+    {
+      "block_number": 19,
+      "current_kept_seal": "seal-C-365-019",
+      "current_dropped_seal": "seal-C-336-019",
+      "candidate_canonical_seal": "seal-C-336-019",
+      "candidate_canonical_cycle": "C-336",
+      "current_kept_cycle": "C-365",
+      "current_dropped_cycle": "C-336",
+      "witness_kept_sealed_at": "2026-07-08T03:03:04.966Z",
+      "witness_dropped_sealed_at": "2026-06-08T14:01:51.686Z",
+      "canonical_sealed_at": "2026-06-08T14:01:51.686Z",
+      "resolution_role": "promote_dropped",
+      "reasoning": "Segment A (blocks 1-33): promote original live attestation over C-359-C-371 recovery fork",
+      "decision_status": "approved_pending_zeus_and_eve"
+    },
+    {
+      "block_number": 20,
+      "current_kept_seal": "seal-C-366-020",
+      "current_dropped_seal": "seal-C-336-020",
+      "candidate_canonical_seal": "seal-C-336-020",
+      "candidate_canonical_cycle": "C-336",
+      "current_kept_cycle": "C-366",
+      "current_dropped_cycle": "C-336",
+      "witness_kept_sealed_at": "2026-07-08T16:31:41.426Z",
+      "witness_dropped_sealed_at": "2026-06-08T14:05:30.869Z",
+      "canonical_sealed_at": "2026-06-08T14:05:30.869Z",
+      "resolution_role": "promote_dropped",
+      "reasoning": "Segment A (blocks 1-33): promote original live attestation over C-359-C-371 recovery fork",
+      "decision_status": "approved_pending_zeus_and_eve"
+    },
+    {
+      "block_number": 21,
+      "current_kept_seal": "seal-C-366-021",
+      "current_dropped_seal": "seal-C-336-021",
+      "candidate_canonical_seal": "seal-C-336-021",
+      "candidate_canonical_cycle": "C-336",
+      "current_kept_cycle": "C-366",
+      "current_dropped_cycle": "C-336",
+      "witness_kept_sealed_at": "2026-07-08T17:01:14.257Z",
+      "witness_dropped_sealed_at": "2026-06-08T20:04:15.848Z",
+      "canonical_sealed_at": "2026-06-08T20:04:15.848Z",
+      "resolution_role": "promote_dropped",
+      "reasoning": "Segment A (blocks 1-33): promote original live attestation over C-359-C-371 recovery fork",
+      "decision_status": "approved_pending_zeus_and_eve"
+    },
+    {
+      "block_number": 22,
+      "current_kept_seal": "seal-C-367-022",
+      "current_dropped_seal": "seal-C-336-022",
+      "candidate_canonical_seal": "seal-C-336-022",
+      "candidate_canonical_cycle": "C-336",
+      "current_kept_cycle": "C-367",
+      "current_dropped_cycle": "C-336",
+      "witness_kept_sealed_at": "2026-07-09T06:01:55.258Z",
+      "witness_dropped_sealed_at": "2026-06-08T20:10:17.791Z",
+      "canonical_sealed_at": "2026-06-08T20:10:17.791Z",
+      "resolution_role": "promote_dropped",
+      "reasoning": "Segment A (blocks 1-33): promote original live attestation over C-359-C-371 recovery fork",
+      "decision_status": "approved_pending_zeus_and_eve"
+    },
+    {
+      "block_number": 23,
+      "current_kept_seal": "seal-C-367-023",
+      "current_dropped_seal": "seal-C-336-023",
+      "candidate_canonical_seal": "seal-C-336-023",
+      "candidate_canonical_cycle": "C-336",
+      "current_kept_cycle": "C-367",
+      "current_dropped_cycle": "C-336",
+      "witness_kept_sealed_at": "2026-07-09T19:02:32.275Z",
+      "witness_dropped_sealed_at": "2026-06-09T02:03:55.998Z",
+      "canonical_sealed_at": "2026-06-09T02:03:55.998Z",
+      "resolution_role": "promote_dropped",
+      "reasoning": "Segment A (blocks 1-33): promote original live attestation over C-359-C-371 recovery fork",
+      "decision_status": "approved_pending_zeus_and_eve"
+    },
+    {
+      "block_number": 24,
+      "current_kept_seal": "seal-C-368-024",
+      "current_dropped_seal": "seal-C-336-024",
+      "candidate_canonical_seal": "seal-C-336-024",
+      "candidate_canonical_cycle": "C-336",
+      "current_kept_cycle": "C-368",
+      "current_dropped_cycle": "C-336",
+      "witness_kept_sealed_at": "2026-07-10T08:03:18.571Z",
+      "witness_dropped_sealed_at": "2026-06-09T02:05:17.391Z",
+      "canonical_sealed_at": "2026-06-09T02:05:17.391Z",
+      "resolution_role": "promote_dropped",
+      "reasoning": "Segment A (blocks 1-33): promote original live attestation over C-359-C-371 recovery fork",
+      "decision_status": "approved_pending_zeus_and_eve"
+    },
+    {
+      "block_number": 25,
+      "current_kept_seal": "seal-C-368-025",
+      "current_dropped_seal": "seal-C-337-025",
+      "candidate_canonical_seal": "seal-C-337-025",
+      "candidate_canonical_cycle": "C-337",
+      "current_kept_cycle": "C-368",
+      "current_dropped_cycle": "C-337",
+      "witness_kept_sealed_at": "2026-07-10T22:01:12.672Z",
+      "witness_dropped_sealed_at": "2026-06-09T08:01:02.626Z",
+      "canonical_sealed_at": "2026-06-09T08:01:02.626Z",
+      "resolution_role": "promote_dropped",
+      "reasoning": "Segment A (blocks 1-33): promote original live attestation over C-359-C-371 recovery fork",
+      "decision_status": "approved_pending_zeus_and_eve"
+    },
+    {
+      "block_number": 26,
+      "current_kept_seal": "seal-C-369-026",
+      "current_dropped_seal": "seal-C-337-026",
+      "candidate_canonical_seal": "seal-C-337-026",
+      "candidate_canonical_cycle": "C-337",
+      "current_kept_cycle": "C-369",
+      "current_dropped_cycle": "C-337",
+      "witness_kept_sealed_at": "2026-07-11T11:30:46.996Z",
+      "witness_dropped_sealed_at": "2026-06-09T08:05:17.420Z",
+      "canonical_sealed_at": "2026-06-09T08:05:17.420Z",
+      "resolution_role": "promote_dropped",
+      "reasoning": "Segment A (blocks 1-33): promote original live attestation over C-359-C-371 recovery fork",
+      "decision_status": "approved_pending_zeus_and_eve"
+    },
+    {
+      "block_number": 27,
+      "current_kept_seal": "seal-C-369-027",
+      "current_dropped_seal": "seal-C-337-027",
+      "candidate_canonical_seal": "seal-C-337-027",
+      "candidate_canonical_cycle": "C-337",
+      "current_kept_cycle": "C-369",
+      "current_dropped_cycle": "C-337",
+      "witness_kept_sealed_at": "2026-07-11T12:00:23.706Z",
+      "witness_dropped_sealed_at": "2026-06-09T14:01:01.677Z",
+      "canonical_sealed_at": "2026-06-09T14:01:01.677Z",
+      "resolution_role": "promote_dropped",
+      "reasoning": "Segment A (blocks 1-33): promote original live attestation over C-359-C-371 recovery fork",
+      "decision_status": "approved_pending_zeus_and_eve"
+    },
+    {
+      "block_number": 28,
+      "current_kept_seal": "seal-C-369-028",
+      "current_dropped_seal": "seal-C-337-028",
+      "candidate_canonical_seal": "seal-C-337-028",
+      "candidate_canonical_cycle": "C-337",
+      "current_kept_cycle": "C-369",
+      "current_dropped_cycle": "C-337",
+      "witness_kept_sealed_at": "2026-07-12T01:31:27.569Z",
+      "witness_dropped_sealed_at": "2026-06-09T19:51:14.427Z",
+      "canonical_sealed_at": "2026-06-09T19:51:14.427Z",
+      "resolution_role": "promote_dropped",
+      "reasoning": "Segment A (blocks 1-33): promote original live attestation over C-359-C-371 recovery fork",
+      "decision_status": "approved_pending_zeus_and_eve"
+    },
+    {
+      "block_number": 29,
+      "current_kept_seal": "seal-C-370-029",
+      "current_dropped_seal": "seal-C-337-029",
+      "candidate_canonical_seal": "seal-C-337-029",
+      "candidate_canonical_cycle": "C-337",
+      "current_kept_cycle": "C-370",
+      "current_dropped_cycle": "C-337",
+      "witness_kept_sealed_at": "2026-07-12T15:01:20.143Z",
+      "witness_dropped_sealed_at": "2026-06-10T01:31:14.172Z",
+      "canonical_sealed_at": "2026-06-10T01:31:14.172Z",
+      "resolution_role": "promote_dropped",
+      "reasoning": "Segment A (blocks 1-33): promote original live attestation over C-359-C-371 recovery fork",
+      "decision_status": "approved_pending_zeus_and_eve"
+    },
+    {
+      "block_number": 30,
+      "current_kept_seal": "seal-C-370-030",
+      "current_dropped_seal": "seal-C-337-030",
+      "candidate_canonical_seal": "seal-C-337-030",
+      "candidate_canonical_cycle": "C-337",
+      "current_kept_cycle": "C-370",
+      "current_dropped_cycle": "C-337",
+      "witness_kept_sealed_at": "2026-07-13T04:30:37.415Z",
+      "witness_dropped_sealed_at": "2026-06-10T01:35:10.630Z",
+      "canonical_sealed_at": "2026-06-10T01:35:10.630Z",
+      "resolution_role": "promote_dropped",
+      "reasoning": "Segment A (blocks 1-33): promote original live attestation over C-359-C-371 recovery fork",
+      "decision_status": "approved_pending_zeus_and_eve"
+    },
+    {
+      "block_number": 31,
+      "current_kept_seal": "seal-C-371-031",
+      "current_dropped_seal": "seal-C-338-031",
+      "candidate_canonical_seal": "seal-C-338-031",
+      "candidate_canonical_cycle": "C-338",
+      "current_kept_cycle": "C-371",
+      "current_dropped_cycle": "C-338",
+      "witness_kept_sealed_at": "2026-07-13T05:00:28.049Z",
+      "witness_dropped_sealed_at": "2026-06-10T07:11:14.099Z",
+      "canonical_sealed_at": "2026-06-10T07:11:14.099Z",
+      "resolution_role": "promote_dropped",
+      "reasoning": "Segment A (blocks 1-33): promote original live attestation over C-359-C-371 recovery fork",
+      "decision_status": "approved_pending_zeus_and_eve"
+    },
+    {
+      "block_number": 32,
+      "current_kept_seal": "seal-C-371-032",
+      "current_dropped_seal": "seal-C-338-032",
+      "candidate_canonical_seal": "seal-C-338-032",
+      "candidate_canonical_cycle": "C-338",
+      "current_kept_cycle": "C-371",
+      "current_dropped_cycle": "C-338",
+      "witness_kept_sealed_at": "2026-07-13T16:02:04.391Z",
+      "witness_dropped_sealed_at": "2026-06-10T07:15:10.847Z",
+      "canonical_sealed_at": "2026-06-10T07:15:10.847Z",
+      "resolution_role": "promote_dropped",
+      "reasoning": "Segment A (blocks 1-33): promote original live attestation over C-359-C-371 recovery fork",
+      "decision_status": "approved_pending_zeus_and_eve"
+    },
+    {
+      "block_number": 33,
+      "current_kept_seal": "seal-C-371-033",
+      "current_dropped_seal": "seal-C-338-033",
+      "candidate_canonical_seal": "seal-C-338-033",
+      "candidate_canonical_cycle": "C-338",
+      "current_kept_cycle": "C-371",
+      "current_dropped_cycle": "C-338",
+      "witness_kept_sealed_at": "2026-07-13T16:30:27.892Z",
+      "witness_dropped_sealed_at": "2026-06-10T13:11:14.293Z",
+      "canonical_sealed_at": "2026-06-10T13:11:14.293Z",
+      "resolution_role": "promote_dropped",
+      "reasoning": "Segment A (blocks 1-33): promote original live attestation over C-359-C-371 recovery fork",
+      "decision_status": "approved_pending_zeus_and_eve"
+    },
+    {
+      "block_number": 42,
+      "current_kept_seal": "seal-C-339-042",
+      "current_dropped_seal": "seal-C-308-042",
+      "candidate_canonical_seal": "seal-C-339-042",
+      "candidate_canonical_cycle": "C-339",
+      "current_kept_cycle": "C-339",
+      "current_dropped_cycle": "C-308",
+      "witness_kept_sealed_at": "2026-06-12T00:55:34.653Z",
+      "witness_dropped_sealed_at": "2026-05-11T07:51:02.451Z",
+      "canonical_sealed_at": "2026-06-12T00:55:34.653Z",
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity with clean 34-41; C-308 fork witness-only",
+      "decision_status": "approved_pending_zeus_and_eve"
+    },
+    {
+      "block_number": 43,
+      "current_kept_seal": "seal-C-340-043",
+      "current_dropped_seal": "seal-C-308-043",
+      "candidate_canonical_seal": "seal-C-340-043",
+      "candidate_canonical_cycle": "C-340",
+      "current_kept_cycle": "C-340",
+      "current_dropped_cycle": "C-308",
+      "witness_kept_sealed_at": "2026-06-12T07:41:02.617Z",
+      "witness_dropped_sealed_at": "2026-05-11T14:51:15.853Z",
+      "canonical_sealed_at": "2026-06-12T07:41:02.617Z",
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity with clean 34-41; C-308 fork witness-only",
+      "decision_status": "approved_pending_zeus_and_eve"
+    },
+    {
+      "block_number": 44,
+      "current_kept_seal": "seal-C-340-044",
+      "current_dropped_seal": "seal-C-308-044",
+      "candidate_canonical_seal": "seal-C-340-044",
+      "candidate_canonical_cycle": "C-340",
+      "current_kept_cycle": "C-340",
+      "current_dropped_cycle": "C-308",
+      "witness_kept_sealed_at": "2026-06-12T07:45:34.646Z",
+      "witness_dropped_sealed_at": "2026-05-11T14:55:46.437Z",
+      "canonical_sealed_at": "2026-06-12T07:45:34.646Z",
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity with clean 34-41; C-308 fork witness-only",
+      "decision_status": "approved_pending_zeus_and_eve"
+    },
+    {
+      "block_number": 45,
+      "current_kept_seal": "seal-C-340-045",
+      "current_dropped_seal": "seal-C-308-045",
+      "candidate_canonical_seal": "seal-C-340-045",
+      "candidate_canonical_cycle": "C-340",
+      "current_kept_cycle": "C-340",
+      "current_dropped_cycle": "C-308",
+      "witness_kept_sealed_at": "2026-06-12T14:11:02.352Z",
+      "witness_dropped_sealed_at": "2026-05-11T22:01:03.397Z",
+      "canonical_sealed_at": "2026-06-12T14:11:02.352Z",
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity with clean 34-41; C-308 fork witness-only",
+      "decision_status": "approved_pending_zeus_and_eve"
+    },
+    {
+      "block_number": 46,
+      "current_kept_seal": "seal-C-340-046",
+      "current_dropped_seal": "seal-C-309-046",
+      "candidate_canonical_seal": "seal-C-340-046",
+      "candidate_canonical_cycle": "C-340",
+      "current_kept_cycle": "C-340",
+      "current_dropped_cycle": "C-309",
+      "witness_kept_sealed_at": "2026-06-12T20:51:01.803Z",
+      "witness_dropped_sealed_at": "2026-05-12T05:01:17.290Z",
+      "canonical_sealed_at": "2026-06-12T20:51:01.803Z",
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity with clean 34-41; C-308 fork witness-only",
+      "decision_status": "approved_pending_zeus_and_eve"
+    },
+    {
+      "block_number": 47,
+      "current_kept_seal": "seal-C-340-047",
+      "current_dropped_seal": "seal-C-309-047",
+      "candidate_canonical_seal": "seal-C-340-047",
+      "candidate_canonical_cycle": "C-340",
+      "current_kept_cycle": "C-340",
+      "current_dropped_cycle": "C-309",
+      "witness_kept_sealed_at": "2026-06-13T03:20:45.921Z",
+      "witness_dropped_sealed_at": "2026-05-12T12:01:20.484Z",
+      "canonical_sealed_at": "2026-06-13T03:20:45.921Z",
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity with clean 34-41; C-308 fork witness-only",
+      "decision_status": "approved_pending_zeus_and_eve"
+    },
+    {
+      "block_number": 48,
+      "current_kept_seal": "seal-C-340-048",
+      "current_dropped_seal": "seal-C-309-048",
+      "candidate_canonical_seal": "seal-C-340-048",
+      "candidate_canonical_cycle": "C-340",
+      "current_kept_cycle": "C-340",
+      "current_dropped_cycle": "C-309",
+      "witness_kept_sealed_at": "2026-06-13T03:25:17.736Z",
+      "witness_dropped_sealed_at": "2026-05-12T19:11:20.197Z",
+      "canonical_sealed_at": "2026-06-13T03:25:17.736Z",
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity with clean 34-41; C-308 fork witness-only",
+      "decision_status": "approved_pending_zeus_and_eve"
+    },
+    {
+      "block_number": 49,
+      "current_kept_seal": "seal-C-341-049",
+      "current_dropped_seal": "seal-C-309-049",
+      "candidate_canonical_seal": "seal-C-341-049",
+      "candidate_canonical_cycle": "C-341",
+      "current_kept_cycle": "C-341",
+      "current_dropped_cycle": "C-309",
+      "witness_kept_sealed_at": "2026-06-13T09:50:46.565Z",
+      "witness_dropped_sealed_at": "2026-05-12T19:15:46.521Z",
+      "canonical_sealed_at": "2026-06-13T09:50:46.565Z",
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity with clean 34-41; C-308 fork witness-only",
+      "decision_status": "approved_pending_zeus_and_eve"
+    },
+    {
+      "block_number": 50,
+      "current_kept_seal": "seal-C-341-050",
+      "current_dropped_seal": "seal-C-309-050",
+      "candidate_canonical_seal": "seal-C-341-050",
+      "candidate_canonical_cycle": "C-341",
+      "current_kept_cycle": "C-341",
+      "current_dropped_cycle": "C-309",
+      "witness_kept_sealed_at": "2026-06-13T16:40:46.379Z",
+      "witness_dropped_sealed_at": "2026-05-13T02:01:09.506Z",
+      "canonical_sealed_at": "2026-06-13T16:40:46.379Z",
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity with clean 34-41; C-308 fork witness-only",
+      "decision_status": "approved_pending_zeus_and_eve"
+    },
+    {
+      "block_number": 51,
+      "current_kept_seal": "seal-C-341-051",
+      "current_dropped_seal": "seal-C-310-051",
+      "candidate_canonical_seal": "seal-C-341-051",
+      "candidate_canonical_cycle": "C-341",
+      "current_kept_cycle": "C-341",
+      "current_dropped_cycle": "C-310",
+      "witness_kept_sealed_at": "2026-06-13T16:45:17.691Z",
+      "witness_dropped_sealed_at": "2026-05-13T09:01:06.971Z",
+      "canonical_sealed_at": "2026-06-13T16:45:17.691Z",
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity with clean 34-41; C-308 fork witness-only",
+      "decision_status": "approved_pending_zeus_and_eve"
+    },
+    {
+      "block_number": 52,
+      "current_kept_seal": "seal-C-341-052",
+      "current_dropped_seal": "seal-C-310-052",
+      "candidate_canonical_seal": "seal-C-341-052",
+      "candidate_canonical_cycle": "C-341",
+      "current_kept_cycle": "C-341",
+      "current_dropped_cycle": "C-310",
+      "witness_kept_sealed_at": "2026-06-13T23:10:46.250Z",
+      "witness_dropped_sealed_at": "2026-05-13T09:05:46.633Z",
+      "canonical_sealed_at": "2026-06-13T23:10:46.250Z",
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity with clean 34-41; C-308 fork witness-only",
+      "decision_status": "approved_pending_zeus_and_eve"
+    },
+    {
+      "block_number": 53,
+      "current_kept_seal": "seal-C-341-053",
+      "current_dropped_seal": "seal-C-310-053",
+      "candidate_canonical_seal": "seal-C-341-053",
+      "candidate_canonical_cycle": "C-341",
+      "current_kept_cycle": "C-341",
+      "current_dropped_cycle": "C-310",
+      "witness_kept_sealed_at": "2026-06-14T05:50:46.048Z",
+      "witness_dropped_sealed_at": "2026-05-13T16:01:31.032Z",
+      "canonical_sealed_at": "2026-06-14T05:50:46.048Z",
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity with clean 34-41; C-308 fork witness-only",
+      "decision_status": "approved_pending_zeus_and_eve"
+    },
+    {
+      "block_number": 54,
+      "current_kept_seal": "seal-C-342-054",
+      "current_dropped_seal": "seal-C-310-054",
+      "candidate_canonical_seal": "seal-C-342-054",
+      "candidate_canonical_cycle": "C-342",
+      "current_kept_cycle": "C-342",
+      "current_dropped_cycle": "C-310",
+      "witness_kept_sealed_at": "2026-06-14T12:20:46.034Z",
+      "witness_dropped_sealed_at": "2026-05-13T16:05:04.825Z",
+      "canonical_sealed_at": "2026-06-14T12:20:46.034Z",
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity with clean 34-41; C-308 fork witness-only",
+      "decision_status": "approved_pending_zeus_and_eve"
+    },
+    {
+      "block_number": 55,
+      "current_kept_seal": "seal-C-342-055",
+      "current_dropped_seal": "seal-C-310-055",
+      "candidate_canonical_seal": "seal-C-342-055",
+      "candidate_canonical_cycle": "C-342",
+      "current_kept_cycle": "C-342",
+      "current_dropped_cycle": "C-310",
+      "witness_kept_sealed_at": "2026-06-14T19:10:45.867Z",
+      "witness_dropped_sealed_at": "2026-05-13T23:01:21.613Z",
+      "canonical_sealed_at": "2026-06-14T19:10:45.867Z",
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity with clean 34-41; C-308 fork witness-only",
+      "decision_status": "approved_pending_zeus_and_eve"
+    },
+    {
+      "block_number": 56,
+      "current_kept_seal": "seal-C-342-056",
+      "current_dropped_seal": "seal-C-310-056",
+      "candidate_canonical_seal": "seal-C-342-056",
+      "candidate_canonical_cycle": "C-342",
+      "current_kept_cycle": "C-342",
+      "current_dropped_cycle": "C-310",
+      "witness_kept_sealed_at": "2026-06-14T19:15:17.716Z",
+      "witness_dropped_sealed_at": "2026-05-13T23:05:05.088Z",
+      "canonical_sealed_at": "2026-06-14T19:15:17.716Z",
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity with clean 34-41; C-308 fork witness-only",
+      "decision_status": "approved_pending_zeus_and_eve"
+    },
+    {
+      "block_number": 57,
+      "current_kept_seal": "seal-C-342-057",
+      "current_dropped_seal": "seal-C-310-057",
+      "candidate_canonical_seal": "seal-C-342-057",
+      "candidate_canonical_cycle": "C-342",
+      "current_kept_cycle": "C-342",
+      "current_dropped_cycle": "C-310",
+      "witness_kept_sealed_at": "2026-06-15T01:40:46.162Z",
+      "witness_dropped_sealed_at": "2026-05-14T05:51:06.069Z",
+      "canonical_sealed_at": "2026-06-15T01:40:46.162Z",
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity with clean 34-41; C-308 fork witness-only",
+      "decision_status": "approved_pending_zeus_and_eve"
+    },
+    {
+      "block_number": 58,
+      "current_kept_seal": "seal-C-342-058",
+      "current_dropped_seal": "seal-C-311-058",
+      "candidate_canonical_seal": "seal-C-342-058",
+      "candidate_canonical_cycle": "C-342",
+      "current_kept_cycle": "C-342",
+      "current_dropped_cycle": "C-311",
+      "witness_kept_sealed_at": "2026-06-15T01:45:17.638Z",
+      "witness_dropped_sealed_at": "2026-05-14T12:51:17.885Z",
+      "canonical_sealed_at": "2026-06-15T01:45:17.638Z",
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity with clean 34-41; C-308 fork witness-only",
+      "decision_status": "approved_pending_zeus_and_eve"
+    },
+    {
+      "block_number": 59,
+      "current_kept_seal": "seal-C-343-059",
+      "current_dropped_seal": "seal-C-311-059",
+      "candidate_canonical_seal": "seal-C-343-059",
+      "candidate_canonical_cycle": "C-343",
+      "current_kept_cycle": "C-343",
+      "current_dropped_cycle": "C-311",
+      "witness_kept_sealed_at": "2026-06-15T08:20:46.425Z",
+      "witness_dropped_sealed_at": "2026-05-14T19:51:26.798Z",
+      "canonical_sealed_at": "2026-06-15T08:20:46.425Z",
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity with clean 34-41; C-308 fork witness-only",
+      "decision_status": "approved_pending_zeus_and_eve"
+    },
+    {
+      "block_number": 60,
+      "current_kept_seal": "seal-C-343-060",
+      "current_dropped_seal": "seal-C-311-060",
+      "candidate_canonical_seal": "seal-C-343-060",
+      "candidate_canonical_cycle": "C-343",
+      "current_kept_cycle": "C-343",
+      "current_dropped_cycle": "C-311",
+      "witness_kept_sealed_at": "2026-06-15T08:25:17.850Z",
+      "witness_dropped_sealed_at": "2026-05-14T19:55:04.615Z",
+      "canonical_sealed_at": "2026-06-15T08:25:17.850Z",
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity with clean 34-41; C-308 fork witness-only",
+      "decision_status": "approved_pending_zeus_and_eve"
+    },
+    {
+      "block_number": 61,
+      "current_kept_seal": "seal-C-343-061",
+      "current_dropped_seal": "seal-C-311-061",
+      "candidate_canonical_seal": "seal-C-343-061",
+      "candidate_canonical_cycle": "C-343",
+      "current_kept_cycle": "C-343",
+      "current_dropped_cycle": "C-311",
+      "witness_kept_sealed_at": "2026-06-15T15:00:46.325Z",
+      "witness_dropped_sealed_at": "2026-05-15T02:41:29.565Z",
+      "canonical_sealed_at": "2026-06-15T15:00:46.325Z",
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity with clean 34-41; C-308 fork witness-only",
+      "decision_status": "approved_pending_zeus_and_eve"
+    },
+    {
+      "block_number": 62,
+      "current_kept_seal": "seal-C-343-062",
+      "current_dropped_seal": "seal-C-311-062",
+      "candidate_canonical_seal": "seal-C-343-062",
+      "candidate_canonical_cycle": "C-343",
+      "current_kept_cycle": "C-343",
+      "current_dropped_cycle": "C-311",
+      "witness_kept_sealed_at": "2026-06-15T15:05:18.047Z",
+      "witness_dropped_sealed_at": "2026-05-15T02:45:04.987Z",
+      "canonical_sealed_at": "2026-06-15T15:05:18.047Z",
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity with clean 34-41; C-308 fork witness-only",
+      "decision_status": "approved_pending_zeus_and_eve"
+    },
+    {
+      "block_number": 63,
+      "current_kept_seal": "seal-C-343-063",
+      "current_dropped_seal": "seal-C-312-063",
+      "candidate_canonical_seal": "seal-C-343-063",
+      "candidate_canonical_cycle": "C-343",
+      "current_kept_cycle": "C-343",
+      "current_dropped_cycle": "C-312",
+      "witness_kept_sealed_at": "2026-06-15T21:01:36.768Z",
+      "witness_dropped_sealed_at": "2026-05-15T09:41:04.169Z",
+      "canonical_sealed_at": "2026-06-15T21:01:36.768Z",
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity with clean 34-41; C-308 fork witness-only",
+      "decision_status": "approved_pending_zeus_and_eve"
+    },
+    {
+      "block_number": 64,
+      "current_kept_seal": "seal-C-343-064",
+      "current_dropped_seal": "seal-C-312-064",
+      "candidate_canonical_seal": "seal-C-343-064",
+      "candidate_canonical_cycle": "C-343",
+      "current_kept_cycle": "C-343",
+      "current_dropped_cycle": "C-312",
+      "witness_kept_sealed_at": "2026-06-16T03:00:53.611Z",
+      "witness_dropped_sealed_at": "2026-05-15T09:45:04.722Z",
+      "canonical_sealed_at": "2026-06-16T03:00:53.611Z",
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity with clean 34-41; C-308 fork witness-only",
+      "decision_status": "approved_pending_zeus_and_eve"
+    },
+    {
+      "block_number": 65,
+      "current_kept_seal": "seal-C-343-065",
+      "current_dropped_seal": "seal-C-312-065",
+      "candidate_canonical_seal": "seal-C-343-065",
+      "candidate_canonical_cycle": "C-343",
+      "current_kept_cycle": "C-343",
+      "current_dropped_cycle": "C-312",
+      "witness_kept_sealed_at": "2026-06-16T03:05:19.327Z",
+      "witness_dropped_sealed_at": "2026-05-15T16:41:37.138Z",
+      "canonical_sealed_at": "2026-06-16T03:05:19.327Z",
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity with clean 34-41; C-308 fork witness-only",
+      "decision_status": "approved_pending_zeus_and_eve"
+    },
+    {
+      "block_number": 66,
+      "current_kept_seal": "seal-C-344-066",
+      "current_dropped_seal": "seal-C-312-066",
+      "candidate_canonical_seal": "seal-C-344-066",
+      "candidate_canonical_cycle": "C-344",
+      "current_kept_cycle": "C-344",
+      "current_dropped_cycle": "C-312",
+      "witness_kept_sealed_at": "2026-06-16T08:50:52.236Z",
+      "witness_dropped_sealed_at": "2026-05-15T22:31:15.206Z",
+      "canonical_sealed_at": "2026-06-16T08:50:52.236Z",
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity with clean 34-41; C-308 fork witness-only",
+      "decision_status": "approved_pending_zeus_and_eve"
+    },
+    {
+      "block_number": 67,
+      "current_kept_seal": "seal-C-344-067",
+      "current_dropped_seal": "seal-C-312-067",
+      "candidate_canonical_seal": "seal-C-344-067",
+      "candidate_canonical_cycle": "C-344",
+      "current_kept_cycle": "C-344",
+      "current_dropped_cycle": "C-312",
+      "witness_kept_sealed_at": "2026-06-16T14:30:53.008Z",
+      "witness_dropped_sealed_at": "2026-05-15T22:35:05.821Z",
+      "canonical_sealed_at": "2026-06-16T14:30:53.008Z",
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity with clean 34-41; C-308 fork witness-only",
+      "decision_status": "approved_pending_zeus_and_eve"
+    },
+    {
+      "block_number": 68,
+      "current_kept_seal": "seal-C-344-068",
+      "current_dropped_seal": "seal-C-312-068",
+      "candidate_canonical_seal": "seal-C-344-068",
+      "candidate_canonical_cycle": "C-344",
+      "current_kept_cycle": "C-344",
+      "current_dropped_cycle": "C-312",
+      "witness_kept_sealed_at": "2026-06-16T14:35:19.694Z",
+      "witness_dropped_sealed_at": "2026-05-16T04:21:18.128Z",
+      "canonical_sealed_at": "2026-06-16T14:35:19.694Z",
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity with clean 34-41; C-308 fork witness-only",
+      "decision_status": "approved_pending_zeus_and_eve"
+    },
+    {
+      "block_number": 69,
+      "current_kept_seal": "seal-C-344-069",
+      "current_dropped_seal": "seal-C-312-069",
+      "candidate_canonical_seal": "seal-C-344-069",
+      "candidate_canonical_cycle": "C-344",
+      "current_kept_cycle": "C-344",
+      "current_dropped_cycle": "C-312",
+      "witness_kept_sealed_at": "2026-06-16T20:30:52.458Z",
+      "witness_dropped_sealed_at": "2026-05-16T04:25:05.859Z",
+      "canonical_sealed_at": "2026-06-16T20:30:52.458Z",
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity with clean 34-41; C-308 fork witness-only",
+      "decision_status": "approved_pending_zeus_and_eve"
+    },
+    {
+      "block_number": 70,
+      "current_kept_seal": "seal-C-344-070",
+      "current_dropped_seal": "seal-C-313-070",
+      "candidate_canonical_seal": "seal-C-344-070",
+      "candidate_canonical_cycle": "C-344",
+      "current_kept_cycle": "C-344",
+      "current_dropped_cycle": "C-313",
+      "witness_kept_sealed_at": "2026-06-16T20:35:19.578Z",
+      "witness_dropped_sealed_at": "2026-05-16T10:20:43.402Z",
+      "canonical_sealed_at": "2026-06-16T20:35:19.578Z",
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity with clean 34-41; C-308 fork witness-only",
+      "decision_status": "approved_pending_zeus_and_eve"
+    },
+    {
+      "block_number": 71,
+      "current_kept_seal": "seal-C-344-071",
+      "current_dropped_seal": "seal-C-313-071",
+      "candidate_canonical_seal": "seal-C-344-071",
+      "candidate_canonical_cycle": "C-344",
+      "current_kept_cycle": "C-344",
+      "current_dropped_cycle": "C-313",
+      "witness_kept_sealed_at": "2026-06-17T02:04:36.914Z",
+      "witness_dropped_sealed_at": "2026-05-16T16:21:34.472Z",
+      "canonical_sealed_at": "2026-06-17T02:04:36.914Z",
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity with clean 34-41; C-308 fork witness-only",
+      "decision_status": "approved_pending_zeus_and_eve"
+    },
+    {
+      "block_number": 72,
+      "current_kept_seal": "seal-C-345-072",
+      "current_dropped_seal": "seal-C-313-072",
+      "candidate_canonical_seal": "seal-C-345-072",
+      "candidate_canonical_cycle": "C-345",
+      "current_kept_cycle": "C-345",
+      "current_dropped_cycle": "C-313",
+      "witness_kept_sealed_at": "2026-06-17T07:50:54.008Z",
+      "witness_dropped_sealed_at": "2026-05-16T22:31:12.987Z",
+      "canonical_sealed_at": "2026-06-17T07:50:54.008Z",
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity with clean 34-41; C-308 fork witness-only",
+      "decision_status": "approved_pending_zeus_and_eve"
+    },
+    {
+      "block_number": 73,
+      "current_kept_seal": "seal-C-345-073",
+      "current_dropped_seal": "seal-C-314-073",
+      "candidate_canonical_seal": "seal-C-345-073",
+      "candidate_canonical_cycle": "C-345",
+      "current_kept_cycle": "C-345",
+      "current_dropped_cycle": "C-314",
+      "witness_kept_sealed_at": "2026-06-17T13:30:53.341Z",
+      "witness_dropped_sealed_at": "2026-05-17T04:41:23.751Z",
+      "canonical_sealed_at": "2026-06-17T13:30:53.341Z",
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity with clean 34-41; C-308 fork witness-only",
+      "decision_status": "approved_pending_zeus_and_eve"
+    },
+    {
+      "block_number": 74,
+      "current_kept_seal": "seal-C-345-074",
+      "current_dropped_seal": "seal-C-314-074",
+      "candidate_canonical_seal": "seal-C-345-074",
+      "candidate_canonical_cycle": "C-345",
+      "current_kept_cycle": "C-345",
+      "current_dropped_cycle": "C-314",
+      "witness_kept_sealed_at": "2026-06-17T19:20:53.889Z",
+      "witness_dropped_sealed_at": "2026-05-17T04:45:05.647Z",
+      "canonical_sealed_at": "2026-06-17T19:20:53.889Z",
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity with clean 34-41; C-308 fork witness-only",
+      "decision_status": "approved_pending_zeus_and_eve"
+    },
+    {
+      "block_number": 75,
+      "current_kept_seal": "seal-C-345-075",
+      "current_dropped_seal": "seal-C-314-075",
+      "candidate_canonical_seal": "seal-C-345-075",
+      "candidate_canonical_cycle": "C-345",
+      "current_kept_cycle": "C-345",
+      "current_dropped_cycle": "C-314",
+      "witness_kept_sealed_at": "2026-06-17T19:25:08.701Z",
+      "witness_dropped_sealed_at": "2026-05-17T10:40:54.767Z",
+      "canonical_sealed_at": "2026-06-17T19:25:08.701Z",
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity with clean 34-41; C-308 fork witness-only",
+      "decision_status": "approved_pending_zeus_and_eve"
+    },
+    {
+      "block_number": 76,
+      "current_kept_seal": "seal-C-345-076",
+      "current_dropped_seal": "seal-C-314-076",
+      "candidate_canonical_seal": "seal-C-345-076",
+      "candidate_canonical_cycle": "C-345",
+      "current_kept_cycle": "C-345",
+      "current_dropped_cycle": "C-314",
+      "witness_kept_sealed_at": "2026-06-18T00:50:53.947Z",
+      "witness_dropped_sealed_at": "2026-05-17T16:41:24.313Z",
+      "canonical_sealed_at": "2026-06-18T00:50:53.947Z",
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity with clean 34-41; C-308 fork witness-only",
+      "decision_status": "approved_pending_zeus_and_eve"
+    },
+    {
+      "block_number": 77,
+      "current_kept_seal": "seal-C-346-077",
+      "current_dropped_seal": "seal-C-314-077",
+      "candidate_canonical_seal": "seal-C-346-077",
+      "candidate_canonical_cycle": "C-346",
+      "current_kept_cycle": "C-346",
+      "current_dropped_cycle": "C-314",
+      "witness_kept_sealed_at": "2026-06-18T06:40:53.413Z",
+      "witness_dropped_sealed_at": "2026-05-17T16:45:16.368Z",
+      "canonical_sealed_at": "2026-06-18T06:40:53.413Z",
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity with clean 34-41; C-308 fork witness-only",
+      "decision_status": "approved_pending_zeus_and_eve"
+    },
+    {
+      "block_number": 78,
+      "current_kept_seal": "seal-C-346-078",
+      "current_dropped_seal": "seal-C-314-078",
+      "candidate_canonical_seal": "seal-C-346-078",
+      "candidate_canonical_cycle": "C-346",
+      "current_kept_cycle": "C-346",
+      "current_dropped_cycle": "C-314",
+      "witness_kept_sealed_at": "2026-06-18T12:30:52.589Z",
+      "witness_dropped_sealed_at": "2026-05-17T22:21:06.996Z",
+      "canonical_sealed_at": "2026-06-18T12:30:52.589Z",
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity with clean 34-41; C-308 fork witness-only",
+      "decision_status": "approved_pending_zeus_and_eve"
+    },
+    {
+      "block_number": 79,
+      "current_kept_seal": "seal-C-346-079",
+      "current_dropped_seal": "seal-C-314-079",
+      "candidate_canonical_seal": "seal-C-346-079",
+      "candidate_canonical_cycle": "C-346",
+      "current_kept_cycle": "C-346",
+      "current_dropped_cycle": "C-314",
+      "witness_kept_sealed_at": "2026-06-18T18:20:53.372Z",
+      "witness_dropped_sealed_at": "2026-05-17T22:25:30.563Z",
+      "canonical_sealed_at": "2026-06-18T18:20:53.372Z",
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity with clean 34-41; C-308 fork witness-only",
+      "decision_status": "approved_pending_zeus_and_eve"
+    },
+    {
+      "block_number": 80,
+      "current_kept_seal": "seal-C-346-080",
+      "current_dropped_seal": "seal-C-314-080",
+      "candidate_canonical_seal": "seal-C-346-080",
+      "candidate_canonical_cycle": "C-346",
+      "current_kept_cycle": "C-346",
+      "current_dropped_cycle": "C-314",
+      "witness_kept_sealed_at": "2026-06-19T00:10:53.367Z",
+      "witness_dropped_sealed_at": "2026-05-18T03:31:07.887Z",
+      "canonical_sealed_at": "2026-06-19T00:10:53.367Z",
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity with clean 34-41; C-308 fork witness-only",
+      "decision_status": "approved_pending_zeus_and_eve"
+    },
+    {
+      "block_number": 81,
+      "current_kept_seal": "seal-C-346-081",
+      "current_dropped_seal": "seal-C-315-081",
+      "candidate_canonical_seal": "seal-C-346-081",
+      "candidate_canonical_cycle": "C-346",
+      "current_kept_cycle": "C-346",
+      "current_dropped_cycle": "C-315",
+      "witness_kept_sealed_at": "2026-06-19T00:15:09.086Z",
+      "witness_dropped_sealed_at": "2026-05-18T09:11:07.405Z",
+      "canonical_sealed_at": "2026-06-19T00:15:09.086Z",
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity with clean 34-41; C-308 fork witness-only",
+      "decision_status": "approved_pending_zeus_and_eve"
+    },
+    {
+      "block_number": 82,
+      "current_kept_seal": "seal-C-347-082",
+      "current_dropped_seal": "seal-C-315-082",
+      "candidate_canonical_seal": "seal-C-347-082",
+      "candidate_canonical_cycle": "C-347",
+      "current_kept_cycle": "C-347",
+      "current_dropped_cycle": "C-315",
+      "witness_kept_sealed_at": "2026-06-19T06:03:51.210Z",
+      "witness_dropped_sealed_at": "2026-05-18T09:15:30.684Z",
+      "canonical_sealed_at": "2026-06-19T06:03:51.210Z",
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity with clean 34-41; C-308 fork witness-only",
+      "decision_status": "approved_pending_zeus_and_eve"
+    },
+    {
+      "block_number": 83,
+      "current_kept_seal": "seal-C-347-083",
+      "current_dropped_seal": "seal-C-315-083",
+      "candidate_canonical_seal": "seal-C-347-083",
+      "candidate_canonical_cycle": "C-347",
+      "current_kept_cycle": "C-347",
+      "current_dropped_cycle": "C-315",
+      "witness_kept_sealed_at": "2026-06-19T12:03:17.532Z",
+      "witness_dropped_sealed_at": "2026-05-18T15:01:06.767Z",
+      "canonical_sealed_at": "2026-06-19T12:03:17.532Z",
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity with clean 34-41; C-308 fork witness-only",
+      "decision_status": "approved_pending_zeus_and_eve"
+    },
+    {
+      "block_number": 84,
+      "current_kept_seal": "seal-C-347-084",
+      "current_dropped_seal": "seal-C-315-084",
+      "candidate_canonical_seal": "seal-C-347-084",
+      "candidate_canonical_cycle": "C-347",
+      "current_kept_cycle": "C-347",
+      "current_dropped_cycle": "C-315",
+      "witness_kept_sealed_at": "2026-06-19T18:03:17.560Z",
+      "witness_dropped_sealed_at": "2026-05-18T20:20:59.810Z",
+      "canonical_sealed_at": "2026-06-19T18:03:17.560Z",
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity with clean 34-41; C-308 fork witness-only",
+      "decision_status": "approved_pending_zeus_and_eve"
+    },
+    {
+      "block_number": 85,
+      "current_kept_seal": "seal-C-347-085",
+      "current_dropped_seal": "seal-C-315-085",
+      "candidate_canonical_seal": "seal-C-347-085",
+      "candidate_canonical_cycle": "C-347",
+      "current_kept_cycle": "C-347",
+      "current_dropped_cycle": "C-315",
+      "witness_kept_sealed_at": "2026-06-20T00:00:53.663Z",
+      "witness_dropped_sealed_at": "2026-05-18T20:25:23.753Z",
+      "canonical_sealed_at": "2026-06-20T00:00:53.663Z",
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity with clean 34-41; C-308 fork witness-only",
+      "decision_status": "approved_pending_zeus_and_eve"
+    },
+    {
+      "block_number": 86,
+      "current_kept_seal": "seal-C-347-086",
+      "current_dropped_seal": "seal-C-315-086",
+      "candidate_canonical_seal": "seal-C-347-086",
+      "candidate_canonical_cycle": "C-347",
+      "current_kept_cycle": "C-347",
+      "current_dropped_cycle": "C-315",
+      "witness_kept_sealed_at": "2026-06-20T00:05:08.729Z",
+      "witness_dropped_sealed_at": "2026-05-19T02:11:00.420Z",
+      "canonical_sealed_at": "2026-06-20T00:05:08.729Z",
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity with clean 34-41; C-308 fork witness-only",
+      "decision_status": "approved_pending_zeus_and_eve"
+    },
+    {
+      "block_number": 87,
+      "current_kept_seal": "seal-C-348-087",
+      "current_dropped_seal": "seal-C-315-087",
+      "candidate_canonical_seal": "seal-C-348-087",
+      "candidate_canonical_cycle": "C-348",
+      "current_kept_cycle": "C-348",
+      "current_dropped_cycle": "C-315",
+      "witness_kept_sealed_at": "2026-06-20T05:40:53.153Z",
+      "witness_dropped_sealed_at": "2026-05-19T02:15:23.457Z",
+      "canonical_sealed_at": "2026-06-20T05:40:53.153Z",
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity with clean 34-41; C-308 fork witness-only",
+      "decision_status": "approved_pending_zeus_and_eve"
+    },
+    {
+      "block_number": 88,
+      "current_kept_seal": "seal-C-348-088",
+      "current_dropped_seal": "seal-C-316-088",
+      "candidate_canonical_seal": "seal-C-348-088",
+      "candidate_canonical_cycle": "C-348",
+      "current_kept_cycle": "C-348",
+      "current_dropped_cycle": "C-316",
+      "witness_kept_sealed_at": "2026-06-20T05:45:08.597Z",
+      "witness_dropped_sealed_at": "2026-05-19T08:02:41.703Z",
+      "canonical_sealed_at": "2026-06-20T05:45:08.597Z",
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity with clean 34-41; C-308 fork witness-only",
+      "decision_status": "approved_pending_zeus_and_eve"
+    },
+    {
+      "block_number": 89,
+      "current_kept_seal": "seal-C-348-089",
+      "current_dropped_seal": "seal-C-316-089",
+      "candidate_canonical_seal": "seal-C-348-089",
+      "candidate_canonical_cycle": "C-348",
+      "current_kept_cycle": "C-348",
+      "current_dropped_cycle": "C-316",
+      "witness_kept_sealed_at": "2026-06-20T11:20:53.021Z",
+      "witness_dropped_sealed_at": "2026-05-19T13:50:59.752Z",
+      "canonical_sealed_at": "2026-06-20T11:20:53.021Z",
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity with clean 34-41; C-308 fork witness-only",
+      "decision_status": "approved_pending_zeus_and_eve"
+    },
+    {
+      "block_number": 90,
+      "current_kept_seal": "seal-C-348-090",
+      "current_dropped_seal": "seal-C-316-090",
+      "candidate_canonical_seal": "seal-C-348-090",
+      "candidate_canonical_cycle": "C-348",
+      "current_kept_cycle": "C-348",
+      "current_dropped_cycle": "C-316",
+      "witness_kept_sealed_at": "2026-06-20T11:25:08.816Z",
+      "witness_dropped_sealed_at": "2026-05-19T19:31:00.142Z",
+      "canonical_sealed_at": "2026-06-20T11:25:08.816Z",
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity with clean 34-41; C-308 fork witness-only",
+      "decision_status": "approved_pending_zeus_and_eve"
+    },
+    {
+      "block_number": 91,
+      "current_kept_seal": "seal-C-348-091",
+      "current_dropped_seal": "seal-C-316-091",
+      "candidate_canonical_seal": "seal-C-348-091",
+      "candidate_canonical_cycle": "C-348",
+      "current_kept_cycle": "C-348",
+      "current_dropped_cycle": "C-316",
+      "witness_kept_sealed_at": "2026-06-20T17:00:53.533Z",
+      "witness_dropped_sealed_at": "2026-05-19T19:35:23.864Z",
+      "canonical_sealed_at": "2026-06-20T17:00:53.533Z",
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity with clean 34-41; C-308 fork witness-only",
+      "decision_status": "approved_pending_zeus_and_eve"
+    },
+    {
+      "block_number": 92,
+      "current_kept_seal": "seal-C-348-092",
+      "current_dropped_seal": "seal-C-316-092",
+      "candidate_canonical_seal": "seal-C-348-092",
+      "candidate_canonical_cycle": "C-348",
+      "current_kept_cycle": "C-348",
+      "current_dropped_cycle": "C-316",
+      "witness_kept_sealed_at": "2026-06-20T22:50:52.653Z",
+      "witness_dropped_sealed_at": "2026-05-20T01:02:58.354Z",
+      "canonical_sealed_at": "2026-06-20T22:50:52.653Z",
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity with clean 34-41; C-308 fork witness-only",
+      "decision_status": "approved_pending_zeus_and_eve"
+    },
+    {
+      "block_number": 93,
+      "current_kept_seal": "seal-C-349-093",
+      "current_dropped_seal": "seal-C-316-093",
+      "candidate_canonical_seal": "seal-C-349-093",
+      "candidate_canonical_cycle": "C-349",
+      "current_kept_cycle": "C-349",
+      "current_dropped_cycle": "C-316",
+      "witness_kept_sealed_at": "2026-06-21T04:20:53.177Z",
+      "witness_dropped_sealed_at": "2026-05-20T01:05:23.369Z",
+      "canonical_sealed_at": "2026-06-21T04:20:53.177Z",
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity with clean 34-41; C-308 fork witness-only",
+      "decision_status": "approved_pending_zeus_and_eve"
+    },
+    {
+      "block_number": 94,
+      "current_kept_seal": "seal-C-349-094",
+      "current_dropped_seal": "seal-C-317-094",
+      "candidate_canonical_seal": "seal-C-349-094",
+      "candidate_canonical_cycle": "C-349",
+      "current_kept_cycle": "C-349",
+      "current_dropped_cycle": "C-317",
+      "witness_kept_sealed_at": "2026-06-21T10:03:02.681Z",
+      "witness_dropped_sealed_at": "2026-05-20T06:20:59.949Z",
+      "canonical_sealed_at": "2026-06-21T10:03:02.681Z",
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity with clean 34-41; C-308 fork witness-only",
+      "decision_status": "approved_pending_zeus_and_eve"
+    },
+    {
+      "block_number": 95,
+      "current_kept_seal": "seal-C-349-095",
+      "current_dropped_seal": "seal-C-317-095",
+      "candidate_canonical_seal": "seal-C-349-095",
+      "candidate_canonical_cycle": "C-349",
+      "current_kept_cycle": "C-349",
+      "current_dropped_cycle": "C-317",
+      "witness_kept_sealed_at": "2026-06-21T15:40:52.961Z",
+      "witness_dropped_sealed_at": "2026-05-20T12:02:57.103Z",
+      "canonical_sealed_at": "2026-06-21T15:40:52.961Z",
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity with clean 34-41; C-308 fork witness-only",
+      "decision_status": "approved_pending_zeus_and_eve"
+    },
+    {
+      "block_number": 96,
+      "current_kept_seal": "seal-C-349-096",
+      "current_dropped_seal": "seal-C-317-096",
+      "candidate_canonical_seal": "seal-C-349-096",
+      "candidate_canonical_cycle": "C-349",
+      "current_kept_cycle": "C-349",
+      "current_dropped_cycle": "C-317",
+      "witness_kept_sealed_at": "2026-06-21T15:45:08.823Z",
+      "witness_dropped_sealed_at": "2026-05-20T12:05:23.603Z",
+      "canonical_sealed_at": "2026-06-21T15:45:08.823Z",
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity with clean 34-41; C-308 fork witness-only",
+      "decision_status": "approved_pending_zeus_and_eve"
+    },
+    {
+      "block_number": 97,
+      "current_kept_seal": "seal-C-349-097",
+      "current_dropped_seal": "seal-C-317-097",
+      "candidate_canonical_seal": "seal-C-349-097",
+      "candidate_canonical_cycle": "C-349",
+      "current_kept_cycle": "C-349",
+      "current_dropped_cycle": "C-317",
+      "witness_kept_sealed_at": "2026-06-21T21:20:53.644Z",
+      "witness_dropped_sealed_at": "2026-05-20T12:10:23.810Z",
+      "canonical_sealed_at": "2026-06-21T21:20:53.644Z",
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity with clean 34-41; C-308 fork witness-only",
+      "decision_status": "approved_pending_zeus_and_eve"
+    },
+    {
+      "block_number": 98,
+      "current_kept_seal": "seal-C-349-098",
+      "current_dropped_seal": "seal-C-317-098",
+      "candidate_canonical_seal": "seal-C-349-098",
+      "candidate_canonical_cycle": "C-349",
+      "current_kept_cycle": "C-349",
+      "current_dropped_cycle": "C-317",
+      "witness_kept_sealed_at": "2026-06-21T21:25:08.633Z",
+      "witness_dropped_sealed_at": "2026-05-20T17:41:06.467Z",
+      "canonical_sealed_at": "2026-06-21T21:25:08.633Z",
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity with clean 34-41; C-308 fork witness-only",
+      "decision_status": "approved_pending_zeus_and_eve"
+    },
+    {
+      "block_number": 99,
+      "current_kept_seal": "seal-C-349-099",
+      "current_dropped_seal": "seal-C-317-099",
+      "candidate_canonical_seal": "seal-C-349-099",
+      "candidate_canonical_cycle": "C-349",
+      "current_kept_cycle": "C-349",
+      "current_dropped_cycle": "C-317",
+      "witness_kept_sealed_at": "2026-06-22T03:02:20.930Z",
+      "witness_dropped_sealed_at": "2026-05-20T17:45:08.544Z",
+      "canonical_sealed_at": "2026-06-22T03:02:20.930Z",
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity with clean 34-41; C-308 fork witness-only",
+      "decision_status": "approved_pending_zeus_and_eve"
+    },
+    {
+      "block_number": 100,
+      "current_kept_seal": "seal-C-350-100",
+      "current_dropped_seal": "seal-C-317-100",
+      "candidate_canonical_seal": "seal-C-350-100",
+      "candidate_canonical_cycle": "C-350",
+      "current_kept_cycle": "C-350",
+      "current_dropped_cycle": "C-317",
+      "witness_kept_sealed_at": "2026-06-22T08:50:53.171Z",
+      "witness_dropped_sealed_at": "2026-05-20T23:21:07.125Z",
+      "canonical_sealed_at": "2026-06-22T08:50:53.171Z",
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity with clean 34-41; C-308 fork witness-only",
+      "decision_status": "approved_pending_zeus_and_eve"
+    },
+    {
+      "block_number": 101,
+      "current_kept_seal": "seal-C-350-101",
+      "current_dropped_seal": "seal-C-317-101",
+      "candidate_canonical_seal": "seal-C-350-101",
+      "candidate_canonical_cycle": "C-350",
+      "current_kept_cycle": "C-350",
+      "current_dropped_cycle": "C-317",
+      "witness_kept_sealed_at": "2026-06-22T08:55:08.583Z",
+      "witness_dropped_sealed_at": "2026-05-20T23:25:08.482Z",
+      "canonical_sealed_at": "2026-06-22T08:55:08.583Z",
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity with clean 34-41; C-308 fork witness-only",
+      "decision_status": "approved_pending_zeus_and_eve"
+    },
+    {
+      "block_number": 102,
+      "current_kept_seal": "seal-C-350-102",
+      "current_dropped_seal": "seal-C-317-102",
+      "candidate_canonical_seal": "seal-C-350-102",
+      "candidate_canonical_cycle": "C-350",
+      "current_kept_cycle": "C-350",
+      "current_dropped_cycle": "C-317",
+      "witness_kept_sealed_at": "2026-06-22T14:20:53.233Z",
+      "witness_dropped_sealed_at": "2026-05-21T04:51:05.537Z",
+      "canonical_sealed_at": "2026-06-22T14:20:53.233Z",
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity with clean 34-41; C-308 fork witness-only",
+      "decision_status": "approved_pending_zeus_and_eve"
+    },
+    {
+      "block_number": 103,
+      "current_kept_seal": "seal-C-350-103",
+      "current_dropped_seal": "seal-C-318-103",
+      "candidate_canonical_seal": "seal-C-350-103",
+      "candidate_canonical_cycle": "C-350",
+      "current_kept_cycle": "C-350",
+      "current_dropped_cycle": "C-318",
+      "witness_kept_sealed_at": "2026-06-22T20:02:12.405Z",
+      "witness_dropped_sealed_at": "2026-05-21T04:55:08.334Z",
+      "canonical_sealed_at": "2026-06-22T20:02:12.405Z",
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity with clean 34-41; C-308 fork witness-only",
+      "decision_status": "approved_pending_zeus_and_eve"
+    },
+    {
+      "block_number": 104,
+      "current_kept_seal": "seal-C-350-104",
+      "current_dropped_seal": "seal-C-318-104",
+      "candidate_canonical_seal": "seal-C-350-104",
+      "candidate_canonical_cycle": "C-350",
+      "current_kept_cycle": "C-350",
+      "current_dropped_cycle": "C-318",
+      "witness_kept_sealed_at": "2026-06-22T20:05:08.590Z",
+      "witness_dropped_sealed_at": "2026-05-21T10:21:05.922Z",
+      "canonical_sealed_at": "2026-06-22T20:05:08.590Z",
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity with clean 34-41; C-308 fork witness-only",
+      "decision_status": "approved_pending_zeus_and_eve"
+    },
+    {
+      "block_number": 105,
+      "current_kept_seal": "seal-C-350-105",
+      "current_dropped_seal": "seal-C-318-105",
+      "candidate_canonical_seal": "seal-C-350-105",
+      "candidate_canonical_cycle": "C-350",
+      "current_kept_cycle": "C-350",
+      "current_dropped_cycle": "C-318",
+      "witness_kept_sealed_at": "2026-06-23T01:40:53.453Z",
+      "witness_dropped_sealed_at": "2026-05-21T16:02:38.317Z",
+      "canonical_sealed_at": "2026-06-23T01:40:53.453Z",
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity with clean 34-41; C-308 fork witness-only",
+      "decision_status": "approved_pending_zeus_and_eve"
+    },
+    {
+      "block_number": 106,
+      "current_kept_seal": "seal-C-351-106",
+      "current_dropped_seal": "seal-C-318-106",
+      "candidate_canonical_seal": "seal-C-351-106",
+      "candidate_canonical_cycle": "C-351",
+      "current_kept_cycle": "C-351",
+      "current_dropped_cycle": "C-318",
+      "witness_kept_sealed_at": "2026-06-23T07:30:52.942Z",
+      "witness_dropped_sealed_at": "2026-05-21T21:50:37.224Z",
+      "canonical_sealed_at": "2026-06-23T07:30:52.942Z",
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity with clean 34-41; C-308 fork witness-only",
+      "decision_status": "approved_pending_zeus_and_eve"
+    },
+    {
+      "block_number": 107,
+      "current_kept_seal": "seal-C-351-107",
+      "current_dropped_seal": "seal-C-318-107",
+      "candidate_canonical_seal": "seal-C-351-107",
+      "candidate_canonical_cycle": "C-351",
+      "current_kept_cycle": "C-351",
+      "current_dropped_cycle": "C-318",
+      "witness_kept_sealed_at": "2026-06-23T07:35:08.639Z",
+      "witness_dropped_sealed_at": "2026-05-21T21:50:39.100Z",
+      "canonical_sealed_at": "2026-06-23T07:35:08.639Z",
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity with clean 34-41; C-308 fork witness-only",
+      "decision_status": "approved_pending_zeus_and_eve"
+    },
+    {
+      "block_number": 108,
+      "current_kept_seal": "seal-C-351-108",
+      "current_dropped_seal": "seal-C-318-108",
+      "candidate_canonical_seal": "seal-C-351-108",
+      "candidate_canonical_cycle": "C-351",
+      "current_kept_cycle": "C-351",
+      "current_dropped_cycle": "C-318",
+      "witness_kept_sealed_at": "2026-06-23T13:10:53.140Z",
+      "witness_dropped_sealed_at": "2026-05-22T03:21:20.147Z",
+      "canonical_sealed_at": "2026-06-23T13:10:53.140Z",
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity with clean 34-41; C-308 fork witness-only",
+      "decision_status": "approved_pending_zeus_and_eve"
+    },
+    {
+      "block_number": 109,
+      "current_kept_seal": "seal-C-351-109",
+      "current_dropped_seal": "seal-C-318-109",
+      "candidate_canonical_seal": "seal-C-351-109",
+      "candidate_canonical_cycle": "C-351",
+      "current_kept_cycle": "C-351",
+      "current_dropped_cycle": "C-318",
+      "witness_kept_sealed_at": "2026-06-23T13:15:08.771Z",
+      "witness_dropped_sealed_at": "2026-05-22T03:25:49.484Z",
+      "canonical_sealed_at": "2026-06-23T13:15:08.771Z",
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity with clean 34-41; C-308 fork witness-only",
+      "decision_status": "approved_pending_zeus_and_eve"
+    },
+    {
+      "block_number": 110,
+      "current_kept_seal": "seal-C-351-110",
+      "current_dropped_seal": "seal-C-319-110",
+      "candidate_canonical_seal": "seal-C-351-110",
+      "candidate_canonical_cycle": "C-351",
+      "current_kept_cycle": "C-351",
+      "current_dropped_cycle": "C-319",
+      "witness_kept_sealed_at": "2026-06-23T19:00:53.576Z",
+      "witness_dropped_sealed_at": "2026-05-22T09:01:20.462Z",
+      "canonical_sealed_at": "2026-06-23T19:00:53.576Z",
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity with clean 34-41; C-308 fork witness-only",
+      "decision_status": "approved_pending_zeus_and_eve"
+    },
+    {
+      "block_number": 111,
+      "current_kept_seal": "seal-C-351-111",
+      "current_dropped_seal": "seal-C-319-111",
+      "candidate_canonical_seal": "seal-C-351-111",
+      "candidate_canonical_cycle": "C-351",
+      "current_kept_cycle": "C-351",
+      "current_dropped_cycle": "C-319",
+      "witness_kept_sealed_at": "2026-06-24T00:50:52.863Z",
+      "witness_dropped_sealed_at": "2026-05-22T09:05:49.646Z",
+      "canonical_sealed_at": "2026-06-24T00:50:52.863Z",
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity with clean 34-41; C-308 fork witness-only",
+      "decision_status": "approved_pending_zeus_and_eve"
+    },
+    {
+      "block_number": 112,
+      "current_kept_seal": "seal-C-351-112",
+      "current_dropped_seal": "seal-C-319-112",
+      "candidate_canonical_seal": "seal-C-351-112",
+      "candidate_canonical_cycle": "C-351",
+      "current_kept_cycle": "C-351",
+      "current_dropped_cycle": "C-319",
+      "witness_kept_sealed_at": "2026-06-24T00:55:08.738Z",
+      "witness_dropped_sealed_at": "2026-05-22T14:41:19.687Z",
+      "canonical_sealed_at": "2026-06-24T00:55:08.738Z",
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity with clean 34-41; C-308 fork witness-only",
+      "decision_status": "approved_pending_zeus_and_eve"
+    },
+    {
+      "block_number": 113,
+      "current_kept_seal": "seal-C-352-113",
+      "current_dropped_seal": "seal-C-319-113",
+      "candidate_canonical_seal": "seal-C-352-113",
+      "candidate_canonical_cycle": "C-352",
+      "current_kept_cycle": "C-352",
+      "current_dropped_cycle": "C-319",
+      "witness_kept_sealed_at": "2026-06-24T06:40:53.743Z",
+      "witness_dropped_sealed_at": "2026-05-22T14:45:49.429Z",
+      "canonical_sealed_at": "2026-06-24T06:40:53.743Z",
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity with clean 34-41; C-308 fork witness-only",
+      "decision_status": "approved_pending_zeus_and_eve"
+    },
+    {
+      "block_number": 114,
+      "current_kept_seal": "seal-C-352-114",
+      "current_dropped_seal": "seal-C-319-114",
+      "candidate_canonical_seal": "seal-C-352-114",
+      "candidate_canonical_cycle": "C-352",
+      "current_kept_cycle": "C-352",
+      "current_dropped_cycle": "C-319",
+      "witness_kept_sealed_at": "2026-06-24T12:20:53.502Z",
+      "witness_dropped_sealed_at": "2026-05-22T20:21:22.275Z",
+      "canonical_sealed_at": "2026-06-24T12:20:53.502Z",
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity with clean 34-41; C-308 fork witness-only",
+      "decision_status": "approved_pending_zeus_and_eve"
+    },
+    {
+      "block_number": 115,
+      "current_kept_seal": "seal-C-352-115",
+      "current_dropped_seal": "seal-C-319-115",
+      "candidate_canonical_seal": "seal-C-352-115",
+      "candidate_canonical_cycle": "C-352",
+      "current_kept_cycle": "C-352",
+      "current_dropped_cycle": "C-319",
+      "witness_kept_sealed_at": "2026-06-24T18:01:51.429Z",
+      "witness_dropped_sealed_at": "2026-05-22T20:25:07.503Z",
+      "canonical_sealed_at": "2026-06-24T18:01:51.429Z",
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity with clean 34-41; C-308 fork witness-only",
+      "decision_status": "approved_pending_zeus_and_eve"
+    },
+    {
+      "block_number": 116,
+      "current_kept_seal": "seal-C-352-116",
+      "current_dropped_seal": "seal-C-319-116",
+      "candidate_canonical_seal": "seal-C-352-116",
+      "candidate_canonical_cycle": "C-352",
+      "current_kept_cycle": "C-352",
+      "current_dropped_cycle": "C-319",
+      "witness_kept_sealed_at": "2026-06-24T18:05:08.629Z",
+      "witness_dropped_sealed_at": "2026-05-23T01:41:22.304Z",
+      "canonical_sealed_at": "2026-06-24T18:05:08.629Z",
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity with clean 34-41; C-308 fork witness-only",
+      "decision_status": "approved_pending_zeus_and_eve"
+    },
+    {
+      "block_number": 117,
+      "current_kept_seal": "seal-C-352-117",
+      "current_dropped_seal": "seal-C-320-117",
+      "candidate_canonical_seal": "seal-C-352-117",
+      "candidate_canonical_cycle": "C-352",
+      "current_kept_cycle": "C-352",
+      "current_dropped_cycle": "C-320",
+      "witness_kept_sealed_at": "2026-06-24T23:50:48.657Z",
+      "witness_dropped_sealed_at": "2026-05-23T07:31:21.560Z",
+      "canonical_sealed_at": "2026-06-24T23:50:48.657Z",
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity with clean 34-41; C-308 fork witness-only",
+      "decision_status": "approved_pending_zeus_and_eve"
+    },
+    {
+      "block_number": 118,
+      "current_kept_seal": "seal-C-352-118",
+      "current_dropped_seal": "seal-C-320-118",
+      "candidate_canonical_seal": "seal-C-352-118",
+      "candidate_canonical_cycle": "C-352",
+      "current_kept_cycle": "C-352",
+      "current_dropped_cycle": "C-320",
+      "witness_kept_sealed_at": "2026-06-25T05:50:48.581Z",
+      "witness_dropped_sealed_at": "2026-05-23T13:21:21.941Z",
+      "canonical_sealed_at": "2026-06-25T05:50:48.581Z",
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity with clean 34-41; C-308 fork witness-only",
+      "decision_status": "approved_pending_zeus_and_eve"
+    },
+    {
+      "block_number": 119,
+      "current_kept_seal": "seal-C-352-119",
+      "current_dropped_seal": "seal-C-320-119",
+      "candidate_canonical_seal": "seal-C-352-119",
+      "candidate_canonical_cycle": "C-352",
+      "current_kept_cycle": "C-352",
+      "current_dropped_cycle": "C-320",
+      "witness_kept_sealed_at": "2026-06-25T05:55:19.594Z",
+      "witness_dropped_sealed_at": "2026-05-23T13:25:07.679Z",
+      "canonical_sealed_at": "2026-06-25T05:55:19.594Z",
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity with clean 34-41; C-308 fork witness-only",
+      "decision_status": "approved_pending_zeus_and_eve"
+    },
+    {
+      "block_number": 120,
+      "current_kept_seal": "seal-C-353-120",
+      "current_dropped_seal": "seal-C-320-120",
+      "candidate_canonical_seal": "seal-C-353-120",
+      "candidate_canonical_cycle": "C-353",
+      "current_kept_cycle": "C-353",
+      "current_dropped_cycle": "C-320",
+      "witness_kept_sealed_at": "2026-06-25T11:50:48.649Z",
+      "witness_dropped_sealed_at": "2026-05-23T19:01:22.244Z",
+      "canonical_sealed_at": "2026-06-25T11:50:48.649Z",
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity with clean 34-41; C-308 fork witness-only",
+      "decision_status": "approved_pending_zeus_and_eve"
+    },
+    {
+      "block_number": 121,
+      "current_kept_seal": "seal-C-353-121",
+      "current_dropped_seal": "seal-C-320-121",
+      "candidate_canonical_seal": "seal-C-353-121",
+      "candidate_canonical_cycle": "C-353",
+      "current_kept_cycle": "C-353",
+      "current_dropped_cycle": "C-320",
+      "witness_kept_sealed_at": "2026-06-25T17:20:48.962Z",
+      "witness_dropped_sealed_at": "2026-05-23T19:05:40.474Z",
+      "canonical_sealed_at": "2026-06-25T17:20:48.962Z",
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity with clean 34-41; C-308 fork witness-only",
+      "decision_status": "approved_pending_zeus_and_eve"
+    },
+    {
+      "block_number": 122,
+      "current_kept_seal": "seal-C-355-122",
+      "current_dropped_seal": "seal-C-320-122",
+      "candidate_canonical_seal": "seal-C-355-122",
+      "candidate_canonical_cycle": "C-355",
+      "current_kept_cycle": "C-355",
+      "current_dropped_cycle": "C-320",
+      "witness_kept_sealed_at": "2026-06-28T01:31:06.671Z",
+      "witness_dropped_sealed_at": "2026-05-24T00:40:50.403Z",
+      "canonical_sealed_at": "2026-06-28T01:31:06.671Z",
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity with clean 34-41; C-308 fork witness-only",
+      "decision_status": "approved_pending_zeus_and_eve"
+    },
+    {
+      "block_number": 123,
+      "current_kept_seal": "seal-C-355-123",
+      "current_dropped_seal": "seal-C-321-123",
+      "candidate_canonical_seal": "seal-C-355-123",
+      "candidate_canonical_cycle": "C-355",
+      "current_kept_cycle": "C-355",
+      "current_dropped_cycle": "C-321",
+      "witness_kept_sealed_at": "2026-06-28T02:00:50.430Z",
+      "witness_dropped_sealed_at": "2026-05-24T06:20:49.977Z",
+      "canonical_sealed_at": "2026-06-28T02:00:50.430Z",
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity with clean 34-41; C-308 fork witness-only",
+      "decision_status": "approved_pending_zeus_and_eve"
+    },
+    {
+      "block_number": 124,
+      "current_kept_seal": "seal-C-356-124",
+      "current_dropped_seal": "seal-C-321-124",
+      "candidate_canonical_seal": "seal-C-356-124",
+      "candidate_canonical_cycle": "C-356",
+      "current_kept_cycle": "C-356",
+      "current_dropped_cycle": "C-321",
+      "witness_kept_sealed_at": "2026-06-28T15:01:06.441Z",
+      "witness_dropped_sealed_at": "2026-05-24T12:03:34.829Z",
+      "canonical_sealed_at": "2026-06-28T15:01:06.441Z",
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity with clean 34-41; C-308 fork witness-only",
+      "decision_status": "approved_pending_zeus_and_eve"
+    },
+    {
+      "block_number": 125,
+      "current_kept_seal": "seal-C-356-125",
+      "current_dropped_seal": "seal-C-321-125",
+      "candidate_canonical_seal": "seal-C-356-125",
+      "candidate_canonical_cycle": "C-356",
+      "current_kept_cycle": "C-356",
+      "current_dropped_cycle": "C-321",
+      "witness_kept_sealed_at": "2026-06-28T15:30:50.408Z",
+      "witness_dropped_sealed_at": "2026-05-24T12:05:40.628Z",
+      "canonical_sealed_at": "2026-06-28T15:30:50.408Z",
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity with clean 34-41; C-308 fork witness-only",
+      "decision_status": "approved_pending_zeus_and_eve"
+    },
+    {
+      "block_number": 126,
+      "current_kept_seal": "seal-C-357-126",
+      "current_dropped_seal": "seal-C-321-126",
+      "candidate_canonical_seal": "seal-C-357-126",
+      "candidate_canonical_cycle": "C-357",
+      "current_kept_cycle": "C-357",
+      "current_dropped_cycle": "C-321",
+      "witness_kept_sealed_at": "2026-06-29T04:02:32.623Z",
+      "witness_dropped_sealed_at": "2026-05-24T17:51:18.751Z",
+      "canonical_sealed_at": "2026-06-29T04:02:32.623Z",
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity with clean 34-41; C-308 fork witness-only",
+      "decision_status": "approved_pending_zeus_and_eve"
+    },
+    {
+      "block_number": 127,
+      "current_kept_seal": "seal-C-357-127",
+      "current_dropped_seal": "seal-C-321-127",
+      "candidate_canonical_seal": "seal-C-357-127",
+      "candidate_canonical_cycle": "C-357",
+      "current_kept_cycle": "C-357",
+      "current_dropped_cycle": "C-321",
+      "witness_kept_sealed_at": "2026-06-29T18:00:16.481Z",
+      "witness_dropped_sealed_at": "2026-05-24T17:55:11.668Z",
+      "canonical_sealed_at": "2026-06-29T18:00:16.481Z",
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity with clean 34-41; C-308 fork witness-only",
+      "decision_status": "approved_pending_zeus_and_eve"
+    },
+    {
+      "block_number": 128,
+      "current_kept_seal": "seal-C-357-128",
+      "current_dropped_seal": "seal-C-321-128",
+      "candidate_canonical_seal": "seal-C-357-128",
+      "candidate_canonical_cycle": "C-357",
+      "current_kept_cycle": "C-357",
+      "current_dropped_cycle": "C-321",
+      "witness_kept_sealed_at": "2026-06-29T18:30:22.927Z",
+      "witness_dropped_sealed_at": "2026-05-24T23:31:19.205Z",
+      "canonical_sealed_at": "2026-06-29T18:30:22.927Z",
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity with clean 34-41; C-308 fork witness-only",
+      "decision_status": "approved_pending_zeus_and_eve"
+    },
+    {
+      "block_number": 129,
+      "current_kept_seal": "seal-C-358-129",
+      "current_dropped_seal": "seal-C-322-129",
+      "candidate_canonical_seal": "seal-C-358-129",
+      "candidate_canonical_cycle": "C-358",
+      "current_kept_cycle": "C-358",
+      "current_dropped_cycle": "C-322",
+      "witness_kept_sealed_at": "2026-06-30T07:01:33.138Z",
+      "witness_dropped_sealed_at": "2026-05-25T05:11:19.876Z",
+      "canonical_sealed_at": "2026-06-30T07:01:33.138Z",
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity with clean 34-41; C-308 fork witness-only",
+      "decision_status": "approved_pending_zeus_and_eve"
+    },
+    {
+      "block_number": 130,
+      "current_kept_seal": "seal-C-358-130",
+      "current_dropped_seal": "seal-C-322-130",
+      "candidate_canonical_seal": "seal-C-358-130",
+      "candidate_canonical_cycle": "C-358",
+      "current_kept_cycle": "C-358",
+      "current_dropped_cycle": "C-322",
+      "witness_kept_sealed_at": "2026-06-30T20:01:28.988Z",
+      "witness_dropped_sealed_at": "2026-05-25T14:02:19.283Z",
+      "canonical_sealed_at": "2026-06-30T20:01:28.988Z",
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity with clean 34-41; C-308 fork witness-only",
+      "decision_status": "approved_pending_zeus_and_eve"
+    },
+    {
+      "block_number": 131,
+      "current_kept_seal": "seal-C-358-131",
+      "current_dropped_seal": "seal-C-322-131",
+      "candidate_canonical_seal": "seal-C-358-131",
+      "candidate_canonical_cycle": "C-358",
+      "current_kept_cycle": "C-358",
+      "current_dropped_cycle": "C-322",
+      "witness_kept_sealed_at": "2026-06-30T20:30:08.388Z",
+      "witness_dropped_sealed_at": "2026-05-25T19:50:35.856Z",
+      "canonical_sealed_at": "2026-06-30T20:30:08.388Z",
+      "resolution_role": "promote_kept",
+      "reasoning": "Segment B (blocks 42-131): promote component-1 kept fork for prev-chain continuity with clean 34-41; C-308 fork witness-only",
+      "decision_status": "approved_pending_zeus_and_eve"
+    }
+  ],
+  "summary": {
+    "total_collision_pairs": 125,
+    "contested_blocks": 123,
+    "three_way_blocks": [
+      1,
+      2
+    ],
+    "clean_blocks": 71,
+    "segment_a_blocks": "1-33",
+    "segment_b_blocks": "42-131",
+    "clean_segment_c_blocks": "132-194",
+    "segment_b_tip": "seal-C-358-131"
+  }
+}
