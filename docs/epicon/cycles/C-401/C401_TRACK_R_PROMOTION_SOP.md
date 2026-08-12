@@ -18,7 +18,7 @@ Do **not** execute until all are true:
 4. ✅ **EVE attestation** filed (Track R step 5 — required; not optional)
 5. ✅ Fresh collision audit confirms pair count still 125 (re-run step 1 if stale)
 6. ✅ C-373 `collisionRepair` guard deployed on terminal `main`
-7. ✅ Chain continuity dry-run passes for segments A + B (especially block 41→42)
+7. ✅ Segment-local continuity dry-run passes (41→42 and 131→132 boundaries documented as open until step 8)
 
 ---
 
@@ -64,9 +64,10 @@ curl -sS "${TERMINAL_BASE}/api/vault/status" | jq '.latest_seal_id, .seals_count
 
 1. Re-run **Audit Reserve Block Lineage** workflow
 2. Confirm: `hash_divergent_pair_count = 0` for adjudicated set
-3. Confirm: **chain continuity** from genesis through block 360 (no orphan_prev at promoted spine)
-4. File witness: `C401-COLLISION-PROMOTION-WITNESS.md` (terminal repo)
-5. Only then request `SEAL_INTEGRITY_GATE` lift
+3. Confirm: **segment-local continuity** per `continuity_claim.segment_local_continuity_required` (1–33, 34–41, 42–131, 132–194) — **not** a single unbroken chain 1–194 (open boundaries at 41→42 and 131→132 documented in JSON)
+4. Confirm: `hash_divergent_pair_count = 0` within adjudicated collision set
+5. File witness: `C401-COLLISION-PROMOTION-WITNESS.md` (terminal repo) — must record boundary status at 41→42 and 131→132
+6. Request `SEAL_INTEGRITY_GATE` lift only after step 7 passes; **full** canonical spine resolution remains **Track R step 8** (`.dat` regeneration)
 
 ---
 

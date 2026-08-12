@@ -48,7 +48,14 @@ No promotion entries in `block_canonical`. Existing sole attestations stand.
 | 1 | C-332-001 → C-358-131 | Blocks 1–131 |
 | 4 | C-308-042 → C-332-194 | Blocks 42–194; **orphan_prev at 42** |
 
-Boundary risk at 41→42 documented in JSON `lineage_anchors.boundary_risk`.
+**Open boundaries** (documented in JSON `lineage_anchors.boundary_risks`):
+
+| Edge | Issue | Mitigation |
+|------|-------|------------|
+| 41→42 | C-308-042 `orphan_prev` if component-4 dropped promoted | Segment B promotes kept at block 42 |
+| 131→132 | Segment B tip (`seal-C-358-131`, component-1) may not link to clean block 132 (component-4 only) | Document open; step 7 = segment-local audit; step 8 = full canon |
+
+**Do not claim** single continuous chain 1–194 until Track R step 8. Clean blocks 132–194 remain on component-4 attestations unchanged.
 
 ---
 

@@ -39,7 +39,10 @@ Naive “promote earliest dropped at every block” breaks chain continuity at b
 
 **Clean blocks (no action):** 34–41, 132–194 (71 positions).
 
-**Explicit non-claim:** Blocks 42–131 kept cycles are **not** the C-359–C-372 recovery tranche — they are C-339–C-358. Segment B promotes kept fork for **continuity**, not “125/125 re-attest pattern.”
+**Explicit non-claims:**
+
+- Blocks 42–131 kept cycles are C-339–C-358 (not C-359–C-372 recovery tranche).
+- **Single chain 1–194 is not claimed** in step 6 — open boundaries at **41→42** and **131→132** (clean 132–194 on component-4 only). Full canon resolves at Track R **step 8**.
 
 ---
 
