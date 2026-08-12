@@ -1,11 +1,11 @@
 {
   "mobius_catalog_version": "1.0.0",
-  "generated_at": "2026-08-12T02:22:10.667Z",
+  "generated_at": "2026-08-12T04:11:42.184Z",
   "repo": {
     "name": "Mobius-Substrate",
     "url": "https://github.com/kaizencycle/Mobius-Substrate",
     "default_branch": "main",
-    "commit": "b8822efc3cf1625efe6f22609e38ad937451ba59"
+    "commit": "a4a8c2e2739bea6c1996464f44b0d982dda2b4a8"
   },
   "stats": {
     "epiconCount": 0,
@@ -7250,7 +7250,7 @@
       "title": "Mobius Handbook — Generated Index",
       "category": "INDEX.md",
       "tags": [],
-      "content_hash": "sha256:152aa31fbda1059131a410122347b797f141d605b20d134fbae1d47ab90911c7",
+      "content_hash": "sha256:45774e42a3fa01a12954029a934ec960033671ca1c9a81b0f85c5526d960af7c",
       "summary": ""
     },
     {
@@ -7378,7 +7378,7 @@
       "title": "State of the Substrate — Latest",
       "category": "STATE_OF_THE_SUBSTRATE_LATEST.md",
       "tags": [],
-      "content_hash": "sha256:a87ff6da1bba1513f3d79c48fe6059ea5990fa244f084d135e8624ccf46272b1",
+      "content_hash": "sha256:46b681bbe19d11983c7f92d8e6fe68a7c4249a8f3ca2a5e311d32f41ecdaa271",
       "summary": ""
     },
     {
@@ -8428,7 +8428,7 @@
       "title": "C-401 Collision Pair Resolution Table",
       "category": "epicon",
       "tags": [],
-      "content_hash": "sha256:8166d19a188c0c3aafc80488d08459ce00f68681918c551f756092520d8776c9",
+      "content_hash": "sha256:b1bd46e564e34b5c6db41847669d264710968247240664e148a850c5cd15cac2",
       "summary": ""
     },
     {
@@ -8436,7 +8436,7 @@
       "title": "C-401 Opening Brief",
       "category": "epicon",
       "tags": [],
-      "content_hash": "sha256:41d1c3fc7c2350d52d49e44bc25734740299906a615c4c7191e184f71f11e603",
+      "content_hash": "sha256:25329c1b64d5bd90ee6a9e24c9829223e98df3ad85c7010feb4918472fef221d",
       "summary": ""
     },
     {
@@ -8444,7 +8444,7 @@
       "title": "C-401 Track R Promotion SOP",
       "category": "epicon",
       "tags": [],
-      "content_hash": "sha256:30c8b294c8f1296c537655a01eae7224bf598e31f69663557063274e3b624903",
+      "content_hash": "sha256:f2507279983e6e5bf8740941179e2d0501ba63d4e29fc8506254d528fa2150c8",
       "summary": ""
     },
     {
@@ -8452,7 +8452,7 @@
       "title": "C-401 ZEUS Attestation Request — Track R Collision Resolution",
       "category": "epicon",
       "tags": [],
-      "content_hash": "sha256:4c63b6528152d82f23dc50c32f0494a643d8da62bf12c56c6f126924b20d875a",
+      "content_hash": "sha256:46b210275d7556fdc7509e32870ac71eb65bd10dcd3fab5250552984b23860fb",
       "summary": ""
     },
     {
@@ -8460,7 +8460,7 @@
       "title": "C-401: Track R collision resolution — promote originals to canonical",
       "category": "epicon",
       "tags": [],
-      "content_hash": "sha256:7727215d942282ec4eea2635b59ff08e10d0ff38c0fe59ab6b1ac4f52af3342b",
+      "content_hash": "sha256:eabd307117863ae6796471d19e509ed67bd2c4e7236acc23b06262a77d6eab9e",
       "summary": ""
     },
     {
