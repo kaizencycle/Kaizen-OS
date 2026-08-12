@@ -1,15 +1,15 @@
 {
   "mobius_catalog_version": "1.0.0",
-  "generated_at": "2026-08-12T04:11:42.184Z",
+  "generated_at": "2026-08-12T15:19:25.367Z",
   "repo": {
     "name": "Mobius-Substrate",
     "url": "https://github.com/kaizencycle/Mobius-Substrate",
     "default_branch": "main",
-    "commit": "a4a8c2e2739bea6c1996464f44b0d982dda2b4a8"
+    "commit": "ebf0f1731388751aa39bab967cff6e42fe43452d"
   },
   "stats": {
     "epiconCount": 0,
-    "docCount": 1097
+    "docCount": 1100
   },
   "epicons": [],
   "docs": [
@@ -7250,7 +7250,7 @@
       "title": "Mobius Handbook — Generated Index",
       "category": "INDEX.md",
       "tags": [],
-      "content_hash": "sha256:45774e42a3fa01a12954029a934ec960033671ca1c9a81b0f85c5526d960af7c",
+      "content_hash": "sha256:4232d76f3d295ef384741badeaf030331aa2c2b5e8008b6f9ffe96099b54db92",
       "summary": ""
     },
     {
@@ -7378,7 +7378,7 @@
       "title": "State of the Substrate — Latest",
       "category": "STATE_OF_THE_SUBSTRATE_LATEST.md",
       "tags": [],
-      "content_hash": "sha256:46b681bbe19d11983c7f92d8e6fe68a7c4249a8f3ca2a5e311d32f41ecdaa271",
+      "content_hash": "sha256:4602765c7747cb7a3a4f2d847e0a0fe42dfb6d56b8de91aae3b799df965b1d03",
       "summary": ""
     },
     {
@@ -8432,6 +8432,22 @@
       "summary": ""
     },
     {
+      "path": "docs/epicon/cycles/C-401/C401_FEDERATION_SCAN_REPORT.md",
+      "title": "C-401 Federation Scan Report",
+      "category": "epicon",
+      "tags": [],
+      "content_hash": "sha256:42830d9090d836138e347f2d26273322594304326d3c0b72d6079483bd7ed750",
+      "summary": ""
+    },
+    {
+      "path": "docs/epicon/cycles/C-401/C401_GATE_DECISION.md",
+      "title": "C-401 Gate Decision — Federation Scan",
+      "category": "epicon",
+      "tags": [],
+      "content_hash": "sha256:d14c8ec7de156e5b0ca066461984601dfb81ba70a896427ae73b08c9d9f9d5e8",
+      "summary": ""
+    },
+    {
       "path": "docs/epicon/cycles/C-401/C401_OPENING_BRIEF.md",
       "title": "C-401 Opening Brief",
       "category": "epicon",
@@ -8453,6 +8469,14 @@
       "category": "epicon",
       "tags": [],
       "content_hash": "sha256:46b210275d7556fdc7509e32870ac71eb65bd10dcd3fab5250552984b23860fb",
+      "summary": ""
+    },
+    {
+      "path": "docs/epicon/cycles/C-401/EPICON_C-401_FEDERATION_SCAN_v1.md",
+      "title": "C-401: Federation scan — fail-closed Track R status",
+      "category": "epicon",
+      "tags": [],
+      "content_hash": "sha256:64b21f1e383f1b11a57e4354d2de533bcd73888c5a6340d9315798fc41dc9b3a",
       "summary": ""
     },
     {
