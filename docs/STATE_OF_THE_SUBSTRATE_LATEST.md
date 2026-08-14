@@ -1,8 +1,8 @@
 # State of the Substrate — Latest
 
-**Cycle:** C-401  
-**Updated:** 2026-08-12  
-**GI:** ~0.75 · yellow *(editorial; use Live strip below for Terminal snapshot)*  
+**Cycle:** C-403  
+**Updated:** 2026-08-14  
+**GI:** ~0.78 · yellow *(editorial; use Live strip below for Terminal snapshot — do not average micro vs primary)*  
 **Custodian:** Michael (kaizencycle)
 
 <div class="mobius-proof-strip">
@@ -18,7 +18,8 @@
 
 ## Dateline
 
-**C-397** — Reserve Block collision reconciliation: preserve C-377 pair witness (125 hash-divergent / 123 contested); cold 194-block snapshot draft pending Track R + gate adjudication (#429).  
+**C-403** — Federation reconciliation: GI provenance matrix, ZEUS disposition, editorial pointer sync; integrity gate engaged (125 collisions); Track R promotion unauthorized.  
+**C-401** — Reserve Block collision strategy merged (`component_coherent_hybrid`); federation scan filed.  
 **C-383** — cycle journal ledger verification (#11): trace `ledger_verified` to `/pulse/state` witness.  
 **C-382** — federation scan (20 optimizations), CPC identity durability follow-through, verification preference on `main`.  
 **C-381** — handbook CI remediation, I7 witness table (warn), Docs Guard Phase 1.  
