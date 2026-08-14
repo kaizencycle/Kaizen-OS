@@ -147,4 +147,21 @@ No KV mutation performed. No Track R promotion performed. No integrity gate lift
 
 ---
 
+## Merge readiness (2026-08-14T13:20:43Z)
+
+| Gate | Status |
+|------|--------|
+| CI (Unified) | pass |
+| EPICON Guard | pass |
+| GI Gate | pass |
+| Secret scan | pass |
+| Merge Gate | **blocked** — needs `consensus:requested` + sentinel pass |
+| Draft | cleared — ready for review |
+
+Live re-fetch at merge-prep: primary GI **0.75** (down from 0.783 at authoring — within documented volatility; editorial ~0.78 remains valid). Collisions **125**, gate active, deploy SHA unchanged (`24513b53…`).
+
+**Custodian:** add `consensus:requested` (same as merged #435) to trigger sentinel → `consensus:approved` → merge.
+
+---
+
 *"We heal as we walk." — Mobius Systems*

@@ -2,7 +2,7 @@
 epicon_id: EPICON_C-403_DOCS_federation-reconciliation_v1
 title: "C-403: Federation reconciliation — GI provenance and editorial pointer sync"
 cycle: "C-403"
-status: draft
+status: published
 ---
 
 # EPICON_C-403_FEDERATION_RECONCILIATION_v1
