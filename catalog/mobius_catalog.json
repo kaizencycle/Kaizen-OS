@@ -1,15 +1,15 @@
 {
   "mobius_catalog_version": "1.0.0",
-  "generated_at": "2026-08-14T04:12:29.336Z",
+  "generated_at": "2026-08-14T13:24:01.683Z",
   "repo": {
     "name": "Mobius-Substrate",
     "url": "https://github.com/kaizencycle/Mobius-Substrate",
     "default_branch": "main",
-    "commit": "f0948a682ba3c764f1fbb6bcda2eaed9fc486577"
+    "commit": "0eedc8fdab0b28ee4130f1cd12b9276fc3ff858a"
   },
   "stats": {
     "epiconCount": 0,
-    "docCount": 1100
+    "docCount": 1104
   },
   "epicons": [],
   "docs": [
@@ -7250,7 +7250,7 @@
       "title": "Mobius Handbook — Generated Index",
       "category": "INDEX.md",
       "tags": [],
-      "content_hash": "sha256:4232d76f3d295ef384741badeaf030331aa2c2b5e8008b6f9ffe96099b54db92",
+      "content_hash": "sha256:98147f7c6603b50ad501bfe85d3a25fc443ef7fb04ad75bd171520f1e7623142",
       "summary": ""
     },
     {
@@ -7378,7 +7378,7 @@
       "title": "State of the Substrate — Latest",
       "category": "STATE_OF_THE_SUBSTRATE_LATEST.md",
       "tags": [],
-      "content_hash": "sha256:4602765c7747cb7a3a4f2d847e0a0fe42dfb6d56b8de91aae3b799df965b1d03",
+      "content_hash": "sha256:f7a81a841a19c33d4e3fcb2e1b869f7afa6a976206a159cbc230a9767eb8e361",
       "summary": ""
     },
     {
@@ -8485,6 +8485,38 @@
       "category": "epicon",
       "tags": [],
       "content_hash": "sha256:eabd307117863ae6796471d19e509ed67bd2c4e7236acc23b06262a77d6eab9e",
+      "summary": ""
+    },
+    {
+      "path": "docs/epicon/cycles/C-403/C403_FEDERATION_RECONCILIATION_REPORT.md",
+      "title": "C-403 Federation Reconciliation Report",
+      "category": "epicon",
+      "tags": [],
+      "content_hash": "sha256:3a9f1d219b941d5e82b1d3ce58f1444b968e0906c357b7df4115359b18b6b436",
+      "summary": ""
+    },
+    {
+      "path": "docs/epicon/cycles/C-403/C403_GI_PROVENANCE_MATRIX.md",
+      "title": "C-403 GI Provenance Matrix",
+      "category": "epicon",
+      "tags": [],
+      "content_hash": "sha256:c477b09ab31fa6194c5a3c37d355ac1f16e452958e60ba1502ba8c0921834edc",
+      "summary": ""
+    },
+    {
+      "path": "docs/epicon/cycles/C-403/C403_ZEUS_DISPOSITION.md",
+      "title": "C-403 ZEUS Disposition — Federation Reconciliation",
+      "category": "epicon",
+      "tags": [],
+      "content_hash": "sha256:06ea3258688291dc698757e395a4e24bdb9cc81d9307dacc06d445304fee3426",
+      "summary": ""
+    },
+    {
+      "path": "docs/epicon/cycles/C-403/EPICON_C-403_RECONCILIATION_INTENT.md",
+      "title": "C-403: Federation reconciliation — GI provenance and editorial pointer sync",
+      "category": "epicon",
+      "tags": [],
+      "content_hash": "sha256:55cb18485af6ffec74f36146a2e3d232f2aa2d4356a45f0ca49a022fed4421e9",
       "summary": ""
     },
     {
