@@ -1,11 +1,11 @@
 {
   "mobius_catalog_version": "1.0.0",
-  "generated_at": "2026-08-14T13:09:19.967Z",
+  "generated_at": "2026-08-14T13:24:01.683Z",
   "repo": {
     "name": "Mobius-Substrate",
     "url": "https://github.com/kaizencycle/Mobius-Substrate",
     "default_branch": "main",
-    "commit": "93635e798d61ae9ee2eeaa1afc31c7de16c96038"
+    "commit": "0eedc8fdab0b28ee4130f1cd12b9276fc3ff858a"
   },
   "stats": {
     "epiconCount": 0,
@@ -8492,7 +8492,7 @@
       "title": "C-403 Federation Reconciliation Report",
       "category": "epicon",
       "tags": [],
-      "content_hash": "sha256:5e648c7d91c3704165e6e30002182f7078109a1444e9d0ba67000e444cff31dc",
+      "content_hash": "sha256:3a9f1d219b941d5e82b1d3ce58f1444b968e0906c357b7df4115359b18b6b436",
       "summary": ""
     },
     {
@@ -8516,7 +8516,7 @@
       "title": "C-403: Federation reconciliation — GI provenance and editorial pointer sync",
       "category": "epicon",
       "tags": [],
-      "content_hash": "sha256:698f37f6faa7b7c1bf8d7a606ff7f3c352d4f832655c00332ba77af56515d347",
+      "content_hash": "sha256:55cb18485af6ffec74f36146a2e3d232f2aa2d4356a45f0ca49a022fed4421e9",
       "summary": ""
     },
     {
