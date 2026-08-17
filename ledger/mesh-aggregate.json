@@ -1,8 +1,8 @@
 {
   "schema": "MNS_AGGREGATE_V1",
-  "updated_at": "2026-08-17T16:15:24.132Z",
+  "updated_at": "2026-08-17T17:17:02.522Z",
   "node_count": 5,
-  "live_nodes": 2,
+  "live_nodes": 3,
   "total_entries": 50,
   "nodes": [
     {
@@ -10,15 +10,15 @@
       "tier": "sentinel",
       "node_type": "substrate",
       "entry_count": 0,
-      "fetched_at": "2026-08-17T16:15:24.132Z",
-      "error": "timeout"
+      "fetched_at": "2026-08-17T17:17:01.520Z",
+      "error": null
     },
     {
       "node_id": "mobius-civic-ai-terminal",
       "tier": "contributor",
       "node_type": "app",
       "entry_count": 0,
-      "fetched_at": "2026-08-17T16:15:17.148Z",
+      "fetched_at": "2026-08-17T17:17:02.522Z",
       "error": null
     },
     {
@@ -26,7 +26,7 @@
       "tier": "contributor",
       "node_type": "service",
       "entry_count": 50,
-      "fetched_at": "2026-08-17T16:15:16.496Z",
+      "fetched_at": "2026-08-17T17:17:01.535Z",
       "error": null
     },
     {
