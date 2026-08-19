@@ -1,7 +1,7 @@
 # C-408 Evidence Commons — EPICON Intent (v0.1)
 
 ---
-epicon_id: EPICON_C-408_CORE_evidence-commons-v01
+epicon_id: EPICON_C-408_CORE_evidence-commons_v1
 title: "C-408: Evidence Commons packet and cache broker v0.1"
 cycle: "C-408"
 status: published
@@ -10,7 +10,7 @@ status: published
 ## Intent publication
 
 ```intent
-epicon_id: EPICON_C-408_CORE_evidence-commons-v01
+epicon_id: EPICON_C-408_CORE_evidence-commons_v1
 ledger_id: kaizencycle
 scope: core, docs
 mode: normal
