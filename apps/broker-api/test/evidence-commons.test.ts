@@ -398,7 +398,6 @@ describe('Evidence reuse authorization', () => {
     const access = authorizePayloadAccess(stale!, {
       requesterAgent: 'ECHO',
       purpose: 'current',
-      historicalOnly: false,
     });
     expect(access.decision).toBe('REVALIDATE');
   });

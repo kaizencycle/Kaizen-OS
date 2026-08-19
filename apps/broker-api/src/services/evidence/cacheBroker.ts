@@ -98,12 +98,11 @@ export function authorizePayloadAccess(
   input: {
     requesterAgent?: string;
     purpose?: string;
-    historicalOnly?: boolean;
   },
 ): EvidenceAccessDecision {
   const requesterAgent = input.requesterAgent?.trim() ?? '';
   const purpose = input.purpose?.trim() ?? '';
-  const historicalOnly = input.historicalOnly ?? false;
+  const historicalOnly = false;
 
   if (packet.license.publicPayload && !requesterAgent) {
     const freshness = evaluateFreshnessStatus(packet);

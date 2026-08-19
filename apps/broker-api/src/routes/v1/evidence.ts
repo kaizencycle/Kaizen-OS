@@ -1,4 +1,5 @@
 import { Router, Request, Response, NextFunction } from 'express';
+import rateLimit from 'express-rate-limit';
 import { z } from 'zod';
 import {
   decideEvidenceAccess,
@@ -22,6 +23,32 @@ import {
 import { normalizeEvidenceRequest } from '../../services/evidence/normalization';
 
 export const evidenceRouter = Router();
+
+const evidenceRateLimiter = rateLimit({
+  windowMs: 60 * 1000,
+  max: 100,
+  message: { ok: false, error: 'rate_limit_exceeded', reason: 'Too many evidence API requests.' },
+  standardHeaders: true,
+  legacyHeaders: false,
+});
+
+const evidencePayloadRateLimiter = rateLimit({
+  windowMs: 60 * 1000,
+  max: 30,
+  message: { ok: false, error: 'rate_limit_exceeded', reason: 'Too many payload read requests.' },
+  standardHeaders: true,
+  legacyHeaders: false,
+});
+
+const evidenceWriteRateLimiter = rateLimit({
+  windowMs: 60 * 1000,
+  max: 30,
+  message: { ok: false, error: 'rate_limit_exceeded', reason: 'Too many evidence write requests.' },
+  standardHeaders: true,
+  legacyHeaders: false,
+});
+
+evidenceRouter.use(evidenceRateLimiter);
 
 const MockAcquireSchema = z.object({
   request: NormalizedEvidenceRequestSchema,
@@ -91,7 +118,7 @@ evidenceRouter.post('/resolve', async (req, res, next) => {
   }
 });
 
-evidenceRouter.post('/resolve-reuse', async (req, res, next) => {
+evidenceRouter.post('/resolve-reuse', evidenceWriteRateLimiter, async (req, res, next) => {
   try {
     const input = EvidenceResolveInputSchema.parse(req.body);
     const decision = await resolveAndReuse(input);
@@ -121,7 +148,7 @@ evidenceRouter.post('/candidates', async (req, res, next) => {
   }
 });
 
-evidenceRouter.post('/packets/:packetId/mock-acquire', async (req, res, next) => {
+evidenceRouter.post('/packets/:packetId/mock-acquire', evidenceWriteRateLimiter, async (req, res, next) => {
   try {
     const body = MockAcquireSchema.parse(req.body);
     const packet = await mockAcquireEvidencePacket({
@@ -148,7 +175,7 @@ evidenceRouter.post('/packets/:packetId/mock-acquire', async (req, res, next) =>
   }
 });
 
-evidenceRouter.post('/packets/:packetId/reuse', async (req, res, next) => {
+evidenceRouter.post('/packets/:packetId/reuse', evidenceWriteRateLimiter, async (req, res, next) => {
   try {
     const body = ReuseSchema.parse(req.body);
     const decision = await recordEvidenceReuse({
@@ -170,21 +197,21 @@ evidenceRouter.post('/packets/:packetId/reuse', async (req, res, next) => {
   }
 });
 
-evidenceRouter.get('/packets/:packetId', async (req, res, next) => {
+evidenceRouter.get('/packets/:packetId', evidencePayloadRateLimiter, async (req, res, next) => {
   try {
     const repo = getEvidenceRepository();
     const includePayload = req.query.includePayload === 'true';
     const requesterAgent =
       typeof req.query.requesterAgent === 'string' ? req.query.requesterAgent.trim() : '';
     const purpose = typeof req.query.purpose === 'string' ? req.query.purpose.trim() : '';
-    const historicalOnly = req.query.historicalOnly === 'true';
     const packet = await repo.findByPacketId(req.params.packetId);
     if (!packet) {
       res.status(404).json({ ok: false, error: 'packet_not_found' });
       return;
     }
+    // GET never permits historical stale payload reads — use POST /reuse or /resolve-reuse.
     const payloadAccess = includePayload
-      ? authorizePayloadAccess(packet, { requesterAgent, purpose, historicalOnly })
+      ? authorizePayloadAccess(packet, { requesterAgent, purpose })
       : undefined;
     const mayReadPayload =
       includePayload &&
