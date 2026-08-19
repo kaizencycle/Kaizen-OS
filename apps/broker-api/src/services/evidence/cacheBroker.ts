@@ -93,6 +93,64 @@ export function evaluateReuseAuthorization(
   };
 }
 
+export function authorizePayloadAccess(
+  packet: EvidencePacket,
+  input: {
+    requesterAgent?: string;
+    purpose?: string;
+    historicalOnly?: boolean;
+  },
+): EvidenceAccessDecision {
+  const requesterAgent = input.requesterAgent?.trim() ?? '';
+  const purpose = input.purpose?.trim() ?? '';
+  const historicalOnly = input.historicalOnly ?? false;
+
+  if (packet.license.publicPayload && !requesterAgent) {
+    const freshness = evaluateFreshnessStatus(packet);
+    if (freshness === 'SUPERSEDED' || freshness === 'DISPUTED') {
+      return {
+        decision: 'NEW_ACQUISITION',
+        packet,
+        reason: `Existing packet status ${freshness}; fresh acquisition required.`,
+        requiresPayment: true,
+      };
+    }
+    if (freshness === 'STALE') {
+      if (historicalOnly) {
+        return {
+          decision: 'STALE_ALLOWED',
+          packet,
+          reason: 'Historical public payload read permitted.',
+          requiresPayment: false,
+        };
+      }
+      return {
+        decision: 'REVALIDATE',
+        packet,
+        reason: 'Public payload is stale for current information.',
+        requiresPayment: true,
+      };
+    }
+    return {
+      decision: 'FRESH_HIT',
+      packet,
+      reason: 'Public payload read permitted.',
+      requiresPayment: false,
+    };
+  }
+
+  if (!requesterAgent || !purpose) {
+    return {
+      decision: 'LICENSE_DENIED',
+      packet,
+      reason: 'requesterAgent and purpose required for authorized payload access.',
+      requiresPayment: true,
+    };
+  }
+
+  return evaluateReuseAuthorization(packet, { requesterAgent, purpose, historicalOnly });
+}
+
 async function appendAuthorizedReuseEvent(
   packet: EvidencePacket,
   input: {

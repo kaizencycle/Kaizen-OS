@@ -1,11 +1,11 @@
 {
   "mobius_catalog_version": "1.0.0",
-  "generated_at": "2026-08-19T23:10:48.181Z",
+  "generated_at": "2026-08-19T23:24:23.066Z",
   "repo": {
     "name": "Mobius-Substrate",
     "url": "https://github.com/kaizencycle/Mobius-Substrate",
     "default_branch": "main",
-    "commit": "73c135f0f94bf6f007962ab293b504bcf8e566d8"
+    "commit": "ece05ba52c5dc18bbaba3fb13329144fb59019df"
   },
   "stats": {
     "epiconCount": 0,
@@ -7250,7 +7250,7 @@
       "title": "Mobius Handbook — Generated Index",
       "category": "INDEX.md",
       "tags": [],
-      "content_hash": "sha256:98147f7c6603b50ad501bfe85d3a25fc443ef7fb04ad75bd171520f1e7623142",
+      "content_hash": "sha256:6496b0ea785b32096bf1aa3f62593118720f5efbd178130d2cc01f478d520bc3",
       "summary": ""
     },
     {
@@ -8524,7 +8524,7 @@
       "title": "C-408 Evidence Commons — EPICON Intent (v0.1)",
       "category": "epicon",
       "tags": [],
-      "content_hash": "sha256:59e8de761f6843b56b96dba2e1427da0770f45efd4ee0121005a355888fa0b29",
+      "content_hash": "sha256:1687cd6e40252e36d2a80d18f7e7e04d01178aa632175bf1608aa9123342722c",
       "summary": ""
     },
     {

@@ -6,13 +6,14 @@ import {
   recordEvidenceReuse,
   resolveAndReuse,
   summarizePacket,
+  authorizePayloadAccess,
 } from '../../services/evidence/cacheBroker';
 import { ingestHermesCandidates, MARKET_SWEEP_FIXTURE } from '../../services/evidence/hermesAdapter';
 import {
   getEvidenceRepository,
   type InMemoryEvidenceRepository,
 } from '../../services/evidence/repository';
-import { publicMetadataOnly, canReusePayload } from '../../services/evidence/licensePolicy';
+import { publicMetadataOnly } from '../../services/evidence/licensePolicy';
 import {
   EvidenceResolveInputSchema,
   HermesCandidateSubmissionSchema,
@@ -176,27 +177,33 @@ evidenceRouter.get('/packets/:packetId', async (req, res, next) => {
     const requesterAgent =
       typeof req.query.requesterAgent === 'string' ? req.query.requesterAgent.trim() : '';
     const purpose = typeof req.query.purpose === 'string' ? req.query.purpose.trim() : '';
+    const historicalOnly = req.query.historicalOnly === 'true';
     const packet = await repo.findByPacketId(req.params.packetId);
     if (!packet) {
       res.status(404).json({ ok: false, error: 'packet_not_found' });
       return;
     }
-    const reuseAuth =
-      requesterAgent && purpose
-        ? canReusePayload(packet, requesterAgent, purpose)
-        : { allowed: false, reason: 'requesterAgent and purpose required for authorized payload access' };
+    const payloadAccess = includePayload
+      ? authorizePayloadAccess(packet, { requesterAgent, purpose, historicalOnly })
+      : undefined;
     const mayReadPayload =
       includePayload &&
-      (packet.license.publicPayload || reuseAuth.allowed);
+      (payloadAccess?.decision === 'FRESH_HIT' || payloadAccess?.decision === 'STALE_ALLOWED');
     const reuseEvents = await repo.listReuseEvents(packet.packetId);
     const summary = summarizePacket(packet, reuseEvents);
     const memRepo = repo as InMemoryEvidenceRepository;
     const payload = mayReadPayload ? memRepo.getPayload?.(packet.packetId) : undefined;
     res.json({
       ok: true,
-      packet:
-        includePayload && mayReadPayload ? packet : publicMetadataOnly(packet),
+      packet: publicMetadataOnly(packet),
       payload,
+      payloadAccess: payloadAccess
+        ? {
+            decision: payloadAccess.decision,
+            requiresPayment: payloadAccess.requiresPayment,
+            reason: payloadAccess.reason,
+          }
+        : undefined,
       reuseEvents,
       summary,
     });

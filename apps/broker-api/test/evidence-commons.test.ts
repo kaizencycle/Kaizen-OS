@@ -9,6 +9,7 @@ import {
   recordEvidenceReuse,
   resolveAndReuse,
   expirePacketForFixture,
+  authorizePayloadAccess,
 } from '../src/services/evidence/cacheBroker';
 import {
   InMemoryEvidenceRepository,
@@ -376,6 +377,30 @@ describe('Evidence reuse authorization', () => {
       repo,
     );
     expect(packet.packetId).toBe('MOB-EVID-C408-CUSTOM');
+  });
+
+  it('denies stale payload reads without historicalOnly', async () => {
+    const repo = freshRepo();
+    const packet = await mockAcquireEvidencePacket(
+      {
+        request: normalizeEvidenceRequest(BASE_REQUEST),
+        acquiredByAgent: 'HERMES',
+        subject: 'subject',
+        observation: 'obs',
+        source: { providerId: 'example-provider', acquiredAt: new Date().toISOString() },
+        payload: { secret: true },
+        acquisition: { acquiredByAgent: 'HERMES', acquisitionMode: 'FREE' },
+      },
+      repo,
+    );
+    await expirePacketForFixture(packet.packetId, repo);
+    const stale = await repo.findByPacketId(packet.packetId);
+    const access = authorizePayloadAccess(stale!, {
+      requesterAgent: 'ECHO',
+      purpose: 'current',
+      historicalOnly: false,
+    });
+    expect(access.decision).toBe('REVALIDATE');
   });
 });
 
