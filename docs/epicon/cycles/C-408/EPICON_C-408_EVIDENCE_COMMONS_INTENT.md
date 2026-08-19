@@ -1,18 +1,18 @@
 # C-408 Evidence Commons — EPICON Intent (v0.1)
 
 ---
-epicon_id: EPICON_C-408_FEAT_evidence-commons-v01
+epicon_id: EPICON_C-408_CORE_evidence-commons-v01
 title: "C-408: Evidence Commons packet and cache broker v0.1"
 cycle: "C-408"
-status: draft
+status: published
 ---
 
 ## Intent publication
 
 ```intent
-epicon_id: EPICON_C-408_FEAT_evidence-commons-v01
+epicon_id: EPICON_C-408_CORE_evidence-commons-v01
 ledger_id: kaizencycle
-scope: core
+scope: core, docs
 mode: normal
 issued_at: 2026-08-19T00:00:00Z
 expires_at: 2026-11-17T00:00:00Z
@@ -28,6 +28,12 @@ counterfactuals:
   - Terminal renderer PR is separate (PR B)
   - CPC receipt anchoring deferred to PR C
 ```
+
+## Authority Provenance & Standing
+
+*Authority declared using `docs/templates/EPICON_FOUNDER_STANDING.md` v0.1*
+
+Broker Evidence Commons v0.1 — core application code plus protocol documentation. Mock acquisition only; no production KV or wallet authority exercised.
 
 ## Behavioral invariant
 
