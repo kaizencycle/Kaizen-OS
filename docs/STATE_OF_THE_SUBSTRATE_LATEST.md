@@ -1,8 +1,8 @@
 # State of the Substrate — Latest
 
-**Cycle:** C-403  
-**Updated:** 2026-08-14  
-**GI:** ~0.78 · yellow *(editorial; use Live strip below for Terminal snapshot — do not average micro vs primary)*  
+**Cycle:** C-408  
+**Updated:** 2026-08-19  
+**GI:** ~0.90 · yellow *(editorial; use Live strip below for Terminal snapshot — do not average micro vs primary)*  
 **Custodian:** Michael (kaizencycle)
 
 <div class="mobius-proof-strip">
@@ -18,6 +18,7 @@
 
 ## Dateline
 
+**C-408** — Evidence Commons v0.1: fail-closed Evidence Packet protocol and broker `/v1/evidence` API beside ECHO cache; mock acquisition only; Terminal renderer paired separately.  
 **C-403** — Federation reconciliation: GI provenance matrix, ZEUS disposition, editorial pointer sync; integrity gate engaged (125 collisions); Track R promotion unauthorized.  
 **C-401** — Reserve Block collision strategy merged (`component_coherent_hybrid`); federation scan filed.  
 **C-383** — cycle journal ledger verification (#11): trace `ledger_verified` to `/pulse/state` witness.  
@@ -35,6 +36,7 @@
 
 ## This cycle at a glance
 
+- **Evidence Commons (C-408):** exact-hash reuse broker, dedicated tables (not `echo_layer_entries`), HERMES candidate boundary; mock x402 only
 - **Handbook (C-380):** plain-language entry (`AI Simple in Life`), progressive-disclosure nav, reading-path cards — renderer only; `CANON → LEDGER → UI`
 - **EPICON-000 (C-380):** external reality boundary — public internet quarantined as witness pool, not truth source
 - **C-382:** Federation scan codified; CPC identity `ismount` port queued; security tooling backlog on four repos
