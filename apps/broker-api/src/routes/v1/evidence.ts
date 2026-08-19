@@ -12,7 +12,7 @@ import {
   getEvidenceRepository,
   type InMemoryEvidenceRepository,
 } from '../../services/evidence/repository';
-import { publicMetadataOnly } from '../../services/evidence/licensePolicy';
+import { publicMetadataOnly, canReusePayload } from '../../services/evidence/licensePolicy';
 import {
   EvidenceResolveInputSchema,
   HermesCandidateSubmissionSchema,
@@ -135,6 +135,7 @@ evidenceRouter.post('/packets/:packetId/mock-acquire', async (req, res, next) =>
         acquiredByAgent: body.acquisition.acquiredByAgent,
       },
       ttlHours: body.ttlHours,
+      preferredPacketId: req.params.packetId,
     });
     res.status(201).json({
       ok: true,
@@ -157,8 +158,9 @@ evidenceRouter.post('/packets/:packetId/reuse', async (req, res, next) => {
       operatorScope: body.operatorScope,
     });
     res.json({
-      ok: true,
+      ok: decision.decision === 'FRESH_HIT' || decision.decision === 'STALE_ALLOWED',
       decision: decision.decision,
+      requiresPayment: decision.requiresPayment,
       reason: decision.reason,
       packet: decision.packet ? publicMetadataOnly(decision.packet) : undefined,
     });
@@ -171,20 +173,29 @@ evidenceRouter.get('/packets/:packetId', async (req, res, next) => {
   try {
     const repo = getEvidenceRepository();
     const includePayload = req.query.includePayload === 'true';
+    const requesterAgent =
+      typeof req.query.requesterAgent === 'string' ? req.query.requesterAgent.trim() : '';
+    const purpose = typeof req.query.purpose === 'string' ? req.query.purpose.trim() : '';
     const packet = await repo.findByPacketId(req.params.packetId);
     if (!packet) {
       res.status(404).json({ ok: false, error: 'packet_not_found' });
       return;
     }
+    const reuseAuth =
+      requesterAgent && purpose
+        ? canReusePayload(packet, requesterAgent, purpose)
+        : { allowed: false, reason: 'requesterAgent and purpose required for authorized payload access' };
+    const mayReadPayload =
+      includePayload &&
+      (packet.license.publicPayload || reuseAuth.allowed);
     const reuseEvents = await repo.listReuseEvents(packet.packetId);
     const summary = summarizePacket(packet, reuseEvents);
     const memRepo = repo as InMemoryEvidenceRepository;
-    const payload = includePayload && packet.license.publicPayload
-      ? memRepo.getPayload?.(packet.packetId)
-      : undefined;
+    const payload = mayReadPayload ? memRepo.getPayload?.(packet.packetId) : undefined;
     res.json({
       ok: true,
-      packet: includePayload && packet.license.publicPayload ? packet : publicMetadataOnly(packet),
+      packet:
+        includePayload && mayReadPayload ? packet : publicMetadataOnly(packet),
       payload,
       reuseEvents,
       summary,

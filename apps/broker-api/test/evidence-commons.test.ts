@@ -7,6 +7,7 @@ import {
   decideEvidenceAccess,
   mockAcquireEvidencePacket,
   recordEvidenceReuse,
+  resolveAndReuse,
   expirePacketForFixture,
 } from '../src/services/evidence/cacheBroker';
 import {
@@ -66,6 +67,12 @@ describe('Evidence normalization + hashing', () => {
     const h1 = createEvidenceContentHash({ value: 1 });
     const h2 = createEvidenceContentHash({ value: 2 });
     expect(h1).not.toBe(h2);
+  });
+
+  it('normalizes query case for stable request hashes', () => {
+    const lower = normalizeEvidenceRequest({ ...BASE_REQUEST, query: 'middle east oil export disruption' });
+    const upper = normalizeEvidenceRequest({ ...BASE_REQUEST, query: 'MIDDLE EAST OIL EXPORT DISRUPTION' });
+    expect(createEvidenceRequestHash(lower)).toBe(createEvidenceRequestHash(upper));
   });
 });
 
@@ -201,6 +208,43 @@ describe('Evidence cache decisions', () => {
     expect(decision.decision).toBe('LICENSE_DENIED');
   });
 
+  it('allows acquiring agent to reuse when federation reuse is forbidden', async () => {
+    const licensedRequest = {
+      ...BASE_REQUEST,
+      licenseScope: {
+        cacheAllowed: true,
+        internalReuse: true,
+        federationReuse: false,
+        publicPayload: true,
+        publicProvenance: true,
+        derivativeSummary: true,
+      },
+    };
+    const repo = freshRepo();
+    await mockAcquireEvidencePacket(
+      {
+        request: normalizeEvidenceRequest(licensedRequest),
+        acquiredByAgent: 'HERMES',
+        subject: 'subject',
+        observation: 'obs',
+        source: { providerId: 'example-provider', acquiredAt: new Date().toISOString() },
+        payload: {},
+        acquisition: { acquiredByAgent: 'HERMES', acquisitionMode: 'FREE' },
+      },
+      repo,
+    );
+    const decision = await decideEvidenceAccess(
+      {
+        requesterAgent: 'HERMES',
+        purpose: 'test',
+        independentWitnessRequired: false,
+        request: licensedRequest,
+      },
+      repo,
+    );
+    expect(decision.decision).toBe('FRESH_HIT');
+  });
+
   it('returns INDEPENDENT_SOURCE_REQUIRED when corroboration requested', async () => {
     const repo = freshRepo();
     await mockAcquireEvidencePacket(
@@ -225,6 +269,113 @@ describe('Evidence cache decisions', () => {
       repo,
     );
     expect(decision.decision).toBe('INDEPENDENT_SOURCE_REQUIRED');
+  });
+});
+
+describe('Evidence reuse authorization', () => {
+  it('rejects direct reuse of stale packets without historicalOnly', async () => {
+    const repo = freshRepo();
+    const packet = await mockAcquireEvidencePacket(
+      {
+        request: normalizeEvidenceRequest(BASE_REQUEST),
+        acquiredByAgent: 'HERMES',
+        subject: 'subject',
+        observation: 'obs',
+        source: { providerId: 'example-provider', acquiredAt: new Date().toISOString() },
+        payload: {},
+        acquisition: { acquiredByAgent: 'HERMES', acquisitionMode: 'FREE' },
+      },
+      repo,
+    );
+    await expirePacketForFixture(packet.packetId, repo);
+    const decision = await recordEvidenceReuse({
+      packetId: packet.packetId,
+      consumerAgent: 'ECHO',
+      purpose: 'current',
+      historicalOnly: false,
+      repo,
+    });
+    expect(decision.decision).toBe('REVALIDATE');
+    expect(await repo.listReuseEvents(packet.packetId)).toHaveLength(0);
+  });
+
+  it('records historical reuse through resolve-reuse for stale packets', async () => {
+    const repo = freshRepo();
+    const packet = await mockAcquireEvidencePacket(
+      {
+        request: normalizeEvidenceRequest(BASE_REQUEST),
+        acquiredByAgent: 'HERMES',
+        subject: 'subject',
+        observation: 'obs',
+        source: { providerId: 'example-provider', acquiredAt: new Date().toISOString() },
+        payload: {},
+        acquisition: { acquiredByAgent: 'HERMES', acquisitionMode: 'FREE' },
+      },
+      repo,
+    );
+    await expirePacketForFixture(packet.packetId, repo);
+    const decision = await resolveAndReuse(
+      {
+        requesterAgent: 'ECHO',
+        purpose: 'historical',
+        independentWitnessRequired: false,
+        historicalOnly: true,
+        request: BASE_REQUEST,
+      },
+      repo,
+    );
+    expect(decision.decision).toBe('STALE_ALLOWED');
+    expect(await repo.listReuseEvents(packet.packetId)).toHaveLength(1);
+  });
+
+  it('increments version when refreshing a stale packet', async () => {
+    const repo = freshRepo();
+    const first = await mockAcquireEvidencePacket(
+      {
+        request: normalizeEvidenceRequest(BASE_REQUEST),
+        acquiredByAgent: 'HERMES',
+        subject: 'subject',
+        observation: 'obs v1',
+        source: { providerId: 'example-provider', acquiredAt: new Date().toISOString() },
+        payload: { version: 1 },
+        acquisition: { acquiredByAgent: 'HERMES', acquisitionMode: 'FREE' },
+      },
+      repo,
+    );
+    await expirePacketForFixture(first.packetId, repo);
+    const second = await mockAcquireEvidencePacket(
+      {
+        request: normalizeEvidenceRequest(BASE_REQUEST),
+        acquiredByAgent: 'HERMES',
+        subject: 'subject',
+        observation: 'obs v2',
+        source: { providerId: 'example-provider', acquiredAt: new Date().toISOString() },
+        payload: { version: 2 },
+        acquisition: { acquiredByAgent: 'HERMES', acquisitionMode: 'FREE' },
+      },
+      repo,
+    );
+    expect(second.version).toBe(2);
+    expect(second.predecessorPacketId).toBe(first.packetId);
+    expect(second.packetId).not.toBe(first.packetId);
+  });
+
+  it('honors preferred packet id on first acquisition', async () => {
+    const repo = freshRepo();
+    const packet = await mockAcquireEvidencePacket(
+      {
+        request: normalizeEvidenceRequest(BASE_REQUEST),
+        acquiredByAgent: 'HERMES',
+        subject: 'subject',
+        observation: 'obs',
+        source: { providerId: 'example-provider', acquiredAt: new Date().toISOString() },
+        payload: {},
+        acquisition: { acquiredByAgent: 'HERMES', acquisitionMode: 'FREE' },
+        preferredPacketId: 'MOB-EVID-C408-CUSTOM',
+      },
+      repo,
+    );
+    expect(packet.packetId).toBe('MOB-EVID-C408-CUSTOM');
   });
 });
 

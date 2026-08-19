@@ -108,6 +108,12 @@ export class InMemoryEvidenceRepository implements EvidenceRepository {
 let defaultRepository: InMemoryEvidenceRepository | null = null;
 
 export function getEvidenceRepository(): InMemoryEvidenceRepository {
+  if (process.env.EVIDENCE_COMMONS_DB_URL) {
+    throw new Error(
+      'EVIDENCE_COMMONS_DB_URL is set but PostgreSQL Evidence Commons storage is not implemented in v0.1. ' +
+        'Unset EVIDENCE_COMMONS_DB_URL to use the in-process repository, or apply a follow-up PR with PG backing.',
+    );
+  }
   if (!defaultRepository) {
     defaultRepository = new InMemoryEvidenceRepository();
   }

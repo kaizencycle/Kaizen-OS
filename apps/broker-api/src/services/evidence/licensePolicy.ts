@@ -12,7 +12,11 @@ export function canReusePayload(
   if (packet.visibility === 'PRIVATE_SCOPED' && packet.acquisition.acquiredByAgent !== requesterAgent) {
     return { allowed: false, reason: 'Private-scoped packet is outside requester scope.' };
   }
-  if (packet.visibility === 'FEDERATION_SHARED' && !license.federationReuse) {
+  if (
+    packet.visibility === 'FEDERATION_SHARED' &&
+    !license.federationReuse &&
+    packet.acquisition.acquiredByAgent !== requesterAgent
+  ) {
     return { allowed: false, reason: 'Federation reuse not permitted by license.' };
   }
   if (!license.internalReuse && packet.acquisition.acquiredByAgent !== requesterAgent) {
@@ -61,7 +65,23 @@ export function publicMetadataOnly(packet: EvidencePacket): Partial<EvidencePack
     },
   };
   if (license.publicPayload) {
-    return { ...packet };
+    const visible: EvidencePacket = { ...packet };
+    if (!license.publicProvenance) {
+      visible.source = {
+        providerId: packet.source.providerId,
+        acquiredAt: packet.source.acquiredAt,
+        eventTime: packet.source.eventTime,
+        reportingTime: packet.source.reportingTime,
+      };
+      visible.acquisition = {
+        acquiredByAgent: packet.acquisition.acquiredByAgent,
+        acquisitionMode: packet.acquisition.acquisitionMode,
+        price: null,
+        paymentReference: null,
+      };
+      visible.normalizedQuery = '[redacted query]';
+    }
+    return visible;
   }
   base.observation = license.derivativeSummary
     ? `[redacted — see license scope; subject: ${packet.subject}]`

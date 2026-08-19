@@ -37,7 +37,88 @@ export type MockAcquireInput = {
   acquisition: EvidenceAcquisition;
   ttlHours?: number;
   predecessorPacketId?: string | null;
+  preferredPacketId?: string;
 };
+
+export function evaluateReuseAuthorization(
+  packet: EvidencePacket,
+  input: {
+    requesterAgent: string;
+    purpose: string;
+    historicalOnly?: boolean;
+  },
+): EvidenceAccessDecision {
+  const licenseCheck = canReusePayload(packet, input.requesterAgent, input.purpose);
+  if (!licenseCheck.allowed) {
+    return {
+      decision: 'LICENSE_DENIED',
+      packet,
+      reason: licenseCheck.reason,
+      requiresPayment: true,
+    };
+  }
+
+  const freshness = evaluateFreshnessStatus(packet);
+  if (freshness === 'SUPERSEDED' || freshness === 'DISPUTED') {
+    return {
+      decision: 'NEW_ACQUISITION',
+      packet,
+      reason: `Existing packet status ${freshness}; fresh acquisition required.`,
+      requiresPayment: true,
+    };
+  }
+
+  if (freshness === 'STALE') {
+    if (input.historicalOnly) {
+      return {
+        decision: 'STALE_ALLOWED',
+        packet,
+        reason: 'Historical reuse permitted for stale packet within original time boundary.',
+        requiresPayment: false,
+      };
+    }
+    return {
+      decision: 'REVALIDATE',
+      packet,
+      reason: 'Matching packet exists but freshness window expired for current information.',
+      requiresPayment: true,
+    };
+  }
+
+  return {
+    decision: 'FRESH_HIT',
+    packet,
+    reason: 'Equivalent fresh packet exists and reuse is permitted.',
+    requiresPayment: false,
+  };
+}
+
+async function appendAuthorizedReuseEvent(
+  packet: EvidencePacket,
+  input: {
+    consumerAgent: string;
+    purpose: string;
+    operatorScope?: string | null;
+    decision: 'FRESH_HIT' | 'STALE_ALLOWED';
+    repo: EvidenceRepository;
+  },
+): Promise<void> {
+  const freshness = evaluateFreshnessStatus(packet);
+  const accessMode =
+    input.decision === 'STALE_ALLOWED' || freshness === 'STALE'
+      ? 'HISTORICAL_REUSE'
+      : 'CACHE_REUSE';
+  await input.repo.appendReuseEvent(
+    createReuseEvent({
+      packetId: packet.packetId,
+      consumerAgent: input.consumerAgent,
+      purpose: input.purpose,
+      accessMode,
+      freshnessAtAccess: freshness === 'FRESH' ? 'FRESH' : 'STALE',
+      operatorScope: input.operatorScope,
+    }),
+  );
+}
 
 export async function decideEvidenceAccess(
   input: EvidenceResolveParams,
@@ -129,21 +210,25 @@ export async function recordEvidenceReuse(input: {
   if (!packet) {
     throw new Error(`Packet not found: ${input.packetId}`);
   }
-  const freshness = evaluateFreshnessStatus(packet);
-  const accessMode = input.historicalOnly || freshness === 'STALE' ? 'HISTORICAL_REUSE' : 'CACHE_REUSE';
-  await repo.appendReuseEvent(
-    createReuseEvent({
-      packetId: packet.packetId,
-      consumerAgent: input.consumerAgent,
-      purpose: input.purpose,
-      accessMode,
-      freshnessAtAccess: freshness === 'FRESH' ? 'FRESH' : 'STALE',
-      operatorScope: input.operatorScope,
-    }),
-  );
+
+  const auth = evaluateReuseAuthorization(packet, {
+    requesterAgent: input.consumerAgent,
+    purpose: input.purpose,
+    historicalOnly: input.historicalOnly,
+  });
+  if (auth.decision !== 'FRESH_HIT' && auth.decision !== 'STALE_ALLOWED') {
+    return auth;
+  }
+
+  await appendAuthorizedReuseEvent(packet, {
+    consumerAgent: input.consumerAgent,
+    purpose: input.purpose,
+    operatorScope: input.operatorScope,
+    decision: auth.decision,
+    repo,
+  });
   return {
-    decision: freshness === 'FRESH' ? 'FRESH_HIT' : 'STALE_ALLOWED',
-    packet,
+    ...auth,
     reason: 'Reuse event appended.',
     requiresPayment: false,
   };
@@ -163,16 +248,20 @@ export async function mockAcquireEvidencePacket(
     }
 
     const memRepo = repo as ReturnType<typeof getEvidenceRepository>;
+    const predecessor = existing ?? null;
+    const version = predecessor ? predecessor.version + 1 : 1;
     const packetId =
-      typeof (memRepo as { nextPacketId?: () => string }).nextPacketId === 'function'
-        ? (memRepo as { nextPacketId: () => string }).nextPacketId()
-        : `MOB-EVID-C408-${randomUUID().slice(0, 8)}`;
+      input.preferredPacketId && !predecessor
+        ? input.preferredPacketId
+        : typeof (memRepo as { nextPacketId?: () => string }).nextPacketId === 'function'
+          ? (memRepo as { nextPacketId: () => string }).nextPacketId()
+          : `MOB-EVID-C408-${randomUUID().slice(0, 8)}`;
 
     const now = new Date().toISOString();
     const contentHash = createEvidenceContentHash(input.payload);
     const packet: EvidencePacket = {
       packetId,
-      version: 1,
+      version,
       requestHash,
       contentHash,
       normalizedQuery: buildNormalizedQueryLabel(normalized),
@@ -194,13 +283,13 @@ export async function mockAcquireEvidencePacket(
       },
       verification: {
         status: 'PROVISIONAL',
-        uniquePacketCount: 1,
+        uniquePacketCount: version,
         independentSourceCount: 1,
         conflicts: [],
       },
       createdAt: now,
       payloadRef: `payload:${packetId}`,
-      predecessorPacketId: input.predecessorPacketId ?? null,
+      predecessorPacketId: input.predecessorPacketId ?? predecessor?.packetId ?? null,
     };
 
     await repo.insertPacket(packet, input.payload);
@@ -251,13 +340,21 @@ export async function resolveAndReuse(
   repo: EvidenceRepository = getEvidenceRepository(),
 ): Promise<EvidenceAccessDecision> {
   const decision = await decideEvidenceAccess(input, repo);
-  if (decision.decision === 'FRESH_HIT' && decision.packet) {
-    await recordEvidenceReuse({
-      packetId: decision.packet.packetId,
+  if (
+    (decision.decision === 'FRESH_HIT' || decision.decision === 'STALE_ALLOWED') &&
+    decision.packet
+  ) {
+    await appendAuthorizedReuseEvent(decision.packet, {
       consumerAgent: input.requesterAgent,
       purpose: input.purpose,
+      decision: decision.decision,
       repo,
     });
+    return {
+      ...decision,
+      reason: 'Reuse event appended.',
+      requiresPayment: false,
+    };
   }
   return decision;
 }

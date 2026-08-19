@@ -33,6 +33,8 @@ export async function withSingleFlight<T>(
     promise,
     expiresAt: now + (timeoutMs > 0 ? timeoutMs : DEFAULT_TIMEOUT_MS),
   });
+  // Prevent unhandled rejection when the leader fails before followers attach.
+  void promise.catch(() => {});
 
   try {
     const result = await leader();

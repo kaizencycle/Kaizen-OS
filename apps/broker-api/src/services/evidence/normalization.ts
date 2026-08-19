@@ -28,7 +28,7 @@ export function normalizeEvidenceRequest(input: unknown): NormalizedEvidenceRequ
     ...parsed,
     providerId: trimCollapse(parsed.providerId).toLowerCase(),
     resourceClass: trimCollapse(parsed.resourceClass).toLowerCase(),
-    query: trimCollapse(parsed.query),
+    query: trimCollapse(parsed.query).toLowerCase(),
     parameters: normalizeParameters(parsed.parameters ?? {}),
     format: trimCollapse(parsed.format).toLowerCase(),
     locale: trimCollapse(parsed.locale).toLowerCase(),
