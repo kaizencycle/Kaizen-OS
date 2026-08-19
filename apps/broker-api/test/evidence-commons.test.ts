@@ -401,6 +401,36 @@ describe('Evidence reuse authorization', () => {
     });
     expect(access.decision).toBe('REVALIDATE');
   });
+
+  it('records reuse lineage on authorized fresh payload read', async () => {
+    const repo = freshRepo();
+    const packet = await mockAcquireEvidencePacket(
+      {
+        request: normalizeEvidenceRequest(BASE_REQUEST),
+        acquiredByAgent: 'HERMES',
+        subject: 'subject',
+        observation: 'obs',
+        source: { providerId: 'example-provider', acquiredAt: new Date().toISOString() },
+        payload: { value: 42 },
+        acquisition: { acquiredByAgent: 'HERMES', acquisitionMode: 'FREE' },
+      },
+      repo,
+    );
+    const access = authorizePayloadAccess(packet, {
+      requesterAgent: 'ECHO',
+      purpose: 'world_anomaly_digest',
+    });
+    expect(access.decision).toBe('FRESH_HIT');
+    await recordEvidenceReuse({
+      packetId: packet.packetId,
+      consumerAgent: 'ECHO',
+      purpose: 'world_anomaly_digest',
+      repo,
+    });
+    const events = await repo.listReuseEvents(packet.packetId);
+    expect(events).toHaveLength(1);
+    expect(repo.getPayload(packet.packetId)).toEqual({ value: 42 });
+  });
 });
 
 describe('HERMES candidate ingestion', () => {

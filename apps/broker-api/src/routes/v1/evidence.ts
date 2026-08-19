@@ -7,7 +7,6 @@ import {
   recordEvidenceReuse,
   resolveAndReuse,
   summarizePacket,
-  authorizePayloadAccess,
 } from '../../services/evidence/cacheBroker';
 import { ingestHermesCandidates, MARKET_SWEEP_FIXTURE } from '../../services/evidence/hermesAdapter';
 import {
@@ -86,6 +85,11 @@ const ReuseSchema = z.object({
   purpose: z.string().min(1),
   historicalOnly: z.boolean().optional(),
   operatorScope: z.string().nullable().optional(),
+});
+
+const PayloadReadSchema = z.object({
+  requesterAgent: z.string().min(1),
+  purpose: z.string().min(1),
 });
 
 function handleError(err: unknown, _req: Request, res: Response, next: NextFunction): void {
@@ -197,40 +201,19 @@ evidenceRouter.post('/packets/:packetId/reuse', evidenceWriteRateLimiter, async 
   }
 });
 
-evidenceRouter.get('/packets/:packetId', evidencePayloadRateLimiter, async (req, res, next) => {
+evidenceRouter.get('/packets/:packetId', async (req, res, next) => {
   try {
     const repo = getEvidenceRepository();
-    const includePayload = req.query.includePayload === 'true';
-    const requesterAgent =
-      typeof req.query.requesterAgent === 'string' ? req.query.requesterAgent.trim() : '';
-    const purpose = typeof req.query.purpose === 'string' ? req.query.purpose.trim() : '';
     const packet = await repo.findByPacketId(req.params.packetId);
     if (!packet) {
       res.status(404).json({ ok: false, error: 'packet_not_found' });
       return;
     }
-    // GET never permits historical stale payload reads — use POST /reuse or /resolve-reuse.
-    const payloadAccess = includePayload
-      ? authorizePayloadAccess(packet, { requesterAgent, purpose })
-      : undefined;
-    const mayReadPayload =
-      includePayload &&
-      (payloadAccess?.decision === 'FRESH_HIT' || payloadAccess?.decision === 'STALE_ALLOWED');
     const reuseEvents = await repo.listReuseEvents(packet.packetId);
     const summary = summarizePacket(packet, reuseEvents);
-    const memRepo = repo as InMemoryEvidenceRepository;
-    const payload = mayReadPayload ? memRepo.getPayload?.(packet.packetId) : undefined;
     res.json({
       ok: true,
       packet: publicMetadataOnly(packet),
-      payload,
-      payloadAccess: payloadAccess
-        ? {
-            decision: payloadAccess.decision,
-            requiresPayment: payloadAccess.requiresPayment,
-            reason: payloadAccess.reason,
-          }
-        : undefined,
       reuseEvents,
       summary,
     });
@@ -238,6 +221,51 @@ evidenceRouter.get('/packets/:packetId', evidencePayloadRateLimiter, async (req,
     next(err);
   }
 });
+
+evidenceRouter.post(
+  '/packets/:packetId/payload',
+  evidencePayloadRateLimiter,
+  evidenceWriteRateLimiter,
+  async (req, res, next) => {
+    try {
+      const body = PayloadReadSchema.parse(req.body);
+      const repo = getEvidenceRepository();
+      const packet = await repo.findByPacketId(req.params.packetId);
+      if (!packet) {
+        res.status(404).json({ ok: false, error: 'packet_not_found' });
+        return;
+      }
+      const reuseDecision = await recordEvidenceReuse({
+        packetId: packet.packetId,
+        consumerAgent: body.requesterAgent,
+        purpose: body.purpose,
+        historicalOnly: false,
+        repo,
+      });
+      if (reuseDecision.decision !== 'FRESH_HIT' && reuseDecision.decision !== 'STALE_ALLOWED') {
+        res.status(403).json({
+          ok: false,
+          decision: reuseDecision.decision,
+          requiresPayment: reuseDecision.requiresPayment,
+          reason: reuseDecision.reason,
+          packet: publicMetadataOnly(packet),
+        });
+        return;
+      }
+      const memRepo = repo as InMemoryEvidenceRepository;
+      res.json({
+        ok: true,
+        decision: reuseDecision.decision,
+        reason: reuseDecision.reason,
+        packet: publicMetadataOnly(packet),
+        payload: memRepo.getPayload?.(packet.packetId),
+        summary: summarizePacket(packet, await repo.listReuseEvents(packet.packetId)),
+      });
+    } catch (err) {
+      handleError(err, req, res, next);
+    }
+  },
+);
 
 evidenceRouter.get('/packets', async (req, res, next) => {
   try {
