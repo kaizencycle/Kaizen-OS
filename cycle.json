@@ -2,7 +2,10 @@
   "current_cycle": "C-410",
   "date": "2026-08-21",
   "gi": 0.9,
+  "gi_status": "unresolved",
+  "gi_editorial_class": "carry_forward_withheld",
   "mode": "yellow",
+  "mode_status": "unresolved",
   "canonical_domain": "https://mobius-substrate.com",
   "handbook": "https://handbook.mobius-substrate.com",
   "terminal": "https://terminal.mobius-substrate.com",
@@ -10,15 +13,17 @@
   "snapshot": "https://terminal.mobius-substrate.com/api/terminal/snapshot",
   "vault_status": "https://terminal.mobius-substrate.com/api/vault/status",
   "vault_seals": "https://terminal.mobius-substrate.com/api/vault/seal",
-  "last_updated": "2026-08-21T04:50:09Z",
-  "previous_cycle": "C-358",
-  "updated_by": "c360-pr-b-constitutional",
+  "last_updated": "2026-08-21T13:15:00Z",
+  "previous_cycle": "C-409",
+  "updated_by": "c410-civic-mesh-reconciliation",
   "vault": {
-    "in_progress_balance": 32.13,
+    "authority_class": "editorial_stale_superseded",
     "tranche_target": 50,
     "hash_coverage_pct": 100,
-    "seals_count": 319,
-    "fountain_status": "locked"
+    "fountain_status": "locked",
+    "runtime_reference": "operational_pulse",
+    "seals_count_note": "Former editorial seals_count 319 superseded; runtime seals_raw=360 in operational_pulse.",
+    "in_progress_balance_note": "Former editorial in_progress_balance 32.13 superseded; runtime MIC tranche in operational_pulse."
   },
   "kv": {
     "primary": "upstash",
@@ -57,10 +62,115 @@
     "mobius-bot-app-credentials-rotation-required",
     "identity-vercel-creds-pending-reattest",
     "mic-wallet-render-crash-loop",
-    "c360-federation-sweep-in-progress"
+    "c410-zeus-dispute-unresolved",
+    "c410-gi-provenance-unconverged",
+    "c410-track-r-intake-unverified"
   ],
-  "doc_version": "2.2.0",
+  "doc_version": "2.3.0",
   "last_state_snapshot": "C-410",
-  "next_state_snapshot_expected": "C-361",
-  "notes": "Auto-sync by mobius-bot (deterministic, no LLM). Advanced C-409 -> C-410. Ledger pulse fetched; GI not updated (unreachable, absent, or null in pulse)."
+  "editorial_pointer": {
+    "authority_class": "canon_writer",
+    "cycle_calendar_rule": "C-410 remains active for 2026-08-21; commits do not advance cycle",
+    "note": "Top-level gi/mode are editorial carry-forward only (GI_NULL_IN_PULSE). Runtime pulse truth is operational_pulse — not averaged into gi."
+  },
+  "operational_pulse": {
+    "authority_class": "runtime_pulse",
+    "source_of_truth": "kaizencycle/mobius-civic-ai-terminal/ledger/cycle-state.json",
+    "source_url": "https://raw.githubusercontent.com/kaizencycle/mobius-civic-ai-terminal/main/ledger/cycle-state.json",
+    "snapshot_lite_url": "https://mobius-civic-ai-terminal.vercel.app/api/terminal/snapshot-lite",
+    "observed_at": "2026-08-21T13:06:50.492Z",
+    "fetched_at": "2026-08-21T13:15:00Z",
+    "fetch_provenance": "C-410 civic mesh reconciliation (read-only)",
+    "cycle": "C-410",
+    "gi": 0.81,
+    "gi_provenance": "kv-live",
+    "gi_verified": true,
+    "mode": "green",
+    "degraded": true,
+    "seals_raw": 360,
+    "cold_manifest_blocks": 194,
+    "canon_lag": {
+      "raw_minus_cold_arithmetic": 166,
+      "counting_model": "invalid_for_canon_lag",
+      "status": "unverified",
+      "note": "seals_raw is raw KV index cardinality; cold_manifest_blocks is deduplicated cold canon. 360−194 is not valid canon lag (C-379/C-368). Deduped hot unique count UNVERIFIED."
+    },
+    "in_progress_block": 361,
+    "fountain_status": "locked",
+    "sustain_cycles_met": false,
+    "execution_authorized": false,
+    "zeus_disposition": "disputed",
+    "zeus_disposition_source": "docs/catalog/zeus/2026-08-20T12-02-50Z-verification.json (C-409 witness; C-410 catalog witness pending)",
+    "note": "Observed values only — not promoted to editorial gi field. Handoff selected reference cited GI 0.64 yellow; live ledger at fetch disagrees — see competing_projections."
+  },
+  "competing_projections": {
+    "note": "Do not average. Disagreement is evidence of unresolved provenance or synchronization drift.",
+    "readings": [
+      {
+        "source": "handoff_selected_reference",
+        "gi": 0.64,
+        "mode": "yellow",
+        "degraded": true,
+        "as_of": "2026-08-21 handoff",
+        "authority_class": "operator_reference"
+      },
+      {
+        "source": "terminal_ledger_main",
+        "gi": 0.81,
+        "mode": "green",
+        "degraded": true,
+        "gi_provenance": "kv-live",
+        "as_of": "2026-08-21T13:06:50.492Z",
+        "authority_class": "runtime_pulse"
+      },
+      {
+        "source": "atlas_heartbeat_cached",
+        "gi": 0.712,
+        "note": "handoff cite; latest committed repo heartbeat 0.786 (C-409, 2026-08-20T14:04:22Z)",
+        "authority_class": "agent_evidence"
+      },
+      {
+        "source": "integrity_status_live",
+        "gi": 0.81,
+        "mode": "green",
+        "as_of": "2026-08-21T13:03:44.378Z",
+        "authority_class": "runtime_pulse"
+      },
+      {
+        "source": "micro_composite_live",
+        "gi": 0.872,
+        "as_of": "2026-08-21T13:10:33Z",
+        "authority_class": "micro_composite"
+      },
+      {
+        "source": "substrate_cycle_json_former",
+        "gi": 0.9,
+        "status": "superseded",
+        "authority_class": "editorial_carry_forward"
+      }
+    ]
+  },
+  "superseded_fields": {
+    "next_state_snapshot_expected": {
+      "former": "C-361",
+      "reason": "Stale writer residue — block 361 is in-progress reserve slot, not next cycle snapshot id"
+    },
+    "previous_cycle": {
+      "former": "C-358",
+      "reason": "Writer skipped cycle chain; corrected to C-409"
+    },
+    "gi": {
+      "former": 0.9,
+      "reason": "Carry-forward without pulse attestation; gi_status unresolved — not live authority"
+    },
+    "vault.seals_count": {
+      "former": 319,
+      "reason": "Attested-examined count at prior sync; runtime raw index now 360"
+    },
+    "vault.in_progress_balance": {
+      "former": 32.13,
+      "reason": "Obsolete MIC tranche editorial snapshot"
+    }
+  },
+  "notes": "C-410 civic mesh reconciliation (docs-only pointer sync). Editorial gi/mode carry-forward withheld (unresolved). Runtime truth in operational_pulse from Terminal ledger. ZEUS dispute preserved. No KV mutation. No cycle advance beyond C-410 calendar day."
 }

@@ -9,11 +9,13 @@ from unittest.mock import patch
 
 from scripts.state_sync_cycle import (
     LedgerFetchResult,
+    apply_cycle_writer_hygiene,
     build_ledger_journal_fields,
     compute_cycle_id,
     fetch_ledger_pulse,
     gi_attestation_status,
     is_atlas_cycle_journal,
+    is_cycle_scoped_open_flag,
     merge_journal_record,
     should_refresh_ledger_fields,
 )
@@ -146,6 +148,61 @@ class TestRefreshPolicy(unittest.TestCase):
         out = merge_journal_record(existing, "C-383", date(2026, 7, 25), fields)
         self.assertEqual(out["narrative"], "ATLAS note")
         self.assertTrue(out["ledger_verified"])
+
+
+class TestCycleWriterHygiene(unittest.TestCase):
+    def test_cycle_scoped_open_flag(self):
+        self.assertTrue(is_cycle_scoped_open_flag("c410-zeus-dispute-unresolved"))
+        self.assertFalse(is_cycle_scoped_open_flag("mic-wallet-render-crash-loop"))
+
+    def test_cycle_advance_clears_reconciliation_metadata(self):
+        doc = {
+            "current_cycle": "C-410",
+            "gi_status": "unresolved",
+            "operational_pulse": {"cycle": "C-410"},
+            "open_flags": ["c410-zeus-dispute-unresolved", "mic-wallet-render-crash-loop"],
+        }
+        fetch = LedgerFetchResult(
+            verified=True,
+            withheld_reason=None,
+            snapshot={"gi": None},
+            health=None,
+            witness_url="https://x/pulse/state",
+            error=None,
+        )
+        apply_cycle_writer_hygiene(
+            doc, previous_cycle="C-410", new_cycle="C-411", fetch=fetch
+        )
+        self.assertNotIn("operational_pulse", doc)
+        self.assertNotIn("gi_status", doc)
+        self.assertEqual(doc["previous_cycle"], "C-410")
+        self.assertIn("mic-wallet-render-crash-loop", doc["open_flags"])
+        self.assertNotIn("c410-zeus-dispute-unresolved", doc["open_flags"])
+
+    def test_gi_attestation_clears_unresolved_markers(self):
+        doc = {
+            "current_cycle": "C-410",
+            "gi": 0.9,
+            "gi_status": "unresolved",
+            "gi_editorial_class": "carry_forward_withheld",
+            "mode_status": "unresolved",
+        }
+        fetch = LedgerFetchResult(
+            verified=True,
+            withheld_reason=None,
+            snapshot={"gi": 0.81, "mode": "green"},
+            health=None,
+            witness_url="https://x/pulse/state",
+            error=None,
+        )
+        apply_cycle_writer_hygiene(
+            doc, previous_cycle="C-410", new_cycle="C-410", fetch=fetch
+        )
+        self.assertEqual(doc["gi"], 0.81)
+        self.assertEqual(doc["mode"], "green")
+        self.assertNotIn("gi_status", doc)
+        self.assertNotIn("gi_editorial_class", doc)
+        self.assertNotIn("mode_status", doc)
 
 
 if __name__ == "__main__":

@@ -1,15 +1,15 @@
 {
   "mobius_catalog_version": "1.0.0",
-  "generated_at": "2026-08-21T03:06:49.808Z",
+  "generated_at": "2026-08-21T14:14:39.251Z",
   "repo": {
     "name": "Mobius-Substrate",
     "url": "https://github.com/kaizencycle/Mobius-Substrate",
     "default_branch": "main",
-    "commit": "7a12a559af1bcb3f4fa9b838a60a399f4e3cdb45"
+    "commit": "92b8839fb8c541c4b54c37b148a2002d51d72de8"
   },
   "stats": {
     "epiconCount": 0,
-    "docCount": 1108
+    "docCount": 1109
   },
   "epicons": [],
   "docs": [
@@ -7378,7 +7378,7 @@
       "title": "State of the Substrate — Latest",
       "category": "STATE_OF_THE_SUBSTRATE_LATEST.md",
       "tags": [],
-      "content_hash": "sha256:84f2e1328bc99451b9f0557819944488c50d00dca3721b160d845db063360e47",
+      "content_hash": "sha256:7c5a8dd64f88a2ac0f6450547bd8726b55d1994c27f676274d3293d043607c0d",
       "summary": ""
     },
     {
@@ -8525,6 +8525,14 @@
       "category": "epicon",
       "tags": [],
       "content_hash": "sha256:1687cd6e40252e36d2a80d18f7e7e04d01178aa632175bf1608aa9123342722c",
+      "summary": ""
+    },
+    {
+      "path": "docs/epicon/cycles/C-410/README.md",
+      "title": "C-410 — Substrate cycle pointer reconciliation",
+      "category": "epicon",
+      "tags": [],
+      "content_hash": "sha256:0d7c998de98be7f6c490bcedc58cab1635886a1cadc9b1f06569bd2b15e44086",
       "summary": ""
     },
     {

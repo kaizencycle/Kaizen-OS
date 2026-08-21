@@ -67,7 +67,7 @@ SCOPE_MAP = {
     "infra": ["infra/", "deploy/", "docker/", "monitoring/", "grafana/"],
     "sentinels": ["sentinels/"],
     "labs": ["labs/"],
-    "specs": ["specs/", "schemas/", "configs/", "tests/", "canon/", "docs/epicon/"],
+    "specs": ["specs/", "schemas/", "configs/", "tests/", "canon/", "docs/epicon/", "cycle.json"],
 }
 
 # Scope -> labels to apply
