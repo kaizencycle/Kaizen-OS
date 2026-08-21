@@ -1,9 +1,10 @@
 {
   "current_cycle": "C-410",
   "date": "2026-08-21",
-  "gi": null,
+  "gi": 0.9,
   "gi_status": "unresolved",
-  "mode": null,
+  "gi_editorial_class": "carry_forward_withheld",
+  "mode": "yellow",
   "mode_status": "unresolved",
   "canonical_domain": "https://mobius-substrate.com",
   "handbook": "https://handbook.mobius-substrate.com",
@@ -17,14 +18,12 @@
   "updated_by": "c410-civic-mesh-reconciliation",
   "vault": {
     "authority_class": "editorial_stale_superseded",
-    "in_progress_balance": null,
-    "in_progress_balance_note": "Former editorial value 32.13 (C-408 era) superseded. Runtime MIC tranche lives in operational_pulse.",
     "tranche_target": 50,
     "hash_coverage_pct": 100,
-    "seals_count": null,
-    "seals_count_note": "Former editorial value 319 superseded. Runtime seals_raw=360 per operational_pulse; 319 was attested-examined count at prior sync.",
     "fountain_status": "locked",
-    "runtime_reference": "operational_pulse"
+    "runtime_reference": "operational_pulse",
+    "seals_count_note": "Former editorial seals_count 319 superseded; runtime seals_raw=360 in operational_pulse.",
+    "in_progress_balance_note": "Former editorial in_progress_balance 32.13 superseded; runtime MIC tranche in operational_pulse."
   },
   "kv": {
     "primary": "upstash",
@@ -72,7 +71,7 @@
   "editorial_pointer": {
     "authority_class": "canon_writer",
     "cycle_calendar_rule": "C-410 remains active for 2026-08-21; commits do not advance cycle",
-    "note": "This file tracks editorial/canon pointers. Runtime pulse truth is operational_pulse — not averaged into gi."
+    "note": "Top-level gi/mode are editorial carry-forward only (GI_NULL_IN_PULSE). Runtime pulse truth is operational_pulse — not averaged into gi."
   },
   "operational_pulse": {
     "authority_class": "runtime_pulse",
@@ -157,7 +156,7 @@
     },
     "gi": {
       "former": 0.9,
-      "reason": "Carry-forward without pulse attestation (GI_NULL_IN_PULSE in C-410 journal)"
+      "reason": "Carry-forward without pulse attestation; gi_status unresolved — not live authority"
     },
     "vault.seals_count": {
       "former": 319,
@@ -168,5 +167,5 @@
       "reason": "Obsolete MIC tranche editorial snapshot"
     }
   },
-  "notes": "C-410 civic mesh reconciliation (docs-only pointer sync). Editorial gi withheld (null/unresolved). Runtime truth in operational_pulse from Terminal ledger. ZEUS dispute preserved. No KV mutation. No cycle advance beyond C-410 calendar day."
+  "notes": "C-410 civic mesh reconciliation (docs-only pointer sync). Editorial gi/mode carry-forward withheld (unresolved). Runtime truth in operational_pulse from Terminal ledger. ZEUS dispute preserved. No KV mutation. No cycle advance beyond C-410 calendar day."
 }

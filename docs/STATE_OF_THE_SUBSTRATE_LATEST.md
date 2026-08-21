@@ -1,8 +1,8 @@
 # State of the Substrate — Latest
 
-**Cycle:** C-408  
-**Updated:** 2026-08-19  
-**GI:** ~0.90 · yellow *(editorial; use Live strip below for Terminal snapshot — do not average micro vs primary)*  
+**Cycle:** C-410  
+**Updated:** 2026-08-21  
+**GI:** editorial carry-forward *(unresolved — `gi_status` in `cycle.json`; use Live strip below for Terminal snapshot — do not average micro vs primary)*  
 **Custodian:** Michael (kaizencycle)
 
 <div class="mobius-proof-strip">
