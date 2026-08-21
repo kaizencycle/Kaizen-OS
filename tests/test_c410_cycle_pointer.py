@@ -57,6 +57,9 @@ def test_stale_vault_counts_not_carried_forward():
     assert "seals_count" not in vault
     assert "in_progress_balance" not in vault
     assert cycle["operational_pulse"]["seals_raw"] == 360
+    canon_lag = cycle["operational_pulse"]["canon_lag"]
+    assert canon_lag["counting_model"] == "invalid_for_canon_lag"
+    assert "gap_raw_vs_cold" not in cycle["operational_pulse"]
 
 
 def test_zeus_dispute_preserved():

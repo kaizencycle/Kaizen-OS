@@ -89,7 +89,12 @@
     "degraded": true,
     "seals_raw": 360,
     "cold_manifest_blocks": 194,
-    "gap_raw_vs_cold": 166,
+    "canon_lag": {
+      "raw_minus_cold_arithmetic": 166,
+      "counting_model": "invalid_for_canon_lag",
+      "status": "unverified",
+      "note": "seals_raw is raw KV index cardinality; cold_manifest_blocks is deduplicated cold canon. 360−194 is not valid canon lag (C-379/C-368). Deduped hot unique count UNVERIFIED."
+    },
     "in_progress_block": 361,
     "fountain_status": "locked",
     "sustain_cycles_met": false,

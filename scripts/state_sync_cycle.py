@@ -8,6 +8,7 @@ Civic Ledger /pulse/state (and optional /health) for journals/cycles/*.json.
 from __future__ import annotations
 
 import json
+import re
 import urllib.error
 import urllib.request
 from dataclasses import dataclass
@@ -173,3 +174,47 @@ def should_refresh_ledger_fields(existing: dict[str, Any] | None) -> bool:
     if existing.get("ledger_gi_attested") is not True:
         return True
     return False
+
+
+CYCLE_SCOPED_RECONCILIATION_KEYS = (
+    "operational_pulse",
+    "competing_projections",
+    "superseded_fields",
+    "editorial_pointer",
+    "gi_status",
+    "gi_editorial_class",
+    "mode_status",
+)
+
+
+def is_cycle_scoped_open_flag(flag: str) -> bool:
+    return bool(re.match(r"^c\d+-", flag, re.IGNORECASE))
+
+
+def apply_cycle_writer_hygiene(
+    cycle_doc: dict[str, Any],
+    *,
+    previous_cycle: str | None,
+    new_cycle: str,
+    fetch: LedgerFetchResult,
+) -> None:
+    """Keep mobius-bot writer from leaving stale reconciliation metadata behind."""
+    if previous_cycle and previous_cycle != new_cycle:
+        for key in CYCLE_SCOPED_RECONCILIATION_KEYS:
+            cycle_doc.pop(key, None)
+        cycle_doc["open_flags"] = [
+            flag
+            for flag in cycle_doc.get("open_flags", [])
+            if not is_cycle_scoped_open_flag(flag)
+        ]
+        cycle_doc["previous_cycle"] = previous_cycle
+        cycle_doc["updated_by"] = "mobius-bot-state-sync"
+
+    if fetch.verified and fetch.snapshot and fetch.snapshot.get("gi") is not None:
+        cycle_doc["gi"] = fetch.snapshot["gi"]
+        cycle_doc["gi_attested_at"] = new_cycle
+        for key in ("gi_status", "gi_editorial_class", "mode_status"):
+            cycle_doc.pop(key, None)
+        mode = fetch.snapshot.get("mode")
+        if mode in ("green", "yellow", "red"):
+            cycle_doc["mode"] = mode

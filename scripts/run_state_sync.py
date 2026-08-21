@@ -13,6 +13,7 @@ sys.path.insert(0, str(_SCRIPTS))
 
 from state_sync_cycle import (  # noqa: E402
     DEFAULT_LEDGER_BASE_URL,
+    apply_cycle_writer_hygiene,
     build_ledger_journal_fields,
     compute_cycle_id,
     fetch_ledger_pulse,
@@ -46,9 +47,7 @@ def main() -> int:
     c["date"] = today.isoformat()
     c["last_updated"] = now
     c["last_state_snapshot"] = cycle
-    if fetch.verified and fetch.snapshot and fetch.snapshot.get("gi") is not None:
-        c["gi"] = fetch.snapshot["gi"]
-        c["gi_attested_at"] = cycle
+    apply_cycle_writer_hygiene(c, previous_cycle=prev, new_cycle=cycle, fetch=fetch)
     note = (
         f"Auto-sync by mobius-bot (deterministic, no LLM). Advanced {prev} -> {cycle}. "
         + (
