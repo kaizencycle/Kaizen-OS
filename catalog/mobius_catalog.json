@@ -1,11 +1,11 @@
 {
   "mobius_catalog_version": "1.0.0",
-  "generated_at": "2026-08-21T14:14:39.251Z",
+  "generated_at": "2026-08-22T02:57:32.647Z",
   "repo": {
     "name": "Mobius-Substrate",
     "url": "https://github.com/kaizencycle/Mobius-Substrate",
     "default_branch": "main",
-    "commit": "92b8839fb8c541c4b54c37b148a2002d51d72de8"
+    "commit": "1d19508550c50fef0da07bafd2e7b25a43ccd5d6"
   },
   "stats": {
     "epiconCount": 0,
@@ -7250,7 +7250,7 @@
       "title": "Mobius Handbook — Generated Index",
       "category": "INDEX.md",
       "tags": [],
-      "content_hash": "sha256:6496b0ea785b32096bf1aa3f62593118720f5efbd178130d2cc01f478d520bc3",
+      "content_hash": "sha256:b407d8fd51afff4f3c5e8ff1bf99a51b9debd2d791bcf4ef49c46db659cc6302",
       "summary": ""
     },
     {
