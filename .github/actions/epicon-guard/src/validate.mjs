@@ -70,7 +70,7 @@ const SCOPE_ENVELOPES = {
     'LICENSE',
     'mkdocs.yml',
   ],
-  ci: ['.github/', 'ci/', 'scripts/', 'STATE/'],
+  ci: ['.github/', 'ci/', 'scripts/', 'STATE/', '...'],
   core: ['apps/', 'packages/', 'src/', 'lib/', 'services/'],
   infra: ['infra/', 'deploy/', 'docker/', 'monitoring/', 'grafana/', 'render.yaml', 'vercel.json', 'Dockerfile', 'docker-compose', 'netlify.toml'],
   sentinels: ['sentinels/', 'agents/'],
