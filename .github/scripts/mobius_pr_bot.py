@@ -62,7 +62,7 @@ SCOPE_MAP = {
         "journals/cycles/",
         "catalog/",
     ],
-    "ci": [".github/", "ci/", "scripts/", "STATE/"],
+    "ci": [".github/", "ci/", "scripts/", "STATE/", "..."],
     "core": ["src/", "packages/", "apps/", "services/", "package.json", "package-lock.json"],
     "infra": ["infra/", "deploy/", "docker/", "monitoring/", "grafana/"],
     "sentinels": ["sentinels/"],
