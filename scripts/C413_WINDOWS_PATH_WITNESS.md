@@ -1,5 +1,9 @@
 # C-413 — Remove Windows-invalid top-level `...` path
 
+## Authority Provenance
+
+*Authority declared using `docs/templates/EPICON_FOUNDER_STANDING.md` v0.1 — custodian-issued ATLAS bounded repository repair; no production authority.*
+
 ## Status
 
 Repository repair. Removes an accidental empty top-level blob named `...` that breaks
@@ -33,8 +37,16 @@ Low. Single empty blob removal at repository root.
 
 ## Rollback
 
+If merged as a merge commit:
+
 ```bash
-git revert <merge-commit-sha>
+git revert -m 1 <merge-commit-sha>
+```
+
+If merged as a squash commit:
+
+```bash
+git revert <squash-commit-sha>
 ```
 
 Reintroduces the Windows checkout failure; do not rollback unless the blob is required
@@ -45,7 +57,7 @@ for a documented non-Windows-only workflow.
 ```intent
 epicon_id: EPICON_C-413_INFRA_windows-invalid-path-removal_v1
 ledger_id: mobius:kaizencycle
-scope: infra
+scope: ci, specs
 mode: normal
 issued_at: 2026-08-24T13:45:00Z
 expires_at: 2026-11-22T13:45:00Z
@@ -54,8 +66,8 @@ justification: |
   REASONING: An accidental top-level Git path named ... blocks conventional Windows checkout for Mobius-Substrate contributors and agents. Removing it restores cross-platform clone parity without rewriting history.
   ANCHORS:
     - scripts/verify_windows_portable_checkout.sh
+    - scripts/C413_WINDOWS_PATH_WITNESS.md
     - tests/test_windows_portable_paths.py
-    - docs/epicon/cycles/C-413/WINDOWS_INVALID_PATH_REMOVAL.md
   BOUNDARIES: Repository layout repair only. No canon, cycle pointer, GI, MIC, Vault, Reserve Block, Track R, Fountain, seal, or deployment changes.
   COUNTERFACTUAL: If Windows checkout still fails after removal, do not merge until the remaining invalid path is identified.
 counterfactuals:
