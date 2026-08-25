@@ -1,6 +1,6 @@
 {
-  "current_cycle": "C-413",
-  "date": "2026-08-24",
+  "current_cycle": "C-414",
+  "date": "2026-08-25",
   "gi": 0.9,
   "mode": "yellow",
   "canonical_domain": "https://mobius-substrate.com",
@@ -10,8 +10,8 @@
   "snapshot": "https://terminal.mobius-substrate.com/api/terminal/snapshot",
   "vault_status": "https://terminal.mobius-substrate.com/api/vault/status",
   "vault_seals": "https://terminal.mobius-substrate.com/api/vault/seal",
-  "last_updated": "2026-08-24T04:57:00Z",
-  "previous_cycle": "C-412",
+  "last_updated": "2026-08-25T04:49:26Z",
+  "previous_cycle": "C-413",
   "updated_by": "mobius-bot-state-sync",
   "vault": {
     "authority_class": "editorial_stale_superseded",
@@ -61,6 +61,6 @@
     "mic-wallet-render-crash-loop"
   ],
   "doc_version": "2.3.0",
-  "last_state_snapshot": "C-413",
-  "notes": "Auto-sync by mobius-bot (deterministic, no LLM). Advanced C-412 -> C-413. Ledger pulse fetched; GI not updated (unreachable, absent, or null in pulse)."
+  "last_state_snapshot": "C-414",
+  "notes": "Auto-sync by mobius-bot (deterministic, no LLM). Advanced C-413 -> C-414. Ledger pulse fetched; GI not updated (unreachable, absent, or null in pulse)."
 }
