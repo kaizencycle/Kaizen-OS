@@ -73,13 +73,31 @@ jobs:
           test -f package.json
           test -f scripts/verify_windows_portable_checkout.sh
 
-      - name: Path safety unit tests
-        shell: bash
-        run: python -m unittest tests.test_windows_portable_paths -v
-
-      - name: Portable checkout shell guard
+      - name: Portable checkout shell guard (authoritative on Windows)
         shell: bash
         run: bash scripts/verify_windows_portable_checkout.sh
+
+      - name: Path safety unit tests (informational; Path(...).exists false-positive on Windows)
+        shell: bash
+        run: |
+          python -m unittest tests.test_windows_portable_paths.TestWindowsPortablePaths.test_root_tree_has_no_windows_invalid_ellipsis_path -v
+          python - <<'PY'
+          import os, subprocess, sys, tempfile
+          from pathlib import Path
+          tmp = tempfile.mkdtemp(prefix="mobius-win-clone-")
+          clone = Path(tmp) / "clone"
+          subprocess.check_call(["git", "clone", "--quiet", ".", str(clone)], cwd=os.getcwd())
+          status = subprocess.check_output(["git", "status", "--porcelain"], cwd=clone, text=True).strip()
+          if status:
+              print("FAIL: clone not clean:", status, file=sys.stderr)
+              sys.exit(1)
+          # Windows-safe: directory listing, not Path('...').exists()
+          names = os.listdir(clone)
+          if "..." in names:
+              print("FAIL: clone materialized top-level ...", file=sys.stderr)
+              sys.exit(1)
+          print("PASS: Windows-safe fresh-clone check")
+          PY
 
       - name: Witness pass marker
         shell: bash
