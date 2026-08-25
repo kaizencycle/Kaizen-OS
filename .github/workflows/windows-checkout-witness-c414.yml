@@ -1,0 +1,82 @@
+# Ephemeral ATLAS Job-5 witness — push-triggered on witness branch only.
+# Not merged to main; does not expand permanent CI on default branch.
+name: C-414 Windows Checkout Witness (Job-5)
+
+on:
+  push:
+    branches:
+      - cursor/c414-windows-checkout-witness-0e02
+  workflow_dispatch:
+    inputs:
+      ref:
+        description: Git ref to witness (default main)
+        required: false
+        default: main
+
+permissions:
+  contents: read
+
+jobs:
+  windows-checkout-witness:
+    name: windows-latest conventional checkout
+    runs-on: windows-latest
+    steps:
+      - name: Checkout target ref
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.inputs.ref || 'main' }}
+          fetch-depth: 1
+
+      - name: Record witness context
+        shell: bash
+        run: |
+          echo "WITNESS_REF=${{ github.event.inputs.ref || 'main' }}"
+          echo "WITNESS_SHA=$(git rev-parse HEAD)"
+          echo "RUNNER_OS=${RUNNER_OS}"
+          git --version
+
+      - name: Assert top-level ... absent from index
+        shell: bash
+        run: |
+          if git ls-tree --name-only HEAD | grep -Fx '...'; then
+            echo "FAIL: top-level '...' still in HEAD tree" >&2
+            exit 1
+          fi
+
+      - name: Assert top-level ... not materialized on disk
+        shell: pwsh
+        run: |
+          if (Test-Path -LiteralPath '...') {
+            Write-Error "FAIL: top-level '...' exists on Windows filesystem"
+            exit 1
+          }
+
+      - name: Assert working tree clean after checkout
+        shell: bash
+        run: |
+          if [[ -n "$(git status --porcelain)" ]]; then
+            echo "FAIL: working tree not clean after checkout" >&2
+            git status --porcelain >&2
+            exit 1
+          fi
+
+      - name: Repository discovery commands
+        shell: bash
+        run: |
+          git rev-parse HEAD
+          git ls-tree --name-only HEAD | head -20
+          test -f cycle.json
+          test -f package.json
+          test -f scripts/verify_windows_portable_checkout.sh
+
+      - name: Path safety unit tests
+        shell: bash
+        run: python -m unittest tests.test_windows_portable_paths -v
+
+      - name: Portable checkout shell guard
+        shell: bash
+        run: bash scripts/verify_windows_portable_checkout.sh
+
+      - name: Witness pass marker
+        shell: bash
+        run: echo "WITNESS_PASS windows-latest conventional checkout"
