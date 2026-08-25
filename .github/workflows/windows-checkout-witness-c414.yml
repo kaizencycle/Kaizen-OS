@@ -44,12 +44,16 @@ jobs:
           fi
 
       - name: Assert top-level ... not materialized on disk
-        shell: pwsh
+        shell: bash
         run: |
-          if (Test-Path -LiteralPath '...') {
-            Write-Error "FAIL: top-level '...' exists on Windows filesystem"
+          if [[ -e './...' ]]; then
+            echo "FAIL: top-level '...' exists on Windows filesystem" >&2
             exit 1
-          }
+          fi
+          if find . -maxdepth 1 -name '...' -print -quit | grep -q .; then
+            echo "FAIL: find detected top-level '...'" >&2
+            exit 1
+          fi
 
       - name: Assert working tree clean after checkout
         shell: bash
