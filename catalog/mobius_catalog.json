@@ -1,11 +1,11 @@
 {
   "mobius_catalog_version": "1.0.0",
-  "generated_at": "2026-08-25T03:02:25.524Z",
+  "generated_at": "2026-08-25T16:03:26.868Z",
   "repo": {
     "name": "Mobius-Substrate",
     "url": "https://github.com/kaizencycle/Mobius-Substrate",
     "default_branch": "main",
-    "commit": "b430d81f32bf30e04b8a742efc5c27f2d9000f06"
+    "commit": "aaf307461711ff6066e624d64baa47aadabf620d"
   },
   "stats": {
     "epiconCount": 0,
@@ -7250,7 +7250,7 @@
       "title": "Mobius Handbook — Generated Index",
       "category": "INDEX.md",
       "tags": [],
-      "content_hash": "sha256:0f2e42b950c2b1d2854b48a4b607faa49bb5ead7c7747a1e11e9e6c63f2d2b18",
+      "content_hash": "sha256:8c33a2160b382a40a413d770044fda6b3b38a00898da28ea4f17e8cfb5e43a98",
       "summary": ""
     },
     {
@@ -7378,7 +7378,7 @@
       "title": "State of the Substrate — Latest",
       "category": "STATE_OF_THE_SUBSTRATE_LATEST.md",
       "tags": [],
-      "content_hash": "sha256:46e49546ab6c6e1fa861285c3f965202055e39b722c22a986d4f5dcecd3a385b",
+      "content_hash": "sha256:64c8d282574762a74e6343c2ef8fe8fa5027e0141b40aae812b45beedd2dae43",
       "summary": ""
     },
     {
