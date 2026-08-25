@@ -1,15 +1,15 @@
 {
   "mobius_catalog_version": "1.0.0",
-  "generated_at": "2026-08-25T16:03:26.868Z",
+  "generated_at": "2026-08-25T16:13:35.173Z",
   "repo": {
     "name": "Mobius-Substrate",
     "url": "https://github.com/kaizencycle/Mobius-Substrate",
     "default_branch": "main",
-    "commit": "aaf307461711ff6066e624d64baa47aadabf620d"
+    "commit": "135e3a7202465623b825e14503c69c35a2395269"
   },
   "stats": {
     "epiconCount": 0,
-    "docCount": 1109
+    "docCount": 1110
   },
   "epicons": [],
   "docs": [
@@ -8533,6 +8533,14 @@
       "category": "epicon",
       "tags": [],
       "content_hash": "sha256:0d7c998de98be7f6c490bcedc58cab1635886a1cadc9b1f06569bd2b15e44086",
+      "summary": ""
+    },
+    {
+      "path": "docs/epicon/cycles/C-414/EPICON_C-414_DOCS_editorial-state_v1.md",
+      "title": "C-414: Editorial State of the Substrate catch-up — arithmetic pointer sync without seal",
+      "category": "epicon",
+      "tags": [],
+      "content_hash": "sha256:0c18c2afbb964cec1622e678bf10ad56941abae6a18882881751aae01533b8b5",
       "summary": ""
     },
     {
