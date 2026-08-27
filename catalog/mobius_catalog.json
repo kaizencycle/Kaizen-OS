@@ -1,11 +1,11 @@
 {
   "mobius_catalog_version": "1.0.0",
-  "generated_at": "2026-08-27T12:37:32.905Z",
+  "generated_at": "2026-08-27T19:10:37.619Z",
   "repo": {
     "name": "Mobius-Substrate",
     "url": "https://github.com/kaizencycle/Mobius-Substrate",
     "default_branch": "main",
-    "commit": "be99c4dcf3cfc8672f7f907d8d1fb1dbd2998fb9"
+    "commit": "35f568f47a844d4dafe457a429ff72550ace6429"
   },
   "stats": {
     "epiconCount": 0,
@@ -8820,7 +8820,7 @@
       "title": "Agent Reporting Protocol",
       "category": "protocols",
       "tags": [],
-      "content_hash": "sha256:1a9d19c01342f388c7c78348134a2835296651700ccf25f2fcd4ab10f323b009",
+      "content_hash": "sha256:fdb1738cafd57122539a2ce381b21ca4bfd7671651dc5187c3339ffb770729b6",
       "summary": ""
     },
     {
