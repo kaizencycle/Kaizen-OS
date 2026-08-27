@@ -1,0 +1,130 @@
+{
+  "meta": {
+    "cycle_id": "C-379",
+    "date": "2026-07-21",
+    "timezone": "UTC",
+    "chamber": "Cycle Journal",
+    "tags": ["c379", "federation", "scan", "infra", "witness", "zeus-disputed", "wallet-recovery"],
+    "mood_vector": "Clear"
+  },
+  "sweep": {
+    "statement": "C-379 OPEN — infrastructure recovery advanced. Wallet #98–#101 merged; disk_mounted:true @ 23:09Z. Durability redeploy-survival BLOCKING. ZEUS disputed; micro C-306 stale; kv_keys_ok contradiction P1.",
+    "style": "mobius"
+  },
+  "signals": [
+    {
+      "timestamp": "2026-07-21T15:00:00Z",
+      "domain": "tech",
+      "statement": "Identity service live: db_ok true, db_write_ok true at mobius-identity-service.onrender.com/health — C-358 disk fix holding.",
+      "sources": ["docs/epicon/cycles/C-379/FEDERATION_SCAN_WITNESS_TABLE.md"],
+      "confidence": 0.98,
+      "attribution": "ATLAS"
+    },
+    {
+      "timestamp": "2026-07-21T22:29:11Z",
+      "domain": "tech",
+      "statement": "Wallet connectivity witness: /health ok db_ok true @ 2026-07-21T22:29:11Z. Not sufficient for full closeout — Codex P1 ephemeral false-green risk.",
+      "sources": ["mobius-mic-wallet-service.onrender.com/health"],
+      "confidence": 0.99,
+      "attribution": "custodian"
+    },
+    {
+      "timestamp": "2026-07-21T23:09:47Z",
+      "domain": "tech",
+      "statement": "Wallet infrastructure witness: db_ok true, db_write_ok true, disk_mounted true @ /var/lib/mic-wallet. CPC #98–#101 merged (fail-closed, disk blueprint, ismount, federation starter plans). Durability redeploy-survival still BLOCKING.",
+      "sources": [
+        "mobius-mic-wallet-service.onrender.com/health",
+        "docs/epicon/cycles/C-379/C-379_REAUDIT_infrastructure-recovery-advanced.md"
+      ],
+      "confidence": 0.99,
+      "attribution": "custodian"
+    },
+    {
+      "timestamp": "2026-07-21T15:00:00Z",
+      "domain": "governance",
+      "statement": "Reserve Block: MANIFEST 194 blocks; raw seals_count 360; 125 collision pairs; canonical count unresolved — do not compare seals_count to MANIFEST (C368-PR7).",
+      "sources": ["canon/reserve-blocks/MANIFEST.json", "terminal.mobius-substrate.com/api/vault/status"],
+      "confidence": 0.92,
+      "attribution": "ATLAS"
+    },
+    {
+      "timestamp": "2026-07-21T18:56:00Z",
+      "domain": "governance",
+      "statement": "ZEUS verification disputed for C-379. Micro layer stale: /api/signals/micro cycle C-306 composite 0.896 vs integrity-status C-379 GI 0.90. kv_keys.ok true but kv_keys_ok false.",
+      "sources": ["docs/epicon/cycles/C-379/C-379_AUDIT_live-github-review.md"],
+      "confidence": 0.94,
+      "attribution": "live-github-review"
+    }
+  ],
+  "integrity": {
+    "status": "watch",
+    "domains_touched": ["infra", "docs", "governance", "tech"],
+    "mii_current": 0.97,
+    "mii_trend": "up",
+    "watch_items": [
+      {
+        "indicator": "mic-wallet-durability-redeploy",
+        "direction": "flat",
+        "note": "Connectivity and disk_mounted green; write must survive redeploy before item 6 full closeout.",
+        "evidence": [
+          "docs/epicon/cycles/C-379/C-379_REAUDIT_infrastructure-recovery-advanced.md",
+          "mobius-mic-wallet-service.onrender.com/health"
+        ]
+      },
+      {
+        "indicator": "reserve-block-canon-lag",
+        "direction": "flat",
+        "note": "Canon lag UNVERIFIED — deduplicated unique_block_count required; 360-194 retracted.",
+        "evidence": ["docs/epicon/cycles/C-368/C368-PR7_prime-count-clarification.md"]
+      },
+      {
+        "indicator": "micro-operator-cycle-divergence",
+        "direction": "down",
+        "note": "Micro at C-306 while operator at C-379 — item 21 P1.",
+        "evidence": ["terminal.mobius-substrate.com/api/signals/micro"]
+      },
+      {
+        "indicator": "kv-keys-semantic-contradiction",
+        "direction": "flat",
+        "note": "kv_keys.ok true vs kv_keys_ok false — item 22 P1.",
+        "evidence": ["docs/catalog/zeus/"]
+      }
+    ]
+  },
+  "decisions": [
+    {
+      "decision": "C-379 remains OPEN — infrastructure recovery advanced; durability + ZEUS pending",
+      "rationale": "Wallet code/blueprint recovery complete (#98–#101); redeploy-survival unverified; ZEUS disputed and micro staleness remain.",
+      "owner": "kaizencycle",
+      "risk": "low"
+    },
+    {
+      "decision": "Item 6 partial closeout — connectivity + mount verified; durability blocking",
+      "rationale": "23:09Z witness shows disk_mounted:true; scientific closeout requires write → redeploy → read.",
+      "owner": "kaizencycle",
+      "risk": "medium"
+    }
+  ],
+  "actions": [
+    {
+      "task": "P0/P1: Wallet durability — write → redeploy → read same value (item 6 blocking)",
+      "priority": "P0",
+      "owner": "kaizencycle"
+    },
+    {
+      "task": "P1: Micro cycle alignment (item 21), KV keys resolver (item 22), ZEUS disposition (item 23)",
+      "priority": "P1",
+      "owner": "kaizencycle"
+    },
+    {
+      "task": "Continue optimization items 4-5, 7-20 per OPTIMIZATIONS_C-379_20-items.md",
+      "priority": "P1",
+      "owner": "kaizencycle"
+    }
+  ],
+  "seal": {
+    "compiled_at": "2026-07-21T23:17:00Z",
+    "contributors": ["ATLAS", "cursor-cloud-agent", "custodian"],
+    "statement": "C-379 open. Wallet infra recovery advanced; durability redeploy test blocking. Micro/ZEUS P1 remains."
+  }
+}

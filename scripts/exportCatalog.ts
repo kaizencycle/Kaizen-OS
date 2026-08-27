@@ -12,8 +12,10 @@
  */
 
 import fs from "fs/promises";
+import fsSync from "fs";
 import path from "path";
 import crypto from "crypto";
+import { execSync } from "child_process";
 import matter from "gray-matter";
 
 // ============================================================================
@@ -78,14 +80,33 @@ const REPO_URL = "https://github.com/kaizencycle/Mobius-Substrate";
 const DEFAULT_BRANCH = "main";
 const CATALOG_VERSION = "1.0.0";
 
-// Optional: pass current commit via env in CI
-const CURRENT_COMMIT =
-  process.env.GIT_COMMIT ||
-  process.env.VERCEL_GIT_COMMIT_SHA ||
-  process.env.GITHUB_SHA ||
-  "";
-
 const repoRoot = process.cwd();
+
+function resolveCurrentCommit(): string {
+  const fromEnv =
+    process.env.GIT_COMMIT ||
+    process.env.VERCEL_GIT_COMMIT_SHA ||
+    process.env.GITHUB_SHA ||
+    "";
+  if (fromEnv) return fromEnv;
+  try {
+    return execSync("git rev-parse HEAD", {
+      cwd: repoRoot,
+      encoding: "utf8",
+      stdio: ["ignore", "pipe", "ignore"],
+    }).trim();
+  } catch {
+    const catalogPath = path.join(repoRoot, "catalog", "mobius_catalog.json");
+    try {
+      const prior = JSON.parse(fsSync.readFileSync(catalogPath, "utf8")) as Catalog;
+      return prior.repo?.commit || "";
+    } catch {
+      return "";
+    }
+  }
+}
+
+const CURRENT_COMMIT = resolveCurrentCommit();
 
 // Directories to skip
 const SKIP_DIRS = new Set([

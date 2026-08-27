@@ -14,9 +14,10 @@
 #   1. DEPLOYMENT-DECOUPLED: commits carry [skip ci] and touch only state
 #      paths, so Vercel/Render never build on a state write. This coupling
 #      is what killed the last pipeline.
-#   2. DETERMINISTIC: no LLM. Cycle number is arithmetic; ledger values are
-#      fetched, never invented. If the ledger is unreachable, attested
-#      fields are carried forward and marked unverified.
+#   2. DETERMINISTIC: no LLM. Cycle number is arithmetic; ledger pulse is
+#      fetched (secret, fallback URL, or default), never invented. Journal
+#      records withheld_reason when pulse fails; GI in cycle.json updates only
+#      when pulse returns non-null gi.
 #   3. SCOPED IDENTITY (C-336): commits via the Mobius GitHub App, allowed
 #      paths only (cycle.json, STATE/, journals/cycles/). Tier-3 protected
 #      paths stay untouchable.
@@ -57,12 +58,50 @@ jobs:
             exit 1
           fi
 
+      - name: Diagnose private key shape (no secret contents logged)
+        id: keycheck
+        env:
+          APP_KEY: ${{ secrets.MOBIUS_BOT_PRIVATE_KEY }}
+        run: |
+          # Support literal \n separators (create-github-app-token normalizes these too).
+          normalized="${APP_KEY//\\n/$'\n'}"
+          lines=$(printf '%s' "$normalized" | wc -l | tr -d ' ')
+          first=$(printf '%s' "$normalized" | head -1)
+          bytes=$(printf '%s' "$normalized" | wc -c | tr -d ' ')
+          echo "Private key line count: $lines (expect >= 3)"
+          echo "Private key first line: $first"
+          echo "Private key byte count: $bytes"
+          case "$first" in
+            "-----BEGIN RSA PRIVATE KEY-----"|"-----BEGIN PRIVATE KEY-----") ;;
+            *)
+              echo "::error::First line must be -----BEGIN RSA PRIVATE KEY----- or -----BEGIN PRIVATE KEY-----"
+              echo "::error::If you see a hex string, you stored the Client secret — use Private keys → Generate instead."
+              exit 1
+              ;;
+          esac
+          if [ "$lines" -lt 3 ]; then
+            echo "::error::Private key is effectively one line — PEM newlines were lost when setting the secret."
+            echo "::error::Fix: gh secret set MOBIUS_BOT_PRIVATE_KEY --repo kaizencycle/Mobius-Substrate < path/to.key.pem"
+            exit 1
+          fi
+          printf '%s\n' "$normalized" > /tmp/mobius-bot.pem
+          if ! openssl rsa -in /tmp/mobius-bot.pem -check -noout 2>/dev/null; then
+            if ! openssl pkey -in /tmp/mobius-bot.pem -check -noout 2>/dev/null; then
+              echo "::error::OpenSSL cannot parse MOBIUS_BOT_PRIVATE_KEY — regenerate Private key on the App and re-set via gh secret set < file.pem"
+              exit 1
+            fi
+          fi
+          echo "OpenSSL PEM parse: ok"
+          echo "pem<<EOF" >> "$GITHUB_OUTPUT"
+          cat /tmp/mobius-bot.pem >> "$GITHUB_OUTPUT"
+          echo "EOF" >> "$GITHUB_OUTPUT"
+
       - name: Mint scoped App token (C-336 identity)
         id: app
         uses: actions/create-github-app-token@v3
         with:
           client-id: ${{ secrets.MOBIUS_BOT_APP_ID }}
-          private-key: ${{ secrets.MOBIUS_BOT_PRIVATE_KEY }}
+          private-key: ${{ steps.keycheck.outputs.pem }}
 
       - uses: actions/checkout@v7
         with:
@@ -71,77 +110,9 @@ jobs:
       - name: Compute cycle + fetch ledger state
         id: state
         env:
-          LEDGER_BASE_URL: ${{ secrets.LEDGER_BASE_URL }}  # Civic-Protocol-Core on Render
-        run: |
-          python3 - << 'PY'
-          import json, os, urllib.request, datetime
-
-          # C-288 = 2026-04-21: the attested freeze point this sync corrects (see PR #298).
-          ANCHOR_CYCLE = 288
-          ANCHOR_DATE = datetime.date(2026, 4, 21)
-          today = datetime.datetime.now(datetime.timezone.utc).date()
-          cycle_n = ANCHOR_CYCLE + (today - ANCHOR_DATE).days
-          cycle = f"C-{cycle_n}"
-
-          ledger, verified = {}, False
-          base = os.environ.get("LEDGER_BASE_URL", "").rstrip("/")
-          if base:
-              try:
-                  with urllib.request.urlopen(f"{base}/pulse/state", timeout=15) as r:
-                      ledger = json.load(r)
-                      verified = True
-              except Exception as e:
-                  print(f"::warning::ledger unreachable, carrying forward: {e}")
-
-          with open("cycle.json") as f:
-              c = json.load(f)
-
-          prev = c.get("current_cycle")
-          c["current_cycle"] = cycle
-          c["date"] = today.isoformat()
-          c["last_updated"] = datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
-          c["last_state_snapshot"] = cycle
-          if verified and "gi" in ledger:
-              c["gi"] = ledger["gi"]
-              c["gi_attested_at"] = cycle
-          note = (f"Auto-sync by mobius-bot (deterministic, no LLM). "
-                  f"Advanced {prev} -> {cycle}. "
-                  + ("GI refreshed from ledger." if verified and "gi" in ledger
-                     else "Ledger unreachable or GI absent: attested fields carried forward UNVERIFIED."))
-          c["notes"] = note
-
-          with open("cycle.json", "w") as f:
-              json.dump(c, f, indent=2); f.write("\n")
-          with open("STATE/CYCLE.txt", "w") as f:
-              f.write(cycle + "\n")
-
-          os.makedirs("journals/cycles", exist_ok=True)
-          stub = {
-              "cycle": cycle, "date": today.isoformat(),
-              "writer": "mobius-bot/state-sync",
-              "ledger_verified": verified,
-              "ledger_snapshot": ledger if verified else None,
-              "narrative": None,  # Layer 3: ATLAS routine fills this, never the counters
-          }
-          p = f"journals/cycles/{cycle}.json"
-          if not os.path.exists(p):           # idempotent: never overwrite a day
-              with open(p, "w") as f:
-                  json.dump(stub, f, indent=2); f.write("\n")
-
-          # C-356: write writer-health canary so watchdog can detect writer failures
-          # before cycle.json drift accumulates (Layer 1 upstream detection).
-          health = {
-              "writer": "mobius-bot-state-sync",
-              "last_run_at": datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
-              "last_cycle": cycle,
-              "status": "ok",
-          }
-          with open("STATE/writer-health.json", "w") as f:
-              json.dump(health, f, indent=2); f.write("\n")
-
-          with open(os.environ["GITHUB_OUTPUT"], "a") as f:
-              f.write(f"cycle={cycle}\n")
-          PY
+          LEDGER_BASE_URL: ${{ secrets.LEDGER_BASE_URL }}
+          LEDGER_BASE_URL_FALLBACK: https://civic-protocol-core-ledger.onrender.com
+        run: python3 scripts/run_state_sync.py
 
       - name: Commit (deployment-decoupled, EPICON trailer)
         run: |
@@ -152,4 +123,71 @@ jobs:
           git commit -m "canon: ${{ steps.state.outputs.cycle }} daily state sync [skip ci]" \
                      -m "EPICON-INTENT: scheduled deterministic cycle-state write; allowed paths only; no attested values invented." \
                      -m "Actor: mobius-bot (scoped App, C-336 guardrail model)"
+          git push
+
+  record-failure:
+    needs: sync
+    if: failure()
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Stamp writer-health failure (C-373)
+        env:
+          APP_ID: ${{ secrets.MOBIUS_BOT_APP_ID }}
+          APP_KEY: ${{ secrets.MOBIUS_BOT_PRIVATE_KEY }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          python3 - << 'PY'
+          import json, datetime, os
+
+          now = datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+          app_id = (os.environ.get("APP_ID") or "").strip()
+          app_key = (os.environ.get("APP_KEY") or "").strip()
+
+          if not app_id:
+              reason = "MOBIUS_BOT_APP_ID secret empty — create-github-app-token fails at mint step"
+          elif not app_key:
+              reason = "MOBIUS_BOT_PRIVATE_KEY secret empty — create-github-app-token fails at mint step"
+          else:
+              reason = f"mobius-bot-state-sync failed after credential preflight — inspect run {os.environ.get('RUN_URL', '')}"
+
+          path = "STATE/writer-health.json"
+          health = {}
+          if os.path.exists(path):
+              with open(path) as f:
+                  health = json.load(f)
+
+          health.update({
+              "writer": "mobius-bot-state-sync",
+              "status": "blocked",
+              "last_failed_attempt_at": now,
+              "failure_reason": reason,
+              "recovery_note": (
+                  "Owner action: set MOBIUS_BOT_APP_ID (GitHub App client ID) and "
+                  "MOBIUS_BOT_PRIVATE_KEY in Settings → Secrets → Actions, then "
+                  "workflow_dispatch mobius-bot-state-sync. Do not manually advance "
+                  "cycle.json — let the writer catch up deterministically. "
+                  "See docs/CANON_WRITER_REPAIR.md and issues #351 / #371."
+              ),
+          })
+          if health.get("status") != "ok":
+              health.setdefault("last_run_at", health.get("last_run_at", "2026-06-30T09:00:00Z"))
+              health.setdefault("last_cycle", health.get("last_cycle", "C-358"))
+
+          with open(path, "w") as f:
+              json.dump(health, f, indent=2)
+              f.write("\n")
+          PY
+
+      - name: Commit failure stamp [skip ci]
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add STATE/writer-health.json
+          git diff --cached --quiet && { echo "writer-health unchanged."; exit 0; }
+          git commit -m "canon: record mobius-bot-state-sync failure [skip ci]" \
+                     -m "EPICON-INTENT: automated writer-health failure stamp; no cycle.json mutation."
           git push

@@ -5,6 +5,7 @@ on:
     paths:
       - 'journals/cycles/**'
       - 'schemas/cycle_journal.schema.json'
+    - 'schemas/cycle_journal_layer1_stub.schema.json'
       - 'scripts/validate_cycle_journal.mjs'
       - 'scripts/render_cycle_markdown.mjs'
   push:
@@ -12,6 +13,7 @@ on:
     paths:
       - 'journals/cycles/**'
       - 'schemas/cycle_journal.schema.json'
+    - 'schemas/cycle_journal_layer1_stub.schema.json'
 
 # C-339: least privilege — validation only needs read plus PR comments.
 permissions:

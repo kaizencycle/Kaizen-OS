@@ -101,3 +101,25 @@ If any of these workflows need to be restored:
   is Layer 3 (ATLAS routine fills the `narrative` field, never the counters).
 - **Risk:** Low — manual-only trigger; restoring it would reintroduce the
   dual-schema writer problem.
+
+---
+
+## Archive Date: 2026-07-17 (C-375)
+
+#### 6. **guardian.yml** → **guardian.yml.archived**
+- **Reason:** Engine script absent — daily no-op failure
+- **Analysis:**
+  - Workflow fires daily (`cron: '0 0 * * *'`) to run `kaizen_guardian.py` as a
+    dormancy monitor. The script does not exist anywhere in the tree (`kaizen_guardian.py`
+    absent from `.github/scripts/`, `tools/`, and all repo paths).
+  - C-303 added an existence check to suppress the hard failure, but the workflow
+    still consumes a runner-minute per day with zero consequential output.
+  - Last 5 runs: all `failure`, 2026-07-13 through 2026-07-17 (schedule trigger).
+  - Last successful *consequential* run: none recorded — script was absent through
+    all sampled history.
+- **Replacement:** None at this time. When `kaizen_guardian.py` is authored and
+  deployed, restore by removing the `.archived` suffix and re-register in this file.
+- **Superseded-by:** N/A (script is absent, not superseded)
+- **Evidence:** B1 verification pass, C-375 — see `docs/audits/AUDIT_C-375_workflow-archaeology.md`
+- **Risk:** Low — zero consequential output being removed. Nightly dormancy
+  monitoring is not currently wired to any live script.

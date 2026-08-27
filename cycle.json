@@ -1,6 +1,6 @@
 {
-  "current_cycle": "C-360",
-  "date": "2026-07-02",
+  "current_cycle": "C-416",
+  "date": "2026-08-27",
   "gi": 0.9,
   "mode": "yellow",
   "canonical_domain": "https://mobius-substrate.com",
@@ -10,15 +10,17 @@
   "snapshot": "https://terminal.mobius-substrate.com/api/terminal/snapshot",
   "vault_status": "https://terminal.mobius-substrate.com/api/vault/status",
   "vault_seals": "https://terminal.mobius-substrate.com/api/vault/seal",
-  "last_updated": "2026-07-02T12:00:00Z",
-  "previous_cycle": "C-358",
-  "updated_by": "c360-pr-b-constitutional",
+  "last_updated": "2026-08-27T15:09:14Z",
+  "previous_cycle": "C-415",
+  "updated_by": "mobius-bot-state-sync",
   "vault": {
-    "in_progress_balance": 32.13,
+    "authority_class": "editorial_stale_superseded",
     "tranche_target": 50,
     "hash_coverage_pct": 100,
-    "seals_count": 319,
-    "fountain_status": "locked"
+    "fountain_status": "locked",
+    "runtime_reference": "operational_pulse",
+    "seals_count_note": "Former editorial seals_count 319 superseded; runtime seals_raw=360 in operational_pulse.",
+    "in_progress_balance_note": "Former editorial in_progress_balance 32.13 superseded; runtime MIC tranche in operational_pulse."
   },
   "kv": {
     "primary": "upstash",
@@ -56,11 +58,9 @@
   "open_flags": [
     "mobius-bot-app-credentials-rotation-required",
     "identity-vercel-creds-pending-reattest",
-    "mic-wallet-render-crash-loop",
-    "c360-federation-sweep-in-progress"
+    "mic-wallet-render-crash-loop"
   ],
-  "doc_version": "2.2.0",
-  "last_state_snapshot": "C-360",
-  "next_state_snapshot_expected": "C-361",
-  "notes": "C-360 Federation Optimization Sweep (PR-B): license policy ratified (AGPL code / CC-BY-SA docs / CC0 data); cycle pointer synced; sentinel roster 10 (URIEL truth, ZENITH shadow). mobius-bot-state-sync still blocked on GitHub App secret rotation. Identity service account provisioned; Vercel creds + reattest pending."
+  "doc_version": "2.3.0",
+  "last_state_snapshot": "C-416",
+  "notes": "Auto-sync by mobius-bot (deterministic, no LLM). Advanced C-415 -> C-416. Ledger pulse fetched; GI not updated (unreachable, absent, or null in pulse)."
 }

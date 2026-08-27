@@ -33,6 +33,14 @@
       "type": "string",
       "pattern": "^C-[0-9]+$"
     },
+    "gi_attested_this_cycle": {
+      "type": "boolean",
+      "description": "True once this cycle has had a writer run that received a non-null gi from the ledger pulse and wrote it into `gi` (i.e. `gi_attested_at == current_cycle`). False means no run this cycle has attested a value yet, and `gi` is carried forward unchanged from `gi_attested_at`; see `gi_withheld_reason`. A later same-cycle rerun whose own ledger fetch fails does not flip this back to false — mobius-bot-state-sync.yml permits workflow_dispatch catch-up runs alongside the scheduled cron, and a transient retry failure must not unattest an earlier success. Never scrubbed on cycle rollover."
+    },
+    "gi_withheld_reason": {
+      "type": "string",
+      "description": "Present only when gi_attested_this_cycle is false. One of the ledger fetch withheld reasons (e.g. LEDGER_PULSE_UNREACHABLE, LEDGER_URL_UNCONFIGURED) or GI_NULL_IN_PULSE when the pulse was reachable but returned gi=null."
+    },
     "vault": {
       "type": "object",
       "properties": {

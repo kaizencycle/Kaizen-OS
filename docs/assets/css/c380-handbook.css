@@ -1,0 +1,58 @@
+/* C-380 — Handbook progressive-disclosure UI
+ * Additive only. The existing terminal/proof/reader layers remain authoritative.
+ */
+
+.mobius-path-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.9rem;
+  margin: 1.25rem 0 1.75rem;
+}
+
+.mobius-path-card {
+  min-width: 0;
+  padding: 1rem 1.05rem;
+  border: 1px solid var(--mobius-terminal-border, #2a3544);
+  border-radius: 12px;
+  background: var(--mobius-terminal-surface, #121820);
+}
+
+.mobius-path-card:hover {
+  border-color: rgba(34, 211, 238, 0.55);
+}
+
+.mobius-path-card h3 {
+  margin-top: 0;
+  margin-bottom: 0.45rem;
+  font-size: 0.95rem;
+}
+
+.mobius-path-card p:last-child {
+  margin-bottom: 0;
+}
+
+.mobius-path-card a {
+  font-weight: 700;
+}
+
+/* Handbook home only: comparison table sizing without touching protocol pages. */
+.c380-handbook-home .md-typeset table:not([class]) {
+  font-size: 0.86rem;
+}
+
+@media screen and (max-width: 44.99em) {
+  .mobius-path-grid {
+    grid-template-columns: 1fr;
+    gap: 0.7rem;
+  }
+
+  .mobius-path-card {
+    padding: 0.85rem 0.9rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mobius-path-card {
+    transition: none;
+  }
+}

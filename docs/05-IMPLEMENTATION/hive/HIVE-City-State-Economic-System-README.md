@@ -1,5 +1,7 @@
 # 🌐 HIVE City-State Economic System
 
+> **Charter context (C-375):** HIVE is the *playable renderer* in the Three Renderers architecture — see [OAA Charter §7](../../OAA_CHARTER.md#7-the-three-renderers). The simulation namespace rule and Phase F sequencing gate are constitutional constraints on this implementation.
+
 **The World's First Integrity-Backed Digital Civilization**
 
 Version: 1.0.0  

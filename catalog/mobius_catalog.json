@@ -1,15 +1,15 @@
 {
   "mobius_catalog_version": "1.0.0",
-  "generated_at": "2026-07-14T17:36:18.739Z",
+  "generated_at": "2026-08-27T19:33:24.626Z",
   "repo": {
     "name": "Mobius-Substrate",
     "url": "https://github.com/kaizencycle/Mobius-Substrate",
     "default_branch": "main",
-    "commit": ""
+    "commit": "f35a70fdc07a18fac27520a23b079c4d732b6310"
   },
   "stats": {
     "epiconCount": 0,
-    "docCount": 1028
+    "docCount": 1111
   },
   "epicons": [],
   "docs": [
@@ -59,6 +59,14 @@
       "category": "00-META",
       "tags": [],
       "content_hash": "sha256:5563d950e31ecc75fe2580531fddedd2f22dfd60fc6390b7d0d5ab9d1869c844",
+      "summary": ""
+    },
+    {
+      "path": "docs/00-START-HERE/AI_SIMPLE_IN_LIFE.md",
+      "title": "Mobius — AI Simple in Life",
+      "category": "00-START-HERE",
+      "tags": [],
+      "content_hash": "sha256:e4e56492b14ca78c3666fbd61a7efe217238390b4c0dd4a707c538eb86033d96",
       "summary": ""
     },
     {
@@ -119,10 +127,10 @@
     },
     {
       "path": "docs/00-START-HERE/README.md",
-      "title": "Welcome to Mobius Substrate Documentation",
+      "title": "Mobius Substrate Handbook",
       "category": "00-START-HERE",
       "tags": [],
-      "content_hash": "sha256:50e86ecb978170e0bdfd5365c9fb5a8d3ccb43108251215a611a34d2979b27b5",
+      "content_hash": "sha256:bdcd29a571eb210925320b3a6c7464c0c5fdba88713aebdd087b381195b41246",
       "summary": ""
     },
     {
@@ -434,7 +442,7 @@
       "title": "🌐 THE HIVE CITY-STATE MAP",
       "category": "03-GOVERNANCE-AND-POLICY",
       "tags": [],
-      "content_hash": "sha256:b2ee2b679555eb42380866c71d53a63631f0850faac9ca9b311bbebc0450e3c4",
+      "content_hash": "sha256:f54d7b0a016d15be9666e78dca99bec3bdd7f011b09b723d7e662e6a71879839",
       "summary": ""
     },
     {
@@ -1778,7 +1786,7 @@
       "title": "🌐 HIVE City-State Economic System",
       "category": "05-IMPLEMENTATION",
       "tags": [],
-      "content_hash": "sha256:06b11bc920b3617eafa49da957655d0afc254f2295d697cbc9cb3bc92159308f",
+      "content_hash": "sha256:ed5f485425850482a189076402c622497465eb986ef0eca46351f3b82f86ee4e",
       "summary": ""
     },
     {
@@ -7210,7 +7218,7 @@
       "title": "Canon Writer Repair — mobius-bot-state-sync",
       "category": "CANON_WRITER_REPAIR.md",
       "tags": [],
-      "content_hash": "sha256:45d0f65e281d14a99b992862eba87510690a66cc68e9e8e22f015d75615737b7",
+      "content_hash": "sha256:4f4c8be26a4176254cce5d71d0636d462f2f5e2d1b93e0abb29ecf74a452626a",
       "summary": ""
     },
     {
@@ -7239,10 +7247,10 @@
     },
     {
       "path": "docs/INDEX.md",
-      "title": "Mobius Systems Documentation Index",
+      "title": "Mobius Handbook — Generated Index",
       "category": "INDEX.md",
       "tags": [],
-      "content_hash": "sha256:d03163e75292e38f03d9277fb74a33a42ecb95db2a55d960381cadbae80cef6d",
+      "content_hash": "sha256:8c33a2160b382a40a413d770044fda6b3b38a00898da28ea4f17e8cfb5e43a98",
       "summary": ""
     },
     {
@@ -7294,11 +7302,19 @@
       "summary": ""
     },
     {
+      "path": "docs/OAA_CHARTER.md",
+      "title": "OAA CHARTER — The Open Attestation Authority & Academy",
+      "category": "OAA_CHARTER.md",
+      "tags": [],
+      "content_hash": "sha256:11c7c2425f7317ac8b58dc00a11e2328ef952c95768c20bfdacebd013b4e6027",
+      "summary": ""
+    },
+    {
       "path": "docs/README.md",
-      "title": "🌀 Mobius Substrate Documentation Portal",
+      "title": "Mobius Substrate — Documentation Portal",
       "category": "README.md",
       "tags": [],
-      "content_hash": "sha256:0556725d4a40dc15be29f41692dc19e588f59ec7699a3eca8ede9a6116f2a1e5",
+      "content_hash": "sha256:e49cd7fb3bc52f9063c75fa4e8507fda2e418c94b8295aea8f7de51a3f93df2a",
       "summary": ""
     },
     {
@@ -7362,7 +7378,7 @@
       "title": "State of the Substrate — Latest",
       "category": "STATE_OF_THE_SUBSTRATE_LATEST.md",
       "tags": [],
-      "content_hash": "sha256:75733baabba1348f4b6a8f1797e7577fa87ce706f29aa66a7c6e6685c8f8f807",
+      "content_hash": "sha256:64c8d282574762a74e6343c2ef8fe8fa5027e0141b40aae812b45beedd2dae43",
       "summary": ""
     },
     {
@@ -7382,11 +7398,59 @@
       "summary": ""
     },
     {
+      "path": "docs/WITNESS_PROTOCOL.md",
+      "title": "Witness Protocol — Report Discloses; Repo Witnesses",
+      "category": "WITNESS_PROTOCOL.md",
+      "tags": [],
+      "content_hash": "sha256:e23d932cc484f9a2c042deaa25ac3cdfddd1f67a9c2c46465f9e323b17b60aaf",
+      "summary": ""
+    },
+    {
       "path": "docs/WORKFLOW_CONSOLIDATION_PLAN.md",
       "title": "Workflow Consolidation Plan — EPICON Era",
       "category": "WORKFLOW_CONSOLIDATION_PLAN.md",
       "tags": [],
       "content_hash": "sha256:0d856dddf6737fb3335b99f7d55142b6a7a6ac33f800b98b73fecbe4143d586c",
+      "summary": ""
+    },
+    {
+      "path": "docs/academy/ACADEMY_PROTOCOL.md",
+      "title": "Academy Protocol v0.1",
+      "category": "academy",
+      "tags": [],
+      "content_hash": "sha256:e85a02b2e5d4a121e673ff9da0aae2e0ad51aceb153207175b64bc3ba72d03f5",
+      "summary": ""
+    },
+    {
+      "path": "docs/academy/AGENT_TEACHER_CONTRACT.md",
+      "title": "Agent Teacher Contract v0.1",
+      "category": "academy",
+      "tags": [],
+      "content_hash": "sha256:2677532a04b01aaf27747b459d36609c2a36d6bc355f2af54b305a6f2cd18f57",
+      "summary": ""
+    },
+    {
+      "path": "docs/academy/ASSESSMENT_PROTOCOL.md",
+      "title": "Assessment Protocol v0.1",
+      "category": "academy",
+      "tags": [],
+      "content_hash": "sha256:d3611b6036b5a04a8693a2cb72a1e5e192c128a1237c62c65d964502b1210f3d",
+      "summary": ""
+    },
+    {
+      "path": "docs/academy/OAA-HIST-001-exemplar.md",
+      "title": "OAA-HIST-001: When the Record and Reality Disagree",
+      "category": "academy",
+      "tags": [],
+      "content_hash": "sha256:ce9fc982761d43faa36becd670700dc4f8a6871f674291a2f240557a3eab7847",
+      "summary": ""
+    },
+    {
+      "path": "docs/academy/README.md",
+      "title": "Academy Protocol (OAA Floor 3)",
+      "category": "academy",
+      "tags": [],
+      "content_hash": "sha256:884d2fceae9024dce8daad62a783dcb9e4b5427415a1040ddbdcd37ee4f959e0",
       "summary": ""
     },
     {
@@ -7430,6 +7494,30 @@
       "summary": ""
     },
     {
+      "path": "docs/audits/AUDIT_C-374_cold-canon-tip-divergence.md",
+      "title": "AUDIT C-374 — Cold Canon Tip Divergence (PR #392)",
+      "category": "audits",
+      "tags": [],
+      "content_hash": "sha256:9b962895e273d7c6a57acaf2063832e0eb8e00b7915694dfdac4f6018e63bc8c",
+      "summary": ""
+    },
+    {
+      "path": "docs/audits/AUDIT_C-374_oaa-reality.md",
+      "title": "AUDIT C-374 — OAA Reality (Read-Only)",
+      "category": "audits",
+      "tags": [],
+      "content_hash": "sha256:7e161c728ac736a4ab12aefe558082fe572b2dd25c33156e26e75d8bd5bfbdbd",
+      "summary": ""
+    },
+    {
+      "path": "docs/audits/AUDIT_C-375_workflow-archaeology.md",
+      "title": "Workflow Archaeology Audit — C-375",
+      "category": "audits",
+      "tags": [],
+      "content_hash": "sha256:78c39e8637c3bbec09533c7287696348edf45b09ff65bdb6de4f9c17976c6286",
+      "summary": ""
+    },
+    {
       "path": "docs/authority/AVM.md",
       "title": "Authority Verification Module (AVM)",
       "category": "authority",
@@ -7451,6 +7539,14 @@
       "category": "divergence",
       "tags": [],
       "content_hash": "sha256:20239e81c0a77980478705ad52aea317668c9952baad57e88e7b2005aed3592c",
+      "summary": ""
+    },
+    {
+      "path": "docs/epicon/EPICON-000-external-reality-boundary.md",
+      "title": "EPICON-000 — External Reality Boundary",
+      "category": "epicon",
+      "tags": [],
+      "content_hash": "sha256:2a20ce42d97cd77fdbcf0e2b953fb0683da38965ff0446ad49faa3030e6340a0",
       "summary": ""
     },
     {
@@ -7482,7 +7578,7 @@
       "title": "EPICON-02: Intent Publication & Divergence Protocol (IPDP)",
       "category": "epicon",
       "tags": [],
-      "content_hash": "sha256:4f6f0cdffc929533006a56d7c83343ac2a04483d7e654e2bf5c6db97d1357dbe",
+      "content_hash": "sha256:bbdc4377d7c4c6cd2965362e79937a100ca6ee8d7d7fb68bf8bf2be0f20fa25d",
       "summary": ""
     },
     {
@@ -7556,6 +7652,22 @@
       "summary": ""
     },
     {
+      "path": "docs/epicon/EPICON-C380-HANDBOOK-001.md",
+      "title": "EPICON-C380-HANDBOOK-001 — Handbook Progressive Disclosure",
+      "category": "epicon",
+      "tags": [],
+      "content_hash": "sha256:7f75d43a6a7ce782802899c23f31d5031b031841450716804dac7bf0000d4f6c",
+      "summary": ""
+    },
+    {
+      "path": "docs/epicon/EPICON-C381-HANDBOOK-REORG-001.md",
+      "title": "EPICON-C381-HANDBOOK-REORG-001 — Handbook Canon/Archive Reorganization",
+      "category": "epicon",
+      "tags": [],
+      "content_hash": "sha256:6c7a3a8e841a0d81864d529ac5c58465f6967dc505e307e7fb8bfbabe7bd3d5a",
+      "summary": ""
+    },
+    {
       "path": "docs/epicon/EPICON-DVA-RUNTIME.md",
       "title": "DVA Runtime Protocol - Multi-Agent Cognitive Pipeline",
       "category": "epicon",
@@ -7604,7 +7716,7 @@
       "title": "EPICON-01 — Epistemic Constraint Layer",
       "category": "epicon",
       "tags": [],
-      "content_hash": "sha256:f6e65e3297e1fb1b93c68ae79a0774a40c8d5a47a9a204d3009be399071627d4",
+      "content_hash": "sha256:8a03e7e37a0b117d2842aed88bf7fc3f057eb59499014a2a4b39243ca48d8d4d",
       "summary": ""
     },
     {
@@ -7977,7 +8089,466 @@
       "title": "Journal parcel flush lane — Substrate verifier + workflow",
       "category": "epicon",
       "tags": [],
-      "content_hash": "sha256:e69d22dee6d39d6fe187362aa5a6e47452f05a9c52b649d9898ca0a03b22a6a4",
+      "content_hash": "sha256:0546f1cf94e47d6395fb35ca01ba679deb00f6189eaed9bcb7f5914bb1819f7b",
+      "summary": ""
+    },
+    {
+      "path": "docs/epicon/cycles/C-373/HANDOFF_C-373_oaa-sentinel-review-broker.md",
+      "title": "ATLAS HANDOFF — C-373: OAA Sentinel Review Broker (Phase 0 + Phase 1)",
+      "category": "epicon",
+      "tags": [],
+      "content_hash": "sha256:2861811ae02b5fee2c67b757cdca38f2ccea222b8b60a898144fc8d60aba8706",
+      "summary": ""
+    },
+    {
+      "path": "docs/epicon/cycles/C-374/ATTESTATION_C-374_cycle-opening.md",
+      "title": "EVE Attestation — C-374 Cycle Opening",
+      "category": "epicon",
+      "tags": [],
+      "content_hash": "sha256:ff4277df63c3a8af0989cf6c28017f2bf7d8a603ec44ee61558ee4ea3b69fa75",
+      "summary": ""
+    },
+    {
+      "path": "docs/epicon/cycles/C-374/REVIEW_C-374_goodhart-guards.md",
+      "title": "EVE Review — Charter §3.1 Goodhart Guards (Advisory)",
+      "category": "epicon",
+      "tags": [],
+      "content_hash": "sha256:fc9a6546dd392c68621564aa4307432cf9dc06f66c3f6e93226d02dced2a5623",
+      "summary": ""
+    },
+    {
+      "path": "docs/epicon/cycles/C-374/ZEUS_DISPUTE_DISPOSITIONS.md",
+      "title": "ZEUS Dispute Dispositions — C-374",
+      "category": "epicon",
+      "tags": [],
+      "content_hash": "sha256:55d7036ee64f2aa2418f720de0aab3514b71ce9747c3cbaad8ce19271ed3a493",
+      "summary": ""
+    },
+    {
+      "path": "docs/epicon/cycles/C-374/production-audit/GATE_G3_POST_REDEPLOY_AUDIT.md",
+      "title": "Gate G3 — Post-Redeploy Production Audit",
+      "category": "epicon",
+      "tags": [],
+      "content_hash": "sha256:581e31f8d0d4a2fd463dd5ee033cbcc14d474d6b4e1662991866c0e14db38d56",
+      "summary": ""
+    },
+    {
+      "path": "docs/epicon/cycles/C-374/production-audit/LANE_B_BLOCKED.md",
+      "title": "Lane B — Gate G3 Production Collision Capture",
+      "category": "epicon",
+      "tags": [],
+      "content_hash": "sha256:cd7165f77125751d1d2f671c064bc5ac9057b2026f891f6d2ef729bb2314fd37",
+      "summary": ""
+    },
+    {
+      "path": "docs/epicon/cycles/C-374/reconciliation/README.md",
+      "title": "C-374 Reconciliation Playbook (Track R)",
+      "category": "epicon",
+      "tags": [],
+      "content_hash": "sha256:b9e4cccfd20cfebd77da83c6b343180ed328dab316ac2cbff780e64eddc72a54",
+      "summary": ""
+    },
+    {
+      "path": "docs/epicon/cycles/C-374/reconciliation/RECONCILIATION_RECEIPT_BLOCK_001_PROPOSED.md",
+      "title": "Reconciliation Receipt — Reserve Block 1 (PROPOSED)",
+      "category": "epicon",
+      "tags": [],
+      "content_hash": "sha256:427f6014eb7c645f59c9f169131c9dc6ac4e68b3a7779addfc97378497ea6d27",
+      "summary": ""
+    },
+    {
+      "path": "docs/epicon/cycles/C-375/ZEUS_DISPUTE_DISPOSITIONS.md",
+      "title": "ZEUS Dispute Dispositions — C-375",
+      "category": "epicon",
+      "tags": [],
+      "content_hash": "sha256:779656cddcbc597a44177988f8033460b7dd08359cf5ebb5f3a3812026d4735d",
+      "summary": ""
+    },
+    {
+      "path": "docs/epicon/cycles/C-378/ATLAS_HANDOFF_C-378_trunk-cycle.md",
+      "title": "ATLAS HANDOFF — C-378: The Trunk Cycle",
+      "category": "epicon",
+      "tags": [],
+      "content_hash": "sha256:f7d14864e46fcf865cd12d0691584f599b465f8f05fadaeb3ff9bdba32ac1318",
+      "summary": ""
+    },
+    {
+      "path": "docs/epicon/cycles/C-379/C-379_AUDIT_live-github-review.md",
+      "title": "C-379 Audit — Live GitHub Review",
+      "category": "epicon",
+      "tags": [],
+      "content_hash": "sha256:d579cd1e42c116de5c25454b124068ba36b851bcf51b07d523cf91008e3dd67a",
+      "summary": ""
+    },
+    {
+      "path": "docs/epicon/cycles/C-379/C-379_REAUDIT_infrastructure-recovery-advanced.md",
+      "title": "C-379 Re-Audit — Infrastructure Recovery Advanced",
+      "category": "epicon",
+      "tags": [],
+      "content_hash": "sha256:4f780e17ffc43850fb421ed1bc8d20d5bf5bd32f015f1a7bab282be0bd0afd18",
+      "summary": ""
+    },
+    {
+      "path": "docs/epicon/cycles/C-379/EPICON_C-379_INFRA_federation-scan-20-optimizations_v1.md",
+      "title": "EPICON_C-379_INFRA_federation-scan-20-optimizations_v1",
+      "category": "epicon",
+      "tags": [],
+      "content_hash": "sha256:ac9e218127f755a0bf3c57bb71da83dab97bc34d6e0e0a3ea161f4273a606d50",
+      "summary": ""
+    },
+    {
+      "path": "docs/epicon/cycles/C-379/FEDERATION_SCAN_WITNESS_TABLE.md",
+      "title": "Federation Scan — Witness Table",
+      "category": "epicon",
+      "tags": [],
+      "content_hash": "sha256:1af03647ed03f7fa4c7459a4c438b74b6a8db494e399f227c0a6eb60d6b5ff1d",
+      "summary": ""
+    },
+    {
+      "path": "docs/epicon/cycles/C-379/OPTIMIZATIONS_C-379_20-items.md",
+      "title": "C-379 — 20 Optimizations Backlog",
+      "category": "epicon",
+      "tags": [],
+      "content_hash": "sha256:6049757ef944d611b3543d5939fc58a9ef1f9913fda42aa360f65037497e0253",
+      "summary": ""
+    },
+    {
+      "path": "docs/epicon/cycles/C-379/README.md",
+      "title": "C-379 — Federation scan & 20 optimizations",
+      "category": "epicon",
+      "tags": [],
+      "content_hash": "sha256:57a1a0008ea5df9f8c2ec0066ddccb01cbbbff4df5f37827849a0a82c0481f6d",
+      "summary": ""
+    },
+    {
+      "path": "docs/epicon/cycles/C-380/ATLAS_ARCHITECTURE_external-observation.md",
+      "title": "ATLAS — External Observation Architecture (EPICON-000)",
+      "category": "epicon",
+      "tags": [],
+      "content_hash": "sha256:e50df850c3c8ec8bb7c39d6821180567d9f57688cf183f2975f46c52a908130b",
+      "summary": ""
+    },
+    {
+      "path": "docs/epicon/cycles/C-380/ATLAS_JADE_HANDOFF_EPICON-000.md",
+      "title": "ATLAS × JADE Handoff — EPICON-000 External Reality Boundary",
+      "category": "epicon",
+      "tags": [],
+      "content_hash": "sha256:349f61dae31f3d37d6e2b476862203f6bb03d2eaf04cee12e4e22e08e163166c",
+      "summary": ""
+    },
+    {
+      "path": "docs/epicon/cycles/C-380/C-380-opener.md",
+      "title": "C-380 Opener — External Reality Boundary",
+      "category": "epicon",
+      "tags": [],
+      "content_hash": "sha256:c965e27b94271f40ebb94276f26a0d0af7e17c6a473bc120b79c735678184a7f",
+      "summary": ""
+    },
+    {
+      "path": "docs/epicon/cycles/C-380/EPICON_C-380_CONSTITUTION_external-reality-boundary_v1.md",
+      "title": "C-380: External Reality Boundary — constitutional opener",
+      "category": "epicon",
+      "tags": [
+        "c380",
+        "external-observation",
+        "witness-pool",
+        "quarantine"
+      ],
+      "content_hash": "sha256:1bec2478ea3782e0863eeeb7e218a296c57abb7c063fa61f77e60fc1826fe5bc",
+      "summary": "Cycle-bound operational EPICON to file EPICON-000 external reality boundary doctrine."
+    },
+    {
+      "path": "docs/epicon/cycles/C-380/JADE_CIVILIAN_RENDERER_external-claim.md",
+      "title": "JADE — Civilian Renderer: External Claim Signal",
+      "category": "epicon",
+      "tags": [],
+      "content_hash": "sha256:45a8575e95f623f1e744c2792146f1855e6fef5291cd5cd1f152fea2077a5f82",
+      "summary": ""
+    },
+    {
+      "path": "docs/epicon/cycles/C-380/README.md",
+      "title": "C-380 — External Reality Boundary (EPICON-000)",
+      "category": "epicon",
+      "tags": [],
+      "content_hash": "sha256:ff2c695262369e6e8298147ede2743198288f89972ab060c07f89396858ad028",
+      "summary": ""
+    },
+    {
+      "path": "docs/epicon/cycles/C-381/I7_WITNESS_TABLE_ENFORCEMENT.md",
+      "title": "C-381 — I7 Witness Table Enforcement",
+      "category": "epicon",
+      "tags": [],
+      "content_hash": "sha256:5738bb23fd14a43df02dbc1a6ba55f267ccebb9750a8ea470fc696bb5ae01b5e",
+      "summary": ""
+    },
+    {
+      "path": "docs/epicon/cycles/C-381/README.md",
+      "title": "C-381 — Handbook CI / Codex Remediation",
+      "category": "epicon",
+      "tags": [],
+      "content_hash": "sha256:bef0ca6502cbbb8e81b283e996ea7b31687ab25bd6b9c30ec3987e4f13459939",
+      "summary": ""
+    },
+    {
+      "path": "docs/epicon/cycles/C-382/FEDERATION_SCAN_20_OPTIMIZATIONS.md",
+      "title": "C-382 — Federation Scan: 20 Optimizations",
+      "category": "epicon",
+      "tags": [],
+      "content_hash": "sha256:d10fdbcac182ba175eb9e185d2dbd197b8fba96f3b8be7fe8a005ede154a025c",
+      "summary": ""
+    },
+    {
+      "path": "docs/epicon/cycles/C-382/README.md",
+      "title": "C-382 — Federation scan & durability follow-through",
+      "category": "epicon",
+      "tags": [],
+      "content_hash": "sha256:a8e96165f10dc8f78c177c7e7a13ed0a3ae9407311afdfb938e1445b1a285855",
+      "summary": ""
+    },
+    {
+      "path": "docs/epicon/cycles/C-383/CYCLE_LEDGER_VERIFICATION.md",
+      "title": "C-383 — Cycle journal ledger verification (#11)",
+      "category": "epicon",
+      "tags": [],
+      "content_hash": "sha256:e1035d0faaaa51a2f06be52d48fa981cee6969bb0a6cebd188cdce09398de421",
+      "summary": ""
+    },
+    {
+      "path": "docs/epicon/cycles/C-383/LEDGER_GI_SOURCE_TRACE.md",
+      "title": "C-383 — Ledger GI source trace (`gi_source_unwired`)",
+      "category": "epicon",
+      "tags": [],
+      "content_hash": "sha256:ab72b41061b5f8a72f85b80b618d9803e8f7498e6be6eba1cebadedc9e5d0a3d",
+      "summary": ""
+    },
+    {
+      "path": "docs/epicon/cycles/C-383/RECONCILIATION_REPORT.md",
+      "title": "C-383 — Reconciliation report generator (#20)",
+      "category": "epicon",
+      "tags": [],
+      "content_hash": "sha256:5e29981a1fa4756ceec938d5bf7732a895255c90cc0c0f7d3990c1bcfd5b0075",
+      "summary": ""
+    },
+    {
+      "path": "docs/epicon/cycles/C-386/CHAMBER_ATLAS.md",
+      "title": "ATLAS C-386 — Implementation chamber",
+      "category": "epicon",
+      "tags": [],
+      "content_hash": "sha256:1d70f8e2e5d7938062cccdd18433b49ce43c73bb59efc636c071e9db610a6b5a",
+      "summary": ""
+    },
+    {
+      "path": "docs/epicon/cycles/C-386/CHAMBER_ZEUS.md",
+      "title": "ZEUS C-386 — Adversarial chamber",
+      "category": "epicon",
+      "tags": [],
+      "content_hash": "sha256:683208f05c2738703061372c424f50b2fe5466264536cdf0843336ad45bc34c2",
+      "summary": ""
+    },
+    {
+      "path": "docs/epicon/cycles/C-386/HANDOFF_C-386_ATLAS_ZEUS_agent-memory-kv-drift_v1.md",
+      "title": "C-386 — Persistent Agent Memory, Evidentiary Independence, and KV Drift Control",
+      "category": "epicon",
+      "tags": [],
+      "content_hash": "sha256:5c96d279150c25eaef5887e2097a21aeeea5edd2dcd1f22f69cb8d56c31bf3f4",
+      "summary": ""
+    },
+    {
+      "path": "docs/epicon/cycles/C-386/README.md",
+      "title": "C-386 — Agent memory / KV drift control",
+      "category": "epicon",
+      "tags": [],
+      "content_hash": "sha256:c9a038bf404156ca621455c02fa40592ad97279c678d0f917f019eb72552aca2",
+      "summary": ""
+    },
+    {
+      "path": "docs/epicon/cycles/C-397/RESERVE_BLOCK_RECONCILIATION.md",
+      "title": "C-397 — Reserve Block collision reconciliation witness",
+      "category": "epicon",
+      "tags": [],
+      "content_hash": "sha256:f6ff8fb527fd14efa04651a42a8be80af3678dfc539a7bdf1740bca2fa22e70d",
+      "summary": ""
+    },
+    {
+      "path": "docs/epicon/cycles/C-399/ATLAS_HANDOFF_SUMMARY.md",
+      "title": "ATLAS Handoff: Academy Protocol v0.1",
+      "category": "epicon",
+      "tags": [],
+      "content_hash": "sha256:b03e96acf39e815d233c5c1f8f874bccc65a7cb99c5a5816c3096c2d8a3a9569",
+      "summary": ""
+    },
+    {
+      "path": "docs/epicon/cycles/C-399/EPICON_C-399_ACADEMY_PROTOCOL_v1.md",
+      "title": "C-399: Academy Protocol v0.1 — OAA Floor 3 specification",
+      "category": "epicon",
+      "tags": [
+        "c399",
+        "academy",
+        "oaa",
+        "floor-3",
+        "assessment"
+      ],
+      "content_hash": "sha256:0be164b417d8797ab2251e90c10fba9c5b99030f5abf7767db7b86873c0c5415",
+      "summary": "Specification-only package formalizing OAA Floor 3 (Academy) teaching, assessment, and agent teacher obligations."
+    },
+    {
+      "path": "docs/epicon/cycles/C-400/C400_ACTION_PACKAGE.md",
+      "title": "C-400 Action Package",
+      "category": "epicon",
+      "tags": [],
+      "content_hash": "sha256:09fc3b6d9504980ebf71d42ce8174b7f9075f9072b7208625d827f1aaca3a5a4",
+      "summary": ""
+    },
+    {
+      "path": "docs/epicon/cycles/C-400/C400_FEDERATION_SCAN_REPORT.md",
+      "title": "C-400 Federation Scan Report",
+      "category": "epicon",
+      "tags": [],
+      "content_hash": "sha256:e43e7da99734be3dd5104150150efae331cf11d568b8c24098f55fbc3ab91a19",
+      "summary": ""
+    },
+    {
+      "path": "docs/epicon/cycles/C-400/C400_ZEUS_DISPUTE_RESOLUTION.md",
+      "title": "C-400 ZEUS Dispute Resolution",
+      "category": "epicon",
+      "tags": [],
+      "content_hash": "sha256:e409264a5aab2965687396cad5aa01896c27920e4d1db9f44a4449435cd36b3d",
+      "summary": ""
+    },
+    {
+      "path": "docs/epicon/cycles/C-400/EPICON_C-400_FEDERATION_SCAN_v1.md",
+      "title": "C-400: Federation scan, ZEUS dispute resolution, Track R doc completion",
+      "category": "epicon",
+      "tags": [],
+      "content_hash": "sha256:da642ccb9319ccd482660908728a06597ffeb9088262c91a8e6c878170be22a7",
+      "summary": ""
+    },
+    {
+      "path": "docs/epicon/cycles/C-401/C401_COLLISION_RESOLUTION_TABLE.md",
+      "title": "C-401 Collision Pair Resolution Table",
+      "category": "epicon",
+      "tags": [],
+      "content_hash": "sha256:b1bd46e564e34b5c6db41847669d264710968247240664e148a850c5cd15cac2",
+      "summary": ""
+    },
+    {
+      "path": "docs/epicon/cycles/C-401/C401_FEDERATION_SCAN_REPORT.md",
+      "title": "C-401 Federation Scan Report",
+      "category": "epicon",
+      "tags": [],
+      "content_hash": "sha256:42830d9090d836138e347f2d26273322594304326d3c0b72d6079483bd7ed750",
+      "summary": ""
+    },
+    {
+      "path": "docs/epicon/cycles/C-401/C401_GATE_DECISION.md",
+      "title": "C-401 Gate Decision — Federation Scan",
+      "category": "epicon",
+      "tags": [],
+      "content_hash": "sha256:d14c8ec7de156e5b0ca066461984601dfb81ba70a896427ae73b08c9d9f9d5e8",
+      "summary": ""
+    },
+    {
+      "path": "docs/epicon/cycles/C-401/C401_OPENING_BRIEF.md",
+      "title": "C-401 Opening Brief",
+      "category": "epicon",
+      "tags": [],
+      "content_hash": "sha256:25329c1b64d5bd90ee6a9e24c9829223e98df3ad85c7010feb4918472fef221d",
+      "summary": ""
+    },
+    {
+      "path": "docs/epicon/cycles/C-401/C401_TRACK_R_PROMOTION_SOP.md",
+      "title": "C-401 Track R Promotion SOP",
+      "category": "epicon",
+      "tags": [],
+      "content_hash": "sha256:f2507279983e6e5bf8740941179e2d0501ba63d4e29fc8506254d528fa2150c8",
+      "summary": ""
+    },
+    {
+      "path": "docs/epicon/cycles/C-401/C401_ZEUS_ATTESTATION_REQUEST.md",
+      "title": "C-401 ZEUS Attestation Request — Track R Collision Resolution",
+      "category": "epicon",
+      "tags": [],
+      "content_hash": "sha256:46b210275d7556fdc7509e32870ac71eb65bd10dcd3fab5250552984b23860fb",
+      "summary": ""
+    },
+    {
+      "path": "docs/epicon/cycles/C-401/EPICON_C-401_FEDERATION_SCAN_v1.md",
+      "title": "C-401: Federation scan — fail-closed Track R status",
+      "category": "epicon",
+      "tags": [],
+      "content_hash": "sha256:64b21f1e383f1b11a57e4354d2de533bcd73888c5a6340d9315798fc41dc9b3a",
+      "summary": ""
+    },
+    {
+      "path": "docs/epicon/cycles/C-401/EPICON_C-401_TRACK_R_LINEAGE_v1.md",
+      "title": "C-401: Track R collision resolution — promote originals to canonical",
+      "category": "epicon",
+      "tags": [],
+      "content_hash": "sha256:eabd307117863ae6796471d19e509ed67bd2c4e7236acc23b06262a77d6eab9e",
+      "summary": ""
+    },
+    {
+      "path": "docs/epicon/cycles/C-403/C403_FEDERATION_RECONCILIATION_REPORT.md",
+      "title": "C-403 Federation Reconciliation Report",
+      "category": "epicon",
+      "tags": [],
+      "content_hash": "sha256:3a9f1d219b941d5e82b1d3ce58f1444b968e0906c357b7df4115359b18b6b436",
+      "summary": ""
+    },
+    {
+      "path": "docs/epicon/cycles/C-403/C403_GI_PROVENANCE_MATRIX.md",
+      "title": "C-403 GI Provenance Matrix",
+      "category": "epicon",
+      "tags": [],
+      "content_hash": "sha256:c477b09ab31fa6194c5a3c37d355ac1f16e452958e60ba1502ba8c0921834edc",
+      "summary": ""
+    },
+    {
+      "path": "docs/epicon/cycles/C-403/C403_ZEUS_DISPOSITION.md",
+      "title": "C-403 ZEUS Disposition — Federation Reconciliation",
+      "category": "epicon",
+      "tags": [],
+      "content_hash": "sha256:06ea3258688291dc698757e395a4e24bdb9cc81d9307dacc06d445304fee3426",
+      "summary": ""
+    },
+    {
+      "path": "docs/epicon/cycles/C-403/EPICON_C-403_RECONCILIATION_INTENT.md",
+      "title": "C-403: Federation reconciliation — GI provenance and editorial pointer sync",
+      "category": "epicon",
+      "tags": [],
+      "content_hash": "sha256:55cb18485af6ffec74f36146a2e3d232f2aa2d4356a45f0ca49a022fed4421e9",
+      "summary": ""
+    },
+    {
+      "path": "docs/epicon/cycles/C-408/EPICON_C-408_EVIDENCE_COMMONS_INTENT.md",
+      "title": "C-408 Evidence Commons — EPICON Intent (v0.1)",
+      "category": "epicon",
+      "tags": [],
+      "content_hash": "sha256:1687cd6e40252e36d2a80d18f7e7e04d01178aa632175bf1608aa9123342722c",
+      "summary": ""
+    },
+    {
+      "path": "docs/epicon/cycles/C-410/README.md",
+      "title": "C-410 — Substrate cycle pointer reconciliation",
+      "category": "epicon",
+      "tags": [],
+      "content_hash": "sha256:0d7c998de98be7f6c490bcedc58cab1635886a1cadc9b1f06569bd2b15e44086",
+      "summary": ""
+    },
+    {
+      "path": "docs/epicon/cycles/C-414/EPICON_C-414_DOCS_editorial-state_v1.md",
+      "title": "C-414: Editorial State of the Substrate catch-up — arithmetic pointer sync without seal",
+      "category": "epicon",
+      "tags": [],
+      "content_hash": "sha256:0c18c2afbb964cec1622e678bf10ad56941abae6a18882881751aae01533b8b5",
+      "summary": ""
+    },
+    {
+      "path": "docs/epicon/cycles/C-416/EPICON_C-416_GOV_gi-cycle-projection-reconciliation_v1.md",
+      "title": "C-416: GI and cycle projection reconciliation — carried-forward GI made visible in cycle.json",
+      "category": "epicon",
+      "tags": [],
+      "content_hash": "sha256:be082cd246e6f029a7db0452955c736b8762c7de2ccd1ef72b1c1373e2673805",
       "summary": ""
     },
     {
@@ -8045,11 +8616,83 @@
       "summary": ""
     },
     {
+      "path": "docs/journals/C-377.md",
+      "title": "Cycle Journal — C-377",
+      "category": "journals",
+      "tags": [],
+      "content_hash": "sha256:c64c650db766d61c155cb31d4968ad85b17d42a7952592108bc15778ad9995f7",
+      "summary": ""
+    },
+    {
+      "path": "docs/journals/C-378.md",
+      "title": "Cycle Journal — C-378",
+      "category": "journals",
+      "tags": [],
+      "content_hash": "sha256:5788687dea08cb0025c578150d95a8e1b4da36a93aaa72a3e0adc1b8f8800906",
+      "summary": ""
+    },
+    {
+      "path": "docs/journals/C-379.md",
+      "title": "Cycle Journal — C-379",
+      "category": "journals",
+      "tags": [],
+      "content_hash": "sha256:c40c5e87c0e8b012d68966a99fb24f2aa6f0d402441c70c1a8961f46046b4c23",
+      "summary": ""
+    },
+    {
+      "path": "docs/journals/C-380.md",
+      "title": "Cycle Journal — C-380",
+      "category": "journals",
+      "tags": [],
+      "content_hash": "sha256:2af41988115f20162361424735d00fac69baf0cd1c0bedc9727da1fb6f4faf43",
+      "summary": ""
+    },
+    {
+      "path": "docs/journals/C-381.md",
+      "title": "Cycle Journal — C-381",
+      "category": "journals",
+      "tags": [],
+      "content_hash": "sha256:48b8a6ee91ad264867e66f4b6f2ddb6f37037048302cc08cd1aa08ebed84d409",
+      "summary": ""
+    },
+    {
+      "path": "docs/journals/C-382.md",
+      "title": "Cycle Journal — C-382",
+      "category": "journals",
+      "tags": [],
+      "content_hash": "sha256:eb3a6a8d9bcdcf552d4369140341ebe562f5f86f09b17631b9390f4588182ac9",
+      "summary": ""
+    },
+    {
+      "path": "docs/journals/C-383.md",
+      "title": "Cycle Journal — C-383",
+      "category": "journals",
+      "tags": [],
+      "content_hash": "sha256:bd79f36d9a257328b252bdda71adce093777eb9958dd9081dcfabef5bb2b8488",
+      "summary": ""
+    },
+    {
+      "path": "docs/journals/C-397.md",
+      "title": "Cycle Journal — C-397",
+      "category": "journals",
+      "tags": [],
+      "content_hash": "sha256:f1ce08ac7c0883cab8009fb06e7da5da9e879bd29d00ea3cbce0bd94dc8ea5b1",
+      "summary": ""
+    },
+    {
       "path": "docs/journals/archive.md",
       "title": "Cycle Journal — Archive",
       "category": "journals",
       "tags": [],
-      "content_hash": "sha256:d950d917eae8801e2da7f5ca52dc3230754112ee5759eb52f98b674af4b4ee48",
+      "content_hash": "sha256:3a68e4b4703f1f6eda1714e9b4575a142d6541ca49590088e317e337f1c80676",
+      "summary": ""
+    },
+    {
+      "path": "docs/lineage/EVE_LOOP_LINEAGE.md",
+      "title": "EVE Loop Lineage — From Clock-In to Academy Teaching Cycle",
+      "category": "lineage",
+      "tags": [],
+      "content_hash": "sha256:d98e611ccf1bee02f5c7c2d4976fa15b9b43af1a8f30ce57a16d87520f0703cd",
       "summary": ""
     },
     {
@@ -8185,7 +8828,31 @@
       "title": "Agent Reporting Protocol",
       "category": "protocols",
       "tags": [],
-      "content_hash": "sha256:1a9d19c01342f388c7c78348134a2835296651700ccf25f2fcd4ab10f323b009",
+      "content_hash": "sha256:fdb1738cafd57122539a2ce381b21ca4bfd7671651dc5187c3339ffb770729b6",
+      "summary": ""
+    },
+    {
+      "path": "docs/protocols/evidence-commons/CACHE_REUSE_POLICY.md",
+      "title": "Evidence Commons — Cache Reuse Policy v0.1",
+      "category": "protocols",
+      "tags": [],
+      "content_hash": "sha256:e87df7033ea6ddf36650bf0b0c8ca0846c92651484672bdc0e9bf9c851fe81d2",
+      "summary": ""
+    },
+    {
+      "path": "docs/protocols/evidence-commons/EVIDENCE_PACKET_PROTOCOL.md",
+      "title": "Evidence Packet Protocol v0.1 (C-408)",
+      "category": "protocols",
+      "tags": [],
+      "content_hash": "sha256:273b7474776c5aadb54a7cae4c5c9e0c5d6a1eff966c5b9f2dc43e9501aab374",
+      "summary": ""
+    },
+    {
+      "path": "docs/protocols/evidence-commons/X402_ACQUISITION_POLICY.md",
+      "title": "Evidence Commons — x402 Acquisition Policy v0.1",
+      "category": "protocols",
+      "tags": [],
+      "content_hash": "sha256:44b5b6d33e9696fcad3dd3b60ab9f1f4cff52bdee9f5c42d9cef865ff1299cb4",
       "summary": ""
     },
     {
@@ -8346,6 +9013,14 @@
       "category": "specs",
       "tags": [],
       "content_hash": "sha256:fcdc47a593a62dfd1577d52015a674b4c3816359feff9d47b40317defd75e8cf",
+      "summary": ""
+    },
+    {
+      "path": "docs/templates/ATLAS_HANDOFF_TEMPLATE.md",
+      "title": "ATLAS Handoff Template",
+      "category": "templates",
+      "tags": [],
+      "content_hash": "sha256:51cda855df6da746ba747a7da4cc83b7bfd0d68424846e6dfd05d227da228ca5",
       "summary": ""
     },
     {

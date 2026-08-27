@@ -1,0 +1,17 @@
+{
+  "cycle": "C-383",
+  "date": "2026-07-25",
+  "writer": "mobius-bot/state-sync",
+  "ledger_verified": true,
+  "ledger_snapshot": {
+    "cycle": "unknown",
+    "gi": null,
+    "attested_at": "2026-07-25T13:10:24.475657+00:00"
+  },
+  "narrative": null,
+  "ledger_snapshot_at": "2026-07-25T13:19:47Z",
+  "ledger_witness_url": "https://civic-protocol-core-ledger.onrender.com/pulse/state",
+  "ledger_gi_attested": false,
+  "ledger_gi_withheld_reason": "GI_NULL_IN_PULSE",
+  "ledger_health_ephemeral": false
+}

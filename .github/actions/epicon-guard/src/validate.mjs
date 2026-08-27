@@ -1,4 +1,6 @@
 #!/usr/bin/env node
+// ## Authority Provenance
+// Scope envelope alignment: journals/ under docs scope per mobius_pr_bot SCOPE_MAP.
 /**
  * EPICON Guard — v0 (GitHub Action validator)
  *
@@ -18,6 +20,7 @@
  *   I4 Divergence observable, no blocking -> scope-vs-changed-paths flagged as warnings
  *   I5 Expiration is mandatory            -> expires_at required; expired intent fails
  *   I6 No narrative substitutes           -> structural validation only; prose never passes the gate
+ *   I7 Witness table on Tier 2+           -> literal ## Witness Table block; Claim/Verdict/Evidence rows
  *
  * Tiering (EPICON_TIERING_SPEC_v0.1):
  *   Rule 5.1 -> tier is computed here from the policy registry, never read from
@@ -35,6 +38,7 @@
 import { readFileSync, existsSync, appendFileSync } from 'node:fs';
 import { createHash } from 'node:crypto';
 import { join } from 'node:path';
+import { checkWitnessTable, witnessTableFailureMessage } from './witness-table.mjs';
 
 // ---------------------------------------------------------------------------
 // Canonical patterns — keep in sync with Mobius-Substrate sources noted below.
@@ -54,16 +58,24 @@ const VALID_SCOPES = ['docs', 'ci', 'core', 'infra', 'sentinels', 'labs', 'specs
 const VALID_MODES = ['normal', 'emergency', 'standard']; // 'standard' accepted with warning
 
 // Scope -> path-prefix envelope used for divergence detection (I4).
-// Divergence is flagged, never blocked (EPICON-02 §3.2: "Actions outside the
-// envelope are not blocked — they are flagged as divergent.")
+// Keep aligned with .github/scripts/mobius_pr_bot.py SCOPE_MAP.
 const SCOPE_ENVELOPES = {
-  docs: ['docs/', 'README', 'DOCS.md', 'CONTRIBUTING.md', 'LICENSE', 'FOR-'],
-  ci: ['.github/'],
-  core: ['apps/', 'packages/', 'src/', 'lib/'],
-  infra: ['infra/', 'render.yaml', 'vercel.json', 'Dockerfile', 'docker-compose', 'netlify.toml'],
+  docs: [
+    'docs/',
+    'epicon/',
+    'catalog/',
+    'journals/',
+    'README.md',
+    'CHANGELOG.md',
+    'LICENSE',
+    'mkdocs.yml',
+  ],
+  ci: ['.github/', 'ci/', 'scripts/', 'STATE/', '...'],
+  core: ['apps/', 'packages/', 'src/', 'lib/', 'services/'],
+  infra: ['infra/', 'deploy/', 'docker/', 'monitoring/', 'grafana/', 'render.yaml', 'vercel.json', 'Dockerfile', 'docker-compose', 'netlify.toml'],
   sentinels: ['sentinels/', 'agents/'],
   labs: ['labs/', 'experiments/'],
-  specs: ['docs/specs/', 'schemas/', 'docs/epicon/', 'canon/'],
+  specs: ['docs/specs/', 'schemas/', 'docs/epicon/', 'canon/', 'specs/', 'configs/', 'tests/', 'cycle.json'],
 };
 
 // Default tier policy registry (Rule 5.1: declarative, independent of proposer).
@@ -494,6 +506,28 @@ if (changed && changed.length > 0) {
   }
 } else if (changed && changed.length === 0) {
   note('No changed files reported for this PR.');
+}
+
+// ---------------------------------------------------------------------------
+// 5b. I7 — Witness Table (Tier EP-2+ only; warn-only until custodian flips enforce)
+// ---------------------------------------------------------------------------
+
+const i7Mode = (process.env.INPUT_I7_MODE || 'warn').toLowerCase();
+
+if (TIER_ORDER[prTier] >= TIER_ORDER['EP-2']) {
+  const i7 = checkWitnessTable(prBody);
+  if (!i7.ok) {
+    const detail = `I7 — ${i7.message}\n\n${witnessTableFailureMessage()}`;
+    if (i7Mode === 'enforce') {
+      fail(detail);
+    } else {
+      warn(`${detail}\n\n_(I7 is warn-only until custodian enables enforce mode.)_`);
+    }
+  } else if (i7.allStale) {
+    warn(
+      'I7 — All witness rows are STALE — table passes format check but nothing has been actively re-verified.'
+    );
+  }
 }
 
 // ---------------------------------------------------------------------------

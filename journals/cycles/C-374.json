@@ -1,0 +1,44 @@
+{
+  "meta": {
+    "cycle_id": "C-374",
+    "date": "2026-07-16",
+    "timezone": "UTC",
+    "chamber": "Cycle Journal",
+    "tags": ["c374", "vault", "witness"],
+    "mood_vector": "Focused"
+  },
+  "sweep": {
+    "statement": "C-374 vault/canon witness track — tip forensics and Gate G3 collision audit.",
+    "style": "mobius"
+  },
+  "signals": [
+    {
+      "timestamp": "2026-07-16T00:00:00Z",
+      "domain": "governance",
+      "statement": "C-374 vault/canon witness track opened.",
+      "sources": ["docs/audits/AUDIT_C-374_cold-canon-tip-divergence.md"],
+      "confidence": 0.9,
+      "attribution": "mobius-bot/state-sync"
+    }
+  ],
+  "integrity": {
+    "status": "normal",
+    "domains_touched": ["governance"],
+    "mii_current": 0.9,
+    "mii_trend": "flat",
+    "watch_items": []
+  },
+  "decisions": [],
+  "actions": [
+    {
+      "task": "Complete vault/canon witness track",
+      "priority": "P2",
+      "owner": "kaizencycle"
+    }
+  ],
+  "seal": {
+    "compiled_at": "2026-07-16T00:00:00Z",
+    "contributors": ["mobius-bot/state-sync"],
+    "statement": "C-374 journal stub migrated to schema v1."
+  }
+}

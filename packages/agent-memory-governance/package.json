@@ -1,0 +1,32 @@
+{
+  "name": "@mobius/agent-memory-governance",
+  "version": "0.1.0",
+  "description": "C-386 agent memory epistemic classes, evidentiary quorum, and KV drift control",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "clean": "rm -rf dist",
+    "type-check": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "typescript": "^5.0.0",
+    "vitest": "^3.0.0"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "license": "AGPL-3.0-or-later",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kaizencycle/Mobius-Substrate.git",
+    "directory": "packages/agent-memory-governance"
+  }
+}
