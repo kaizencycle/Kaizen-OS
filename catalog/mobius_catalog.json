@@ -1,15 +1,15 @@
 {
   "mobius_catalog_version": "1.0.0",
-  "generated_at": "2026-08-27T19:10:37.619Z",
+  "generated_at": "2026-08-27T19:15:21.997Z",
   "repo": {
     "name": "Mobius-Substrate",
     "url": "https://github.com/kaizencycle/Mobius-Substrate",
     "default_branch": "main",
-    "commit": "35f568f47a844d4dafe457a429ff72550ace6429"
+    "commit": "839c02d27fb8789718aaa44eb537625c01adaa13"
   },
   "stats": {
     "epiconCount": 0,
-    "docCount": 1110
+    "docCount": 1111
   },
   "epicons": [],
   "docs": [
@@ -8541,6 +8541,14 @@
       "category": "epicon",
       "tags": [],
       "content_hash": "sha256:0c18c2afbb964cec1622e678bf10ad56941abae6a18882881751aae01533b8b5",
+      "summary": ""
+    },
+    {
+      "path": "docs/epicon/cycles/C-416/EPICON_C-416_GOV_gi-cycle-projection-reconciliation_v1.md",
+      "title": "C-416: GI and cycle projection reconciliation — carried-forward GI made visible in cycle.json",
+      "category": "epicon",
+      "tags": [],
+      "content_hash": "sha256:be082cd246e6f029a7db0452955c736b8762c7de2ccd1ef72b1c1373e2673805",
       "summary": ""
     },
     {
