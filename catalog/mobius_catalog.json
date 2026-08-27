@@ -1,15 +1,15 @@
 {
   "mobius_catalog_version": "1.0.0",
-  "generated_at": "2026-08-27T19:33:24.626Z",
+  "generated_at": "2026-08-27T23:00:38.835Z",
   "repo": {
     "name": "Mobius-Substrate",
     "url": "https://github.com/kaizencycle/Mobius-Substrate",
     "default_branch": "main",
-    "commit": "f35a70fdc07a18fac27520a23b079c4d732b6310"
+    "commit": "ab4665d614b8d06e541a6e7206422d50da4496fc"
   },
   "stats": {
     "epiconCount": 0,
-    "docCount": 1111
+    "docCount": 1112
   },
   "epicons": [],
   "docs": [
@@ -8549,6 +8549,14 @@
       "category": "epicon",
       "tags": [],
       "content_hash": "sha256:be082cd246e6f029a7db0452955c736b8762c7de2ccd1ef72b1c1373e2673805",
+      "summary": ""
+    },
+    {
+      "path": "docs/epicon/cycles/C-416/EPICON_C-416_LABS_lab7-workrepo-gitlink-reissue_v1.md",
+      "title": "C-416: reissue of the C-372 lab7 workrepo gitlink fix (PR #385), rebased and republished",
+      "category": "epicon",
+      "tags": [],
+      "content_hash": "sha256:ee6c68a979a1fcce2034804192951564f072154dc0a1e6176313068cb9939af2",
       "summary": ""
     },
     {
