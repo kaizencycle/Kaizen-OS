@@ -45,6 +45,26 @@ the Substrate receives copies via archive crons.
 **Doctrine:** *KV is authoritative for now. Substrate is authoritative for
 history. Terminal is authoritative for the composition of both.*
 
+### 1a. GI has (at least) three distinct surfaces — do not average them
+
+"GI" is not one number replicated everywhere; it is computed independently
+by whichever surface reports it, on its own cadence, from its own inputs.
+Treating a mismatch between them as drift to be corrected by averaging or
+by copying one value over another is a category error — reconcile the
+*provenance*, not the number. Known surfaces, as of C-416:
+
+| Surface | What it reports | Refresh | Notes |
+|---|---|---|---|
+| **Terminal `/api/terminal/snapshot*`** | live runtime GI | on read, KV-backed | Primary GI per the doctrine above; see `lib/integrity/integrityAuthority.ts` in `mobius-civic-ai-terminal`. |
+| **`Mobius-Substrate/cycle.json` `gi`** | last value *attested* from the Civic-Protocol-Core ledger pulse (`/pulse/state`) | once daily, best-effort cron (`mobius-bot-state-sync.yml`) | Carried forward unchanged when the pulse is unreachable or returns `gi: null`. Check `gi_attested_this_cycle` / `gi_withheld_reason` (schema: `schemas/cycle_state.schema.json`) before treating this value as current — `false` means the number you're looking at may be several cycles stale. |
+| **`mobius-hive` `world/current-cycle.json` `signals.gi`** | a game-world/observation-layer reading derived from Terminal's pulse | scheduled workflow (`world-update.yml`), independent cadence | Explicitly a simulation-layer signal (see Job #14 / `EPICON_C-414_ORG_hive-gi-delta-writeback-design`) — never treat as canonical GI without a resolved gate. |
+
+A daily-cron writer and a live KV read will disagree for part of every day
+by construction; that lag is expected, not an incident. What *is* worth
+raising is `gi_attested_this_cycle: false` persisting across several
+consecutive cycles — that means the ledger pulse's GI feed has been down
+for that whole span, not just delayed.
+
 <div class="mobius-proof-strip">
   <mobius-proof endpoint="snapshot-lite" path="integrity.gi" label="Live GI"></mobius-proof>
   <mobius-proof endpoint="snapshot-lite" path="integrity.mode" label="Live mode"></mobius-proof>

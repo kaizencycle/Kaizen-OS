@@ -1,15 +1,15 @@
 {
   "mobius_catalog_version": "1.0.0",
-  "generated_at": "2026-08-27T12:37:32.905Z",
+  "generated_at": "2026-08-27T19:33:24.626Z",
   "repo": {
     "name": "Mobius-Substrate",
     "url": "https://github.com/kaizencycle/Mobius-Substrate",
     "default_branch": "main",
-    "commit": "be99c4dcf3cfc8672f7f907d8d1fb1dbd2998fb9"
+    "commit": "f35a70fdc07a18fac27520a23b079c4d732b6310"
   },
   "stats": {
     "epiconCount": 0,
-    "docCount": 1110
+    "docCount": 1111
   },
   "epicons": [],
   "docs": [
@@ -8544,6 +8544,14 @@
       "summary": ""
     },
     {
+      "path": "docs/epicon/cycles/C-416/EPICON_C-416_GOV_gi-cycle-projection-reconciliation_v1.md",
+      "title": "C-416: GI and cycle projection reconciliation — carried-forward GI made visible in cycle.json",
+      "category": "epicon",
+      "tags": [],
+      "content_hash": "sha256:be082cd246e6f029a7db0452955c736b8762c7de2ccd1ef72b1c1373e2673805",
+      "summary": ""
+    },
+    {
       "path": "docs/epicon/cycles/C-ATLAS/EPICON_C-ATLAS_INFRA_mobiusatlas-agent-launch_v1.md",
       "title": "MobiusATLAS Agent Infrastructure Launch",
       "category": "epicon",
@@ -8820,7 +8828,7 @@
       "title": "Agent Reporting Protocol",
       "category": "protocols",
       "tags": [],
-      "content_hash": "sha256:1a9d19c01342f388c7c78348134a2835296651700ccf25f2fcd4ab10f323b009",
+      "content_hash": "sha256:fdb1738cafd57122539a2ce381b21ca4bfd7671651dc5187c3339ffb770729b6",
       "summary": ""
     },
     {

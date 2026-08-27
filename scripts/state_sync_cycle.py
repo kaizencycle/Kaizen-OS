@@ -213,8 +213,30 @@ def apply_cycle_writer_hygiene(
     if fetch.verified and fetch.snapshot and fetch.snapshot.get("gi") is not None:
         cycle_doc["gi"] = fetch.snapshot["gi"]
         cycle_doc["gi_attested_at"] = new_cycle
-        for key in ("gi_status", "gi_editorial_class", "mode_status"):
+        cycle_doc["gi_attested_this_cycle"] = True
+        for key in ("gi_status", "gi_editorial_class", "mode_status", "gi_withheld_reason"):
             cycle_doc.pop(key, None)
         mode = fetch.snapshot.get("mode")
         if mode in ("green", "yellow", "red"):
             cycle_doc["mode"] = mode
+    elif cycle_doc.get("gi_attested_at") == new_cycle:
+        # GI was already attested earlier in this same cycle (e.g. the
+        # scheduled run succeeded); mobius-bot-state-sync.yml also allows
+        # workflow_dispatch catch-up runs, so a later same-day rerun whose
+        # own ledger fetch fails must not retroactively mark that earlier,
+        # still-current attestation as stale. Leave gi/gi_attested_this_cycle
+        # as the prior successful run set them.
+        pass
+    else:
+        # cycle.json's own `gi` field is carried forward unchanged from the
+        # last cycle where the ledger pulse actually attested a value. That
+        # carry-forward was previously silent (visible only as a CI log
+        # warning and a per-cycle journal field); surface it durably here so
+        # a reader of cycle.json alone — not just the day's Actions log or
+        # journals/cycles/<cycle>.json — can see the value is stale. This is
+        # not GI calculation: no numeric value is invented or averaged.
+        cycle_doc["gi_attested_this_cycle"] = False
+        _, gi_reason = gi_attestation_status(fetch.snapshot)
+        cycle_doc["gi_withheld_reason"] = (
+            fetch.withheld_reason or gi_reason or "LEDGER_PULSE_UNVERIFIED"
+        )

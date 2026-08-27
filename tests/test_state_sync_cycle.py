@@ -203,6 +203,89 @@ class TestCycleWriterHygiene(unittest.TestCase):
         self.assertNotIn("gi_status", doc)
         self.assertNotIn("gi_editorial_class", doc)
         self.assertNotIn("mode_status", doc)
+        self.assertTrue(doc["gi_attested_this_cycle"])
+        self.assertNotIn("gi_withheld_reason", doc)
+
+    def test_gi_null_pulse_marks_carry_forward_unattested(self):
+        doc = {"current_cycle": "C-415", "gi": 0.9}
+        fetch = LedgerFetchResult(
+            verified=True,
+            withheld_reason=None,
+            snapshot={"gi": None},
+            health=None,
+            witness_url="https://x/pulse/state",
+            error=None,
+        )
+        apply_cycle_writer_hygiene(
+            doc, previous_cycle="C-415", new_cycle="C-416", fetch=fetch
+        )
+        self.assertEqual(doc["gi"], 0.9)
+        self.assertFalse(doc["gi_attested_this_cycle"])
+        self.assertEqual(doc["gi_withheld_reason"], "GI_NULL_IN_PULSE")
+
+    def test_same_cycle_rerun_failure_does_not_unattest_earlier_success(self):
+        # Codex review on PR #443: mobius-bot-state-sync.yml allows
+        # workflow_dispatch catch-up runs alongside the scheduled cron. If
+        # the scheduled run already attested GI for this cycle and a later
+        # same-day manual rerun can't reach the ledger, that rerun must not
+        # flip gi_attested_this_cycle back to false.
+        doc = {
+            "current_cycle": "C-416",
+            "gi": 0.93,
+            "gi_attested_at": "C-416",
+            "gi_attested_this_cycle": True,
+        }
+        fetch = LedgerFetchResult(
+            verified=False,
+            withheld_reason="LEDGER_PULSE_UNREACHABLE",
+            snapshot=None,
+            health=None,
+            witness_url="https://x/pulse/state",
+            error="connection refused",
+        )
+        apply_cycle_writer_hygiene(
+            doc, previous_cycle="C-416", new_cycle="C-416", fetch=fetch
+        )
+        self.assertEqual(doc["gi"], 0.93)
+        self.assertTrue(doc["gi_attested_this_cycle"])
+        self.assertNotIn("gi_withheld_reason", doc)
+
+    def test_unreachable_pulse_marks_carry_forward_with_transport_reason(self):
+        doc = {"current_cycle": "C-415", "gi": 0.9}
+        fetch = LedgerFetchResult(
+            verified=False,
+            withheld_reason="LEDGER_PULSE_UNREACHABLE",
+            snapshot=None,
+            health=None,
+            witness_url="https://x/pulse/state",
+            error="connection refused",
+        )
+        apply_cycle_writer_hygiene(
+            doc, previous_cycle="C-415", new_cycle="C-416", fetch=fetch
+        )
+        self.assertFalse(doc["gi_attested_this_cycle"])
+        self.assertEqual(doc["gi_withheld_reason"], "LEDGER_PULSE_UNREACHABLE")
+
+    def test_re_attestation_clears_prior_withheld_reason(self):
+        doc = {
+            "current_cycle": "C-415",
+            "gi": 0.9,
+            "gi_attested_this_cycle": False,
+            "gi_withheld_reason": "GI_NULL_IN_PULSE",
+        }
+        fetch = LedgerFetchResult(
+            verified=True,
+            withheld_reason=None,
+            snapshot={"gi": 0.93, "mode": "yellow"},
+            health=None,
+            witness_url="https://x/pulse/state",
+            error=None,
+        )
+        apply_cycle_writer_hygiene(
+            doc, previous_cycle="C-415", new_cycle="C-416", fetch=fetch
+        )
+        self.assertTrue(doc["gi_attested_this_cycle"])
+        self.assertNotIn("gi_withheld_reason", doc)
 
 
 if __name__ == "__main__":
