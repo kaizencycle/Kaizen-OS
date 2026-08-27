@@ -91,9 +91,12 @@ def main() -> int:
         "status": "ok",
         "ledger_verified": fetch.verified,
         "ledger_witness_url": fetch.witness_url,
+        "gi_attested_this_cycle": c.get("gi_attested_this_cycle", False),
     }
     if fetch.withheld_reason:
         health["ledger_withheld_reason"] = fetch.withheld_reason
+    if c.get("gi_withheld_reason"):
+        health["gi_withheld_reason"] = c["gi_withheld_reason"]
 
     with (ROOT / "STATE" / "writer-health.json").open("w") as f:
         json.dump(health, f, indent=2)

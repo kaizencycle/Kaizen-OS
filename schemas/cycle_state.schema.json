@@ -33,6 +33,14 @@
       "type": "string",
       "pattern": "^C-[0-9]+$"
     },
+    "gi_attested_this_cycle": {
+      "type": "boolean",
+      "description": "True only when this cycle's writer run received a non-null gi from the ledger pulse and wrote it into `gi`. False means `gi` is carried forward unchanged from `gi_attested_at`; see `gi_withheld_reason`. Set unconditionally every run — never scrubbed on cycle rollover."
+    },
+    "gi_withheld_reason": {
+      "type": "string",
+      "description": "Present only when gi_attested_this_cycle is false. One of the ledger fetch withheld reasons (e.g. LEDGER_PULSE_UNREACHABLE, LEDGER_URL_UNCONFIGURED) or GI_NULL_IN_PULSE when the pulse was reachable but returned gi=null."
+    },
     "vault": {
       "type": "object",
       "properties": {
