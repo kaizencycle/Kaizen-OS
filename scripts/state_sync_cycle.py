@@ -219,6 +219,14 @@ def apply_cycle_writer_hygiene(
         mode = fetch.snapshot.get("mode")
         if mode in ("green", "yellow", "red"):
             cycle_doc["mode"] = mode
+    elif cycle_doc.get("gi_attested_at") == new_cycle:
+        # GI was already attested earlier in this same cycle (e.g. the
+        # scheduled run succeeded); mobius-bot-state-sync.yml also allows
+        # workflow_dispatch catch-up runs, so a later same-day rerun whose
+        # own ledger fetch fails must not retroactively mark that earlier,
+        # still-current attestation as stale. Leave gi/gi_attested_this_cycle
+        # as the prior successful run set them.
+        pass
     else:
         # cycle.json's own `gi` field is carried forward unchanged from the
         # last cycle where the ledger pulse actually attested a value. That
