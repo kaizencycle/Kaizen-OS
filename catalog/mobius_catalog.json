@@ -1,15 +1,15 @@
 {
   "mobius_catalog_version": "1.0.0",
-  "generated_at": "2026-08-27T23:00:38.835Z",
+  "generated_at": "2026-08-28T02:49:06.506Z",
   "repo": {
     "name": "Mobius-Substrate",
     "url": "https://github.com/kaizencycle/Mobius-Substrate",
     "default_branch": "main",
-    "commit": "ab4665d614b8d06e541a6e7206422d50da4496fc"
+    "commit": "efa894b6477f77f4c32871ec829b373d0339c7e1"
   },
   "stats": {
     "epiconCount": 0,
-    "docCount": 1112
+    "docCount": 1113
   },
   "epicons": [],
   "docs": [
@@ -8541,6 +8541,14 @@
       "category": "epicon",
       "tags": [],
       "content_hash": "sha256:0c18c2afbb964cec1622e678bf10ad56941abae6a18882881751aae01533b8b5",
+      "summary": ""
+    },
+    {
+      "path": "docs/epicon/cycles/C-416/EPICON_C-416_GOV_clear-stale-open-flags_v1.md",
+      "title": "C-416: clear one stale cycle.json open_flag (bot credential rotation) per Job #15 finding; Job #16's flag retained pending actual re-attestation",
+      "category": "epicon",
+      "tags": [],
+      "content_hash": "sha256:1f25fe88bcf5d9e61b09ba3119ed6588687068fba328a929f6d357c43f92b378",
       "summary": ""
     },
     {

@@ -56,7 +56,6 @@
     ]
   },
   "open_flags": [
-    "mobius-bot-app-credentials-rotation-required",
     "identity-vercel-creds-pending-reattest",
     "mic-wallet-render-crash-loop"
   ],
