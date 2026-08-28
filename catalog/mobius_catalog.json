@@ -1,15 +1,15 @@
 {
   "mobius_catalog_version": "1.0.0",
-  "generated_at": "2026-08-27T23:00:38.835Z",
+  "generated_at": "2026-08-28T00:11:11.853Z",
   "repo": {
     "name": "Mobius-Substrate",
     "url": "https://github.com/kaizencycle/Mobius-Substrate",
     "default_branch": "main",
-    "commit": "ab4665d614b8d06e541a6e7206422d50da4496fc"
+    "commit": "8222c7c775855a5040176a2868bd7556bef88171"
   },
   "stats": {
     "epiconCount": 0,
-    "docCount": 1112
+    "docCount": 1113
   },
   "epicons": [],
   "docs": [
@@ -8541,6 +8541,14 @@
       "category": "epicon",
       "tags": [],
       "content_hash": "sha256:0c18c2afbb964cec1622e678bf10ad56941abae6a18882881751aae01533b8b5",
+      "summary": ""
+    },
+    {
+      "path": "docs/epicon/cycles/C-416/EPICON_C-416_GOV_clear-stale-open-flags_v1.md",
+      "title": "C-416: clear two stale cycle.json open_flags (credential rotation, Vercel identity re-attestation) per Job #15/#16 findings",
+      "category": "epicon",
+      "tags": [],
+      "content_hash": "sha256:2ef8908fafe8461e30af279c956bcab7f0023d4f1097cba2f83acfe18f599069",
       "summary": ""
     },
     {
