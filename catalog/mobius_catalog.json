@@ -1,15 +1,15 @@
 {
   "mobius_catalog_version": "1.0.0",
-  "generated_at": "2026-08-27T23:00:38.835Z",
+  "generated_at": "2026-08-28T02:54:45.360Z",
   "repo": {
     "name": "Mobius-Substrate",
     "url": "https://github.com/kaizencycle/Mobius-Substrate",
     "default_branch": "main",
-    "commit": "ab4665d614b8d06e541a6e7206422d50da4496fc"
+    "commit": "8222c7c775855a5040176a2868bd7556bef88171"
   },
   "stats": {
     "epiconCount": 0,
-    "docCount": 1112
+    "docCount": 1113
   },
   "epicons": [],
   "docs": [
@@ -7378,7 +7378,7 @@
       "title": "State of the Substrate — Latest",
       "category": "STATE_OF_THE_SUBSTRATE_LATEST.md",
       "tags": [],
-      "content_hash": "sha256:64c8d282574762a74e6343c2ef8fe8fa5027e0141b40aae812b45beedd2dae43",
+      "content_hash": "sha256:e42f21b2cd9c0a8481f96eae11b39a84213798675b602dd31e69b722d73839ea",
       "summary": ""
     },
     {
@@ -8541,6 +8541,14 @@
       "category": "epicon",
       "tags": [],
       "content_hash": "sha256:0c18c2afbb964cec1622e678bf10ad56941abae6a18882881751aae01533b8b5",
+      "summary": ""
+    },
+    {
+      "path": "docs/epicon/cycles/C-416/EPICON_C-416_GOV_advance-editorial-state-c416_v1.md",
+      "title": "C-416: advance editorial State of the Substrate and mkdocs cycle pointer to C-416 without implying seal completion or fabricating unrefetched live data",
+      "category": "epicon",
+      "tags": [],
+      "content_hash": "sha256:6827ae446eeeead2fe618eddfd4e4e24d0ca3c044da15fd72fc0dfe340a3b19f",
       "summary": ""
     },
     {
