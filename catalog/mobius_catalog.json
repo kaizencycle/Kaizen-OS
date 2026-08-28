@@ -1,11 +1,11 @@
 {
   "mobius_catalog_version": "1.0.0",
-  "generated_at": "2026-08-28T00:11:11.853Z",
+  "generated_at": "2026-08-28T00:14:05.288Z",
   "repo": {
     "name": "Mobius-Substrate",
     "url": "https://github.com/kaizencycle/Mobius-Substrate",
     "default_branch": "main",
-    "commit": "8222c7c775855a5040176a2868bd7556bef88171"
+    "commit": "42932d4e9a3b9fd8adad35fd4f90d72a2e09a0f4"
   },
   "stats": {
     "epiconCount": 0,
@@ -8548,7 +8548,7 @@
       "title": "C-416: clear two stale cycle.json open_flags (credential rotation, Vercel identity re-attestation) per Job #15/#16 findings",
       "category": "epicon",
       "tags": [],
-      "content_hash": "sha256:2ef8908fafe8461e30af279c956bcab7f0023d4f1097cba2f83acfe18f599069",
+      "content_hash": "sha256:11b7b585173bbcc229fd0a4f9c3ed17712d1df7c2521e8a506bbd4cbee069bed",
       "summary": ""
     },
     {

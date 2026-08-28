@@ -15,7 +15,7 @@ execution_authorized: false
 ```intent
 epicon_id: EPICON_C-416_GOV_clear-stale-open-flags_v1
 ledger_id: cursor-aurea-daedalus-c416-flag-clear
-scope: docs, ci
+scope: docs, ci, specs
 mode: normal
 issued_at: 2026-08-28T00:00:00Z
 expires_at: 2026-11-20T00:00:00Z
