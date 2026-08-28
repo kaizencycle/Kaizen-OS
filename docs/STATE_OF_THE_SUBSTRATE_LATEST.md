@@ -1,8 +1,8 @@
 # State of the Substrate — Latest
 
-**Cycle:** C-414  
-**Updated:** 2026-08-25  
-**GI:** editorial carry-forward *(unresolved — not constitutional truth; use Live strip below for Terminal snapshot — do not average `cycle.json` 0.9, live KV readings, or ledger null)*  
+**Cycle:** C-416  
+**Updated:** 2026-08-28  
+**GI:** editorial carry-forward *(unresolved — not constitutional truth; use Live strip below for Terminal snapshot — do not average `cycle.json` 0.9, live KV readings, or ledger null; C-416 governance review Job #2 merged `gi_attested_this_cycle`/`gi_withheld_reason` into the `mobius-bot-state-sync` writer code — these fields are not yet present in the currently-committed `cycle.json` and will populate on that job's next scheduled run, not retroactively)*  
 **Custodian:** Michael (kaizencycle)  
 **Execution authority:** `execution_authorized=false`
 
@@ -21,21 +21,23 @@
 
 These classes are not interchangeable. Mixing them is how lag becomes a false seal.
 
-| Class | What it is | What it is not | C-414 pointer |
+| Class | What it is | What it is not | C-416 pointer |
 |-------|------------|----------------|---------------|
-| **Arithmetic cycle** | Calendar / writer pointer (`cycle.json` `current_cycle`, Terminal `meta.cycle_source: calendar`) | Not a Seal, not a receipt, not execution leave | **C-414** |
-| **Live runtime observation** | Terminal / Vault API fetch at a timestamp | Not constitutional truth; values move | Snapshot-lite `2026-08-25T16:02:45Z` (below) |
-| **Editorial summary** | This document | Not a Seal; not a KV write | C-414 catch-up of C-413 prose |
-| **Constitutional sealing** | Attested Seal with eligibility, lineage, and gate clearance | Not implied by cycle advance, 5/5 receipts, or vault-global `status` | **Not completed** for C-411, C-412, C-413, or C-414 |
-| **Receipt quorum** | Attestations *received* (`quorum_receipt_status`) | Not seal completion; not execution authority | `seal_status: receipt_quorum_only` |
+| **Arithmetic cycle** | Calendar / writer pointer (`cycle.json` `current_cycle`, Terminal `meta.cycle_source: calendar`) | Not a Seal, not a receipt, not execution leave | **C-416** |
+| **Live runtime observation** | Terminal / Vault API fetch at a timestamp | Not constitutional truth; values move | Last fetch `2026-08-25T16:02:45Z` (cycle C-414 at fetch time) — **not re-fetched for C-415/C-416**; see note below |
+| **Editorial summary** | This document | Not a Seal; not a KV write | C-416 catch-up of C-415 prose |
+| **Constitutional sealing** | Attested Seal with eligibility, lineage, and gate clearance | Not implied by cycle advance, 5/5 receipts, or vault-global `status` | **Not completed** for C-411–C-414 (live-verified, last fetch `2026-08-25T16:02:45Z`); C-415/C-416 **not independently re-verified** this update — no seal event has been announced via any subsequent EPICON or PR, but this is not a live confirmation |
+| **Receipt quorum** | Attestations *received* (`quorum_receipt_status`) | Not seal completion; not execution authority | `seal_status: receipt_quorum_only` (as of last fetch) |
 | **Execution authority** | Leave to mutate production (KV, Track R apply, gate lift, Fountain unlock) | Not implied by observation or editorial sync | **`execution_authorized=false`** |
 
-**Posture (live, not settled):** DEGRADED · RECEIPT QUORUM ONLY · SEAL BLOCKED · EXECUTION UNAUTHORIZED
+**Posture (live, not settled):** DEGRADED · RECEIPT QUORUM ONLY · SEAL BLOCKED · EXECUTION UNAUTHORIZED *(as of last fetch, 2026-08-25T16:02:45Z; not re-verified for C-415/C-416)*
 
 ---
 
 ## Dateline
 
+**C-416** — Arithmetic rollover by `mobius-bot-state-sync` (C-415 → C-416, `cycle.json` `last_updated: 2026-08-27T15:09:14Z`). No constitutional seal. Ledger pulse `GI_NULL_IN_PULSE` (`journals/cycles/C-416.json`). C-416 governance review reconciled `cycle.json` `open_flags` (removed one stale entry, Job #15) and merged `gi_attested_this_cycle`/`gi_withheld_reason` into the `mobius-bot-state-sync` writer code (Job #2) — those fields are not yet present in the currently-committed `cycle.json` and will populate on that job's next scheduled run, not retroactively. Live runtime observation below was **not re-fetched** this update — Terminal network egress was unavailable from this editorial session.  
+**C-415** — Arithmetic rollover by `mobius-bot-state-sync` (C-414 → C-415, ledger snapshot `2026-08-26T04:51:22Z`). No constitutional seal. Ledger pulse `GI_NULL_IN_PULSE` (`journals/cycles/C-415.json`).  
 **C-414** — Editorial State of the Substrate catch-up to the arithmetic pointer. Arithmetic rollover C-413 → C-414 by `mobius-bot-state-sync` (`cycle.json` `last_updated: 2026-08-25T04:49:26Z`). C-411, C-412, C-413, and C-414 are **not sealed**. Receipt quorum is not constitutional sealing. `execution_authorized=false`. Vault collision (125 hash-divergent pairs) and canonical lineage remain unresolved. Track R production promotion remains unauthorized. Vault Fountain remains locked; IPI `fountain_status` is a **different field** and is not treated as Fountain unlock.  
 **C-413** — Editorial State of the Substrate catch-up to the arithmetic pointer. C-411, C-412, and C-413 are **not sealed**. Receipt quorum is not constitutional sealing. `execution_authorized=false`. Vault collision (125 hash-divergent pairs) and canonical lineage remain unresolved. Track R production promotion remains unauthorized. Vault Fountain remains locked; IPI `fountain_status` is a **different field** and is not treated as Fountain unlock.  
 **C-412** — Arithmetic rollover by `mobius-bot-state-sync` (C-411 → C-412). No constitutional seal. Ledger pulse `GI_NULL_IN_PULSE`.  
@@ -59,20 +61,20 @@ These classes are not interchangeable. Mixing them is how lag becomes a false se
 
 ## This cycle at a glance
 
-- **Arithmetic pointer:** C-414 in [`cycle.json`](../cycle.json) (`2026-08-25`, previous C-413, blob SHA `f2663d19…`, `last_updated: 2026-08-25T04:49:26Z`). Terminal snapshot-lite reports the same cycle with `cycle_source: calendar`.
-- **Not sealed:** latest attested seal on `/api/vault/seal` remains **`seal-C-372-002`** (`2026-07-14`). Do not read C-411 / C-412 / C-413 / C-414 as sealed cycles.
-- **Receipt ≠ seal:** snapshot-lite `quorum_semantics.seal_status = receipt_quorum_only`; `seal_eligibility = blocked`; receipt note states 5/5 attestations received are **not** seal completion or execution authority.
-- **Execution:** snapshot-lite and integrity-status both report **`execution_authorized=false`**. This editorial PR does not grant it.
-- **Integrity gate:** active; sealing suspended on **125** hash-divergent `block_number` collision pair(s). `canonical_reserve_blocks = null`; `canonical_count_status = unresolved`; `canonical_lineage_status = unresolved_pending_reconciliation`.
-- **Fountain (do not silently reconcile):** Vault `/api/vault/status` `fountain_status = locked`. IPI on snapshot-lite reports a separate `ipi.fountain_status` field — **not** Vault Fountain unlock, **not** v1/v2 protocol merge.
+- **Arithmetic pointer:** C-416 in [`cycle.json`](../cycle.json) (`2026-08-27`, previous C-415, blob SHA `00c6cacd…`, `last_updated: 2026-08-27T15:09:14Z`). Terminal snapshot-lite was **not re-fetched** for this update (network egress to Terminal unavailable from this editorial session) — do not assume `cycle_source: calendar` still matches without a fresh fetch.
+- **Not sealed:** latest attested seal on `/api/vault/seal`, as of the last fetch (`2026-08-25T16:02:45Z`), remained **`seal-C-372-002`** (`2026-07-14`) — live-verified through C-414 only. C-415/C-416 are **not independently re-verified**; no seal event has been announced via any subsequent EPICON or PR, but do not read that absence as a live confirmation. Do not read C-411 through C-416 as sealed cycles without a fresh fetch.
+- **Receipt ≠ seal:** as of the last fetch, snapshot-lite `quorum_semantics.seal_status = receipt_quorum_only`; `seal_eligibility = blocked`; receipt note states 5/5 attestations received are **not** seal completion or execution authority. Not re-verified this update.
+- **Execution:** as of the last fetch, snapshot-lite and integrity-status both reported **`execution_authorized=false`**. This editorial PR does not grant it and did not re-check it live.
+- **Integrity gate:** as of the last fetch, active; sealing suspended on **125** hash-divergent `block_number` collision pair(s). `canonical_reserve_blocks = null`; `canonical_count_status = unresolved`; `canonical_lineage_status = unresolved_pending_reconciliation`. Not re-verified this update.
+- **Fountain (do not silently reconcile):** as of the last fetch, Vault `/api/vault/status` `fountain_status = locked`. IPI on snapshot-lite reports a separate `ipi.fountain_status` field — **not** Vault Fountain unlock, **not** v1/v2 protocol merge. Not re-verified this update.
 - **Track R:** production promotion remains **unauthorized** (`pending_zeus_and_eve_attestation` as last documented gate). Arithmetic rollover is not Track R step 6.
-- **GI (observational only):** live snapshot-lite `gi = 0.81` (green, `kv-live`, fetch `2026-08-25T16:02:45Z`); `cycle.json` still carries editorial `0.9` from pulse-null withhold; ledger `/pulse/state` `gi = null`. None of these is constitutional truth. Do not average them.
+- **GI (observational only):** as of the last fetch, snapshot-lite `gi = 0.81` (green, `kv-live`, fetch `2026-08-25T16:02:45Z`, not re-fetched this update); `cycle.json` still carries editorial `0.9` from pulse-null withhold — Job #2 (C-416) merged the `gi_attested_this_cycle`/`gi_withheld_reason` writer fields that will label this carry-forward explicitly, but they are not yet present in the currently-committed `cycle.json` (populate on the writer's next scheduled run); ledger `/pulse/state` `gi = null`. None of these is constitutional truth. Do not average them.
 
 ---
 
 ## Live runtime observation (fetch, not canon)
 
-Fetched **2026-08-25T16:02:45Z**. Renderer output is not canonical truth. Re-fetch before acting.
+Fetched **2026-08-25T16:02:45Z** (cycle **C-414** at fetch time) — **not re-fetched for C-415/C-416**; Terminal network egress was unavailable from this editorial session (C-416 update). Every value in the table below is that C-414-era fetch, not current state. Re-fetch before acting on or citing any number here.
 
 | Endpoint | Observation (this fetch) |
 |----------|--------------------------|
@@ -107,7 +109,7 @@ Receipt of 5/5 attestations is **receipt quorum**, not constitutional sealing an
 ## Read next
 
 1. [AI Simple in Life](./00-START-HERE/AI_SIMPLE_IN_LIFE.md) — handbook plain-language entry (C-380)
-2. [Cycle journal — C-397](./journals/C-397.md) — latest markdown cycle journal (C-411–C-414 have arithmetic JSON stubs only)
+2. [Cycle journal — C-397](./journals/C-397.md) — latest markdown cycle journal (C-411–C-416 have arithmetic JSON stubs only)
 3. [EPICON-000 — External Reality Boundary](./epicon/EPICON-000-external-reality-boundary.md) — witness pool doctrine
 4. [Vault v2 — Sealed Reserve](./protocols/vault-v2-sealed-reserve.md) — current discrete-Seal doctrine (do not collapse into v1 Fountain)
 5. [Vault v1 → Fountain](./protocols/vault-to-fountain-protocol.md) — historical continuous-reserve doctrine (preserved, not silently merged)

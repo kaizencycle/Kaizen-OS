@@ -2,8 +2,8 @@
 
 # Mobius Handbook — Generated Index
 
-**Cycle:** C-414  
-**Generated:** 2026-08-25  
+**Cycle:** C-416  
+**Generated:** 2026-08-27  
 **Source of truth:** [`mkdocs.yml`](../mkdocs.yml) navigation
 
 > This file is a build artifact. Edit navigation in `mkdocs.yml`, then run `npm run docs:generate-index`.
@@ -112,5 +112,5 @@
 
 ---
 
-*Generated for cycle C-414. "We heal as we walk."*
+*Generated for cycle C-416. "We heal as we walk."*
 

@@ -124,7 +124,7 @@ extra:
   canonical_domain: https://mobius-substrate.com
   terminal_url: https://terminal.mobius-substrate.com
   handbook_url: https://handbook.mobius-substrate.com
-  current_cycle: C-414
+  current_cycle: C-416
   gi_status: yellow
   terminal_repo: https://github.com/kaizencycle/mobius-civic-ai-terminal
   substrate_repo: https://github.com/kaizencycle/Mobius-Substrate

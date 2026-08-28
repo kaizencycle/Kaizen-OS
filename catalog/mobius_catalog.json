@@ -1,15 +1,15 @@
 {
   "mobius_catalog_version": "1.0.0",
-  "generated_at": "2026-08-28T02:49:06.506Z",
+  "generated_at": "2026-08-28T04:22:13.753Z",
   "repo": {
     "name": "Mobius-Substrate",
     "url": "https://github.com/kaizencycle/Mobius-Substrate",
     "default_branch": "main",
-    "commit": "efa894b6477f77f4c32871ec829b373d0339c7e1"
+    "commit": "72066d9a9a99ea95ce519f7b2ac3c448be152f90"
   },
   "stats": {
     "epiconCount": 0,
-    "docCount": 1113
+    "docCount": 1114
   },
   "epicons": [],
   "docs": [
@@ -7250,7 +7250,7 @@
       "title": "Mobius Handbook — Generated Index",
       "category": "INDEX.md",
       "tags": [],
-      "content_hash": "sha256:8c33a2160b382a40a413d770044fda6b3b38a00898da28ea4f17e8cfb5e43a98",
+      "content_hash": "sha256:84e89499edf4a2c734ad9fe69ef1ccf515246d87e7315a5039a6eb60834aafc5",
       "summary": ""
     },
     {
@@ -7378,7 +7378,7 @@
       "title": "State of the Substrate — Latest",
       "category": "STATE_OF_THE_SUBSTRATE_LATEST.md",
       "tags": [],
-      "content_hash": "sha256:64c8d282574762a74e6343c2ef8fe8fa5027e0141b40aae812b45beedd2dae43",
+      "content_hash": "sha256:3dea60a81fd3f636cedbc6b0ab07ee67073de5802d7e40b005619d6eaca228a4",
       "summary": ""
     },
     {
@@ -8541,6 +8541,14 @@
       "category": "epicon",
       "tags": [],
       "content_hash": "sha256:0c18c2afbb964cec1622e678bf10ad56941abae6a18882881751aae01533b8b5",
+      "summary": ""
+    },
+    {
+      "path": "docs/epicon/cycles/C-416/EPICON_C-416_GOV_advance-editorial-state-c416_v1.md",
+      "title": "C-416: advance editorial State of the Substrate and mkdocs cycle pointer to C-416 without implying seal completion or fabricating unrefetched live data",
+      "category": "epicon",
+      "tags": [],
+      "content_hash": "sha256:21747ed4a2652b173a451a3e5b21d8a515787e11fafe620d7ac72e9e13c295c5",
       "summary": ""
     },
     {
