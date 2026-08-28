@@ -1,32 +1,15 @@
 {
   "repo": "kaizencycle/Mobius-Substrate",
-  "generated_at": "2026-08-27T22:13:02Z",
-  "open_pr_count": 8,
+  "generated_at": "2026-08-28T11:17:20Z",
+  "open_pr_count": 7,
   "by_severity": {
-    "high": 4,
+    "high": 3,
     "medium": 0,
     "low": 0,
     "unknown": 4
   },
   "emergency_count": 0,
   "items": [
-    {
-      "pr": 385,
-      "title": "fix(labs): replace lab7 workrepo gitlink with tracked scaffold",
-      "url": "https://github.com/kaizencycle/Mobius-Substrate/pull/385",
-      "author": "kaizencycle",
-      "updated_at": "2026-07-14T17:53:09Z",
-      "created_at": "2026-07-14T17:52:55Z",
-      "labels": [],
-      "mode": "normal",
-      "has_debt": false,
-      "severity": "high",
-      "justification_hash": "",
-      "checks": {
-        "epicon": "unknown",
-        "merge_gate": "unknown"
-      }
-    },
     {
       "pr": 408,
       "title": "chore(deps): bump the actions group across 1 directory with 3 updates",
