@@ -1,6 +1,6 @@
 {
   "repo": "kaizencycle/Mobius-Substrate",
-  "generated_at": "2026-08-31T13:36:29Z",
+  "generated_at": "2026-08-31T22:46:22Z",
   "open_pr_count": 7,
   "by_severity": {
     "high": 3,
@@ -15,7 +15,7 @@
       "title": "chore(deps): bump the actions group across 1 directory with 3 updates",
       "url": "https://github.com/kaizencycle/Mobius-Substrate/pull/408",
       "author": "dependabot[bot]",
-      "updated_at": "2026-08-24T15:45:36Z",
+      "updated_at": "2026-08-31T15:45:07Z",
       "created_at": "2026-07-20T15:38:34Z",
       "labels": [],
       "mode": "normal",
@@ -48,12 +48,12 @@
       }
     },
     {
-      "pr": 437,
-      "title": "chore(deps): bump the npm-minor-patch group across 1 directory with 23 updates",
-      "url": "https://github.com/kaizencycle/Mobius-Substrate/pull/437",
+      "pr": 446,
+      "title": "chore(deps): bump the npm-minor-patch group across 1 directory with 22 updates",
+      "url": "https://github.com/kaizencycle/Mobius-Substrate/pull/446",
       "author": "dependabot[bot]",
-      "updated_at": "2026-08-24T16:08:53Z",
-      "created_at": "2026-08-17T17:58:34Z",
+      "updated_at": "2026-08-31T16:08:37Z",
+      "created_at": "2026-08-31T16:06:35Z",
       "labels": [],
       "mode": "normal",
       "has_debt": false,
