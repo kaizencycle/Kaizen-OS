@@ -1,84 +1,7 @@
 {
   "repo": "kaizencycle/Mobius-Substrate",
-  "updated_at": "2026-09-01T16:33:43Z",
+  "updated_at": "2026-09-01T20:58:53Z",
   "timeline": [
-    {
-      "repo": "kaizencycle/Mobius-Substrate",
-      "generated_at": "2026-07-17T03:32:15Z",
-      "open_pr_count": 9,
-      "counts": {
-        "high": 3,
-        "medium": 2,
-        "low": 0,
-        "unknown": 4
-      },
-      "emergency_count": 0,
-      "pr_sig": {
-        "382": {
-          "severity": "high",
-          "mode": "normal",
-          "epicon": "unknown",
-          "gate": "unknown",
-          "url": "https://github.com/kaizencycle/Mobius-Substrate/pull/382"
-        },
-        "385": {
-          "severity": "high",
-          "mode": "normal",
-          "epicon": "unknown",
-          "gate": "unknown",
-          "url": "https://github.com/kaizencycle/Mobius-Substrate/pull/385"
-        },
-        "390": {
-          "severity": "high",
-          "mode": "normal",
-          "epicon": "unknown",
-          "gate": "unknown",
-          "url": "https://github.com/kaizencycle/Mobius-Substrate/pull/390"
-        },
-        "392": {
-          "severity": "medium",
-          "mode": "normal",
-          "epicon": "unknown",
-          "gate": "unknown",
-          "url": "https://github.com/kaizencycle/Mobius-Substrate/pull/392"
-        },
-        "396": {
-          "severity": "medium",
-          "mode": "normal",
-          "epicon": "unknown",
-          "gate": "unknown",
-          "url": "https://github.com/kaizencycle/Mobius-Substrate/pull/396"
-        },
-        "344": {
-          "severity": "unknown",
-          "mode": "normal",
-          "epicon": "unknown",
-          "gate": "unknown",
-          "url": "https://github.com/kaizencycle/Mobius-Substrate/pull/344"
-        },
-        "345": {
-          "severity": "unknown",
-          "mode": "normal",
-          "epicon": "unknown",
-          "gate": "unknown",
-          "url": "https://github.com/kaizencycle/Mobius-Substrate/pull/345"
-        },
-        "346": {
-          "severity": "unknown",
-          "mode": "normal",
-          "epicon": "unknown",
-          "gate": "unknown",
-          "url": "https://github.com/kaizencycle/Mobius-Substrate/pull/346"
-        },
-        "347": {
-          "severity": "unknown",
-          "mode": "normal",
-          "epicon": "unknown",
-          "gate": "unknown",
-          "url": "https://github.com/kaizencycle/Mobius-Substrate/pull/347"
-        }
-      }
-    },
     {
       "repo": "kaizencycle/Mobius-Substrate",
       "generated_at": "2026-07-17T08:25:01Z",
@@ -12493,6 +12416,69 @@
     {
       "repo": "kaizencycle/Mobius-Substrate",
       "generated_at": "2026-09-01T16:33:43Z",
+      "open_pr_count": 7,
+      "counts": {
+        "high": 3,
+        "medium": 0,
+        "low": 0,
+        "unknown": 4
+      },
+      "emergency_count": 0,
+      "pr_sig": {
+        "408": {
+          "severity": "high",
+          "mode": "normal",
+          "epicon": "unknown",
+          "gate": "unknown",
+          "url": "https://github.com/kaizencycle/Mobius-Substrate/pull/408"
+        },
+        "419": {
+          "severity": "high",
+          "mode": "normal",
+          "epicon": "unknown",
+          "gate": "unknown",
+          "url": "https://github.com/kaizencycle/Mobius-Substrate/pull/419"
+        },
+        "446": {
+          "severity": "high",
+          "mode": "normal",
+          "epicon": "unknown",
+          "gate": "unknown",
+          "url": "https://github.com/kaizencycle/Mobius-Substrate/pull/446"
+        },
+        "344": {
+          "severity": "unknown",
+          "mode": "normal",
+          "epicon": "unknown",
+          "gate": "unknown",
+          "url": "https://github.com/kaizencycle/Mobius-Substrate/pull/344"
+        },
+        "345": {
+          "severity": "unknown",
+          "mode": "normal",
+          "epicon": "unknown",
+          "gate": "unknown",
+          "url": "https://github.com/kaizencycle/Mobius-Substrate/pull/345"
+        },
+        "346": {
+          "severity": "unknown",
+          "mode": "normal",
+          "epicon": "unknown",
+          "gate": "unknown",
+          "url": "https://github.com/kaizencycle/Mobius-Substrate/pull/346"
+        },
+        "347": {
+          "severity": "unknown",
+          "mode": "normal",
+          "epicon": "unknown",
+          "gate": "unknown",
+          "url": "https://github.com/kaizencycle/Mobius-Substrate/pull/347"
+        }
+      }
+    },
+    {
+      "repo": "kaizencycle/Mobius-Substrate",
+      "generated_at": "2026-09-01T20:58:53Z",
       "open_pr_count": 7,
       "counts": {
         "high": 3,
